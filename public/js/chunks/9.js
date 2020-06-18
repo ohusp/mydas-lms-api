@@ -480,9 +480,6 @@ var DefaultLayout = /*#__PURE__*/function (_Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log("Ohusp Noni");
-      console.log(this.state.loginState);
-
       if (this.state.loginState != true) {
         this.props.history.push("/login");
       }

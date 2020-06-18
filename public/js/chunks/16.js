@@ -14,6 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./resources/coreui/node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./resources/coreui/node_modules/reactstrap/es/index.js");
+/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! history */ "./resources/coreui/node_modules/history/esm/history.js");
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -136,6 +137,8 @@ function _getPrototypeOf(o) {
 
 
 
+var hashHistory = Object(history__WEBPACK_IMPORTED_MODULE_3__["createHashHistory"])();
+
 var ApplicationsList = /*#__PURE__*/function (_Component) {
   _inherits(ApplicationsList, _Component);
 
@@ -185,6 +188,8 @@ var ApplicationsList = /*#__PURE__*/function (_Component) {
           });
         } else alert("Login Failed!");
       })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        hashHistory.push('/premontessori');
         console.error("An Error Occuredd! ".concat(error));
       });
     }

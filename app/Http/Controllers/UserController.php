@@ -64,7 +64,9 @@ class UserController extends Controller
             $user->auth_token = $token; // update user token
             
             $user->save();
-            
+            // ///////// ADD ROLE ///////////////////////
+            $user->attachRole('user');
+            // /////////////////////////////////////////
             $response = ['success'=>true, 'data'=>['name'=>$user->name,'id'=>$user->id,'email'=>$request->email,'auth_token'=>$token]];        
         }
         else
