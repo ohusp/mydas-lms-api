@@ -40,7 +40,7 @@ class Login extends Component {
       //     }
       // })
       axios .post(
-            'api/user/login',
+            'api/admin/login',
             {
                 email: user.email,
                 password: user.password
@@ -57,13 +57,14 @@ class Login extends Component {
         .then(json => {
             if (json.data.success) {
                 alert("Login Successful!");
-                const { name, id, email, auth_token } = json.data.data;
+                const { name, id, email, auth_token, user_type } = json.data.data;
 
                 let userData = {
                 name,
                 id,
                 email,
                 auth_token,
+                user_type,
                 timestamp: new Date().toString()
                 };
                 let appState = {
@@ -72,11 +73,11 @@ class Login extends Component {
                 };
                 // save app state with user date in local storage
                 localStorage["appState"] = JSON.stringify(appState);
-                console.log("Response-2");
+                // console.log("Response-2");
                 console.log(localStorage["appState"]);
-                console.log("Response-3");
+                // console.log("Response-3");
                 let storedData1 = appState.user.email;
-                console.log(storedData1);
+                // console.log(storedData1);
                 
                 this.setState({
                     isLoggedIn: appState.isLoggedIn,

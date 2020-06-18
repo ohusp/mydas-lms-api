@@ -30,11 +30,13 @@ class UserController extends Controller
     {
         $user = \App\User::where('email', $request->email)->get()->first();
         if ($user && \Hash::check($request->password, $user->password)) // The passwords match...
-        {
+        {   
+            $role_name = $user->roles->pluck('name');
+            $role_name = $role_name[0];
             $token = self::getToken($request->email, $request->password);
             $user->auth_token = $token;
             $user->save();
-            $response = ['success'=>true, 'data'=>['id'=>$user->id,'auth_token'=>$user->auth_token,'name'=>$user->name, 'email'=>$user->email]];           
+            $response = ['success'=>true, 'data'=>['id'=>$user->id,'auth_token'=>$user->auth_token,'name'=>$user->name, 'email'=>$user->email, 'user_type'=>$role_name]];           
         }
         else 
           $response = ['success'=>false, 'data'=>'Record doesnt exists'];

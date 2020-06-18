@@ -30,7 +30,7 @@ var register = function register(newUser) {
   });
 };
 var login = function login(user) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('api/user/login', {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('api/admin/login', {
     email: user.email,
     password: user.password
   }).then(function (response) {

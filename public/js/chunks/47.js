@@ -201,7 +201,7 @@ var Login = /*#__PURE__*/function (_Component) {
       //     }
       // })
 
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/user/login', {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/admin/login', {
         email: user.email,
         password: user.password
       }).then(function (response) {
@@ -217,12 +217,14 @@ var Login = /*#__PURE__*/function (_Component) {
               name = _json$data$data.name,
               id = _json$data$data.id,
               email = _json$data$data.email,
-              auth_token = _json$data$data.auth_token;
+              auth_token = _json$data$data.auth_token,
+              user_type = _json$data$data.user_type;
           var userData = {
             name: name,
             id: id,
             email: email,
             auth_token: auth_token,
+            user_type: user_type,
             timestamp: new Date().toString()
           };
           var appState = {
@@ -230,12 +232,11 @@ var Login = /*#__PURE__*/function (_Component) {
             user: userData
           }; // save app state with user date in local storage
 
-          localStorage["appState"] = JSON.stringify(appState);
-          console.log("Response-2");
-          console.log(localStorage["appState"]);
-          console.log("Response-3");
-          var storedData1 = appState.user.email;
-          console.log(storedData1);
+          localStorage["appState"] = JSON.stringify(appState); // console.log("Response-2");
+
+          console.log(localStorage["appState"]); // console.log("Response-3");
+
+          var storedData1 = appState.user.email; // console.log(storedData1);
 
           _this2.setState({
             isLoggedIn: appState.isLoggedIn,
