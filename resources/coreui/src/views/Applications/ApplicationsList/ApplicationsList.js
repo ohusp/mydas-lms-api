@@ -15,10 +15,8 @@ class ApplicationsList extends Component {
       token: localStorage["appState"]
         ? JSON.parse(localStorage["appState"]).user.auth_token
         : "",
-      // loginState: localStorage["appState"]
-      //   ? JSON.parse(localStorage["appState"]).isLoggedIn
-      //   : "",
-        applications_list:[]
+        applications_list:[],
+        number: '1'
     };
   }
 
@@ -82,7 +80,7 @@ class ApplicationsList extends Component {
                       this.state.applications_list.map(application=>{
                         return(
                           <tr key={application.id}>
-                            <th scope="row">1</th>
+                            <th scope="row">{this.state.number++}</th>
                             <td>{application.first_name}</td>
                             <td>{application.last_name}</td>
                             <td>{application.middle_name}</td>
