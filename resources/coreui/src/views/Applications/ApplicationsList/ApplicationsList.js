@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 // import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
-import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
+import { Badge, Card, CardBody, CardHeader, Col, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
 import {createHashHistory} from 'history';
+import Pagination from "react-js-pagination";
 
 let hashHistory = createHashHistory()
 
@@ -16,25 +17,20 @@ class ApplicationsList extends Component {
         ? JSON.parse(localStorage["appState"]).user.auth_token
         : "",
         applications_list:[],
-        number: '1'
+        number: 1,
+        activePage:1,
+        itemsCountPerPage:1,
+        totalItemsCount:1,
+        pageRangeDisplayed:3,
+        currentPage2:''
     };
+    this.handlePageChange=this.handlePageChange.bind(this);
   }
 
   // fetch data from db
   componentDidMount()
   {
-    // console.log("Ohusp Noni");
-    // console.log(this.state.loginState);
-    // if(this.state.loginState != true){
-    //   this.props.history.push("/login");
-    // }
     axios.get(`http://localhost:8000/api/applications/list?token=${this.state.token}`)
-    // .then(response=>{
-    //   console.log("Ohusp Noni");
-    //   console.log(response.data);
-    //   this.setState({applications_list:response.data});
-    // });
-
     .then(response => {
       console.log("ROI Cartoon");
       console.log(response);
@@ -42,7 +38,12 @@ class ApplicationsList extends Component {
     })
     .then(json => {
       if (json.data.success) {
-        this.setState({ applications_list: json.data.data });
+        this.setState({ 
+          applications_list: json.data.data.data,
+          itemsCountPerPage: json.data.data.per_page,
+          totalItemsCount: json.data.data.total,
+          activePage: json.data.data.current_page
+        });
       } else alert("Login Failed!");
     })
     .catch(error => {
@@ -51,6 +52,26 @@ class ApplicationsList extends Component {
       console.error(`An Error Occuredd! ${error}`);
       
     });
+  }
+
+  // Pagination handler
+  handlePageChange(pageNumber) {
+    console.log(`active page is ${pageNumber}`);
+    // this.setState({activePage: pageNumber});
+    axios.get(`http://localhost:8000/api/applications/list?token=${this.state.token}&page=`+pageNumber)
+    .then(response => {
+      return response;
+    })
+    .then(json => {
+      if (json.data.success) {
+        this.setState({ 
+          applications_list: json.data.data.data,
+          itemsCountPerPage: json.data.data.per_page,
+          totalItemsCount: json.data.data.total,
+          activePage: json.data.data.current_page
+        });
+      } else alert("Login Failed!");
+    })
   }
   
   render() {
@@ -77,10 +98,14 @@ class ApplicationsList extends Component {
                   </thead>
                   <tbody>
                     {
+                      // Calculation for the page S/N
+                      this.state.currentPage = ((this.state.activePage * 10) - (10 - 1)),
+                      // ////////////////////////////////////////////////////////////
                       this.state.applications_list.map(application=>{
                         return(
                           <tr key={application.id}>
-                            <th scope="row">{this.state.number++}</th>
+                            {/* <th scope="row">{this.state.pageNumber++}</th> */}
+                            <th scope="row">{this.state.currentPage++}</th>
                             <td>{application.first_name}</td>
                             <td>{application.last_name}</td>
                             <td>{application.middle_name}</td>
@@ -93,16 +118,17 @@ class ApplicationsList extends Component {
                     }
                   </tbody>
                 </Table>
-                <Pagination>
-                  <PaginationItem><PaginationLink previous tag="button">Prev</PaginationLink></PaginationItem>
-                  <PaginationItem active>
-                    <PaginationLink tag="button">1</PaginationLink>
-                  </PaginationItem>
-                  <PaginationItem className="page-item"><PaginationLink tag="button">2</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink tag="button">3</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink tag="button">4</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink next tag="button">Next</PaginationLink></PaginationItem>
-                </Pagination>
+                <div className="d-flex justify-content-center">
+                  <Pagination
+                    activePage={this.state.activePage}
+                    itemsCountPerPage={this.state.itemsCountPerPage}
+                    totalItemsCount={this.state.totalItemsCount}
+                    pageRangeDisplayed={this.state.pageRangeDisplayed}
+                    onChange={this.handlePageChange}
+                    itemClass='page-item'
+                    linkClass='page-link'
+                  />
+                </div>
               </CardBody>
             </Card>
           </Col>

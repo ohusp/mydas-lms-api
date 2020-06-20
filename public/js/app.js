@@ -80769,15 +80769,15 @@ var loading = function loading() {
 
 
 var DefaultLayout = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(7), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./containers/DefaultLayout */ "./resources/coreui/src/containers/DefaultLayout/DefaultLayout.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./containers/DefaultLayout */ "./resources/coreui/src/containers/DefaultLayout/DefaultLayout.js"));
 }); // Pages
 
 var Apply = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(5), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Apply */ "./resources/coreui/src/views/Pages/Apply/Apply.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(46)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Apply */ "./resources/coreui/src/views/Pages/Apply/Apply.js"));
 }); // //////////////////////////////////////////////////////////////
 
 var Login = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(5), __webpack_require__.e(47)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Login */ "./resources/coreui/src/views/Pages/Login/Login.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(54), __webpack_require__.e(47)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Login */ "./resources/coreui/src/views/Pages/Login/Login.js"));
 });
 var Register = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(50)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Register */ "./resources/coreui/src/views/Pages/Register/Register.js"));

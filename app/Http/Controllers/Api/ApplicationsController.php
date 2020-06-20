@@ -26,7 +26,7 @@ class ApplicationsController extends Controller
     public function index()
     {
         //
-        $applications = Applications::all();
+        $applications = Applications::paginate(10);
         // return $result;
         $response = ['success'=>true, 'data'=>$applications];
         return response()->json($response, 201);

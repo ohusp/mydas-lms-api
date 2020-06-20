@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
-import {register} from './../../../functions/UserFunctions'
+// import {register} from './../../../functions/UserFunctions'
 
 class Apply extends Component {
   constructor(){
@@ -29,9 +29,21 @@ class Apply extends Component {
       password: this.state.password
     }
 
-    register(newUser).then(res => {
-      this.props.history.push('/login')
-    })
+    // register(newUser).then(res => {
+    //   this.props.history.push('/login')
+    // })
+
+    axios
+      .post('api/user/register', newUser, {
+          headers: { 'Content-Type': 'application/json' }
+      })
+      .then(response => {
+          console.log(response)
+          this.props.history.push('/login')
+      })
+      .catch(err => {
+          console.log(err)
+      });
   }
 
   render() {
