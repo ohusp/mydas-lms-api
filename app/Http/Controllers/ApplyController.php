@@ -2,7 +2,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Applications;
-// use App\User;
 use JWTAuth;
 use JWTAuthException;
 
@@ -48,7 +47,7 @@ class ApplyController extends Controller
             $token = self::getToken($request->email, $request->password);
             $user->auth_token = $token;
             $user->save();
-            $response = ['success'=>true, 'data'=>['id'=>$user->id,'auth_token'=>$user->auth_token,'name'=>$user->name, 'email'=>$user->email, 'user_type'=>$role_name]];           
+            $response = ['success'=>true, 'data'=>['id'=>$user->id,'auth_token'=>$user->auth_token,'first_name'=>$user->first_name,'last_name'=>$user->last_name, 'email'=>$user->email, 'user_type'=>$role_name]];           
         }
         else 
           $response = ['success'=>false, 'data'=>'Record doesnt exists'];
@@ -61,7 +60,8 @@ class ApplyController extends Controller
         $payload = [
             'password'=>\Hash::make($request->password),
             'email'=>$request->email,
-            'name'=>$request->name,
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
             'auth_token'=> ''
         ];
                   
@@ -81,7 +81,7 @@ class ApplyController extends Controller
             // ///////// ADD ROLE ///////////////////////
             $user->attachRole('user');
             // /////////////////////////////////////////
-            $response = ['success'=>true, 'data'=>['name'=>$user->name,'id'=>$user->id,'email'=>$request->email,'auth_token'=>$token]];        
+            $response = ['success'=>true, 'data'=>['first_name'=>$user->first_name,'last_name'=>$user->last_name,'id'=>$user->id,'email'=>$request->email,'auth_token'=>$token]];        
         }
         else
             $response = ['success'=>false, 'data'=>'Couldnt register user'];

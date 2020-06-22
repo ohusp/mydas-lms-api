@@ -86,7 +86,7 @@ class AdminLogin extends Component {
                 // localStorage.setItem('usertoken', appState)
                 // console.log("Mr Mendes is here 2");
                 // console.log(`Bearer ${localStorage.usertoken}`)
-                this.props.history.push(`/dashboard`)
+                this.props.history.push(`/admin_dashboard`)
             } else alert("Login Failed!");
 
             $("#login-form button")

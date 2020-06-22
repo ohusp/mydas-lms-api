@@ -24,7 +24,8 @@ class Apply extends Component {
     e.preventDefault()
 
     const newUser = {
-      name: this.state.first_name + ' ' + this.state.last_name,
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
       email: this.state.email,
       password: this.state.password
     }

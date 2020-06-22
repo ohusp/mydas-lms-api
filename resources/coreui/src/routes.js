@@ -1,6 +1,11 @@
 import React from 'react';
 
+// //////////////////////////////// ADMIN ////////////////////////////////////////////////
+const AdminDashboard = React.lazy(() => import('./views/Admin/AdminDashboard'));
 const ApplicationsList = React.lazy(() => import('./views/Applications/ApplicationsList'));
+
+// ////////////////////////////////////////////////////////////////////////////////////////
+
 
 // ////////////////////////////////////////////////////////////////////////////
 const Breadcrumbs = React.lazy(() => import('./views/Base/Breadcrumbs'));
@@ -41,7 +46,12 @@ const User = React.lazy(() => import('./views/Users/User'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
+  // ///////////////////////////// ADMIN ////////////////////////////////////////////////////////////
+  { path: '/admin/admin-dashboard', name: 'Admin Dashboard', component: AdminDashboard },
   { path: '/applications/applications-list', name: 'Applications List', component: ApplicationsList },
+
+  // ////////////////////////////////////////////////////////////////////////////////////////////////
+  
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/theme', exact: true, name: 'Theme', component: Colors },

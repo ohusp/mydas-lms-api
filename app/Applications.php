@@ -22,7 +22,7 @@ class Applications extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'auth_token'
+        'first_name', 'last_name', 'email', 'password', 'auth_token'
     ];
 
     /**

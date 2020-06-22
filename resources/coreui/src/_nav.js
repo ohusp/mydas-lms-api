@@ -1,8 +1,9 @@
 export default {
   items: [
+    // ///////////////////////// ADMIN /////////////////////////////////////////////////
     {
       name: 'Dashboard',
-      url: '/dashboard',
+      url: '/admin/admin-dashboard',
       icon: 'icon-speedometer',
       badge: {
         variant: 'info',
@@ -23,6 +24,18 @@ export default {
       ],
     },
 
+    // ///////////////////////////////// USER /////////////////////////////////////////////////////
+    {
+      name: 'Dashboard',
+      url: '/dashboard',
+      icon: 'icon-speedometer',
+      badge: {
+        variant: 'info',
+        text: 'NEW',
+      },
+    },
+
+    // /////////////////////////////////////////////////////////////////////////////////////////
     {
       title: true,
       name: 'Theme',

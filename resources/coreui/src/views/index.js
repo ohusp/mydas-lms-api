@@ -1,8 +1,13 @@
 // ////////////////////////////////////// ADMIN ///////////////////////////////////////////////
 import { AdminLogin } from './Admin';
+import { AdminDashboard } from './Admin';
+import { ApplicationsList } from './Applications';
 
-// /////////////////////////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////// USER /////////////////////////////////////////////////
+import { Login, Page404, Page500, Register, Apply } from './Pages';
+import Dashboard from './Dashboard';
 
+// //////////////////////////////////////////////////////////////////////////////////////////////
 import {
   Breadcrumbs,
   Cards,
@@ -25,21 +30,22 @@ import {
 
 import { ButtonDropdowns, ButtonGroups, Buttons, BrandButtons } from './Buttons';
 import Charts from './Charts';
-import Dashboard from './Dashboard';
 import { CoreUIIcons, Flags, FontAwesome, SimpleLineIcons } from './Icons';
-import { ApplicationsList } from './Applications';
 import { Alerts, Badges, Modals } from './Notifications';
-import { Login, Page404, Page500, Register, Apply } from './Pages';
 import { Colors, Typography } from './Theme';
 import Widgets from './Widgets';
 
 export {
   // ////////////////////////////////////// ADMIN ///////////////////////////////////////////
   AdminLogin,
-
-  // ////////////////////////////////////////////////////////////////////////////////////////
+  AdminDashboard,
   ApplicationsList,
+
+  // ////////////////////////////////////// USER /////////////////////////////////////////////
   Apply,
+  Login,
+  Dashboard,
+
   // ///////////////////////////////
   Badges,
   Typography,
@@ -48,7 +54,6 @@ export {
   Page404,
   Page500,
   Register,
-  Login,
   Modals,
   Alerts,
   Flags,
@@ -62,7 +67,6 @@ export {
   Tabs,
   Tables,
   Charts,
-  Dashboard,
   Widgets,
   Jumbotrons,
   Switches,
