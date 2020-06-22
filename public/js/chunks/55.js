@@ -1,9 +1,9 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[16],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[55],{
 
-/***/ "./resources/coreui/src/containers/DefaultLayout/DefaultFooter.js":
-/*!************************************************************************!*\
-  !*** ./resources/coreui/src/containers/DefaultLayout/DefaultFooter.js ***!
-  \************************************************************************/
+/***/ "./resources/coreui/src/views/Widgets/Widget03.js":
+/*!********************************************************!*\
+  !*** ./resources/coreui/src/views/Widgets/Widget03.js ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -13,6 +13,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./resources/coreui/node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./resources/coreui/node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var reactstrap_lib_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactstrap/lib/utils */ "./resources/coreui/node_modules/reactstrap/lib/utils.js");
+/* harmony import */ var reactstrap_lib_utils__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reactstrap_lib_utils__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -168,46 +172,88 @@ function _getPrototypeOf(o) {
 
 
 
+
+
 var propTypes = {
-  children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node
+  children: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.node,
+  className: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.string,
+  cssModule: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object,
+  dataBox: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
 };
-var defaultProps = {};
+var defaultProps = {
+  dataBox: function dataBox() {
+    return {
+      variant: 'facebook',
+      friends: '-',
+      feeds: '-'
+    };
+  }
+};
 
-var DefaultFooter = /*#__PURE__*/function (_Component) {
-  _inherits(DefaultFooter, _Component);
+var Widget03 = /*#__PURE__*/function (_Component) {
+  _inherits(Widget03, _Component);
 
-  var _super = _createSuper(DefaultFooter);
+  var _super = _createSuper(Widget03);
 
-  function DefaultFooter() {
-    _classCallCheck(this, DefaultFooter);
+  function Widget03() {
+    _classCallCheck(this, Widget03);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(DefaultFooter, [{
+  _createClass(Widget03, [{
     key: "render",
     value: function render() {
       // eslint-disable-next-line
       var _this$props = this.props,
           children = _this$props.children,
-          attributes = _objectWithoutProperties(_this$props, ["children"]);
+          className = _this$props.className,
+          cssModule = _this$props.cssModule,
+          dataBox = _this$props.dataBox,
+          attributes = _objectWithoutProperties(_this$props, ["children", "className", "cssModule", "dataBox"]); // demo purposes only
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://coreui.io"
-      }, "CoreUI"), " \xA9 2020 creativeLabs."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "ml-auto"
-      }, "Powered by ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://coreui.io/react"
-      }, "CoreUI for React")));
+
+      var data = dataBox();
+      var variant = data.variant;
+
+      if (!variant || ['facebook', 'twitter', 'linkedin', 'google-plus'].indexOf(variant) < 0) {
+        return null;
+      }
+
+      var back = 'bg-' + variant;
+      var icon = 'fa fa-' + variant;
+      var keys = Object.keys(data);
+      var vals = Object.values(data);
+      var classCard = 'brand-card';
+      var classCardHeader = classnames__WEBPACK_IMPORTED_MODULE_2___default()("".concat(classCard, "-header"), back);
+      var classCardBody = classnames__WEBPACK_IMPORTED_MODULE_2___default()("".concat(classCard, "-body"));
+      var classes = Object(reactstrap_lib_utils__WEBPACK_IMPORTED_MODULE_3__["mapToCssModules"])(classnames__WEBPACK_IMPORTED_MODULE_2___default()(classCard, className), cssModule);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: classes
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: classCardHeader
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: icon
+      }), children), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: classCardBody
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-value"
+      }, vals[1]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-uppercase text-muted small"
+      }, keys[1])), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-value"
+      }, vals[2]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-uppercase text-muted small"
+      }, keys[2]))));
     }
   }]);
 
-  return DefaultFooter;
+  return Widget03;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-DefaultFooter.propTypes = propTypes;
-DefaultFooter.defaultProps = defaultProps;
-/* harmony default export */ __webpack_exports__["default"] = (DefaultFooter);
+Widget03.propTypes = propTypes;
+Widget03.defaultProps = defaultProps;
+/* harmony default export */ __webpack_exports__["default"] = (Widget03);
 
 /***/ })
 

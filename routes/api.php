@@ -18,6 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth:api')->get('/applications', function (Request $request) {
+    return $request->applications();
+});
 
 
 Route::group(['middleware' => ['jwt.auth','api-header']], function () {
@@ -44,8 +47,13 @@ Route::group(['middleware' => 'api-header'], function () {
     // The registration and login requests doesn't come with tokens 
     // as users at that point have not been authenticated yet
     // Therefore the jwtMiddleware will be exclusive of them
-
+    //////////////////////// ADMIN ///////////////////////////////////// 
     Route::post('admin/login', 'AdminController@login');
+    Route::post('admin/register', 'AdminController@register');
+
+    // ////////////////////////////////////////////////////////////////
     Route::post('user/register', 'UserController@register');
     Route::post('user/login', 'UserController@login');
+
+    Route::post('user/apply', 'ApplyController@register');
 });

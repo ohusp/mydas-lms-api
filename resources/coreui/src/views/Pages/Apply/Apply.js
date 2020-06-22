@@ -34,7 +34,7 @@ class Apply extends Component {
     // })
 
     axios
-      .post('api/user/register', newUser, {
+      .post('api/user/apply', newUser, {
           headers: { 'Content-Type': 'application/json' }
       })
       .then(response => {

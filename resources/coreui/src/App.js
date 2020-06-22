@@ -8,10 +8,14 @@ const loading = () => <div className="animated fadeIn pt-3 text-center">Loading.
 // Containers
 const DefaultLayout = React.lazy(() => import('./containers/DefaultLayout'));
 
+// /////////////////////////////////////// ADMIN //////////////////////////////////////////
+const AdminLogin = React.lazy(() => import('./views/Admin/AdminLogin/AdminLogin'));
+
+// ///////////////////////////////////////////////////////////////////////////////////////
 // Pages
 const Apply = React.lazy(() => import('./views/Pages/Apply'));
 // //////////////////////////////////////////////////////////////
-const Login = React.lazy(() => import('./views/Pages/Login'));
+const Login = React.lazy(() => import('./views/Admin/AdminLogin/AdminLogin'));
 const Register = React.lazy(() => import('./views/Pages/Register'));
 const Page404 = React.lazy(() => import('./views/Pages/Page404'));
 const Page500 = React.lazy(() => import('./views/Pages/Page500'));
@@ -23,6 +27,10 @@ class App extends Component {
       <HashRouter>
           <React.Suspense fallback={loading()}>
             <Switch>
+              {/* ////////////////////////// ADMIN /////////////////////////////////////////// */}
+              <Route exact path="/admin_login" name="Admin Login Page" render={props => <AdminLogin {...props}/>} />
+
+              {/* //////////////////////////////////////////////////////////////////////////// */}
               <Route exact path="/Apply" name="Apply Page" render={props => <Apply {...props}/>} />
               {/* //////////////////////////////////////////////////////////////////////////// */}
               <Route exact path="/login" name="Login Page" render={props => <Login {...props}/>} />

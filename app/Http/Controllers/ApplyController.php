@@ -1,12 +1,23 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\User;
+use App\Applications;
+// use App\User;
 use JWTAuth;
 use JWTAuthException;
 
-class AdminController extends Controller
-{
+class ApplyController extends Controller
+{   
+    function __construct()
+    {
+        // This is use to get the token for Applications model
+        \Config::set('jwt.user', Applications::class);
+        \Config::set('auth.providers', ['users' => [
+                'driver' => 'eloquent',
+                'model' => Applications::class,
+            ]]);
+    }
+
     private function getToken($email, $password)
     {
         $token = null;
@@ -29,7 +40,7 @@ class AdminController extends Controller
     }
     public function login(Request $request)
     {
-        $user = \App\User::where('email', $request->email)->get()->first();
+        $user = \App\Applications::where('email', $request->email)->get()->first();
         if ($user && \Hash::check($request->password, $user->password)) // The passwords match...
         {   
             $role_name = $user->roles->pluck('name');
@@ -54,7 +65,7 @@ class AdminController extends Controller
             'auth_token'=> ''
         ];
                   
-        $user = new \App\User($payload);
+        $user = new \App\Applications($payload);
         if ($user->save())
         {
             
@@ -62,7 +73,7 @@ class AdminController extends Controller
             
             if (!is_string($token))  return response()->json(['success'=>false,'data'=>'Token generation failed'], 201);
             
-            $user = \App\User::where('email', $request->email)->get()->first();
+            $user = \App\Applications::where('email', $request->email)->get()->first();
             
             $user->auth_token = $token; // update user token
             

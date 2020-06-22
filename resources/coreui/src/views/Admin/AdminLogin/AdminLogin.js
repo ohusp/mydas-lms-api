@@ -6,7 +6,7 @@ import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGr
 import axios from 'axios'
 import $ from "jquery";
 
-class Login extends Component {
+class AdminLogin extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -40,7 +40,7 @@ class Login extends Component {
       //     }
       // })
       axios .post(
-            'api/user/login',
+            'api/admin/login',
             {
                 email: user.email,
                 password: user.password
@@ -86,7 +86,7 @@ class Login extends Component {
                 // localStorage.setItem('usertoken', appState)
                 // console.log("Mr Mendes is here 2");
                 // console.log(`Bearer ${localStorage.usertoken}`)
-                this.props.history.push(`/applications/applications-list`)
+                this.props.history.push(`/dashboard`)
             } else alert("Login Failed!");
 
             $("#login-form button")
@@ -117,7 +117,7 @@ class Login extends Component {
                 <Card className="p-4">
                   <CardBody>
                     <Form noValidate onSubmit={this.onSubmit}>
-                      <h1>Login</h1>
+                      <h1>Admin Login</h1>
                       <p className="text-muted">Sign In to your account</p>
                       <InputGroup className="mb-3">
                         <InputGroupAddon addonType="prepend">
@@ -184,4 +184,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default AdminLogin;
