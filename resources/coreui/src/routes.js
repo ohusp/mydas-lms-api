@@ -2,10 +2,11 @@ import React from 'react';
 
 // //////////////////////////////// ADMIN ////////////////////////////////////////////////
 const AdminDashboard = React.lazy(() => import('./views/Admin/AdminDashboard'));
-const ApplicationsList = React.lazy(() => import('./views/Applications/ApplicationsList'));
+const ApplicationsList = React.lazy(() => import('./views/Admin/Applications/ApplicationsList'));
 
-// ////////////////////////////////////////////////////////////////////////////////////////
-
+// //////////////////////////////// USER ///////////////////////////////////////////////////////
+const Dashboard = React.lazy(() => import('./views/Dashboard'));
+const Application = React.lazy(() => import('./views/Application'));
 
 // ////////////////////////////////////////////////////////////////////////////
 const Breadcrumbs = React.lazy(() => import('./views/Base/Breadcrumbs'));
@@ -30,7 +31,6 @@ const ButtonDropdowns = React.lazy(() => import('./views/Buttons/ButtonDropdowns
 const ButtonGroups = React.lazy(() => import('./views/Buttons/ButtonGroups'));
 const Buttons = React.lazy(() => import('./views/Buttons/Buttons'));
 const Charts = React.lazy(() => import('./views/Charts'));
-const Dashboard = React.lazy(() => import('./views/Dashboard'));
 const CoreUIIcons = React.lazy(() => import('./views/Icons/CoreUIIcons'));
 const Flags = React.lazy(() => import('./views/Icons/Flags'));
 const FontAwesome = React.lazy(() => import('./views/Icons/FontAwesome'));
@@ -48,12 +48,18 @@ const User = React.lazy(() => import('./views/Users/User'));
 const routes = [
   // ///////////////////////////// ADMIN ////////////////////////////////////////////////////////////
   { path: '/admin/admin-dashboard', name: 'Admin Dashboard', component: AdminDashboard },
-  { path: '/applications/applications-list', name: 'Applications List', component: ApplicationsList },
+  { path: '/admin/applications/applications-list', name: 'Applications List', component: ApplicationsList },
+
+  // ///////////////////////////// ADMIN ////////////////////////////////////////////////////////////
+  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+  { path: '/application', name: 'Application', component: Application },
+
+
+  // ////////////////////////////////////////////////////////////////////////////////////////////////
 
   // ////////////////////////////////////////////////////////////////////////////////////////////////
   
   { path: '/', exact: true, name: 'Home' },
-  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/theme', exact: true, name: 'Theme', component: Colors },
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },

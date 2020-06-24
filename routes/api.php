@@ -52,8 +52,10 @@ Route::group(['middleware' => 'api-header'], function () {
     Route::post('admin/register', 'AdminController@register');
 
     // ////////////////////////////////////////////////////////////////
-    Route::post('user/register', 'UserController@register');
-    Route::post('user/login', 'UserController@login');
-
     Route::post('user/apply', 'ApplyController@register');
+    Route::post('user/login', 'ApplyController@login');
+
+    Route::post('user/register', 'UserController@register');
+
+    
 });

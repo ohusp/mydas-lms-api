@@ -1,9 +1,20 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[13],{
 
-/***/ "./resources/coreui/src/views/Users/User.js":
-/*!**************************************************!*\
-  !*** ./resources/coreui/src/views/Users/User.js ***!
-  \**************************************************/
+/***/ "./resources/coreui/src/images/avatars/0.jpg":
+/*!***************************************************!*\
+  !*** ./resources/coreui/src/images/avatars/0.jpg ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/0.jpg?73476783ca0f7583198978de7073815b";
+
+/***/ }),
+
+/***/ "./resources/coreui/src/views/Application/Application.js":
+/*!***************************************************************!*\
+  !*** ./resources/coreui/src/views/Application/Application.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -12,7 +23,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./resources/coreui/node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./resources/coreui/node_modules/reactstrap/es/index.js");
-/* harmony import */ var _UsersData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UsersData */ "./resources/coreui/src/views/Users/UsersData.js");
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -27,64 +37,6 @@ function _typeof(obj) {
   }
 
   return _typeof(obj);
-}
-
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-
-  return arr2;
-}
-
-function _iterableToArrayLimit(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -191,231 +143,179 @@ function _getPrototypeOf(o) {
 
 
 
+var Application = /*#__PURE__*/function (_Component) {
+  _inherits(Application, _Component);
 
-var User = /*#__PURE__*/function (_Component) {
-  _inherits(User, _Component);
+  var _super = _createSuper(Application);
 
-  var _super = _createSuper(User);
+  function Application(props) {
+    var _this;
 
-  function User() {
-    _classCallCheck(this, User);
+    _classCallCheck(this, Application);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.toggle = _this.toggle.bind(_assertThisInitialized(_this));
+    _this.toggleFade = _this.toggleFade.bind(_assertThisInitialized(_this));
+    _this.state = {
+      token: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.auth_token : "",
+      first_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.first_name : "",
+      last_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.last_name : "",
+      middle_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.middle_name : "",
+      email: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.email : "",
+      telephone: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.telephone : "",
+      title: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.title : "",
+      gender: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.gender : "",
+      dob: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.dob : "",
+      nationality: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.nationality : "",
+      country_of_residence: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.country_of_residence : "",
+      district_province_state: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.district_province_state : "",
+      contact_address: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.contact_address : "",
+      disabilities: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disabilities : "",
+      parent_guardian_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.parent_guardian_name : "",
+      parent_guardian_relationship: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.parent_guardian_relationship : "",
+      parent_guardian_occupation: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.parent_guardian_occupation : "",
+      passport_photograph: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.passport_photograph : "",
+      type_of_identification: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.type_of_identification : "",
+      id_passport_number: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.id_passport_number : "",
+      id_passport_upload: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.id_passport_upload : "",
+      programme_first_choice: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.programme_first_choice : "",
+      programme_second_choice: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.programme_second_choice : "",
+      programme_third_choice: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.programme_third_choice : "",
+      academic_session: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.academic_session : "",
+      admission_intake: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.admission_intake : "",
+      study_mode: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.study_mode : "",
+      previous_result_transcript: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.previous_result_transcript : "",
+      status: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.status : "",
+      created_at: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.created_at : "",
+      user_type: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.user_type : "",
+      collapse: true,
+      fadeIn: true,
+      timeout: 300,
+      // //////////////////////////////////////////////////
+      avatar: __webpack_require__(/*! ./../../images/avatars/0.jpg */ "./resources/coreui/src/images/avatars/0.jpg"),
+      jobTitle: "Project Manager",
+      performanceReportTitle: "Workload",
+      performanceReportValue: 74,
+      metaTitle: "Description",
+      metaValue: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?"
+    };
+    return _this;
   }
 
-  _createClass(User, [{
+  _createClass(Application, [{
+    key: "toggle",
+    value: function toggle() {
+      this.setState({
+        collapse: !this.state.collapse
+      });
+    }
+  }, {
+    key: "toggleFade",
+    value: function toggleFade() {
+      this.setState(function (prevState) {
+        return {
+          fadeIn: !prevState
+        };
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this = this;
-
-      var user = _UsersData__WEBPACK_IMPORTED_MODULE_2__["default"].find(function (user) {
-        return user.id.toString() === _this.props.match.params.id;
-      });
-      var userDetails = user ? Object.entries(user) : [['id', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "text-muted icon-ban"
-      }), " Not found")]];
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "animated fadeIn"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        lg: 6
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-info pr-1"
-      }), "User id: ", this.props.match.params.id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
-        responsive: true,
-        striped: true,
-        hover: true
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, userDetails.map(function (_ref) {
-        var _ref2 = _slicedToArray(_ref, 2),
-            key = _ref2[0],
-            value = _ref2[1];
-
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          key: key
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "".concat(key, ":")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, value)));
-      }))))))));
+        xs: "12",
+        sm: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardHeader"], {
+        className: "border-bottom text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mb-3 mx-auto"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "rounded-circle",
+        src: this.state.avatar,
+        alt: this.state.name,
+        width: "110"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "mb-0"
+      }, this.state.first_name, " ", this.state.last_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-muted d-block mb-2"
+      }, this.state.email)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
+        className: "text-muted d-block mb-2"
+      }, this.state.metaTitle), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, this.state.metaValue)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "12",
+        sm: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardHeader"], null, "Application Form"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+        action: "",
+        method: "post"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, "Username")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+        type: "email",
+        id: "username3",
+        name: "username3",
+        autoComplete: "name"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-user"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, "Email")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+        type: "email",
+        id: "email3",
+        name: "email3",
+        autoComplete: "username"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-envelope"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, "Password")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+        type: "password",
+        id: "password3",
+        name: "password3",
+        autoComplete: "current-password"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["FormGroup"], {
+        className: "form-actions"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        type: "submit",
+        size: "sm",
+        color: "primary"
+      }, "Submit"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-align-justify"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Collapse"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header-actions"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://reactstrap.github.io/components/collapse/",
+        rel: "noreferrer noopener",
+        target: "_blank",
+        className: "card-header-action"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        className: "text-muted"
+      }, "docs")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Collapse"], {
+        isOpen: this.state.collapse,
+        onEntering: this.onEntering,
+        onEntered: this.onEntered,
+        onExiting: this.onExiting,
+        onExited: this.onExited
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Donec molestie odio id nisi malesuada, mattis tincidunt velit egestas. Sed non pulvinar risus. Aenean elementum eleifend nunc, pellentesque dapibus arcu hendrerit fringilla. Aliquam in nibh massa. Cras ultricies lorem non enim volutpat, a eleifend urna placerat. Fusce id luctus urna. In sed leo tellus. Mauris tristique leo a nisl feugiat, eget vehicula leo venenatis. Quisque magna metus, luctus quis sollicitudin vel, vehicula nec ipsum. Donec rutrum commodo lacus ut condimentum. Integer vel turpis purus. Etiam vehicula, nulla non fringilla blandit, massa purus faucibus tellus, a luctus enim orci non augue. Aenean ullamcorper nisl urna, non feugiat tortor volutpat in. Vivamus lobortis massa dolor, eget faucibus ipsum varius eget. Pellentesque imperdiet, turpis sed sagittis lobortis, leo elit laoreet arcu, vehicula sagittis elit leo id nisi."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        color: "primary",
+        onClick: this.toggle,
+        className: 'mb-1',
+        id: "toggleCollapse1"
+      }, "Toggle"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Current state: ", this.state.status))))));
     }
   }]);
 
-  return User;
+  return Application;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (User);
-
-/***/ }),
-
-/***/ "./resources/coreui/src/views/Users/UsersData.js":
-/*!*******************************************************!*\
-  !*** ./resources/coreui/src/views/Users/UsersData.js ***!
-  \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var usersData = [{
-  id: 0,
-  name: 'John Doe',
-  registered: '2018/01/01',
-  role: 'Guest',
-  status: 'Pending'
-}, {
-  id: 1,
-  name: 'Samppa Nori',
-  registered: '2018/01/01',
-  role: 'Member',
-  status: 'Active'
-}, {
-  id: 2,
-  name: 'Estavan Lykos',
-  registered: '2018/02/01',
-  role: 'Staff',
-  status: 'Banned'
-}, {
-  id: 3,
-  name: 'Chetan Mohamed',
-  registered: '2018/02/01',
-  role: 'Admin',
-  status: 'Inactive'
-}, {
-  id: 4,
-  name: 'Derick Maximinus',
-  registered: '2018/03/01',
-  role: 'Member',
-  status: 'Pending'
-}, {
-  id: 5,
-  name: 'Friderik Dávid',
-  registered: '2018/01/21',
-  role: 'Staff',
-  status: 'Active'
-}, {
-  id: 6,
-  name: 'Yiorgos Avraamu',
-  registered: '2018/01/01',
-  role: 'Member',
-  status: 'Active'
-}, {
-  id: 7,
-  name: 'Avram Tarasios',
-  registered: '2018/02/01',
-  role: 'Staff',
-  status: 'Banned'
-}, {
-  id: 8,
-  name: 'Quintin Ed',
-  registered: '2018/02/01',
-  role: 'Admin',
-  status: 'Inactive'
-}, {
-  id: 9,
-  name: 'Enéas Kwadwo',
-  registered: '2018/03/01',
-  role: 'Member',
-  status: 'Pending'
-}, {
-  id: 10,
-  name: 'Agapetus Tadeáš',
-  registered: '2018/01/21',
-  role: 'Staff',
-  status: 'Active'
-}, {
-  id: 11,
-  name: 'Carwyn Fachtna',
-  registered: '2018/01/01',
-  role: 'Member',
-  status: 'Active'
-}, {
-  id: 12,
-  name: 'Nehemiah Tatius',
-  registered: '2018/02/01',
-  role: 'Staff',
-  status: 'Banned'
-}, {
-  id: 13,
-  name: 'Ebbe Gemariah',
-  registered: '2018/02/01',
-  role: 'Admin',
-  status: 'Inactive'
-}, {
-  id: 14,
-  name: 'Eustorgios Amulius',
-  registered: '2018/03/01',
-  role: 'Member',
-  status: 'Pending'
-}, {
-  id: 15,
-  name: 'Leopold Gáspár',
-  registered: '2018/01/21',
-  role: 'Staff',
-  status: 'Active'
-}, {
-  id: 16,
-  name: 'Pompeius René',
-  registered: '2018/01/01',
-  role: 'Member',
-  status: 'Active'
-}, {
-  id: 17,
-  name: 'Paĉjo Jadon',
-  registered: '2018/02/01',
-  role: 'Staff',
-  status: 'Banned'
-}, {
-  id: 18,
-  name: 'Micheal Mercurius',
-  registered: '2018/02/01',
-  role: 'Admin',
-  status: 'Inactive'
-}, {
-  id: 19,
-  name: 'Ganesha Dubhghall',
-  registered: '2018/03/01',
-  role: 'Member',
-  status: 'Pending'
-}, {
-  id: 20,
-  name: 'Hiroto Šimun',
-  registered: '2018/01/21',
-  role: 'Staff',
-  status: 'Active'
-}, {
-  id: 21,
-  name: 'Vishnu Serghei',
-  registered: '2018/01/01',
-  role: 'Member',
-  status: 'Active'
-}, {
-  id: 22,
-  name: 'Zbyněk Phoibos',
-  registered: '2018/02/01',
-  role: 'Staff',
-  status: 'Banned'
-}, {
-  id: 23,
-  name: 'Einar Randall',
-  registered: '2018/02/01',
-  role: 'Admin',
-  status: 'Inactive'
-}, {
-  id: 24,
-  name: 'Félix Troels',
-  registered: '2018/03/21',
-  role: 'Staff',
-  status: 'Active'
-}, {
-  id: 25,
-  name: 'Aulus Agmundr',
-  registered: '2018/01/01',
-  role: 'Member',
-  status: 'Pending'
-}, {
-  id: 42,
-  name: 'Ford Prefex',
-  registered: '2001/05/21',
-  role: 'Alien',
-  status: 'Don\'t panic!'
-}];
-/* harmony default export */ __webpack_exports__["default"] = (usersData);
+/* harmony default export */ __webpack_exports__["default"] = (Application);
 
 /***/ })
 

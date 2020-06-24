@@ -13,12 +13,12 @@ export default {
 
     {
       name: 'Applications',
-      url: '/applications',
+      url: '/admin/applications',
       icon: 'icon-star',
       children: [
         {
           name: 'Applications List',
-          url: '/applications/applications-list',
+          url: '/admin/applications/applications-list',
           icon: 'icon-star',
         },
       ],
@@ -28,6 +28,16 @@ export default {
     {
       name: 'Dashboard',
       url: '/dashboard',
+      icon: 'icon-speedometer',
+      badge: {
+        variant: 'info',
+        text: 'NEW',
+      },
+    },
+
+    {
+      name: 'Application',
+      url: '/application',
       icon: 'icon-speedometer',
       badge: {
         variant: 'info',

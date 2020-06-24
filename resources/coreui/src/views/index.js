@@ -1,11 +1,12 @@
 // ////////////////////////////////////// ADMIN ///////////////////////////////////////////////
 import { AdminLogin } from './Admin';
 import { AdminDashboard } from './Admin';
-import { ApplicationsList } from './Applications';
+import { ApplicationsList } from './Admin/Applications';
 
 // /////////////////////////////////////// USER /////////////////////////////////////////////////
 import { Login, Page404, Page500, Register, Apply } from './Pages';
 import Dashboard from './Dashboard';
+import Application from './Application';
 
 // //////////////////////////////////////////////////////////////////////////////////////////////
 import {
@@ -45,6 +46,7 @@ export {
   Apply,
   Login,
   Dashboard,
+  Application,
 
   // ///////////////////////////////
   Badges,

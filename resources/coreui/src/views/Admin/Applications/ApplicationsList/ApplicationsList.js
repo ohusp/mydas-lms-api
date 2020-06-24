@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 // import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
-import { Badge, Card, CardBody, CardHeader, Col, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
+import { Button, Badge, Card, CardBody, CardHeader, Col, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
 import {createHashHistory} from 'history';
 import Pagination from "react-js-pagination";
 
@@ -22,7 +22,8 @@ class ApplicationsList extends Component {
         itemsCountPerPage:1,
         totalItemsCount:1,
         pageRangeDisplayed:3,
-        currentPage2:''
+        currentPage2:'',
+        status: '1'
     };
     this.handlePageChange=this.handlePageChange.bind(this);
   }
@@ -90,10 +91,12 @@ class ApplicationsList extends Component {
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th>Username</th>
-                      <th>Date registered</th>
-                      <th>Role</th>
+                      <th>First name</th>
+                      <th>Last Name</th>
+                      <th>Email</th>
+                      <th>Telephone</th>
                       <th>Status</th>
+                      <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -102,15 +105,22 @@ class ApplicationsList extends Component {
                       this.state.currentPage = ((this.state.activePage * 10) - (10 - 1)),
                       // ////////////////////////////////////////////////////////////
                       this.state.applications_list.map(application=>{
+                        if(application.status == 1){
+                          this.state.status = <Badge color="success">Completed</Badge>;
+                        }else{
+                          this.state.status = <Badge color="danger">Not Complete</Badge>;
+                        }
                         return(
                           <tr key={application.id}>
                             {/* <th scope="row">{this.state.pageNumber++}</th> */}
                             <th scope="row">{this.state.currentPage++}</th>
                             <td>{application.first_name}</td>
                             <td>{application.last_name}</td>
-                            <td>{application.middle_name}</td>
+                            <td>{application.email}</td>
+                            <td>{application.telephone}</td>
+                            <td>{this.state.status}</td>
                             <td>
-                              <Badge color="success">Active</Badge>
+                            <Button size="sm" className="btn-facebook btn-brand icon mr-1 mb-1"><i className="fa fa-eye"></i></Button>
                             </td>
                           </tr>
                         )

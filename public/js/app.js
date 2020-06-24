@@ -80773,25 +80773,24 @@ var DefaultLayout = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.la
 }); // /////////////////////////////////////// ADMIN //////////////////////////////////////////
 
 var AdminLogin = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(7), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! ./views/Admin/AdminLogin/AdminLogin */ "./resources/coreui/src/views/Admin/AdminLogin/AdminLogin.js"));
-}); // ///////////////////////////////////////////////////////////////////////////////////////
-// Pages
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(7), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./views/Admin/AdminLogin/AdminLogin */ "./resources/coreui/src/views/Admin/AdminLogin/AdminLogin.js"));
+}); // /////////////////////////////////////// USER //////////////////////////////////////////////
 
 var Apply = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(50)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Apply */ "./resources/coreui/src/views/Pages/Apply/Apply.js"));
-}); // //////////////////////////////////////////////////////////////
-
-var Login = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(7), __webpack_require__.e(51)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Login */ "./resources/coreui/src/views/Pages/Login/Login.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(51)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Apply */ "./resources/coreui/src/views/Pages/Apply/Apply.js"));
 });
+var Login = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(7), __webpack_require__.e(52)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Login */ "./resources/coreui/src/views/Pages/Login/Login.js"));
+}); // Pages
+
 var Register = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(54)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Register */ "./resources/coreui/src/views/Pages/Register/Register.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(55)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Register */ "./resources/coreui/src/views/Pages/Register/Register.js"));
 });
 var Page404 = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(52)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page404 */ "./resources/coreui/src/views/Pages/Page404/Page404.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(53)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page404 */ "./resources/coreui/src/views/Pages/Page404/Page404.js"));
 });
 var Page500 = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(53)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page500 */ "./resources/coreui/src/views/Pages/Page500/Page500.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(54)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page500 */ "./resources/coreui/src/views/Pages/Page500/Page500.js"));
 });
 
 var App = /*#__PURE__*/function (_Component) {
