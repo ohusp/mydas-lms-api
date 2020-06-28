@@ -22,9 +22,10 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
     return $request->applications();
 });
 
+// Route::put('user/update/{id}', 'Api\ApplicationsController@update');
 
 Route::group(['middleware' => ['jwt.auth','api-header']], function () {
-  
+    // ///////////////////// ADMIN ////////////////////////////////////////
     // all routes to protected resources are registered here  
     Route::get('users/list', function(){
         $users = App\User::all();
@@ -33,14 +34,10 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
         return response()->json($response, 201);
     });
 
-    // Route::get('applications/list', function(){
-    //     $applications = App\Applications::all();
-        
-    //     $response = ['success'=>true, 'data'=>$applications];
-    //     return response()->json($response, 201);
-    // });
-
     Route::get('applications/list', 'Api\ApplicationsController@index');
+
+    // ///////////////////// USER ////////////////////////////////////////
+    Route::put('user/update/{id}', 'Api\ApplicationsController@update');
 });
 Route::group(['middleware' => 'api-header'], function () {
   

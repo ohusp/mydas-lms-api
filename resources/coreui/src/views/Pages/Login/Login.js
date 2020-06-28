@@ -10,6 +10,7 @@ class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
+        id: '',
         first_name: '',
         last_name: '',
         middle_name: '',
@@ -86,15 +87,15 @@ class Login extends Component {
         .then(json => {
             if (json.data.success) {
                 alert("Login Successful!");
-                const { first_name, last_name, middle_name, email, telephone, title, gender, dob, nationality, country_of_residence, district_province_state, contact_address, disabilities, parent_guardian_name, parent_guardian_relationship, parent_guardian_occupation, passport_photograph, type_of_identification, id_passport_number, id_passport_upload, programme_first_choice, programme_second_choice, programme_third_choice, academic_session, admission_intake, study_mode, previous_result_transcript, status, created_at, auth_token, user_type } = json.data.data;
+                const { id, first_name, last_name, middle_name, email, telephone, title, gender, dob, nationality, country_of_residence, district_province_state, contact_address, disabilities, parent_guardian_name, parent_guardian_relationship, parent_guardian_occupation, parent_guardian_phone, passport_photograph, type_of_identification, id_passport_number, id_passport_upload, programme_first_choice, programme_second_choice, programme_third_choice, academic_session, admission_intake, study_mode, previous_result_transcript, status, created_at, auth_token, user_type } = json.data.data;
 
                 let userData = {
+                  id,
                   first_name,
                   last_name,
                   middle_name,
                   email,
                   telephone,
-                  password,
                   title,
                   gender,
                   dob,

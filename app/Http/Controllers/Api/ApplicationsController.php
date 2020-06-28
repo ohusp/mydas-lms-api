@@ -14,10 +14,10 @@ use JWTAuthException;
 
 class ApplicationsController extends Controller
 {   
-    public function __construct()
-    {
-        $this->middleware('role:superadministrator');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('role:superadministrator');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -84,7 +84,17 @@ class ApplicationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $application_data = Applications::find($id);
+        // $application_data->first_name = $request->first_name;
+        // $application_data->save();
+        // $response = ['success'=>true, 'data'=>$application_data];
+        // return response()->json($response, 201);
+
+        $application_data = Applications::where('id', '=', $id)->first();
+
+        $application_data->update($request->all());
+        $response = ['success'=>true, 'data'=>$application_data];
+        return response()->json($response, 201);
     }
 
     /**

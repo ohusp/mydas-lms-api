@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[53],{
 
-/***/ "./resources/coreui/src/views/Pages/Page404/Page404.js":
-/*!*************************************************************!*\
-  !*** ./resources/coreui/src/views/Pages/Page404/Page404.js ***!
-  \*************************************************************/
+/***/ "./resources/coreui/src/views/Pages/Login/Login.js":
+/*!*********************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/Login/Login.js ***!
+  \*********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11,7 +11,12 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./resources/coreui/node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./resources/coreui/node_modules/reactstrap/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./resources/coreui/node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./resources/coreui/node_modules/reactstrap/es/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./resources/coreui/node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jquery */ "./resources/coreui/node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -26,6 +31,21 @@ function _typeof(obj) {
   }
 
   return _typeof(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -131,57 +151,284 @@ function _getPrototypeOf(o) {
 
 
 
+ // import {login} from './../../../functions/UserFunctions'
 
-var Page404 = /*#__PURE__*/function (_Component) {
-  _inherits(Page404, _Component);
 
-  var _super = _createSuper(Page404);
 
-  function Page404() {
-    _classCallCheck(this, Page404);
 
-    return _super.apply(this, arguments);
+var Login = /*#__PURE__*/function (_Component) {
+  _inherits(Login, _Component);
+
+  var _super = _createSuper(Login);
+
+  function Login(props) {
+    var _this;
+
+    _classCallCheck(this, Login);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      id: '',
+      first_name: '',
+      last_name: '',
+      middle_name: '',
+      email: '',
+      telephone: '',
+      password: '',
+      title: '',
+      gender: '',
+      dob: '',
+      nationality: '',
+      country_of_residence: '',
+      district_province_state: '',
+      contact_address: '',
+      disabilities: '',
+      parent_guardian_name: '',
+      parent_guardian_relationship: '',
+      parent_guardian_occupation: '',
+      parent_guardian_phone: '',
+      passport_photograph: '',
+      type_of_identification: '',
+      id_passport_number: '',
+      id_passport_upload: '',
+      programme_first_choice: '',
+      programme_second_choice: '',
+      programme_third_choice: '',
+      academic_session: '',
+      admission_intake: '',
+      study_mode: '',
+      previous_result_transcript: '',
+      status: '',
+      created_at: '',
+      errors: {},
+      isLoggedIn: false,
+      user: {},
+      storedData1: {},
+      storedData2: {}
+    };
+    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
+    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
-  _createClass(Page404, [{
+  _createClass(Login, [{
+    key: "onChange",
+    value: function onChange(e) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+    }
+  }, {
+    key: "onSubmit",
+    value: function onSubmit(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var user = {
+        email: this.state.email,
+        password: this.state.password
+      }; // login(user).then(res => {
+      //     if (res) {
+      //         this.props.history.push(`/applications/applications-list`)
+      //     }
+      // })
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/user/login', {
+        email: user.email,
+        password: user.password
+      }).then(function (response) {
+        console.log("response-1");
+        console.log(response);
+        return response; // console.log("Mr mendes")
+        // localStorage.setItem('usertoken', response.data.auth_token)
+        // return response.data.token
+      }).then(function (json) {
+        if (json.data.success) {
+          alert("Login Successful!");
+          var _json$data$data = json.data.data,
+              id = _json$data$data.id,
+              first_name = _json$data$data.first_name,
+              last_name = _json$data$data.last_name,
+              middle_name = _json$data$data.middle_name,
+              email = _json$data$data.email,
+              telephone = _json$data$data.telephone,
+              title = _json$data$data.title,
+              gender = _json$data$data.gender,
+              dob = _json$data$data.dob,
+              nationality = _json$data$data.nationality,
+              country_of_residence = _json$data$data.country_of_residence,
+              district_province_state = _json$data$data.district_province_state,
+              contact_address = _json$data$data.contact_address,
+              disabilities = _json$data$data.disabilities,
+              parent_guardian_name = _json$data$data.parent_guardian_name,
+              parent_guardian_relationship = _json$data$data.parent_guardian_relationship,
+              parent_guardian_occupation = _json$data$data.parent_guardian_occupation,
+              parent_guardian_phone = _json$data$data.parent_guardian_phone,
+              passport_photograph = _json$data$data.passport_photograph,
+              type_of_identification = _json$data$data.type_of_identification,
+              id_passport_number = _json$data$data.id_passport_number,
+              id_passport_upload = _json$data$data.id_passport_upload,
+              programme_first_choice = _json$data$data.programme_first_choice,
+              programme_second_choice = _json$data$data.programme_second_choice,
+              programme_third_choice = _json$data$data.programme_third_choice,
+              academic_session = _json$data$data.academic_session,
+              admission_intake = _json$data$data.admission_intake,
+              study_mode = _json$data$data.study_mode,
+              previous_result_transcript = _json$data$data.previous_result_transcript,
+              status = _json$data$data.status,
+              created_at = _json$data$data.created_at,
+              auth_token = _json$data$data.auth_token,
+              user_type = _json$data$data.user_type;
+          var userData = {
+            id: id,
+            first_name: first_name,
+            last_name: last_name,
+            middle_name: middle_name,
+            email: email,
+            telephone: telephone,
+            title: title,
+            gender: gender,
+            dob: dob,
+            nationality: nationality,
+            country_of_residence: country_of_residence,
+            district_province_state: district_province_state,
+            contact_address: contact_address,
+            disabilities: disabilities,
+            parent_guardian_name: parent_guardian_name,
+            parent_guardian_relationship: parent_guardian_relationship,
+            parent_guardian_occupation: parent_guardian_occupation,
+            parent_guardian_phone: parent_guardian_phone,
+            passport_photograph: passport_photograph,
+            type_of_identification: type_of_identification,
+            id_passport_number: id_passport_number,
+            id_passport_upload: id_passport_upload,
+            programme_first_choice: programme_first_choice,
+            programme_second_choice: programme_second_choice,
+            programme_third_choice: programme_third_choice,
+            academic_session: academic_session,
+            admission_intake: admission_intake,
+            study_mode: study_mode,
+            previous_result_transcript: previous_result_transcript,
+            status: status,
+            created_at: created_at,
+            auth_token: auth_token,
+            user_type: user_type,
+            timestamp: new Date().toString()
+          };
+          var appState = {
+            isLoggedIn: true,
+            user: userData
+          }; // save app state with user date in local storage
+
+          localStorage["appState"] = JSON.stringify(appState); // console.log("Response-2");
+
+          console.log(localStorage["appState"]); // console.log("Response-3");
+
+          var storedData1 = appState.user.email; // console.log(storedData1);
+
+          _this2.setState({
+            isLoggedIn: appState.isLoggedIn,
+            user: appState.user
+          }); // localStorage.setItem('usertoken', appState)
+          // console.log("Mr Mendes is here 2");
+          // console.log(`Bearer ${localStorage.usertoken}`)
+
+
+          _this2.props.history.push("/dashboard");
+        } else alert("Login Failed!");
+
+        jquery__WEBPACK_IMPORTED_MODULE_4___default()("#login-form button").removeAttr("disabled").html("Login");
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var state = localStorage["appState"];
+
+      if (state) {
+        var AppState = JSON.parse(state);
+        console.log(AppState);
+        this.setState({
+          isLoggedIn: AppState.isLoggedIn,
+          user: AppState
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "app flex-row align-items-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
         className: "justify-content-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "clearfix"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "float-left display-3 mr-4"
-      }, "404"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "pt-3"
-      }, "Oops! You're lost."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-muted float-left"
-      }, "The page you are looking for was not found.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
-        className: "input-prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        md: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
+        className: "p-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Form"], {
+        noValidate: true,
+        onSubmit: this.onSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-muted"
+      }, "Sign In to your account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupAddon"], {
         addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-search"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-        size: "16",
-        type: "text",
-        placeholder: "What are you looking for?"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        color: "info"
-      }, "Search")))))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-user"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "email",
+        className: "form-control",
+        name: "email",
+        placeholder: "Enter email",
+        value: this.state.email,
+        onChange: this.onChange
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], {
+        className: "mb-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-lock"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "form-control",
+        name: "password",
+        placeholder: "Password",
+        value: this.state.password,
+        onChange: this.onChange
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        xs: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-lg btn-primary btn-block"
+      }, "Sign in")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        xs: "6",
+        className: "text-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        color: "link",
+        className: "px-0"
+      }, "Forgot password?")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
+        className: "text-white bg-primary py-5 d-md-down-none",
+        style: {
+          width: '44%'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], {
+        className: "text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/register"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        color: "primary",
+        className: "mt-3",
+        active: true,
+        tabIndex: -1
+      }, "Register Now!"))))))))));
     }
   }]);
 
-  return Page404;
+  return Login;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Page404);
+/* harmony default export */ __webpack_exports__["default"] = (Login);
 
 /***/ })
 

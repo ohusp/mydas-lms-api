@@ -1,8 +1,8 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[54],{
 
-/***/ "./resources/coreui/src/views/Pages/Page500/Page500.js":
+/***/ "./resources/coreui/src/views/Pages/Page404/Page404.js":
 /*!*************************************************************!*\
-  !*** ./resources/coreui/src/views/Pages/Page500/Page500.js ***!
+  !*** ./resources/coreui/src/views/Pages/Page404/Page404.js ***!
   \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -132,18 +132,18 @@ function _getPrototypeOf(o) {
 
 
 
-var Page500 = /*#__PURE__*/function (_Component) {
-  _inherits(Page500, _Component);
+var Page404 = /*#__PURE__*/function (_Component) {
+  _inherits(Page404, _Component);
 
-  var _super = _createSuper(Page500);
+  var _super = _createSuper(Page404);
 
-  function Page500() {
-    _classCallCheck(this, Page500);
+  function Page404() {
+    _classCallCheck(this, Page404);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(Page500, [{
+  _createClass(Page404, [{
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -152,15 +152,15 @@ var Page500 = /*#__PURE__*/function (_Component) {
         className: "justify-content-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         md: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "clearfix"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "float-left display-3 mr-4"
-      }, "500"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+      }, "404"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "pt-3"
-      }, "Houston, we have a problem!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, "Oops! You're lost."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "text-muted float-left"
-      }, "The page you are looking for is temporarily unavailable.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+      }, "The page you are looking for was not found.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
         className: "input-prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
         addonType: "prepend"
@@ -178,10 +178,10 @@ var Page500 = /*#__PURE__*/function (_Component) {
     }
   }]);
 
-  return Page500;
+  return Page404;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Page500);
+/* harmony default export */ __webpack_exports__["default"] = (Page404);
 
 /***/ })
 
