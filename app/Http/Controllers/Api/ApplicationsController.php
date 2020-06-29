@@ -14,10 +14,10 @@ use JWTAuthException;
 
 class ApplicationsController extends Controller
 {   
-    // public function __construct()
-    // {
-    //     $this->middleware('role:superadministrator');
-    // }
+    public function __construct()
+    {
+        $this->middleware('role:superadministrator');
+    }
     /**
      * Display a listing of the resource.
      *

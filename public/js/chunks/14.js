@@ -179,6 +179,40 @@ var Application = /*#__PURE__*/function (_Component) {
 
     _this.onChangeFirstName = _this.onChangeFirstName.bind(_assertThisInitialized(_this));
     _this.onChangeLastName = _this.onChangeLastName.bind(_assertThisInitialized(_this));
+    _this.onChangeMiddleName = _this.onChangeMiddleName.bind(_assertThisInitialized(_this));
+    _this.onChangeEmail = _this.onChangeEmail.bind(_assertThisInitialized(_this));
+    _this.onChangeZipCode = _this.onChangeZipCode.bind(_assertThisInitialized(_this));
+    _this.onChangeTelephone = _this.onChangeTelephone.bind(_assertThisInitialized(_this));
+    _this.onChangeTitle = _this.onChangeTitle.bind(_assertThisInitialized(_this));
+    _this.onChangeGender = _this.onChangeGender.bind(_assertThisInitialized(_this));
+    _this.onChangeDob = _this.onChangeDob.bind(_assertThisInitialized(_this));
+    _this.onChangeNationality = _this.onChangeNationality.bind(_assertThisInitialized(_this));
+    _this.onChangeCountryOfResidence = _this.onChangeCountryOfResidence.bind(_assertThisInitialized(_this));
+    _this.onChangeDistrictProvinceState = _this.onChangeDistrictProvinceState.bind(_assertThisInitialized(_this));
+    _this.onChangeContactAddress = _this.onChangeContactAddress.bind(_assertThisInitialized(_this)); // ////////////////////// DISABILITY //////////////////////////////////////////////////
+
+    _this.onChangeDisabilityNone = _this.onChangeDisabilityNone.bind(_assertThisInitialized(_this));
+    _this.onChangeDisabilityHearing = _this.onChangeDisabilityHearing.bind(_assertThisInitialized(_this));
+    _this.onChangeDisabilityMobility = _this.onChangeDisabilityMobility.bind(_assertThisInitialized(_this));
+    _this.onChangeDisabilitySight = _this.onChangeDisabilitySight.bind(_assertThisInitialized(_this));
+    _this.onChangeDisabilityLearning = _this.onChangeDisabilityLearning.bind(_assertThisInitialized(_this));
+    _this.onChangeDisabilityOthers = _this.onChangeDisabilityOthers.bind(_assertThisInitialized(_this)); // ////////////////////////////////////////////////////////////////////////////////////
+
+    _this.onChangeParentGuardianName = _this.onChangeParentGuardianName.bind(_assertThisInitialized(_this));
+    _this.onChangeParentGuardianRelationship = _this.onChangeParentGuardianRelationship.bind(_assertThisInitialized(_this));
+    _this.onChangeparentGuardianOccupation = _this.onChangeparentGuardianOccupation.bind(_assertThisInitialized(_this));
+    _this.onChangeParentGuardianPhone = _this.onChangeParentGuardianPhone.bind(_assertThisInitialized(_this));
+    _this.onChangePassportPhotograph = _this.onChangePassportPhotograph.bind(_assertThisInitialized(_this));
+    _this.onChangeTypeOfIdentification = _this.onChangeTypeOfIdentification.bind(_assertThisInitialized(_this));
+    _this.onChangeIdPassportNumber = _this.onChangeIdPassportNumber.bind(_assertThisInitialized(_this));
+    _this.onChangeIdPassportUpload = _this.onChangeIdPassportUpload.bind(_assertThisInitialized(_this));
+    _this.onChangeProgrammeFirstChoice = _this.onChangeProgrammeFirstChoice.bind(_assertThisInitialized(_this));
+    _this.onChangeProgrammeSecondChoice = _this.onChangeProgrammeSecondChoice.bind(_assertThisInitialized(_this));
+    _this.onChangeProgrammeThirdChoice = _this.onChangeProgrammeThirdChoice.bind(_assertThisInitialized(_this));
+    _this.onChangeAcademicSession = _this.onChangeAcademicSession.bind(_assertThisInitialized(_this));
+    _this.onChangeAdmissionIntake = _this.onChangeAdmissionIntake.bind(_assertThisInitialized(_this));
+    _this.onChangeStudyMode = _this.onChangeStudyMode.bind(_assertThisInitialized(_this));
+    _this.onChangePreviousResultTranscript = _this.onChangePreviousResultTranscript.bind(_assertThisInitialized(_this));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
       token: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.auth_token : "",
@@ -195,7 +229,17 @@ var Application = /*#__PURE__*/function (_Component) {
       country_of_residence: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.country_of_residence : "",
       district_province_state: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.district_province_state : "",
       contact_address: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.contact_address : "",
-      disabilities: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disabilities : "",
+      // ///////// DISABILITY /////////////////////////////////////////
+      disability_none: true,
+      // disability_none: localStorage["appState"]
+      //   ? JSON.parse(localStorage["appState"]).user.disability_none
+      //   : "",
+      disability_hearing: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_hearing : "",
+      disability_mobility: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_mobility : "",
+      disability_sight: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_sight : "",
+      disability_learning: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_learning : "",
+      disability_others: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_others : "",
+      // /////////////////////////////////////////////////////////////
       parent_guardian_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.parent_guardian_name : "",
       parent_guardian_relationship: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.parent_guardian_relationship : "",
       parent_guardian_occupation: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.parent_guardian_occupation : "",
@@ -268,6 +312,246 @@ var Application = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "onChangeLastName",
+    value: function onChangeLastName(e) {
+      this.setState({
+        last_name: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeMiddleName",
+    value: function onChangeMiddleName(e) {
+      this.setState({
+        middle_name: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeEmail",
+    value: function onChangeEmail(e) {
+      this.setState({
+        email: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeZipCode",
+    value: function onChangeZipCode(e) {
+      this.setState({
+        zip_code: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeTelephone",
+    value: function onChangeTelephone(e) {
+      this.setState({
+        telephone: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeTitle",
+    value: function onChangeTitle(e) {
+      this.setState({
+        title: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeGender",
+    value: function onChangeGender(e) {
+      this.setState({
+        gender: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeDob",
+    value: function onChangeDob(e) {
+      this.setState({
+        dob: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeNationality",
+    value: function onChangeNationality(e) {
+      this.setState({
+        nationality: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeCountryOfResidence",
+    value: function onChangeCountryOfResidence(e) {
+      this.setState({
+        country_of_residence: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeDistrictProvinceState",
+    value: function onChangeDistrictProvinceState(e) {
+      this.setState({
+        district_province_state: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeContactAddress",
+    value: function onChangeContactAddress(e) {
+      this.setState({
+        contact_address: e.target.value
+      });
+    } // //////////////////////// DISABILITY /////////////////////////////////////////////////////////////
+
+  }, {
+    key: "onChangeDisabilityNone",
+    value: function onChangeDisabilityNone(e) {
+      this.setState({
+        disability_none: !this.state.disability_none
+      });
+    }
+  }, {
+    key: "onChangeDisabilityHearing",
+    value: function onChangeDisabilityHearing(e) {
+      this.setState({
+        disability_hearing: !this.state.disability_hearing
+      });
+    }
+  }, {
+    key: "onChangeDisabilityMobility",
+    value: function onChangeDisabilityMobility(e) {
+      this.setState({
+        disability_mobility: !this.state.disability_mobility
+      });
+    }
+  }, {
+    key: "onChangeDisabilitySight",
+    value: function onChangeDisabilitySight(e) {
+      this.setState({
+        disability_sight: !this.state.disability_sight
+      });
+    }
+  }, {
+    key: "onChangeDisabilityLearning",
+    value: function onChangeDisabilityLearning(e) {
+      this.setState({
+        disability_learning: !this.state.disability_learning
+      });
+    }
+  }, {
+    key: "onChangeDisabilityOthers",
+    value: function onChangeDisabilityOthers(e) {
+      this.setState({
+        disability_others: !this.state.disability_others
+      });
+    } ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+  }, {
+    key: "onChangeParentGuardianName",
+    value: function onChangeParentGuardianName(e) {
+      this.setState({
+        parent_guardian_name: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeParentGuardianRelationship",
+    value: function onChangeParentGuardianRelationship(e) {
+      this.setState({
+        parent_guardian_relationship: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeparentGuardianOccupation",
+    value: function onChangeparentGuardianOccupation(e) {
+      this.setState({
+        parent_guardian_occupation: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeParentGuardianPhone",
+    value: function onChangeParentGuardianPhone(e) {
+      this.setState({
+        parent_guardian_phone: e.target.value
+      });
+    }
+  }, {
+    key: "onChangePassportPhotograph",
+    value: function onChangePassportPhotograph(e) {
+      this.setState({
+        passport_photograph: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeTypeOfIdentification",
+    value: function onChangeTypeOfIdentification(e) {
+      this.setState({
+        type_of_identification: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeIdPassportNumber",
+    value: function onChangeIdPassportNumber(e) {
+      this.setState({
+        id_passport_number: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeIdPassportUpload",
+    value: function onChangeIdPassportUpload(e) {
+      this.setState({
+        id_passport_upload: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeProgrammeFirstChoice",
+    value: function onChangeProgrammeFirstChoice(e) {
+      this.setState({
+        programme_first_choice: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeProgrammeSecondChoice",
+    value: function onChangeProgrammeSecondChoice(e) {
+      this.setState({
+        programme_second_choice: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeProgrammeThirdChoice",
+    value: function onChangeProgrammeThirdChoice(e) {
+      this.setState({
+        programme_third_choice: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeAcademicSession",
+    value: function onChangeAcademicSession(e) {
+      this.setState({
+        academic_session: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeAdmissionIntake",
+    value: function onChangeAdmissionIntake(e) {
+      this.setState({
+        admission_intake: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeStudyMode",
+    value: function onChangeStudyMode(e) {
+      this.setState({
+        study_mode: e.target.value
+      });
+    }
+  }, {
+    key: "onChangePreviousResultTranscript",
+    value: function onChangePreviousResultTranscript(e) {
+      this.setState({
+        previous_result_transcript: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeStatus",
+    value: function onChangeStatus(e) {
+      this.setState({
+        status: e.target.value
+      });
+    }
+  }, {
     key: "onSubmit",
     value: function onSubmit(e) {
       var _this2 = this;
@@ -275,8 +559,36 @@ var Application = /*#__PURE__*/function (_Component) {
       e.preventDefault();
       var application_data = {
         first_name: this.state.first_name,
-        last_name: this.state.last_name
-      }; // axios.put(`http://localhost:8000/api/user/update/?token=${this.state.token}`+this.state.id, application_data)
+        last_name: this.state.last_name,
+        middle_name: this.state.middle_name,
+        email: this.state.email,
+        telephone: this.state.telephone,
+        zip_code: this.state.zip_code,
+        title: this.state.title,
+        gender: this.state.gender,
+        dob: this.state.dob,
+        nationality: this.state.nationality,
+        country_of_residence: this.state.country_of_residence,
+        district_province_state: this.state.district_province_state,
+        contact_address: this.state.contact_address,
+        disability_none: this.state.disability_none,
+        parent_guardian_name: this.state.parent_guardian_name,
+        parent_guardian_relationship: this.state.parent_guardian_relationship,
+        parent_guardian_occupation: this.state.parent_guardian_occupation,
+        parent_guardian_phone: this.state.parent_guardian_phone,
+        passport_photograph: this.state.passport_photograph,
+        type_of_identification: this.state.type_of_identification,
+        id_passport_number: this.state.id_passport_number,
+        id_passport_upload: this.state.id_passport_upload,
+        programme_first_choice: this.state.programme_first_choice,
+        programme_second_choice: this.state.programme_second_choice,
+        programme_third_choice: this.state.programme_third_choice,
+        academic_session: this.state.academic_session,
+        admission_intake: this.state.admission_intake,
+        study_mode: this.state.study_mode,
+        previous_result_transcript: this.state.previous_result_transcript
+      };
+      console.log(application_data); // axios.put(`http://localhost:8000/api/user/update/?token=${this.state.token}`+this.state.id, application_data)
 
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/update/" + this.state.id + "?token=".concat(this.state.token), application_data) // axios.put(`http://localhost:8000/api/user/update/`+this.state.id, application_data)
       .then(function (response) {
@@ -391,7 +703,9 @@ var Application = /*#__PURE__*/function (_Component) {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Gender")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "select",
-        id: "gender"
+        id: "gender",
+        defaultValue: this.state.gender,
+        onChange: this.onChangeGender
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "0"
       }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -418,8 +732,8 @@ var Application = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Middle Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "text",
         id: "middle_name",
-        defaultValue: this.state.id,
-        name: "middle_name"
+        defaultValue: this.state.middle_name,
+        onChange: this.onChangeMiddleName
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -439,18 +753,20 @@ var Application = /*#__PURE__*/function (_Component) {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Phone Number")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "select",
-        name: "select",
-        id: "zip_code"
+        id: "zip_code",
+        defaultValue: this.state.zip_code,
+        onChange: this.onChangeZipCode
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "0"
       }, " Zip Code "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1"
-      }, "Male"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "2"
-      }, "Female")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
+        value: "NG (+234)"
+      }, "NG (+234)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "UG (+256)"
+      }, "UG (+256)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "text",
         id: "telephone",
-        name: "telephone"
+        defaultValue: this.state.telephone,
+        onChange: this.onChangeTelephone
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -460,8 +776,8 @@ var Application = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Date of Birth")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "date",
         id: "dob",
-        name: "dob",
-        placeholder: "date"
+        defaultValue: this.state.dob,
+        onChange: this.onChangeDob
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -470,8 +786,9 @@ var Application = /*#__PURE__*/function (_Component) {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Nationality")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "select",
-        name: "nationality",
-        id: "nationality"
+        id: "nationality",
+        defaultValue: this.state.nationality,
+        onChange: this.onChangeNationality
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "0"
       }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -486,8 +803,9 @@ var Application = /*#__PURE__*/function (_Component) {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Country of Residence")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "select",
-        name: "country_of_residence",
-        id: "country_of_residence"
+        id: "country_of_residence",
+        defaultValue: this.state.country_of_residence,
+        onChange: this.onChangeCountryOfResidence
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "0"
       }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -506,7 +824,8 @@ var Application = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "District/Province/State")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "text",
         id: "district_province_state",
-        name: "district_province_state"
+        defaultValue: this.state.district_province_state,
+        onChange: this.onChangeDistrictProvinceState
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -515,9 +834,10 @@ var Application = /*#__PURE__*/function (_Component) {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Contact Address")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "textarea",
-        name: "contact_address",
         id: "contact_address",
         rows: "2",
+        defaultValue: this.state.contact_address,
+        onChange: this.onChangeContactAddress,
         placeholder: "Contact Address"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
         addonType: "append"
@@ -532,9 +852,9 @@ var Application = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         className: "form-check-input",
         type: "checkbox",
-        id: "none",
-        name: "none",
-        value: "none"
+        id: "disability_none",
+        checked: this.state.disability_none,
+        onChange: this.onChangeDisabilityNone
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Label"], {
         check: true,
         className: "form-check-label",
@@ -546,8 +866,8 @@ var Application = /*#__PURE__*/function (_Component) {
         className: "form-check-input",
         type: "checkbox",
         id: "hearing",
-        name: "hearing",
-        value: "hearing"
+        checked: this.state.hearing,
+        onChange: this.onChangeHearing
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Label"], {
         check: true,
         className: "form-check-label",
@@ -559,8 +879,8 @@ var Application = /*#__PURE__*/function (_Component) {
         className: "form-check-input",
         type: "checkbox",
         id: "mobility",
-        name: "mobility",
-        value: "mobility"
+        checked: this.state.mobility,
+        onChange: this.onChangeMobility
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Label"], {
         check: true,
         className: "form-check-label",
@@ -575,8 +895,8 @@ var Application = /*#__PURE__*/function (_Component) {
         className: "form-check-input",
         type: "checkbox",
         id: "sight",
-        name: "sight",
-        value: "sight"
+        checked: this.state.sight,
+        onChange: this.onChangeSight
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Label"], {
         check: true,
         className: "form-check-label",
@@ -588,8 +908,8 @@ var Application = /*#__PURE__*/function (_Component) {
         className: "form-check-input",
         type: "checkbox",
         id: "learning_disability",
-        name: "learning_disability",
-        value: "learning_disability"
+        checked: this.state.learningDisability,
+        onChange: this.onChangeLearningDisability
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Label"], {
         check: true,
         className: "form-check-label",
@@ -601,8 +921,8 @@ var Application = /*#__PURE__*/function (_Component) {
         className: "form-check-input",
         type: "checkbox",
         id: "others",
-        name: "others",
-        value: "others"
+        checked: this.state.others,
+        onChange: this.onChangeOthers
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Label"], {
         check: true,
         className: "form-check-label",
@@ -612,8 +932,8 @@ var Application = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Full Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "text",
         id: "parent_guardian_name",
-        name: "parent_guardian_name",
-        defaultValue: this.state.parent_guardian_name
+        defaultValue: this.state.parent_guardian_name,
+        onChange: this.onChangeParentGuardianName
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -623,8 +943,8 @@ var Application = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Relationship")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "text",
         id: "parent_guardian_relationship",
-        name: "parent_guardian_relationship",
-        defaultValue: this.state.parent_guardian_relationship
+        defaultValue: this.state.parent_guardian_relationship,
+        onChange: this.onChangeParentGuardianRelationship
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -634,8 +954,8 @@ var Application = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Occupation")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "text",
         id: "parent_guardian_occupation",
-        name: "parent_guardian_occupation",
-        defaultValue: this.state.parent_guardian_occupation
+        defaultValue: this.state.parent_guardian_occupation,
+        onChange: this.onChangeparentGuardianOccupation
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -645,8 +965,8 @@ var Application = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Phone")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "text",
         id: "parent_guardian_phone",
-        name: "parent_guardian_phone",
-        value: this.state.parent_guardian_phone
+        defaultValue: this.state.parent_guardian_phone,
+        onChange: this.onChangeParentGuardianPhone
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
