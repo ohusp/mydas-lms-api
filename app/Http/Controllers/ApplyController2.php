@@ -12,7 +12,7 @@ use App\Applications;
 use JWTAuth;
 use JWTAuthException;
 
-class ApplicationsController extends Controller
+class ApplyController2 extends Controller
 {   
     // public function __construct()
     // {

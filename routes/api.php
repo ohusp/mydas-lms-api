@@ -37,7 +37,7 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
     Route::get('applications/list', 'Api\ApplicationsController@index');
 
     // ///////////////////// USER ////////////////////////////////////////
-    Route::put('user/update/{id}', 'Api\ApplicationsController@update');
+    Route::put('user/update/{id}', 'ApplyController2@update');
 });
 Route::group(['middleware' => 'api-header'], function () {
   

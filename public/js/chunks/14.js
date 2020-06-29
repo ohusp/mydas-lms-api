@@ -178,6 +178,7 @@ var Application = /*#__PURE__*/function (_Component) {
     _this.toggle_app_instructions = _this.toggle_app_instructions.bind(_assertThisInitialized(_this)); // bind input values on change
 
     _this.onChangeFirstName = _this.onChangeFirstName.bind(_assertThisInitialized(_this));
+    _this.onChangeLastName = _this.onChangeLastName.bind(_assertThisInitialized(_this));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     _this.state = {
       token: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.auth_token : "",
@@ -260,13 +261,21 @@ var Application = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "onChangeLastName",
+    value: function onChangeLastName(e) {
+      this.setState({
+        last_name: e.target.value
+      });
+    }
+  }, {
     key: "onSubmit",
     value: function onSubmit(e) {
       var _this2 = this;
 
       e.preventDefault();
       var application_data = {
-        first_name: this.state.first_name
+        first_name: this.state.first_name,
+        last_name: this.state.last_name
       }; // axios.put(`http://localhost:8000/api/user/update/?token=${this.state.token}`+this.state.id, application_data)
 
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/update/" + this.state.id + "?token=".concat(this.state.token), application_data) // axios.put(`http://localhost:8000/api/user/update/`+this.state.id, application_data)
@@ -361,8 +370,9 @@ var Application = /*#__PURE__*/function (_Component) {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Title")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "select",
-        name: "select",
-        id: "title"
+        id: "title",
+        defaultValue: this.state.title,
+        onChange: this.onChangeTitle
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "0"
       }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -381,7 +391,6 @@ var Application = /*#__PURE__*/function (_Component) {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Gender")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "select",
-        name: "select",
         id: "gender"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "0"
@@ -420,7 +429,8 @@ var Application = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Last Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "text",
         id: "last_name",
-        name: "last_name"
+        defaultValue: this.state.last_name,
+        onChange: this.onChangeLastName
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {

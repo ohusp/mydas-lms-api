@@ -43,7 +43,35 @@ class Application extends Component {
     this.toggle_app_instructions  = this.toggle_app_instructions.bind(this);
 
     // bind input values on change
-    this.onChangeFirstName =this.onChangeFirstName.bind(this);
+    this.onChangeFirstName    =this.onChangeFirstName.bind(this);
+    this.onChangeLastName     =this.onChangeLastName.bind(this);
+    this.onChangeMiddleName   =this.onChangeMiddleName.bind(this);
+    this.onChangeEmail        =this.onChangeEmail.bind(this);
+    this.onChangeTelephone    =this.onChangeTelephone.bind(this);
+    this.onChangeTitle        =this.onChangeTitle.bind(this);
+    this.onChangeGender       =this.onChangeGender.bind(this);
+    this.onChangeDob          =this.onChangeDob.bind(this);
+    this.onChangeNationality  =this.onChangeNationality.bind(this);
+    this.onChangeCountryOfResidence     =this.onChangeCountryOfResidence.bind(this);
+    this.onChangeDistrictProvinceState  =this.onChangeDistrictProvinceState.bind(this);
+    this.onChangeContactAddress         =this.onChangeContactAddress.bind(this);
+    this.onChangeDisabilities           =this.onChangeDisabilities.bind(this);
+    this.onChangeParentGuardianName     =this.onChangeParentGuardianName.bind(this);
+    this.onChangeParentGuardianRelationship =this.onChangeParentGuardianRelationship.bind(this);
+    this.onChangeparentGuardianOccupation   =this.onChangeparentGuardianOccupation.bind(this);
+    this.onChangeParentGuardianPhone        =this.onChangeParentGuardianPhone.bind(this);
+    this.onChangePassportPhotograph         =this.onChangePassportPhotograph.bind(this);
+    this.onChangeTypeOfIdentification       =this.onChangeTypeOfIdentification.bind(this);
+    this.onChangeIdPassportNumber           =this.onChangeIdPassportNumber.bind(this);
+    this.onChangeIdPassportUpload         =this.onChangeIdPassportUpload.bind(this);
+    this.onChangeProgrammeFirstChoice     =this.onChangeProgrammeFirstChoice.bind(this);
+    this.onChangeProgrammeSecondChoice    =this.onChangeProgrammeSecondChoice.bind(this);
+    this.onChangeProgrammeThirdChoice     =this.onChangeProgrammeThirdChoice.bind(this);
+    this.onChangeAcademicSession          =this.onChangeAcademicSession.bind(this);
+    this.onChangeAdmissionIntake          =this.onChangeAdmissionIntake.bind(this);
+    this.onChangeStudyMode                =this.onChangeStudyMode.bind(this);
+    this.onChangePreviousResultTranscript =this.onChangePreviousResultTranscript.bind(this);
+
 
     this.onSubmit = this.onSubmit.bind(this);
 
@@ -185,18 +213,35 @@ class Application extends Component {
   }
 
   // ON Change of first name input
-  onChangeFirstName(e)
-  {
-      this.setState({
-          first_name:e.target.value
-      });
-  }
+  onChangeFirstName(e) { this.setState({ first_name:e.target.value }); }
+  onChangeLastName(e) { this.setState({ last_name:e.target.value  }); }
+  onChangeLastName(e) { this.setState({ last_name:e.target.value  }); }
+  onChangeMiddleName(e) { this.setState({ middle_name:e.target.value  }); }
+  onChangeEmail(e) { this.setState({ email:e.target.value  }); }
+  onChangeTelephone(e) { this.setState({ telephone:e.target.value  }); }
+  onChangeTitle(e) { this.setState({ title:e.target.value  }); }
+  onChangeGender(e) { this.setState({ gender:e.target.value  }); }
+  onChangeDob(e) { this.setState({ dob:e.target.value  }); }
+  onChangeNationality(e) { this.setState({ nationality:e.target.value  }); }
+  onChangeCountryOfResidence(e) { this.setState({ country_of_residence:e.target.value  }); }
+  onChangeDistrictProvinceState(e) { this.setState({ district_province_state:e.target.value  }); }
+  onChangeContactAddress(e) { this.setState({ contact_address:e.target.value  }); }
+  onChangeDisabilities(e) { this.setState({ disabilities:e.target.value  }); }
+  onChangeParentGuardianName(e) { this.setState({ parent_guardian_name:e.target.value  }); }
+  onChangeParentGuardianRelationship(e) { this.setState({ parent_guardian_relationship:e.target.value  }); }
+  onChangeparentGuardianOccupation(e) { this.setState({ parent_guardian_occupation:e.target.value  }); }
+  onChangeParentGuardianPhone(e) { this.setState({ parent_guardian_phone:e.target.value  }); }
+  onChangePassportPhotograph(e) { this.setState({ passport_photograph:e.target.value  }); }
+  onChangeTypeOfIdentification(e) { this.setState({ type_of_identification:e.target.value  }); }
+  onChangeIdPassportNumber(e) { this.setState({ id_passport_number:e.target.value  }); }
+  onChangeLastName(e) { this.setState({ last_name:e.target.value  }); }
+  onChangeLastName(e) { this.setState({ last_name:e.target.value  }); }
   
   onSubmit(e)
   {
       e.preventDefault();
       const application_data ={
-          first_name : this.state.first_name
+        first_name : this.state.first_name, last_name : this.state.last_name
       }
 
       // axios.put(`http://localhost:8000/api/user/update/?token=${this.state.token}`+this.state.id, application_data)
@@ -313,7 +358,7 @@ class Application extends Component {
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>Title</InputGroupText>
                             </InputGroupAddon>
-                            <Input type="select" name="select" id="title">
+                            <Input type="select" id="title" defaultValue={this.state.title} onChange={this.onChangeTitle}>
                               <option value="0"> --- select --- </option>
                               <option value="1">Mr</option>
                               <option value="2">Mrs</option>
@@ -331,7 +376,7 @@ class Application extends Component {
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>Gender</InputGroupText>
                             </InputGroupAddon>
-                            <Input type="select" name="select" id="gender">
+                            <Input type="select" id="gender">
                               <option value="0"> --- select --- </option>
                               <option value="1">Male</option>
                               <option value="2">Female</option>
@@ -369,7 +414,7 @@ class Application extends Component {
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>Last Name</InputGroupText>
                             </InputGroupAddon>
-                            <Input type="text" id="last_name" name="last_name"/>
+                            <Input type="text" id="last_name" defaultValue={this.state.last_name} onChange={this.onChangeLastName}/>
                             <InputGroupAddon addonType="append">
                               <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
                             </InputGroupAddon>

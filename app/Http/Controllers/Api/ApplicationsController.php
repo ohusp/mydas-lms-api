@@ -90,11 +90,11 @@ class ApplicationsController extends Controller
         // $response = ['success'=>true, 'data'=>$application_data];
         // return response()->json($response, 201);
 
-        $application_data = Applications::where('id', '=', $id)->first();
+        // $application_data = Applications::where('id', '=', $id)->first();
 
-        $application_data->update($request->all());
-        $response = ['success'=>true, 'data'=>$application_data];
-        return response()->json($response, 201);
+        // $application_data->update($request->all());
+        // $response = ['success'=>true, 'data'=>$application_data];
+        // return response()->json($response, 201);
     }
 
     /**
