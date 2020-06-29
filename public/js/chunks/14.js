@@ -268,9 +268,9 @@ var Application = /*#__PURE__*/function (_Component) {
       var application_data = {
         first_name: this.state.first_name
       }; // axios.put(`http://localhost:8000/api/user/update/?token=${this.state.token}`+this.state.id, application_data)
-      // axios.put(`http://localhost:8000/api/user/update/`+this.state.id+`?token=${this.state.token}`, application_data)
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/update/" + this.state.id, application_data).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/update/" + this.state.id + "?token=".concat(this.state.token), application_data) // axios.put(`http://localhost:8000/api/user/update/`+this.state.id, application_data)
+      .then(function (response) {
         console.log("ROI Cartoon");
         console.log(response);
         return response;

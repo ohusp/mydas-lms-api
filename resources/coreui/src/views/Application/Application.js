@@ -199,8 +199,8 @@ class Application extends Component {
           first_name : this.state.first_name
       }
 
-      axios.put(`http://localhost:8000/api/user/update/?token=${this.state.token}`+this.state.id, application_data)
-      // axios.put(`http://localhost:8000/api/user/update/`+this.state.id+`?token=${this.state.token}`, application_data)
+      // axios.put(`http://localhost:8000/api/user/update/?token=${this.state.token}`+this.state.id, application_data)
+      axios.put(`http://localhost:8000/api/user/update/`+this.state.id+`?token=${this.state.token}`, application_data)
       // axios.put(`http://localhost:8000/api/user/update/`+this.state.id, application_data)
       .then(response => {
         console.log("ROI Cartoon");
