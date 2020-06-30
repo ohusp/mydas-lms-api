@@ -130,10 +130,9 @@ class Application extends Component {
         ? JSON.parse(localStorage["appState"]).user.contact_address
         : "",
       // ///////// DISABILITY /////////////////////////////////////////
-      disability_none: true,
-      // disability_none: localStorage["appState"]
-      //   ? JSON.parse(localStorage["appState"]).user.disability_none
-      //   : "",
+      disability_none: localStorage["appState"]
+        ? JSON.parse(localStorage["appState"]).user.disability_none
+        : "",
       disability_hearing: localStorage["appState"]
         ? JSON.parse(localStorage["appState"]).user.disability_hearing
         : "",
@@ -288,8 +287,7 @@ class Application extends Component {
   {
       e.preventDefault();
       const application_data ={
-        first_name : this.state.first_name, last_name : this.state.last_name, middle_name : this.state.middle_name, email : this.state.email, zip_code : this.state.zip_code, telephone : this.state.telephone, title : this.state.title, gender : this.state.gender, dob : this.state.dob, nationality : this.state.nationality, country_of_residence : this.state.country_of_residence, district_province_state : this.state.district_province_state, contact_address : this.state.contact_address, disability_none : this.state.disability_none, 
-        parent_guardian_name : this.state.parent_guardian_name, parent_guardian_relationship : this.state.parent_guardian_relationship, parent_guardian_occupation : this.state.parent_guardian_occupation, parent_guardian_phone : this.state.parent_guardian_phone, passport_photograph : this.state.passport_photograph, type_of_identification : this.state.type_of_identification, id_passport_number : this.state.id_passport_number, id_passport_upload : this.state.id_passport_upload, programme_first_choice : this.state.programme_first_choice, programme_second_choice : this.state.programme_second_choice, programme_third_choice : this.state.programme_third_choice, academic_session : this.state.academic_session, admission_intake : this.state.admission_intake, study_mode : this.state.study_mode, previous_result_transcript : this.state.previous_result_transcript
+        first_name : this.state.first_name, last_name : this.state.last_name, middle_name : this.state.middle_name, email : this.state.email, zip_code : this.state.zip_code, telephone : this.state.telephone, title : this.state.title, gender : this.state.gender, dob : this.state.dob, nationality : this.state.nationality, country_of_residence : this.state.country_of_residence, district_province_state : this.state.district_province_state, contact_address : this.state.contact_address, disability_none : this.state.disability_none, parent_guardian_name : this.state.parent_guardian_name, parent_guardian_relationship : this.state.parent_guardian_relationship, parent_guardian_occupation : this.state.parent_guardian_occupation, parent_guardian_phone : this.state.parent_guardian_phone, passport_photograph : this.state.passport_photograph, type_of_identification : this.state.type_of_identification, id_passport_number : this.state.id_passport_number, id_passport_upload : this.state.id_passport_upload, programme_first_choice : this.state.programme_first_choice, programme_second_choice : this.state.programme_second_choice, programme_third_choice : this.state.programme_third_choice, academic_session : this.state.academic_session, admission_intake : this.state.admission_intake, study_mode : this.state.study_mode, previous_result_transcript : this.state.previous_result_transcript
       }
       // axios.put(`http://localhost:8000/api/user/update/?token=${this.state.token}`+this.state.id, application_data)
       axios.put(`http://localhost:8000/api/user/update/`+this.state.id+`?token=${this.state.token}`, application_data)

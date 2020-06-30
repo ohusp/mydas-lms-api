@@ -42,12 +42,36 @@ class ApplyController extends Controller
         $user = \App\Applications::where('email', $request->email)->get()->first();
         if ($user && \Hash::check($request->password, $user->password)) // The passwords match...
         {   
+            // This gets the user role name and passed into a variable
             $role_name = $user->roles->pluck('name');
             $role_name = $role_name[0];
+
             $token = self::getToken($request->email, $request->password);
             $user->auth_token = $token;
             $user->save();
-            $response = ['success'=>true, 'data'=>['auth_token'=>$user->auth_token,'id'=>$user->id,'first_name'=>$user->first_name,'last_name'=>$user->last_name, 'middle_name'=>$user->middle_name, 'email'=>$user->email, 'zip_code'=>$user->zip_code, 'telephone'=>$user->telephone, 'title'=>$user->title, 'gender'=>$user->gender, 'dob'=>$user->dob, 'nationality'=>$user->nationality, 'country_of_residence'=>$user->country_of_residence, 'district_province_state'=>$user->district_province_state, 'contact_address'=>$user->contact_address, 'disabilities'=>$user->disabilities, 'parent_guardian_name'=>$user->parent_guardian_name, 'parent_guardian_relationship'=>$user->parent_guardian_relationship, 'parent_guardian_occupation'=>$user->parent_guardian_occupation, 'parent_guardian_phone'=>$user->parent_guardian_phone, 'passport_photograph'=>$user->passport_photograph, 'type_of_identification'=>$user->type_of_identification, 'id_passport_number'=>$user->id_passport_number, 'id_passport_upload'=>$user->id_passport_upload, 'programme_first_choice'=>$user->programme_first_choice, 'programme_second_choice'=>$user->programme_second_choice, 'programme_third_choice'=>$user->programme_third_choice, 'academic_session'=>$user->academic_session, 'admission_intake'=>$user->admission_intake, 'study_mode'=>$user->study_mode, 'previous_result_transcript'=>$user->previous_result_transcript, 'status'=>$user->status, 'created_at'=>$user->created_at, 'user_type'=>$role_name]];           
+
+            // get the disabilities values and convert to array
+            $disabilities_new = $user->disabilities;
+            $disabilities_new = json_decode($disabilities_new, true);
+
+            // Pass each value into an array
+            $disability_none        = $disabilities_new[0]["disability_none"];
+            $disability_hearing     = $disabilities_new[0]["disability_hearing"];
+            $disability_mobility    = $disabilities_new[0]["disability_mobility"];
+            $disability_sight       = $disabilities_new[0]["disability_sight"];
+            $disability_learning    = $disabilities_new[0]["disability_learning"];
+            $disability_others      = $disabilities_new[0]["disability_others"];
+
+            $response = ['success'=>true, 'data'=>['auth_token'=>$user->auth_token,'id'=>$user->id,'first_name'=>$user->first_name,'last_name'=>$user->last_name, 'middle_name'=>$user->middle_name, 'email'=>$user->email, 'zip_code'=>$user->zip_code, 'telephone'=>$user->telephone, 'title'=>$user->title, 'gender'=>$user->gender, 'dob'=>$user->dob, 'nationality'=>$user->nationality, 'country_of_residence'=>$user->country_of_residence, 'district_province_state'=>$user->district_province_state, 'contact_address'=>$user->contact_address, 
+
+            'disability_none'       =>$disability_none,
+            'disability_hearing'    =>$disability_hearing,
+            'disability_mobility'   =>$disability_mobility,
+            'disability_sight'      =>$disability_sight,
+            'disability_learning'   =>$disability_learning, 
+            'disability_others'     =>$disability_others, 
+
+            'parent_guardian_name'=>$user->parent_guardian_name, 'parent_guardian_relationship'=>$user->parent_guardian_relationship, 'parent_guardian_occupation'=>$user->parent_guardian_occupation, 'parent_guardian_phone'=>$user->parent_guardian_phone, 'passport_photograph'=>$user->passport_photograph, 'type_of_identification'=>$user->type_of_identification, 'id_passport_number'=>$user->id_passport_number, 'id_passport_upload'=>$user->id_passport_upload, 'programme_first_choice'=>$user->programme_first_choice, 'programme_second_choice'=>$user->programme_second_choice, 'programme_third_choice'=>$user->programme_third_choice, 'academic_session'=>$user->academic_session, 'admission_intake'=>$user->admission_intake, 'study_mode'=>$user->study_mode, 'previous_result_transcript'=>$user->previous_result_transcript, 'status'=>$user->status, 'created_at'=>$user->created_at, 'user_type'=>$role_name]];           
         }
         else 
           $response = ['success'=>false, 'data'=>'Record doesnt exists'];
