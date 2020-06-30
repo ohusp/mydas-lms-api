@@ -221,6 +221,7 @@ var Application = /*#__PURE__*/function (_Component) {
       last_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.last_name : "",
       middle_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.middle_name : "",
       email: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.email : "",
+      zip_code: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.zip_code : "",
       telephone: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.telephone : "",
       title: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.title : "",
       gender: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.gender : "",
@@ -230,10 +231,7 @@ var Application = /*#__PURE__*/function (_Component) {
       district_province_state: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.district_province_state : "",
       contact_address: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.contact_address : "",
       // ///////// DISABILITY /////////////////////////////////////////
-      disability_none: true,
-      // disability_none: localStorage["appState"]
-      //   ? JSON.parse(localStorage["appState"]).user.disability_none
-      //   : "",
+      disability_none: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_none : "",
       disability_hearing: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_hearing : "",
       disability_mobility: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_mobility : "",
       disability_sight: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_sight : "",
@@ -562,8 +560,8 @@ var Application = /*#__PURE__*/function (_Component) {
         last_name: this.state.last_name,
         middle_name: this.state.middle_name,
         email: this.state.email,
-        telephone: this.state.telephone,
         zip_code: this.state.zip_code,
+        telephone: this.state.telephone,
         title: this.state.title,
         gender: this.state.gender,
         dob: this.state.dob,
@@ -587,8 +585,7 @@ var Application = /*#__PURE__*/function (_Component) {
         admission_intake: this.state.admission_intake,
         study_mode: this.state.study_mode,
         previous_result_transcript: this.state.previous_result_transcript
-      };
-      console.log(application_data); // axios.put(`http://localhost:8000/api/user/update/?token=${this.state.token}`+this.state.id, application_data)
+      }; // axios.put(`http://localhost:8000/api/user/update/?token=${this.state.token}`+this.state.id, application_data)
 
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/update/" + this.state.id + "?token=".concat(this.state.token), application_data) // axios.put(`http://localhost:8000/api/user/update/`+this.state.id, application_data)
       .then(function (response) {
