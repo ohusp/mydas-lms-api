@@ -54,14 +54,26 @@ class ApplyController extends Controller
             $disabilities_new = $user->disabilities;
             $disabilities_new = json_decode($disabilities_new, true);
 
+            if( $disabilities_new == "" || $disabilities_new == "null"){
+                $disability_none        = "false";
+                $disability_hearing     = "false";
+                $disability_mobility    = "false";
+                $disability_sight       = "false";
+                $disability_learning    = "false";
+                $disability_others      = "false";
+            }else{
             // Pass each value into an array
-            $disability_none        = $disabilities_new[0]["disability_none"];
-            $disability_hearing     = $disabilities_new[0]["disability_hearing"];
-            $disability_mobility    = $disabilities_new[0]["disability_mobility"];
-            $disability_sight       = $disabilities_new[0]["disability_sight"];
-            $disability_learning    = $disabilities_new[0]["disability_learning"];
-            $disability_others      = $disabilities_new[0]["disability_others"];
+                $disability_none        = $disabilities_new[0]["disability_none"];
+                $disability_hearing     = $disabilities_new[0]["disability_hearing"];
+                $disability_mobility    = $disabilities_new[0]["disability_mobility"];
+                $disability_sight       = $disabilities_new[0]["disability_sight"];
+                $disability_learning    = $disabilities_new[0]["disability_learning"];
+                $disability_others      = $disabilities_new[0]["disability_others"];
+            }
 
+            // return $disability_none;
+
+            // send response array to the front
             $response = ['success'=>true, 'data'=>['auth_token'=>$user->auth_token,'id'=>$user->id,'first_name'=>$user->first_name,'last_name'=>$user->last_name, 'middle_name'=>$user->middle_name, 'email'=>$user->email, 'zip_code'=>$user->zip_code, 'telephone'=>$user->telephone, 'title'=>$user->title, 'gender'=>$user->gender, 'dob'=>$user->dob, 'nationality'=>$user->nationality, 'country_of_residence'=>$user->country_of_residence, 'district_province_state'=>$user->district_province_state, 'contact_address'=>$user->contact_address, 
 
             'disability_none'       =>$disability_none,

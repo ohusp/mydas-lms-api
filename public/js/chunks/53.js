@@ -340,7 +340,18 @@ var Login = /*#__PURE__*/function (_Component) {
 
           console.log(localStorage["appState"]); // console.log("Response-3");
 
-          var storedData1 = appState.user.email; // console.log(storedData1);
+          var storedData1 = appState.user.disability_none;
+          var storedData2 = appState.user.disability_hearing;
+          var storedData3 = appState.user.disability_learning;
+          var storedData4 = appState.user.disability_mobility;
+          var storedData5 = appState.user.disability_sight;
+          var storedData6 = appState.user.disability_others;
+          console.log("disability_none: " + storedData1);
+          console.log("disability_hearing: " + storedData2);
+          console.log("disability_learning: " + storedData3);
+          console.log("disability_mobility: " + storedData4);
+          console.log("disability_sight: " + storedData5);
+          console.log("disability_others: " + storedData6);
 
           _this2.setState({
             isLoggedIn: appState.isLoggedIn,

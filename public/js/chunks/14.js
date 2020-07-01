@@ -217,43 +217,43 @@ var Application = /*#__PURE__*/function (_Component) {
     _this.state = {
       token: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.auth_token : "",
       id: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.id : "",
-      first_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.first_name : "",
-      last_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.last_name : "",
-      middle_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.middle_name : "",
-      email: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.email : "",
-      zip_code: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.zip_code : "",
-      telephone: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.telephone : "",
-      title: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.title : "",
-      gender: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.gender : "",
-      dob: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.dob : "",
-      nationality: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.nationality : "",
-      country_of_residence: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.country_of_residence : "",
-      district_province_state: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.district_province_state : "",
-      contact_address: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.contact_address : "",
+      first_name: "",
+      last_name: "",
+      middle_name: "",
+      email: "",
+      zip_code: "",
+      telephone: "",
+      title: "",
+      gender: "",
+      dob: "",
+      nationality: "",
+      country_of_residence: "",
+      district_province_state: "",
+      contact_address: "",
       // ///////// DISABILITY /////////////////////////////////////////
-      disability_none: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_none : "",
-      disability_hearing: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_hearing : "",
-      disability_mobility: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_mobility : "",
-      disability_sight: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_sight : "",
-      disability_learning: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_learning : "",
-      disability_others: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.disability_others : "",
+      disability_none: "",
+      disability_hearing: "",
+      disability_mobility: "",
+      disability_sight: "",
+      disability_learning: "",
+      disability_others: "",
       // /////////////////////////////////////////////////////////////
-      parent_guardian_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.parent_guardian_name : "",
-      parent_guardian_relationship: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.parent_guardian_relationship : "",
-      parent_guardian_occupation: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.parent_guardian_occupation : "",
-      parent_guardian_phone: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.parent_guardian_phone : "",
-      passport_photograph: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.passport_photograph : "",
-      type_of_identification: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.type_of_identification : "",
-      id_passport_number: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.id_passport_number : "",
-      id_passport_upload: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.id_passport_upload : "",
-      programme_first_choice: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.programme_first_choice : "",
-      programme_second_choice: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.programme_second_choice : "",
-      programme_third_choice: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.programme_third_choice : "",
-      academic_session: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.academic_session : "",
-      admission_intake: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.admission_intake : "",
-      study_mode: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.study_mode : "",
-      previous_result_transcript: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.previous_result_transcript : "",
-      status: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.status : "",
+      parent_guardian_name: "",
+      parent_guardian_relationship: "",
+      parent_guardian_occupation: "",
+      parent_guardian_phone: "",
+      passport_photograph: "",
+      type_of_identification: "",
+      id_passport_number: "",
+      id_passport_upload: "",
+      programme_first_choice: "",
+      programme_second_choice: "",
+      programme_third_choice: "",
+      academic_session: "",
+      admission_intake: "",
+      study_mode: "",
+      previous_result_transcript: "",
+      status: "",
       created_at: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.created_at : "",
       user_type: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.user_type : "",
       collapse: false,
@@ -267,10 +267,81 @@ var Application = /*#__PURE__*/function (_Component) {
       startDate: new Date()
     };
     return _this;
-  } // For datepicker
-
+  }
 
   _createClass(Application, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this; // if(this.state.disability_none     == "false"){ this.state.disability_none = false }
+      // if(this.state.disability_hearing  == "false"){ this.state.disability_hearing = false }
+      // if(this.state.disability_mobility == "false"){ this.state.disability_mobility = false }
+      // if(this.state.disability_sight    == "false"){ this.state.disability_sight = false }
+      // if(this.state.disability_learning == "false"){ this.state.disability_learning = false }
+      // if(this.state.disability_others   == "false"){ this.state.disability_others = false }
+      // if(this.state.disability_none     == "true"){ this.state.disability_none = true }
+      // if(this.state.disability_hearing  == "true"){ this.state.disability_hearing = true }
+      // if(this.state.disability_mobility == "true"){ this.state.disability_mobility = true }
+      // if(this.state.disability_sight    == "true"){ this.state.disability_sight = true }
+      // if(this.state.disability_learning == "true"){ this.state.disability_learning = true }
+      // if(this.state.disability_others   == "true"){ this.state.disability_others = true }
+
+
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("http://localhost:8000/api/user/get/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+        console.log("It came back");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          console.log("It came back 2");
+
+          _this2.setState({
+            title: json.data.data.title,
+            first_name: json.data.data.first_name,
+            last_name: json.data.data.last_name,
+            middle_name: json.data.data.middle_name,
+            email: json.data.data.email,
+            zip_code: json.data.data.zip_code,
+            telephone: json.data.data.telephone,
+            gender: json.data.data.gender,
+            dob: json.data.data.dob,
+            nationality: json.data.data.nationality,
+            country_of_residence: json.data.data.country_of_residence,
+            district_province_state: json.data.data.district_province_state,
+            contact_address: json.data.data.contact_address,
+            // ///////// DISABILITY /////////////////////////////////////////
+            disability_none: json.data.data.disability_none,
+            disability_hearing: json.data.data.disability_hearing,
+            disability_mobility: json.data.data.disability_mobility,
+            disability_sight: json.data.data.disability_sight,
+            disability_learning: json.data.data.disability_learning,
+            disability_others: json.data.data.disability_others,
+            /////////////////////////////////////////////
+            parent_guardian_name: json.data.data.parent_guardian_name,
+            parent_guardian_relationship: json.data.data.parent_guardian_relationship,
+            parent_guardian_occupation: json.data.data.parent_guardian_occupation,
+            parent_guardian_phone: json.data.data.parent_guardian_phone,
+            passport_photograph: json.data.data.passport_photograph,
+            type_of_identification: json.data.data.type_of_identification,
+            id_passport_number: json.data.data.id_passport_number,
+            id_passport_upload: json.data.data.id_passport_upload,
+            programme_first_choice: json.data.data.programme_first_choice,
+            programme_second_choice: json.data.data.programme_second_choice,
+            programme_third_choice: json.data.data.programme_third_choice,
+            academic_session: json.data.data.academic_session,
+            admission_intake: json.data.data.admission_intake,
+            study_mode: json.data.data.study_mode,
+            previous_result_transcript: json.data.data.previous_result_transcript,
+            status: json.data.data.status
+          });
+        } else alert("Login Failed!");
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    } // For datepicker
+
+  }, {
     key: "toggle_app_instructions",
     // toggle collapse and expand application instruction
     value: function toggle_app_instructions() {
@@ -552,7 +623,7 @@ var Application = /*#__PURE__*/function (_Component) {
   }, {
     key: "onSubmit",
     value: function onSubmit(e) {
-      var _this2 = this;
+      var _this3 = this;
 
       e.preventDefault();
       var application_data = {
@@ -570,6 +641,11 @@ var Application = /*#__PURE__*/function (_Component) {
         district_province_state: this.state.district_province_state,
         contact_address: this.state.contact_address,
         disability_none: this.state.disability_none,
+        disability_hearing: this.state.disability_hearing,
+        disability_mobility: this.state.disability_mobility,
+        disability_sight: this.state.disability_sight,
+        disability_learning: this.state.disability_learning,
+        disability_others: this.state.disability_others,
         parent_guardian_name: this.state.parent_guardian_name,
         parent_guardian_relationship: this.state.parent_guardian_relationship,
         parent_guardian_occupation: this.state.parent_guardian_occupation,
@@ -585,16 +661,14 @@ var Application = /*#__PURE__*/function (_Component) {
         admission_intake: this.state.admission_intake,
         study_mode: this.state.study_mode,
         previous_result_transcript: this.state.previous_result_transcript
-      }; // axios.put(`http://localhost:8000/api/user/update/?token=${this.state.token}`+this.state.id, application_data)
-
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/update/" + this.state.id + "?token=".concat(this.state.token), application_data) // axios.put(`http://localhost:8000/api/user/update/`+this.state.id, application_data)
-      .then(function (response) {
+      };
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/update/" + this.state.id + "?token=".concat(this.state.token), application_data).then(function (response) {
         console.log("ROI Cartoon");
         console.log(response);
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          _this2.setState({// applications_list: json.data.data.data,
+          _this3.setState({// applications_list: json.data.data.data,
             // itemsCountPerPage: json.data.data.per_page,
             // totalItemsCount: json.data.data.total,
             // activePage: json.data.data.current_page
@@ -609,6 +683,54 @@ var Application = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      if (this.state.disability_none == "false") {
+        this.state.disability_none = false;
+      }
+
+      if (this.state.disability_hearing == "false") {
+        this.state.disability_hearing = false;
+      }
+
+      if (this.state.disability_mobility == "false") {
+        this.state.disability_mobility = false;
+      }
+
+      if (this.state.disability_sight == "false") {
+        this.state.disability_sight = false;
+      }
+
+      if (this.state.disability_learning == "false") {
+        this.state.disability_learning = false;
+      }
+
+      if (this.state.disability_others == "false") {
+        this.state.disability_others = false;
+      }
+
+      if (this.state.disability_none == "true") {
+        this.state.disability_none = true;
+      }
+
+      if (this.state.disability_hearing == "true") {
+        this.state.disability_hearing = true;
+      }
+
+      if (this.state.disability_mobility == "true") {
+        this.state.disability_mobility = true;
+      }
+
+      if (this.state.disability_sight == "true") {
+        this.state.disability_sight = true;
+      }
+
+      if (this.state.disability_learning == "true") {
+        this.state.disability_learning = true;
+      }
+
+      if (this.state.disability_others == "true") {
+        this.state.disability_others = true;
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "animated fadeIn"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Col"], {
@@ -680,7 +802,7 @@ var Application = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Title")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "select",
         id: "title",
-        defaultValue: this.state.title,
+        value: this.state.title,
         onChange: this.onChangeTitle
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "0"
@@ -701,7 +823,7 @@ var Application = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Gender")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "select",
         id: "gender",
-        defaultValue: this.state.gender,
+        value: this.state.gender,
         onChange: this.onChangeGender
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "0"
@@ -751,7 +873,7 @@ var Application = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Phone Number")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "select",
         id: "zip_code",
-        defaultValue: this.state.zip_code,
+        value: this.state.zip_code,
         onChange: this.onChangeZipCode
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "0"
@@ -784,7 +906,7 @@ var Application = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Nationality")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "select",
         id: "nationality",
-        defaultValue: this.state.nationality,
+        value: this.state.nationality,
         onChange: this.onChangeNationality
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "0"
@@ -801,7 +923,7 @@ var Application = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Country of Residence")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "select",
         id: "country_of_residence",
-        defaultValue: this.state.country_of_residence,
+        value: this.state.country_of_residence,
         onChange: this.onChangeCountryOfResidence
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "0"
@@ -863,8 +985,8 @@ var Application = /*#__PURE__*/function (_Component) {
         className: "form-check-input",
         type: "checkbox",
         id: "hearing",
-        checked: this.state.hearing,
-        onChange: this.onChangeHearing
+        checked: this.state.disability_hearing,
+        onChange: this.onChangeDisabilityHearing
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Label"], {
         check: true,
         className: "form-check-label",
@@ -876,8 +998,8 @@ var Application = /*#__PURE__*/function (_Component) {
         className: "form-check-input",
         type: "checkbox",
         id: "mobility",
-        checked: this.state.mobility,
-        onChange: this.onChangeMobility
+        checked: this.state.disability_mobility,
+        onChange: this.onChangeDisabilityMobility
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Label"], {
         check: true,
         className: "form-check-label",
@@ -892,8 +1014,8 @@ var Application = /*#__PURE__*/function (_Component) {
         className: "form-check-input",
         type: "checkbox",
         id: "sight",
-        checked: this.state.sight,
-        onChange: this.onChangeSight
+        checked: this.state.disability_sight,
+        onChange: this.onChangeDisabilitySight
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Label"], {
         check: true,
         className: "form-check-label",
@@ -905,8 +1027,8 @@ var Application = /*#__PURE__*/function (_Component) {
         className: "form-check-input",
         type: "checkbox",
         id: "learning_disability",
-        checked: this.state.learningDisability,
-        onChange: this.onChangeLearningDisability
+        checked: this.state.disability_learning,
+        onChange: this.onChangeDisabilityLearning
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Label"], {
         check: true,
         className: "form-check-label",
@@ -918,8 +1040,8 @@ var Application = /*#__PURE__*/function (_Component) {
         className: "form-check-input",
         type: "checkbox",
         id: "others",
-        checked: this.state.others,
-        onChange: this.onChangeOthers
+        checked: this.state.disability_others,
+        onChange: this.onChangeDisabilityOthers
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Label"], {
         check: true,
         className: "form-check-label",
@@ -1001,8 +1123,8 @@ var Application = /*#__PURE__*/function (_Component) {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Type of Identification")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "select",
-        name: "type_of_identification",
-        id: "type_of_identification"
+        id: "type_of_identification",
+        value: this.state.type_of_identification
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "0"
       }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {

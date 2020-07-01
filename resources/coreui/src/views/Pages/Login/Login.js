@@ -146,8 +146,18 @@ class Login extends Component {
                 // console.log("Response-2");
                 console.log(localStorage["appState"]);
                 // console.log("Response-3");
-                let storedData1 = appState.user.email;
-                // console.log(storedData1);
+                let storedData1 = appState.user.disability_none;
+                let storedData2 = appState.user.disability_hearing;
+                let storedData3 = appState.user.disability_learning;
+                let storedData4 = appState.user.disability_mobility;
+                let storedData5 = appState.user.disability_sight;
+                let storedData6 = appState.user.disability_others;
+                console.log("disability_none: "+storedData1);
+                console.log("disability_hearing: "+storedData2);
+                console.log("disability_learning: "+storedData3);
+                console.log("disability_mobility: "+storedData4);
+                console.log("disability_sight: "+storedData5);
+                console.log("disability_others: "+storedData6);
                 
                 this.setState({
                     isLoggedIn: appState.isLoggedIn,

@@ -90,113 +90,43 @@ class Application extends Component {
       id: localStorage["appState"]
         ? JSON.parse(localStorage["appState"]).user.id
         : "",
-      first_name: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.first_name
-        : "",
-      last_name: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.last_name
-        : "",
-      middle_name: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.middle_name
-        : "",
-      email: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.email
-        : "",
-      zip_code: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.zip_code
-        : "",
-      telephone: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.telephone
-        : "",
-      title: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.title
-        : "", 
-      gender: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.gender
-        : "",
-      dob: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.dob
-        : "",
-      nationality: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.nationality
-        : "",
-      country_of_residence: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.country_of_residence
-        : "",
-      district_province_state: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.district_province_state
-        : "",
-      contact_address: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.contact_address
-        : "",
+      first_name: "",
+      last_name: "",
+      middle_name: "",
+      email: "",
+      zip_code: "",
+      telephone: "",
+      title: "", 
+      gender: "",
+      dob: "",
+      nationality: "",
+      country_of_residence: "",
+      district_province_state: "",
+      contact_address: "",
       // ///////// DISABILITY /////////////////////////////////////////
-      disability_none: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.disability_none
-        : "",
-      disability_hearing: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.disability_hearing
-        : "",
-      disability_mobility: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.disability_mobility
-        : "",
-      disability_sight: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.disability_sight
-        : "",
-      disability_learning: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.disability_learning
-        : "",
-      disability_others: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.disability_others
-        : "",
+      disability_none: "",
+      disability_hearing: "",
+      disability_mobility: "",
+      disability_sight: "",
+      disability_learning: "",
+      disability_others: "",
       // /////////////////////////////////////////////////////////////
-      parent_guardian_name: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.parent_guardian_name
-        : "",
-      parent_guardian_relationship: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.parent_guardian_relationship
-        : "",
-      parent_guardian_occupation: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.parent_guardian_occupation
-        : "", 
-      parent_guardian_phone: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.parent_guardian_phone
-        : "", 
-      passport_photograph: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.passport_photograph
-        : "",
-      type_of_identification: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.type_of_identification
-        : "",
-      id_passport_number: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.id_passport_number
-        : "",
-      id_passport_upload: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.id_passport_upload
-        : "",
-      programme_first_choice: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.programme_first_choice
-        : "",
-      programme_second_choice: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.programme_second_choice
-        : "",  
-      programme_third_choice: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.programme_third_choice
-        : "",
-      academic_session: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.academic_session
-        : "",
-      admission_intake: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.admission_intake
-        : "",
-      study_mode: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.study_mode
-        : "",
-      previous_result_transcript: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.previous_result_transcript
-        : "",
-      status: localStorage["appState"]
-        ? JSON.parse(localStorage["appState"]).user.status
-        : "",
+      parent_guardian_name: "",
+      parent_guardian_relationship: "",
+      parent_guardian_occupation: "", 
+      parent_guardian_phone: "", 
+      passport_photograph: "",
+      type_of_identification: "",
+      id_passport_number: "",
+      id_passport_upload: "",
+      programme_first_choice: "",
+      programme_second_choice: "",  
+      programme_third_choice: "",
+      academic_session: "",
+      admission_intake: "",
+      study_mode: "",
+      previous_result_transcript: "",
+      status: "",
       created_at: localStorage["appState"]
         ? JSON.parse(localStorage["appState"]).user.created_at
         : "",
@@ -216,6 +146,81 @@ class Application extends Component {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?",
       startDate: new Date()
     };
+  }
+
+  componentDidMount()
+  {
+    // if(this.state.disability_none     == "false"){ this.state.disability_none = false }
+    // if(this.state.disability_hearing  == "false"){ this.state.disability_hearing = false }
+    // if(this.state.disability_mobility == "false"){ this.state.disability_mobility = false }
+    // if(this.state.disability_sight    == "false"){ this.state.disability_sight = false }
+    // if(this.state.disability_learning == "false"){ this.state.disability_learning = false }
+    // if(this.state.disability_others   == "false"){ this.state.disability_others = false }
+
+    // if(this.state.disability_none     == "true"){ this.state.disability_none = true }
+    // if(this.state.disability_hearing  == "true"){ this.state.disability_hearing = true }
+    // if(this.state.disability_mobility == "true"){ this.state.disability_mobility = true }
+    // if(this.state.disability_sight    == "true"){ this.state.disability_sight = true }
+    // if(this.state.disability_learning == "true"){ this.state.disability_learning = true }
+    // if(this.state.disability_others   == "true"){ this.state.disability_others = true }
+
+
+    axios.get(`http://localhost:8000/api/user/get/`+this.state.id+`?token=${this.state.token}`)
+    .then(response => {
+      console.log("It came back");
+      console.log(response);
+      return response;
+    })
+    .then(json => {
+      if (json.data.success) {
+        console.log("It came back 2");
+        this.setState({ 
+          title: json.data.data.title,
+          first_name: json.data.data.first_name,
+          last_name: json.data.data.last_name,
+          middle_name: json.data.data.middle_name,
+          email: json.data.data.email,
+          zip_code: json.data.data.zip_code,
+          telephone: json.data.data.telephone,
+          gender: json.data.data.gender,
+          dob: json.data.data.dob,
+          nationality: json.data.data.nationality,
+          country_of_residence: json.data.data.country_of_residence,
+          district_province_state: json.data.data.district_province_state,
+          contact_address: json.data.data.contact_address,
+          // ///////// DISABILITY /////////////////////////////////////////
+          disability_none: json.data.data.disability_none,
+          disability_hearing: json.data.data.disability_hearing,
+          disability_mobility: json.data.data.disability_mobility,
+          disability_sight: json.data.data.disability_sight,
+          disability_learning: json.data.data.disability_learning,
+          disability_others: json.data.data.disability_others,
+          /////////////////////////////////////////////
+          parent_guardian_name: json.data.data.parent_guardian_name,
+          parent_guardian_relationship: json.data.data.parent_guardian_relationship,
+          parent_guardian_occupation: json.data.data.parent_guardian_occupation,
+          parent_guardian_phone: json.data.data.parent_guardian_phone,
+          passport_photograph: json.data.data.passport_photograph,
+          type_of_identification: json.data.data.type_of_identification,
+          id_passport_number: json.data.data.id_passport_number,
+          id_passport_upload: json.data.data.id_passport_upload,
+          programme_first_choice: json.data.data.programme_first_choice,
+          programme_second_choice: json.data.data.programme_second_choice,
+          programme_third_choice: json.data.data.programme_third_choice,
+          academic_session: json.data.data.academic_session,
+          admission_intake: json.data.data.admission_intake,
+          study_mode: json.data.data.study_mode,
+          previous_result_transcript: json.data.data.previous_result_transcript,
+          status: json.data.data.status,
+        });
+      } else alert("Login Failed!");
+    })
+    .catch(error => {
+      // redirect user to previous page if user does not have autorization to the page
+      hashHistory.push('/premontessori');
+      console.error(`An Error Occuredd! ${error}`);
+      
+    });
   }
 
   // For datepicker
@@ -287,11 +292,9 @@ class Application extends Component {
   {
       e.preventDefault();
       const application_data ={
-        first_name : this.state.first_name, last_name : this.state.last_name, middle_name : this.state.middle_name, email : this.state.email, zip_code : this.state.zip_code, telephone : this.state.telephone, title : this.state.title, gender : this.state.gender, dob : this.state.dob, nationality : this.state.nationality, country_of_residence : this.state.country_of_residence, district_province_state : this.state.district_province_state, contact_address : this.state.contact_address, disability_none : this.state.disability_none, parent_guardian_name : this.state.parent_guardian_name, parent_guardian_relationship : this.state.parent_guardian_relationship, parent_guardian_occupation : this.state.parent_guardian_occupation, parent_guardian_phone : this.state.parent_guardian_phone, passport_photograph : this.state.passport_photograph, type_of_identification : this.state.type_of_identification, id_passport_number : this.state.id_passport_number, id_passport_upload : this.state.id_passport_upload, programme_first_choice : this.state.programme_first_choice, programme_second_choice : this.state.programme_second_choice, programme_third_choice : this.state.programme_third_choice, academic_session : this.state.academic_session, admission_intake : this.state.admission_intake, study_mode : this.state.study_mode, previous_result_transcript : this.state.previous_result_transcript
+        first_name : this.state.first_name, last_name : this.state.last_name, middle_name : this.state.middle_name, email : this.state.email, zip_code : this.state.zip_code, telephone : this.state.telephone, title : this.state.title, gender : this.state.gender, dob : this.state.dob, nationality : this.state.nationality, country_of_residence : this.state.country_of_residence, district_province_state : this.state.district_province_state, contact_address : this.state.contact_address, disability_none : this.state.disability_none, disability_hearing : this.state.disability_hearing, disability_mobility : this.state.disability_mobility, disability_sight : this.state.disability_sight, disability_learning : this.state.disability_learning, disability_others : this.state.disability_others, parent_guardian_name : this.state.parent_guardian_name, parent_guardian_relationship : this.state.parent_guardian_relationship, parent_guardian_occupation : this.state.parent_guardian_occupation, parent_guardian_phone : this.state.parent_guardian_phone, passport_photograph : this.state.passport_photograph, type_of_identification : this.state.type_of_identification, id_passport_number : this.state.id_passport_number, id_passport_upload : this.state.id_passport_upload, programme_first_choice : this.state.programme_first_choice, programme_second_choice : this.state.programme_second_choice, programme_third_choice : this.state.programme_third_choice, academic_session : this.state.academic_session, admission_intake : this.state.admission_intake, study_mode : this.state.study_mode, previous_result_transcript : this.state.previous_result_transcript
       }
-      // axios.put(`http://localhost:8000/api/user/update/?token=${this.state.token}`+this.state.id, application_data)
       axios.put(`http://localhost:8000/api/user/update/`+this.state.id+`?token=${this.state.token}`, application_data)
-      // axios.put(`http://localhost:8000/api/user/update/`+this.state.id, application_data)
       .then(response => {
         console.log("ROI Cartoon");
         console.log(response);
@@ -315,7 +318,23 @@ class Application extends Component {
       });
   }
 
+  
+
   render() {
+    if(this.state.disability_none     == "false"){ this.state.disability_none = false }
+    if(this.state.disability_hearing  == "false"){ this.state.disability_hearing = false }
+    if(this.state.disability_mobility == "false"){ this.state.disability_mobility = false }
+    if(this.state.disability_sight    == "false"){ this.state.disability_sight = false }
+    if(this.state.disability_learning == "false"){ this.state.disability_learning = false }
+    if(this.state.disability_others   == "false"){ this.state.disability_others = false }
+
+    if(this.state.disability_none     == "true"){ this.state.disability_none = true }
+    if(this.state.disability_hearing  == "true"){ this.state.disability_hearing = true }
+    if(this.state.disability_mobility == "true"){ this.state.disability_mobility = true }
+    if(this.state.disability_sight    == "true"){ this.state.disability_sight = true }
+    if(this.state.disability_learning == "true"){ this.state.disability_learning = true }
+    if(this.state.disability_others   == "true"){ this.state.disability_others = true }
+    
     return (
       <div className="animated fadeIn"> 
         <Row> 
@@ -402,7 +421,7 @@ class Application extends Component {
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>Title</InputGroupText>
                             </InputGroupAddon>
-                            <Input type="select" id="title" defaultValue={this.state.title} onChange={this.onChangeTitle}>
+                            <Input type="select" id="title" value={this.state.title} onChange={this.onChangeTitle}>
                               <option value="0"> --- select --- </option>
                               <option value="1">Mr</option>
                               <option value="2">Mrs</option>
@@ -420,7 +439,7 @@ class Application extends Component {
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>Gender</InputGroupText>
                             </InputGroupAddon>
-                            <Input type="select" id="gender" defaultValue={this.state.gender} onChange={this.onChangeGender}>
+                            <Input type="select" id="gender" value={this.state.gender} onChange={this.onChangeGender}>
                               <option value="0"> --- select --- </option>
                               <option value="1">Male</option>
                               <option value="2">Female</option>
@@ -472,7 +491,7 @@ class Application extends Component {
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>Phone Number</InputGroupText>
                             </InputGroupAddon>
-                            <Input type="select" id="zip_code" defaultValue={this.state.zip_code} onChange={this.onChangeZipCode}>
+                            <Input type="select" id="zip_code" value={this.state.zip_code} onChange={this.onChangeZipCode}>
                               <option value="0"> Zip Code </option>
                               <option value="NG (+234)">NG (+234)</option>
                               <option value="UG (+256)">UG (+256)</option>
@@ -501,7 +520,7 @@ class Application extends Component {
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>Nationality</InputGroupText>
                             </InputGroupAddon>
-                            <Input type="select" id="nationality" defaultValue={this.state.nationality} onChange={this.onChangeNationality}>
+                            <Input type="select" id="nationality" value={this.state.nationality} onChange={this.onChangeNationality}>
                               <option value="0"> --- select --- </option>
                               <option value="1">Ghana</option>
                               <option value="2">Nigeria</option>
@@ -517,7 +536,7 @@ class Application extends Component {
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>Country of Residence</InputGroupText>
                             </InputGroupAddon>
-                            <Input type="select" id="country_of_residence" defaultValue={this.state.country_of_residence} onChange={this.onChangeCountryOfResidence}>
+                            <Input type="select" id="country_of_residence" value={this.state.country_of_residence} onChange={this.onChangeCountryOfResidence}>
                               <option value="0"> --- select --- </option>
                               <option value="1">Ghana</option>
                               <option value="2">Nigeria</option>
@@ -564,26 +583,26 @@ class Application extends Component {
                               <Label check className="form-check-label" htmlFor="checkbox1">None</Label>
                             </FormGroup>
                             <FormGroup check className="checkbox">
-                              <Input className="form-check-input" type="checkbox" id="hearing" checked={this.state.hearing} onChange={this.onChangeHearing} />
+                              <Input className="form-check-input" type="checkbox" id="hearing" checked={this.state.disability_hearing} onChange={this.onChangeDisabilityHearing} />
                               <Label check className="form-check-label" htmlFor="checkbox2">Hearing</Label>
                             </FormGroup>
                             <FormGroup check className="checkbox">
-                              <Input className="form-check-input" type="checkbox" id="mobility" checked={this.state.mobility} onChange={this.onChangeMobility} />
+                              <Input className="form-check-input" type="checkbox" id="mobility" checked={this.state.disability_mobility} onChange={this.onChangeDisabilityMobility} />
                               <Label check className="form-check-label" htmlFor="checkbox3">Mobility</Label>
                             </FormGroup>
                           </Col>
                           <Col xs="12" sm="6">
                             <FormGroup check className="checkbox">
-                              <Input className="form-check-input" type="checkbox" id="sight" checked={this.state.sight} onChange={this.onChangeSight} />
+                              <Input className="form-check-input" type="checkbox" id="sight" checked={this.state.disability_sight} onChange={this.onChangeDisabilitySight} />
                               <Label check className="form-check-label" htmlFor="checkbox1">Sight</Label>
                             </FormGroup>
                             <FormGroup check className="checkbox">
-                              <Input className="form-check-input" type="checkbox" id="learning_disability" checked={this.state.learningDisability} onChange={this.onChangeLearningDisability} />
+                              <Input className="form-check-input" type="checkbox" id="learning_disability" checked={this.state.disability_learning} onChange={this.onChangeDisabilityLearning} />
                               <Label check className="form-check-label" htmlFor="checkbox2">Learning Disability
 </Label>
                             </FormGroup>
                             <FormGroup check className="checkbox">
-                              <Input className="form-check-input" type="checkbox" id="others" checked={this.state.others} onChange={this.onChangeOthers} />
+                              <Input className="form-check-input" type="checkbox" id="others" checked={this.state.disability_others} onChange={this.onChangeDisabilityOthers} />
                               <Label check className="form-check-label" htmlFor="checkbox3">others</Label>
                             </FormGroup>
                           </Col>
@@ -672,7 +691,7 @@ class Application extends Component {
                               <InputGroupAddon addonType="prepend">
                                 <InputGroupText>Type of Identification</InputGroupText>
                               </InputGroupAddon>
-                              <Input type="select" name="type_of_identification" id="type_of_identification">
+                              <Input type="select" id="type_of_identification" value={this.state.type_of_identification}>
                                 <option value="0"> --- select --- </option>
                                 <option value="1">Passport</option>
                                 <option value="2">National ID</option>
