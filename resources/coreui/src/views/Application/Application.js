@@ -150,21 +150,6 @@ class Application extends Component {
 
   componentDidMount()
   {
-    // if(this.state.disability_none     == "false"){ this.state.disability_none = false }
-    // if(this.state.disability_hearing  == "false"){ this.state.disability_hearing = false }
-    // if(this.state.disability_mobility == "false"){ this.state.disability_mobility = false }
-    // if(this.state.disability_sight    == "false"){ this.state.disability_sight = false }
-    // if(this.state.disability_learning == "false"){ this.state.disability_learning = false }
-    // if(this.state.disability_others   == "false"){ this.state.disability_others = false }
-
-    // if(this.state.disability_none     == "true"){ this.state.disability_none = true }
-    // if(this.state.disability_hearing  == "true"){ this.state.disability_hearing = true }
-    // if(this.state.disability_mobility == "true"){ this.state.disability_mobility = true }
-    // if(this.state.disability_sight    == "true"){ this.state.disability_sight = true }
-    // if(this.state.disability_learning == "true"){ this.state.disability_learning = true }
-    // if(this.state.disability_others   == "true"){ this.state.disability_others = true }
-
-
     axios.get(`http://localhost:8000/api/user/get/`+this.state.id+`?token=${this.state.token}`)
     .then(response => {
       console.log("It came back");
@@ -334,7 +319,7 @@ class Application extends Component {
     if(this.state.disability_sight    == "true"){ this.state.disability_sight = true }
     if(this.state.disability_learning == "true"){ this.state.disability_learning = true }
     if(this.state.disability_others   == "true"){ this.state.disability_others = true }
-    
+
     return (
       <div className="animated fadeIn"> 
         <Row> 

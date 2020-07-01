@@ -11,42 +11,6 @@ class Login extends Component {
     super(props)
     this.state = {
         id: '',
-        first_name: '',
-        last_name: '',
-        middle_name: '',
-        email: '',
-        zip_code: '',
-        telephone: '',
-        password: '',
-        title: '',
-        gender: '',
-        dob: '',
-        nationality: '',
-        country_of_residence: '',
-        district_province_state: '',
-        contact_address: '',
-        disability_none: '',
-        disability_hearing: '',
-        disability_mobility: '',
-        disability_sight: '',
-        disability_learning: '',
-        disability_others: '',
-        parent_guardian_name: '',
-        parent_guardian_relationship: '',
-        parent_guardian_occupation: '',
-        parent_guardian_phone: '',
-        passport_photograph: '',
-        type_of_identification: '',
-        id_passport_number: '',
-        id_passport_upload: '',
-        programme_first_choice: '',
-        programme_second_choice: '',
-        programme_third_choice: '',
-        academic_session: '',
-        admission_intake: '',
-        study_mode: '',
-        previous_result_transcript: '',
-        status: '',
         created_at: '',
         errors: {},
         isLoggedIn: false,
@@ -70,11 +34,6 @@ class Login extends Component {
           password: this.state.password
       }
 
-      // login(user).then(res => {
-      //     if (res) {
-      //         this.props.history.push(`/applications/applications-list`)
-      //     }
-      // })
       axios .post(
             'api/user/login',
             {
@@ -93,45 +52,10 @@ class Login extends Component {
         .then(json => {
             if (json.data.success) {
                 alert("Login Successful!");
-                const { id, first_name, last_name, middle_name, email, zip_code, telephone, title, gender, dob, nationality, country_of_residence, district_province_state, contact_address, disability_none, disability_hearing, disability_mobility, disability_sight, disability_learning,  disability_others,parent_guardian_name, parent_guardian_relationship, parent_guardian_occupation, parent_guardian_phone, passport_photograph, type_of_identification, id_passport_number, id_passport_upload, programme_first_choice, programme_second_choice, programme_third_choice, academic_session, admission_intake, study_mode, previous_result_transcript, status, created_at, auth_token, user_type } = json.data.data;
+                const { id, created_at, auth_token, user_type } = json.data.data;
 
                 let userData = {
                   id,
-                  first_name,
-                  last_name,
-                  middle_name,
-                  email,
-                  zip_code,
-                  telephone,
-                  title,
-                  gender,
-                  dob,
-                  nationality,
-                  country_of_residence,
-                  district_province_state,
-                  contact_address,
-                  disability_none,
-                  disability_hearing,
-                  disability_mobility,
-                  disability_sight,
-                  disability_learning,
-                  disability_others,
-                  parent_guardian_name,
-                  parent_guardian_relationship,
-                  parent_guardian_occupation,
-                  parent_guardian_phone,
-                  passport_photograph,
-                  type_of_identification,
-                  id_passport_number,
-                  id_passport_upload,
-                  programme_first_choice,
-                  programme_second_choice,
-                  programme_third_choice,
-                  academic_session,
-                  admission_intake,
-                  study_mode,
-                  previous_result_transcript,
-                  status,
                   created_at,
                   auth_token,
                   user_type,
@@ -146,18 +70,6 @@ class Login extends Component {
                 // console.log("Response-2");
                 console.log(localStorage["appState"]);
                 // console.log("Response-3");
-                let storedData1 = appState.user.disability_none;
-                let storedData2 = appState.user.disability_hearing;
-                let storedData3 = appState.user.disability_learning;
-                let storedData4 = appState.user.disability_mobility;
-                let storedData5 = appState.user.disability_sight;
-                let storedData6 = appState.user.disability_others;
-                console.log("disability_none: "+storedData1);
-                console.log("disability_hearing: "+storedData2);
-                console.log("disability_learning: "+storedData3);
-                console.log("disability_mobility: "+storedData4);
-                console.log("disability_sight: "+storedData5);
-                console.log("disability_others: "+storedData6);
                 
                 this.setState({
                     isLoggedIn: appState.isLoggedIn,
