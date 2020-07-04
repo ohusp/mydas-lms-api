@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {createHashHistory} from 'history';
-import axios from 'axios';
+// import axios from 'axios';
+import axios, { post } from 'axios';
 
 import {
   Badge,
@@ -68,10 +69,15 @@ class Application extends Component {
     this.onChangeParentGuardianRelationship =this.onChangeParentGuardianRelationship.bind(this);
     this.onChangeparentGuardianOccupation   =this.onChangeparentGuardianOccupation.bind(this);
     this.onChangeParentGuardianPhone        =this.onChangeParentGuardianPhone.bind(this);
+
+    // //////////// IDENTITY //////////////////////////////
     this.onChangePassportPhotograph         =this.onChangePassportPhotograph.bind(this);
+
     this.onChangeTypeOfIdentification       =this.onChangeTypeOfIdentification.bind(this);
     this.onChangeIdPassportNumber           =this.onChangeIdPassportNumber.bind(this);
     this.onChangeIdPassportUpload         =this.onChangeIdPassportUpload.bind(this);
+
+    // ///////////////////////////////////////////////////////
     this.onChangeProgrammeFirstChoice     =this.onChangeProgrammeFirstChoice.bind(this);
     this.onChangeProgrammeSecondChoice    =this.onChangeProgrammeSecondChoice.bind(this);
     this.onChangeProgrammeThirdChoice     =this.onChangeProgrammeThirdChoice.bind(this);
@@ -79,9 +85,14 @@ class Application extends Component {
     this.onChangeAdmissionIntake          =this.onChangeAdmissionIntake.bind(this);
     this.onChangeStudyMode                =this.onChangeStudyMode.bind(this);
     this.onChangePreviousResultTranscript =this.onChangePreviousResultTranscript.bind(this);
+    // ///////////////////////////////////////////////////////
 
 
     this.onSubmit = this.onSubmit.bind(this);
+
+    // ///////////// IDENTITY SUBMISSION /////////////////
+    this.onSubmitIdentity = this.onSubmitIdentity.bind(this);
+    this.fileUploadIdPassport = this.fileUploadIdPassport.bind(this)
 
     this.state = {
       token: localStorage["appState"]
@@ -115,10 +126,11 @@ class Application extends Component {
       parent_guardian_relationship: "",
       parent_guardian_occupation: "", 
       parent_guardian_phone: "", 
+      // /////////// IDENTITY ////////////////////////////////
       passport_photograph: "",
       type_of_identification: "",
       id_passport_number: "",
-      id_passport_upload: "",
+      id_passport_upload: null,
       programme_first_choice: "",
       programme_second_choice: "",  
       programme_third_choice: "",
@@ -261,9 +273,14 @@ class Application extends Component {
   onChangeparentGuardianOccupation(e)   { this.setState({ parent_guardian_occupation:e.target.value  }); }
   onChangeParentGuardianPhone(e)        { this.setState({ parent_guardian_phone:e.target.value  }); }
   onChangePassportPhotograph(e)         { this.setState({ passport_photograph:e.target.value  }); }
+
+  // ///////////////// IDENTITY ///////////////////////////////
   onChangeTypeOfIdentification(e)   { this.setState({ type_of_identification:e.target.value  }); }
   onChangeIdPassportNumber(e)       { this.setState({ id_passport_number:e.target.value  }); }
-  onChangeIdPassportUpload(e)       { this.setState({ id_passport_upload:e.target.value  }); }
+
+  
+
+  // ///////////////////////////////////////////////////////////
   onChangeProgrammeFirstChoice(e)   { this.setState({ programme_first_choice:e.target.value  }); }
   onChangeProgrammeSecondChoice(e)  { this.setState({ programme_second_choice:e.target.value  }); }
   onChangeProgrammeThirdChoice(e)   { this.setState({ programme_third_choice:e.target.value  }); }
@@ -303,9 +320,30 @@ class Application extends Component {
       });
   }
 
-  
+  onSubmitIdentity(e){
+    e.preventDefault() // Stop form submit
+    this.fileUploadIdPassport(this.state.id_passport_upload).then((response)=>{
+      console.log(response.data);
+    })
+  }
+  onChangeIdPassportUpload(e) {
+    this.setState({id_passport_upload:e.target.files[0]})
+  }
+  // axios.get(`http://localhost:8000/api/user/get/`+this.state.id+`?token=${this.state.token}`)
+  fileUploadIdPassport(id_passport_upload){
+    const url = 'http://localhost:8000/api/fileupload/'+this.state.id;
+    const formData = new FormData();
+    formData.append('id_passport_upload',id_passport_upload)
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    }
+    return  post(url, formData,config)
+  }
 
   render() {
+    // gets the state value as a string and convert to boolean
     if(this.state.disability_none     == "false"){ this.state.disability_none = false }
     if(this.state.disability_hearing  == "false"){ this.state.disability_hearing = false }
     if(this.state.disability_mobility == "false"){ this.state.disability_mobility = false }
@@ -389,272 +427,272 @@ class Application extends Component {
             
               {/* ////////////////////// PERSONAL DATA ////////////////////////////////////// */}
               <Card>
-              <CardHeader>
-                <i className="fa fa-align-justify"></i><strong>Personal Data</strong>
-                <div className="card-header-actions">
-                  <Button color="primary" onClick={this.toggle} className={'mb-1'} id="" size="sm">Toggle</Button>
-                </div>
-              </CardHeader>
-              <Collapse isOpen={this.state.collapse} >
-                <CardBody>
-                  <Form onSubmit={this.onSubmit}>
-                    <Row>
-                      <Col xs="12" sm="6">
-                        {/* //// TITLE //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>Title</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="select" id="title" value={this.state.title} onChange={this.onChangeTitle}>
-                              <option value="0"> --- select --- </option>
-                              <option value="1">Mr</option>
-                              <option value="2">Mrs</option>
-                              <option value="3">Ms</option>
-                              <option value="3">Miss</option>
-                            </Input>
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-user"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>
-                        {/* //// GENDER //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>Gender</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="select" id="gender" value={this.state.gender} onChange={this.onChangeGender}>
-                              <option value="0"> --- select --- </option>
-                              <option value="1">Male</option>
-                              <option value="2">Female</option>
-                            </Input>
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-user"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>
-                        {/* //// FIRST NAME //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>First Name</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="text" id="first_name" defaultValue={this.state.first_name} onChange={this.onChangeFirstName} />
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-user"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>
-                        {/* //// MIDDLE NAME //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>Middle Name</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="text" id="middle_name" defaultValue={this.state.middle_name} onChange={this.onChangeMiddleName} />
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-envelope"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>
-                        {/* //// LAST NAME //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>Last Name</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="text" id="last_name" defaultValue={this.state.last_name} onChange={this.onChangeLastName}/>
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>
-                        {/* //// PHONE NUMBER //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>Phone Number</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="select" id="zip_code" value={this.state.zip_code} onChange={this.onChangeZipCode}>
-                              <option value="0"> Zip Code </option>
-                              <option value="NG (+234)">NG (+234)</option>
-                              <option value="UG (+256)">UG (+256)</option>
-                            </Input>
-                            <Input type="text" id="telephone" defaultValue={this.state.telephone} onChange={this.onChangeTelephone} />
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>
-                        {/* //// DATE OF BIRTH //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>Date of Birth</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="date" id="dob" defaultValue={this.state.dob} onChange={this.onChangeDob} />
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>
-                        {/* //// NATIONALITY //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>Nationality</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="select" id="nationality" value={this.state.nationality} onChange={this.onChangeNationality}>
-                              <option value="0"> --- select --- </option>
-                              <option value="1">Ghana</option>
-                              <option value="2">Nigeria</option>
-                            </Input>
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-user"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>
-                        {/* //// COUNTRY OF RESIDENCE //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>Country of Residence</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="select" id="country_of_residence" value={this.state.country_of_residence} onChange={this.onChangeCountryOfResidence}>
-                              <option value="0"> --- select --- </option>
-                              <option value="1">Ghana</option>
-                              <option value="2">Nigeria</option>
-                            </Input>
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-user"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>                       
-                      </Col>
-                      <Col xs="12" sm="6">
-                        {/* //// DISTRICT/PROVINCE/STATE //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>District/Province/State</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="text" id="district_province_state" defaultValue={this.state.district_province_state} onChange={this.onChangeDistrictProvinceState}/>
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>
-                        {/* //// CONTACT ADDRESS //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>Contact Address</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="textarea" id="contact_address" rows="2" defaultValue={this.state.contact_address} onChange={this.onChangeContactAddress} placeholder="Contact Address" />
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>
-                        {/* //// DISABILITY //////// */}
-                        <FormGroup>
-                            <strong>Disability:</strong>
-                        </FormGroup>
-                        <Row>
-                          <Col xs="12" sm="6">
-                            <FormGroup check className="checkbox">
-                              <Input className="form-check-input" type="checkbox" id="disability_none" checked={this.state.disability_none} onChange={this.onChangeDisabilityNone} />
-                              <Label check className="form-check-label" htmlFor="checkbox1">None</Label>
-                            </FormGroup>
-                            <FormGroup check className="checkbox">
-                              <Input className="form-check-input" type="checkbox" id="hearing" checked={this.state.disability_hearing} onChange={this.onChangeDisabilityHearing} />
-                              <Label check className="form-check-label" htmlFor="checkbox2">Hearing</Label>
-                            </FormGroup>
-                            <FormGroup check className="checkbox">
-                              <Input className="form-check-input" type="checkbox" id="mobility" checked={this.state.disability_mobility} onChange={this.onChangeDisabilityMobility} />
-                              <Label check className="form-check-label" htmlFor="checkbox3">Mobility</Label>
-                            </FormGroup>
-                          </Col>
-                          <Col xs="12" sm="6">
-                            <FormGroup check className="checkbox">
-                              <Input className="form-check-input" type="checkbox" id="sight" checked={this.state.disability_sight} onChange={this.onChangeDisabilitySight} />
-                              <Label check className="form-check-label" htmlFor="checkbox1">Sight</Label>
-                            </FormGroup>
-                            <FormGroup check className="checkbox">
-                              <Input className="form-check-input" type="checkbox" id="learning_disability" checked={this.state.disability_learning} onChange={this.onChangeDisabilityLearning} />
-                              <Label check className="form-check-label" htmlFor="checkbox2">Learning Disability
-</Label>
-                            </FormGroup>
-                            <FormGroup check className="checkbox">
-                              <Input className="form-check-input" type="checkbox" id="others" checked={this.state.disability_others} onChange={this.onChangeDisabilityOthers} />
-                              <Label check className="form-check-label" htmlFor="checkbox3">others</Label>
-                            </FormGroup>
-                          </Col>
-                        </Row>
-                        <hr></hr>
-                        {/* //// PARENT/GUARDIAN/NEXT OF KIN INFORMATION //////// */}
-                        <FormGroup>
-                          <strong>Parent/Guardian/Next of Kin Information</strong>
-                        </FormGroup>
-                        {/* //// PARENT/GUARDIAN NAME //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>Full Name</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="text" id="parent_guardian_name" defaultValue={this.state.parent_guardian_name} onChange={this.onChangeParentGuardianName} />
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-user"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>
-                        {/* //// PARENT/GUARDIAN RELATIONSHIP //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>Relationship</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="text" id="parent_guardian_relationship" defaultValue={this.state.parent_guardian_relationship} onChange={this.onChangeParentGuardianRelationship} />
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-user"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>
-                        {/* //// PARENT/GUARDIAN OCCUPATION //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>Occupation</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="text" id="parent_guardian_occupation" defaultValue={this.state.parent_guardian_occupation} onChange={this.onChangeparentGuardianOccupation} />
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-user"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>
-                        {/* //// PARENT/GUARDIAN PHONE //////// */}
-                        <FormGroup>
-                          <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                              <InputGroupText>Phone</InputGroupText>
-                            </InputGroupAddon>
-                            <Input type="text" id="parent_guardian_phone" defaultValue={this.state.parent_guardian_phone} onChange={this.onChangeParentGuardianPhone} />
-                            <InputGroupAddon addonType="append">
-                              <InputGroupText><i className="fa fa-user"></i></InputGroupText>
-                            </InputGroupAddon>
-                          </InputGroup>
-                        </FormGroup>
-                        
-                      </Col>
-                    </Row>
-                    <FormGroup className="form-actions">
-                      <Button type="submit" size="sm" color="primary">Update Personal Details</Button>
-                    </FormGroup>
-                  </Form>
-                </CardBody>
-              </Collapse>
-            </Card>
+                <CardHeader>
+                  <i className="fa fa-align-justify"></i><strong>Personal Data</strong>
+                  <div className="card-header-actions">
+                    <Button color="primary" onClick={this.toggle} className={'mb-1'} id="" size="sm">Toggle</Button>
+                  </div>
+                </CardHeader>
+                <Collapse isOpen={this.state.collapse} >
+                  <CardBody>
+                    <Form onSubmit={this.onSubmit}>
+                      <Row>
+                        <Col xs="12" sm="6">
+                          {/* //// TITLE //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Title</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="select" id="title" value={this.state.title} onChange={this.onChangeTitle}>
+                                <option value="0"> --- select --- </option>
+                                <option value="1">Mr</option>
+                                <option value="2">Mrs</option>
+                                <option value="3">Ms</option>
+                                <option value="3">Miss</option>
+                              </Input>
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-user"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// GENDER //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Gender</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="select" id="gender" value={this.state.gender} onChange={this.onChangeGender}>
+                                <option value="0"> --- select --- </option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                              </Input>
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-user"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// FIRST NAME //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>First Name</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="text" id="first_name" defaultValue={this.state.first_name} onChange={this.onChangeFirstName} />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-user"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// MIDDLE NAME //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Middle Name</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="text" id="middle_name" defaultValue={this.state.middle_name} onChange={this.onChangeMiddleName} />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-envelope"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// LAST NAME //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Last Name</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="text" id="last_name" defaultValue={this.state.last_name} onChange={this.onChangeLastName}/>
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// PHONE NUMBER //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Phone Number</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="select" id="zip_code" value={this.state.zip_code} onChange={this.onChangeZipCode}>
+                                <option value="0"> Zip Code </option>
+                                <option value="NG (+234)">NG (+234)</option>
+                                <option value="UG (+256)">UG (+256)</option>
+                              </Input>
+                              <Input type="text" id="telephone" defaultValue={this.state.telephone} onChange={this.onChangeTelephone} />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// DATE OF BIRTH //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Date of Birth</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="date" id="dob" defaultValue={this.state.dob} onChange={this.onChangeDob} />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// NATIONALITY //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Nationality</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="select" id="nationality" value={this.state.nationality} onChange={this.onChangeNationality}>
+                                <option value="0"> --- select --- </option>
+                                <option value="1">Ghana</option>
+                                <option value="2">Nigeria</option>
+                              </Input>
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-user"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// COUNTRY OF RESIDENCE //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Country of Residence</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="select" id="country_of_residence" value={this.state.country_of_residence} onChange={this.onChangeCountryOfResidence}>
+                                <option value="0"> --- select --- </option>
+                                <option value="1">Ghana</option>
+                                <option value="2">Nigeria</option>
+                              </Input>
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-user"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>                       
+                        </Col>
+                        <Col xs="12" sm="6">
+                          {/* //// DISTRICT/PROVINCE/STATE //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>District/Province/State</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="text" id="district_province_state" defaultValue={this.state.district_province_state} onChange={this.onChangeDistrictProvinceState}/>
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// CONTACT ADDRESS //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Contact Address</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="textarea" id="contact_address" rows="2" defaultValue={this.state.contact_address} onChange={this.onChangeContactAddress} placeholder="Contact Address" />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// DISABILITY //////// */}
+                          <FormGroup>
+                              <strong>Disability:</strong>
+                          </FormGroup>
+                          <Row>
+                            <Col xs="12" sm="6">
+                              <FormGroup check className="checkbox">
+                                <Input className="form-check-input" type="checkbox" id="disability_none" checked={this.state.disability_none} onChange={this.onChangeDisabilityNone} />
+                                <Label check className="form-check-label" htmlFor="checkbox1">None</Label>
+                              </FormGroup>
+                              <FormGroup check className="checkbox">
+                                <Input className="form-check-input" type="checkbox" id="hearing" checked={this.state.disability_hearing} onChange={this.onChangeDisabilityHearing} />
+                                <Label check className="form-check-label" htmlFor="checkbox2">Hearing</Label>
+                              </FormGroup>
+                              <FormGroup check className="checkbox">
+                                <Input className="form-check-input" type="checkbox" id="mobility" checked={this.state.disability_mobility} onChange={this.onChangeDisabilityMobility} />
+                                <Label check className="form-check-label" htmlFor="checkbox3">Mobility</Label>
+                              </FormGroup>
+                            </Col>
+                            <Col xs="12" sm="6">
+                              <FormGroup check className="checkbox">
+                                <Input className="form-check-input" type="checkbox" id="sight" checked={this.state.disability_sight} onChange={this.onChangeDisabilitySight} />
+                                <Label check className="form-check-label" htmlFor="checkbox1">Sight</Label>
+                              </FormGroup>
+                              <FormGroup check className="checkbox">
+                                <Input className="form-check-input" type="checkbox" id="learning_disability" checked={this.state.disability_learning} onChange={this.onChangeDisabilityLearning} />
+                                <Label check className="form-check-label" htmlFor="checkbox2">Learning Disability
+  </Label>
+                              </FormGroup>
+                              <FormGroup check className="checkbox">
+                                <Input className="form-check-input" type="checkbox" id="others" checked={this.state.disability_others} onChange={this.onChangeDisabilityOthers} />
+                                <Label check className="form-check-label" htmlFor="checkbox3">others</Label>
+                              </FormGroup>
+                            </Col>
+                          </Row>
+                          <hr></hr>
+                          {/* //// PARENT/GUARDIAN/NEXT OF KIN INFORMATION //////// */}
+                          <FormGroup>
+                            <strong>Parent/Guardian/Next of Kin Information</strong>
+                          </FormGroup>
+                          {/* //// PARENT/GUARDIAN NAME //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Full Name</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="text" id="parent_guardian_name" defaultValue={this.state.parent_guardian_name} onChange={this.onChangeParentGuardianName} />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-user"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// PARENT/GUARDIAN RELATIONSHIP //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Relationship</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="text" id="parent_guardian_relationship" defaultValue={this.state.parent_guardian_relationship} onChange={this.onChangeParentGuardianRelationship} />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-user"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// PARENT/GUARDIAN OCCUPATION //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Occupation</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="text" id="parent_guardian_occupation" defaultValue={this.state.parent_guardian_occupation} onChange={this.onChangeparentGuardianOccupation} />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-user"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// PARENT/GUARDIAN PHONE //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Phone</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="text" id="parent_guardian_phone" defaultValue={this.state.parent_guardian_phone} onChange={this.onChangeParentGuardianPhone} />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-user"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          
+                        </Col>
+                      </Row>
+                      <FormGroup className="form-actions">
+                        <Button type="submit" size="sm" color="primary">Update Personal Details</Button>
+                      </FormGroup>
+                    </Form>
+                  </CardBody>
+                </Collapse>
+              </Card>
               
               {/* ////////////////////// IDENTIFICATION ////////////////////////////////////// */}
               <Card>
@@ -668,7 +706,7 @@ class Application extends Component {
                 </CardHeader>
                 <Collapse isOpen={this.state.collapse_identification}>
                   <CardBody>
-                    <Form action="" method="post">
+                    <Form onSubmit={this.onSubmitIdentity}>
                       <Row>
                         <Col xs="12" sm="6">
                           <FormGroup>
@@ -676,7 +714,11 @@ class Application extends Component {
                               <InputGroupAddon addonType="prepend">
                                 <InputGroupText>Type of Identification</InputGroupText>
                               </InputGroupAddon>
-                              <Input type="select" id="type_of_identification" value={this.state.type_of_identification}>
+                              <Input 
+                                type="select" 
+                                value={this.state.type_of_identification}
+                                onChange={this.onChangeTypeOfIdentification}
+                              >
                                 <option value="0"> --- select --- </option>
                                 <option value="1">Passport</option>
                                 <option value="2">National ID</option>
@@ -692,7 +734,11 @@ class Application extends Component {
                               <InputGroupAddon addonType="prepend">
                                 <InputGroupText>ID Passport Number</InputGroupText>
                               </InputGroupAddon>
-                              <Input type="text" id="id_passport_number" name="id_passport_number" defaultValue={this.state.id_passport_number} />
+                              <Input 
+                                type="text" 
+                                defaultValue={this.state.id_passport_number} 
+                                onChange={this.onChangeIdPassportNumber}
+                              />
                               <InputGroupAddon addonType="append">
                                 <InputGroupText><i className="fa fa-user"></i></InputGroupText>
                               </InputGroupAddon>
@@ -700,11 +746,14 @@ class Application extends Component {
                           </FormGroup>               
                         </Col>
                         <Col xs="12" sm="6">
-                          <Input type="file" id="file-input" name="file-input" />
+                          <Input 
+                            type="file" 
+                            onChange={this.onChangeIdPassportUpload}
+                          />
                         </Col>
                       </Row>
                       <FormGroup className="form-actions">
-                        <Button type="submit" size="sm" color="primary">Update Personal Details</Button>
+                        <Button type="submit" size="sm" color="primary">Update Personal Identity</Button>
                       </FormGroup>
                     </Form>
                   </CardBody>

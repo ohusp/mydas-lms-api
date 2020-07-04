@@ -169,42 +169,6 @@ var Login = /*#__PURE__*/function (_Component) {
     _this = _super.call(this, props);
     _this.state = {
       id: '',
-      first_name: '',
-      last_name: '',
-      middle_name: '',
-      email: '',
-      zip_code: '',
-      telephone: '',
-      password: '',
-      title: '',
-      gender: '',
-      dob: '',
-      nationality: '',
-      country_of_residence: '',
-      district_province_state: '',
-      contact_address: '',
-      disability_none: '',
-      disability_hearing: '',
-      disability_mobility: '',
-      disability_sight: '',
-      disability_learning: '',
-      disability_others: '',
-      parent_guardian_name: '',
-      parent_guardian_relationship: '',
-      parent_guardian_occupation: '',
-      parent_guardian_phone: '',
-      passport_photograph: '',
-      type_of_identification: '',
-      id_passport_number: '',
-      id_passport_upload: '',
-      programme_first_choice: '',
-      programme_second_choice: '',
-      programme_third_choice: '',
-      academic_session: '',
-      admission_intake: '',
-      study_mode: '',
-      previous_result_transcript: '',
-      status: '',
       created_at: '',
       errors: {},
       isLoggedIn: false,
@@ -231,12 +195,7 @@ var Login = /*#__PURE__*/function (_Component) {
       var user = {
         email: this.state.email,
         password: this.state.password
-      }; // login(user).then(res => {
-      //     if (res) {
-      //         this.props.history.push(`/applications/applications-list`)
-      //     }
-      // })
-
+      };
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/user/login', {
         email: user.email,
         password: user.password
@@ -251,81 +210,11 @@ var Login = /*#__PURE__*/function (_Component) {
           alert("Login Successful!");
           var _json$data$data = json.data.data,
               id = _json$data$data.id,
-              first_name = _json$data$data.first_name,
-              last_name = _json$data$data.last_name,
-              middle_name = _json$data$data.middle_name,
-              email = _json$data$data.email,
-              zip_code = _json$data$data.zip_code,
-              telephone = _json$data$data.telephone,
-              title = _json$data$data.title,
-              gender = _json$data$data.gender,
-              dob = _json$data$data.dob,
-              nationality = _json$data$data.nationality,
-              country_of_residence = _json$data$data.country_of_residence,
-              district_province_state = _json$data$data.district_province_state,
-              contact_address = _json$data$data.contact_address,
-              disability_none = _json$data$data.disability_none,
-              disability_hearing = _json$data$data.disability_hearing,
-              disability_mobility = _json$data$data.disability_mobility,
-              disability_sight = _json$data$data.disability_sight,
-              disability_learning = _json$data$data.disability_learning,
-              disability_others = _json$data$data.disability_others,
-              parent_guardian_name = _json$data$data.parent_guardian_name,
-              parent_guardian_relationship = _json$data$data.parent_guardian_relationship,
-              parent_guardian_occupation = _json$data$data.parent_guardian_occupation,
-              parent_guardian_phone = _json$data$data.parent_guardian_phone,
-              passport_photograph = _json$data$data.passport_photograph,
-              type_of_identification = _json$data$data.type_of_identification,
-              id_passport_number = _json$data$data.id_passport_number,
-              id_passport_upload = _json$data$data.id_passport_upload,
-              programme_first_choice = _json$data$data.programme_first_choice,
-              programme_second_choice = _json$data$data.programme_second_choice,
-              programme_third_choice = _json$data$data.programme_third_choice,
-              academic_session = _json$data$data.academic_session,
-              admission_intake = _json$data$data.admission_intake,
-              study_mode = _json$data$data.study_mode,
-              previous_result_transcript = _json$data$data.previous_result_transcript,
-              status = _json$data$data.status,
               created_at = _json$data$data.created_at,
               auth_token = _json$data$data.auth_token,
               user_type = _json$data$data.user_type;
           var userData = {
             id: id,
-            first_name: first_name,
-            last_name: last_name,
-            middle_name: middle_name,
-            email: email,
-            zip_code: zip_code,
-            telephone: telephone,
-            title: title,
-            gender: gender,
-            dob: dob,
-            nationality: nationality,
-            country_of_residence: country_of_residence,
-            district_province_state: district_province_state,
-            contact_address: contact_address,
-            disability_none: disability_none,
-            disability_hearing: disability_hearing,
-            disability_mobility: disability_mobility,
-            disability_sight: disability_sight,
-            disability_learning: disability_learning,
-            disability_others: disability_others,
-            parent_guardian_name: parent_guardian_name,
-            parent_guardian_relationship: parent_guardian_relationship,
-            parent_guardian_occupation: parent_guardian_occupation,
-            parent_guardian_phone: parent_guardian_phone,
-            passport_photograph: passport_photograph,
-            type_of_identification: type_of_identification,
-            id_passport_number: id_passport_number,
-            id_passport_upload: id_passport_upload,
-            programme_first_choice: programme_first_choice,
-            programme_second_choice: programme_second_choice,
-            programme_third_choice: programme_third_choice,
-            academic_session: academic_session,
-            admission_intake: admission_intake,
-            study_mode: study_mode,
-            previous_result_transcript: previous_result_transcript,
-            status: status,
             created_at: created_at,
             auth_token: auth_token,
             user_type: user_type,
@@ -339,19 +228,6 @@ var Login = /*#__PURE__*/function (_Component) {
           localStorage["appState"] = JSON.stringify(appState); // console.log("Response-2");
 
           console.log(localStorage["appState"]); // console.log("Response-3");
-
-          var storedData1 = appState.user.disability_none;
-          var storedData2 = appState.user.disability_hearing;
-          var storedData3 = appState.user.disability_learning;
-          var storedData4 = appState.user.disability_mobility;
-          var storedData5 = appState.user.disability_sight;
-          var storedData6 = appState.user.disability_others;
-          console.log("disability_none: " + storedData1);
-          console.log("disability_hearing: " + storedData2);
-          console.log("disability_learning: " + storedData3);
-          console.log("disability_mobility: " + storedData4);
-          console.log("disability_sight: " + storedData5);
-          console.log("disability_others: " + storedData6);
 
           _this2.setState({
             isLoggedIn: appState.isLoggedIn,

@@ -23,6 +23,7 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
 });
 
 // Route::put('user/update/{id}', 'Api\ApplicationsController@update');
+Route::post('fileupload/{id}','ApplyController2@updateIdentityPdf');
 
 Route::group(['middleware' => ['jwt.auth','api-header']], function () {
     // ///////////////////// ADMIN ////////////////////////////////////////

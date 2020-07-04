@@ -150,6 +150,7 @@ function _getPrototypeOf(o) {
 
 
 
+ // import axios from 'axios';
 
 
 
@@ -201,19 +202,25 @@ var Application = /*#__PURE__*/function (_Component) {
     _this.onChangeParentGuardianName = _this.onChangeParentGuardianName.bind(_assertThisInitialized(_this));
     _this.onChangeParentGuardianRelationship = _this.onChangeParentGuardianRelationship.bind(_assertThisInitialized(_this));
     _this.onChangeparentGuardianOccupation = _this.onChangeparentGuardianOccupation.bind(_assertThisInitialized(_this));
-    _this.onChangeParentGuardianPhone = _this.onChangeParentGuardianPhone.bind(_assertThisInitialized(_this));
+    _this.onChangeParentGuardianPhone = _this.onChangeParentGuardianPhone.bind(_assertThisInitialized(_this)); // //////////// IDENTITY //////////////////////////////
+
     _this.onChangePassportPhotograph = _this.onChangePassportPhotograph.bind(_assertThisInitialized(_this));
     _this.onChangeTypeOfIdentification = _this.onChangeTypeOfIdentification.bind(_assertThisInitialized(_this));
     _this.onChangeIdPassportNumber = _this.onChangeIdPassportNumber.bind(_assertThisInitialized(_this));
-    _this.onChangeIdPassportUpload = _this.onChangeIdPassportUpload.bind(_assertThisInitialized(_this));
+    _this.onChangeIdPassportUpload = _this.onChangeIdPassportUpload.bind(_assertThisInitialized(_this)); // ///////////////////////////////////////////////////////
+
     _this.onChangeProgrammeFirstChoice = _this.onChangeProgrammeFirstChoice.bind(_assertThisInitialized(_this));
     _this.onChangeProgrammeSecondChoice = _this.onChangeProgrammeSecondChoice.bind(_assertThisInitialized(_this));
     _this.onChangeProgrammeThirdChoice = _this.onChangeProgrammeThirdChoice.bind(_assertThisInitialized(_this));
     _this.onChangeAcademicSession = _this.onChangeAcademicSession.bind(_assertThisInitialized(_this));
     _this.onChangeAdmissionIntake = _this.onChangeAdmissionIntake.bind(_assertThisInitialized(_this));
     _this.onChangeStudyMode = _this.onChangeStudyMode.bind(_assertThisInitialized(_this));
-    _this.onChangePreviousResultTranscript = _this.onChangePreviousResultTranscript.bind(_assertThisInitialized(_this));
-    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
+    _this.onChangePreviousResultTranscript = _this.onChangePreviousResultTranscript.bind(_assertThisInitialized(_this)); // ///////////////////////////////////////////////////////
+
+    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this)); // ///////////// IDENTITY SUBMISSION /////////////////
+
+    _this.onSubmitIdentity = _this.onSubmitIdentity.bind(_assertThisInitialized(_this));
+    _this.fileUploadIdPassport = _this.fileUploadIdPassport.bind(_assertThisInitialized(_this));
     _this.state = {
       token: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.auth_token : "",
       id: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.id : "",
@@ -242,10 +249,11 @@ var Application = /*#__PURE__*/function (_Component) {
       parent_guardian_relationship: "",
       parent_guardian_occupation: "",
       parent_guardian_phone: "",
+      // /////////// IDENTITY ////////////////////////////////
       passport_photograph: "",
       type_of_identification: "",
       id_passport_number: "",
-      id_passport_upload: "",
+      id_passport_upload: null,
       programme_first_choice: "",
       programme_second_choice: "",
       programme_third_choice: "",
@@ -272,19 +280,7 @@ var Application = /*#__PURE__*/function (_Component) {
   _createClass(Application, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this; // if(this.state.disability_none     == "false"){ this.state.disability_none = false }
-      // if(this.state.disability_hearing  == "false"){ this.state.disability_hearing = false }
-      // if(this.state.disability_mobility == "false"){ this.state.disability_mobility = false }
-      // if(this.state.disability_sight    == "false"){ this.state.disability_sight = false }
-      // if(this.state.disability_learning == "false"){ this.state.disability_learning = false }
-      // if(this.state.disability_others   == "false"){ this.state.disability_others = false }
-      // if(this.state.disability_none     == "true"){ this.state.disability_none = true }
-      // if(this.state.disability_hearing  == "true"){ this.state.disability_hearing = true }
-      // if(this.state.disability_mobility == "true"){ this.state.disability_mobility = true }
-      // if(this.state.disability_sight    == "true"){ this.state.disability_sight = true }
-      // if(this.state.disability_learning == "true"){ this.state.disability_learning = true }
-      // if(this.state.disability_others   == "true"){ this.state.disability_others = true }
-
+      var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("http://localhost:8000/api/user/get/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
         console.log("It came back");
@@ -542,7 +538,8 @@ var Application = /*#__PURE__*/function (_Component) {
       this.setState({
         passport_photograph: e.target.value
       });
-    }
+    } // ///////////////// IDENTITY ///////////////////////////////
+
   }, {
     key: "onChangeTypeOfIdentification",
     value: function onChangeTypeOfIdentification(e) {
@@ -556,14 +553,8 @@ var Application = /*#__PURE__*/function (_Component) {
       this.setState({
         id_passport_number: e.target.value
       });
-    }
-  }, {
-    key: "onChangeIdPassportUpload",
-    value: function onChangeIdPassportUpload(e) {
-      this.setState({
-        id_passport_upload: e.target.value
-      });
-    }
+    } // ///////////////////////////////////////////////////////////
+
   }, {
     key: "onChangeProgrammeFirstChoice",
     value: function onChangeProgrammeFirstChoice(e) {
@@ -681,8 +672,39 @@ var Application = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "onSubmitIdentity",
+    value: function onSubmitIdentity(e) {
+      e.preventDefault(); // Stop form submit
+
+      this.fileUploadIdPassport(this.state.id_passport_upload).then(function (response) {
+        console.log(response.data);
+      });
+    }
+  }, {
+    key: "onChangeIdPassportUpload",
+    value: function onChangeIdPassportUpload(e) {
+      this.setState({
+        id_passport_upload: e.target.files[0]
+      });
+    } // axios.get(`http://localhost:8000/api/user/get/`+this.state.id+`?token=${this.state.token}`)
+
+  }, {
+    key: "fileUploadIdPassport",
+    value: function fileUploadIdPassport(id_passport_upload) {
+      var url = 'http://localhost:8000/api/fileupload/' + this.state.id;
+      var formData = new FormData();
+      formData.append('id_passport_upload', id_passport_upload);
+      var config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      };
+      return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
+    }
+  }, {
     key: "render",
     value: function render() {
+      // gets the state value as a string and convert to boolean
       if (this.state.disability_none == "false") {
         this.state.disability_none = false;
       }
@@ -1114,8 +1136,7 @@ var Application = /*#__PURE__*/function (_Component) {
       }, "Toggle"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Collapse"], {
         isOpen: this.state.collapse_identification
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Form"], {
-        action: "",
-        method: "post"
+        onSubmit: this.onSubmitIdentity
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Col"], {
         xs: "12",
         sm: "6"
@@ -1153,15 +1174,14 @@ var Application = /*#__PURE__*/function (_Component) {
         sm: "6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "file",
-        id: "file-input",
-        name: "file-input"
+        onChange: this.onChangeIdPassportUpload
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["FormGroup"], {
         className: "form-actions"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Button"], {
         type: "submit",
         size: "sm",
         color: "primary"
-      }, "Update Personal Details")))))))));
+      }, "Update Personal Identity")))))))));
     }
   }]);
 

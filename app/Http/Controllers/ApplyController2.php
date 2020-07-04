@@ -48,9 +48,9 @@ class ApplyController2 extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function storeIdentity(Request $request)
+    {   
+        // 
     }
 
     /**
@@ -151,6 +151,40 @@ class ApplyController2 extends Controller
         return response()->json($response, 201);
     }
 
+    // upload/update applicant's identity pdf
+    public function updateIdentityPdf(Request $request, $id) {
+      
+        $this->validate($request, [
+            // 'name' => 'required',
+            // 'details' => 'required',
+            // 'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // Maximum size of 2MB
+            'id_passport_upload' => 'mimes:pdf|max:2048',
+        ]);
+        
+        // get the user_id to update
+        $application_data = Applications::where('id', '=', $id)->first();
+
+        // get the file from the request and concartinate time with the name
+        $file = $request->file('id_passport_upload');
+        $fileName = time().'.'.$file->getClientOriginalName();
+
+        // Path where the file will be saved
+        $path = '/uploads/identity_uploads/pdf';
+        $destinationPath = public_path().$path;
+  
+        // This moved file to server folder
+        $file->move($destinationPath,$fileName);
+
+        // save file name in database
+        $application_data->id_passport_upload = $fileName;
+        $application_data->save();
+
+        // return response
+        $response = ['success'=>true, 'data'=>$application_data];
+        return response()->json($response, 201);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -161,4 +195,5 @@ class ApplyController2 extends Controller
     {
         //
     }
+
 }
