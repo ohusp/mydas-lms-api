@@ -9,7 +9,7 @@ class ApplyController extends Controller
 {   
     function __construct()
     {
-        // This is use to get the token for Applications model
+        // This is use to get the token for Applications model. it uses the same for user.
         \Config::set('jwt.user', Applications::class);
         \Config::set('auth.providers', ['users' => [
                 'driver' => 'eloquent',

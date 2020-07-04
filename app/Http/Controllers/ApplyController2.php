@@ -152,7 +152,7 @@ class ApplyController2 extends Controller
     }
 
     // upload/update applicant's identity pdf
-    public function updateIdentityPdf(Request $request, $id) {
+    public function updateIdentity(Request $request, $id) {
       
         $this->validate($request, [
             // 'name' => 'required',
@@ -178,6 +178,25 @@ class ApplyController2 extends Controller
 
         // save file name in database
         $application_data->id_passport_upload = $fileName;
+        $application_data->save();
+
+        // return response
+        $response = ['success'=>true, 'data'=>$application_data];
+        return response()->json($response, 201);
+    }
+
+    public function updateIdDetails(Request $request, $id)
+    {
+        // Find user with that id
+        $application_data = Applications::where('id', '=', $id)->first();
+
+        // Get parameters to update
+        $type_of_identification = $request->type_of_identification;
+        $id_passport_number     = $request->id_passport_number;
+
+        // save file name in database
+        $application_data->type_of_identification = $type_of_identification;
+        $application_data->id_passport_number         = $id_passport_number;
         $application_data->save();
 
         // return response

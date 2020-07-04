@@ -221,6 +221,7 @@ var Application = /*#__PURE__*/function (_Component) {
 
     _this.onSubmitIdentity = _this.onSubmitIdentity.bind(_assertThisInitialized(_this));
     _this.fileUploadIdPassport = _this.fileUploadIdPassport.bind(_assertThisInitialized(_this));
+    _this.idPassportDetails = _this.idPassportDetails.bind(_assertThisInitialized(_this));
     _this.state = {
       token: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.auth_token : "",
       id: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.id : "",
@@ -254,6 +255,7 @@ var Application = /*#__PURE__*/function (_Component) {
       type_of_identification: "",
       id_passport_number: "",
       id_passport_upload: null,
+      // ////////////////////////////////////////////////////
       programme_first_choice: "",
       programme_second_choice: "",
       programme_third_choice: "",
@@ -553,6 +555,13 @@ var Application = /*#__PURE__*/function (_Component) {
       this.setState({
         id_passport_number: e.target.value
       });
+    }
+  }, {
+    key: "onChangeIdPassportUpload",
+    value: function onChangeIdPassportUpload(e) {
+      this.setState({
+        id_passport_upload: e.target.files[0]
+      });
     } // ///////////////////////////////////////////////////////////
 
   }, {
@@ -640,18 +649,7 @@ var Application = /*#__PURE__*/function (_Component) {
         parent_guardian_name: this.state.parent_guardian_name,
         parent_guardian_relationship: this.state.parent_guardian_relationship,
         parent_guardian_occupation: this.state.parent_guardian_occupation,
-        parent_guardian_phone: this.state.parent_guardian_phone,
-        passport_photograph: this.state.passport_photograph,
-        type_of_identification: this.state.type_of_identification,
-        id_passport_number: this.state.id_passport_number,
-        id_passport_upload: this.state.id_passport_upload,
-        programme_first_choice: this.state.programme_first_choice,
-        programme_second_choice: this.state.programme_second_choice,
-        programme_third_choice: this.state.programme_third_choice,
-        academic_session: this.state.academic_session,
-        admission_intake: this.state.admission_intake,
-        study_mode: this.state.study_mode,
-        previous_result_transcript: this.state.previous_result_transcript
+        parent_guardian_phone: this.state.parent_guardian_phone
       };
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/update/" + this.state.id + "?token=".concat(this.state.token), application_data).then(function (response) {
         console.log("ROI Cartoon");
@@ -660,9 +658,6 @@ var Application = /*#__PURE__*/function (_Component) {
       }).then(function (json) {
         if (json.data.success) {
           _this3.setState({// applications_list: json.data.data.data,
-            // itemsCountPerPage: json.data.data.per_page,
-            // totalItemsCount: json.data.data.total,
-            // activePage: json.data.data.current_page
           });
         } else alert("Login Failed!");
       })["catch"](function (error) {
@@ -674,24 +669,20 @@ var Application = /*#__PURE__*/function (_Component) {
   }, {
     key: "onSubmitIdentity",
     value: function onSubmitIdentity(e) {
+      var _this4 = this;
+
       e.preventDefault(); // Stop form submit
 
       this.fileUploadIdPassport(this.state.id_passport_upload).then(function (response) {
-        console.log(response.data);
+        console.log(response.data); // Call the function to get and store passport type n id number
+
+        _this4.idPassportDetails();
       });
     }
   }, {
-    key: "onChangeIdPassportUpload",
-    value: function onChangeIdPassportUpload(e) {
-      this.setState({
-        id_passport_upload: e.target.files[0]
-      });
-    } // axios.get(`http://localhost:8000/api/user/get/`+this.state.id+`?token=${this.state.token}`)
-
-  }, {
     key: "fileUploadIdPassport",
     value: function fileUploadIdPassport(id_passport_upload) {
-      var url = 'http://localhost:8000/api/fileupload/' + this.state.id;
+      var url = 'http://localhost:8000/api/user/uploadId/' + this.state.id + "?token=".concat(this.state.token);
       var formData = new FormData();
       formData.append('id_passport_upload', id_passport_upload);
       var config = {
@@ -700,6 +691,30 @@ var Application = /*#__PURE__*/function (_Component) {
         }
       };
       return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
+    }
+  }, {
+    key: "idPassportDetails",
+    value: function idPassportDetails() {
+      var _this5 = this;
+
+      var application_data = {
+        type_of_identification: this.state.type_of_identification,
+        id_passport_number: this.state.id_passport_number
+      };
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/updateIdDetails/" + this.state.id + "?token=".concat(this.state.token), application_data).then(function (response) {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this5.setState({// applications_list: json.data.data.data,
+          });
+        } else alert("Login Failed!");
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
     }
   }, {
     key: "render",
@@ -1144,8 +1159,8 @@ var Application = /*#__PURE__*/function (_Component) {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "Type of Identification")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "select",
-        id: "type_of_identification",
-        value: this.state.type_of_identification
+        value: this.state.type_of_identification,
+        onChange: this.onChangeTypeOfIdentification
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "0"
       }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -1162,9 +1177,8 @@ var Application = /*#__PURE__*/function (_Component) {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, "ID Passport Number")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["Input"], {
         type: "text",
-        id: "id_passport_number",
-        name: "id_passport_number",
-        defaultValue: this.state.id_passport_number
+        defaultValue: this.state.id_passport_number,
+        onChange: this.onChangeIdPassportNumber
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_5__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {

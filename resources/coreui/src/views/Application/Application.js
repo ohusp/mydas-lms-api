@@ -93,6 +93,7 @@ class Application extends Component {
     // ///////////// IDENTITY SUBMISSION /////////////////
     this.onSubmitIdentity = this.onSubmitIdentity.bind(this);
     this.fileUploadIdPassport = this.fileUploadIdPassport.bind(this)
+    this.idPassportDetails = this.idPassportDetails.bind(this)
 
     this.state = {
       token: localStorage["appState"]
@@ -128,9 +129,11 @@ class Application extends Component {
       parent_guardian_phone: "", 
       // /////////// IDENTITY ////////////////////////////////
       passport_photograph: "",
+
       type_of_identification: "",
       id_passport_number: "",
       id_passport_upload: null,
+      // ////////////////////////////////////////////////////
       programme_first_choice: "",
       programme_second_choice: "",  
       programme_third_choice: "",
@@ -275,10 +278,9 @@ class Application extends Component {
   onChangePassportPhotograph(e)         { this.setState({ passport_photograph:e.target.value  }); }
 
   // ///////////////// IDENTITY ///////////////////////////////
-  onChangeTypeOfIdentification(e)   { this.setState({ type_of_identification:e.target.value  }); }
-  onChangeIdPassportNumber(e)       { this.setState({ id_passport_number:e.target.value  }); }
-
-  
+  onChangeTypeOfIdentification(e) { this.setState({ type_of_identification:e.target.value  }); }
+  onChangeIdPassportNumber(e)     { this.setState({ id_passport_number:e.target.value  }); }
+  onChangeIdPassportUpload(e)     {this.setState({id_passport_upload:e.target.files[0]}) }
 
   // ///////////////////////////////////////////////////////////
   onChangeProgrammeFirstChoice(e)   { this.setState({ programme_first_choice:e.target.value  }); }
@@ -294,7 +296,7 @@ class Application extends Component {
   {
       e.preventDefault();
       const application_data ={
-        first_name : this.state.first_name, last_name : this.state.last_name, middle_name : this.state.middle_name, email : this.state.email, zip_code : this.state.zip_code, telephone : this.state.telephone, title : this.state.title, gender : this.state.gender, dob : this.state.dob, nationality : this.state.nationality, country_of_residence : this.state.country_of_residence, district_province_state : this.state.district_province_state, contact_address : this.state.contact_address, disability_none : this.state.disability_none, disability_hearing : this.state.disability_hearing, disability_mobility : this.state.disability_mobility, disability_sight : this.state.disability_sight, disability_learning : this.state.disability_learning, disability_others : this.state.disability_others, parent_guardian_name : this.state.parent_guardian_name, parent_guardian_relationship : this.state.parent_guardian_relationship, parent_guardian_occupation : this.state.parent_guardian_occupation, parent_guardian_phone : this.state.parent_guardian_phone, passport_photograph : this.state.passport_photograph, type_of_identification : this.state.type_of_identification, id_passport_number : this.state.id_passport_number, id_passport_upload : this.state.id_passport_upload, programme_first_choice : this.state.programme_first_choice, programme_second_choice : this.state.programme_second_choice, programme_third_choice : this.state.programme_third_choice, academic_session : this.state.academic_session, admission_intake : this.state.admission_intake, study_mode : this.state.study_mode, previous_result_transcript : this.state.previous_result_transcript
+        first_name : this.state.first_name, last_name : this.state.last_name, middle_name : this.state.middle_name, email : this.state.email, zip_code : this.state.zip_code, telephone : this.state.telephone, title : this.state.title, gender : this.state.gender, dob : this.state.dob, nationality : this.state.nationality, country_of_residence : this.state.country_of_residence, district_province_state : this.state.district_province_state, contact_address : this.state.contact_address, disability_none : this.state.disability_none, disability_hearing : this.state.disability_hearing, disability_mobility : this.state.disability_mobility, disability_sight : this.state.disability_sight, disability_learning : this.state.disability_learning, disability_others : this.state.disability_others, parent_guardian_name : this.state.parent_guardian_name, parent_guardian_relationship : this.state.parent_guardian_relationship, parent_guardian_occupation : this.state.parent_guardian_occupation, parent_guardian_phone : this.state.parent_guardian_phone
       }
       axios.put(`http://localhost:8000/api/user/update/`+this.state.id+`?token=${this.state.token}`, application_data)
       .then(response => {
@@ -306,9 +308,6 @@ class Application extends Component {
         if (json.data.success) {
           this.setState({ 
             // applications_list: json.data.data.data,
-            // itemsCountPerPage: json.data.data.per_page,
-            // totalItemsCount: json.data.data.total,
-            // activePage: json.data.data.current_page
           });
         } else alert("Login Failed!");
       })
@@ -322,16 +321,16 @@ class Application extends Component {
 
   onSubmitIdentity(e){
     e.preventDefault() // Stop form submit
-    this.fileUploadIdPassport(this.state.id_passport_upload).then((response)=>{
+    this.fileUploadIdPassport(this.state.id_passport_upload)
+    .then((response)=>{
       console.log(response.data);
+      // Call the function to get and store passport type n id number
+      this.idPassportDetails()
     })
   }
-  onChangeIdPassportUpload(e) {
-    this.setState({id_passport_upload:e.target.files[0]})
-  }
-  // axios.get(`http://localhost:8000/api/user/get/`+this.state.id+`?token=${this.state.token}`)
+  
   fileUploadIdPassport(id_passport_upload){
-    const url = 'http://localhost:8000/api/fileupload/'+this.state.id;
+    const url = 'http://localhost:8000/api/user/uploadId/'+this.state.id+`?token=${this.state.token}`;
     const formData = new FormData();
     formData.append('id_passport_upload',id_passport_upload)
     const config = {
@@ -340,6 +339,30 @@ class Application extends Component {
         }
     }
     return  post(url, formData,config)
+  }
+
+  idPassportDetails(){
+    const application_data ={
+      type_of_identification : this.state.type_of_identification, id_passport_number : this.state.id_passport_number
+    }
+    axios.put(`http://localhost:8000/api/user/updateIdDetails/`+this.state.id+`?token=${this.state.token}`, application_data)
+    .then(response => {
+      console.log("ROI Cartoon");
+      console.log(response);
+      return response;
+    })
+    .then(json => {
+      if (json.data.success) {
+        this.setState({ 
+          // applications_list: json.data.data.data,
+        });
+      } else alert("Login Failed!");
+    })
+    .catch(error => {
+      // redirect user to previous page if user does not have autorization to the page
+      hashHistory.push('/premontessori');
+      console.error(`An Error Occuredd! ${error}`);
+    });
   }
 
   render() {
@@ -399,8 +422,6 @@ class Application extends Component {
                 <CardHeader>
                   <i className="fa fa-align-justify"></i><strong>Application Instructions</strong>
                   <div className="card-header-actions">
-                    <a href="https://reactstrap.github.io/components/collapse/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-                    </a>
                     <Button color="primary" onClick={this.toggle_app_instructions} className={'mb-1'} id="" size="sm">Toggle</Button>
                   </div>
                 </CardHeader>
@@ -699,8 +720,6 @@ class Application extends Component {
                 <CardHeader>
                   <i className="fa fa-align-justify"></i><strong>Identification</strong>
                   <div className="card-header-actions">
-                    <a href="https://reactstrap.github.io/components/collapse/" rel="noreferrer noopener" target="_blank" className="card-header-action">
-                    </a>
                     <Button color="primary" onClick={this.toggle_identification} className={'mb-1'} id="" size="sm">Toggle</Button>
                   </div>
                 </CardHeader>

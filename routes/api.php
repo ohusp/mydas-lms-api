@@ -22,9 +22,6 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
     return $request->applications();
 });
 
-// Route::put('user/update/{id}', 'Api\ApplicationsController@update');
-Route::post('fileupload/{id}','ApplyController2@updateIdentityPdf');
-
 Route::group(['middleware' => ['jwt.auth','api-header']], function () {
     // ///////////////////// ADMIN ////////////////////////////////////////
     // all routes to protected resources are registered here  
@@ -40,6 +37,8 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
     // ///////////////////// USER ////////////////////////////////////////
     Route::put('user/update/{id}', 'ApplyController2@update');
     Route::get('user/get/{id}', 'ApplyController2@show');
+    Route::post('user/uploadId/{id}','ApplyController2@updateIdentity');
+    Route::put('user/updateIdDetails/{id}','ApplyController2@updateIdDetails');
 });
 Route::group(['middleware' => 'api-header'], function () {
   
@@ -53,8 +52,5 @@ Route::group(['middleware' => 'api-header'], function () {
     // ////////////////////////////////////////////////////////////////
     Route::post('user/apply', 'ApplyController@register');
     Route::post('user/login', 'ApplyController@login');
-
-    Route::post('user/register', 'UserController@register');
-
     
 });
