@@ -591,7 +591,7 @@ var Dashboard = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(f
   return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(4), __webpack_require__.e(3), __webpack_require__.e(44)]).then(__webpack_require__.bind(null, /*! ./views/Dashboard */ "./resources/coreui/src/views/Dashboard/Dashboard.js"));
 });
 var Application = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(8), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./views/Application */ "./resources/coreui/src/views/Application/Application.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(5), __webpack_require__.e(8), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./views/Application */ "./resources/coreui/src/views/Application/Application.js"));
 }); // ////////////////////////////////////////////////////////////////////////////
 
 var Breadcrumbs = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
@@ -688,7 +688,7 @@ var Typography = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(
   return __webpack_require__.e(/*! import() */ 58).then(__webpack_require__.bind(null, /*! ./views/Theme/Typography */ "./resources/coreui/src/views/Theme/Typography/Typography.js"));
 });
 var Widgets = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(5), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./views/Widgets/Widgets */ "./resources/coreui/src/views/Widgets/Widgets.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(6), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./views/Widgets/Widgets */ "./resources/coreui/src/views/Widgets/Widgets.js"));
 });
 var Users = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return __webpack_require__.e(/*! import() */ 16).then(__webpack_require__.bind(null, /*! ./views/Users/Users */ "./resources/coreui/src/views/Users/Users.js"));

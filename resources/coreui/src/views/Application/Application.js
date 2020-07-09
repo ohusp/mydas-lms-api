@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import {createHashHistory} from 'history';
 // import axios from 'axios';
 import axios, { post } from 'axios';
+import $ from "jquery";
 
 import {
   Badge,
@@ -363,6 +364,10 @@ class Application extends Component {
       hashHistory.push('/premontessori');
       console.error(`An Error Occuredd! ${error}`);
     });
+  }
+
+  trigerFileUpload(){
+    $('#id_passport_upload').trigger('click');
   }
 
   render() {
@@ -727,7 +732,7 @@ class Application extends Component {
                   <CardBody>
                     <Form onSubmit={this.onSubmitIdentity}>
                       <Row>
-                        <Col xs="12" sm="6">
+                        <Col xs="12" sm="5">
                           <FormGroup>
                             <InputGroup>
                               <InputGroupAddon addonType="prepend">
@@ -764,11 +769,30 @@ class Application extends Component {
                             </InputGroup>
                           </FormGroup>               
                         </Col>
-                        <Col xs="12" sm="6">
+                        <Col xs="12" sm="7">
                           <Input 
                             type="file" 
+                            color="primary"
+                            id="id_passport_upload"
+                            style={{display: "none"}}
                             onChange={this.onChangeIdPassportUpload}
                           />
+                          <p style={{fontSize: 11, fontWeight: "bold", flexDirection: 'row'}}>
+                            <i className="cui-paperclip icons font-1xl d-block mt-4" style={{fontSize: 11, fontWeight: "bold"}}></i>
+                              If you choose to upload a PDF file, your file size must be less than 500KB.
+                            
+                          </p>
+                          <p style={{fontSize: 11, fontWeight: "bold"}}>
+                            <i className="cui-paperclip icons font-1xl d-block mt-4"></i>
+                            If you choose to an image file, your file size must be less than 300KB.
+                          </p>
+                          <Button 
+                            type="button" 
+                            size="sm" 
+                            color="primary" 
+                            onClick={this.trigerFileUpload}>
+                              Upload PDF
+                          </Button>
                         </Col>
                       </Row>
                       <FormGroup className="form-actions">

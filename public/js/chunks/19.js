@@ -140,7 +140,7 @@ function _getPrototypeOf(o) {
 
 
 var Widget03 = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["lazy"])(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(5), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ../../../views/Widgets/Widget03 */ "./resources/coreui/src/views/Widgets/Widget03.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(6), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ../../../views/Widgets/Widget03 */ "./resources/coreui/src/views/Widgets/Widget03.js"));
 });
 var brandPrimary = Object(_coreui_coreui_dist_js_coreui_utilities__WEBPACK_IMPORTED_MODULE_4__["getStyle"])('--primary');
 var brandSuccess = Object(_coreui_coreui_dist_js_coreui_utilities__WEBPACK_IMPORTED_MODULE_4__["getStyle"])('--success');
