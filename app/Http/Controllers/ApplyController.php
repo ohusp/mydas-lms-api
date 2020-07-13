@@ -5,6 +5,9 @@ use App\Applications;
 use JWTAuth;
 use JWTAuthException;
 
+use Illuminate\Support\Facades\Validator;
+use App\Sanitizes\Sanitizes;
+
 class ApplyController extends Controller
 {   
     function __construct()
@@ -91,14 +94,39 @@ class ApplyController extends Controller
 
         return response()->json($response, 201);
     }
+
     public function register(Request $request)
-    { 
+    {   
+        // Validate
+        $validator = Validator::make($request->all(), [ 
+            'first_name' => 'required|string|max:150', 
+            'last_name' => 'required|string|max:150', 
+            'email' => 'required|email|unique:applications|max:255', 
+            'password' => 'required|string|min:8|max:255', 
+        ]);
+        
+        // Return validation error
+        if ($validator->fails()) { 
+            $validationError = $validator->errors(); 
+            $response = ['success'=>false, 'data'=>$validationError];
+            return response()->json($response, 201);
+        }
+
+        // Sanitize inputs
+        $first_name = Sanitizes::my_sanitize_string( $request->first_name);
+        $last_name  = Sanitizes::my_sanitize_string( $request->last_name);
+        $email      = Sanitizes::my_sanitize_email( $request->email);
+        $password   = Sanitizes::my_sanitize_string( $request->password);
+
+        $ev_code = md5(sprintf("%05x%05x",mt_rand(0,0xffff),mt_rand(0,0xffff)));;
+
         $payload = [
-            'password'=>\Hash::make($request->password),
+            'password'=>\Hash::make($password),
             'email'=>$request->email,
-            'first_name'=>$request->first_name,
-            'last_name'=>$request->last_name,
-            'auth_token'=> ''
+            'first_name'=>$first_name,
+            'last_name'=>$last_name,
+            'auth_token'=> '',
+            'ev_code'=>$ev_code
         ];
                   
         $user = new \App\Applications($payload);
@@ -121,8 +149,6 @@ class ApplyController extends Controller
         }
         else
             $response = ['success'=>false, 'data'=>'Couldnt register user'];
-        
-        
-        return response()->json($response, 201);
+            return response()->json($response, 201);
     }
 }

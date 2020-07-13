@@ -1,1 +1,31 @@
+.err {
+    font-size: small;
+    color: red;
+}
+.asterisk{
+    font-size: small;
+    color: red;
+}
 
+.kiu-bg{
+    background-color: #369752 !important;
+}
+
+.kiu-btn{
+    background-color: #369752 !important;
+    color: #fff !important;
+}
+
+.kiu-btn-sec{
+    background-color: #26c91e !important;
+    color: #fff !important;
+}
+
+.kiu-btn-sec:hover{
+    background-color: #369752;
+    color: #fff;
+}
+
+.kiu-color{
+    color: #369752 !important;
+}

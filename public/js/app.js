@@ -2128,7 +2128,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n", ""]);
+exports.push([module.i, ".err {\n    font-size: small;\n    color: red;\n}\n.asterisk{\n    font-size: small;\n    color: red;\n}\n\n.kiu-bg{\n    background-color: #369752 !important;\n}\n\n.kiu-btn{\n    background-color: #369752 !important;\n    color: #fff !important;\n}\n\n.kiu-btn-sec{\n    background-color: #26c91e !important;\n    color: #fff !important;\n}\n\n.kiu-btn-sec:hover{\n    background-color: #369752;\n    color: #fff;\n}\n\n.kiu-color{\n    color: #369752 !important;\n}", ""]);
 
 // exports
 
@@ -80773,24 +80773,27 @@ var DefaultLayout = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.la
 }); // /////////////////////////////////////// ADMIN //////////////////////////////////////////
 
 var AdminLogin = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(5), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, /*! ./views/Admin/AdminLogin/AdminLogin */ "./resources/coreui/src/views/Admin/AdminLogin/AdminLogin.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(23)]).then(__webpack_require__.bind(null, /*! ./views/Admin/AdminLogin/AdminLogin */ "./resources/coreui/src/views/Admin/AdminLogin/AdminLogin.js"));
 }); // /////////////////////////////////////// USER //////////////////////////////////////////////
 
 var Apply = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(52)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Apply */ "./resources/coreui/src/views/Pages/Apply/Apply.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Apply */ "./resources/coreui/src/views/Pages/Apply/Apply.js"));
 });
 var Login = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(5), __webpack_require__.e(53)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Login */ "./resources/coreui/src/views/Pages/Login/Login.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Login */ "./resources/coreui/src/views/Pages/Login/Login.js"));
+});
+var ForgetPassword = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./views/Pages/ForgetPassword */ "./resources/coreui/src/views/Pages/ForgetPassword/ForgetPassword.js"));
 }); // Pages
 
 var Register = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(56)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Register */ "./resources/coreui/src/views/Pages/Register/Register.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(57)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Register */ "./resources/coreui/src/views/Pages/Register/Register.js"));
 });
 var Page404 = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(54)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page404 */ "./resources/coreui/src/views/Pages/Page404/Page404.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(55)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page404 */ "./resources/coreui/src/views/Pages/Page404/Page404.js"));
 });
 var Page500 = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(55)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page500 */ "./resources/coreui/src/views/Pages/Page500/Page500.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(56)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page500 */ "./resources/coreui/src/views/Pages/Page500/Page500.js"));
 });
 
 var App = /*#__PURE__*/function (_Component) {
@@ -80829,6 +80832,13 @@ var App = /*#__PURE__*/function (_Component) {
         name: "Login Page",
         render: function render(props) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Login, props);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/forgetpassword",
+        name: "Forget Password Page",
+        render: function render(props) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ForgetPassword, props);
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,

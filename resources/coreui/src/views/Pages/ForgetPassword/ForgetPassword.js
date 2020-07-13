@@ -6,7 +6,7 @@ import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGr
 import axios from 'axios'
 import $ from "jquery";
 
-class Login extends Component {
+class ForgetPassword extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -120,8 +120,8 @@ class Login extends Component {
                 <Card className="p-4">
                   <CardBody>
                     <Form noValidate onSubmit={this.onSubmit}>
-                      <h1>Login</h1>
-                      <p className="text-muted">Sign In to your account</p>
+                      <h1>Forget Password</h1>
+                      <p className="text-muted">Enter your email address</p>
                       <InputGroup className="mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
@@ -136,36 +136,21 @@ class Login extends Component {
                           value={this.state.email}
                           onChange={this.onChange} />
                       </InputGroup>
-                      <InputGroup className="mb-4">
-                        <InputGroupAddon addonType="prepend">
-                          <InputGroupText>
-                            <i className="icon-lock"></i>
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <input
-                            type="password"
-                            className="form-control"
-                            name="password"
-                            placeholder="Password"
-                            value={this.state.password}
-                            onChange={this.onChange}
-                        />
-                      </InputGroup>
                       <Row>
-                        <Col xs="6">
-                        <button
-                          type="submit"
-                          className="btn btn-lg kiu-btn btn-block" >
-                          Sign in
-                        </button>
+                        <Col xs="12">
+                          <button
+                            type="submit"
+                            className="btn btn-lg kiu-btn btn-block" >
+                            Forget Password
+                          </button>
                         </Col>
-                        </Row>
+                      </Row>
                     </Form>
                       <Row>
                         <Col xs="6" className="text-right"></Col>
                         <Col xs="6" className="text-right">
-                          <Link to="/forgetpassword">
-                            <Button color="link" className="px-0 kiu-color">Forgot password?</Button>
+                          <Link to="/login">
+                            <Button color="link" className="px-0 kiu-color"> Sign In</Button>
                           </Link>
                         </Col>
                       </Row>
@@ -180,9 +165,13 @@ class Login extends Component {
                       <p>
                         As we comply with the Presidential Directive on COVID-19, we would love to inform all stakeholders (including Lecturers and Students) that learning materials are now available here on the Learning Management System.
                       </p>
-                      <Link to="/apply">
-                        <Button className="mt-3 kiu-btn-sec" active tabIndex={-1}>Register Now!</Button>
-                      </Link>
+                      <p>
+                        Don't Have An Account?<br></br>
+                        <Link to="/apply">
+                          <Button className="mt-3 kiu-btn-sec" active tabIndex={-1}>Register Now!</Button>
+                        </Link>
+                      </p>
+                      
                     </div>
                   </CardBody>
                 </Card>
@@ -195,4 +184,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default ForgetPassword;
