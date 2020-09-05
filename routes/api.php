@@ -49,9 +49,11 @@ Route::group(['middleware' => 'api-header'], function () {
     Route::post('admin/login', 'AdminController@login');
     Route::post('admin/register', 'AdminController@register');
 
-    // ////////////////////////////////////////////////////////////////
+    // ///////////////////// USERS //////////////////////////////////////////
     Route::post('user/apply', 'ApplyController@register');
     Route::post('user/login', 'ApplyController@login');
-    Route::post('user/forgetpassword', 'ApplyController@forgetpassword');
+    // Route::post('user/forgetpassword', 'ApplyController@forgetpassword');
+
+    Route::post('user/forgetPassword','PasswordController@forgetPassword');
     
 });

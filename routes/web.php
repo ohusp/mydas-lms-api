@@ -19,3 +19,5 @@ Route::get('/', function () {
 
 
 // Route::get('applications', 'Api\ApplicationsController@index');
+
+Route::get('my-Test-mail','HomeController@myTestMail');

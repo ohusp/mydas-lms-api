@@ -184,8 +184,8 @@ var ForgetPassword = /*#__PURE__*/function (_Component) {
       errors: {},
       isLoggedIn: false,
       user: {},
-      storedData1: {},
-      storedData2: {},
+      // storedData1: {},
+      // storedData2: {},
       avatar: __webpack_require__(/*! ./../../../images/logo/kiu-logo.png */ "./resources/coreui/src/images/logo/kiu-logo.png"),
       kiu_logo: 'KIU Logo'
     };
@@ -206,12 +206,12 @@ var ForgetPassword = /*#__PURE__*/function (_Component) {
 
       e.preventDefault();
       var user = {
-        email: this.state.email,
-        password: this.state.password
+        email: this.state.email // password: this.state.password
+
       };
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/user/login', {
-        email: user.email,
-        password: user.password
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/user/forgetPassword', {
+        email: user.email // password: user.password
+
       }).then(function (response) {
         console.log("response-1");
         console.log(response);

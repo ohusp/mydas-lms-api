@@ -15,8 +15,8 @@ class ForgetPassword extends Component {
         errors: {},
         isLoggedIn: false,
         user: {},
-        storedData1: {},
-        storedData2: {},
+        // storedData1: {},
+        // storedData2: {},
 
         avatar: require("./../../../images/logo/kiu-logo.png"),
         kiu_logo: 'KIU Logo'
@@ -33,15 +33,15 @@ class ForgetPassword extends Component {
       e.preventDefault()
 
       const user = {
-          email: this.state.email,
-          password: this.state.password
+          email: this.state.email
+          // password: this.state.password
       }
 
       axios .post(
-            'api/user/login',
+            'api/user/forgetPassword',
             {
-                email: user.email,
-                password: user.password
+                email: user.email
+                // password: user.password
             }
         )
         .then(response => {

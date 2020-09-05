@@ -99,10 +99,10 @@ class ApplyController extends Controller
     {   
         // Validate
         $validator = Validator::make($request->all(), [ 
-            'first_name' => 'required|string|max:150', 
+            'first_name'=> 'required|string|max:150', 
             'last_name' => 'required|string|max:150', 
-            'email' => 'required|email|unique:applications|max:255', 
-            'password' => 'required|string|min:8|max:255', 
+            'email'     => 'required|email|unique:applications|max:255', 
+            'password'  => 'required|string|min:8|max:255', 
         ]);
         
         // Return validation error
@@ -121,12 +121,12 @@ class ApplyController extends Controller
         $ev_code = md5(sprintf("%05x%05x",mt_rand(0,0xffff),mt_rand(0,0xffff)));;
 
         $payload = [
-            'password'=>\Hash::make($password),
-            'email'=>$request->email,
+            'password'  =>\Hash::make($password),
+            'email'     =>$request->email,
             'first_name'=>$first_name,
-            'last_name'=>$last_name,
+            'last_name' =>$last_name,
             'auth_token'=> '',
-            'ev_code'=>$ev_code
+            'ev_code'   =>$ev_code
         ];
                   
         $user = new \App\Applications($payload);
