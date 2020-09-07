@@ -55,5 +55,8 @@ Route::group(['middleware' => 'api-header'], function () {
     // Route::post('user/forgetpassword', 'ApplyController@forgetpassword');
 
     Route::post('user/forgetPassword','PasswordController@forgetPassword');
+    Route::get('user/reset/{code}','PasswordController@reset');
+    Route::post('user/checkResetPassword','PasswordController@checkResetPassword');
+    Route::post('user/resetPassword','PasswordController@resetPassword');
     
 });

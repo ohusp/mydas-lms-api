@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Applications;
 use JWTAuth;
 use JWTAuthException;
+use Mail;
 
 use Illuminate\Support\Facades\Validator;
 use App\Sanitizes\Sanitizes;
@@ -118,7 +119,7 @@ class ApplyController extends Controller
         $email      = Sanitizes::my_sanitize_email( $request->email);
         $password   = Sanitizes::my_sanitize_string( $request->password);
 
-        $ev_code = md5(sprintf("%05x%05x",mt_rand(0,0xffff),mt_rand(0,0xffff)));;
+        $ev_code = md5(sprintf("%05x%05x",mt_rand(0,0xffff),mt_rand(0,0xffff)));
 
         $payload = [
             'password'  =>\Hash::make($password),
@@ -144,7 +145,15 @@ class ApplyController extends Controller
             $user->save();
             // ///////// ADD ROLE ///////////////////////
             $user->attachRole('user');
-            // /////////////////////////////////////////
+            // ////////// SEND MAIL //////////////////////////
+            $emailDetails = [
+                'title' => 'Welcome Email',
+                'first_name' => $user->first_name,
+                'url' => 'http://localhost:8000'
+            ];
+    
+            Mail::to($request->email)->send(new WelcomeMail($emailDetails));
+
             $response = ['success'=>true, 'data'=>['first_name'=>$user->first_name,'last_name'=>$user->last_name,'id'=>$user->id,'email'=>$request->email,'auth_token'=>$token]];        
         }
         else

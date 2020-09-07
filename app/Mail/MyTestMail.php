@@ -18,9 +18,14 @@ class MyTestMail extends Mailable
      * @return void
      */
     // get from controller
-    public function __construct($details)
+    // public function __construct($details)
+    // {
+    //     $this->details = $details;
+    // }
+
+    public function __construct()
     {
-        $this->details = $details;
+        //
     }
    
     /**
@@ -29,9 +34,14 @@ class MyTestMail extends Mailable
      * @return $this
      */
     // sends this to view
+    // public function build()
+    // {
+    //     return $this->markdown('emails.myTestMail')
+    //                 ->with('details', $this->details);
+    // }
+
     public function build()
     {
-        return $this->markdown('emails.myTestMail')
-                    ->with('details', $this->details);
+        return $this->markdown('emails.myTestMail');
     }
 }

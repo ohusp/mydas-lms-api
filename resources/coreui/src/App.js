@@ -15,6 +15,7 @@ const AdminLogin = React.lazy(() => import('./views/Admin/AdminLogin/AdminLogin'
 const Apply = React.lazy(() => import('./views/Pages/Apply'));
 const Login = React.lazy(() => import('./views/Pages/Login'));
 const ForgetPassword = React.lazy(() => import('./views/Pages/ForgetPassword'));
+const ResetPassword = React.lazy(() => import('./views/Pages/ResetPassword'));
 
 // Pages
 const Register = React.lazy(() => import('./views/Pages/Register'));
@@ -34,7 +35,8 @@ class App extends Component {
               {/* /////////////////////////// USER ////////////////////////////////////////////// */}
               <Route exact path="/Apply" name="Apply Page" render={props => <Apply {...props}/>} />
               <Route exact path="/login" name="Login Page" render={props => <Login {...props}/>} />
-              <Route exact path="/forgetpassword" name="Forget Password Page" render={props => <ForgetPassword {...props}/>} />
+              <Route exact path="/forgetpassword" name="Forget Password Page" render={props =>  <ForgetPassword {...props}/>} />
+              <Route exact path="/resetpassword" name="Reset Password Page" render={props =>   <ResetPassword {...props}/>} />
               {/* //////////////////////////////////////////////////////////////////////////// */}
               
               <Route exact path="/register" name="Register Page" render={props => <Register {...props}/>} />

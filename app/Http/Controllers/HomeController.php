@@ -24,6 +24,8 @@ class HomeController extends Controller
   
         Mail::to($myEmail)->send(new MyTestMail($details));
    
-        dd("Mail Send Successfully");
+        // dd("Mail Send Successfully");
+        // return new MyTestMail();
+        return \View::make("emails/myTestMail")->with("details", $details);
     }
 }

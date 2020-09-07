@@ -1,9 +1,20 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[18],{
 
-/***/ "./resources/coreui/src/views/Users/User.js":
-/*!**************************************************!*\
-  !*** ./resources/coreui/src/views/Users/User.js ***!
-  \**************************************************/
+/***/ "./resources/coreui/src/images/logo/kiu-logo.png":
+/*!*******************************************************!*\
+  !*** ./resources/coreui/src/images/logo/kiu-logo.png ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/kiu-logo.png?9c6e38e56071ba59ca42078cfed5bca2";
+
+/***/ }),
+
+/***/ "./resources/coreui/src/views/Pages/ResetPassword/ResetPassword.js":
+/*!*************************************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/ResetPassword/ResetPassword.js ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11,8 +22,12 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./resources/coreui/node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./resources/coreui/node_modules/reactstrap/es/index.js");
-/* harmony import */ var _UsersData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UsersData */ "./resources/coreui/src/views/Users/UsersData.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./resources/coreui/node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./resources/coreui/node_modules/reactstrap/es/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./resources/coreui/node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jquery */ "./resources/coreui/node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -29,62 +44,19 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
   }
 
-  return arr2;
-}
-
-function _iterableToArrayLimit(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
+  return obj;
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -190,232 +162,306 @@ function _getPrototypeOf(o) {
 
 
 
+ // import {login} from './../../../functions/UserFunctions'
 
 
-var User = /*#__PURE__*/function (_Component) {
-  _inherits(User, _Component);
 
-  var _super = _createSuper(User);
 
-  function User() {
-    _classCallCheck(this, User);
+var validateForm = function validateForm(errors) {
+  var valid = true;
+  Object.values(errors).forEach(function (val) {
+    return val.length > 0 && (valid = false);
+  });
+  return valid;
+};
 
-    return _super.apply(this, arguments);
+var ResetPassword = /*#__PURE__*/function (_Component) {
+  _inherits(ResetPassword, _Component);
+
+  var _super = _createSuper(ResetPassword);
+
+  function ResetPassword(props) {
+    var _this;
+
+    _classCallCheck(this, ResetPassword);
+
+    _this = _super.call(this, props);
+
+    _this.onChange = function (e) {
+      _this.onChangeState(e); // this.handleChange(e)
+
+    };
+
+    _this.handleChange = function (event) {
+      event.preventDefault();
+      var _event$target = event.target,
+          name = _event$target.name,
+          value = _event$target.value;
+      var errors = _this.state.errors; // called to empty thec alert on top of the form
+
+      _this.setState({
+        alert_message: ""
+      });
+
+      switch (name) {
+        case 'password':
+          errors.password = value.length < 8 ? 'Password must be at least 8 characters long!' : '';
+          break;
+
+        case 'confirmPassword':
+          if (_this.state.password !== value) {
+            errors.confirmPassword = "Password and Confirm Password does not match.";
+          } else {
+            errors.confirmPassword = "";
+          }
+
+          break;
+
+        default:
+          break;
+      }
+
+      _this.setState(_defineProperty({
+        errors: errors
+      }, name, value));
+    };
+
+    _this.state = {
+      // first_name: '',
+      // last_name: '',
+      // email: '',
+      password: '',
+      confirmPassword: '',
+      url_string: '',
+      errorMsg: '',
+      errors: {
+        // email: '',
+        password: '',
+        confirmPassword: ''
+      },
+      // alert_message:'',
+      avatar: __webpack_require__(/*! ./../../../images/logo/kiu-logo.png */ "./resources/coreui/src/images/logo/kiu-logo.png"),
+      kiu_logo: 'KIU Logo'
+    };
+    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
+    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
-  _createClass(User, [{
+  _createClass(ResetPassword, [{
+    key: "onChangeState",
+    // onchange for setting state
+    value: function onChangeState(e) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+      this.handleChange(e);
+    }
+  }, {
+    key: "onSubmit",
+    value: function onSubmit(e) {
+      var _this2 = this;
+
+      e.preventDefault(); // validate check if fields are empty
+
+      if (this.state.password == "" || this.state.confirmPassword == "") {
+        this.setState({
+          alert_message: "error"
+        });
+        this.setState({
+          errorMsg: "Please fill all required fields"
+        }); // validate check if theres no error in the form 
+      } else if (validateForm(this.state.errors)) {
+        var newUser = {
+          password: this.state.password,
+          url_string: this.state.url_string
+        };
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/user/resetPassword', newUser, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(function (response) {
+          console.log(response);
+
+          if (response.data.success) {
+            console.log("Password Reset Successful");
+
+            _this2.setState({
+              alert_message: "success"
+            }); // setTimeout(function(){ this.props.history.push('/login') }, 3000);
+            // this.props.history.push('/login')
+
+
+            var timer = setTimeout(function () {
+              _this2.props.history.push('/login');
+            }, 5000);
+            return function () {
+              return clearTimeout(timer);
+            };
+          } else {
+            console.log(response.data.data); // const { first_name, last_name, email, password } = response.data.data;
+          }
+        })["catch"](function (err) {
+          console.log(err); // this.setState({alert_message:"success"});
+
+          _this2.setState({
+            alert_message: "error"
+          });
+
+          _this2.setState({
+            errorMsg: "Please fill form correctly"
+          });
+        });
+      } else {
+        console.error(this.state.errors.password);
+        this.setState({
+          alert_message: "error"
+        });
+        this.setState({
+          errorMsg: "Please fill form correctly"
+        });
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this3 = this;
+
+      try {
+        // get the url param
+        var url_string = window.location.href;
+        var url_string = url_string.split('?')[1];
+        var url_string = url_string.split('=')[1]; // pass into state for later use
+
+        this.state.url_string = url_string; // post param to check if reset password has been allowed
+
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/user/checkResetPassword', {
+          url_string: url_string
+        }).then(function (response) {
+          // console.log(response);
+          return response;
+        }).then(function (json) {
+          // if password reset is allowed stay on page, else redirect
+          if (json.data.success) {} else _this3.props.history.push("/login");
+        })["catch"](function (err) {
+          // if theres error redirect to login page
+          // console.log(err)
+          _this3.props.history.push("/login");
+        });
+      } catch (error) {
+        // if theres error redirect to login page
+        // console.log(error)
+        this.props.history.push("/login");
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this = this;
-
-      var user = _UsersData__WEBPACK_IMPORTED_MODULE_2__["default"].find(function (user) {
-        return user.id.toString() === _this.props.match.params.id;
-      });
-      var userDetails = user ? Object.entries(user) : [['id', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "text-muted icon-ban"
-      }), " Not found")]];
+      var errors = this.state.errors;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "animated fadeIn"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        lg: 6
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-info pr-1"
-      }), "User id: ", this.props.match.params.id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Table"], {
-        responsive: true,
-        striped: true,
-        hover: true
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, userDetails.map(function (_ref) {
-        var _ref2 = _slicedToArray(_ref, 2),
-            key = _ref2[0],
-            value = _ref2[1];
-
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          key: key
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "".concat(key, ":")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, value)));
-      }))))))));
+        className: "app flex-row align-items-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+        className: "justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        md: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mb-3 mx-auto text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "",
+        src: this.state.avatar,
+        alt: this.state.kiu_logo,
+        width: "110"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
+        className: "p-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Form"], {
+        noValidate: true,
+        onSubmit: this.onSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Reset Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-muted"
+      }, "Enter new password"), this.state.alert_message == "success" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Alert"], {
+        color: "success"
+      }, "Password Reset Successful") : null, this.state.alert_message == "error" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Alert"], {
+        color: "danger"
+      }, this.state.errorMsg) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-lock"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "form-control",
+        name: "password",
+        placeholder: "Enter Password",
+        value: this.state.password,
+        onChange: this.onChange // onBlur={this.onChange}
+        ,
+        noValidate: true
+      })), errors.password.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Badge"], {
+        style: {
+          marginBottom: 25
+        },
+        className: "mr-1",
+        color: "danger"
+      }, errors.password), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], {
+        className: "mb-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-lock"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+        type: "password",
+        placeholder: "Confirm password",
+        name: "confirmPassword",
+        value: this.state.confirmPassword,
+        onChange: this.onChange // onBlur={this.onChange}
+        ,
+        noValidate: true
+      })), errors.confirmPassword.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Badge"], {
+        style: {
+          marginBottom: 25
+        },
+        className: "mr-1",
+        color: "danger"
+      }, errors.confirmPassword), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        xs: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-lg kiu-btn btn-block"
+      }, "Reset Password")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        xs: "6",
+        className: "text-right"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        xs: "6",
+        className: "text-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/login"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        color: "link",
+        className: "px-0 kiu-color"
+      }, " Sign In")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
+        className: "text-white kiu-bg py-5 d-md-down-none",
+        style: {
+          width: '44%'
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], {
+        className: "text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "As we comply with the Presidential Directive on COVID-19, we would love to inform all stakeholders (including Lecturers and Students) that learning materials are now available here on the Learning Management System."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't Have An Account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/apply"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        className: "mt-3 kiu-btn-sec",
+        active: true,
+        tabIndex: -1
+      }, "Register Now!")))))))))));
     }
   }]);
 
-  return User;
+  return ResetPassword;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (User);
-
-/***/ }),
-
-/***/ "./resources/coreui/src/views/Users/UsersData.js":
-/*!*******************************************************!*\
-  !*** ./resources/coreui/src/views/Users/UsersData.js ***!
-  \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var usersData = [{
-  id: 0,
-  name: 'John Doe',
-  registered: '2018/01/01',
-  role: 'Guest',
-  status: 'Pending'
-}, {
-  id: 1,
-  name: 'Samppa Nori',
-  registered: '2018/01/01',
-  role: 'Member',
-  status: 'Active'
-}, {
-  id: 2,
-  name: 'Estavan Lykos',
-  registered: '2018/02/01',
-  role: 'Staff',
-  status: 'Banned'
-}, {
-  id: 3,
-  name: 'Chetan Mohamed',
-  registered: '2018/02/01',
-  role: 'Admin',
-  status: 'Inactive'
-}, {
-  id: 4,
-  name: 'Derick Maximinus',
-  registered: '2018/03/01',
-  role: 'Member',
-  status: 'Pending'
-}, {
-  id: 5,
-  name: 'Friderik Dávid',
-  registered: '2018/01/21',
-  role: 'Staff',
-  status: 'Active'
-}, {
-  id: 6,
-  name: 'Yiorgos Avraamu',
-  registered: '2018/01/01',
-  role: 'Member',
-  status: 'Active'
-}, {
-  id: 7,
-  name: 'Avram Tarasios',
-  registered: '2018/02/01',
-  role: 'Staff',
-  status: 'Banned'
-}, {
-  id: 8,
-  name: 'Quintin Ed',
-  registered: '2018/02/01',
-  role: 'Admin',
-  status: 'Inactive'
-}, {
-  id: 9,
-  name: 'Enéas Kwadwo',
-  registered: '2018/03/01',
-  role: 'Member',
-  status: 'Pending'
-}, {
-  id: 10,
-  name: 'Agapetus Tadeáš',
-  registered: '2018/01/21',
-  role: 'Staff',
-  status: 'Active'
-}, {
-  id: 11,
-  name: 'Carwyn Fachtna',
-  registered: '2018/01/01',
-  role: 'Member',
-  status: 'Active'
-}, {
-  id: 12,
-  name: 'Nehemiah Tatius',
-  registered: '2018/02/01',
-  role: 'Staff',
-  status: 'Banned'
-}, {
-  id: 13,
-  name: 'Ebbe Gemariah',
-  registered: '2018/02/01',
-  role: 'Admin',
-  status: 'Inactive'
-}, {
-  id: 14,
-  name: 'Eustorgios Amulius',
-  registered: '2018/03/01',
-  role: 'Member',
-  status: 'Pending'
-}, {
-  id: 15,
-  name: 'Leopold Gáspár',
-  registered: '2018/01/21',
-  role: 'Staff',
-  status: 'Active'
-}, {
-  id: 16,
-  name: 'Pompeius René',
-  registered: '2018/01/01',
-  role: 'Member',
-  status: 'Active'
-}, {
-  id: 17,
-  name: 'Paĉjo Jadon',
-  registered: '2018/02/01',
-  role: 'Staff',
-  status: 'Banned'
-}, {
-  id: 18,
-  name: 'Micheal Mercurius',
-  registered: '2018/02/01',
-  role: 'Admin',
-  status: 'Inactive'
-}, {
-  id: 19,
-  name: 'Ganesha Dubhghall',
-  registered: '2018/03/01',
-  role: 'Member',
-  status: 'Pending'
-}, {
-  id: 20,
-  name: 'Hiroto Šimun',
-  registered: '2018/01/21',
-  role: 'Staff',
-  status: 'Active'
-}, {
-  id: 21,
-  name: 'Vishnu Serghei',
-  registered: '2018/01/01',
-  role: 'Member',
-  status: 'Active'
-}, {
-  id: 22,
-  name: 'Zbyněk Phoibos',
-  registered: '2018/02/01',
-  role: 'Staff',
-  status: 'Banned'
-}, {
-  id: 23,
-  name: 'Einar Randall',
-  registered: '2018/02/01',
-  role: 'Admin',
-  status: 'Inactive'
-}, {
-  id: 24,
-  name: 'Félix Troels',
-  registered: '2018/03/21',
-  role: 'Staff',
-  status: 'Active'
-}, {
-  id: 25,
-  name: 'Aulus Agmundr',
-  registered: '2018/01/01',
-  role: 'Member',
-  status: 'Pending'
-}, {
-  id: 42,
-  name: 'Ford Prefex',
-  registered: '2001/05/21',
-  role: 'Alien',
-  status: 'Don\'t panic!'
-}];
-/* harmony default export */ __webpack_exports__["default"] = (usersData);
+/* harmony default export */ __webpack_exports__["default"] = (ResetPassword);
 
 /***/ })
 

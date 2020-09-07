@@ -9,7 +9,8 @@ import Login from '../Admin/AdminLogin/AdminLogin';
 import Apply from './Apply';
 import Login from './Login';
 import ForgetPassword from './ForgetPassword';
+import ResetPassword  from './ResetPassword';
 
 export {
-  Apply, Login, ForgetPassword, Page404, Page500, Register
+  Apply, Login, ForgetPassword,ResetPassword, Page404, Page500, Register
 };
