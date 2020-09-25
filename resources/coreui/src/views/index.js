@@ -4,9 +4,9 @@ import { AdminDashboard } from './Admin';
 import { ApplicationsList } from './Admin/Applications';
 
 // /////////////////////////////////////// USER /////////////////////////////////////////////////
-import { Login, Page404, Page500, Register, Apply } from './Pages';
+import { Register, RegisterAirPort, RegisterDoc, RegisterPharm, Login, LoginDoc, LoginPharm, LoginAirPort, Page404, Page500 } from './Pages';
 import Dashboard from './Dashboard';
-import Application from './Application';
+import Profile from './Profile';
 
 // //////////////////////////////////////////////////////////////////////////////////////////////
 import {
@@ -40,13 +40,19 @@ export {
   // ////////////////////////////////////// ADMIN ///////////////////////////////////////////
   AdminLogin,
   AdminDashboard,
-  ApplicationsList,
+  Profile,
 
   // ////////////////////////////////////// USER /////////////////////////////////////////////
-  Apply,
+  Register,
+  RegisterAirPort,
+  RegisterDoc,
+  RegisterPharm,
   Login,
+  LoginPharm,
+  LoginAirPort,
+  LoginDoc,
   Dashboard,
-  Application,
+  Profile,
 
   // ///////////////////////////////
   Badges,

@@ -31,13 +31,19 @@ import {
   Label,
   Row,
   ListGroupItem,
+  Modal, 
+  ModalBody, 
+  ModalFooter, 
+  ModalHeader,
 } from 'reactstrap';
 
 let hashHistory = createHashHistory()
 
-class Application extends Component {
+class Profile extends Component {
   constructor(props) {
     super(props);
+    // ////////////////MODAL
+    this.togglePrimary = this.togglePrimary.bind(this);
 
     // bing toggle functions and values
     this.toggle = this.toggle.bind(this);
@@ -58,6 +64,8 @@ class Application extends Component {
     this.onChangeCountryOfResidence     =this.onChangeCountryOfResidence.bind(this);
     this.onChangeDistrictProvinceState  =this.onChangeDistrictProvinceState.bind(this);
     this.onChangeContactAddress         =this.onChangeContactAddress.bind(this);
+    this.onChangeHeight                 =this.onChangeHeight.bind(this);
+    this.onChangeWeight                 =this.onChangeWeight.bind(this);
     // ////////////////////// DISABILITY //////////////////////////////////////////////////
     this.onChangeDisabilityNone         =this.onChangeDisabilityNone.bind(this);
     this.onChangeDisabilityHearing      =this.onChangeDisabilityHearing.bind(this);
@@ -66,17 +74,19 @@ class Application extends Component {
     this.onChangeDisabilityLearning     =this.onChangeDisabilityLearning.bind(this);
     this.onChangeDisabilityOthers       =this.onChangeDisabilityOthers.bind(this);
     // ////////////////////////////////////////////////////////////////////////////////////
-    this.onChangeParentGuardianName         =this.onChangeParentGuardianName.bind(this);
-    this.onChangeParentGuardianRelationship =this.onChangeParentGuardianRelationship.bind(this);
-    this.onChangeparentGuardianOccupation   =this.onChangeparentGuardianOccupation.bind(this);
-    this.onChangeParentGuardianPhone        =this.onChangeParentGuardianPhone.bind(this);
+    this.onChangeNextKinName         =this.onChangeNextKinName.bind(this);
+    this.onChangeNextKinRelationship =this.onChangeNextKinRelationship.bind(this);
+    this.onChangeNextKinOccupation   =this.onChangeNextKinOccupation.bind(this);
+    this.onChangeNextKinPhone        =this.onChangeNextKinPhone.bind(this);
+    this.onChangeNextKinEmail        =this.onChangeNextKinEmail.bind(this);
 
     // //////////// IDENTITY //////////////////////////////
-    this.onChangePassportPhotograph         =this.onChangePassportPhotograph.bind(this);
+    this.onChangeProfilePicture         =this.onChangeProfilePicture.bind(this);
+    // this.onChangePassportPhotograph         =this.onChangePassportPhotograph.bind(this);
 
-    this.onChangeTypeOfIdentification       =this.onChangeTypeOfIdentification.bind(this);
-    this.onChangeIdPassportNumber           =this.onChangeIdPassportNumber.bind(this);
-    this.onChangeIdPassportUpload         =this.onChangeIdPassportUpload.bind(this);
+    // this.onChangeTypeOfIdentification       =this.onChangeTypeOfIdentification.bind(this);
+    // this.onChangeIdPassportNumber           =this.onChangeIdPassportNumber.bind(this);
+    // this.onChangeIdPassportUpload         =this.onChangeIdPassportUpload.bind(this);
 
     // ///////////////////////////////////////////////////////
     this.onChangeProgrammeFirstChoice     =this.onChangeProgrammeFirstChoice.bind(this);
@@ -88,13 +98,27 @@ class Application extends Component {
     this.onChangePreviousResultTranscript =this.onChangePreviousResultTranscript.bind(this);
     // ///////////////////////////////////////////////////////
 
+    // /////////////////// MEDICAL HISTORY /////////////////////////////////////
+    this.onChangeMedicationsCurrentlyUsing  =this.onChangeMedicationsCurrentlyUsing.bind(this);
+    this.onChangeAllergies                  =this.onChangeAllergies.bind(this);
+    this.onChangeBloodGroup                 =this.onChangeBloodGroup.bind(this);
+    this.onChangeUnderlyingConditions       =this.onChangeUnderlyingConditions.bind(this);
+    this.onChangeFamilyMedicalHistory       =this.onChangeFamilyMedicalHistory.bind(this);
+    this.onChangeHypertensive               =this.onChangeHypertensive.bind(this);
+    this.onChangeDiabetic                   =this.onChangeDiabetic.bind(this);
+    // ////////////////// SHARE MEDICAL HISTORY //////////////////////////////
+    this.onChangeShareMedHistory  = this.onChangeShareMedHistory.bind(this);
+
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.onSubmitMedicalHistory = this.onSubmitMedicalHistory.bind(this);
+    this.onSubmitShareMedHistory = this.onSubmitShareMedHistory.bind(this);
 
     // ///////////// IDENTITY SUBMISSION /////////////////
-    this.onSubmitIdentity = this.onSubmitIdentity.bind(this);
-    this.fileUploadIdPassport = this.fileUploadIdPassport.bind(this)
-    this.idPassportDetails = this.idPassportDetails.bind(this)
+    this.onSubmitProfilePicture = this.onSubmitProfilePicture.bind(this);
+
+    // this.fileUploadIdPassport = this.fileUploadIdPassport.bind(this)
+    // this.idPassportDetails = this.idPassportDetails.bind(this)
 
     this.state = {
       token: localStorage["appState"]
@@ -116,6 +140,8 @@ class Application extends Component {
       country_of_residence: "",
       district_province_state: "",
       contact_address: "",
+      height: "",
+      weight: "",
       // ///////// DISABILITY /////////////////////////////////////////
       disability_none: "",
       disability_hearing: "",
@@ -124,16 +150,17 @@ class Application extends Component {
       disability_learning: "",
       disability_others: "",
       // /////////////////////////////////////////////////////////////
-      parent_guardian_name: "",
-      parent_guardian_relationship: "",
-      parent_guardian_occupation: "", 
-      parent_guardian_phone: "", 
+      next_of_kin_name: "",
+      next_of_kin_relationship: "",
+      next_of_kin_occupation: "", 
+      next_of_kin_phone: "", 
+      next_of_kin_email: "", 
       // /////////// IDENTITY ////////////////////////////////
       passport_photograph: "",
 
       type_of_identification: "",
       id_passport_number: "",
-      id_passport_upload: null,
+      profile_picture: null,
       // ////////////////////////////////////////////////////
       programme_first_choice: "",
       programme_second_choice: "",  
@@ -142,6 +169,16 @@ class Application extends Component {
       admission_intake: "",
       study_mode: "",
       previous_result_transcript: "",
+
+      // ////////////////////////////////////////////
+      medications_currently_using: "",
+      allergies: "",
+      blood_group: "",
+      underlying_conditions: "",
+      family_medical_history: "",
+      hypertensive: "",
+      diabetic: "",
+
       status: "",
       created_at: localStorage["appState"]
         ? JSON.parse(localStorage["appState"]).user.created_at
@@ -160,12 +197,17 @@ class Application extends Component {
       avatar: require("./../../images/avatars/0.jpg"),
       metaValue:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?",
-      startDate: new Date()
+      startDate: new Date(),
+      // //////////////////modal
+      primary: false,
+
+      share_med_history: "",
+      // profile_pictureimageUrl: "/images/cam-medics-logo.png"
     };
   }
 
   componentDidMount()
-  {
+  { 
     axios.get(`http://localhost:8000/api/user/get/`+this.state.id+`?token=${this.state.token}`)
     .then(response => {
       console.log("It came back");
@@ -189,6 +231,8 @@ class Application extends Component {
           country_of_residence: json.data.data.country_of_residence,
           district_province_state: json.data.data.district_province_state,
           contact_address: json.data.data.contact_address,
+          height: json.data.data.height,
+          weight: json.data.data.weight,
           // ///////// DISABILITY /////////////////////////////////////////
           disability_none: json.data.data.disability_none,
           disability_hearing: json.data.data.disability_hearing,
@@ -197,21 +241,23 @@ class Application extends Component {
           disability_learning: json.data.data.disability_learning,
           disability_others: json.data.data.disability_others,
           /////////////////////////////////////////////
-          parent_guardian_name: json.data.data.parent_guardian_name,
-          parent_guardian_relationship: json.data.data.parent_guardian_relationship,
-          parent_guardian_occupation: json.data.data.parent_guardian_occupation,
-          parent_guardian_phone: json.data.data.parent_guardian_phone,
-          passport_photograph: json.data.data.passport_photograph,
-          type_of_identification: json.data.data.type_of_identification,
-          id_passport_number: json.data.data.id_passport_number,
-          id_passport_upload: json.data.data.id_passport_upload,
-          programme_first_choice: json.data.data.programme_first_choice,
-          programme_second_choice: json.data.data.programme_second_choice,
-          programme_third_choice: json.data.data.programme_third_choice,
-          academic_session: json.data.data.academic_session,
-          admission_intake: json.data.data.admission_intake,
-          study_mode: json.data.data.study_mode,
-          previous_result_transcript: json.data.data.previous_result_transcript,
+          next_of_kin_name: json.data.data.next_kin_name,
+          next_of_kin_relationship: json.data.data.next_kin_relationship,
+          next_of_kin_occupation: json.data.data.next_kin_occupation,
+          next_of_kin_phone: json.data.data.next_kin_phone,
+          next_of_kin_email: json.data.data.next_kin_email,
+          // /////////////////////////////////////////////
+          // //////////////////////////////////////////////////////
+          medications_currently_using: json.data.data.med_currently_using,
+          allergies: json.data.data.med_allergies,
+          blood_group: json.data.data.med_blood_group,
+          underlying_conditions: json.data.data.med_underlying_conditions,
+          family_medical_history: json.data.data.med_family_medical_history,
+          hypertensive: json.data.data.med_hypertensive,
+          diabetic: json.data.data.med_diabetic,
+
+          profile_picture: json.data.data.profile_picture,
+
           status: json.data.data.status,
         });
       } else alert("Login Failed!");
@@ -245,6 +291,13 @@ class Application extends Component {
   toggle_identification() {
     this.setState({ collapse_identification: !this.state.collapse_identification });
   }
+  
+  // /////////////// Share medical records
+  togglePrimary() {
+    this.setState({
+      primary: !this.state.primary,
+    });
+  }
 
   // ON Change of first name input
   onChangeFirstName(e)  { this.setState({ first_name:e.target.value }); }
@@ -261,6 +314,8 @@ class Application extends Component {
   onChangeCountryOfResidence(e)     { this.setState({ country_of_residence:e.target.value  }); }
   onChangeDistrictProvinceState(e)  { this.setState({ district_province_state:e.target.value  }); }
   onChangeContactAddress(e)     { this.setState({ contact_address:e.target.value  }); }
+  onChangeHeight(e)  { this.setState({ height:e.target.value  }); }
+  onChangeWeight(e)  { this.setState({ weight:e.target.value  }); }
   // //////////////////////// DISABILITY /////////////////////////////////////////////////////////////
   onChangeDisabilityNone (e)    { this.setState({ disability_none: !this.state.disability_none }); }
   onChangeDisabilityHearing(e)  { this.setState({ disability_hearing: !this.state.disability_hearing });}
@@ -272,16 +327,26 @@ class Application extends Component {
   
   
   ///////////////////////////////////////////////////////////////////////////////////////////////////
-  onChangeParentGuardianName(e) { this.setState({ parent_guardian_name:e.target.value  }); }
-  onChangeParentGuardianRelationship(e) { this.setState({ parent_guardian_relationship:e.target.value  }); }
-  onChangeparentGuardianOccupation(e)   { this.setState({ parent_guardian_occupation:e.target.value  }); }
-  onChangeParentGuardianPhone(e)        { this.setState({ parent_guardian_phone:e.target.value  }); }
-  onChangePassportPhotograph(e)         { this.setState({ passport_photograph:e.target.value  }); }
+  onChangeNextKinName(e) { this.setState({ next_of_kin_name:e.target.value  }); }
+  onChangeNextKinRelationship(e) { this.setState({ next_of_kin_relationship:e.target.value  }); }
+  onChangeNextKinOccupation(e)   { this.setState({ next_of_kin_occupation:e.target.value  }); }
+  onChangeNextKinPhone(e)        { this.setState({ next_of_kin_phone:e.target.value  }); }
+  onChangeNextKinEmail(e)        { this.setState({ next_of_kin_email:e.target.value  }); }
+  // onChangePassportPhotograph(e)         { this.setState({ passport_photograph:e.target.value  }); }
 
   // ///////////////// IDENTITY ///////////////////////////////
-  onChangeTypeOfIdentification(e) { this.setState({ type_of_identification:e.target.value  }); }
-  onChangeIdPassportNumber(e)     { this.setState({ id_passport_number:e.target.value  }); }
-  onChangeIdPassportUpload(e)     {this.setState({id_passport_upload:e.target.files[0]}) }
+  // pass in the file into state
+  onChangeProfilePicture(e)     {this.setState({profile_picture:e.target.files[0]});
+    // set a timwer and call the submit profile picture 
+      const timeout = setTimeout(() => {
+        // call to save images
+        this.onSubmitProfilePicture();
+        // call to load contents again so the image can change
+        this.componentDidMount();
+      }, 1000);
+    // },[]);
+    // this.onSubmitProfilePicture()
+  }
 
   // ///////////////////////////////////////////////////////////
   onChangeProgrammeFirstChoice(e)   { this.setState({ programme_first_choice:e.target.value  }); }
@@ -292,12 +357,23 @@ class Application extends Component {
   onChangeStudyMode(e)        { this.setState({ study_mode:e.target.value  }); }
   onChangePreviousResultTranscript(e) { this.setState({ previous_result_transcript:e.target.value  }); }
   onChangeStatus(e) { this.setState({ status:e.target.value  }); }
+  // ////////////////////////////////////////////////////////////
+  onChangeMedicationsCurrentlyUsing(e)     { this.setState({ medications_currently_using:e.target.value  }); }
+  onChangeAllergies(e)     { this.setState({ allergies:e.target.value  }); }
+  onChangeBloodGroup(e)     { this.setState({ blood_group:e.target.value  }); }
+  onChangeUnderlyingConditions(e)     { this.setState({ underlying_conditions:e.target.value  }); }
+  onChangeFamilyMedicalHistory(e)     { this.setState({ family_medical_history:e.target.value  }); }
+  onChangeHypertensive(e)     { this.setState({ hypertensive:e.target.value  }); }
+  onChangeDiabetic(e)     { this.setState({ diabetic:e.target.value  }); }
+  // //////////////////// SHARE MED HISTORY /////////////////////////
+  onChangeShareMedHistory(e)     { this.setState({ share_med_history:e.target.value  }); }
+
   
   onSubmit(e)
   {
       e.preventDefault();
       const application_data ={
-        first_name : this.state.first_name, last_name : this.state.last_name, middle_name : this.state.middle_name, email : this.state.email, zip_code : this.state.zip_code, telephone : this.state.telephone, title : this.state.title, gender : this.state.gender, dob : this.state.dob, nationality : this.state.nationality, country_of_residence : this.state.country_of_residence, district_province_state : this.state.district_province_state, contact_address : this.state.contact_address, disability_none : this.state.disability_none, disability_hearing : this.state.disability_hearing, disability_mobility : this.state.disability_mobility, disability_sight : this.state.disability_sight, disability_learning : this.state.disability_learning, disability_others : this.state.disability_others, parent_guardian_name : this.state.parent_guardian_name, parent_guardian_relationship : this.state.parent_guardian_relationship, parent_guardian_occupation : this.state.parent_guardian_occupation, parent_guardian_phone : this.state.parent_guardian_phone
+        first_name : this.state.first_name, last_name : this.state.last_name, middle_name : this.state.middle_name, email : this.state.email, zip_code : this.state.zip_code, telephone : this.state.telephone, title : this.state.title, gender : this.state.gender, dob : this.state.dob, nationality : this.state.nationality, country_of_residence : this.state.country_of_residence, district_province_state : this.state.district_province_state, contact_address : this.state.contact_address, height : this.state.height, weight : this.state.weight, disability_none : this.state.disability_none, disability_hearing : this.state.disability_hearing, disability_mobility : this.state.disability_mobility, disability_sight : this.state.disability_sight, disability_learning : this.state.disability_learning, disability_others : this.state.disability_others, next_kin_name : this.state.next_of_kin_name, next_kin_relationship : this.state.next_of_kin_relationship, next_kin_occupation : this.state.next_of_kin_occupation, next_kin_phone : this.state.next_of_kin_phone, next_kin_email : this.state.next_of_kin_email
       }
       axios.put(`http://localhost:8000/api/user/update/`+this.state.id+`?token=${this.state.token}`, application_data)
       .then(response => {
@@ -320,20 +396,73 @@ class Application extends Component {
       });
   }
 
-  onSubmitIdentity(e){
-    e.preventDefault() // Stop form submit
-    this.fileUploadIdPassport(this.state.id_passport_upload)
+  onSubmitMedicalHistory(e)
+  {
+      e.preventDefault();
+      const application_data ={
+        med_currently_using : this.state.medications_currently_using, med_allergies : this.state.allergies, med_blood_group : this.state.blood_group, med_underlying_conditions : this.state.underlying_conditions, med_family_medical_history : this.state.family_medical_history, med_hypertensive : this.state.hypertensive, med_diabetic : this.state.diabetic
+      }
+      axios.put(`http://localhost:8000/api/user/updateMed/`+this.state.id+`?token=${this.state.token}`, application_data)
+      .then(response => {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      })
+      .then(json => {
+        if (json.data.success) {
+          this.setState({ 
+            // applications_list: json.data.data.data,
+          });
+        } else alert("Login Failed!");
+      })
+      .catch(error => {
+        // redirect user to previous page if user does not have autorization to the page
+        hashHistory.push('/premontessori');
+        console.error(`An Error Occuredd! ${error}`);
+        
+      });
+  }
+
+  onSubmitShareMedHistory(e)
+  {
+      e.preventDefault();
+      const share_med_data ={
+        share_med_history : this.state.share_med_history
+      }
+      axios.put(`http://localhost:8000/api/user/shareMedHistory/`+this.state.id+`?token=${this.state.token}`, share_med_data)
+      .then(response => {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      })
+      .then(json => {
+        if (json.data.success) {
+          this.setState({ 
+            // applications_list: json.data.data.data,
+          });
+        } else alert("Login Failed!");
+      })
+      .catch(error => {
+        // redirect user to previous page if user does not have autorization to the page
+        hashHistory.push('/premontessori');
+        console.error(`An Error Occuredd! ${error}`);
+      });
+  }
+
+  onSubmitProfilePicture(e){
+    // e.preventDefault() // Stop form submit
+    this.fileUploadProfilePicture(this.state.profile_picture)
     .then((response)=>{
       console.log(response.data);
       // Call the function to get and store passport type n id number
-      this.idPassportDetails()
+      // this.idPassportDetails()
     })
   }
   
-  fileUploadIdPassport(id_passport_upload){
-    const url = 'http://localhost:8000/api/user/uploadId/'+this.state.id+`?token=${this.state.token}`;
+  fileUploadProfilePicture(profile_picture){
+    const url = 'http://localhost:8000/api/user/updateProfilePicture/'+this.state.id+`?token=${this.state.token}`;
     const formData = new FormData();
-    formData.append('id_passport_upload',id_passport_upload)
+    formData.append('profile_picture',profile_picture)
     const config = {
         headers: {
             'content-type': 'multipart/form-data'
@@ -342,33 +471,39 @@ class Application extends Component {
     return  post(url, formData,config)
   }
 
-  idPassportDetails(){
-    const application_data ={
-      type_of_identification : this.state.type_of_identification, id_passport_number : this.state.id_passport_number
-    }
-    axios.put(`http://localhost:8000/api/user/updateIdDetails/`+this.state.id+`?token=${this.state.token}`, application_data)
-    .then(response => {
-      console.log("ROI Cartoon");
-      console.log(response);
-      return response;
-    })
-    .then(json => {
-      if (json.data.success) {
-        this.setState({ 
-          // applications_list: json.data.data.data,
-        });
-      } else alert("Login Failed!");
-    })
-    .catch(error => {
-      // redirect user to previous page if user does not have autorization to the page
-      hashHistory.push('/premontessori');
-      console.error(`An Error Occuredd! ${error}`);
-    });
-  }
+  // idPassportDetails(){
+  //   const application_data ={
+  //     type_of_identification : this.state.type_of_identification, id_passport_number : this.state.id_passport_number
+  //   }
+  //   axios.put(`http://localhost:8000/api/user/updateIdDetails/`+this.state.id+`?token=${this.state.token}`, application_data)
+  //   .then(response => {
+  //     console.log("ROI Cartoon");
+  //     console.log(response);
+  //     return response;
+  //   })
+  //   .then(json => {
+  //     if (json.data.success) {
+  //       this.setState({ 
+  //         // applications_list: json.data.data.data,
+  //       });
+  //     } else alert("Login Failed!");
+  //   })
+  //   .catch(error => {
+  //     // redirect user to previous page if user does not have autorization to the page
+  //     hashHistory.push('/premontessori');
+  //     console.error(`An Error Occuredd! ${error}`);
+  //   });
+  // }
 
   trigerFileUpload(){
-    $('#id_passport_upload').trigger('click');
+    $('#profile_picture').trigger('click');
   }
+
+  // onError() {
+  //   this.setState({
+  //     imageUrl: "/images/cam-medics-logo.png"
+  //   })
+  // }
 
   render() {
     // gets the state value as a string and convert to boolean
@@ -390,7 +525,7 @@ class Application extends Component {
       <div className="animated fadeIn"> 
         <Row> 
           <Col xs="12" sm="3">
-            <h3>Application Form</h3>  
+            <h3>Profile Form</h3>  
           </Col>
         </Row><br></br> 
         
@@ -401,7 +536,7 @@ class Application extends Component {
                 <div className="mb-3 mx-auto">
                   <img
                     className="rounded-circle"
-                    src={this.state.avatar}
+                    src={this.state.profile_picture}
                     alt={this.state.name}
                     width="110"
                   />
@@ -409,35 +544,46 @@ class Application extends Component {
                 <h4 className="mb-0">{this.state.first_name} {this.state.last_name}</h4>
                 <span className="text-muted d-block mb-2">{this.state.email}</span>
                 <ListGroupItem className="px-4">
-                  <Button block outline color="success">Update Passport Photograph</Button> 
+                  <Button block outline color="success" onClick={this.trigerFileUpload}>Update Profile Photograph</Button>
                 </ListGroupItem>
               </CardHeader>
+                {/* ///////////// */}
+                {/* input file to change profile picture */}
+                  <Input 
+                    type="file" 
+                    color="primary"
+                    id="profile_picture"
+                    style={{display: "none"}}
+                    onChange={this.onChangeProfilePicture}
+                  />
+                {/* //////////// */}
+
               <CardBody>
                 <strong className="text-muted d-block mb-2">
                   {this.state.metaTitle}
                 </strong>
-                <span>{this.state.metaValue}</span>
+                {/* <span>{this.state.metaValue}</span> */}
               </CardBody>
             </Card>
             </Col>
             
             <Col xs="12" sm="9">
-              {/* ////////////////////// APPLICATION INSTRUCTIONS ////////////////////////////////////// */}
+              {/* ////////////////////// Profile INSTRUCTIONS ////////////////////////////////////// */}
               <Card>
                 <CardHeader>
-                  <i className="fa fa-align-justify"></i><strong>Application Instructions</strong>
+                  <i className="fa fa-align-justify"></i><strong>Profile Instructions</strong>
                   <div className="card-header-actions">
                     <Button color="primary" onClick={this.toggle_app_instructions} className={'mb-1'} id="" size="sm">Toggle</Button>
                   </div>
                 </CardHeader>
                 <Collapse isOpen={this.state.collapse_app_instructions}>
                   <CardBody>
-                    <strong>Thank you for choosing KIU!</strong><br></br><br></br>
+                    <strong>Thank you for choosing Cam Medics!</strong><br></br><br></br>
                     All communications regarding your application and responses to your inquiries will be sent to the email address that you have provided in your account. You are therefore encouraged to check your email regularly.<br></br><br></br>
 
                     Using this account, you can start a new application or resume an existing application.<br></br><br></br>
 
-                    <strong>The Online application process: Apply in 3 steps.</strong><br></br><br></br>
+                    <strong>How to Use</strong><br></br><br></br>
                     1. Complete the application forms.<br></br>
                     2. Upload the required academic documents and any other relevant documents.<br></br>
                     3. Upload your passport photo or take a webcam photo<br></br><br></br>
@@ -594,9 +740,7 @@ class Application extends Component {
                                 <InputGroupText><i className="fa fa-user"></i></InputGroupText>
                               </InputGroupAddon>
                             </InputGroup>
-                          </FormGroup>                       
-                        </Col>
-                        <Col xs="12" sm="6">
+                          </FormGroup>
                           {/* //// DISTRICT/PROVINCE/STATE //////// */}
                           <FormGroup>
                             <InputGroup>
@@ -616,6 +760,32 @@ class Application extends Component {
                                 <InputGroupText>Contact Address</InputGroupText>
                               </InputGroupAddon>
                               <Input type="textarea" id="contact_address" rows="2" defaultValue={this.state.contact_address} onChange={this.onChangeContactAddress} placeholder="Contact Address" />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>                       
+                        </Col>
+                        <Col xs="12" sm="6">
+                          {/* //// HEIGHT //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Height </InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="text" id="height" defaultValue={this.state.height} onChange={this.onChangeHeight}/>
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// WEIGHT //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Weight </InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="text" id="weight" defaultValue={this.state.weight} onChange={this.onChangeWeight}/>
                               <InputGroupAddon addonType="append">
                                 <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
                               </InputGroupAddon>
@@ -647,8 +817,7 @@ class Application extends Component {
                               </FormGroup>
                               <FormGroup check className="checkbox">
                                 <Input className="form-check-input" type="checkbox" id="learning_disability" checked={this.state.disability_learning} onChange={this.onChangeDisabilityLearning} />
-                                <Label check className="form-check-label" htmlFor="checkbox2">Learning Disability
-  </Label>
+                                <Label check className="form-check-label" htmlFor="checkbox2">Learning Disability</Label>
                               </FormGroup>
                               <FormGroup check className="checkbox">
                                 <Input className="form-check-input" type="checkbox" id="others" checked={this.state.disability_others} onChange={this.onChangeDisabilityOthers} />
@@ -656,60 +825,73 @@ class Application extends Component {
                               </FormGroup>
                             </Col>
                           </Row>
+                          
                           <hr></hr>
-                          {/* //// PARENT/GUARDIAN/NEXT OF KIN INFORMATION //////// */}
+                          {/* //// NEXT OF KIN INFORMATION //////// */}
                           <FormGroup>
-                            <strong>Parent/Guardian/Next of Kin Information</strong>
+                            <strong>Next of Kin Information</strong>
                           </FormGroup>
-                          {/* //// PARENT/GUARDIAN NAME //////// */}
+                          {/* //// NEXT OF KIN NAME //////// */}
                           <FormGroup>
                             <InputGroup>
                               <InputGroupAddon addonType="prepend">
                                 <InputGroupText>Full Name</InputGroupText>
                               </InputGroupAddon>
-                              <Input type="text" id="parent_guardian_name" defaultValue={this.state.parent_guardian_name} onChange={this.onChangeParentGuardianName} />
+                              <Input type="text" id="next_of_kin_name" defaultValue={this.state.next_of_kin_name} onChange={this.onChangeNextKinName} />
                               <InputGroupAddon addonType="append">
                                 <InputGroupText><i className="fa fa-user"></i></InputGroupText>
                               </InputGroupAddon>
                             </InputGroup>
                           </FormGroup>
-                          {/* //// PARENT/GUARDIAN RELATIONSHIP //////// */}
+                          {/* //// NEXT OF KIN RELATIONSHIP //////// */}
                           <FormGroup>
                             <InputGroup>
                               <InputGroupAddon addonType="prepend">
                                 <InputGroupText>Relationship</InputGroupText>
                               </InputGroupAddon>
-                              <Input type="text" id="parent_guardian_relationship" defaultValue={this.state.parent_guardian_relationship} onChange={this.onChangeParentGuardianRelationship} />
+                              <Input type="text" id="next_of_kin_relationship" defaultValue={this.state.next_of_kin_relationship} onChange={this.onChangeNextKinRelationship} />
                               <InputGroupAddon addonType="append">
                                 <InputGroupText><i className="fa fa-user"></i></InputGroupText>
                               </InputGroupAddon>
                             </InputGroup>
                           </FormGroup>
-                          {/* //// PARENT/GUARDIAN OCCUPATION //////// */}
+                          {/* //// NEXT OF KIN OCCUPATION //////// */}
                           <FormGroup>
                             <InputGroup>
                               <InputGroupAddon addonType="prepend">
                                 <InputGroupText>Occupation</InputGroupText>
                               </InputGroupAddon>
-                              <Input type="text" id="parent_guardian_occupation" defaultValue={this.state.parent_guardian_occupation} onChange={this.onChangeparentGuardianOccupation} />
+                              <Input type="text" id="next_of_kin_occupation" defaultValue={this.state.next_of_kin_occupation} onChange={this.onChangeNextKinOccupation} />
                               <InputGroupAddon addonType="append">
                                 <InputGroupText><i className="fa fa-user"></i></InputGroupText>
                               </InputGroupAddon>
                             </InputGroup>
                           </FormGroup>
-                          {/* //// PARENT/GUARDIAN PHONE //////// */}
+                          {/* //// NEXT OF KIN PHONE //////// */}
                           <FormGroup>
                             <InputGroup>
                               <InputGroupAddon addonType="prepend">
                                 <InputGroupText>Phone</InputGroupText>
                               </InputGroupAddon>
-                              <Input type="text" id="parent_guardian_phone" defaultValue={this.state.parent_guardian_phone} onChange={this.onChangeParentGuardianPhone} />
+                              <Input type="text" id="next_of_kin_phone" defaultValue={this.state.next_of_kin_phone} onChange={this.onChangeNextKinPhone} />
                               <InputGroupAddon addonType="append">
                                 <InputGroupText><i className="fa fa-user"></i></InputGroupText>
                               </InputGroupAddon>
                             </InputGroup>
                           </FormGroup>
-                          
+                          {/* //// NEXT OF KIN EMAIL //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Email</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="email" id="next_of_kin_email" defaultValue={this.state.next_of_kin_email} onChange={this.onChangeNextKinEmail} />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-user"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+
                         </Col>
                       </Row>
                       <FormGroup className="form-actions">
@@ -720,87 +902,161 @@ class Application extends Component {
                 </Collapse>
               </Card>
               
-              {/* ////////////////////// IDENTIFICATION ////////////////////////////////////// */}
+              {/* ////////////////////// MEDICAL HISTORY ////////////////////////////////////// */}
               <Card>
                 <CardHeader>
-                  <i className="fa fa-align-justify"></i><strong>Identification</strong>
+                  <i className="fa fa-align-justify"></i><strong>Medical History</strong>
                   <div className="card-header-actions">
                     <Button color="primary" onClick={this.toggle_identification} className={'mb-1'} id="" size="sm">Toggle</Button>
                   </div>
                 </CardHeader>
                 <Collapse isOpen={this.state.collapse_identification}>
                   <CardBody>
-                    <Form onSubmit={this.onSubmitIdentity}>
+                    <Form onSubmit={this.onSubmitMedicalHistory}>
                       <Row>
-                        <Col xs="12" sm="5">
+                        <Col xs="12" sm="12">
+                          {/* //// LIST OF MEDICATIONS CURRENTLY USING //////// */}
                           <FormGroup>
                             <InputGroup>
                               <InputGroupAddon addonType="prepend">
-                                <InputGroupText>Type of Identification</InputGroupText>
+                                <InputGroupText>List of Medications You are Currently Using</InputGroupText>
                               </InputGroupAddon>
-                              <Input 
-                                type="select" 
-                                value={this.state.type_of_identification}
-                                onChange={this.onChangeTypeOfIdentification}
-                              >
+                              <Input type="textarea" id="medications_currently_using" rows="2" defaultValue={this.state.medications_currently_using} onChange={this.onChangeMedicationsCurrentlyUsing} placeholder="List of Medications You are Currently Using" />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// ALLERGIES //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Allergies</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="textarea" id="allergies" rows="2" defaultValue={this.state.allergies} onChange={this.onChangeAllergies} placeholder=":List of Allergies " />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// BLOOD GROUP //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Blood Group</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="select" id="blood_group" value={this.state.blood_group} onChange={this.onChangeBloodGroup}>
                                 <option value="0"> --- select --- </option>
-                                <option value="1">Passport</option>
-                                <option value="2">National ID</option>
-                                <option value="3">Driver License</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
                               </Input>
                               <InputGroupAddon addonType="append">
                                 <InputGroupText><i className="fa fa-user"></i></InputGroupText>
                               </InputGroupAddon>
                             </InputGroup>
-                          </FormGroup>  
+                          </FormGroup>
+                          {/* //// UNDERLYING CONDITIONS //////// */}
                           <FormGroup>
                             <InputGroup>
                               <InputGroupAddon addonType="prepend">
-                                <InputGroupText>ID Passport Number</InputGroupText>
+                                <InputGroupText>Underlying Conditions</InputGroupText>
                               </InputGroupAddon>
-                              <Input 
-                                type="text" 
-                                defaultValue={this.state.id_passport_number} 
-                                onChange={this.onChangeIdPassportNumber}
-                              />
+                              <Input type="textarea" id="underlying_conditions" rows="2" defaultValue={this.state.underlying_conditions} onChange={this.onChangeUnderlyingConditions} placeholder=":Underlying conditions" />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// FAMILY MEDICAL HISTORY //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Family Medical History</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="textarea" id="family_medical_history" rows="2" defaultValue={this.state.family_medical_history} onChange={this.onChangeFamilyMedicalHistory} placeholder=":Family Medical History" />
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+                          {/* //// HYPERTENSIVE //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Hypertensive</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="select" id="hypertensive" value={this.state.hypertensive } onChange={this.onChangeHypertensive}>
+                                <option value="0"> --- select --- </option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                              </Input>
                               <InputGroupAddon addonType="append">
                                 <InputGroupText><i className="fa fa-user"></i></InputGroupText>
                               </InputGroupAddon>
                             </InputGroup>
-                          </FormGroup>               
-                        </Col>
-                        <Col xs="12" sm="7">
-                          <Input 
-                            type="file" 
-                            color="primary"
-                            id="id_passport_upload"
-                            style={{display: "none"}}
-                            onChange={this.onChangeIdPassportUpload}
-                          />
-                          <p style={{fontSize: 11, fontWeight: "bold", flexDirection: 'row'}}>
-                            <i className="cui-paperclip icons font-1xl d-block mt-4" style={{fontSize: 11, fontWeight: "bold"}}></i>
-                              If you choose to upload a PDF file, your file size must be less than 500KB.
-                            
-                          </p>
-                          <p style={{fontSize: 11, fontWeight: "bold"}}>
-                            <i className="cui-paperclip icons font-1xl d-block mt-4"></i>
-                            If you choose to an image file, your file size must be less than 300KB.
-                          </p>
-                          <Button 
-                            type="button" 
-                            size="sm" 
-                            color="primary" 
-                            onClick={this.trigerFileUpload}>
-                              Upload PDF
-                          </Button>
+                          </FormGroup>
+                          {/* //// DIABETIC //////// */}
+                          <FormGroup>
+                            <InputGroup>
+                              <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Diabetic</InputGroupText>
+                              </InputGroupAddon>
+                              <Input type="select" id="diabetic" value={this.state.diabetic } onChange={this.onChangeDiabetic}>
+                                <option value="0"> --- select --- </option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                              </Input>
+                              <InputGroupAddon addonType="append">
+                                <InputGroupText><i className="fa fa-user"></i></InputGroupText>
+                              </InputGroupAddon>
+                            </InputGroup>
+                          </FormGroup>
+
                         </Col>
                       </Row>
                       <FormGroup className="form-actions">
-                        <Button type="submit" size="sm" color="primary">Update Personal Identity</Button>
+                        <Button type="submit" size="sm" color="primary">Update Medical History</Button>
                       </FormGroup>
                     </Form>
                   </CardBody>
                 </Collapse>
+
+                <CardFooter>
+                  {/* <i className="fa fa-align-justify"></i><strong>Medical History</strong> */}
+                  <div className="card-header-actions">
+                    <Button color="primary" onClick={this.togglePrimary} className={'mb-1'} id="" size="sm">Share Medical Record</Button>
+                     {/* <Button color="primary" onClick={this.togglePrimary} className="mr-1">Primary modal</Button> */}
+                      <Modal isOpen={this.state.primary} toggle={this.togglePrimary}
+                            className={'modal-primary ' + this.props.className}>
+                        <ModalHeader toggle={this.togglePrimary}>Share Medical Record</ModalHeader>
+                        <ModalBody>
+                          <Form onSubmit={this.onSubmitShareMedHistory}>
+                            <FormGroup>
+                              <InputGroup>
+                                <InputGroupAddon addonType="prepend">
+                                  <InputGroupText>Doctor / Airport email</InputGroupText>
+                                </InputGroupAddon>
+                                <Input type="textarea" id="share_med_history" rows="2" onChange={this.onChangeShareMedHistory} placeholder="enter the doctor or airport email" />
+                                <InputGroupAddon addonType="append">
+                                  <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
+                                </InputGroupAddon>
+                              </InputGroup>
+                            </FormGroup>
+                            <Button type="submit" size="sm" color="primary">Share</Button>
+                          </Form>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button color="secondary" onClick={this.togglePrimary}>Cancel</Button>
+                        </ModalFooter>
+                      </Modal>
+                  </div>
+                </CardFooter>
               </Card>
             
             </Col>
@@ -815,4 +1071,4 @@ class Application extends Component {
   }
 }
 
-export default Application;
+export default Profile;

@@ -84,8 +84,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'elearning@kiu.ac.ug'),
-        'name' => env('MAIL_FROM_NAME', 'Kampala International University'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@cammedics.com'),
+        'name' => env('MAIL_FROM_NAME', 'Cam Medics'),
     ],
 
     /*

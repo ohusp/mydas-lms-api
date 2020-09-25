@@ -2128,7 +2128,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".err {\r\n    font-size: small;\r\n    color: red;\r\n}\r\n.asterisk{\r\n    font-size: small;\r\n    color: red;\r\n}\r\n\r\n.kiu-bg{\r\n    background-color: #369752 !important;\r\n}\r\n\r\n.kiu-btn{\r\n    background-color: #369752 !important;\r\n    color: #fff !important;\r\n}\r\n\r\n.kiu-btn-sec{\r\n    background-color: #26c91e !important;\r\n    color: #fff !important;\r\n}\r\n\r\n.kiu-btn-sec:hover{\r\n    background-color: #369752;\r\n    color: #fff;\r\n}\r\n\r\n.kiu-color{\r\n    color: #369752 !important;\r\n}", ""]);
+exports.push([module.i, ".err {\r\n    font-size: small;\r\n    color: red;\r\n}\r\n.asterisk{\r\n    font-size: small;\r\n    color: red;\r\n}\r\n\r\n.kiu-bg{\r\n    background-color: #2167ac !important;\r\n}\r\n\r\n.kiu-btn{\r\n    background-color: #2167ac !important;\r\n    color: #fff !important;\r\n}\r\n\r\n.kiu-btn-sec{\r\n    background-color: #26c91e !important;\r\n    color: #fff !important;\r\n}\r\n\r\n.kiu-btn-sec:hover{\r\n    background-color: #2167ac;\r\n    color: #fff;\r\n}\r\n\r\n.kiu-color{\r\n    color: #2167ac !important;\r\n}\r\n\r\n.cam-btn-white-bg{\r\n    background-color: #ffffff !important;\r\n    color: #2167ac !important;\r\n    box-shadow: 0 8px 6px -6px #ffffff;\r\n}\r\n\r\n.cam-btn-white-bg:hover{\r\n    background-color: #2167ac !important;\r\n    color: #ffffff !important;\r\n}", ""]);
 
 // exports
 
@@ -80769,34 +80769,49 @@ var loading = function loading() {
 
 
 var DefaultLayout = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(9), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./containers/DefaultLayout */ "./resources/coreui/src/containers/DefaultLayout/DefaultLayout.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ./containers/DefaultLayout */ "./resources/coreui/src/containers/DefaultLayout/DefaultLayout.js"));
 }); // /////////////////////////////////////// ADMIN //////////////////////////////////////////
 
 var AdminLogin = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(24)]).then(__webpack_require__.bind(null, /*! ./views/Admin/AdminLogin/AdminLogin */ "./resources/coreui/src/views/Admin/AdminLogin/AdminLogin.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(27)]).then(__webpack_require__.bind(null, /*! ./views/Admin/AdminLogin/AdminLogin */ "./resources/coreui/src/views/Admin/AdminLogin/AdminLogin.js"));
 }); // /////////////////////////////////////// USER //////////////////////////////////////////////
 
-var Apply = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Apply */ "./resources/coreui/src/views/Pages/Apply/Apply.js"));
+var Register = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./views/Pages/RegisterAirPort/RegisterAirPort */ "./resources/coreui/src/views/Pages/RegisterAirPort/RegisterAirPort.js"));
+});
+var RegisterAirPort = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./views/Pages/RegisterAirPort/RegisterAirPort */ "./resources/coreui/src/views/Pages/RegisterAirPort/RegisterAirPort.js"));
+});
+var RegisterDoc = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./views/Pages/RegisterAirPort/RegisterAirPort */ "./resources/coreui/src/views/Pages/RegisterAirPort/RegisterAirPort.js"));
+});
+var RegisterPharm = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./views/Pages/RegisterAirPort/RegisterAirPort */ "./resources/coreui/src/views/Pages/RegisterAirPort/RegisterAirPort.js"));
 });
 var Login = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Login */ "./resources/coreui/src/views/Pages/Login/Login.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Login */ "./resources/coreui/src/views/Pages/Login/Login.js"));
+});
+var LoginPharm = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! ./views/Pages/LoginPharm */ "./resources/coreui/src/views/Pages/LoginPharm/LoginPharm.js"));
+});
+var LoginAirPort = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./views/Pages/LoginAirPort */ "./resources/coreui/src/views/Pages/LoginAirPort/LoginAirPort.js"));
+});
+var LoginDoc = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./views/Pages/LoginDoc */ "./resources/coreui/src/views/Pages/LoginDoc/LoginDoc.js"));
 });
 var ForgetPassword = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./views/Pages/ForgetPassword */ "./resources/coreui/src/views/Pages/ForgetPassword/ForgetPassword.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ./views/Pages/ForgetPassword */ "./resources/coreui/src/views/Pages/ForgetPassword/ForgetPassword.js"));
 });
 var ResetPassword = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! ./views/Pages/ResetPassword */ "./resources/coreui/src/views/Pages/ResetPassword/ResetPassword.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, /*! ./views/Pages/ResetPassword */ "./resources/coreui/src/views/Pages/ResetPassword/ResetPassword.js"));
 }); // Pages
 
-var Register = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(58)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Register */ "./resources/coreui/src/views/Pages/Register/Register.js"));
-});
 var Page404 = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(56)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page404 */ "./resources/coreui/src/views/Pages/Page404/Page404.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(59)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page404 */ "./resources/coreui/src/views/Pages/Page404/Page404.js"));
 });
 var Page500 = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(57)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page500 */ "./resources/coreui/src/views/Pages/Page500/Page500.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(60)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page500 */ "./resources/coreui/src/views/Pages/Page500/Page500.js"));
 });
 
 var App = /*#__PURE__*/function (_Component) {
@@ -80824,10 +80839,31 @@ var App = /*#__PURE__*/function (_Component) {
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-        path: "/Apply",
-        name: "Apply Page",
+        path: "/register",
+        name: "Register Page",
         render: function render(props) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Apply, props);
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Register, props);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/register_airport",
+        name: "Register Air Port Page",
+        render: function render(props) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RegisterAirPort, props);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/register_doc",
+        name: "Register Doctor Page",
+        render: function render(props) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RegisterDoc, props);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/register_pharm",
+        name: "Register Pharmacy Page",
+        render: function render(props) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(RegisterPharm, props);
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
@@ -80835,6 +80871,27 @@ var App = /*#__PURE__*/function (_Component) {
         name: "Login Page",
         render: function render(props) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Login, props);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/login_pharm",
+        name: "LoginPharm Page",
+        render: function render(props) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(LoginPharm, props);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/login_airport",
+        name: "LoginAirPort Page",
+        render: function render(props) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(LoginAirPort, props);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/login_doctor",
+        name: "LoginDoc Page",
+        render: function render(props) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(LoginDoc, props);
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
@@ -81202,9 +81259,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\kiu-student-portal\resources\coreui\src\index.js */"./resources/coreui/src/index.js");
-__webpack_require__(/*! C:\xampp\htdocs\kiu-student-portal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\kiu-student-portal\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\cam-medics\resources\coreui\src\index.js */"./resources/coreui/src/index.js");
+__webpack_require__(/*! C:\xampp\htdocs\cam-medics\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\cam-medics\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,459 +1,490 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[4],{
 
-/***/ "./resources/coreui/node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/umd/custom-tooltips.js":
-/*!*****************************************************************************************************************!*\
-  !*** ./resources/coreui/node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/umd/custom-tooltips.js ***!
-  \*****************************************************************************************************************/
+/***/ "./resources/coreui/src/images/logo/cam-medics-logo.png":
+/*!**************************************************************!*\
+  !*** ./resources/coreui/src/images/logo/cam-medics-logo.png ***!
+  \**************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-(function (global, factory) {
-   true ? factory(exports) :
-  undefined;
-}(this, function (exports) { 'use strict';
-
-  /**
-   * --------------------------------------------------------------------------
-   * CoreUI Plugins - Custom Tooltips for Chart.js (v1.3.1): custom-tooltips.js
-   * Licensed under MIT (https://coreui.io/license)
-   * --------------------------------------------------------------------------
-   */
-  function CustomTooltips(tooltipModel) {
-    var _this = this;
-
-    // Add unique id if not exist
-    var _setCanvasId = function _setCanvasId() {
-      var _idMaker = function _idMaker() {
-        var _hex = 16;
-        var _multiplier = 0x10000;
-        return ((1 + Math.random()) * _multiplier | 0).toString(_hex);
-      };
-
-      var _canvasId = "_canvas-" + (_idMaker() + _idMaker());
-
-      _this._chart.canvas.id = _canvasId;
-      return _canvasId;
-    };
-
-    var ClassName = {
-      ABOVE: 'above',
-      BELOW: 'below',
-      CHARTJS_TOOLTIP: 'chartjs-tooltip',
-      NO_TRANSFORM: 'no-transform',
-      TOOLTIP_BODY: 'tooltip-body',
-      TOOLTIP_BODY_ITEM: 'tooltip-body-item',
-      TOOLTIP_BODY_ITEM_COLOR: 'tooltip-body-item-color',
-      TOOLTIP_BODY_ITEM_LABEL: 'tooltip-body-item-label',
-      TOOLTIP_BODY_ITEM_VALUE: 'tooltip-body-item-value',
-      TOOLTIP_HEADER: 'tooltip-header',
-      TOOLTIP_HEADER_ITEM: 'tooltip-header-item'
-    };
-    var Selector = {
-      DIV: 'div',
-      SPAN: 'span',
-      TOOLTIP: (this._chart.canvas.id || _setCanvasId()) + "-tooltip"
-    };
-    var tooltip = document.getElementById(Selector.TOOLTIP);
-
-    if (!tooltip) {
-      tooltip = document.createElement('div');
-      tooltip.id = Selector.TOOLTIP;
-      tooltip.className = ClassName.CHARTJS_TOOLTIP;
-
-      this._chart.canvas.parentNode.appendChild(tooltip);
-    } // Hide if no tooltip
-
-
-    if (tooltipModel.opacity === 0) {
-      tooltip.style.opacity = 0;
-      return;
-    } // Set caret Position
-
-
-    tooltip.classList.remove(ClassName.ABOVE, ClassName.BELOW, ClassName.NO_TRANSFORM);
-
-    if (tooltipModel.yAlign) {
-      tooltip.classList.add(tooltipModel.yAlign);
-    } else {
-      tooltip.classList.add(ClassName.NO_TRANSFORM);
-    } // Set Text
-
-
-    if (tooltipModel.body) {
-      var titleLines = tooltipModel.title || [];
-      var tooltipHeader = document.createElement(Selector.DIV);
-      tooltipHeader.className = ClassName.TOOLTIP_HEADER;
-      titleLines.forEach(function (title) {
-        var tooltipHeaderTitle = document.createElement(Selector.DIV);
-        tooltipHeaderTitle.className = ClassName.TOOLTIP_HEADER_ITEM;
-        tooltipHeaderTitle.innerHTML = title;
-        tooltipHeader.appendChild(tooltipHeaderTitle);
-      });
-      var tooltipBody = document.createElement(Selector.DIV);
-      tooltipBody.className = ClassName.TOOLTIP_BODY;
-      var tooltipBodyItems = tooltipModel.body.map(function (item) {
-        return item.lines;
-      });
-      tooltipBodyItems.forEach(function (item, i) {
-        var tooltipBodyItem = document.createElement(Selector.DIV);
-        tooltipBodyItem.className = ClassName.TOOLTIP_BODY_ITEM;
-        var colors = tooltipModel.labelColors[i];
-        var tooltipBodyItemColor = document.createElement(Selector.SPAN);
-        tooltipBodyItemColor.className = ClassName.TOOLTIP_BODY_ITEM_COLOR;
-        tooltipBodyItemColor.style.backgroundColor = colors.backgroundColor;
-        tooltipBodyItem.appendChild(tooltipBodyItemColor);
-
-        if (item[0].split(':').length > 1) {
-          var tooltipBodyItemLabel = document.createElement(Selector.SPAN);
-          tooltipBodyItemLabel.className = ClassName.TOOLTIP_BODY_ITEM_LABEL;
-          tooltipBodyItemLabel.innerHTML = item[0].split(': ')[0];
-          tooltipBodyItem.appendChild(tooltipBodyItemLabel);
-          var tooltipBodyItemValue = document.createElement(Selector.SPAN);
-          tooltipBodyItemValue.className = ClassName.TOOLTIP_BODY_ITEM_VALUE;
-          tooltipBodyItemValue.innerHTML = item[0].split(': ').pop();
-          tooltipBodyItem.appendChild(tooltipBodyItemValue);
-        } else {
-          var _tooltipBodyItemValue = document.createElement(Selector.SPAN);
-
-          _tooltipBodyItemValue.className = ClassName.TOOLTIP_BODY_ITEM_VALUE;
-          _tooltipBodyItemValue.innerHTML = item[0];
-          tooltipBodyItem.appendChild(_tooltipBodyItemValue);
-        }
-
-        tooltipBody.appendChild(tooltipBodyItem);
-      });
-      tooltip.innerHTML = '';
-      tooltip.appendChild(tooltipHeader);
-      tooltip.appendChild(tooltipBody);
-    }
-
-    var position = this._chart.canvas.getBoundingClientRect();
-
-    var positionY = this._chart.canvas.offsetTop;
-    var positionX = this._chart.canvas.offsetLeft;
-    var positionLeft = positionX + tooltipModel.caretX;
-    var positionTop = positionY + tooltipModel.caretY; // eslint-disable-next-line
-
-    var halfWidth = tooltipModel.width / 2;
-
-    if (positionLeft + halfWidth > position.width) {
-      positionLeft -= halfWidth;
-    } else if (positionLeft < halfWidth) {
-      positionLeft += halfWidth;
-    } // Display, position, and set styles for font
-
-
-    tooltip.style.opacity = 1;
-    tooltip.style.left = positionLeft + "px";
-    tooltip.style.top = positionTop + "px";
-  }
-
-  var customTooltips = CustomTooltips; // TODO: camel-case
-
-  exports.CustomTooltips = CustomTooltips;
-  exports.customTooltips = customTooltips;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
-
-}));
-//# sourceMappingURL=custom-tooltips.js.map
-
+module.exports = "/images/cam-medics-logo.png?ed1f65b868f552cf68f79f96bf63cb8b";
 
 /***/ }),
 
-/***/ "./resources/coreui/node_modules/moment/locale sync recursive ^\\.\\/.*$":
-/*!*******************************************************************!*\
-  !*** ./resources/coreui/node_modules/moment/locale sync ^\.\/.*$ ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./resources/coreui/src/views/Pages/RegisterAirPort/RegisterAirPort.js":
+/*!*****************************************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/RegisterAirPort/RegisterAirPort.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var map = {
-	"./af": "./resources/coreui/node_modules/moment/locale/af.js",
-	"./af.js": "./resources/coreui/node_modules/moment/locale/af.js",
-	"./ar": "./resources/coreui/node_modules/moment/locale/ar.js",
-	"./ar-dz": "./resources/coreui/node_modules/moment/locale/ar-dz.js",
-	"./ar-dz.js": "./resources/coreui/node_modules/moment/locale/ar-dz.js",
-	"./ar-kw": "./resources/coreui/node_modules/moment/locale/ar-kw.js",
-	"./ar-kw.js": "./resources/coreui/node_modules/moment/locale/ar-kw.js",
-	"./ar-ly": "./resources/coreui/node_modules/moment/locale/ar-ly.js",
-	"./ar-ly.js": "./resources/coreui/node_modules/moment/locale/ar-ly.js",
-	"./ar-ma": "./resources/coreui/node_modules/moment/locale/ar-ma.js",
-	"./ar-ma.js": "./resources/coreui/node_modules/moment/locale/ar-ma.js",
-	"./ar-sa": "./resources/coreui/node_modules/moment/locale/ar-sa.js",
-	"./ar-sa.js": "./resources/coreui/node_modules/moment/locale/ar-sa.js",
-	"./ar-tn": "./resources/coreui/node_modules/moment/locale/ar-tn.js",
-	"./ar-tn.js": "./resources/coreui/node_modules/moment/locale/ar-tn.js",
-	"./ar.js": "./resources/coreui/node_modules/moment/locale/ar.js",
-	"./az": "./resources/coreui/node_modules/moment/locale/az.js",
-	"./az.js": "./resources/coreui/node_modules/moment/locale/az.js",
-	"./be": "./resources/coreui/node_modules/moment/locale/be.js",
-	"./be.js": "./resources/coreui/node_modules/moment/locale/be.js",
-	"./bg": "./resources/coreui/node_modules/moment/locale/bg.js",
-	"./bg.js": "./resources/coreui/node_modules/moment/locale/bg.js",
-	"./bm": "./resources/coreui/node_modules/moment/locale/bm.js",
-	"./bm.js": "./resources/coreui/node_modules/moment/locale/bm.js",
-	"./bn": "./resources/coreui/node_modules/moment/locale/bn.js",
-	"./bn.js": "./resources/coreui/node_modules/moment/locale/bn.js",
-	"./bo": "./resources/coreui/node_modules/moment/locale/bo.js",
-	"./bo.js": "./resources/coreui/node_modules/moment/locale/bo.js",
-	"./br": "./resources/coreui/node_modules/moment/locale/br.js",
-	"./br.js": "./resources/coreui/node_modules/moment/locale/br.js",
-	"./bs": "./resources/coreui/node_modules/moment/locale/bs.js",
-	"./bs.js": "./resources/coreui/node_modules/moment/locale/bs.js",
-	"./ca": "./resources/coreui/node_modules/moment/locale/ca.js",
-	"./ca.js": "./resources/coreui/node_modules/moment/locale/ca.js",
-	"./cs": "./resources/coreui/node_modules/moment/locale/cs.js",
-	"./cs.js": "./resources/coreui/node_modules/moment/locale/cs.js",
-	"./cv": "./resources/coreui/node_modules/moment/locale/cv.js",
-	"./cv.js": "./resources/coreui/node_modules/moment/locale/cv.js",
-	"./cy": "./resources/coreui/node_modules/moment/locale/cy.js",
-	"./cy.js": "./resources/coreui/node_modules/moment/locale/cy.js",
-	"./da": "./resources/coreui/node_modules/moment/locale/da.js",
-	"./da.js": "./resources/coreui/node_modules/moment/locale/da.js",
-	"./de": "./resources/coreui/node_modules/moment/locale/de.js",
-	"./de-at": "./resources/coreui/node_modules/moment/locale/de-at.js",
-	"./de-at.js": "./resources/coreui/node_modules/moment/locale/de-at.js",
-	"./de-ch": "./resources/coreui/node_modules/moment/locale/de-ch.js",
-	"./de-ch.js": "./resources/coreui/node_modules/moment/locale/de-ch.js",
-	"./de.js": "./resources/coreui/node_modules/moment/locale/de.js",
-	"./dv": "./resources/coreui/node_modules/moment/locale/dv.js",
-	"./dv.js": "./resources/coreui/node_modules/moment/locale/dv.js",
-	"./el": "./resources/coreui/node_modules/moment/locale/el.js",
-	"./el.js": "./resources/coreui/node_modules/moment/locale/el.js",
-	"./en-au": "./resources/coreui/node_modules/moment/locale/en-au.js",
-	"./en-au.js": "./resources/coreui/node_modules/moment/locale/en-au.js",
-	"./en-ca": "./resources/coreui/node_modules/moment/locale/en-ca.js",
-	"./en-ca.js": "./resources/coreui/node_modules/moment/locale/en-ca.js",
-	"./en-gb": "./resources/coreui/node_modules/moment/locale/en-gb.js",
-	"./en-gb.js": "./resources/coreui/node_modules/moment/locale/en-gb.js",
-	"./en-ie": "./resources/coreui/node_modules/moment/locale/en-ie.js",
-	"./en-ie.js": "./resources/coreui/node_modules/moment/locale/en-ie.js",
-	"./en-il": "./resources/coreui/node_modules/moment/locale/en-il.js",
-	"./en-il.js": "./resources/coreui/node_modules/moment/locale/en-il.js",
-	"./en-in": "./resources/coreui/node_modules/moment/locale/en-in.js",
-	"./en-in.js": "./resources/coreui/node_modules/moment/locale/en-in.js",
-	"./en-nz": "./resources/coreui/node_modules/moment/locale/en-nz.js",
-	"./en-nz.js": "./resources/coreui/node_modules/moment/locale/en-nz.js",
-	"./en-sg": "./resources/coreui/node_modules/moment/locale/en-sg.js",
-	"./en-sg.js": "./resources/coreui/node_modules/moment/locale/en-sg.js",
-	"./eo": "./resources/coreui/node_modules/moment/locale/eo.js",
-	"./eo.js": "./resources/coreui/node_modules/moment/locale/eo.js",
-	"./es": "./resources/coreui/node_modules/moment/locale/es.js",
-	"./es-do": "./resources/coreui/node_modules/moment/locale/es-do.js",
-	"./es-do.js": "./resources/coreui/node_modules/moment/locale/es-do.js",
-	"./es-us": "./resources/coreui/node_modules/moment/locale/es-us.js",
-	"./es-us.js": "./resources/coreui/node_modules/moment/locale/es-us.js",
-	"./es.js": "./resources/coreui/node_modules/moment/locale/es.js",
-	"./et": "./resources/coreui/node_modules/moment/locale/et.js",
-	"./et.js": "./resources/coreui/node_modules/moment/locale/et.js",
-	"./eu": "./resources/coreui/node_modules/moment/locale/eu.js",
-	"./eu.js": "./resources/coreui/node_modules/moment/locale/eu.js",
-	"./fa": "./resources/coreui/node_modules/moment/locale/fa.js",
-	"./fa.js": "./resources/coreui/node_modules/moment/locale/fa.js",
-	"./fi": "./resources/coreui/node_modules/moment/locale/fi.js",
-	"./fi.js": "./resources/coreui/node_modules/moment/locale/fi.js",
-	"./fil": "./resources/coreui/node_modules/moment/locale/fil.js",
-	"./fil.js": "./resources/coreui/node_modules/moment/locale/fil.js",
-	"./fo": "./resources/coreui/node_modules/moment/locale/fo.js",
-	"./fo.js": "./resources/coreui/node_modules/moment/locale/fo.js",
-	"./fr": "./resources/coreui/node_modules/moment/locale/fr.js",
-	"./fr-ca": "./resources/coreui/node_modules/moment/locale/fr-ca.js",
-	"./fr-ca.js": "./resources/coreui/node_modules/moment/locale/fr-ca.js",
-	"./fr-ch": "./resources/coreui/node_modules/moment/locale/fr-ch.js",
-	"./fr-ch.js": "./resources/coreui/node_modules/moment/locale/fr-ch.js",
-	"./fr.js": "./resources/coreui/node_modules/moment/locale/fr.js",
-	"./fy": "./resources/coreui/node_modules/moment/locale/fy.js",
-	"./fy.js": "./resources/coreui/node_modules/moment/locale/fy.js",
-	"./ga": "./resources/coreui/node_modules/moment/locale/ga.js",
-	"./ga.js": "./resources/coreui/node_modules/moment/locale/ga.js",
-	"./gd": "./resources/coreui/node_modules/moment/locale/gd.js",
-	"./gd.js": "./resources/coreui/node_modules/moment/locale/gd.js",
-	"./gl": "./resources/coreui/node_modules/moment/locale/gl.js",
-	"./gl.js": "./resources/coreui/node_modules/moment/locale/gl.js",
-	"./gom-deva": "./resources/coreui/node_modules/moment/locale/gom-deva.js",
-	"./gom-deva.js": "./resources/coreui/node_modules/moment/locale/gom-deva.js",
-	"./gom-latn": "./resources/coreui/node_modules/moment/locale/gom-latn.js",
-	"./gom-latn.js": "./resources/coreui/node_modules/moment/locale/gom-latn.js",
-	"./gu": "./resources/coreui/node_modules/moment/locale/gu.js",
-	"./gu.js": "./resources/coreui/node_modules/moment/locale/gu.js",
-	"./he": "./resources/coreui/node_modules/moment/locale/he.js",
-	"./he.js": "./resources/coreui/node_modules/moment/locale/he.js",
-	"./hi": "./resources/coreui/node_modules/moment/locale/hi.js",
-	"./hi.js": "./resources/coreui/node_modules/moment/locale/hi.js",
-	"./hr": "./resources/coreui/node_modules/moment/locale/hr.js",
-	"./hr.js": "./resources/coreui/node_modules/moment/locale/hr.js",
-	"./hu": "./resources/coreui/node_modules/moment/locale/hu.js",
-	"./hu.js": "./resources/coreui/node_modules/moment/locale/hu.js",
-	"./hy-am": "./resources/coreui/node_modules/moment/locale/hy-am.js",
-	"./hy-am.js": "./resources/coreui/node_modules/moment/locale/hy-am.js",
-	"./id": "./resources/coreui/node_modules/moment/locale/id.js",
-	"./id.js": "./resources/coreui/node_modules/moment/locale/id.js",
-	"./is": "./resources/coreui/node_modules/moment/locale/is.js",
-	"./is.js": "./resources/coreui/node_modules/moment/locale/is.js",
-	"./it": "./resources/coreui/node_modules/moment/locale/it.js",
-	"./it-ch": "./resources/coreui/node_modules/moment/locale/it-ch.js",
-	"./it-ch.js": "./resources/coreui/node_modules/moment/locale/it-ch.js",
-	"./it.js": "./resources/coreui/node_modules/moment/locale/it.js",
-	"./ja": "./resources/coreui/node_modules/moment/locale/ja.js",
-	"./ja.js": "./resources/coreui/node_modules/moment/locale/ja.js",
-	"./jv": "./resources/coreui/node_modules/moment/locale/jv.js",
-	"./jv.js": "./resources/coreui/node_modules/moment/locale/jv.js",
-	"./ka": "./resources/coreui/node_modules/moment/locale/ka.js",
-	"./ka.js": "./resources/coreui/node_modules/moment/locale/ka.js",
-	"./kk": "./resources/coreui/node_modules/moment/locale/kk.js",
-	"./kk.js": "./resources/coreui/node_modules/moment/locale/kk.js",
-	"./km": "./resources/coreui/node_modules/moment/locale/km.js",
-	"./km.js": "./resources/coreui/node_modules/moment/locale/km.js",
-	"./kn": "./resources/coreui/node_modules/moment/locale/kn.js",
-	"./kn.js": "./resources/coreui/node_modules/moment/locale/kn.js",
-	"./ko": "./resources/coreui/node_modules/moment/locale/ko.js",
-	"./ko.js": "./resources/coreui/node_modules/moment/locale/ko.js",
-	"./ku": "./resources/coreui/node_modules/moment/locale/ku.js",
-	"./ku.js": "./resources/coreui/node_modules/moment/locale/ku.js",
-	"./ky": "./resources/coreui/node_modules/moment/locale/ky.js",
-	"./ky.js": "./resources/coreui/node_modules/moment/locale/ky.js",
-	"./lb": "./resources/coreui/node_modules/moment/locale/lb.js",
-	"./lb.js": "./resources/coreui/node_modules/moment/locale/lb.js",
-	"./lo": "./resources/coreui/node_modules/moment/locale/lo.js",
-	"./lo.js": "./resources/coreui/node_modules/moment/locale/lo.js",
-	"./lt": "./resources/coreui/node_modules/moment/locale/lt.js",
-	"./lt.js": "./resources/coreui/node_modules/moment/locale/lt.js",
-	"./lv": "./resources/coreui/node_modules/moment/locale/lv.js",
-	"./lv.js": "./resources/coreui/node_modules/moment/locale/lv.js",
-	"./me": "./resources/coreui/node_modules/moment/locale/me.js",
-	"./me.js": "./resources/coreui/node_modules/moment/locale/me.js",
-	"./mi": "./resources/coreui/node_modules/moment/locale/mi.js",
-	"./mi.js": "./resources/coreui/node_modules/moment/locale/mi.js",
-	"./mk": "./resources/coreui/node_modules/moment/locale/mk.js",
-	"./mk.js": "./resources/coreui/node_modules/moment/locale/mk.js",
-	"./ml": "./resources/coreui/node_modules/moment/locale/ml.js",
-	"./ml.js": "./resources/coreui/node_modules/moment/locale/ml.js",
-	"./mn": "./resources/coreui/node_modules/moment/locale/mn.js",
-	"./mn.js": "./resources/coreui/node_modules/moment/locale/mn.js",
-	"./mr": "./resources/coreui/node_modules/moment/locale/mr.js",
-	"./mr.js": "./resources/coreui/node_modules/moment/locale/mr.js",
-	"./ms": "./resources/coreui/node_modules/moment/locale/ms.js",
-	"./ms-my": "./resources/coreui/node_modules/moment/locale/ms-my.js",
-	"./ms-my.js": "./resources/coreui/node_modules/moment/locale/ms-my.js",
-	"./ms.js": "./resources/coreui/node_modules/moment/locale/ms.js",
-	"./mt": "./resources/coreui/node_modules/moment/locale/mt.js",
-	"./mt.js": "./resources/coreui/node_modules/moment/locale/mt.js",
-	"./my": "./resources/coreui/node_modules/moment/locale/my.js",
-	"./my.js": "./resources/coreui/node_modules/moment/locale/my.js",
-	"./nb": "./resources/coreui/node_modules/moment/locale/nb.js",
-	"./nb.js": "./resources/coreui/node_modules/moment/locale/nb.js",
-	"./ne": "./resources/coreui/node_modules/moment/locale/ne.js",
-	"./ne.js": "./resources/coreui/node_modules/moment/locale/ne.js",
-	"./nl": "./resources/coreui/node_modules/moment/locale/nl.js",
-	"./nl-be": "./resources/coreui/node_modules/moment/locale/nl-be.js",
-	"./nl-be.js": "./resources/coreui/node_modules/moment/locale/nl-be.js",
-	"./nl.js": "./resources/coreui/node_modules/moment/locale/nl.js",
-	"./nn": "./resources/coreui/node_modules/moment/locale/nn.js",
-	"./nn.js": "./resources/coreui/node_modules/moment/locale/nn.js",
-	"./oc-lnc": "./resources/coreui/node_modules/moment/locale/oc-lnc.js",
-	"./oc-lnc.js": "./resources/coreui/node_modules/moment/locale/oc-lnc.js",
-	"./pa-in": "./resources/coreui/node_modules/moment/locale/pa-in.js",
-	"./pa-in.js": "./resources/coreui/node_modules/moment/locale/pa-in.js",
-	"./pl": "./resources/coreui/node_modules/moment/locale/pl.js",
-	"./pl.js": "./resources/coreui/node_modules/moment/locale/pl.js",
-	"./pt": "./resources/coreui/node_modules/moment/locale/pt.js",
-	"./pt-br": "./resources/coreui/node_modules/moment/locale/pt-br.js",
-	"./pt-br.js": "./resources/coreui/node_modules/moment/locale/pt-br.js",
-	"./pt.js": "./resources/coreui/node_modules/moment/locale/pt.js",
-	"./ro": "./resources/coreui/node_modules/moment/locale/ro.js",
-	"./ro.js": "./resources/coreui/node_modules/moment/locale/ro.js",
-	"./ru": "./resources/coreui/node_modules/moment/locale/ru.js",
-	"./ru.js": "./resources/coreui/node_modules/moment/locale/ru.js",
-	"./sd": "./resources/coreui/node_modules/moment/locale/sd.js",
-	"./sd.js": "./resources/coreui/node_modules/moment/locale/sd.js",
-	"./se": "./resources/coreui/node_modules/moment/locale/se.js",
-	"./se.js": "./resources/coreui/node_modules/moment/locale/se.js",
-	"./si": "./resources/coreui/node_modules/moment/locale/si.js",
-	"./si.js": "./resources/coreui/node_modules/moment/locale/si.js",
-	"./sk": "./resources/coreui/node_modules/moment/locale/sk.js",
-	"./sk.js": "./resources/coreui/node_modules/moment/locale/sk.js",
-	"./sl": "./resources/coreui/node_modules/moment/locale/sl.js",
-	"./sl.js": "./resources/coreui/node_modules/moment/locale/sl.js",
-	"./sq": "./resources/coreui/node_modules/moment/locale/sq.js",
-	"./sq.js": "./resources/coreui/node_modules/moment/locale/sq.js",
-	"./sr": "./resources/coreui/node_modules/moment/locale/sr.js",
-	"./sr-cyrl": "./resources/coreui/node_modules/moment/locale/sr-cyrl.js",
-	"./sr-cyrl.js": "./resources/coreui/node_modules/moment/locale/sr-cyrl.js",
-	"./sr.js": "./resources/coreui/node_modules/moment/locale/sr.js",
-	"./ss": "./resources/coreui/node_modules/moment/locale/ss.js",
-	"./ss.js": "./resources/coreui/node_modules/moment/locale/ss.js",
-	"./sv": "./resources/coreui/node_modules/moment/locale/sv.js",
-	"./sv.js": "./resources/coreui/node_modules/moment/locale/sv.js",
-	"./sw": "./resources/coreui/node_modules/moment/locale/sw.js",
-	"./sw.js": "./resources/coreui/node_modules/moment/locale/sw.js",
-	"./ta": "./resources/coreui/node_modules/moment/locale/ta.js",
-	"./ta.js": "./resources/coreui/node_modules/moment/locale/ta.js",
-	"./te": "./resources/coreui/node_modules/moment/locale/te.js",
-	"./te.js": "./resources/coreui/node_modules/moment/locale/te.js",
-	"./tet": "./resources/coreui/node_modules/moment/locale/tet.js",
-	"./tet.js": "./resources/coreui/node_modules/moment/locale/tet.js",
-	"./tg": "./resources/coreui/node_modules/moment/locale/tg.js",
-	"./tg.js": "./resources/coreui/node_modules/moment/locale/tg.js",
-	"./th": "./resources/coreui/node_modules/moment/locale/th.js",
-	"./th.js": "./resources/coreui/node_modules/moment/locale/th.js",
-	"./tl-ph": "./resources/coreui/node_modules/moment/locale/tl-ph.js",
-	"./tl-ph.js": "./resources/coreui/node_modules/moment/locale/tl-ph.js",
-	"./tlh": "./resources/coreui/node_modules/moment/locale/tlh.js",
-	"./tlh.js": "./resources/coreui/node_modules/moment/locale/tlh.js",
-	"./tr": "./resources/coreui/node_modules/moment/locale/tr.js",
-	"./tr.js": "./resources/coreui/node_modules/moment/locale/tr.js",
-	"./tzl": "./resources/coreui/node_modules/moment/locale/tzl.js",
-	"./tzl.js": "./resources/coreui/node_modules/moment/locale/tzl.js",
-	"./tzm": "./resources/coreui/node_modules/moment/locale/tzm.js",
-	"./tzm-latn": "./resources/coreui/node_modules/moment/locale/tzm-latn.js",
-	"./tzm-latn.js": "./resources/coreui/node_modules/moment/locale/tzm-latn.js",
-	"./tzm.js": "./resources/coreui/node_modules/moment/locale/tzm.js",
-	"./ug-cn": "./resources/coreui/node_modules/moment/locale/ug-cn.js",
-	"./ug-cn.js": "./resources/coreui/node_modules/moment/locale/ug-cn.js",
-	"./uk": "./resources/coreui/node_modules/moment/locale/uk.js",
-	"./uk.js": "./resources/coreui/node_modules/moment/locale/uk.js",
-	"./ur": "./resources/coreui/node_modules/moment/locale/ur.js",
-	"./ur.js": "./resources/coreui/node_modules/moment/locale/ur.js",
-	"./uz": "./resources/coreui/node_modules/moment/locale/uz.js",
-	"./uz-latn": "./resources/coreui/node_modules/moment/locale/uz-latn.js",
-	"./uz-latn.js": "./resources/coreui/node_modules/moment/locale/uz-latn.js",
-	"./uz.js": "./resources/coreui/node_modules/moment/locale/uz.js",
-	"./vi": "./resources/coreui/node_modules/moment/locale/vi.js",
-	"./vi.js": "./resources/coreui/node_modules/moment/locale/vi.js",
-	"./x-pseudo": "./resources/coreui/node_modules/moment/locale/x-pseudo.js",
-	"./x-pseudo.js": "./resources/coreui/node_modules/moment/locale/x-pseudo.js",
-	"./yo": "./resources/coreui/node_modules/moment/locale/yo.js",
-	"./yo.js": "./resources/coreui/node_modules/moment/locale/yo.js",
-	"./zh-cn": "./resources/coreui/node_modules/moment/locale/zh-cn.js",
-	"./zh-cn.js": "./resources/coreui/node_modules/moment/locale/zh-cn.js",
-	"./zh-hk": "./resources/coreui/node_modules/moment/locale/zh-hk.js",
-	"./zh-hk.js": "./resources/coreui/node_modules/moment/locale/zh-hk.js",
-	"./zh-mo": "./resources/coreui/node_modules/moment/locale/zh-mo.js",
-	"./zh-mo.js": "./resources/coreui/node_modules/moment/locale/zh-mo.js",
-	"./zh-tw": "./resources/coreui/node_modules/moment/locale/zh-tw.js",
-	"./zh-tw.js": "./resources/coreui/node_modules/moment/locale/zh-tw.js"
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./resources/coreui/node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./resources/coreui/node_modules/reactstrap/es/index.js");
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+
+ // import {register} from './../../../functions/UserFunctions'
+
+var validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+
+var validateForm = function validateForm(errors) {
+  var valid = true;
+  Object.values(errors).forEach(function (val) {
+    return val.length > 0 && (valid = false);
+  });
+  return valid;
 };
 
+var RegisterAirPort = /*#__PURE__*/function (_Component) {
+  _inherits(RegisterAirPort, _Component);
 
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = "./resources/coreui/node_modules/moment/locale sync recursive ^\\.\\/.*$";
+  var _super = _createSuper(RegisterAirPort);
+
+  function RegisterAirPort() {
+    var _this;
+
+    _classCallCheck(this, RegisterAirPort);
+
+    _this = _super.call(this);
+
+    _this.onChange = function (e) {
+      _this.onChangeState(e); // this.handleChange(e)
+
+    };
+
+    _this.handleChange = function (event) {
+      event.preventDefault();
+      var _event$target = event.target,
+          name = _event$target.name,
+          value = _event$target.value;
+      var errors = _this.state.errors; // called to empty thec alert on top of the form
+
+      _this.setState({
+        alert_message: ""
+      });
+
+      switch (name) {
+        // case 'fullName': 
+        //   errors.fullName = 
+        //     value.length < 5
+        //       ? 'Full Name must be at least 5 characters long!'
+        //       : '';
+        //   break;
+        case 'email':
+          errors.email = validEmailRegex.test(value) ? '' : 'Email is not valid!';
+          break;
+
+        case 'password':
+          errors.password = value.length < 8 ? 'Password must be at least 8 characters long!' : '';
+          break;
+
+        case 'confirmPassword':
+          if (_this.state.password !== value) {
+            errors.confirmPassword = "Password and Confirm Password does not match.";
+          } else {
+            errors.confirmPassword = "";
+          }
+
+          break;
+
+        default:
+          break;
+      }
+
+      _this.setState(_defineProperty({
+        errors: errors
+      }, name, value));
+    };
+
+    _this.state = {
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      errorMsg: '',
+      errors: {
+        email: '',
+        password: '',
+        confirmPassword: ''
+      },
+      alert_message: '',
+      avatar: __webpack_require__(/*! ./../../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png"),
+      Cam_Medics: 'Cam-Medics Logo'
+    };
+    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
+    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(RegisterAirPort, [{
+    key: "onChangeState",
+    // onchange for setting state
+    value: function onChangeState(e) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+      this.handleChange(e);
+    }
+  }, {
+    key: "onSubmit",
+    value: function onSubmit(e) {
+      var _this2 = this;
+
+      e.preventDefault(); // validate check if fields are empty
+
+      if (this.state.first_name == "" || this.state.last_name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == "") {
+        this.setState({
+          alert_message: "error"
+        });
+        this.setState({
+          errorMsg: "Please fill all required fields"
+        }); // validate check if theres no error in the form 
+      } else if (validateForm(this.state.errors)) {
+        var newUser = {
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
+          email: this.state.email,
+          password: this.state.password
+        };
+        axios.post('api/user/registerAirPort', newUser, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(function (response) {
+          if (response.data.success) {
+            console.log("The form is correct");
+
+            _this2.setState({
+              alert_message: "success"
+            });
+
+            _this2.props.history.push('/login');
+          } else {
+            console.log(response.data.data);
+            var _response$data$data = response.data.data,
+                first_name = _response$data$data.first_name,
+                last_name = _response$data$data.last_name,
+                email = _response$data$data.email,
+                password = _response$data$data.password; // if email error is returned, loop through it and display else display normal error
+
+            if (email) {
+              email.map(function (emailErr) {
+                _this2.setState({
+                  alert_message: "error"
+                });
+
+                _this2.setState({
+                  errorMsg: emailErr
+                });
+              });
+            } else {
+              _this2.setState({
+                alert_message: "error"
+              });
+
+              _this2.setState({
+                errorMsg: "Please fill form correctly"
+              });
+            }
+          }
+        })["catch"](function (err) {
+          console.log(err); // this.setState({alert_message:"success"});
+
+          _this2.setState({
+            alert_message: "error"
+          });
+
+          _this2.setState({
+            errorMsg: "Please fill form correctly"
+          });
+        });
+      } else {
+        console.error(this.state.errors.email, ", ", this.state.errors.password);
+        this.setState({
+          alert_message: "error"
+        });
+        this.setState({
+          errorMsg: "Please fill form correctly"
+        });
+      }
+    } // this.setState({alert_message:"success"})
+    //           }).catch(error=>{
+    //               this.setState({alert_message:"error"});
+    //           })
+
+  }, {
+    key: "render",
+    value: function render() {
+      var errors = this.state.errors;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "app flex-row align-items-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+        className: "justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: "9",
+        lg: "7",
+        xl: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mb-3 mx-auto text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "",
+        src: this.state.avatar,
+        alt: this.state.Cam_Medics,
+        width: "160"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "mx-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], {
+        className: "p-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+        noValidate: true,
+        onSubmit: this.onSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Create an Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-muted"
+      }, "Create your account and begin registration process"), this.state.alert_message == "success" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
+        color: "success"
+      }, "Registration Successful") : null, this.state.alert_message == "error" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
+        color: "danger"
+      }, this.state.errorMsg) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-user"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        name: "first_name",
+        placeholder: "Enter First Name",
+        value: this.state.first_name,
+        onChange: this.onChange
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-user"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        name: "last_name",
+        placeholder: "Enter Last Name",
+        value: this.state.last_name,
+        onChange: this.onChange
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, "@", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "email",
+        className: "form-control",
+        name: "email",
+        placeholder: "Enter Email",
+        value: this.state.email,
+        onChange: this.onChange // onBlur={this.onChange}
+        ,
+        noValidate: true
+      })), errors.email.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+        style: {
+          marginBottom: 25
+        },
+        className: "mr-1",
+        color: "danger"
+      }, errors.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-lock"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "form-control",
+        name: "password",
+        placeholder: "Enter Password",
+        value: this.state.password,
+        onChange: this.onChange // onBlur={this.onChange}
+        ,
+        noValidate: true
+      })), errors.password.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+        style: {
+          marginBottom: 25
+        },
+        className: "mr-1",
+        color: "danger"
+      }, errors.password), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-lock"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+        type: "password",
+        placeholder: "Confirm password",
+        name: "confirmPassword",
+        value: this.state.confirmPassword,
+        onChange: this.onChange // onBlur={this.onChange}
+        ,
+        noValidate: true
+      })), errors.confirmPassword.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+        style: {
+          marginBottom: 25
+        },
+        className: "mr-1",
+        color: "danger"
+      }, errors.confirmPassword), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-lg kiu-btn btn-block"
+      }, "Sign up")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/#/login_airport"
+      }, "sign in"))))))));
+    }
+  }]);
+
+  return RegisterAirPort;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (RegisterAirPort);
 
 /***/ })
 

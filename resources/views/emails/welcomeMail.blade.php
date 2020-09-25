@@ -1,7 +1,7 @@
 @component('mail::message')
 # {{ $details['title'] }}
 Hello {{ $details['first_name'] }} <br>
-Welcome to Kampala International University.<br>
+Welcome to Cam Medics.<br>
 Click the button below to login with your username and password
    
 @component('mail::button', ['url' => $details['url']])

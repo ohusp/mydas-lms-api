@@ -6,7 +6,7 @@ const ApplicationsList = React.lazy(() => import('./views/Admin/Applications/App
 
 // //////////////////////////////// USER ///////////////////////////////////////////////////////
 const Dashboard = React.lazy(() => import('./views/Dashboard'));
-const Application = React.lazy(() => import('./views/Application'));
+const Profile = React.lazy(() => import('./views/Profile/Profile'));
 
 // ////////////////////////////////////////////////////////////////////////////
 const Breadcrumbs = React.lazy(() => import('./views/Base/Breadcrumbs'));
@@ -52,7 +52,7 @@ const routes = [
 
   // ///////////////////////////// ADMIN ////////////////////////////////////////////////////////////
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
-  { path: '/application', name: 'Application', component: Application },
+  { path: '/profile', name: 'Profile', component: Profile },
 
 
   // ////////////////////////////////////////////////////////////////////////////////////////////////

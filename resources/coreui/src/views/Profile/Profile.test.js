@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Application from './Application';
+import Profile from './Profile';
 import {mount} from 'enzyme/build';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Application />, div);
+  ReactDOM.render(<Profile />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
 
 describe('toggle clicks', function() {
   it('dropdowns without crashing', () => {
-    const wrapper = mount(<Application />);
+    const wrapper = mount(<Profile />);
     for (let i = 0; i < 4; i++) {
       let count = i === 0 ? 'first' : i === 1 ? 'second' : i === 2 ? 'third' : 'fourth'
       let Dropdown = wrapper.find('button.dropdown-toggle').at(i);
@@ -21,7 +21,7 @@ describe('toggle clicks', function() {
     wrapper.unmount()
   });
   it('collapse without crashing', () => {
-    const wrapper = mount(<Application />);
+    const wrapper = mount(<Profile />);
     let collapse = wrapper.find('button.btn-minimize').at(0);
     collapse.simulate('click');
     expect(wrapper.state().collapse).toEqual(false);
@@ -30,7 +30,7 @@ describe('toggle clicks', function() {
     wrapper.unmount()
   });
   it('fade without crashing', () => {
-    const wrapper = mount(<Application />);
+    const wrapper = mount(<Profile />);
     let fade = wrapper.find('button.btn-close').at(0);
     fade.simulate('click');
     expect(wrapper.state().fadeIn).toEqual(false);

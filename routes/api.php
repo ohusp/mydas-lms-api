@@ -35,10 +35,11 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
     Route::get('applications/list', 'Api\ApplicationsController@index');
 
     // ///////////////////// USER ////////////////////////////////////////
-    Route::put('user/update/{id}', 'ApplyController2@update');
-    Route::get('user/get/{id}', 'ApplyController2@show');
-    Route::post('user/uploadId/{id}','ApplyController2@updateIdentity');
-    Route::put('user/updateIdDetails/{id}','ApplyController2@updateIdDetails');
+    Route::get('user/get/{id}', 'PatientsController2@show');
+    Route::put('user/update/{id}', 'PatientsController2@update');
+    Route::put('user/updateMed/{id}', 'PatientsController2@updateMedHis');
+    Route::post('user/updateProfilePicture/{id}','PatientsController2@updateProfilePicture');
+    Route::put('user/shareMedHistory/{id}','PatientsController2@shareMedHistory');
 });
 Route::group(['middleware' => 'api-header'], function () {
   
@@ -50,7 +51,7 @@ Route::group(['middleware' => 'api-header'], function () {
     Route::post('admin/register', 'AdminController@register');
 
     // ///////////////////// USERS //////////////////////////////////////////
-    Route::post('user/apply', 'ApplyController@register');
+    Route::post('user/register', 'ApplyController@register');
     Route::post('user/login', 'ApplyController@login');
     // Route::post('user/forgetpassword', 'ApplyController@forgetpassword');
 
@@ -58,5 +59,18 @@ Route::group(['middleware' => 'api-header'], function () {
     Route::get('user/reset/{code}','PasswordController@reset');
     Route::post('user/checkResetPassword','PasswordController@checkResetPassword');
     Route::post('user/resetPassword','PasswordController@resetPassword');
-    
+
+    // ///////////////////// DOCTORS //////////////////////////////////////////
+    Route::post('user/LoginDoc', 'ApplyController@login');
+    Route::post('user/registerDoc', 'ApplyController@login');
+
+
+    // ///////////////////// PHARM //////////////////////////////////////////
+    Route::post('user/LoginPharm', 'ApplyController@login');
+    Route::post('user/registerPharm', 'ApplyController@login');
+
+
+    // ///////////////////// AIR PORT //////////////////////////////////////////
+    Route::post('user/LoginAirPort', 'ApplyController@login');
+    Route::post('user/registerAirPort', 'ApplyController@login');
 });

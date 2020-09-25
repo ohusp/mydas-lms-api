@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Kampala International University'),
+    'name' => env('APP_NAME', 'Cam Medics'),
 
     /*
     |--------------------------------------------------------------------------

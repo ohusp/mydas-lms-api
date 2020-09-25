@@ -18,8 +18,8 @@ class ForgetPassword extends Component {
         // storedData1: {},
         // storedData2: {},
 
-        avatar: require("./../../../images/logo/kiu-logo.png"),
-        kiu_logo: 'KIU Logo'
+        avatar: require("./../../../images/logo/cam-medics-logo.png"),
+        Cam_Medics: 'Cam-Medics Logo'
     }
 
     this.onChange = this.onChange.bind(this)
@@ -112,8 +112,8 @@ class ForgetPassword extends Component {
                 <img
                   className=""
                   src={this.state.avatar}
-                  alt={this.state.kiu_logo}
-                  width="110"
+                  alt={this.state.Cam_Medics}
+                  width="160"
                 />
               </div>
               <CardGroup>
@@ -168,7 +168,7 @@ class ForgetPassword extends Component {
                       <p>
                         Don't Have An Account?<br></br>
                         <Link to="/apply">
-                          <Button className="mt-3 kiu-btn-sec" active tabIndex={-1}>Register Now!</Button>
+                          <Button className="mt-3 cam-btn-white-bg" active tabIndex={-1}>Register Now!</Button>
                         </Link>
                       </p>
                       

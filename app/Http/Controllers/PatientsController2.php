@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Applications;
+use App\Patients;
 
 // namespace App\Http\Controllers;
 // use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ use App\Applications;
 use JWTAuth;
 use JWTAuthException;
 
-class ApplyController2 extends Controller
+class PatientsController2 extends Controller
 {   
     // public function __construct()
     // {
@@ -26,9 +26,9 @@ class ApplyController2 extends Controller
     public function index()
     {
         //
-        $applications = Applications::paginate(10);
+        $patients = Patients::paginate(10);
         // return $result;
-        $response = ['success'=>true, 'data'=>$applications];
+        $response = ['success'=>true, 'data'=>$patients];
         return response()->json($response, 201);
     }
 
@@ -62,12 +62,12 @@ class ApplyController2 extends Controller
     public function show($id)
     {
         //
-        $application_data = Applications::where('id', '=', $id)->first();
+        $patient_data = Patients::where('id', '=', $id)->first();
 
-        // return $application_data;
+        // return $patient_data;
 
         // get the disabilities values and convert to array
-        $disabilities_new = $application_data->disabilities;
+        $disabilities_new = $patient_data->disabilities;
         $disabilities_new = json_decode($disabilities_new, true);
 
         if( $disabilities_new == "" || $disabilities_new == "null"){
@@ -89,7 +89,9 @@ class ApplyController2 extends Controller
 
 
 
-        $response = ['success'=>true, 'data'=>['auth_token'=>$application_data->auth_token,'id'=>$application_data->id,'first_name'=>$application_data->first_name,'last_name'=>$application_data->last_name, 'middle_name'=>$application_data->middle_name, 'email'=>$application_data->email, 'zip_code'=>$application_data->zip_code, 'telephone'=>$application_data->telephone, 'title'=>$application_data->title, 'gender'=>$application_data->gender, 'dob'=>$application_data->dob, 'nationality'=>$application_data->nationality, 'country_of_residence'=>$application_data->country_of_residence, 'district_province_state'=>$application_data->district_province_state, 'contact_address'=>$application_data->contact_address, 
+        $response = ['success'=>true, 'data'=>['auth_token'=>$patient_data->auth_token,'id'=>$patient_data->id,'first_name'=>$patient_data->first_name,'last_name'=>$patient_data->last_name, 'middle_name'=>$patient_data->middle_name, 'email'=>$patient_data->email, 'zip_code'=>$patient_data->zip_code, 'telephone'=>$patient_data->telephone, 'title'=>$patient_data->title, 'gender'=>$patient_data->gender, 'dob'=>$patient_data->dob, 'nationality'=>$patient_data->nationality, 'country_of_residence'=>$patient_data->country_of_residence, 'district_province_state'=>$patient_data->district_province_state, 'contact_address'=>$patient_data->contact_address,
+        'height'=>$patient_data->height,
+        'weight'=>$patient_data->weight, 
 
             'disability_none'       =>$disability_none,
             'disability_hearing'    =>$disability_hearing,
@@ -98,7 +100,9 @@ class ApplyController2 extends Controller
             'disability_learning'   =>$disability_learning, 
             'disability_others'     =>$disability_others, 
 
-            'parent_guardian_name'=>$application_data->parent_guardian_name, 'parent_guardian_relationship'=>$application_data->parent_guardian_relationship, 'parent_guardian_occupation'=>$application_data->parent_guardian_occupation, 'parent_guardian_phone'=>$application_data->parent_guardian_phone, 'passport_photograph'=>$application_data->passport_photograph, 'type_of_identification'=>$application_data->type_of_identification, 'id_passport_number'=>$application_data->id_passport_number, 'id_passport_upload'=>$application_data->id_passport_upload, 'programme_first_choice'=>$application_data->programme_first_choice, 'programme_second_choice'=>$application_data->programme_second_choice, 'programme_third_choice'=>$application_data->programme_third_choice, 'academic_session'=>$application_data->academic_session, 'admission_intake'=>$application_data->admission_intake, 'study_mode'=>$application_data->study_mode, 'previous_result_transcript'=>$application_data->previous_result_transcript, 'status'=>$application_data->status, 'created_at'=>$application_data->created_at]];
+            'next_kin_name'=>$patient_data->next_kin_name, 'next_kin_relationship'=>$patient_data->next_kin_relationship, 'next_kin_occupation'=>$patient_data->next_kin_occupation, 'next_kin_phone'=>$patient_data->next_kin_phone, 'next_kin_email'=>$patient_data->next_kin_email, 'med_currently_using'=>$patient_data->med_currently_using, 'med_allergies'=>$patient_data->med_allergies, 'med_blood_group'=>$patient_data->med_blood_group, 'med_underlying_conditions'=>$patient_data->med_underlying_conditions, 'med_family_medical_history'=>$patient_data->med_family_medical_history, 'med_hypertensive'=>$patient_data->med_hypertensive, 'med_diabetic'=>$patient_data->med_diabetic, 
+            'profile_picture'=>$patient_data->profile_picture, 
+            'status'=>$patient_data->status, 'created_at'=>$patient_data->created_at]];
 
         return response()->json($response, 201);
     }
@@ -122,15 +126,16 @@ class ApplyController2 extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        // $application_data = Applications::find($id);
-        // $application_data->first_name = $request->first_name;
-        // $application_data->save();
-        // $response = ['success'=>true, 'data'=>$application_data];
+    {   
+        // return $request;
+        // $patient_data = Patients::find($id);
+        // $patient_data->first_name = $request->first_name;
+        // $patient_data->save();
+        // $response = ['success'=>true, 'data'=>$patient_data];
         // return response()->json($response, 201);
 
         // Find user with that id
-        $application_data = Applications::where('id', '=', $id)->first();
+        $patient_data = Patients::where('id', '=', $id)->first();
 
         // get each disability, pass as an array into a variable and merge into a single variable called disabilities
         $disabilities = array(["disability_none" => $request->disability_none, "disability_hearing" => $request->disability_hearing, "disability_mobility" => $request->disability_mobility, "disability_sight" => $request->disability_sight, "disability_learning" => $request->disability_learning, "disability_others" => $request->disability_others]);
@@ -146,61 +151,97 @@ class ApplyController2 extends Controller
         $request->replace($request->except('disability_learning'));
         $request->replace($request->except('disability_others'));
         
-        $application_data->update($request->all());
-        $response = ['success'=>true, 'data'=>$application_data];
+        $patient_data->update($request->all());
+        $response = ['success'=>true, 'data'=>$patient_data];
+        return response()->json($response, 201);
+    }
+
+    public function updateMedHis(Request $request, $id)
+    {   
+        // return $request;
+        // $patient_data = Patients::find($id);
+        // $patient_data->first_name = $request->first_name;
+        // $patient_data->save();
+        // $response = ['success'=>true, 'data'=>$patient_data];
+        // return response()->json($response, 201);
+
+        // Find user with that id
+        $patient_data = Patients::where('id', '=', $id)->first();
+
+        // return $patient_data;
+        
+        $patient_data->update($request->all());
+        $response = ['success'=>true, 'data'=>$patient_data];
+        
         return response()->json($response, 201);
     }
 
     // upload/update applicant's identity pdf
-    public function updateIdentity(Request $request, $id) {
-      
+    public function updateProfilePicture(Request $request, $id) {
+        // return $request;
         $this->validate($request, [
             // 'name' => 'required',
             // 'details' => 'required',
             // 'product_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             // Maximum size of 2MB
-            'id_passport_upload' => 'mimes:pdf|max:2048',
+            'profile_picture' => 'mimes:jpeg,png,jpg|max:2048',
         ]);
         
         // get the user_id to update
-        $application_data = Applications::where('id', '=', $id)->first();
+        $patient_data = Patients::where('id', '=', $id)->first();
 
         // get the file from the request and concartinate time with the name
-        $file = $request->file('id_passport_upload');
+        $file = $request->file('profile_picture');
+
         $fileName = time().'.'.$file->getClientOriginalName();
 
         // Path where the file will be saved
-        $path = '/uploads/identity_uploads/pdf';
+        $path = '/../public/images/uploads/profile_pictures';
         $destinationPath = public_path().$path;
+        // return $destinationPath;
   
         // This moved file to server folder
         $file->move($destinationPath,$fileName);
 
         // save file name in database
-        $application_data->id_passport_upload = $fileName;
-        $application_data->save();
+        $patient_data->profile_picture = "/images/uploads/profile_pictures/".$fileName;
+        $patient_data->save();
 
         // return response
-        $response = ['success'=>true, 'data'=>$application_data];
+        $response = ['success'=>true, 'data'=>$patient_data];
         return response()->json($response, 201);
     }
 
-    public function updateIdDetails(Request $request, $id)
-    {
+    public function shareMedHistory(Request $request, $id)
+    {   
+        // return $request;
+        $share_med_history = $request->share_med_history;
+
+        // Get user id of username. change from patient table to doctor table
+        $doc_airport_data   = Patients::where('email', '=', $share_med_history)->first();
+        $doc_airport_id     = $doc_airport_data->id;
+        
         // Find user with that id
-        $application_data = Applications::where('id', '=', $id)->first();
+        $patient_data   = Patients::where('id', '=', $id)->first();
+        $shared_med_his = $patient_data->share_med_history;
+        // return $shared_med_his;
 
         // Get parameters to update
-        $type_of_identification = $request->type_of_identification;
-        $id_passport_number     = $request->id_passport_number;
+        // $share_med_history = $request->share_med_history;
+        // $id_passport_number     = $request->id_passport_number;
 
         // save file name in database
-        $application_data->type_of_identification = $type_of_identification;
-        $application_data->id_passport_number         = $id_passport_number;
-        $application_data->save();
+        if($shared_med_his == ""){
+            $patient_data->share_med_history = $doc_airport_id;
+            $patient_data->save();
+        }else{
+            $patient_data->share_med_history = $shared_med_his.",".$doc_airport_id;
+            $patient_data->save();
+        }
+        
 
         // return response
-        $response = ['success'=>true, 'data'=>$application_data];
+        $response = ['success'=>true, 'data'=>$patient_data];
         return response()->json($response, 201);
     }
 

@@ -8,11 +8,11 @@
 }
 
 .kiu-bg{
-    background-color: #369752 !important;
+    background-color: #2167ac !important;
 }
 
 .kiu-btn{
-    background-color: #369752 !important;
+    background-color: #2167ac !important;
     color: #fff !important;
 }
 
@@ -22,10 +22,21 @@
 }
 
 .kiu-btn-sec:hover{
-    background-color: #369752;
+    background-color: #2167ac;
     color: #fff;
 }
 
 .kiu-color{
-    color: #369752 !important;
+    color: #2167ac !important;
+}
+
+.cam-btn-white-bg{
+    background-color: #ffffff !important;
+    color: #2167ac !important;
+    box-shadow: 0 8px 6px -6px #ffffff;
+}
+
+.cam-btn-white-bg:hover{
+    background-color: #2167ac !important;
+    color: #ffffff !important;
 }

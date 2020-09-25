@@ -18,8 +18,8 @@ class Login extends Component {
         storedData1: {},
         storedData2: {},
 
-        avatar: require("./../../../images/logo/kiu-logo.png"),
-        kiu_logo: 'KIU Logo'
+        avatar: require("./../../../images/logo/cam-medics-logo.png"),
+        Cam_Medics: 'Cam-Medics Logo'
     }
 
     this.onChange = this.onChange.bind(this)
@@ -54,7 +54,7 @@ class Login extends Component {
         })
         .then(json => {
             if (json.data.success) {
-                alert("Login Successful!");
+                // alert("Login Successful!");
                 const { id, created_at, auth_token, user_type } = json.data.data;
 
                 let userData = {
@@ -112,8 +112,8 @@ class Login extends Component {
                 <img
                   className=""
                   src={this.state.avatar}
-                  alt={this.state.kiu_logo}
-                  width="110"
+                  alt={this.state.Cam_Medics}
+                  width="160"
                 />
               </div>
               <CardGroup>
@@ -178,10 +178,10 @@ class Login extends Component {
                     <div>
                       <h2>Sign up</h2>
                       <p>
-                        As we comply with the Presidential Directive on COVID-19, we would love to inform all stakeholders (including Lecturers and Students) that learning materials are now available here on the Learning Management System.
+                        To continue believing in yourself, believing in the doctors, believing in the treatment, believing in whatever I chose to believe in, that was the most important thing, I decided. It had to be.
                       </p>
-                      <Link to="/apply">
-                        <Button className="mt-3 kiu-btn-sec" active tabIndex={-1}>Register Now!</Button>
+                      <Link to="/register">
+                        <Button className="mt-3 cam-btn-white-bg" active tabIndex={-1}>Register Now!</Button>
                       </Link>
                     </div>
                   </CardBody>

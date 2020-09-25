@@ -1,20 +1,20 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[17],{
 
-/***/ "./resources/coreui/src/images/logo/kiu-logo.png":
-/*!*******************************************************!*\
-  !*** ./resources/coreui/src/images/logo/kiu-logo.png ***!
-  \*******************************************************/
+/***/ "./resources/coreui/src/images/logo/cam-medics-logo.png":
+/*!**************************************************************!*\
+  !*** ./resources/coreui/src/images/logo/cam-medics-logo.png ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/kiu-logo.png?9c6e38e56071ba59ca42078cfed5bca2";
+module.exports = "/images/cam-medics-logo.png?ed1f65b868f552cf68f79f96bf63cb8b";
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/Pages/Login/Login.js":
-/*!*********************************************************!*\
-  !*** ./resources/coreui/src/views/Pages/Login/Login.js ***!
-  \*********************************************************/
+/***/ "./resources/coreui/src/views/Pages/LoginDoc/LoginDoc.js":
+/*!***************************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/LoginDoc/LoginDoc.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -167,15 +167,15 @@ function _getPrototypeOf(o) {
 
 
 
-var Login = /*#__PURE__*/function (_Component) {
-  _inherits(Login, _Component);
+var LoginPharm = /*#__PURE__*/function (_Component) {
+  _inherits(LoginPharm, _Component);
 
-  var _super = _createSuper(Login);
+  var _super = _createSuper(LoginPharm);
 
-  function Login(props) {
+  function LoginPharm(props) {
     var _this;
 
-    _classCallCheck(this, Login);
+    _classCallCheck(this, LoginPharm);
 
     _this = _super.call(this, props);
     _this.state = {
@@ -186,15 +186,15 @@ var Login = /*#__PURE__*/function (_Component) {
       user: {},
       storedData1: {},
       storedData2: {},
-      avatar: __webpack_require__(/*! ./../../../images/logo/kiu-logo.png */ "./resources/coreui/src/images/logo/kiu-logo.png"),
-      kiu_logo: 'KIU Logo'
+      avatar: __webpack_require__(/*! ./../../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png"),
+      Cam_Medics: 'Cam-Medics Logo'
     };
     _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(Login, [{
+  _createClass(LoginPharm, [{
     key: "onChange",
     value: function onChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
@@ -209,7 +209,7 @@ var Login = /*#__PURE__*/function (_Component) {
         email: this.state.email,
         password: this.state.password
       };
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/user/login', {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/user/LoginDoc', {
         email: user.email,
         password: user.password
       }).then(function (response) {
@@ -286,14 +286,14 @@ var Login = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "",
         src: this.state.avatar,
-        alt: this.state.kiu_logo,
-        width: "110"
+        alt: this.state.Cam_Medics,
+        width: "160"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
         className: "p-4"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Form"], {
         noValidate: true,
         onSubmit: this.onSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Doctor Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "text-muted"
       }, "Sign In to your account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], {
         className: "mb-3"
@@ -344,20 +344,20 @@ var Login = /*#__PURE__*/function (_Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], {
         className: "text-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "As we comply with the Presidential Directive on COVID-19, we would love to inform all stakeholders (including Lecturers and Students) that learning materials are now available here on the Learning Management System."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/apply"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "To continue believing in yourself, believing in the doctors, believing in the treatment, believing in whatever I chose to believe in, that was the most important thing, I decided. It had to be."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/register_doc"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        className: "mt-3 kiu-btn-sec",
+        className: "mt-3 cam-btn-white-bg",
         active: true,
         tabIndex: -1
       }, "Register Now!"))))))))));
     }
   }]);
 
-  return Login;
+  return LoginPharm;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Login);
+/* harmony default export */ __webpack_exports__["default"] = (LoginPharm);
 
 /***/ })
 

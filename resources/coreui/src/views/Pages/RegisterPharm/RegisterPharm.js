@@ -12,7 +12,7 @@ const validateForm = errors => {
   return valid;
 };
 
-class Apply extends Component {
+class RegisterPharm extends Component {
   constructor(){
     super()
     this.state = {
@@ -29,8 +29,8 @@ class Apply extends Component {
       },
       alert_message:'',
 
-      avatar: require("./../../../images/logo/kiu-logo.png"),
-      kiu_logo: 'KIU Logo'
+      avatar: require("./../../../images/logo/cam-medics-logo.png"),
+      Cam_Medics: 'Cam-Medics Logo'
     }
 
     this.onChange = this.onChange.bind(this)
@@ -108,7 +108,7 @@ class Apply extends Component {
       }
       
       axios
-        .post('api/user/apply', newUser, {
+        .post('api/user/registerPharm', newUser, {
             headers: { 'Content-Type': 'application/json' }
         })
         .then(response => {
@@ -160,8 +160,8 @@ class Apply extends Component {
                 <img
                   className=""
                   src={this.state.avatar}
-                  alt={this.state.kiu_logo}
-                  width="110"
+                  alt={this.state.Cam_Medics}
+                  width="160"
                 />
               </div>
               <Card className="mx-4">
@@ -271,8 +271,9 @@ class Apply extends Component {
                     </InputGroup>
                     {errors.confirmPassword.length > 0 && <Badge style={{marginBottom: 25}} className="mr-1" color="danger">{errors.confirmPassword}</Badge>}
 
-                    <button type="submit" className="btn btn-lg kiu-btn btn-block">Apply</button>
+                    <button type="submit" className="btn btn-lg kiu-btn btn-block">Sign up</button>
                   </Form>
+                  <br></br><p>Already have an account? <a href="/#/login_pharm">sign in</a></p>
                 </CardBody>
                 {/* <CardFooter className="p-4">
                   <Row>
@@ -293,4 +294,4 @@ class Apply extends Component {
   }
 }
 
-export default Apply;
+export default RegisterPharm;
