@@ -43,11 +43,13 @@ Route::group(['middleware' => ['jwt.auth','api-header']], function () {
 
     // ///////////////////// PHARM ////////////////////////////////////////
     Route::get('pharm/get/{id}', 'PharmController2@show');
-
     Route::put('pharm/update/{id}', 'PharmController2@update');
-    Route::put('pharm/updateMed/{id}', 'PharmController2@updateMedHis');
+
+    // Route::put('pharm/updateMed/{id}', 'PharmController2@updateMedHis');
     Route::post('pharm/updateLogo/{id}','PharmController2@updateLogo');
-    Route::put('pharm/shareMedHistory/{id}','PharmController2@shareMedHistory');
+    // Route::put('pharm/shareMedHistory/{id}','PharmController2@shareMedHistory');
+
+    Route::get('products/list', 'ProductsController@index');
 });
 Route::group(['middleware' => 'api-header'], function () {
   

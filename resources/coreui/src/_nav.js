@@ -55,6 +55,16 @@ export default {
       },
     },
 
+    {
+      name: 'Products',
+      url: '/products',
+      icon: 'icon-speedometer',
+      badge: {
+        variant: 'info',
+        text: 'NEW',
+      },
+    },
+
     // /////////////////////////////////////////////////////////////////////////////////////////
     {
       title: true,

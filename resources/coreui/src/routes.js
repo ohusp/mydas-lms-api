@@ -7,7 +7,10 @@ const ApplicationsList = React.lazy(() => import('./views/Admin/Applications/App
 // //////////////////////////////// USER ///////////////////////////////////////////////////////
 const Dashboard = React.lazy(() => import('./views/Dashboard'));
 const Profile = React.lazy(() => import('./views/Profile/Profile'));
+
+// /////////////////////////////// PHARM //////////////////////////////////////////////
 const ProfilePharm = React.lazy(() => import('./views/ProfilePharm/ProfilePharm'));
+const Products = React.lazy(() => import('./views/Products/Products'));
 
 // ////////////////////////////////////////////////////////////////////////////
 const Breadcrumbs = React.lazy(() => import('./views/Base/Breadcrumbs'));
@@ -51,10 +54,13 @@ const routes = [
   { path: '/admin/admin-dashboard', name: 'Admin Dashboard', component: AdminDashboard },
   { path: '/admin/applications/applications-list', name: 'Applications List', component: ApplicationsList },
 
-  // ///////////////////////////// ADMIN ////////////////////////////////////////////////////////////
+  // ///////////////////////////// USER ////////////////////////////////////////////////////////////
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/profile', name: 'Profile', component: Profile },
+
+  // //////////////////////////// PHARM /////////////////////////////////////////////////
   { path: '/profile_pharm', name: 'Pharmacy Profile', component: ProfilePharm },
+  { path: '/products', name: 'Pharmacy Profile', component: Products },
 
 
   // ////////////////////////////////////////////////////////////////////////////////////////////////

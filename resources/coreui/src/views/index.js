@@ -8,6 +8,7 @@ import { Register, RegisterAirPort, RegisterDoc, RegisterPharm, Login, LoginDoc,
 import Dashboard from './Dashboard';
 import Profile from './Profile';
 import ProfilePharm from './ProfilePharm';
+import Products from './Products';
 
 // //////////////////////////////////////////////////////////////////////////////////////////////
 import {
@@ -55,6 +56,7 @@ export {
   Dashboard,
   Profile,
   ProfilePharm,
+  Products,
 
   // ///////////////////////////////
   Badges,

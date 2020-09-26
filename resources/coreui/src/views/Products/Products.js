@@ -5,6 +5,7 @@ import {createHashHistory} from 'history';
 // import axios from 'axios';
 import axios, { post } from 'axios';
 import $ from "jquery";
+import Pagination from "react-js-pagination";
 
 import {
   Badge,
@@ -30,6 +31,7 @@ import {
   InputGroupText,
   Label,
   Row,
+  Table,
   ListGroupItem,
   Modal, 
   ModalBody, 
@@ -39,7 +41,7 @@ import {
 
 let hashHistory = createHashHistory()
 
-class ProfilePharm extends Component {
+class Products extends Component {
   constructor(props) {
     super(props);
     // ////////////////MODAL
@@ -89,17 +91,19 @@ class ProfilePharm extends Component {
       email: "",
       zip_code: "",
       telephone: "",
-
       pharm_country: "",
       pharm_district_province_state: "",
-
       pharm_address: "",
-
-      
-      // /////////////////////////////////////////////////////////////
-      
       pharm_logo: null,
       // ////////////////////////////////////////////////////
+      applications_list:[],
+        number: 1,
+        activePage:1,
+        itemsCountPerPage:1,
+        totalItemsCount:1,
+        pageRangeDisplayed:3,
+        currentPage2:'',
+        status: '1',
       
 
       status: "",
@@ -123,37 +127,26 @@ class ProfilePharm extends Component {
       startDate: new Date(),
       // //////////////////modal
       primary: false,
-
-      share_med_history: "",
     };
+    this.handlePageChange=this.handlePageChange.bind(this);
   }
 
+  // fetch data from db
   componentDidMount()
-  { 
-    axios.get(`http://localhost:8000/api/pharm/get/`+this.state.id+`?token=${this.state.token}`)
+  {
+    axios.get(`http://localhost:8000/api/products/list?token=${this.state.token}`)
     .then(response => {
-      console.log("It came back");
+      console.log("ROI Cartoon");
       console.log(response);
       return response;
     })
     .then(json => {
       if (json.data.success) {
-        console.log("It came back 2");
         this.setState({ 
-          name: json.data.data.name,
-          username: json.data.data.username,
-          email: json.data.data.email,
-          zip_code: json.data.data.zip_code,
-          telephone: json.data.data.telephone,
-          pharm_country: json.data.data.pharm_country,
-
-          pharm_district_province_state: json.data.data.pharm_district_province_state,
-          pharm_address: json.data.data.pharm_address,
-          
-
-          pharm_logo: json.data.data.pharm_logo,
-
-          status: json.data.data.status,
+          applications_list: json.data.data.data,
+          itemsCountPerPage: json.data.data.per_page,
+          totalItemsCount: json.data.data.total,
+          activePage: json.data.data.current_page
         });
       } else alert("Login Failed!");
     })
@@ -165,7 +158,26 @@ class ProfilePharm extends Component {
     });
   }
 
-  // For datepicker
+  // Pagination handler
+  handlePageChange(pageNumber) {
+    console.log(`active page is ${pageNumber}`);
+    // this.setState({activePage: pageNumber});
+    axios.get(`http://localhost:8000/api/applications/list?token=${this.state.token}&page=`+pageNumber)
+    .then(response => {
+      return response;
+    })
+    .then(json => {
+      if (json.data.success) {
+        this.setState({ 
+          applications_list: json.data.data.data,
+          itemsCountPerPage: json.data.data.per_page,
+          totalItemsCount: json.data.data.total,
+          activePage: json.data.data.current_page
+        });
+      } else alert("Login Failed!");
+    })
+  }
+
   handleChange = date => {
     this.setState({
       startDate: date
@@ -260,9 +272,58 @@ class ProfilePharm extends Component {
       });
   }
 
-  
+  onSubmitMedicalHistory(e)
+  {
+      e.preventDefault();
+      const application_data ={
+        med_currently_using : this.state.medications_currently_using, med_allergies : this.state.allergies, med_blood_group : this.state.blood_group, med_underlying_conditions : this.state.underlying_conditions, med_family_medical_history : this.state.family_medical_history, med_hypertensive : this.state.hypertensive, med_diabetic : this.state.diabetic
+      }
+      axios.put(`http://localhost:8000/api/pharm/updateMed/`+this.state.id+`?token=${this.state.token}`, application_data)
+      .then(response => {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      })
+      .then(json => {
+        if (json.data.success) {
+          this.setState({ 
+            // applications_list: json.data.data.data,
+          });
+        } else alert("Login Failed!");
+      })
+      .catch(error => {
+        // redirect user to previous page if user does not have autorization to the page
+        hashHistory.push('/premontessori');
+        console.error(`An Error Occuredd! ${error}`);
+        
+      });
+  }
 
- 
+  onSubmitShareMedHistory(e)
+  {
+      e.preventDefault();
+      const share_med_data ={
+        share_med_history : this.state.share_med_history
+      }
+      axios.put(`http://localhost:8000/api/pharm/shareMedHistory/`+this.state.id+`?token=${this.state.token}`, share_med_data)
+      .then(response => {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      })
+      .then(json => {
+        if (json.data.success) {
+          this.setState({ 
+            // applications_list: json.data.data.data,
+          });
+        } else alert("Login Failed!");
+      })
+      .catch(error => {
+        // redirect pharm to previous page if pharm does not have autorization to the page
+        hashHistory.push('/premontessori');
+        console.error(`An Error Occuredd! ${error}`);
+      });
+  }
 
   onSubmitCompanyLogo(e){
     // e.preventDefault() // Stop form submit
@@ -331,78 +392,12 @@ class ProfilePharm extends Component {
         </Row><br></br> 
         
         <Row>
-            <Col xs="12" sm="3">
-              <Card>
-              <CardHeader className="border-bottom text-center">
-                <div className="mb-3 mx-auto">
-                  <img
-                    // className="rounded-circle"
-                    src={this.state.pharm_logo}
-                    alt={this.state.name}
-                    width="110"
-                    height="auto"
-                  />
-                </div>
-                <h4 className="mb-0">{this.state.username} </h4>
-                <span className="text-muted d-block mb-2">{this.state.email}</span>
-                <ListGroupItem className="px-4">
-                  <Button block outline color="success" onClick={this.trigerFileUpload}>Update Logo</Button>
-                </ListGroupItem>
-              </CardHeader>
-                {/* ///////////// */}
-                {/* input file to change profile picture */}
-                  <Input 
-                    type="file" 
-                    color="primary"
-                    id="pharm_logo"
-                    style={{display: "none"}}
-                    onChange={this.onChangeCompanyLogo}
-                  />
-                {/* //////////// */}
-
-              <CardBody>
-                <strong className="text-muted d-block mb-2">
-                  {this.state.metaTitle}
-                </strong>
-                {/* <span>{this.state.metaValue}</span> */}
-              </CardBody>
-            </Card>
-            </Col>
-            
-            <Col xs="12" sm="9">
-              {/* ////////////////////// Profile INSTRUCTIONS ////////////////////////////////////// */}
+            <Col xs="12" sm="5">
+              
+              {/* ////////////////////// ADD PRODUCT ////////////////////////////////////// */}
               <Card>
                 <CardHeader>
-                  <i className="fa fa-align-justify"></i><strong>Profile Instructions</strong>
-                  <div className="card-header-actions">
-                    <Button color="primary" onClick={this.toggle_app_instructions} className={'mb-1'} id="" size="sm">Toggle</Button>
-                  </div>
-                </CardHeader>
-                <Collapse isOpen={this.state.collapse_app_instructions}>
-                  <CardBody>
-                    <strong>Thank you for choosing Cam Medics!</strong><br></br><br></br>
-                    All communications regarding your application and responses to your inquiries will be sent to the email address that you have provided in your account. You are therefore encouraged to check your email regularly.<br></br><br></br>
-
-                    Using this account, you can start a new application or resume an existing application.<br></br><br></br>
-
-                    <strong>How to Use</strong><br></br><br></br>
-                    1. Complete the application forms.<br></br>
-                    2. Upload the required academic documents and any other relevant documents.<br></br>
-                    3. Upload your passport photo or take a webcam photo<br></br><br></br>
-
-                    You are required to scan all the academic documents and any other relevant documents prior to starting the online application process. In addition, you are required to have a passport photograph ready, if you do not wish to take a webcam photo.<br></br><br></br>
-
-                    If you complete and submit your application without academic documents or with partial academic documents, you can still use this account to upload the required documents.<br></br><br></br>
-
-                    Editing Application Information: Before making the final submission of your application, you can edit your application information. However, after making the final submission of the application form, you will not be able to edit it.
-                  </CardBody>
-                </Collapse>
-              </Card>
-            
-              {/* ////////////////////// PERSONAL DATA ////////////////////////////////////// */}
-              <Card>
-                <CardHeader>
-                  <i className="fa fa-align-justify"></i><strong>Pharmacy Data</strong>
+                  <i className="fa fa-align-justify"></i><strong>Add A new Product</strong>
                   <div className="card-header-actions">
                     <Button color="primary" onClick={this.toggle} className={'mb-1'} id="" size="sm">Toggle</Button>
                   </div>
@@ -416,39 +411,33 @@ class ProfilePharm extends Component {
                           <FormGroup>
                             <InputGroup>
                               <InputGroupAddon addonType="prepend">
-                                <InputGroupText>Name</InputGroupText>
+                                <InputGroupText>Product Name</InputGroupText>
                               </InputGroupAddon>
-                              <Input type="text" id="name" defaultValue={this.state.name} onChange={this.onChangeName} />
+                              <Input type="text" id="product_name" defaultValue={this.state.product_name} onChange={this.onChangeProductName} />
                               <InputGroupAddon addonType="append">
                                 <InputGroupText><i className="fa fa-user"></i></InputGroupText>
                               </InputGroupAddon>
                             </InputGroup>
                           </FormGroup>
-                          {/* //// PHONE NUMBER //////// */}
+                          {/* //// DESCRIPTION //////// */}
                           <FormGroup>
                             <InputGroup>
                               <InputGroupAddon addonType="prepend">
-                                <InputGroupText>Phone Number</InputGroupText>
+                                <InputGroupText>Description</InputGroupText>
                               </InputGroupAddon>
-                              <Input type="select" id="zip_code" value={this.state.zip_code} onChange={this.onChangeZipCode}>
-                                <option value="0"> Zip Code </option>
-                                <option value="NG (+234)">NG (+234)</option>
-                                <option value="UG (+256)">UG (+256)</option>
-                              </Input>
-                              <Input type="text" id="telephone" defaultValue={this.state.telephone} onChange={this.onChangeTelephone} />
+                              <Input type="textarea" id="product_description" rows="3" defaultValue={this.state.product_description} onChange={this.onChangeProductDescription} placeholder="enter product description" />
                               <InputGroupAddon addonType="append">
                                 <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
                               </InputGroupAddon>
                             </InputGroup>
                           </FormGroup>
-
-                          {/* //// COUNTRY OF RESIDENCE //////// */}
+                          {/* //// CATEGORY //////// */}
                           <FormGroup>
                             <InputGroup>
                               <InputGroupAddon addonType="prepend">
-                                <InputGroupText>Country</InputGroupText>
+                                <InputGroupText>Category</InputGroupText>
                               </InputGroupAddon>
-                              <Input type="select" id="pharm_country" value={this.state.pharm_country} onChange={this.onChangePharmCountry}>
+                              <Input type="select" id="product_category" value={this.state.product_category} onChange={this.onChangeProductCategory}>
                                 <option value="0"> --- select --- </option>
                                 <option value="1">Ghana</option>
                                 <option value="2">Nigeria</option>
@@ -458,30 +447,31 @@ class ProfilePharm extends Component {
                               </InputGroupAddon>
                             </InputGroup>
                           </FormGroup>
-                          {/* //// DISTRICT/PROVINCE/STATE //////// */}
+                          {/* //// PRICE //////// */}
                           <FormGroup>
                             <InputGroup>
                               <InputGroupAddon addonType="prepend">
-                                <InputGroupText>District/Province/State</InputGroupText>
+                                <InputGroupText>Price</InputGroupText>
                               </InputGroupAddon>
-                              <Input type="text" id="pharm_district_province_state" defaultValue={this.state.pharm_district_province_state} onChange={this.onChangeDistrictProvinceState}/>
+                              <Input type="text" id="product_price" defaultValue={this.state.product_price} onChange={this.onChangeProductPrice}/>
                               <InputGroupAddon addonType="append">
                                 <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
                               </InputGroupAddon>
                             </InputGroup>
                           </FormGroup>
-                          {/* //// CONTACT ADDRESS //////// */}
+                          {/* //// QTY //////// */}
                           <FormGroup>
                             <InputGroup>
                               <InputGroupAddon addonType="prepend">
-                                <InputGroupText>Address</InputGroupText>
+                                <InputGroupText>Quantity</InputGroupText>
                               </InputGroupAddon>
-                              <Input type="textarea" id="pharm_address" rows="2" defaultValue={this.state.pharm_address} onChange={this.onChangePharmAddress} placeholder=" Address" />
+                              <Input type="text" id="product_qty" defaultValue={this.state.product_qty} onChange={this.onChangeProductQty}/>
                               <InputGroupAddon addonType="append">
                                 <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
                               </InputGroupAddon>
                             </InputGroup>
-                          </FormGroup>                       
+                          </FormGroup>
+                                                 
                         </Col>
                       </Row>
                       <FormGroup className="form-actions">
@@ -492,6 +482,70 @@ class ProfilePharm extends Component {
                 </Collapse>
               </Card>
             
+            </Col>
+            {/* ///////// PRODUCTS TABLE ///////////// */}
+            <Col xs="12" lg="7">
+              <Card>
+                <CardHeader>
+                  <i className="fa fa-align-justify"></i> Products
+                </CardHeader>
+                <CardBody>
+                  <Table responsive bordered>
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        // Calculation for the page S/N
+                        this.state.currentPage = ((this.state.activePage * 10) - (10 - 1)),
+                        // ////////////////////////////////////////////////////////////
+                        this.state.applications_list.map(application=>{
+                          if(application.status == 1){
+                            this.state.status = <Badge color="success">Completed</Badge>;
+                          }else{
+                            this.state.status = <Badge color="danger">Not Complete</Badge>;
+                          }
+                          return(
+                            <tr key={application.id}>
+                              {/* <th scope="row">{this.state.pageNumber++}</th> */}
+                              <th scope="row">{this.state.currentPage++}</th>
+                              <td>{application.name}</td>
+                              <td>{application.description}</td>
+                              <td>{application.category}</td>
+                              <td>{application.price}</td>
+                              <td>{application.qty}</td>
+                              <td>{this.state.status}</td>
+                              <td>
+                              <Button size="sm" className="btn-facebook btn-brand icon mr-1 mb-1"><i className="fa fa-eye"></i></Button>
+                              </td>
+                            </tr>
+                          )
+                        })
+                      }
+                    </tbody>
+                  </Table>
+                  <div className="d-flex justify-content-center">
+                    <Pagination
+                      activePage={this.state.activePage}
+                      itemsCountPerPage={this.state.itemsCountPerPage}
+                      totalItemsCount={this.state.totalItemsCount}
+                      pageRangeDisplayed={this.state.pageRangeDisplayed}
+                      onChange={this.handlePageChange}
+                      itemClass='page-item'
+                      linkClass='page-link'
+                    />
+                  </div>
+                </CardBody>
+              </Card>
             </Col>
 
             
@@ -504,4 +558,4 @@ class ProfilePharm extends Component {
   }
 }
 
-export default ProfilePharm;
+export default Products;
