@@ -7,6 +7,7 @@ import { ApplicationsList } from './Admin/Applications';
 import { Register, RegisterAirPort, RegisterDoc, RegisterPharm, Login, LoginDoc, LoginPharm, LoginAirPort, Page404, Page500 } from './Pages';
 import Dashboard from './Dashboard';
 import Profile from './Profile';
+import ProfilePharm from './ProfilePharm';
 
 // //////////////////////////////////////////////////////////////////////////////////////////////
 import {
@@ -53,6 +54,7 @@ export {
   LoginDoc,
   Dashboard,
   Profile,
+  ProfilePharm,
 
   // ///////////////////////////////
   Badges,

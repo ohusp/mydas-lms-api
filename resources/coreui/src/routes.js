@@ -7,6 +7,7 @@ const ApplicationsList = React.lazy(() => import('./views/Admin/Applications/App
 // //////////////////////////////// USER ///////////////////////////////////////////////////////
 const Dashboard = React.lazy(() => import('./views/Dashboard'));
 const Profile = React.lazy(() => import('./views/Profile/Profile'));
+const ProfilePharm = React.lazy(() => import('./views/ProfilePharm/ProfilePharm'));
 
 // ////////////////////////////////////////////////////////////////////////////
 const Breadcrumbs = React.lazy(() => import('./views/Base/Breadcrumbs'));
@@ -53,6 +54,7 @@ const routes = [
   // ///////////////////////////// ADMIN ////////////////////////////////////////////////////////////
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/profile', name: 'Profile', component: Profile },
+  { path: '/profile_pharm', name: 'Pharmacy Profile', component: ProfilePharm },
 
 
   // ////////////////////////////////////////////////////////////////////////////////////////////////
