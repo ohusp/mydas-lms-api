@@ -1,499 +1,379 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[9],{
 
-/***/ "./resources/coreui/node_modules/paginator/index.js":
-/*!**********************************************************!*\
-  !*** ./resources/coreui/node_modules/paginator/index.js ***!
-  \**********************************************************/
+/***/ "./node_modules/reactstrap/lib/utils.js":
+/*!**********************************************!*\
+  !*** ./node_modules/reactstrap/lib/utils.js ***!
+  \**********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = Paginator;
+"use strict";
 
-// Paginator constructor
-//
-// `per_page` is the number of results per page, `length` is the number of
-// pages to display. They default to `25` and `10` respectively.
-function Paginator(per_page, length) {
-  // You really should be calling this with `new Paginator`, but WHATEVER.
-  if (!(this instanceof Paginator)) {
-    return new Paginator(per_page, length);
-  }
 
-  // Woo, defaults!
-  this.per_page = per_page || 25;
-  this.length = length || 10;
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+exports.__esModule = true;
+exports.getScrollbarWidth = getScrollbarWidth;
+exports.setScrollbarWidth = setScrollbarWidth;
+exports.isBodyOverflowing = isBodyOverflowing;
+exports.getOriginalBodyPadding = getOriginalBodyPadding;
+exports.conditionallyUpdateScrollbar = conditionallyUpdateScrollbar;
+exports.setGlobalCssModule = setGlobalCssModule;
+exports.mapToCssModules = mapToCssModules;
+exports.omit = omit;
+exports.pick = pick;
+exports.warnOnce = warnOnce;
+exports.deprecated = deprecated;
+exports.DOMElement = DOMElement;
+exports.isReactRefObj = isReactRefObj;
+exports.toNumber = toNumber;
+exports.isObject = isObject;
+exports.isFunction = isFunction;
+exports.findDOMElements = findDOMElements;
+exports.isArrayOrNodeList = isArrayOrNodeList;
+exports.getTarget = getTarget;
+exports.addMultipleEventListeners = addMultipleEventListeners;
+exports.focusableElements = exports.defaultToggleEvents = exports.canUseDOM = exports.PopperPlacements = exports.keyCodes = exports.TransitionStatuses = exports.TransitionPropTypeKeys = exports.TransitionTimeouts = exports.tagPropType = exports.targetPropType = void 0;
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+// https://github.com/twbs/bootstrap/blob/v4.0.0-alpha.4/js/src/modal.js#L436-L443
+function getScrollbarWidth() {
+  var scrollDiv = document.createElement('div'); // .modal-scrollbar-measure styles // https://github.com/twbs/bootstrap/blob/v4.0.0-alpha.4/scss/_modal.scss#L106-L113
+
+  scrollDiv.style.position = 'absolute';
+  scrollDiv.style.top = '-9999px';
+  scrollDiv.style.width = '50px';
+  scrollDiv.style.height = '50px';
+  scrollDiv.style.overflow = 'scroll';
+  document.body.appendChild(scrollDiv);
+  var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+  document.body.removeChild(scrollDiv);
+  return scrollbarWidth;
 }
 
-// Build an object with all the necessary information for outputting pagination
-// controls.
-//
-// (new Paginator(paginator.build(100, 2)
-Paginator.prototype.build = function(total_results, current_page) {
-  // We want the number of pages, rounded up to the nearest page.
-  var total_pages = Math.ceil(total_results / this.per_page);
+function setScrollbarWidth(padding) {
+  document.body.style.paddingRight = padding > 0 ? padding + "px" : null;
+}
 
-  // Ensure both total_results and current_page are treated as Numbers
-  total_results = parseInt(total_results, 10);
-  current_page  = parseInt(current_page, 10) || 1;
+function isBodyOverflowing() {
+  return document.body.clientWidth < window.innerWidth;
+}
 
-  // Obviously we can't be on a negative or 0 page.
-  if (current_page < 1) { current_page = 1; }
-  // If the user has done something like /page/99999 we want to clamp that back
-  // down.
-  if (current_page > total_pages) { current_page = total_pages; }
+function getOriginalBodyPadding() {
+  var style = window.getComputedStyle(document.body, null);
+  return parseInt(style && style.getPropertyValue('padding-right') || 0, 10);
+}
 
-  // This is the first page to be displayed as a numbered link.
-  var first_page = Math.max(1, current_page - Math.floor(this.length / 2));
+function conditionallyUpdateScrollbar() {
+  var scrollbarWidth = getScrollbarWidth(); // https://github.com/twbs/bootstrap/blob/v4.0.0-alpha.6/js/src/modal.js#L433
 
-  // And here's the last page to be displayed specifically.
-  var last_page = Math.min(total_pages, current_page + Math.floor(this.length / 2));
+  var fixedContent = document.querySelectorAll('.fixed-top, .fixed-bottom, .is-fixed, .sticky-top')[0];
+  var bodyPadding = fixedContent ? parseInt(fixedContent.style.paddingRight || 0, 10) : 0;
 
-  // This is triggered if we're at or near one of the extremes; we won't have
-  // enough page links. We need to adjust our bounds accordingly.
-  if (last_page - first_page + 1 < this.length) {
-    if (current_page < (total_pages / 2)) {
-      last_page = Math.min(total_pages, last_page + (this.length - (last_page - first_page)));
-    } else {
-      first_page = Math.max(1, first_page - (this.length - (last_page - first_page)));
-    }
+  if (isBodyOverflowing()) {
+    setScrollbarWidth(bodyPadding + scrollbarWidth);
+  }
+}
+
+var globalCssModule;
+
+function setGlobalCssModule(cssModule) {
+  globalCssModule = cssModule;
+}
+
+function mapToCssModules(className, cssModule) {
+  if (className === void 0) {
+    className = '';
   }
 
-  // This can be triggered if the user wants an odd number of pages.
-  if (last_page - first_page + 1 > this.length) {
-    // We want to move towards whatever extreme we're closest to at the time.
-    if (current_page > (total_pages / 2)) {
-      first_page++;
-    } else {
-      last_page--;
-    }
+  if (cssModule === void 0) {
+    cssModule = globalCssModule;
   }
 
-  // First result on the page. This, along with the field below, can be used to
-  // do "showing x to y of z results" style things.
-  var first_result = this.per_page * (current_page - 1);
-  if (first_result < 0) { first_result = 0; }
+  if (!cssModule) return className;
+  return className.split(' ').map(function (c) {
+    return cssModule[c] || c;
+  }).join(' ');
+}
+/**
+ * Returns a new object with the key/value pairs from `obj` that are not in the array `omitKeys`.
+ */
 
-  // Last result on the page.
-  var last_result = (this.per_page * current_page) - 1;
-  if (last_result < 0) { last_result = 0; }
-  if (last_result > Math.max(total_results - 1, 0)) { last_result = Math.max(total_results - 1, 0); }
 
-  // GIMME THAT OBJECT
-  return {
-    total_pages: total_pages,
-    pages: Math.min(last_page - first_page + 1, total_pages),
-    current_page: current_page,
-    first_page: first_page,
-    last_page: last_page,
-    previous_page: current_page - 1,
-    next_page: current_page + 1,
-    has_previous_page: current_page > 1,
-    has_next_page: current_page < total_pages,
-    total_results: total_results,
-    results: Math.min(last_result - first_result + 1, total_results),
-    first_result: first_result,
-    last_result: last_result,
+function omit(obj, omitKeys) {
+  var result = {};
+  Object.keys(obj).forEach(function (key) {
+    if (omitKeys.indexOf(key) === -1) {
+      result[key] = obj[key];
+    }
+  });
+  return result;
+}
+/**
+ * Returns a filtered copy of an object with only the specified keys.
+ */
+
+
+function pick(obj, keys) {
+  var pickKeys = Array.isArray(keys) ? keys : [keys];
+  var length = pickKeys.length;
+  var key;
+  var result = {};
+
+  while (length > 0) {
+    length -= 1;
+    key = pickKeys[length];
+    result[key] = obj[key];
+  }
+
+  return result;
+}
+
+var warned = {};
+
+function warnOnce(message) {
+  if (!warned[message]) {
+    /* istanbul ignore else */
+    if (typeof console !== 'undefined') {
+      console.error(message); // eslint-disable-line no-console
+    }
+
+    warned[message] = true;
+  }
+}
+
+function deprecated(propType, explanation) {
+  return function validate(props, propName, componentName) {
+    if (props[propName] !== null && typeof props[propName] !== 'undefined') {
+      warnOnce("\"" + propName + "\" property of \"" + componentName + "\" has been deprecated.\n" + explanation);
+    }
+
+    for (var _len = arguments.length, rest = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
+      rest[_key - 3] = arguments[_key];
+    }
+
+    return propType.apply(void 0, [props, propName, componentName].concat(rest));
   };
+} // Shim Element if needed (e.g. in Node environment)
+
+
+var Element = typeof window === 'object' && window.Element || function () {};
+
+function DOMElement(props, propName, componentName) {
+  if (!(props[propName] instanceof Element)) {
+    return new Error('Invalid prop `' + propName + '` supplied to `' + componentName + '`. Expected prop to be an instance of Element. Validation failed.');
+  }
+}
+
+var targetPropType = _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func, DOMElement, _propTypes.default.shape({
+  current: _propTypes.default.any
+})]);
+
+exports.targetPropType = targetPropType;
+
+var tagPropType = _propTypes.default.oneOfType([_propTypes.default.func, _propTypes.default.string, _propTypes.default.shape({
+  $$typeof: _propTypes.default.symbol,
+  render: _propTypes.default.func
+}), _propTypes.default.arrayOf(_propTypes.default.oneOfType([_propTypes.default.func, _propTypes.default.string, _propTypes.default.shape({
+  $$typeof: _propTypes.default.symbol,
+  render: _propTypes.default.func
+})]))]);
+/* eslint key-spacing: ["error", { afterColon: true, align: "value" }] */
+// These are all setup to match what is in the bootstrap _variables.scss
+// https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss
+
+
+exports.tagPropType = tagPropType;
+var TransitionTimeouts = {
+  Fade: 150,
+  // $transition-fade
+  Collapse: 350,
+  // $transition-collapse
+  Modal: 300,
+  // $modal-transition
+  Carousel: 600 // $carousel-transition
+
+}; // Duplicated Transition.propType keys to ensure that Reactstrap builds
+// for distribution properly exclude these keys for nested child HTML attributes
+// since `react-transition-group` removes propTypes in production builds.
+
+exports.TransitionTimeouts = TransitionTimeouts;
+var TransitionPropTypeKeys = ['in', 'mountOnEnter', 'unmountOnExit', 'appear', 'enter', 'exit', 'timeout', 'onEnter', 'onEntering', 'onEntered', 'onExit', 'onExiting', 'onExited'];
+exports.TransitionPropTypeKeys = TransitionPropTypeKeys;
+var TransitionStatuses = {
+  ENTERING: 'entering',
+  ENTERED: 'entered',
+  EXITING: 'exiting',
+  EXITED: 'exited'
 };
+exports.TransitionStatuses = TransitionStatuses;
+var keyCodes = {
+  esc: 27,
+  space: 32,
+  enter: 13,
+  tab: 9,
+  up: 38,
+  down: 40,
+  home: 36,
+  end: 35,
+  n: 78,
+  p: 80
+};
+exports.keyCodes = keyCodes;
+var PopperPlacements = ['auto-start', 'auto', 'auto-end', 'top-start', 'top', 'top-end', 'right-start', 'right', 'right-end', 'bottom-end', 'bottom', 'bottom-start', 'left-end', 'left', 'left-start'];
+exports.PopperPlacements = PopperPlacements;
+var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+exports.canUseDOM = canUseDOM;
 
-
-/***/ }),
-
-/***/ "./resources/coreui/node_modules/react-js-pagination/dist/Page.js":
-/*!************************************************************************!*\
-  !*** ./resources/coreui/node_modules/react-js-pagination/dist/Page.js ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./resources/coreui/node_modules/react/index.js"));
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./resources/coreui/node_modules/prop-types/index.js"));
-
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./resources/coreui/node_modules/classnames/index.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var Page =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Page, _Component);
-
-  function Page() {
-    _classCallCheck(this, Page);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Page).apply(this, arguments));
+function isReactRefObj(target) {
+  if (target && typeof target === 'object') {
+    return 'current' in target;
   }
 
-  _createClass(Page, [{
-    key: "handleClick",
-    value: function handleClick(e) {
-      var _this$props = this.props,
-          isDisabled = _this$props.isDisabled,
-          pageNumber = _this$props.pageNumber;
-      e.preventDefault();
+  return false;
+}
 
-      if (isDisabled) {
-        return;
-      }
-
-      this.props.onClick(pageNumber);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _cx;
-
-      var _this$props2 = this.props,
-          pageText = _this$props2.pageText,
-          pageNumber = _this$props2.pageNumber,
-          activeClass = _this$props2.activeClass,
-          itemClass = _this$props2.itemClass,
-          linkClass = _this$props2.linkClass,
-          activeLinkClass = _this$props2.activeLinkClass,
-          disabledClass = _this$props2.disabledClass,
-          isActive = _this$props2.isActive,
-          isDisabled = _this$props2.isDisabled,
-          href = _this$props2.href,
-          ariaLabel = _this$props2.ariaLabel;
-      var css = (0, _classnames["default"])(itemClass, (_cx = {}, _defineProperty(_cx, activeClass, isActive), _defineProperty(_cx, disabledClass, isDisabled), _cx));
-      var linkCss = (0, _classnames["default"])(linkClass, _defineProperty({}, activeLinkClass, isActive));
-      return _react["default"].createElement("li", {
-        className: css,
-        onClick: this.handleClick.bind(this)
-      }, _react["default"].createElement("a", {
-        className: linkCss,
-        href: href,
-        "aria-label": ariaLabel
-      }, pageText));
-    }
-  }]);
-
-  return Page;
-}(_react.Component);
-
-exports["default"] = Page;
-
-_defineProperty(Page, "propTypes", {
-  pageText: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].element]),
-  pageNumber: _propTypes["default"].number.isRequired,
-  onClick: _propTypes["default"].func.isRequired,
-  isActive: _propTypes["default"].bool.isRequired,
-  isDisabled: _propTypes["default"].bool,
-  activeClass: _propTypes["default"].string,
-  activeLinkClass: _propTypes["default"].string,
-  itemClass: _propTypes["default"].string,
-  linkClass: _propTypes["default"].string,
-  disabledClass: _propTypes["default"].string,
-  href: _propTypes["default"].string
-});
-
-_defineProperty(Page, "defaultProps", {
-  activeClass: "active",
-  disabledClass: "disabled",
-  itemClass: undefined,
-  linkClass: undefined,
-  activeLinkCLass: undefined,
-  isActive: false,
-  isDisabled: false,
-  href: "#"
-});
-
-/***/ }),
-
-/***/ "./resources/coreui/node_modules/react-js-pagination/dist/Pagination.js":
-/*!******************************************************************************!*\
-  !*** ./resources/coreui/node_modules/react-js-pagination/dist/Pagination.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./resources/coreui/node_modules/react/index.js"));
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./resources/coreui/node_modules/prop-types/index.js"));
-
-var _paginator = _interopRequireDefault(__webpack_require__(/*! paginator */ "./resources/coreui/node_modules/paginator/index.js"));
-
-var _Page = _interopRequireDefault(__webpack_require__(/*! ./Page */ "./resources/coreui/node_modules/react-js-pagination/dist/Page.js"));
-
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./resources/coreui/node_modules/classnames/index.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var Pagination =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(Pagination, _React$Component);
-
-  function Pagination() {
-    _classCallCheck(this, Pagination);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Pagination).apply(this, arguments));
+function getTag(value) {
+  if (value == null) {
+    return value === undefined ? '[object Undefined]' : '[object Null]';
   }
 
-  _createClass(Pagination, [{
-    key: "isFirstPageVisible",
-    value: function isFirstPageVisible(has_previous_page) {
-      var _this$props = this.props,
-          hideDisabled = _this$props.hideDisabled,
-          hideNavigation = _this$props.hideNavigation,
-          hideFirstLastPages = _this$props.hideFirstLastPages;
-      if (hideFirstLastPages || hideDisabled && !has_previous_page) return false;
-      return true;
-    }
-  }, {
-    key: "isPrevPageVisible",
-    value: function isPrevPageVisible(has_previous_page) {
-      var _this$props2 = this.props,
-          hideDisabled = _this$props2.hideDisabled,
-          hideNavigation = _this$props2.hideNavigation;
-      if (hideNavigation || hideDisabled && !has_previous_page) return false;
-      return true;
-    }
-  }, {
-    key: "isNextPageVisible",
-    value: function isNextPageVisible(has_next_page) {
-      var _this$props3 = this.props,
-          hideDisabled = _this$props3.hideDisabled,
-          hideNavigation = _this$props3.hideNavigation;
-      if (hideNavigation || hideDisabled && !has_next_page) return false;
-      return true;
-    }
-  }, {
-    key: "isLastPageVisible",
-    value: function isLastPageVisible(has_next_page) {
-      var _this$props4 = this.props,
-          hideDisabled = _this$props4.hideDisabled,
-          hideNavigation = _this$props4.hideNavigation,
-          hideFirstLastPages = _this$props4.hideFirstLastPages;
-      if (hideFirstLastPages || hideDisabled && !has_next_page) return false;
-      return true;
-    }
-  }, {
-    key: "buildPages",
-    value: function buildPages() {
-      var pages = [];
-      var _this$props5 = this.props,
-          itemsCountPerPage = _this$props5.itemsCountPerPage,
-          pageRangeDisplayed = _this$props5.pageRangeDisplayed,
-          activePage = _this$props5.activePage,
-          prevPageText = _this$props5.prevPageText,
-          nextPageText = _this$props5.nextPageText,
-          firstPageText = _this$props5.firstPageText,
-          lastPageText = _this$props5.lastPageText,
-          totalItemsCount = _this$props5.totalItemsCount,
-          onChange = _this$props5.onChange,
-          activeClass = _this$props5.activeClass,
-          itemClass = _this$props5.itemClass,
-          itemClassFirst = _this$props5.itemClassFirst,
-          itemClassPrev = _this$props5.itemClassPrev,
-          itemClassNext = _this$props5.itemClassNext,
-          itemClassLast = _this$props5.itemClassLast,
-          activeLinkClass = _this$props5.activeLinkClass,
-          disabledClass = _this$props5.disabledClass,
-          hideDisabled = _this$props5.hideDisabled,
-          hideNavigation = _this$props5.hideNavigation,
-          linkClass = _this$props5.linkClass,
-          linkClassFirst = _this$props5.linkClassFirst,
-          linkClassPrev = _this$props5.linkClassPrev,
-          linkClassNext = _this$props5.linkClassNext,
-          linkClassLast = _this$props5.linkClassLast,
-          hideFirstLastPages = _this$props5.hideFirstLastPages,
-          getPageUrl = _this$props5.getPageUrl;
-      var paginationInfo = new _paginator["default"](itemsCountPerPage, pageRangeDisplayed).build(totalItemsCount, activePage);
+  return Object.prototype.toString.call(value);
+}
 
-      for (var i = paginationInfo.first_page; i <= paginationInfo.last_page; i++) {
-        pages.push(_react["default"].createElement(_Page["default"], {
-          isActive: i === activePage,
-          key: i,
-          href: getPageUrl(i),
-          pageNumber: i,
-          pageText: i + "",
-          onClick: onChange,
-          itemClass: itemClass,
-          linkClass: linkClass,
-          activeClass: activeClass,
-          activeLinkClass: activeLinkClass,
-          ariaLabel: "Go to page number ".concat(i)
-        }));
-      }
+function toNumber(value) {
+  var type = typeof value;
+  var NAN = 0 / 0;
 
-      this.isPrevPageVisible(paginationInfo.has_previous_page) && pages.unshift(_react["default"].createElement(_Page["default"], {
-        key: "prev" + paginationInfo.previous_page,
-        href: getPageUrl(paginationInfo.previous_page),
-        pageNumber: paginationInfo.previous_page,
-        onClick: onChange,
-        pageText: prevPageText,
-        isDisabled: !paginationInfo.has_previous_page,
-        itemClass: (0, _classnames["default"])(itemClass, itemClassPrev),
-        linkClass: (0, _classnames["default"])(linkClass, linkClassPrev),
-        disabledClass: disabledClass,
-        ariaLabel: "Go to previous page"
-      }));
-      this.isFirstPageVisible(paginationInfo.has_previous_page) && pages.unshift(_react["default"].createElement(_Page["default"], {
-        key: "first",
-        href: getPageUrl(1),
-        pageNumber: 1,
-        onClick: onChange,
-        pageText: firstPageText,
-        isDisabled: !paginationInfo.has_previous_page,
-        itemClass: (0, _classnames["default"])(itemClass, itemClassFirst),
-        linkClass: (0, _classnames["default"])(linkClass, linkClassFirst),
-        disabledClass: disabledClass,
-        ariaLabel: "Go to first page"
-      }));
-      this.isNextPageVisible(paginationInfo.has_next_page) && pages.push(_react["default"].createElement(_Page["default"], {
-        key: "next" + paginationInfo.next_page,
-        href: getPageUrl(paginationInfo.next_page),
-        pageNumber: paginationInfo.next_page,
-        onClick: onChange,
-        pageText: nextPageText,
-        isDisabled: !paginationInfo.has_next_page,
-        itemClass: (0, _classnames["default"])(itemClass, itemClassNext),
-        linkClass: (0, _classnames["default"])(linkClass, linkClassNext),
-        disabledClass: disabledClass,
-        ariaLabel: "Go to next page"
-      }));
-      this.isLastPageVisible(paginationInfo.has_next_page) && pages.push(_react["default"].createElement(_Page["default"], {
-        key: "last",
-        href: getPageUrl(paginationInfo.total_pages),
-        pageNumber: paginationInfo.total_pages,
-        onClick: onChange,
-        pageText: lastPageText,
-        isDisabled: paginationInfo.current_page === paginationInfo.total_pages,
-        itemClass: (0, _classnames["default"])(itemClass, itemClassLast),
-        linkClass: (0, _classnames["default"])(linkClass, linkClassLast),
-        disabledClass: disabledClass,
-        ariaLabel: "Go to last page"
-      }));
-      return pages;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var pages = this.buildPages();
-      return _react["default"].createElement("ul", {
-        className: this.props.innerClass
-      }, pages);
-    }
-  }]);
-
-  return Pagination;
-}(_react["default"].Component);
-
-exports["default"] = Pagination;
-
-_defineProperty(Pagination, "propTypes", {
-  totalItemsCount: _propTypes["default"].number.isRequired,
-  onChange: _propTypes["default"].func.isRequired,
-  activePage: _propTypes["default"].number,
-  itemsCountPerPage: _propTypes["default"].number,
-  pageRangeDisplayed: _propTypes["default"].number,
-  prevPageText: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].element]),
-  nextPageText: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].element]),
-  lastPageText: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].element]),
-  firstPageText: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].element]),
-  disabledClass: _propTypes["default"].string,
-  hideDisabled: _propTypes["default"].bool,
-  hideNavigation: _propTypes["default"].bool,
-  innerClass: _propTypes["default"].string,
-  itemClass: _propTypes["default"].string,
-  itemClassFirst: _propTypes["default"].string,
-  itemClassPrev: _propTypes["default"].string,
-  itemClassNext: _propTypes["default"].string,
-  itemClassLast: _propTypes["default"].string,
-  linkClass: _propTypes["default"].string,
-  activeClass: _propTypes["default"].string,
-  activeLinkClass: _propTypes["default"].string,
-  linkClassFirst: _propTypes["default"].string,
-  linkClassPrev: _propTypes["default"].string,
-  linkClassNext: _propTypes["default"].string,
-  linkClassLast: _propTypes["default"].string,
-  hideFirstLastPages: _propTypes["default"].bool,
-  getPageUrl: _propTypes["default"].func
-});
-
-_defineProperty(Pagination, "defaultProps", {
-  itemsCountPerPage: 10,
-  pageRangeDisplayed: 5,
-  activePage: 1,
-  prevPageText: "⟨",
-  firstPageText: "«",
-  nextPageText: "⟩",
-  lastPageText: "»",
-  innerClass: "pagination",
-  itemClass: undefined,
-  linkClass: undefined,
-  activeLinkClass: undefined,
-  hideFirstLastPages: false,
-  getPageUrl: function getPageUrl(i) {
-    return "#";
+  if (type === 'number') {
+    return value;
   }
-});
+
+  if (type === 'symbol' || type === 'object' && getTag(value) === '[object Symbol]') {
+    return NAN;
+  }
+
+  if (isObject(value)) {
+    var other = typeof value.valueOf === 'function' ? value.valueOf() : value;
+    value = isObject(other) ? "" + other : other;
+  }
+
+  if (type !== 'string') {
+    return value === 0 ? value : +value;
+  }
+
+  value = value.replace(/^\s+|\s+$/g, '');
+  var isBinary = /^0b[01]+$/i.test(value);
+  return isBinary || /^0o[0-7]+$/i.test(value) ? parseInt(value.slice(2), isBinary ? 2 : 8) : /^[-+]0x[0-9a-f]+$/i.test(value) ? NAN : +value;
+}
+
+function isObject(value) {
+  var type = typeof value;
+  return value != null && (type === 'object' || type === 'function');
+}
+
+function isFunction(value) {
+  if (!isObject(value)) {
+    return false;
+  }
+
+  var tag = getTag(value);
+  return tag === '[object Function]' || tag === '[object AsyncFunction]' || tag === '[object GeneratorFunction]' || tag === '[object Proxy]';
+}
+
+function findDOMElements(target) {
+  if (isReactRefObj(target)) {
+    return target.current;
+  }
+
+  if (isFunction(target)) {
+    return target();
+  }
+
+  if (typeof target === 'string' && canUseDOM) {
+    var selection = document.querySelectorAll(target);
+
+    if (!selection.length) {
+      selection = document.querySelectorAll("#" + target);
+    }
+
+    if (!selection.length) {
+      throw new Error("The target '" + target + "' could not be identified in the dom, tip: check spelling");
+    }
+
+    return selection;
+  }
+
+  return target;
+}
+
+function isArrayOrNodeList(els) {
+  if (els === null) {
+    return false;
+  }
+
+  return Array.isArray(els) || canUseDOM && typeof els.length === 'number';
+}
+
+function getTarget(target, allElements) {
+  var els = findDOMElements(target);
+
+  if (allElements) {
+    if (isArrayOrNodeList(els)) {
+      return els;
+    }
+
+    if (els === null) {
+      return [];
+    }
+
+    return [els];
+  } else {
+    if (isArrayOrNodeList(els)) {
+      return els[0];
+    }
+
+    return els;
+  }
+}
+
+var defaultToggleEvents = ['touchstart', 'click'];
+exports.defaultToggleEvents = defaultToggleEvents;
+
+function addMultipleEventListeners(_els, handler, _events, useCapture) {
+  var els = _els;
+
+  if (!isArrayOrNodeList(els)) {
+    els = [els];
+  }
+
+  var events = _events;
+
+  if (typeof events === 'string') {
+    events = events.split(/\s+/);
+  }
+
+  if (!isArrayOrNodeList(els) || typeof handler !== 'function' || !Array.isArray(events)) {
+    throw new Error("\n      The first argument of this function must be DOM node or an array on DOM nodes or NodeList.\n      The second must be a function.\n      The third is a string or an array of strings that represents DOM events\n    ");
+  }
+
+  Array.prototype.forEach.call(events, function (event) {
+    Array.prototype.forEach.call(els, function (el) {
+      el.addEventListener(event, handler, useCapture);
+    });
+  });
+  return function removeEvents() {
+    Array.prototype.forEach.call(events, function (event) {
+      Array.prototype.forEach.call(els, function (el) {
+        el.removeEventListener(event, handler, useCapture);
+      });
+    });
+  };
+}
+
+var focusableElements = ['a[href]', 'area[href]', 'input:not([disabled]):not([type=hidden])', 'select:not([disabled])', 'textarea:not([disabled])', 'button:not([disabled])', 'object', 'embed', '[tabindex]:not(.modal)', 'audio[controls]', 'video[controls]', '[contenteditable]:not([contenteditable="false"])'];
+exports.focusableElements = focusableElements;
 
 /***/ })
 

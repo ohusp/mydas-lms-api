@@ -1,6 +1,0 @@
-{
-  "name": "RegisterAirPort",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./RegisterAirPort.js"
-}

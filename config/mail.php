@@ -85,7 +85,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'info@cammedics.com'),
-        'name' => env('MAIL_FROM_NAME', 'Cam Medics'),
+        'name' => env('MAIL_FROM_NAME', 'CamMedics'),
     ],
 
     /*

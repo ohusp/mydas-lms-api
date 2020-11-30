@@ -1,0 +1,6 @@
+{
+  "name": "LabListPatients",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./LabListPatients.js"
+}

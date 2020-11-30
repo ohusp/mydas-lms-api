@@ -1,19 +1,30 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[46],{
 
-/***/ "./resources/coreui/src/views/Base/Tabs/Tabs.js":
-/*!******************************************************!*\
-  !*** ./resources/coreui/src/views/Base/Tabs/Tabs.js ***!
-  \******************************************************/
+/***/ "./resources/coreui/src/images/logo/cam-medics-logo.png":
+/*!**************************************************************!*\
+  !*** ./resources/coreui/src/images/logo/cam-medics-logo.png ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
+
+/***/ }),
+
+/***/ "./resources/coreui/src/views/Pages/RegisterHospital/RegisterHospital.js":
+/*!*******************************************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/RegisterHospital/RegisterHospital.js ***!
+  \*******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./resources/coreui/node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./resources/coreui/node_modules/reactstrap/es/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./resources/coreui/node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! aes */ "./node_modules/aes/index.js");
+/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(aes__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -28,6 +39,21 @@ function _typeof(obj) {
   }
 
   return _typeof(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -132,196 +158,379 @@ function _getPrototypeOf(o) {
 }
 
 
+ // import {register} from './../../../functions/UserFunctions'
 
 
+var validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 
-var Tabs = /*#__PURE__*/function (_Component) {
-  _inherits(Tabs, _Component);
+var validateForm = function validateForm(errors) {
+  var valid = true;
+  Object.values(errors).forEach(function (val) {
+    return val.length > 0 && (valid = false);
+  });
+  return valid;
+};
 
-  var _super = _createSuper(Tabs);
+var RegisterHospital = /*#__PURE__*/function (_Component) {
+  _inherits(RegisterHospital, _Component);
 
-  function Tabs(props) {
+  var _super = _createSuper(RegisterHospital);
+
+  function RegisterHospital() {
     var _this;
 
-    _classCallCheck(this, Tabs);
+    _classCallCheck(this, RegisterHospital);
 
-    _this = _super.call(this, props);
-    _this.toggle = _this.toggle.bind(_assertThisInitialized(_this));
-    _this.state = {
-      activeTab: new Array(4).fill('1')
+    _this = _super.call(this);
+
+    _this.onChange = function (e) {
+      _this.onChangeState(e); // this.handleChange(e)
+
     };
+
+    _this.handleChange = function (event) {
+      event.preventDefault();
+      var _event$target = event.target,
+          name = _event$target.name,
+          value = _event$target.value;
+      var errors = _this.state.errors; // called to empty thec alert on top of the form
+
+      _this.setState({
+        alert_message: ""
+      });
+
+      switch (name) {
+        // case 'fullName': 
+        //   errors.fullName = 
+        //     value.length < 5
+        //       ? 'Full Name must be at least 5 characters long!'
+        //       : '';
+        //   break;
+        case 'email':
+          errors.email = validEmailRegex.test(value) ? '' : 'Email is not valid!';
+          break;
+
+        case 'password':
+          errors.password = value.length < 8 ? 'Password must be at least 8 characters long!' : '';
+          break;
+
+        case 'confirmPassword':
+          if (_this.state.password !== value) {
+            errors.confirmPassword = "Password and Confirm Password does not match.";
+          } else {
+            errors.confirmPassword = "";
+          }
+
+          break;
+
+        default:
+          break;
+      }
+
+      _this.setState(_defineProperty({
+        errors: errors
+      }, name, value));
+    };
+
+    _this.state = {
+      username: '',
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      errorMsg: '',
+      errors: {
+        email: '',
+        password: '',
+        confirmPassword: ''
+      },
+      alert_message: '',
+      avatar: __webpack_require__(/*! ./../../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png"),
+      Cam_Medics: 'Cam-Medics Logo'
+    };
+    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
+    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(Tabs, [{
-    key: "lorem",
-    value: function lorem() {
-      return 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.';
+  _createClass(RegisterHospital, [{
+    key: "onChangeState",
+    // onchange for setting state
+    value: function onChangeState(e) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+      this.handleChange(e);
     }
   }, {
-    key: "toggle",
-    value: function toggle(tabPane, tab) {
-      var newArray = this.state.activeTab.slice();
-      newArray[tabPane] = tab;
-      this.setState({
-        activeTab: newArray
-      });
-    }
-  }, {
-    key: "tabPane",
-    value: function tabPane() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["TabPane"], {
-        tabId: "1"
-      }, "1. ".concat(this.lorem())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["TabPane"], {
-        tabId: "2"
-      }, "2. ".concat(this.lorem())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["TabPane"], {
-        tabId: "3"
-      }, "3. ".concat(this.lorem())));
-    }
+    key: "onSubmit",
+    value: function onSubmit(e) {
+      var _this2 = this;
+
+      e.preventDefault(); // validate check if fields are empty
+
+      if (this.state.username == "" || this.state.name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == "") {
+        this.setState({
+          alert_message: "error"
+        });
+        this.setState({
+          errorMsg: "Please fill all required fields"
+        }); // validate check if theres no error in the form 
+      } else if (validateForm(this.state.errors)) {
+        var newUser = {
+          username: this.state.username,
+          name: this.state.name,
+          email: this.state.email,
+          password: this.state.password
+        };
+        var encrypted_user_data = Object(aes__WEBPACK_IMPORTED_MODULE_2__["AesEncrypt"])(newUser, 'where do you go when you by yourself');
+        axios.post('api/hospital/register', {
+          user: encrypted_user_data
+        }, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(function (response) {
+          if (response.data.success) {
+            // console.log("The form is correct")
+            _this2.setState({
+              alert_message: "success"
+            }); // redirect after 3 secs
+
+
+            var timer = setTimeout(function () {
+              _this2.props.history.push('/login_hospital');
+            }, 3000);
+          } else {
+            // console.log(response.data.data)
+            var _response$data$data = response.data.data,
+                username = _response$data$data.username,
+                first_name = _response$data$data.first_name,
+                last_name = _response$data$data.last_name,
+                email = _response$data$data.email,
+                password = _response$data$data.password; // if email error is returned, loop through it and display else display normal error
+
+            if (email) {
+              email.map(function (emailErr) {
+                _this2.setState({
+                  alert_message: "error"
+                });
+
+                _this2.setState({
+                  errorMsg: emailErr
+                });
+              });
+            } else if (username) {
+              username.map(function (usernameErr) {
+                _this2.setState({
+                  alert_message: "error"
+                });
+
+                _this2.setState({
+                  errorMsg: usernameErr
+                });
+              });
+            } else {
+              _this2.setState({
+                alert_message: "error"
+              });
+
+              _this2.setState({
+                errorMsg: "Please fill form correctly"
+              });
+            }
+          }
+        })["catch"](function (err) {
+          // console.log(err)
+          // this.setState({alert_message:"success"});
+          _this2.setState({
+            alert_message: "error"
+          });
+
+          _this2.setState({
+            errorMsg: "Please fill form correctly"
+          });
+        });
+      } else {
+        console.error(this.state.errors.email, ", ", this.state.errors.password);
+        this.setState({
+          alert_message: "error"
+        });
+        this.setState({
+          errorMsg: "Please fill form correctly"
+        });
+      }
+    } // this.setState({alert_message:"success"})
+    //           }).catch(error=>{
+    //               this.setState({alert_message:"error"});
+    //           })
+
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
+      var errors = this.state.errors;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "animated fadeIn"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        xs: "12",
-        md: "6",
-        className: "mb-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], {
-        tabs: true
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        active: this.state.activeTab[0] === '1',
-        onClick: function onClick() {
-          _this2.toggle(0, '1');
+        className: "app flex-row align-items-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+        className: "justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: "9",
+        lg: "7",
+        xl: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mb-3 mx-auto text-center",
+        style: {
+          marginTop: "100px"
         }
-      }, "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        active: this.state.activeTab[0] === '2',
-        onClick: function onClick() {
-          _this2.toggle(0, '2');
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://cammedics.com"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "",
+        src: this.state.avatar,
+        alt: this.state.Cam_Medics,
+        width: "160"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "text-center",
+        style: {
+          marginTop: "15px"
         }
-      }, "Profile")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        active: this.state.activeTab[0] === '3',
-        onClick: function onClick() {
-          _this2.toggle(0, '3');
-        }
-      }, "Messages"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["TabContent"], {
-        activeTab: this.state.activeTab[0]
-      }, this.tabPane())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        xs: "12",
-        md: "6",
-        className: "mb-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], {
-        tabs: true
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        active: this.state.activeTab[1] === '1',
-        onClick: function onClick() {
-          _this2.toggle(1, '1');
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-calculator"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        active: this.state.activeTab[1] === '2',
-        onClick: function onClick() {
-          _this2.toggle(1, '2');
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-basket-loaded"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        active: this.state.activeTab[1] === '3',
-        onClick: function onClick() {
-          _this2.toggle(1, '3');
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-pie-chart"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["TabContent"], {
-        activeTab: this.state.activeTab[1]
-      }, this.tabPane())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        xs: "12",
-        md: "6",
-        className: "mb-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], {
-        tabs: true
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        active: this.state.activeTab[2] === '1',
-        onClick: function onClick() {
-          _this2.toggle(2, '1');
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-calculator"
-      }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: this.state.activeTab[2] === '1' ? '' : 'd-none'
-      }, " Calculator"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        active: this.state.activeTab[2] === '2',
-        onClick: function onClick() {
-          _this2.toggle(2, '2');
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-basket-loaded"
-      }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: this.state.activeTab[2] === '2' ? '' : 'd-none'
-      }, " Shopping cart"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        className: classnames__WEBPACK_IMPORTED_MODULE_2___default()({
-          active: this.state.activeTab[2] === '3'
-        }),
-        onClick: function onClick() {
-          _this2.toggle(2, '3');
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-pie-chart"
-      }), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: this.state.activeTab[2] === '3' ? '' : 'd-none'
-      }, " Charts")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["TabContent"], {
-        activeTab: this.state.activeTab[2]
-      }, this.tabPane())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        xs: "12",
-        md: "6",
-        className: "mb-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], {
-        tabs: true
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        active: this.state.activeTab[3] === '1',
-        onClick: function onClick() {
-          _this2.toggle(3, '1');
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-calculator"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: this.state.activeTab[3] === '1' ? '' : 'd-none'
-      }, " Calc"), "\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+      }, "Hospital")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "mx-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], {
+        className: "p-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+        noValidate: true,
+        onSubmit: this.onSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Create an Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-muted"
+      }, "Create your account and begin registration process"), this.state.alert_message == "success" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
         color: "success"
-      }, "New"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        active: this.state.activeTab[3] === '2',
-        onClick: function onClick() {
-          _this2.toggle(3, '2');
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-basket-loaded"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: this.state.activeTab[3] === '2' ? '' : 'd-none'
-      }, " Cart"), "\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
-        pill: true,
+      }, "Registration Successful") : null, this.state.alert_message == "error" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
         color: "danger"
-      }, "29"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        active: this.state.activeTab[3] === '3',
-        onClick: function onClick() {
-          _this2.toggle(3, '3');
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-pie-chart"
+      }, this.state.errorMsg) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-user"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: this.state.activeTab[3] === '3' ? '' : 'd-none'
-      }, " Charts")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["TabContent"], {
-        activeTab: this.state.activeTab[3]
-      }, this.tabPane()))));
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        name: "username",
+        placeholder: "enter username",
+        value: this.state.username,
+        onChange: this.onChange
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-user"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        name: "name",
+        placeholder: "enter name",
+        value: this.state.name,
+        onChange: this.onChange
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, "@", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "email",
+        className: "form-control",
+        name: "email",
+        placeholder: "enter email",
+        value: this.state.email,
+        onChange: this.onChange // onBlur={this.onChange}
+        ,
+        noValidate: true
+      })), errors.email.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+        style: {
+          marginBottom: 25
+        },
+        className: "mr-1",
+        color: "danger"
+      }, errors.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-lock"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "form-control",
+        name: "password",
+        placeholder: "enter password",
+        onChange: this.onChange // onBlur={this.onChange}
+        ,
+        noValidate: true
+      })), errors.password.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+        style: {
+          marginBottom: 25
+        },
+        className: "mr-1",
+        color: "danger"
+      }, errors.password), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-lock"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+        type: "password",
+        placeholder: "Confirm password",
+        name: "confirmPassword",
+        value: this.state.confirmPassword,
+        onChange: this.onChange // onBlur={this.onChange}
+        ,
+        noValidate: true
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-4",
+        style: {
+          marginLeft: "25px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+        className: "form-check-input",
+        type: "checkbox",
+        required: true
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "I agree to CamMedics", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/#/terms_conditions",
+        target: "_blank"
+      }, " Terms & Conditions"), ", ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/#/privacy_policy",
+        target: "_blank"
+      }, "Privacy Policy"), " and", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/#/providers_agreement",
+        target: "_blank"
+      }, "Providers' Agreement"))), errors.confirmPassword.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+        style: {
+          marginBottom: 25
+        },
+        className: "mr-1",
+        color: "danger"
+      }, errors.confirmPassword), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-lg kiu-btn btn-block"
+      }, "Sign up")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/#/login_hospital"
+      }, "sign in"))))))));
     }
   }]);
 
-  return Tabs;
+  return RegisterHospital;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Tabs);
+/* harmony default export */ __webpack_exports__["default"] = (RegisterHospital);
 
 /***/ })
 

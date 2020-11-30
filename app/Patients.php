@@ -22,7 +22,7 @@ class Patients extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'middle_name', 'email', 'zip_code', 'telephone', 'password', 'auth_token', 'ev_code', 'title', 'gender', 'dob', 'nationality', 'country_of_residence', 'district_province_state', 'contact_address', 'height', 'weight', 'disabilities', 'next_kin_name', 'next_kin_relationship', 'next_kin_occupation', 'next_kin_phone', 'next_kin_email', 'med_currently_using', 'med_allergies', 'med_blood_group', 'med_underlying_conditions', 'med_family_medical_history', 'med_hypertensive', 'med_diabetic', 'profile_picture', 'status'
+        'username', 'first_name', 'last_name', 'middle_name', 'email', 'zip_code', 'telephone', 'password', 'auth_token', 'ev_code', 'title', 'gender', 'gender_others', 'dob', 'nationality', 'country_of_residence', 'district_province_state', 'contact_address', 'height', 'weight', 'disabilities', 'next_kin_name', 'next_kin_relationship', 'next_kin_occupation', 'next_kin_phone', 'next_kin_email', 'med_currently_using', 'med_allergies', 'med_blood_group', 'med_underlying_conditions', 'med_family_medical_history', 'med_hypertensive', 'med_diabetic', 'med_prescription', 'med_lab_test', 'med_note', 'profile_picture', 'bank_name', 'bank_account_name', 'bank_account_number', 'allow_patient_update_med', 'status'
     ];
 
     /**

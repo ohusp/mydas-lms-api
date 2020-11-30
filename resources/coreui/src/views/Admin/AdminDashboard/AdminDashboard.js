@@ -21,7 +21,11 @@ import {
   Table,
 } from 'reactstrap';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
-import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities'
+import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
+
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+
 
 const Widget03 = lazy(() => import('../../../views/Widgets/Widget03'));
 
@@ -462,8 +466,12 @@ class AdminDashboard extends Component {
     this.state = {
       dropdownOpen: false,
       radioSelected: 2,
+
+      date: new Date(),
     };
   }
+
+  onChange = date => this.setState({ date })
 
   toggle() {
     this.setState({
@@ -483,6 +491,50 @@ class AdminDashboard extends Component {
 
     return (
       <div className="animated fadeIn">
+        <Row>
+          <Col xs="12" sm="12" md="12">
+            <Card className="border-primary">
+              <CardHeader>
+                <strong>THE MANY USES OF CAMMEDICS!!!</strong>
+              </CardHeader>
+              <CardBody>
+                CamMedics is a telemedicine portal with the slogan "Hospital without borders" because of it's one of a kind intergregated system that brings doctors, pharmacies, medical laboratories and community health certifications under one roof.<br></br>
+                If the most powerful and protected couple in the world can catch coronavirus,  then you cannot be too safe. An extra layer of protection from the pandemic, is a no brainer. It comes highly recommended. <br></br><br></br>
+            
+                CamMedics is essential in this direction. You can book your video appointment and consultation with your favourite doctor on the portal.
+                You can also search, invite  and see any doctor in the world on CamMedics, no matter your location or theirs.<br></br>
+                By using the platform, your choice of medical practitioners is practically limitless. You can reach the most renowned medical experts/specialists and  literally have them at your finger tips. <br></br><br></br>
+                It also enables you to minimise your physical exposure to viral infections while maximising the comfort and convenience of your medical treatment. <br></br>
+                For doctors, medical professionals and facilities, it opens up a whole new world of patients, not in any way limited by geographical location. <br></br><br></br>
+            
+                Hospitals can also use CamMedics to protect  doctors and other medical professionals. <br></br>
+                By using CamMedics, non- essential in-person visits can be totally eliminated thereby reducing the potential viral load in our medical facilities and making our hospitals safer for patients and providers.<br></br><br></br>
+            
+                Frequent travellers can also overcome the challenge and inconvenience of International travels occasioned by a world reopening after a global pandemic by enjoying the advantage of an easy to retrieve, safe and secure online medical record that follows you where ever you go and can be shared at anytime and with the medical doctor or medical facility of your choice. <br></br><br></br>
+            
+                This also makes it easy to produce proof of medical tests, health certifications and evidence of vaccinations to various Airport and health officials. <br></br>
+                Additionally, you can facilitate your medical tests and receive the result directly without a need for a repeat physical visit on the site. <br></br>
+                Reputable Pharmacies with with the most affordable prescription drugs can also be found on CamMedics. <br></br><br></br>
+            
+                CamMedics first of it's kind, Pre- boarding Medical Screening (PBMS), is the most comprehensive, safe  and reliable medical screening system currently available any where in the world. Its special video feature enables  Airport  and health officials to physically evaluate potential International passengers, verify relevant medical records, certifications and vaccinations and accurately see on a case by case basis, the level of risk each passenger poses to the destination community. <br></br>
+                The is a huge innovation in keeping passengers, airline workers, transportation officials, citizens and residents, safe.<br></br>
+                It also delivers a much needed efficient and convenient travel experience to wary passengers. This will go a long way in encouraging millions to resume traveling and reassure communities not to stigmatize international visitors.<br></br><br></br>
+            
+                Similarly, CamMedics Pre- arrival medical screening (PAMS), can also be used by locations with sensitive and vulnerable occupants to medically evaluate visitors before their arrival. <br></br>
+                Schools, Government offices, Parliaments, businesses with a large volume of daily traffic, can create a safe bubble by using this feature. <br></br><br></br>
+            
+                CamMedics is a hospital without borders, where innovative cutting-edge technology, meets premium medical care.<br></br>
+                It's all about you.
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+        {/* <div>
+          <Calendar
+            onChange={this.onChange}
+            value={this.state.date}
+          />
+        </div>
         <Row>
           <Col xs="12" sm="6" lg="3">
             <Card className="text-white bg-info">
@@ -1119,8 +1171,8 @@ class AdminDashboard extends Component {
                 </Table>
               </CardBody>
             </Card>
-          </Col>
-        </Row>
+          </Col> 
+         </Row> */}
       </div>
     );
   }

@@ -7,7 +7,7 @@ Please click the button below to reset your password.
 Reset Password
 @endcomponent
 
-If you have any issues logging in with your new password please contact us support@elearning.kiu.ac.ug 
+If you have any issues logging in with your new password please contact us support@cammedics.com 
 
 Thanks,
 

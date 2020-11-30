@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Badge, Alert } from 'reactstrap';
 // import {register} from './../../../functions/UserFunctions'
-
+import SweetAlert from 'sweetalert2-react';
+import { AesEncrypt, AesDecrypt } from 'aes';
 
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -16,6 +17,7 @@ class RegisterDoc extends Component {
   constructor(){
     super()
     this.state = {
+      username: '',
       first_name: '',
       last_name: '',
       email: '',
@@ -28,6 +30,8 @@ class RegisterDoc extends Component {
         confirmPassword: '',
       },
       alert_message:'',
+      successMessage: "Successful",
+      errorMessage: "Failed",
 
       avatar: require("./../../../images/logo/cam-medics-logo.png"),
       Cam_Medics: 'Cam-Medics Logo'
@@ -94,45 +98,57 @@ class RegisterDoc extends Component {
     e.preventDefault()
 
     // validate check if fields are empty
-    if(this.state.first_name == "" || this.state.last_name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == ""){
+    if(this.state.username == "" || this.state.first_name == "" || this.state.last_name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == ""){
       this.setState({alert_message:"error"});
       this.setState({errorMsg:"Please fill all required fields"});
 
     // validate check if theres no error in the form 
     }else if(validateForm(this.state.errors)) {
       const newUser = {
+        username: this.state.username,
         first_name: this.state.first_name,
         last_name: this.state.last_name,
         email: this.state.email,
         password: this.state.password
       }
+
+      const encrypted_user_data = AesEncrypt(newUser, 'where do you go when you by yourself' );
       
       axios
-        .post('api/user/registerDoc', newUser, {
+        .post('api/doctor/register', { user: encrypted_user_data }, {
             headers: { 'Content-Type': 'application/json' }
         })
         .then(response => {
           if(response.data.success){
-            console.log("The form is correct")
+            // console.log("The form is correct")
             this.setState({alert_message:"success"});
-            this.props.history.push('/login')
+            // redirect after 3 secs
+            const timer = setTimeout(() => {
+              this.props.history.push('/login_doctor')
+            }, 3000);
           }else{
-            console.log(response.data.data)
-            const { first_name, last_name, email, password } = response.data.data;
+            // console.log(response.data.data)
+            const { username, first_name, last_name, email, password } = response.data.data;
             // if email error is returned, loop through it and display else display normal error
             if(email){
               email.map(emailErr=>{ 
                 this.setState({alert_message:"error"});
                 this.setState({errorMsg: emailErr});
               })
+            }else if(username){
+              username.map(usernameErr=>{ 
+                this.setState({alert_message:"error"});
+                this.setState({errorMsg: usernameErr});
+              })
             }else{
               this.setState({alert_message:"error"});
               this.setState({errorMsg:"Please fill form correctly"});
             }
+            
           } 
         })
         .catch(err => {
-            console.log(err)
+            // console.log(err)
             // this.setState({alert_message:"success"});
             this.setState({alert_message:"error"});
             this.setState({errorMsg:"Please fill form correctly"});
@@ -156,13 +172,16 @@ class RegisterDoc extends Component {
         <Container>
           <Row className="justify-content-center">
             <Col md="9" lg="7" xl="6">
-              <div className="mb-3 mx-auto text-center">
-                <img
-                  className=""
-                  src={this.state.avatar}
-                  alt={this.state.Cam_Medics}
-                  width="160"
-                />
+              <div className="mb-3 mx-auto text-center"  style={{marginTop: "100px"}}>
+                <a href="https://cammedics.com">
+                  <img
+                    className=""
+                    src={this.state.avatar}
+                    alt={this.state.Cam_Medics}
+                    width="160"
+                  />
+                </a>
+                <h5 className="text-center" style={{marginTop: "15px"}}>Doctors</h5>
               </div>
               <Card className="mx-4">
                 <CardBody className="p-4">
@@ -181,6 +200,21 @@ class RegisterDoc extends Component {
                         {this.state.errorMsg}
                       </Alert>
                     :null}
+                    {/* Username */}
+                    <InputGroup className="mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="icon-user"></i>
+                          <span className="asterisk">*</span>
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <input type="text"
+                      className="form-control"
+                      name="username"
+                      placeholder="Enter Username"
+                      value={this.state.username}
+                      onChange={this.onChange}/>
+                    </InputGroup>
 
                     {/* First Name */}
                     <InputGroup className="mb-3">
@@ -209,7 +243,7 @@ class RegisterDoc extends Component {
                       <input type="text"
                       className="form-control"
                       name="last_name"
-                      placeholder="Enter Last Name"
+                      placeholder="enter last name"
                       value={this.state.last_name}
                       onChange={this.onChange}/>
                     </InputGroup>
@@ -225,7 +259,7 @@ class RegisterDoc extends Component {
                       <input type="email"
                       className="form-control"
                       name="email"
-                      placeholder="Enter Email"
+                      placeholder="enter email"
                       value={this.state.email}
                       onChange={this.onChange}
                       // onBlur={this.onChange}
@@ -244,12 +278,12 @@ class RegisterDoc extends Component {
                       <input type="password"
                       className="form-control"
                       name="password"
-                      placeholder="Enter Password"
-                      value={this.state.password}
+                      placeholder="enter password"
                       onChange={this.onChange}
                       // onBlur={this.onChange}
                       noValidate/>
                     </InputGroup>
+                    
                     {errors.password.length > 0 && <Badge style={{marginBottom: 25}} className="mr-1" color="danger">{errors.password}</Badge>}
 
                     {/* Confirm Password */}
@@ -270,10 +304,17 @@ class RegisterDoc extends Component {
                         noValidate/>
                     </InputGroup>
                     {errors.confirmPassword.length > 0 && <Badge style={{marginBottom: 25}} className="mr-1" color="danger">{errors.confirmPassword}</Badge>}
-
+                    
+                    <InputGroup className="mb-4" style={{marginLeft: "25px"}}>
+                      <Input className="form-check-input" type="checkbox" required />
+                      <p>
+                        I agree to CamMedics<a href="/#/terms_conditions" target="_blank" > Terms & Conditions</a>, <a href="/#/privacy_policy" target="_blank">Privacy Policy</a> and 
+                        <br></br><a href="/#/providers_agreement" target="_blank">Providers' Agreement</a>
+                      </p>
+                    </InputGroup>
                     <button type="submit" className="btn btn-lg kiu-btn btn-block">Sign up</button>
                   </Form>
-                  <br></br><p>Already have an account? <a href="/#/login_doc">sign in</a></p>
+                  <br></br><p>Already have an account? <a href="/#/login_doctor">sign in</a></p>
                 </CardBody>
                 {/* <CardFooter className="p-4">
                   <Row>
@@ -289,6 +330,31 @@ class RegisterDoc extends Component {
             </Col>
           </Row>
         </Container>
+
+        {/* ///////////////// Sweet Alerts //////////////////////////////////// */}
+                
+        <button id="sweet_alert1" style={{display: "none"}} onClick={() => this.setState({ showSuccess: true })}>Alert</button>
+              <SweetAlert
+                show={this.state.showSuccess}
+                // title="Demo"
+                type= "success"
+                confirmButtonColor="#2167ac"
+                animation="true"
+                text={this.state.successMessage}
+                onConfirm={() => this.setState({ showSuccess: false })}
+              />
+
+              <button id="sweet_alert2" style={{display: "none"}} onClick={() => this.setState({ showError: true })}>Alert</button>
+              <SweetAlert
+                show={this.state.showError}
+                // title="Demo"
+                type= "warning"
+                confirmButtonColor="#2167ac"
+                animation="true"
+                text={this.state.errorMessage}
+                onConfirm={() => this.setState({ showError: false })}
+              />
+          {/* ///////////////// Sweet Alerts //////////////////////////////////// */}
       </div>
     );
   }

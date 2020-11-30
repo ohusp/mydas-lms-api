@@ -1,0 +1,6 @@
+{
+  "name": "PharmProfile",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./PharmProfile.js"
+}

@@ -31,3 +31,12 @@ Route::get('my-Test-mail', function(){
 //     'as' => 'react',
 //     'where' => ['path' => '.*']
 // ]);
+
+Route::get('/payment', function() {
+    return view('payment');
+});
+
+// Laravel 5.1.17 and above
+Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
+
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');

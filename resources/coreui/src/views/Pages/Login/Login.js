@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 // import {login} from './../../../functions/UserFunctions'
-
 import axios from 'axios'
 import $ from "jquery";
+import { AesEncrypt, AesDecrypt } from 'aes';
 
 class Login extends Component {
   constructor(props) {
@@ -33,20 +33,21 @@ class Login extends Component {
       e.preventDefault()
 
       const user = {
-          email: this.state.email,
-          password: this.state.password
+        email: this.state.email,
+        password: this.state.password
       }
 
+      const encrypted_user_data = AesEncrypt(user, 'where do you go when you by yourself' );
+
       axios .post(
-            'api/user/login',
+            'api/patient/login',
             {
-                email: user.email,
-                password: user.password
+              user: encrypted_user_data,
             }
         )
         .then(response => {
-            console.log("response-1");
-            console.log(response);
+            // console.log("response-1");
+            // console.log(response);
             return response;
             // console.log("Mr mendes")
             // localStorage.setItem('usertoken', response.data.auth_token)
@@ -66,22 +67,28 @@ class Login extends Component {
                 };
                 let appState = {
                     isLoggedIn: true,
-                    user: userData
+                    user: userData,
                 };
+
+                localStorage["login_from"] = "patient";
                 // save app state with user date in local storage
                 localStorage["appState"] = JSON.stringify(appState);
                 // console.log("Response-2");
-                console.log(localStorage["appState"]);
+                // console.log(localStorage["appState"]);
                 // console.log("Response-3");
                 
                 this.setState({
                     isLoggedIn: appState.isLoggedIn,
                     user: appState.user
                 });
+
+                const timeout = setTimeout(() => {
+                  window.location.reload();
+                }, 1000);
                 // localStorage.setItem('usertoken', appState)
                 // console.log("Mr Mendes is here 2");
                 // console.log(`Bearer ${localStorage.usertoken}`)
-                this.props.history.push(`/dashboard`)
+                this.props.history.push(`/profile`)
             } else alert("Login Failed!");
 
             $("#login-form button")
@@ -89,7 +96,7 @@ class Login extends Component {
                 .html("Login");
         })
         .catch(err => {
-            console.log(err)
+            // console.log(err)
         })
   }
 
@@ -97,24 +104,26 @@ class Login extends Component {
     let state = localStorage["appState"];
     if (state) {
       let AppState = JSON.parse(state);
-      console.log(AppState);
+      // console.log(AppState);
       this.setState({ isLoggedIn: AppState.isLoggedIn, user: AppState });
     }
   }
 
   render() {
     return (
-      <div className="app flex-row align-items-center">
+      <div className="flex-row align-items-center">
         <Container>
           <Row className="justify-content-center">
-            <Col md="8">
+            <Col md="8" style={{marginTop: "100px"}}>
               <div className="mb-3 mx-auto text-center">
-                <img
-                  className=""
-                  src={this.state.avatar}
-                  alt={this.state.Cam_Medics}
-                  width="160"
-                />
+                <a href="https://cammedics.com">
+                  <img
+                    className=""
+                    src={this.state.avatar}
+                    alt={this.state.Cam_Medics}
+                    width="160"
+                  />
+                </a>
               </div>
               <CardGroup>
                 <Card className="p-4">
@@ -147,7 +156,6 @@ class Login extends Component {
                             className="form-control"
                             name="password"
                             placeholder="Password"
-                            value={this.state.password}
                             onChange={this.onChange}
                         />
                       </InputGroup>
@@ -164,8 +172,8 @@ class Login extends Component {
                       <Row>
                         <Col xs="6" className="text-right"></Col>
                         <Col xs="6" className="text-right">
-                          <Link to="/forgetpassword">
-                            <Button color="link" className="px-0 kiu-color">Forgot password?</Button>
+                          <Link to="/forgetpassword_patient">
+                            <Button color="link" className="px-0 kiu-color">Forget password?</Button>
                           </Link>
                         </Col>
                       </Row>
@@ -173,12 +181,13 @@ class Login extends Component {
                     </Form> */}
                   </CardBody>
                 </Card>
-                <Card className="text-white kiu-bg py-5 d-md-down-none" style={{ width: '44%' }}>
+                <Card className="text-white kiu-bg py-5">
                   <CardBody className="text-center">
                     <div>
                       <h2>Sign up</h2>
                       <p>
-                        To continue believing in yourself, believing in the doctors, believing in the treatment, believing in whatever I chose to believe in, that was the most important thing, I decided. It had to be.
+                        Hospital without borders where innovative technology meets premium care.<br></br>
+                        It's all about you.
                       </p>
                       <Link to="/register">
                         <Button className="mt-3 cam-btn-white-bg" active tabIndex={-1}>Register Now!</Button>

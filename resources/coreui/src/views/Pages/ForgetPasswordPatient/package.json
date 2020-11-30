@@ -1,0 +1,6 @@
+{
+  "name": "ForgetPasswordPatient",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ForgetPasswordPatient.js"
+}

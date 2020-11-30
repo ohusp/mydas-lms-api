@@ -1,0 +1,6 @@
+{
+  "name": "ForgetPasswordLab",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ForgetPasswordLab.js"
+}

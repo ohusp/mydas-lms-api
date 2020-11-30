@@ -1,0 +1,6 @@
+{
+  "name": "ProvidersAgreement",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ProvidersAgreement.js"
+}

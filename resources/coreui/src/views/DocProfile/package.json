@@ -1,0 +1,6 @@
+{
+  "name": "DocProfile",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./DocProfile.js"
+}

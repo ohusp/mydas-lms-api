@@ -1,0 +1,6 @@
+{
+  "name": "PharmListOrders",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./PharmListOrders.js"
+}

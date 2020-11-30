@@ -22,7 +22,7 @@ class Pharmacies extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'zip_code', 'telephone', 'password', 'auth_token', 'ev_code', 'pharm_country', 'pharm_district_province_state', 'pharm_address', 'pharm_logo', 'status'
+        'name', 'username', 'email', 'zip_code', 'telephone', 'password', 'auth_token', 'ev_code', 'pharm_country', 'pharm_district_province_state', 'pharm_address', 'pharm_logo', 'medical_license', 'bank_name', 'bank_account_name', 'bank_account_number', 'status'
     ];
 
     /**

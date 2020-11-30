@@ -11,6 +11,16 @@
     background-color: #2167ac !important;
 }
 
+.cammedics-btn{
+    background-color: #2167ac !important;
+    color: #fff !important;
+}
+
+.cammedics-btn-danger{
+    background-color: #ca333a !important;
+    color: #fff !important;
+}
+
 .kiu-btn{
     background-color: #2167ac !important;
     color: #fff !important;
@@ -39,4 +49,17 @@
 .cam-btn-white-bg:hover{
     background-color: #2167ac !important;
     color: #ffffff !important;
+}
+
+.product-img{
+    height: auto;
+    width: 350px;
+}
+
+.product-img-holder{
+    margin: 0 auto;
+}
+
+.cammedics-color{
+    color: #2167ac;
 }

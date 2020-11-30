@@ -36,7 +36,7 @@ class DefaultAside extends Component {
 
     return (
       <React.Fragment>
-        <Nav tabs>
+        {/* <Nav tabs>
           <NavItem>
             <NavLink className={classNames({ active: this.state.activeTab === '1' })}
                      onClick={() => {
@@ -61,8 +61,8 @@ class DefaultAside extends Component {
               <i className="icon-settings"></i>
             </NavLink>
           </NavItem>
-        </Nav>
-        <TabContent activeTab={this.state.activeTab}>
+        </Nav> */}
+        {/* <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
             <ListGroup className="list-group-accent" tag={'div'}>
               <ListGroupItem className="list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">Today</ListGroupItem>
@@ -305,7 +305,7 @@ class DefaultAside extends Component {
             <Progress className="progress-xs" color="success" value="10" />
             <small className="text-muted">25GB/256GB</small>
           </TabPane>
-        </TabContent>
+        </TabContent> */}
       </React.Fragment>
     );
   }

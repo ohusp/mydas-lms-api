@@ -16,9 +16,17 @@ import {
   AppSidebarNav2 as AppSidebarNav,
 } from '@coreui/react';
 // sidebar nav config
-import navigation from '../../_nav';
+import navigationAdmin from '../../_nav_admin';
+import navigation from '../../_nav_patient';
+import navigationDoctor from '../../_nav_doctor';
+import navigationLab from '../../_nav_lab';
+import navigationHospital from '../../_nav_hospital';
+import navigationPharm from '../../_nav_pharm';
+import navigationPort from '../../_nav_port';
 // routes config
 import routes from '../../routes';
+
+var login_from  = localStorage.getItem("login_from");
 
 const DefaultAside = React.lazy(() => import('./DefaultAside'));
 const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
@@ -50,8 +58,30 @@ class DefaultLayout extends Component {
     // save app state with user date in local storage
     localStorage["appState"] = JSON.stringify(appState);
     this.setState(appState);
+
+    if(login_from == "admin_user"){
+      this.props.history.push('/admin_login')
+    }
     // //////////////////////////////////////////////////////////////////
-    this.props.history.push('/login')
+    if(login_from == "patient"){
+      this.props.history.push('/login')
+    }
+    if(login_from == "doctor"){
+      this.props.history.push('/login_doctor')
+    }
+    if(login_from == "laboratory"){
+      this.props.history.push('/login_lab')
+    }
+    if(login_from == "hospital"){
+      this.props.history.push('/login_hospital')
+    }
+    if(login_from == "pharm"){
+      this.props.history.push('/login_pharm')
+    }
+    if(login_from == "port"){
+      this.props.history.push('/login_port')
+    }
+    
   }
 
   // ///////////////// MY CODE ///////////////////////////////////////
@@ -75,9 +105,48 @@ class DefaultLayout extends Component {
           <AppSidebar fixed display="lg">
             <AppSidebarHeader />
             <AppSidebarForm />
-            <Suspense>
+
+            {/* ///////////////////////////////////////////////// */}
+            {login_from === "admin_user" && (
+              <Suspense>
+                <AppSidebarNav navConfig={navigationAdmin} {...this.props} router={router}/>
+              </Suspense>
+            )}
+            {login_from === "patient" && (
+              <Suspense>
+                <AppSidebarNav navConfig={navigation} {...this.props} router={router}/>
+              </Suspense>
+            )}
+            {login_from === "doctor" && (
+              <Suspense>
+              <AppSidebarNav navConfig={navigationDoctor} {...this.props} router={router}/>
+              </Suspense>
+            )}
+            {login_from === "laboratory" && (
+              <Suspense>
+              <AppSidebarNav navConfig={navigationLab} {...this.props} router={router}/>
+              </Suspense>
+            )}
+            {login_from === "hospital" && (
+              <Suspense>
+              <AppSidebarNav navConfig={navigationHospital} {...this.props} router={router}/>
+              </Suspense>
+            )}
+            {login_from === "pharm" && (
+              <Suspense>
+              <AppSidebarNav navConfig={navigationPharm} {...this.props} router={router}/>
+              </Suspense>
+            )}
+            {login_from === "port" && (
+              <Suspense>
+              <AppSidebarNav navConfig={navigationPort} {...this.props} router={router}/>
+              </Suspense>
+            )}
+            {/* ///////////////////////////////////////////////// */}
+
+            {/* <Suspense>
             <AppSidebarNav navConfig={navigation} {...this.props} router={router}/>
-            </Suspense>
+            </Suspense> */}
             <AppSidebarFooter />
             <AppSidebarMinimizer />
           </AppSidebar>
@@ -98,7 +167,11 @@ class DefaultLayout extends Component {
                         )} />
                     ) : (null);
                   })}
+                  {login_from === "admin_user" && (
+                    <Redirect from="/" to="/admin/admin-dashboard" />
+                  )}
                   <Redirect from="/" to="/dashboard" />
+                  
                 </Switch>
               </Suspense>
             </Container>

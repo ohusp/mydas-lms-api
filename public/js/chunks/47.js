@@ -1,17 +1,30 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[47],{
 
-/***/ "./resources/coreui/src/views/Base/Tooltips/Tooltips.js":
+/***/ "./resources/coreui/src/images/logo/cam-medics-logo.png":
 /*!**************************************************************!*\
-  !*** ./resources/coreui/src/views/Base/Tooltips/Tooltips.js ***!
+  !*** ./resources/coreui/src/images/logo/cam-medics-logo.png ***!
   \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
+
+/***/ }),
+
+/***/ "./resources/coreui/src/views/Pages/RegisterLab/RegisterLab.js":
+/*!*********************************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/RegisterLab/RegisterLab.js ***!
+  \*********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./resources/coreui/node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./resources/coreui/node_modules/reactstrap/es/index.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! aes */ "./node_modules/aes/index.js");
+/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(aes__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -26,6 +39,21 @@ function _typeof(obj) {
   }
 
   return _typeof(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -130,158 +158,379 @@ function _getPrototypeOf(o) {
 }
 
 
+ // import {register} from './../../../functions/UserFunctions'
 
 
-var TooltipItem = /*#__PURE__*/function (_React$Component) {
-  _inherits(TooltipItem, _React$Component);
+var validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 
-  var _super = _createSuper(TooltipItem);
+var validateForm = function validateForm(errors) {
+  var valid = true;
+  Object.values(errors).forEach(function (val) {
+    return val.length > 0 && (valid = false);
+  });
+  return valid;
+};
 
-  function TooltipItem(props) {
+var RegisterLab = /*#__PURE__*/function (_Component) {
+  _inherits(RegisterLab, _Component);
+
+  var _super = _createSuper(RegisterLab);
+
+  function RegisterLab() {
     var _this;
 
-    _classCallCheck(this, TooltipItem);
+    _classCallCheck(this, RegisterLab);
 
-    _this = _super.call(this, props);
-    _this.toggle = _this.toggle.bind(_assertThisInitialized(_this));
-    _this.state = {
-      tooltipOpen: false
+    _this = _super.call(this);
+
+    _this.onChange = function (e) {
+      _this.onChangeState(e); // this.handleChange(e)
+
     };
+
+    _this.handleChange = function (event) {
+      event.preventDefault();
+      var _event$target = event.target,
+          name = _event$target.name,
+          value = _event$target.value;
+      var errors = _this.state.errors; // called to empty thec alert on top of the form
+
+      _this.setState({
+        alert_message: ""
+      });
+
+      switch (name) {
+        // case 'fullName': 
+        //   errors.fullName = 
+        //     value.length < 5
+        //       ? 'Full Name must be at least 5 characters long!'
+        //       : '';
+        //   break;
+        case 'email':
+          errors.email = validEmailRegex.test(value) ? '' : 'Email is not valid!';
+          break;
+
+        case 'password':
+          errors.password = value.length < 8 ? 'Password must be at least 8 characters long!' : '';
+          break;
+
+        case 'confirmPassword':
+          if (_this.state.password !== value) {
+            errors.confirmPassword = "Password and Confirm Password does not match.";
+          } else {
+            errors.confirmPassword = "";
+          }
+
+          break;
+
+        default:
+          break;
+      }
+
+      _this.setState(_defineProperty({
+        errors: errors
+      }, name, value));
+    };
+
+    _this.state = {
+      username: '',
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      errorMsg: '',
+      errors: {
+        email: '',
+        password: '',
+        confirmPassword: ''
+      },
+      alert_message: '',
+      avatar: __webpack_require__(/*! ./../../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png"),
+      Cam_Medics: 'Cam-Medics Logo'
+    };
+    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
+    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(TooltipItem, [{
-    key: "toggle",
-    value: function toggle() {
-      this.setState({
-        tooltipOpen: !this.state.tooltipOpen
-      });
+  _createClass(RegisterLab, [{
+    key: "onChangeState",
+    // onchange for setting state
+    value: function onChangeState(e) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+      this.handleChange(e);
     }
   }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        className: "mr-1",
-        color: "secondary",
-        id: 'Tooltip-' + this.props.id
-      }, this.props.item.text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Tooltip"], {
-        placement: this.props.item.placement,
-        isOpen: this.state.tooltipOpen,
-        target: 'Tooltip-' + this.props.id,
-        toggle: this.toggle
-      }, "Tooltip Content!"));
-    }
-  }]);
+    key: "onSubmit",
+    value: function onSubmit(e) {
+      var _this2 = this;
 
-  return TooltipItem;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+      e.preventDefault(); // validate check if fields are empty
 
-var Tooltips = /*#__PURE__*/function (_Component) {
-  _inherits(Tooltips, _Component);
-
-  var _super2 = _createSuper(Tooltips);
-
-  function Tooltips(props) {
-    var _this2;
-
-    _classCallCheck(this, Tooltips);
-
-    _this2 = _super2.call(this, props);
-    _this2.toggle = _this2.toggle.bind(_assertThisInitialized(_this2));
-    _this2.state = {
-      tooltipOpen: [false, false],
-      tooltips: [{
-        placement: 'top',
-        text: 'Top'
-      }, {
-        placement: 'bottom',
-        text: 'Bottom'
-      }, {
-        placement: 'left',
-        text: 'Left'
-      }, {
-        placement: 'right',
-        text: 'Right'
-      }]
-    };
-    return _this2;
-  }
-
-  _createClass(Tooltips, [{
-    key: "toggle",
-    value: function toggle(i) {
-      var newArray = this.state.tooltipOpen.map(function (element, index) {
-        return index === i ? !element : false;
-      });
-      this.setState({
-        tooltipOpen: newArray
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "animated fadeIn"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Tooltips"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://reactstrap.github.io/components/tooltips/",
-        rel: "noreferrer noopener",
-        target: "_blank",
-        className: "card-header-action"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
-        className: "text-muted"
-      }, "docs")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Somewhere in here is a ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
-        id: "TooltipExample"
-      }, "tooltip"), "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Tooltip"], {
-        placement: "right",
-        isOpen: this.state.tooltipOpen[0],
-        target: "TooltipExample",
-        toggle: function toggle() {
-          _this3.toggle(0);
-        }
-      }, "Hello world!"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Tooltip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, " disable autohide")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Sometimes you need to allow users to select text within a ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
-        id: "DisabledAutoHideExample"
-      }, "tooltip"), "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Tooltip"], {
-        placement: "top",
-        isOpen: this.state.tooltipOpen[1],
-        autohide: false,
-        target: "DisabledAutoHideExample",
-        toggle: function toggle() {
-          _this3.toggle(1);
-        }
-      }, "Try to select this text!"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Tooltip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, " list")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], null, this.state.tooltips.map(function (tooltip, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TooltipItem, {
-          key: i,
-          item: tooltip,
-          id: i
+      if (this.state.username == "" || this.state.name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == "") {
+        this.setState({
+          alert_message: "error"
         });
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Tooltip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, " uncontrolled")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Somewhere in here is a ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#",
-        id: "UncontrolledTooltipExample"
-      }, "tooltip"), "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["UncontrolledTooltip"], {
-        placement: "right",
-        target: "UncontrolledTooltipExample"
-      }, "Hello world!"))));
+        this.setState({
+          errorMsg: "Please fill all required fields"
+        }); // validate check if theres no error in the form 
+      } else if (validateForm(this.state.errors)) {
+        var newUser = {
+          username: this.state.username,
+          name: this.state.name,
+          email: this.state.email,
+          password: this.state.password
+        };
+        var encrypted_user_data = Object(aes__WEBPACK_IMPORTED_MODULE_2__["AesEncrypt"])(newUser, 'where do you go when you by yourself');
+        axios.post('api/lab/register', {
+          user: encrypted_user_data
+        }, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(function (response) {
+          if (response.data.success) {
+            // console.log("The form is correct")
+            _this2.setState({
+              alert_message: "success"
+            }); // redirect after 3 secs
+
+
+            var timer = setTimeout(function () {
+              _this2.props.history.push('/login_lab');
+            }, 3000);
+          } else {
+            // console.log(response.data.data)
+            var _response$data$data = response.data.data,
+                username = _response$data$data.username,
+                first_name = _response$data$data.first_name,
+                last_name = _response$data$data.last_name,
+                email = _response$data$data.email,
+                password = _response$data$data.password; // if email error is returned, loop through it and display else display normal error
+
+            if (email) {
+              email.map(function (emailErr) {
+                _this2.setState({
+                  alert_message: "error"
+                });
+
+                _this2.setState({
+                  errorMsg: emailErr
+                });
+              });
+            } else if (username) {
+              username.map(function (usernameErr) {
+                _this2.setState({
+                  alert_message: "error"
+                });
+
+                _this2.setState({
+                  errorMsg: usernameErr
+                });
+              });
+            } else {
+              _this2.setState({
+                alert_message: "error"
+              });
+
+              _this2.setState({
+                errorMsg: "Please fill form correctly"
+              });
+            }
+          }
+        })["catch"](function (err) {
+          // console.log(err)
+          // this.setState({alert_message:"success"});
+          _this2.setState({
+            alert_message: "error"
+          });
+
+          _this2.setState({
+            errorMsg: "Please fill form correctly"
+          });
+        });
+      } else {
+        console.error(this.state.errors.email, ", ", this.state.errors.password);
+        this.setState({
+          alert_message: "error"
+        });
+        this.setState({
+          errorMsg: "Please fill form correctly"
+        });
+      }
+    } // this.setState({alert_message:"success"})
+    //           }).catch(error=>{
+    //               this.setState({alert_message:"error"});
+    //           })
+
+  }, {
+    key: "render",
+    value: function render() {
+      var errors = this.state.errors;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "app flex-row align-items-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+        className: "justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: "9",
+        lg: "7",
+        xl: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "mb-3 mx-auto text-center",
+        style: {
+          marginTop: "100px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://cammedics.com"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "",
+        src: this.state.avatar,
+        alt: this.state.Cam_Medics,
+        width: "160"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "text-center",
+        style: {
+          marginTop: "15px"
+        }
+      }, "Laboratories")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+        className: "mx-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], {
+        className: "p-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+        noValidate: true,
+        onSubmit: this.onSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Create an Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-muted"
+      }, "Create your account and begin registration process"), this.state.alert_message == "success" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
+        color: "success"
+      }, "Registration Successful") : null, this.state.alert_message == "error" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
+        color: "danger"
+      }, this.state.errorMsg) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-user"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        name: "username",
+        placeholder: "enter username",
+        value: this.state.username,
+        onChange: this.onChange
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-user"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        name: "name",
+        placeholder: "enter name",
+        value: this.state.name,
+        onChange: this.onChange
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, "@", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "email",
+        className: "form-control",
+        name: "email",
+        placeholder: "enter email",
+        value: this.state.email,
+        onChange: this.onChange // onBlur={this.onChange}
+        ,
+        noValidate: true
+      })), errors.email.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+        style: {
+          marginBottom: 25
+        },
+        className: "mr-1",
+        color: "danger"
+      }, errors.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-lock"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "form-control",
+        name: "password",
+        placeholder: "enter password",
+        onChange: this.onChange // onBlur={this.onChange}
+        ,
+        noValidate: true
+      })), errors.password.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+        style: {
+          marginBottom: 25
+        },
+        className: "mr-1",
+        color: "danger"
+      }, errors.password), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-lock"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+        type: "password",
+        placeholder: "Confirm password",
+        name: "confirmPassword",
+        value: this.state.confirmPassword,
+        onChange: this.onChange // onBlur={this.onChange}
+        ,
+        noValidate: true
+      })), errors.confirmPassword.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+        style: {
+          marginBottom: 25
+        },
+        className: "mr-1",
+        color: "danger"
+      }, errors.confirmPassword), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-4",
+        style: {
+          marginLeft: "25px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+        className: "form-check-input",
+        type: "checkbox",
+        required: true
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "I agree to CamMedics", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/#/terms_conditions",
+        target: "_blank"
+      }, " Terms & Conditions"), ", ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/#/privacy_policy",
+        target: "_blank"
+      }, "Privacy Policy"), " and", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/#/providers_agreement",
+        target: "_blank"
+      }, "Providers' Agreement"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-lg kiu-btn btn-block"
+      }, "Sign up")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/#/login_lab"
+      }, "sign in"))))))));
     }
   }]);
 
-  return Tooltips;
+  return RegisterLab;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Tooltips);
+/* harmony default export */ __webpack_exports__["default"] = (RegisterLab);
 
 /***/ })
 

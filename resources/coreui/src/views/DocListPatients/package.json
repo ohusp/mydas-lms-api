@@ -1,0 +1,6 @@
+{
+  "name": "DocListPatients",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./DocListPatients.js"
+}

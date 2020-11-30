@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Badge, Alert } from 'reactstrap';
 // import {register} from './../../../functions/UserFunctions'
-
+import { AesEncrypt, AesDecrypt } from 'aes';
 
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -16,6 +16,7 @@ class Register extends Component {
   constructor(){
     super()
     this.state = {
+      username: '',
       first_name: '',
       last_name: '',
       email: '',
@@ -30,7 +31,7 @@ class Register extends Component {
       alert_message:'',
 
       avatar: require("./../../../images/logo/cam-medics-logo.png"),
-      Cam_Medics: 'Cam-Medics Logo'
+      Cam_Medics: 'CamMedics Logo'
     }
 
     this.onChange = this.onChange.bind(this)
@@ -94,36 +95,47 @@ class Register extends Component {
     e.preventDefault()
 
     // validate check if fields are empty
-    if(this.state.first_name == "" || this.state.last_name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == ""){
+    if(this.state.username == "" || this.state.first_name == "" || this.state.last_name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == ""){
       this.setState({alert_message:"error"});
       this.setState({errorMsg:"Please fill all required fields"});
 
     // validate check if theres no error in the form 
     }else if(validateForm(this.state.errors)) {
       const newUser = {
+        username: this.state.username,
         first_name: this.state.first_name,
         last_name: this.state.last_name,
         email: this.state.email,
         password: this.state.password
       }
+
+      const encrypted_user_data = AesEncrypt(newUser, 'where do you go when you by yourself' );
       
       axios
-        .post('api/user/register', newUser, {
+        .post('api/patient/register', { user: encrypted_user_data }, {
             headers: { 'Content-Type': 'application/json' }
         })
         .then(response => {
           if(response.data.success){
-            console.log("The form is correct")
+            // console.log("The form is correct")
             this.setState({alert_message:"success"});
-            this.props.history.push('/login')
+            // redirect after 3 secs
+            const timer = setTimeout(() => {
+              this.props.history.push('/login')
+            }, 3000);
           }else{
-            console.log(response.data.data)
-            const { first_name, last_name, email, password } = response.data.data;
+            // console.log(response.data.data)
+            const { username, first_name, last_name, email, password } = response.data.data;
             // if email error is returned, loop through it and display else display normal error
             if(email){
               email.map(emailErr=>{ 
                 this.setState({alert_message:"error"});
                 this.setState({errorMsg: emailErr});
+              })
+            }else if(username){
+              username.map(usernameErr=>{ 
+                this.setState({alert_message:"error"});
+                this.setState({errorMsg: usernameErr});
               })
             }else{
               this.setState({alert_message:"error"});
@@ -132,7 +144,7 @@ class Register extends Component {
           } 
         })
         .catch(err => {
-            console.log(err)
+            // console.log(err)
             // this.setState({alert_message:"success"});
             this.setState({alert_message:"error"});
             this.setState({errorMsg:"Please fill form correctly"});
@@ -156,20 +168,22 @@ class Register extends Component {
         <Container>
           <Row className="justify-content-center">
             <Col md="9" lg="7" xl="6">
-              <div className="mb-3 mx-auto text-center">
-                <img
-                  className=""
-                  src={this.state.avatar}
-                  alt={this.state.Cam_Medics}
-                  width="160"
-                />
+              <div className="mb-3 mx-auto text-center" style={{marginTop: "100px"}}>
+                <a href="https://cammedics.com">
+                  <img
+                    className=""
+                    src={this.state.avatar}
+                    alt={this.state.Cam_Medics}
+                    width="160"
+                  />
+                </a>
               </div>
               <Card className="mx-4">
                 <CardBody className="p-4">
                   
                   <Form noValidate onSubmit={this.onSubmit}>
                     <h1>Create an Account</h1>
-                    <p className="text-muted">Create your account and begin registration process 555</p>
+                    <p className="text-muted">Create your account and begin registration process</p>
                     {this.state.alert_message=="success"?
                       <Alert color="success">
                       Registration Successful
@@ -182,6 +196,22 @@ class Register extends Component {
                       </Alert>
                     :null}
 
+                    {/* Username */}
+                    <InputGroup className="mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="icon-user"></i>
+                          <span className="asterisk">*</span>
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <input type="text"
+                      className="form-control"
+                      name="username"
+                      placeholder="enter username"
+                      value={this.state.username}
+                      onChange={this.onChange}/>
+                    </InputGroup>
+
                     {/* First Name */}
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">
@@ -193,7 +223,7 @@ class Register extends Component {
                       <input type="text"
                       className="form-control"
                       name="first_name"
-                      placeholder="Enter First Name"
+                      placeholder="enter first name"
                       value={this.state.first_name}
                       onChange={this.onChange}/>
                     </InputGroup>
@@ -209,7 +239,7 @@ class Register extends Component {
                       <input type="text"
                       className="form-control"
                       name="last_name"
-                      placeholder="Enter Last Name"
+                      placeholder="enter last name"
                       value={this.state.last_name}
                       onChange={this.onChange}/>
                     </InputGroup>
@@ -225,7 +255,7 @@ class Register extends Component {
                       <input type="email"
                       className="form-control"
                       name="email"
-                      placeholder="Enter Email"
+                      placeholder="enter email"
                       value={this.state.email}
                       onChange={this.onChange}
                       // onBlur={this.onChange}
@@ -244,8 +274,7 @@ class Register extends Component {
                       <input type="password"
                       className="form-control"
                       name="password"
-                      placeholder="Enter Password"
-                      value={this.state.password}
+                      placeholder="enter password"
                       onChange={this.onChange}
                       // onBlur={this.onChange}
                       noValidate/>
@@ -269,6 +298,14 @@ class Register extends Component {
                         // onBlur={this.onChange}
                         noValidate/>
                     </InputGroup>
+
+                    <InputGroup className="mb-4" style={{marginLeft: "25px"}}>
+                      <Input className="form-check-input" type="checkbox" required />
+                      <p>
+                        I agree to CamMedics<a href="/#/terms_conditions" target="_blank" > Terms & Conditions</a> and <a href="/#/privacy_policy" target="_blank">Privacy Policy</a> 
+                      </p>
+                    </InputGroup>
+
                     {errors.confirmPassword.length > 0 && <Badge style={{marginBottom: 25}} className="mr-1" color="danger">{errors.confirmPassword}</Badge>}
 
                     <button type="submit" className="btn btn-lg kiu-btn btn-block">Sign up</button>

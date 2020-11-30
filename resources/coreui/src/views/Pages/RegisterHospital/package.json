@@ -1,0 +1,6 @@
+{
+  "name": "RegisterHospital",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./RegisterHospital.js"
+}

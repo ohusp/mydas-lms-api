@@ -1,18 +1,59 @@
 import React from 'react';
+import HospitalProfile from './views/HospitalProfile/HospitalProfile';
+import HospitalAddDoctor from './views/HospitalAddDoctor/HospitalAddDoctor';
+// import { LabListPatients } from './views';
 
 // //////////////////////////////// ADMIN ////////////////////////////////////////////////
 const AdminDashboard = React.lazy(() => import('./views/Admin/AdminDashboard'));
-const ApplicationsList = React.lazy(() => import('./views/Admin/Applications/ApplicationsList'));
+const Patients = React.lazy(() => import('./views/Admin/Patients'));
+const Doctors = React.lazy(() => import('./views/Admin/Doctors'));
+const Hospitals = React.lazy(() => import('./views/Admin/Hospitals'));
+const Ports = React.lazy(() => import('./views/Admin/Ports'));
+const Pharms = React.lazy(() => import('./views/Admin/Pharms'));
+const Labs = React.lazy(() => import('./views/Admin/Labs'));
 
 // //////////////////////////////// USER ///////////////////////////////////////////////////////
 const Dashboard = React.lazy(() => import('./views/Dashboard'));
-const Profile = React.lazy(() => import('./views/Profile/Profile'));
+const PatientProfile = React.lazy(() => import('./views/PatientProfile/PatientProfile'));
+const PatientListDoctors = React.lazy(() => import('./views/PatientListDoctors/PatientListDoctors'));
+const PatientListHospitals = React.lazy(() => import('./views/PatientListHospitals/PatientListHospitals'));
+const PatientListLabs = React.lazy(() => import('./views/PatientListLabs/PatientListLabs'));
+const PatientListPharms = React.lazy(() => import('./views/PatientListPharms/PatientListPharms'));
+const PharmListOrders = React.lazy(() => import('./views/PharmListOrders/PharmListOrders'));
+const PatientListPorts = React.lazy(() => import('./views/PatientListPorts/PatientListPorts'));
+const PatientCart = React.lazy(() => import('./views/PatientCart/PatientCart'));
+
+const Paystack = React.lazy(() => import('./views/Paystack/Paystack'));
 
 // /////////////////////////////// PHARM //////////////////////////////////////////////
-const ProfilePharm = React.lazy(() => import('./views/ProfilePharm/ProfilePharm'));
-const Products = React.lazy(() => import('./views/Products/Products'));
+const PharmProfile = React.lazy(() => import('./views/PharmProfile/PharmProfile'));
+const PharmProducts = React.lazy(() => import('./views/PharmProducts/PharmProducts'));
+
+// /////////////////////////////// DOC //////////////////////////////////////////////
+const DocProfile = React.lazy(() => import('./views/DocProfile/DocProfile'));
+const DocListPatients = React.lazy(() => import('./views/DocListPatients/DocListPatients'));
+const DocAccount = React.lazy(() => import('./views/DocAccount/DocAccount'));
+const HospitalAccount = React.lazy(() => import('./views/HospitalAccount/HospitalAccount'));
+const PharmAccount = React.lazy(() => import('./views/PharmAccount/PharmAccount'));
+const PortAccount = React.lazy(() => import('./views/PortAccount/PortAccount'));
+const LabAccount = React.lazy(() => import('./views/LabAccount/LabAccount'));
+
+// /////////////////////////////// PORT //////////////////////////////////////////////
+const PortProfile = React.lazy(() => import('./views/PortProfile/PortProfile'));
+const PortListPatients = React.lazy(() => import('./views/PortListPatients/PortListPatients'));
+
+// /////////////////////////////// LAB //////////////////////////////////////////////
+const LabProfile = React.lazy(() => import('./views/LabProfile/LabProfile'));
+const LabTests = React.lazy(() => import('./views/LabTests/LabTests'));
+const LabListPatients = React.lazy(() => import('./views/LabListPatients/LabListPatients'));
+
+// //////////////////////////// Hospitsl /////////////////////////////////////////////
+const HospitalListDoctors = React.lazy(() => import('./views/HospitalListDoctors/HospitalListDoctors'));
 
 // ////////////////////////////////////////////////////////////////////////////
+const Chat = React.lazy(() => import('./views/Chat/Chat'));
+
+
 const Breadcrumbs = React.lazy(() => import('./views/Base/Breadcrumbs'));
 const Cards = React.lazy(() => import('./views/Base/Cards'));
 const Carousels = React.lazy(() => import('./views/Base/Carousels'));
@@ -52,19 +93,60 @@ const User = React.lazy(() => import('./views/Users/User'));
 const routes = [
   // ///////////////////////////// ADMIN ////////////////////////////////////////////////////////////
   { path: '/admin/admin-dashboard', name: 'Admin Dashboard', component: AdminDashboard },
-  { path: '/admin/applications/applications-list', name: 'Applications List', component: ApplicationsList },
+  { path: '/admin/patients', name: 'Patients List', component: Patients },
+  { path: '/admin/doctors', name: 'Doctors List', component: Doctors },
+  { path: '/admin/hospitals', name: 'Hospitals List', component: Hospitals},
+  { path: '/admin/ports', name: 'Ports List', component: Ports},
+  { path: '/admin/pharms', name: 'Pharmacy List', component: Pharms},
+  { path: '/admin/labs', name: 'Laboratory List', component: Labs},
 
   // ///////////////////////////// USER ////////////////////////////////////////////////////////////
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
-  { path: '/profile', name: 'Profile', component: Profile },
+  { path: '/profile_patient', name: 'Profile', component: PatientProfile },
+  { path: '/list_doctors', name: 'List Doctors', component: PatientListDoctors },
+  { path: '/list_hospitals', name: 'List Hospitals', component: PatientListHospitals },
+  { path: '/list_labs', name: 'List Laboratories', component: PatientListLabs },
+  { path: '/list_pharmacies', name: 'List Pharmacies', component: PatientListPharms },
+  { path: '/list_orders', name: 'List Orders', component: PharmListOrders },
+  { path: '/list_ports', name: 'List Ports', component: PatientListPorts },
+  { path: '/cart', name: 'Cart', component: PatientCart },
+
+  { path: '/Paystack', name: 'Paystack', component: Paystack },
 
   // //////////////////////////// PHARM /////////////////////////////////////////////////
-  { path: '/profile_pharm', name: 'Pharmacy Profile', component: ProfilePharm },
-  { path: '/products', name: 'Pharmacy Profile', component: Products },
+  { path: '/profile_pharm', name: 'Pharmacy Profile', component: PharmProfile },
+  { path: '/products', name: 'Products', component: PharmProducts },
+
+  // //////////////////////////// DOC /////////////////////////////////////////////////
+  { path: '/profile_doctor', name: 'Profile', component: DocProfile },
+
+  { path: '/doc_list_patients', name: 'List of Patients', component: DocListPatients },
+  { path: '/doc_account', name: 'Account', component: DocAccount },
+  { path: '/hospital_account', name: 'Account', component: HospitalAccount },
+  { path: '/pharm_account', name: 'Account', component: PharmAccount },
+  { path: '/lab_account', name: 'Account', component: LabAccount },
+  { path: '/port_account', name: 'Account', component: PortAccount },
+
+  // //////////////////////////// LAB /////////////////////////////////////////////////
+  { path: '/profile_lab', name: 'Laboratory Profile', component: LabProfile },
+  { path: '/lab_tests', name: 'Laboratory Tests', component: LabTests },
+  { path: '/lab_list_patients', name: 'Laboratory patients', component: LabListPatients },
+  
+  
+
+  // //////////////////////////// PORT /////////////////////////////////////////////////
+  { path: '/profile_port', name: 'Port Profile', component: PortProfile },
+  { path: '/port_list_patients', name: 'List of Visitors', component: PortListPatients },
+
+  // //////////////////////////// HOSPITAL /////////////////////////////////////////////////
+  { path: '/profile_hospital', name: 'Hospital Profile', component: HospitalProfile },
+  { path: '/add_doctor', name: 'Add Doctor', component: HospitalAddDoctor },
+  { path: '/list_hospital_doctors', name: 'List of doctors', component: HospitalListDoctors },
 
 
   // ////////////////////////////////////////////////////////////////////////////////////////////////
-
+  
+  { path: '/chat', name: 'Chat', component: Chat },
   // ////////////////////////////////////////////////////////////////////////////////////////////////
   
   { path: '/', exact: true, name: 'Home' },

@@ -1,14 +1,47 @@
 // ////////////////////////////////////// ADMIN ///////////////////////////////////////////////
 import { AdminLogin } from './Admin';
 import { AdminDashboard } from './Admin';
-import { ApplicationsList } from './Admin/Applications';
+import { Patients } from './Admin';
+import { Doctors } from './Admin';
+import { Hospitals } from './Admin';
+import { Ports } from './Admin';
+import { Pharms } from './Admin';
+import { Labs } from './Admin';
 
 // /////////////////////////////////////// USER /////////////////////////////////////////////////
-import { Register, RegisterAirPort, RegisterDoc, RegisterPharm, Login, LoginDoc, LoginPharm, LoginAirPort, Page404, Page500 } from './Pages';
+import { Register, RegisterPort, RegisterDoc, RegisterPharm, RegisterLab, RegisterHospital, TermsConditions, PrivacyPolicy, Login, LoginDoc, LoginPharm, LoginPort, Page404, Page500 } from './Pages';
 import Dashboard from './Dashboard';
-import Profile from './Profile';
-import ProfilePharm from './ProfilePharm';
-import Products from './Products';
+import PatientProfile from './PatientProfile';
+import PharmProfile from './PharmProfile';
+import HospitalProfile from './HospitalProfile';
+import HospitalAddDoctor from './HospitalAddDoctor';
+import PharmProducts from './PharmProducts';
+import DocListPatients from './DocListPatients';
+import DocAccount from './DocAccount';
+import HospitalAccount from './HospitalAccount';
+import HospitalListDoctors from './HospitalListDoctors';
+import PharmAccount from './PharmAccount';
+import PortAccount from './PortAccount';
+import LabAccount from './LabAccount';
+import PortListPatients from './PortListPatients';
+import PatientListDoctors from './PatientListDoctors/PatientListDoctors';
+import PatientListHospitals from './PatientListHospitals/PatientListHospitals';
+import PatientListLabs from './PatientListLabs/PatientListLabs';
+import PatientListPharms from './PatientListPharms/PatientListPharms';
+import PharmListOrders from './PharmListOrders/PharmListOrders';
+import PatientListPorts from './PatientListPorts/PatientListPorts';
+import PatientCart from './PatientCart/PatientCart';
+
+import DocProfile from './DocProfile';
+import PortProfile from './PortProfile';
+
+import LabProfile from './LabProfile';
+import LabTests from './LabTests';
+import LabListPatients from './LabListPatients';
+
+import Paystack from './Paystack';
+
+import Chat from './Chat';
 
 // //////////////////////////////////////////////////////////////////////////////////////////////
 import {
@@ -42,21 +75,64 @@ export {
   // ////////////////////////////////////// ADMIN ///////////////////////////////////////////
   AdminLogin,
   AdminDashboard,
-  Profile,
+  Patients,
+  Doctors,
+  Hospitals,
+  Ports,
+  Pharms,
+  Labs,
 
   // ////////////////////////////////////// USER /////////////////////////////////////////////
   Register,
-  RegisterAirPort,
+  RegisterPort,
   RegisterDoc,
   RegisterPharm,
+  RegisterLab,
+  RegisterHospital,
+
+  TermsConditions,
+  PrivacyPolicy,
+
+
   Login,
   LoginPharm,
-  LoginAirPort,
+  LoginPort,
   LoginDoc,
+  LoginLab,
+  LoginHospital,
+
+  Paystack,
+
   Dashboard,
-  Profile,
-  ProfilePharm,
-  Products,
+  PatientProfile,
+  PharmProfile,
+  PharmProducts,
+  DocProfile,
+  PortProfile,
+  HospitalProfile,
+  HospitalAddDoctor,
+  DocListPatients,
+  DocAccount,
+  HospitalAccount,
+  HospitalListDoctors,
+  PharmAccount,
+  PortAccount,
+  LabAccount,
+  PortListPatients,
+  PatientListDoctors,
+  PatientListHospitals,
+  PatientListPorts,
+  PatientListLabs,
+  PatientListPharms,
+  PharmListOrders,
+  PatientCart,
+
+  LabProfile,
+  LabTests,
+  LabListPatients,
+
+
+  Chat,
 
   // ///////////////////////////////
   Badges,

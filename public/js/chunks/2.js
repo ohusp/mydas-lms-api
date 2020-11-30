@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[2],{
 
-/***/ "./resources/coreui/node_modules/jquery/dist/jquery.js":
-/*!*************************************************************!*\
-  !*** ./resources/coreui/node_modules/jquery/dist/jquery.js ***!
-  \*************************************************************/
+/***/ "./node_modules/jquery/dist/jquery.js":
+/*!********************************************!*\
+  !*** ./node_modules/jquery/dist/jquery.js ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

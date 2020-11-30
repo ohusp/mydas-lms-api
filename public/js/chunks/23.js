@@ -1,37 +1,91 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[23],{
 
-/***/ "./resources/coreui/src/images/avatars/0.jpg":
-/*!***************************************************!*\
-  !*** ./resources/coreui/src/images/avatars/0.jpg ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./node_modules/react-external-link/dist/index.esm.js":
+/*!************************************************************!*\
+  !*** ./node_modules/react-external-link/dist/index.esm.js ***!
+  \************************************************************/
+/*! exports provided: ExternalLink */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = "/images/0.jpg?73476783ca0f7583198978de7073815b";
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExternalLink", function() { return ExternalLink; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+var ExternalLink = function (_a) {
+    var href = _a.href, children = _a.children, rest = __rest(_a, ["href", "children"]);
+    return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", __assign({ target: "_blank", rel: "noopener noreferrer", href: href }, rest), children || href));
+};
+
+
+
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/Profile/Profile.js":
+/***/ "./resources/coreui/src/views/Admin/Labs/Labs.js":
 /*!*******************************************************!*\
-  !*** ./resources/coreui/src/views/Profile/Profile.js ***!
+  !*** ./resources/coreui/src/views/Admin/Labs/Labs.js ***!
   \*******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./resources/coreui/node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/dist/react-datepicker.min.js");
-/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_datepicker__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-datepicker/dist/react-datepicker.css */ "./node_modules/react-datepicker/dist/react-datepicker.css");
-/* harmony import */ var react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! history */ "./resources/coreui/node_modules/history/esm/history.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./resources/coreui/node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jquery */ "./resources/coreui/node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "./resources/coreui/node_modules/reactstrap/es/index.js");
+/* harmony import */ var react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-datepicker/dist/react-datepicker.css */ "./node_modules/react-datepicker/dist/react-datepicker.css");
+/* harmony import */ var react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! history */ "./node_modules/history/esm/history.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-js-pagination */ "./node_modules/react-js-pagination/dist/Pagination.js");
+/* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_js_pagination__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_external_link__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-external-link */ "./node_modules/react-external-link/dist/index.esm.js");
+/* harmony import */ var sweetalert2_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! sweetalert2-react */ "./node_modules/sweetalert2-react/dist/sweetalert-react.min.js");
+/* harmony import */ var sweetalert2_react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -46,6 +100,21 @@ function _typeof(obj) {
   }
 
   return _typeof(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -151,25 +220,57 @@ function _getPrototypeOf(o) {
 
 
 
-
  // import axios from 'axios';
 
 
 
 
-var hashHistory = Object(history__WEBPACK_IMPORTED_MODULE_3__["createHashHistory"])();
 
-var Profile = /*#__PURE__*/function (_Component) {
-  _inherits(Profile, _Component);
 
-  var _super = _createSuper(Profile);
 
-  function Profile(props) {
+var hashHistory = Object(history__WEBPACK_IMPORTED_MODULE_2__["createHashHistory"])();
+
+var Labs = /*#__PURE__*/function (_Component) {
+  _inherits(Labs, _Component);
+
+  var _super = _createSuper(Labs);
+
+  function Labs(props) {
+    var _this$state;
+
     var _this;
 
-    _classCallCheck(this, Profile);
+    _classCallCheck(this, Labs);
 
-    _this = _super.call(this, props); // ////////////////MODAL
+    _this = _super.call(this, props); // ////////////////MODAL    
+
+    _this.toggleLabView = function (lab_id, name) {
+      // togglePatientRec(id, name) {
+      console.log(lab_id);
+
+      _this.setState({
+        labView: !_this.state.labView,
+        lab_id: lab_id,
+        lab_name: name
+      });
+    };
+
+    _this.toggleAccountView = function (lab_id, name) {
+      // togglePatientRec(id, name) {
+      console.log(lab_id);
+
+      _this.setState({
+        accountView: !_this.state.accountView,
+        lab_id: lab_id,
+        lab_name: name
+      });
+    };
+
+    _this.toggleViewLabPatient = function () {
+      _this.setState({
+        primaryLabPatient: !_this.state.primaryLabPatient
+      });
+    };
 
     _this.handleChange = function (date) {
       _this.setState({
@@ -177,1359 +278,1531 @@ var Profile = /*#__PURE__*/function (_Component) {
       });
     };
 
-    _this.togglePrimary = _this.togglePrimary.bind(_assertThisInitialized(_this)); // bing toggle functions and values
+    _this.togglePatientRec = function (patient_id, name) {
+      // togglePatientRec(id, name) {
+      // alert(patient_id);
+      // alert(name)
+      console.log(patient_id);
 
-    _this.toggle = _this.toggle.bind(_assertThisInitialized(_this));
-    _this.toggle_identification = _this.toggle_identification.bind(_assertThisInitialized(_this));
-    _this.toggle_app_instructions = _this.toggle_app_instructions.bind(_assertThisInitialized(_this)); // bind input values on change
+      _this.setState({
+        patientRec: !_this.state.patientRec,
+        patient_id: patient_id,
+        patient_name: name
+      }, _this.getLabTestResults(patient_id, name));
+    };
 
-    _this.onChangeFirstName = _this.onChangeFirstName.bind(_assertThisInitialized(_this));
-    _this.onChangeLastName = _this.onChangeLastName.bind(_assertThisInitialized(_this));
-    _this.onChangeMiddleName = _this.onChangeMiddleName.bind(_assertThisInitialized(_this));
-    _this.onChangeEmail = _this.onChangeEmail.bind(_assertThisInitialized(_this));
-    _this.onChangeZipCode = _this.onChangeZipCode.bind(_assertThisInitialized(_this));
-    _this.onChangeTelephone = _this.onChangeTelephone.bind(_assertThisInitialized(_this));
-    _this.onChangeTitle = _this.onChangeTitle.bind(_assertThisInitialized(_this));
-    _this.onChangeGender = _this.onChangeGender.bind(_assertThisInitialized(_this));
-    _this.onChangeDob = _this.onChangeDob.bind(_assertThisInitialized(_this));
-    _this.onChangeNationality = _this.onChangeNationality.bind(_assertThisInitialized(_this));
-    _this.onChangeCountryOfResidence = _this.onChangeCountryOfResidence.bind(_assertThisInitialized(_this));
-    _this.onChangeDistrictProvinceState = _this.onChangeDistrictProvinceState.bind(_assertThisInitialized(_this));
-    _this.onChangeContactAddress = _this.onChangeContactAddress.bind(_assertThisInitialized(_this));
-    _this.onChangeHeight = _this.onChangeHeight.bind(_assertThisInitialized(_this));
-    _this.onChangeWeight = _this.onChangeWeight.bind(_assertThisInitialized(_this)); // ////////////////////// DISABILITY //////////////////////////////////////////////////
+    _this.toggleViewAppointment = function (patient_id, name) {
+      console.log(patient_id);
 
-    _this.onChangeDisabilityNone = _this.onChangeDisabilityNone.bind(_assertThisInitialized(_this));
-    _this.onChangeDisabilityHearing = _this.onChangeDisabilityHearing.bind(_assertThisInitialized(_this));
-    _this.onChangeDisabilityMobility = _this.onChangeDisabilityMobility.bind(_assertThisInitialized(_this));
-    _this.onChangeDisabilitySight = _this.onChangeDisabilitySight.bind(_assertThisInitialized(_this));
-    _this.onChangeDisabilityLearning = _this.onChangeDisabilityLearning.bind(_assertThisInitialized(_this));
-    _this.onChangeDisabilityOthers = _this.onChangeDisabilityOthers.bind(_assertThisInitialized(_this)); // ////////////////////////////////////////////////////////////////////////////////////
+      _this.setState({
+        primaryViewAppointment: !_this.state.primaryViewAppointment,
+        patient_id: patient_id,
+        patient_name: name
+      });
+    };
 
-    _this.onChangeNextKinName = _this.onChangeNextKinName.bind(_assertThisInitialized(_this));
-    _this.onChangeNextKinRelationship = _this.onChangeNextKinRelationship.bind(_assertThisInitialized(_this));
-    _this.onChangeNextKinOccupation = _this.onChangeNextKinOccupation.bind(_assertThisInitialized(_this));
-    _this.onChangeNextKinPhone = _this.onChangeNextKinPhone.bind(_assertThisInitialized(_this));
-    _this.onChangeNextKinEmail = _this.onChangeNextKinEmail.bind(_assertThisInitialized(_this)); // //////////// IDENTITY //////////////////////////////
+    _this.toggleLabView = _this.toggleLabView.bind(_assertThisInitialized(_this));
+    _this.toggleAccountView = _this.toggleAccountView.bind(_assertThisInitialized(_this));
+    _this.toggleViewLabPatient = _this.toggleViewLabPatient.bind(_assertThisInitialized(_this));
+    _this.togglePrimary = _this.togglePrimary.bind(_assertThisInitialized(_this));
+    _this.toggleViewAppointment = _this.toggleViewAppointment.bind(_assertThisInitialized(_this));
+    _this.togglePatientRec = _this.togglePatientRec.bind(_assertThisInitialized(_this));
+    _this.onChangeMedicationsCurrentlyUsingUpdate = _this.onChangeMedicationsCurrentlyUsingUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeAllergiesUpdate = _this.onChangeAllergiesUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeBloodGroupUpdate = _this.onChangeBloodGroupUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeUnderlyingConditionsUpdate = _this.onChangeUnderlyingConditionsUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeFamilyMedicalHistoryUpdate = _this.onChangeFamilyMedicalHistoryUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeHypertensiveUpdate = _this.onChangeHypertensiveUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeDiabeticUpdate = _this.onChangeDiabeticUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangePrescriptionUpdate = _this.onChangePrescriptionUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeLabTestUpdate = _this.onChangeLabTestUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeNoteUpdate = _this.onChangeNoteUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeMessageBox = _this.onChangeMessageBox.bind(_assertThisInitialized(_this));
+    _this.sendFile = _this.sendFile.bind(_assertThisInitialized(_this));
+    _this.submitSendFile = _this.submitSendFile.bind(_assertThisInitialized(_this));
+    _this.sendMessage = _this.sendMessage.bind(_assertThisInitialized(_this)); // /////////////////////////////////////////////////////////////////
 
-    _this.onChangeProfilePicture = _this.onChangeProfilePicture.bind(_assertThisInitialized(_this)); // this.onChangePassportPhotograph         =this.onChangePassportPhotograph.bind(this);
-    // this.onChangeTypeOfIdentification       =this.onChangeTypeOfIdentification.bind(this);
-    // this.onChangeIdPassportNumber           =this.onChangeIdPassportNumber.bind(this);
-    // this.onChangeIdPassportUpload         =this.onChangeIdPassportUpload.bind(this);
-    // ///////////////////////////////////////////////////////
+    _this.onSubmitLabResult = _this.onSubmitLabResult.bind(_assertThisInitialized(_this)); // medical record tab toggle
 
-    _this.onChangeProgrammeFirstChoice = _this.onChangeProgrammeFirstChoice.bind(_assertThisInitialized(_this));
-    _this.onChangeProgrammeSecondChoice = _this.onChangeProgrammeSecondChoice.bind(_assertThisInitialized(_this));
-    _this.onChangeProgrammeThirdChoice = _this.onChangeProgrammeThirdChoice.bind(_assertThisInitialized(_this));
-    _this.onChangeAcademicSession = _this.onChangeAcademicSession.bind(_assertThisInitialized(_this));
-    _this.onChangeAdmissionIntake = _this.onChangeAdmissionIntake.bind(_assertThisInitialized(_this));
-    _this.onChangeStudyMode = _this.onChangeStudyMode.bind(_assertThisInitialized(_this));
-    _this.onChangePreviousResultTranscript = _this.onChangePreviousResultTranscript.bind(_assertThisInitialized(_this)); // ///////////////////////////////////////////////////////
-    // /////////////////// MEDICAL HISTORY /////////////////////////////////////
-
-    _this.onChangeMedicationsCurrentlyUsing = _this.onChangeMedicationsCurrentlyUsing.bind(_assertThisInitialized(_this));
-    _this.onChangeAllergies = _this.onChangeAllergies.bind(_assertThisInitialized(_this));
-    _this.onChangeBloodGroup = _this.onChangeBloodGroup.bind(_assertThisInitialized(_this));
-    _this.onChangeUnderlyingConditions = _this.onChangeUnderlyingConditions.bind(_assertThisInitialized(_this));
-    _this.onChangeFamilyMedicalHistory = _this.onChangeFamilyMedicalHistory.bind(_assertThisInitialized(_this));
-    _this.onChangeHypertensive = _this.onChangeHypertensive.bind(_assertThisInitialized(_this));
-    _this.onChangeDiabetic = _this.onChangeDiabetic.bind(_assertThisInitialized(_this)); // ////////////////// SHARE MEDICAL HISTORY //////////////////////////////
-
-    _this.onChangeShareMedHistory = _this.onChangeShareMedHistory.bind(_assertThisInitialized(_this));
-    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
-    _this.onSubmitMedicalHistory = _this.onSubmitMedicalHistory.bind(_assertThisInitialized(_this));
-    _this.onSubmitShareMedHistory = _this.onSubmitShareMedHistory.bind(_assertThisInitialized(_this)); // ///////////// IDENTITY SUBMISSION /////////////////
-
-    _this.onSubmitProfilePicture = _this.onSubmitProfilePicture.bind(_assertThisInitialized(_this)); // this.fileUploadIdPassport = this.fileUploadIdPassport.bind(this)
-    // this.idPassportDetails = this.idPassportDetails.bind(this)
-
-    _this.state = {
+    _this.toggleMedRecTab = _this.toggleMedRecTab.bind(_assertThisInitialized(_this));
+    _this.state = (_this$state = {
       token: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.auth_token : "",
       id: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.id : "",
-      first_name: "",
-      last_name: "",
-      middle_name: "",
-      email: "",
-      zip_code: "",
-      telephone: "",
-      title: "",
-      gender: "",
-      dob: "",
-      nationality: "",
-      country_of_residence: "",
-      district_province_state: "",
-      contact_address: "",
-      height: "",
-      weight: "",
-      // ///////// DISABILITY /////////////////////////////////////////
-      disability_none: "",
-      disability_hearing: "",
-      disability_mobility: "",
-      disability_sight: "",
-      disability_learning: "",
-      disability_others: "",
-      // /////////////////////////////////////////////////////////////
-      next_of_kin_name: "",
-      next_of_kin_relationship: "",
-      next_of_kin_occupation: "",
-      next_of_kin_phone: "",
-      next_of_kin_email: "",
-      // /////////// IDENTITY ////////////////////////////////
-      passport_photograph: "",
-      type_of_identification: "",
-      id_passport_number: "",
-      profile_picture: null,
-      // ////////////////////////////////////////////////////
-      programme_first_choice: "",
-      programme_second_choice: "",
-      programme_third_choice: "",
-      academic_session: "",
-      admission_intake: "",
-      study_mode: "",
-      previous_result_transcript: "",
-      // ////////////////////////////////////////////
-      medications_currently_using: "",
-      allergies: "",
-      blood_group: "",
-      underlying_conditions: "",
-      family_medical_history: "",
-      hypertensive: "",
-      diabetic: "",
-      status: "",
+      username: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.username : "",
+      first_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.first_name : "",
+      last_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.last_name : "",
+      middle_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.middle_name : "",
       created_at: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.created_at : "",
       user_type: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.user_type : "",
-      collapse: false,
-      collapse_identification: false,
-      collapse_app_instructions: false,
-      fadeIn: true,
-      timeout: 300,
+      // ////////////////////////////////////////////////////
+      labs_list: [],
+      number_labs: 1,
+      activePage_labs: 1,
+      itemsCountPerPage_labs: 1,
+      totalItemsCount_labs: 1,
+      pageRangeDisplayed_labs: 3,
+      currentPage2_labs: '',
+      status_labs: '1',
+      // ////////////////////////////////////////////////////
+      account_list: [],
+      number_account: 1,
+      activePage_account: 1,
+      itemsCountPerPage_account: 1,
+      totalItemsCount_account: 1,
+      pageRangeDisplayed_account: 3,
+      currentPage2_account: '',
+      status_account: '1',
+      // ////////////////////////////////////////////////////
+      applications_list: [],
+      number: 1,
+      activePage: 1,
+      itemsCountPerPage: 1,
+      totalItemsCount: 1,
+      pageRangeDisplayed: 3,
+      currentPage2: '',
+      status: '1',
       // //////////////////////////////////////////////////
-      avatar: __webpack_require__(/*! ./../../images/avatars/0.jpg */ "./resources/coreui/src/images/avatars/0.jpg"),
-      metaValue: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?",
+      // store array of data when a patient is clicked 
+      // medications_currently_using: [],
+      // allergies: [],
+      // blood_group: [],
+      // underlying_conditions: [],
+      // family_medical_history: [],
+      // hypertensive: [],
+      // diabetic: [],
+      // prescription: [],
+      // lab_test: [],
+      // note: [],
+      // // store new data entered to be stored/submitted
+      // medications_currently_using_update: "",
+      // allergies_update: "",
+      // blood_group_update: "",
+      // underlying_conditions_update: "",
+      // family_medical_history_update: "",
+      // hypertensive_update: "",
+      // diabetic_update: "",
+      // prescription_update: "",
+      // lab_test_update: "",
+      // note_update: "",
+      lab_test: [],
+      lab_test_results: [],
+      lab_result: "",
+      lab_test_name: "",
+      currentTime: new Date().toLocaleString(),
+      // for chat
+      message_box: "",
+      message_list: [],
+      message_list_array: [],
+      // ///////////////////// Appointment ///////////////////////////////
+      appointment_id: "",
+      appointment_date: "",
+      appointment_time: "",
+      appointment_subject: "",
+      appointment_message: "",
+      appointment_patient_username: "",
+      appointment_patient_first_name: "",
+      appointment_patient_last_name: "",
+      appointment_patient_middle_name: "",
+      // //////////////////////////////////////////////////
+      // patient clicks for message
+      patient_id: "",
+      patient_name: "",
+      lab_id: "",
+      // /////////////////////////////////////////////////
       startDate: new Date(),
       // //////////////////modal
+      labView: false,
+      accountView: false,
       primary: false,
-      share_med_history: "" // profile_pictureimageUrl: "/images/cam-medics-logo.png"
-
-    };
+      primaryViewAppointment: false,
+      patientRec: false,
+      primaryLabPatient: false,
+      // ///////////////////////////////////////////////////////
+      showSuccess: false,
+      showError: false,
+      successMessage: "Successful",
+      errorMessage: "Failed",
+      // //////////////////////////////////
+      chat_btn_status: false
+    }, _defineProperty(_this$state, "status", ""), _defineProperty(_this$state, "lab_status", ""), _this$state);
+    _this.handlePageChangeLabs = _this.handlePageChangeLabs.bind(_assertThisInitialized(_this));
+    _this.handlePageChange = _this.handlePageChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(Profile, [{
+  _createClass(Labs, [{
+    key: "toggleMedRecTab",
+    value: function toggleMedRecTab(tab) {
+      if (this.state.activeTab !== tab) {
+        this.setState({
+          activeTab: tab
+        });
+      }
+    }
+  }, {
+    key: "onChangeMedicationsCurrentlyUsingUpdate",
+    value: function onChangeMedicationsCurrentlyUsingUpdate(e) {
+      this.setState({
+        medications_currently_using_update: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeAllergiesUpdate",
+    value: function onChangeAllergiesUpdate(e) {
+      this.setState({
+        allergies_update: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeBloodGroupUpdate",
+    value: function onChangeBloodGroupUpdate(e) {
+      this.setState({
+        blood_group_update: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeUnderlyingConditionsUpdate",
+    value: function onChangeUnderlyingConditionsUpdate(e) {
+      this.setState({
+        underlying_conditions_update: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeFamilyMedicalHistoryUpdate",
+    value: function onChangeFamilyMedicalHistoryUpdate(e) {
+      this.setState({
+        family_medical_history_update: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeHypertensiveUpdate",
+    value: function onChangeHypertensiveUpdate(e) {
+      this.setState({
+        hypertensive_update: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeDiabeticUpdate",
+    value: function onChangeDiabeticUpdate(e) {
+      this.setState({
+        diabetic_update: e.target.value
+      });
+    }
+  }, {
+    key: "onChangePrescriptionUpdate",
+    value: function onChangePrescriptionUpdate(e) {
+      this.setState({
+        prescription_update: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeLabTestUpdate",
+    value: function onChangeLabTestUpdate(e) {
+      this.setState({
+        lab_test_update: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeNoteUpdate",
+    value: function onChangeNoteUpdate(e) {
+      this.setState({
+        note_update: e.target.value
+      });
+    } // fetch data from db
+
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("http://localhost:8000/api/user/get/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/admin/list_labs?token=".concat(this.state.token)).then(function (response) {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          console.log(_typeof(json.data.data.data));
+          console.log(json.data.data.data);
+
+          _this2.setState({
+            labs_list: json.data.data.data,
+            itemsCountPerPage_labs: json.data.data.per_page,
+            totalItemsCount_labs: json.data.data.total,
+            activePage_labs: json.data.data.current_page
+          });
+        } else {}
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    } // Pagination handler
+
+  }, {
+    key: "handlePageChangeLabs",
+    value: function handlePageChangeLabs(pageNumber) {
+      var _this3 = this;
+
+      console.log("active page is ".concat(pageNumber)); // this.setState({activePage: pageNumber});
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/admin/list_labs?token=".concat(this.state.token, "&page=") + pageNumber).then(function (response) {
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this3.setState({
+            labs_list: json.data.data.data,
+            itemsCountPerPage_labs: json.data.data.per_page,
+            totalItemsCount_labs: json.data.data.total,
+            activePage_labs: json.data.data.current_page
+          });
+        } else {}
+      });
+    } // //////////////////// VIEW LAB ///////////////////////////////////////////////////////////
+
+  }, {
+    key: "viewLab",
+    value: function viewLab(lab_id, name) {
+      var _this4 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/admin/lab/get/" + lab_id + "?token=".concat(this.state.token)).then(function (response) {
         console.log("It came back");
         console.log(response);
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          console.log("It came back 2");
+          console.log(json.data.med_currently_using);
+          console.log(json.status);
 
-          _this2.setState({
-            title: json.data.data.title,
-            first_name: json.data.data.first_name,
-            last_name: json.data.data.last_name,
-            middle_name: json.data.data.middle_name,
+          _this4.setState({
+            // //////////////////////////////////////////////////////
+            username: json.data.data.username,
+            name: json.data.data.name,
             email: json.data.data.email,
             zip_code: json.data.data.zip_code,
             telephone: json.data.data.telephone,
-            gender: json.data.data.gender,
-            dob: json.data.data.dob,
-            nationality: json.data.data.nationality,
-            country_of_residence: json.data.data.country_of_residence,
+            country: json.data.data.country,
             district_province_state: json.data.data.district_province_state,
-            contact_address: json.data.data.contact_address,
-            height: json.data.data.height,
-            weight: json.data.data.weight,
-            // ///////// DISABILITY /////////////////////////////////////////
-            disability_none: json.data.data.disability_none,
-            disability_hearing: json.data.data.disability_hearing,
-            disability_mobility: json.data.data.disability_mobility,
-            disability_sight: json.data.data.disability_sight,
-            disability_learning: json.data.data.disability_learning,
-            disability_others: json.data.data.disability_others,
-            /////////////////////////////////////////////
-            next_of_kin_name: json.data.data.next_kin_name,
-            next_of_kin_relationship: json.data.data.next_kin_relationship,
-            next_of_kin_occupation: json.data.data.next_kin_occupation,
-            next_of_kin_phone: json.data.data.next_kin_phone,
-            next_of_kin_email: json.data.data.next_kin_email,
-            // /////////////////////////////////////////////
-            // //////////////////////////////////////////////////////
-            medications_currently_using: json.data.data.med_currently_using,
-            allergies: json.data.data.med_allergies,
-            blood_group: json.data.data.med_blood_group,
-            underlying_conditions: json.data.data.med_underlying_conditions,
-            family_medical_history: json.data.data.med_family_medical_history,
-            hypertensive: json.data.data.med_hypertensive,
-            diabetic: json.data.data.med_diabetic,
-            profile_picture: json.data.data.profile_picture,
-            status: json.data.data.status
+            address: json.data.data.address,
+            bank_name: json.data.data.bank_name,
+            bank_account_name: json.data.data.bank_account_name,
+            bank_account_number: json.data.data.bank_account_number,
+            consultation_fee: json.data.data.consultation_fee,
+            logo: json.data.data.logo,
+            certificate: json.data.data.certificate,
+            status_lab: json.data.data.status,
+            created_at: json.data.data.created_at
+          }, _this4.toggleLabView(lab_id, name));
+        } else {
+          _this4.setState({
+            errorMessage: json.data.data,
+            showError: true
           });
-        } else alert("Login Failed!");
+        }
       })["catch"](function (error) {
         // redirect user to previous page if user does not have autorization to the page
-        hashHistory.push('/premontessori');
+        // hashHistory.push('/premontessori');
         console.error("An Error Occuredd! ".concat(error));
       });
-    } // For datepicker
+    } // //////////////////// VIEW ACCOUNT ///////////////////////////////////////////////////////////
 
   }, {
-    key: "toggle_app_instructions",
-    // toggle collapse and expand application instruction
-    value: function toggle_app_instructions() {
-      this.setState({
-        collapse_app_instructions: !this.state.collapse_app_instructions
-      });
-    } // toggle collapse and expand personal data
-
-  }, {
-    key: "toggle",
-    value: function toggle() {
-      this.setState({
-        collapse: !this.state.collapse
-      });
-    } // toggle collapse and expand identification
-
-  }, {
-    key: "toggle_identification",
-    value: function toggle_identification() {
-      this.setState({
-        collapse_identification: !this.state.collapse_identification
-      });
-    } // /////////////// Share medical records
-
-  }, {
-    key: "togglePrimary",
-    value: function togglePrimary() {
-      this.setState({
-        primary: !this.state.primary
-      });
-    } // ON Change of first name input
-
-  }, {
-    key: "onChangeFirstName",
-    value: function onChangeFirstName(e) {
-      this.setState({
-        first_name: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeLastName",
-    value: function onChangeLastName(e) {
-      this.setState({
-        last_name: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeLastName",
-    value: function onChangeLastName(e) {
-      this.setState({
-        last_name: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeMiddleName",
-    value: function onChangeMiddleName(e) {
-      this.setState({
-        middle_name: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeEmail",
-    value: function onChangeEmail(e) {
-      this.setState({
-        email: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeZipCode",
-    value: function onChangeZipCode(e) {
-      this.setState({
-        zip_code: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeTelephone",
-    value: function onChangeTelephone(e) {
-      this.setState({
-        telephone: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeTitle",
-    value: function onChangeTitle(e) {
-      this.setState({
-        title: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeGender",
-    value: function onChangeGender(e) {
-      this.setState({
-        gender: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeDob",
-    value: function onChangeDob(e) {
-      this.setState({
-        dob: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeNationality",
-    value: function onChangeNationality(e) {
-      this.setState({
-        nationality: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeCountryOfResidence",
-    value: function onChangeCountryOfResidence(e) {
-      this.setState({
-        country_of_residence: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeDistrictProvinceState",
-    value: function onChangeDistrictProvinceState(e) {
-      this.setState({
-        district_province_state: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeContactAddress",
-    value: function onChangeContactAddress(e) {
-      this.setState({
-        contact_address: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeHeight",
-    value: function onChangeHeight(e) {
-      this.setState({
-        height: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeWeight",
-    value: function onChangeWeight(e) {
-      this.setState({
-        weight: e.target.value
-      });
-    } // //////////////////////// DISABILITY /////////////////////////////////////////////////////////////
-
-  }, {
-    key: "onChangeDisabilityNone",
-    value: function onChangeDisabilityNone(e) {
-      this.setState({
-        disability_none: !this.state.disability_none
-      });
-    }
-  }, {
-    key: "onChangeDisabilityHearing",
-    value: function onChangeDisabilityHearing(e) {
-      this.setState({
-        disability_hearing: !this.state.disability_hearing
-      });
-    }
-  }, {
-    key: "onChangeDisabilityMobility",
-    value: function onChangeDisabilityMobility(e) {
-      this.setState({
-        disability_mobility: !this.state.disability_mobility
-      });
-    }
-  }, {
-    key: "onChangeDisabilitySight",
-    value: function onChangeDisabilitySight(e) {
-      this.setState({
-        disability_sight: !this.state.disability_sight
-      });
-    }
-  }, {
-    key: "onChangeDisabilityLearning",
-    value: function onChangeDisabilityLearning(e) {
-      this.setState({
-        disability_learning: !this.state.disability_learning
-      });
-    }
-  }, {
-    key: "onChangeDisabilityOthers",
-    value: function onChangeDisabilityOthers(e) {
-      this.setState({
-        disability_others: !this.state.disability_others
-      });
-    } ///////////////////////////////////////////////////////////////////////////////////////////////////
-
-  }, {
-    key: "onChangeNextKinName",
-    value: function onChangeNextKinName(e) {
-      this.setState({
-        next_of_kin_name: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeNextKinRelationship",
-    value: function onChangeNextKinRelationship(e) {
-      this.setState({
-        next_of_kin_relationship: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeNextKinOccupation",
-    value: function onChangeNextKinOccupation(e) {
-      this.setState({
-        next_of_kin_occupation: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeNextKinPhone",
-    value: function onChangeNextKinPhone(e) {
-      this.setState({
-        next_of_kin_phone: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeNextKinEmail",
-    value: function onChangeNextKinEmail(e) {
-      this.setState({
-        next_of_kin_email: e.target.value
-      });
-    } // onChangePassportPhotograph(e)         { this.setState({ passport_photograph:e.target.value  }); }
-    // ///////////////// IDENTITY ///////////////////////////////
-    // pass in the file into state
-
-  }, {
-    key: "onChangeProfilePicture",
-    value: function onChangeProfilePicture(e) {
-      var _this3 = this;
-
-      this.setState({
-        profile_picture: e.target.files[0]
-      }); // set a timwer and call the submit profile picture 
-
-      var timeout = setTimeout(function () {
-        // call to save images
-        _this3.onSubmitProfilePicture(); // call to load contents again so the image can change
-
-
-        _this3.componentDidMount();
-      }, 1000); // },[]);
-      // this.onSubmitProfilePicture()
-    } // ///////////////////////////////////////////////////////////
-
-  }, {
-    key: "onChangeProgrammeFirstChoice",
-    value: function onChangeProgrammeFirstChoice(e) {
-      this.setState({
-        programme_first_choice: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeProgrammeSecondChoice",
-    value: function onChangeProgrammeSecondChoice(e) {
-      this.setState({
-        programme_second_choice: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeProgrammeThirdChoice",
-    value: function onChangeProgrammeThirdChoice(e) {
-      this.setState({
-        programme_third_choice: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeAcademicSession",
-    value: function onChangeAcademicSession(e) {
-      this.setState({
-        academic_session: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeAdmissionIntake",
-    value: function onChangeAdmissionIntake(e) {
-      this.setState({
-        admission_intake: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeStudyMode",
-    value: function onChangeStudyMode(e) {
-      this.setState({
-        study_mode: e.target.value
-      });
-    }
-  }, {
-    key: "onChangePreviousResultTranscript",
-    value: function onChangePreviousResultTranscript(e) {
-      this.setState({
-        previous_result_transcript: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeStatus",
-    value: function onChangeStatus(e) {
-      this.setState({
-        status: e.target.value
-      });
-    } // ////////////////////////////////////////////////////////////
-
-  }, {
-    key: "onChangeMedicationsCurrentlyUsing",
-    value: function onChangeMedicationsCurrentlyUsing(e) {
-      this.setState({
-        medications_currently_using: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeAllergies",
-    value: function onChangeAllergies(e) {
-      this.setState({
-        allergies: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeBloodGroup",
-    value: function onChangeBloodGroup(e) {
-      this.setState({
-        blood_group: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeUnderlyingConditions",
-    value: function onChangeUnderlyingConditions(e) {
-      this.setState({
-        underlying_conditions: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeFamilyMedicalHistory",
-    value: function onChangeFamilyMedicalHistory(e) {
-      this.setState({
-        family_medical_history: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeHypertensive",
-    value: function onChangeHypertensive(e) {
-      this.setState({
-        hypertensive: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeDiabetic",
-    value: function onChangeDiabetic(e) {
-      this.setState({
-        diabetic: e.target.value
-      });
-    } // //////////////////// SHARE MED HISTORY /////////////////////////
-
-  }, {
-    key: "onChangeShareMedHistory",
-    value: function onChangeShareMedHistory(e) {
-      this.setState({
-        share_med_history: e.target.value
-      });
-    }
-  }, {
-    key: "onSubmit",
-    value: function onSubmit(e) {
-      var _this4 = this;
-
-      e.preventDefault();
-      var application_data = {
-        first_name: this.state.first_name,
-        last_name: this.state.last_name,
-        middle_name: this.state.middle_name,
-        email: this.state.email,
-        zip_code: this.state.zip_code,
-        telephone: this.state.telephone,
-        title: this.state.title,
-        gender: this.state.gender,
-        dob: this.state.dob,
-        nationality: this.state.nationality,
-        country_of_residence: this.state.country_of_residence,
-        district_province_state: this.state.district_province_state,
-        contact_address: this.state.contact_address,
-        height: this.state.height,
-        weight: this.state.weight,
-        disability_none: this.state.disability_none,
-        disability_hearing: this.state.disability_hearing,
-        disability_mobility: this.state.disability_mobility,
-        disability_sight: this.state.disability_sight,
-        disability_learning: this.state.disability_learning,
-        disability_others: this.state.disability_others,
-        next_kin_name: this.state.next_of_kin_name,
-        next_kin_relationship: this.state.next_of_kin_relationship,
-        next_kin_occupation: this.state.next_of_kin_occupation,
-        next_kin_phone: this.state.next_of_kin_phone,
-        next_kin_email: this.state.next_of_kin_email
-      };
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/update/" + this.state.id + "?token=".concat(this.state.token), application_data).then(function (response) {
-        console.log("ROI Cartoon");
-        console.log(response);
-        return response;
-      }).then(function (json) {
-        if (json.data.success) {
-          _this4.setState({// applications_list: json.data.data.data,
-          });
-        } else alert("Login Failed!");
-      })["catch"](function (error) {
-        // redirect user to previous page if user does not have autorization to the page
-        hashHistory.push('/premontessori');
-        console.error("An Error Occuredd! ".concat(error));
-      });
-    }
-  }, {
-    key: "onSubmitMedicalHistory",
-    value: function onSubmitMedicalHistory(e) {
+    key: "viewAccount",
+    value: function viewAccount(lab_id, name) {
       var _this5 = this;
 
-      e.preventDefault();
-      var application_data = {
-        med_currently_using: this.state.medications_currently_using,
-        med_allergies: this.state.allergies,
-        med_blood_group: this.state.blood_group,
-        med_underlying_conditions: this.state.underlying_conditions,
-        med_family_medical_history: this.state.family_medical_history,
-        med_hypertensive: this.state.hypertensive,
-        med_diabetic: this.state.diabetic
-      };
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/updateMed/" + this.state.id + "?token=".concat(this.state.token), application_data).then(function (response) {
+      this.setState({
+        lab_id: lab_id,
+        lab_name: name
+      });
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/admin/lab/account/" + lab_id + "?token=".concat(this.state.token)).then(function (response) {
         console.log("ROI Cartoon");
         console.log(response);
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          _this5.setState({// applications_list: json.data.data.data,
-          });
-        } else alert("Login Failed!");
+          _this5.setState({
+            account_list: json.data.data.data,
+            itemsCountPerPage_account: json.data.data.per_page,
+            totalItemsCount_account: json.data.data.total,
+            activePage_account: json.data.data.current_page
+          }, _this5.toggleAccountView(lab_id, name));
+        } else {}
       })["catch"](function (error) {
         // redirect user to previous page if user does not have autorization to the page
-        hashHistory.push('/premontessori');
+        // hashHistory.push('/premontessori');
         console.error("An Error Occuredd! ".concat(error));
       });
     }
   }, {
-    key: "onSubmitShareMedHistory",
-    value: function onSubmitShareMedHistory(e) {
+    key: "handlePageChangeAccount",
+    value: function handlePageChangeAccount(pageNumber) {
       var _this6 = this;
 
-      e.preventDefault();
-      var share_med_data = {
-        share_med_history: this.state.share_med_history
-      };
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/shareMedHistory/" + this.state.id + "?token=".concat(this.state.token), share_med_data).then(function (response) {
+      console.log("active page is ".concat(pageNumber)); // this.setState({activePage: pageNumber});
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/admin/lab/account/" + this.state.lab_id + "?token=".concat(this.state.token, "&page=") + pageNumber).then(function (response) {
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this6.setState({
+            account_list: json.data.data.data,
+            itemsCountPerPage_account: json.data.data.per_page,
+            totalItemsCount_account: json.data.data.total,
+            activePage_account: json.data.data.current_page
+          });
+        } else {}
+      });
+    }
+  }, {
+    key: "viewLabPatient",
+    value: function viewLabPatient(lab_id) {
+      var _this7 = this;
+
+      this.setState({
+        lab_id: lab_id
+      });
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/lab/patients_list/" + lab_id + "?token=".concat(this.state.token)).then(function (response) {
         console.log("ROI Cartoon");
         console.log(response);
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          _this6.setState({// applications_list: json.data.data.data,
-          });
-        } else alert("Login Failed!");
+          console.log("applications_list");
+          console.log(_typeof(json.data.data.data));
+          console.log(json.data.data.data);
+
+          _this7.setState({
+            applications_list: json.data.data.data,
+            itemsCountPerPage: json.data.data.per_page,
+            totalItemsCount: json.data.data.total,
+            activePage: json.data.data.current_page
+          }, _this7.toggleViewLabPatient);
+        } else {}
       })["catch"](function (error) {
         // redirect user to previous page if user does not have autorization to the page
-        hashHistory.push('/premontessori');
+        // hashHistory.push('/premontessori');
         console.error("An Error Occuredd! ".concat(error));
       });
     }
   }, {
-    key: "onSubmitProfilePicture",
-    value: function onSubmitProfilePicture(e) {
-      // e.preventDefault() // Stop form submit
-      this.fileUploadProfilePicture(this.state.profile_picture).then(function (response) {
-        console.log(response.data); // Call the function to get and store passport type n id number
-        // this.idPassportDetails()
+    key: "handlePageChange",
+    value: function handlePageChange(pageNumber) {
+      var _this8 = this;
+
+      console.log("active page is ".concat(pageNumber)); // this.setState({activePage: pageNumber});
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/lab/patients_list/" + this.state.lab_id + "?token=".concat(this.state.token, "&page=") + pageNumber).then(function (response) {
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this8.setState({
+            applications_list: json.data.data.data,
+            itemsCountPerPage: json.data.data.per_page,
+            totalItemsCount: json.data.data.total,
+            activePage: json.data.data.current_page
+          });
+        } else {}
       });
     }
   }, {
-    key: "fileUploadProfilePicture",
-    value: function fileUploadProfilePicture(profile_picture) {
-      var url = 'http://localhost:8000/api/user/updateProfilePicture/' + this.state.id + "?token=".concat(this.state.token);
+    key: "togglePrimary",
+    // //////////////////////////////////////////////////////////////////////
+    // /////////////// Patient chat
+    value: function togglePrimary(close) {
+      // console.log(id);
+      // if the variable passed is closed do not call axios
+      // if(id == "close"){
+      //   this.setState({
+      //     primary: !this.state.primary,
+      //   });
+      // }else{
+      if (close == "close") {
+        clearInterval(this.interval);
+        this.setState({
+          primary: !this.state.primary
+        });
+      } else {
+        this.setState({
+          primary: !this.state.primary,
+          patient_id: this.state.patient_id,
+          patient_name: this.state.patient_name
+        }, this.getMessages1());
+      }
+    }
+  }, {
+    key: "getMessages1",
+    value: function getMessages1() {
+      var _this9 = this;
+
+      this.getMessages2();
+      this.interval = setInterval(function () {
+        return _this9.getMessages2();
+      }, 5000);
+    } // get messages
+
+  }, {
+    key: "getMessages2",
+    value: function getMessages2() {
+      var _this10 = this; // alert("Paulo");
+
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/lab/patient/chat/message/get/" + this.state.patient_id + '/' + this.state.lab_id + "?token=".concat(this.state.token)).then(function (response) {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        console.log("json.data.messages.message");
+        console.log(_typeof(json.data.messages.message));
+        console.log(json.data.messages.message);
+
+        if (json.data.success) {
+          //   console.log("applications_list");
+          //   console.log(json.data.data.data);
+          _this10.setState({
+            message_list: json.data.messages.message
+          }, _this10.loadMessages(json.data.messages.message));
+        } else {}
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    } // get messages from db, do a foreach on the array of messages
+
+  }, {
+    key: "loadMessages",
+    value: function loadMessages(passMessageArray) {
+      // empty message area before adding new message
+      jquery__WEBPACK_IMPORTED_MODULE_4___default()('#message_area').empty();
+      passMessageArray.forEach(this.splitMessage);
+    } // split the messages to know that of lab and patient
+
+  }, {
+    key: "splitMessage",
+    value: function splitMessage(item) {
+      var item_split = item.split("|-|");
+      var from = item_split[0].slice(1);
+      var id = item_split[1];
+      var message = item_split[2];
+      var fileName = item_split[3].slice(0, -1);
+
+      if (from == "lab") {
+        jquery__WEBPACK_IMPORTED_MODULE_4___default()("#message_area").append("<li style='background-color: rgb(33, 103, 172); color: rgb(255, 255, 255); padding: 5px 10px; margin: 5px; border-radius: 10px;'>" + message + "</li>");
+      } else if (from == "patient") {
+        jquery__WEBPACK_IMPORTED_MODULE_4___default()("#message_area").append("<li style='background-color: #ca333a; color: rgb(255, 255, 255); padding: 5px 10px; margin: 5px; border-radius: 10px;'>" + message + "</li>");
+      } else if (from == "lab_file") {
+        jquery__WEBPACK_IMPORTED_MODULE_4___default()("#message_area").append("<a href='" + message + "' target='_blank'><li style='background-color: rgb(33, 103, 172); color: rgb(255, 255, 255); padding: 5px 10px; margin: 5px; border-radius: 10px;'>" + fileName + "<i class='fa fa-paperclip' style='font-size: 1.5em; float: right'></i></li></a>");
+      } else if (from == "patient_file") {
+        jquery__WEBPACK_IMPORTED_MODULE_4___default()("#message_area").append("<a href='" + message + "' target='_blank'><li style='background-color: #ca333a; color: rgb(255, 255, 255); padding: 5px 10px; margin: 5px; border-radius: 10px;'>" + fileName + "<i class='fa fa-paperclip' style='font-size: 1.5em; float: right'></i></li></a>");
+      }
+    }
+  }, {
+    key: "onChangeMessageBox",
+    value: function onChangeMessageBox(e) {
+      this.setState({
+        message_box: e.target.value
+      });
+    } // send chat message
+
+  }, {
+    key: "sendMessage",
+    value: function sendMessage() {
+      // const message ={ message_box : this.state.message_box }
+      var message = this.state.message_box;
+      jquery__WEBPACK_IMPORTED_MODULE_4___default()("#message_area").append("<li style='background-color: rgb(33, 103, 172); color: rgb(255, 255, 255); padding: 5px 10px; margin: 5px; border-radius: 10px;'>" + message + "</li>"); // auto scroll to bottom of page
+
+      jquery__WEBPACK_IMPORTED_MODULE_4___default()('#message_area').animate({
+        scrollTop: jquery__WEBPACK_IMPORTED_MODULE_4___default()('#message_area')[0].scrollHeight
+      }, 2000);
+      console.log(message); // console.log(testmessage);
+
+      var send_message = {
+        message: message
+      };
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("/api/lab/patient/chat/message/send/" + this.state.patient_id + '/' + this.state.lab_id + "?token=".concat(this.state.token), send_message).then(function (response) {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.status == 200) {
+          jquery__WEBPACK_IMPORTED_MODULE_4___default()("#message_box").val("");
+        } else {}
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    }
+  }, {
+    key: "sendFile",
+    value: function sendFile(e) {
+      this.setState({
+        send_file: e.target.files[0]
+      }, this.submitSendFile);
+    }
+  }, {
+    key: "trigerSendFile",
+    value: function trigerSendFile() {
+      jquery__WEBPACK_IMPORTED_MODULE_4___default()('#send_file').trigger('click');
+    }
+  }, {
+    key: "submitSendFile",
+    value: function submitSendFile(e) {
+      var _this11 = this; // e.preventDefault() // Stop form submit
+
+
+      this.uploadSendFile().then(function (response) {
+        // console.log(response.data);
+        if (response.data.success) {// this.setState({
+          //   successMessage: "Profile picture uploaded successfully",
+          //   showSuccess: true
+          // });
+        } else {// this.setState({
+            //   errorMessage: response.data.data.profile_picture,
+            //   showError: true
+            // });
+          }
+      })["catch"](function (error) {
+        _this11.setState({
+          showError: true
+        });
+      });
+    }
+  }, {
+    key: "uploadSendFile",
+    value: function uploadSendFile() {
+      var url = '/api/lab/patient/chat/file/send/' + this.state.patient_id + '/' + this.state.lab_id + "?token=".concat(this.state.token);
       var formData = new FormData();
-      formData.append('profile_picture', profile_picture);
+      formData.append('send_file', this.state.send_file);
       var config = {
         headers: {
           'content-type': 'multipart/form-data'
         }
       };
-      return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
-    } // idPassportDetails(){
-    //   const application_data ={
-    //     type_of_identification : this.state.type_of_identification, id_passport_number : this.state.id_passport_number
-    //   }
-    //   axios.put(`http://localhost:8000/api/user/updateIdDetails/`+this.state.id+`?token=${this.state.token}`, application_data)
-    //   .then(response => {
-    //     console.log("ROI Cartoon");
-    //     console.log(response);
-    //     return response;
-    //   })
-    //   .then(json => {
-    //     if (json.data.success) {
-    //       this.setState({ 
-    //         // applications_list: json.data.data.data,
-    //       });
-    //     } else alert("Login Failed!");
-    //   })
-    //   .catch(error => {
-    //     // redirect user to previous page if user does not have autorization to the page
-    //     hashHistory.push('/premontessori');
-    //     console.error(`An Error Occuredd! ${error}`);
-    //   });
-    // }
+      return Object(axios__WEBPACK_IMPORTED_MODULE_3__["post"])(url, formData, config);
+    } // //////////////////////////////////////////////////////////////////////////
+    // /////////////// Patient records
 
   }, {
-    key: "trigerFileUpload",
-    value: function trigerFileUpload() {
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('#profile_picture').trigger('click');
-    } // onError() {
-    //   this.setState({
-    //     imageUrl: "/images/cam-medics-logo.png"
-    //   })
-    // }
+    key: "getLabTestRecommendations",
+    value: function getLabTestRecommendations(patient_id, name) {
+      var _this12 = this; // get patient medical records to display in modal
 
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/lab/sharedLabTest/get/" + patient_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+        console.log("It came back");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          console.log("med_currently_using");
+          console.log(json.data.med_currently_using);
+          console.log(json.status);
+
+          _this12.setState({
+            // //////////////////////////////////////////////////////
+            personal_data_username: json.data.personal_data.username,
+            personal_data_first_name: json.data.personal_data.first_name,
+            personal_data_last_name: json.data.personal_data.last_name,
+            personal_data_middle_name: json.data.personal_data.middle_name,
+            personal_data_title: json.data.personal_data.title,
+            personal_data_gender: json.data.personal_data.gender,
+            personal_data_gender_others: json.data.personal_data.gender_others,
+            personal_data_dob: json.data.personal_data.dob,
+            personal_data_nationality: json.data.personal_data.nationality,
+            personal_data_country_of_residence: json.data.personal_data.country_of_residence,
+            personal_data_district_province_state: json.data.personal_data.district_province_state,
+            personal_data_profile_picture: json.data.personal_data.profile_picture,
+            status: json.data.status,
+            lab_test: json.data.lab_test,
+            patient_id: patient_id,
+            patient_name: name
+          }, _this12.togglePatientRec(patient_id, name));
+        } else {
+          _this12.setState({
+            errorMessage: json.data.data,
+            showError: true
+          });
+        }
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    }
+  }, {
+    key: "getLabTestResults",
+    value: function getLabTestResults(patient_id, name) {
+      var _this13 = this; // alert(this.state.patient_id);
+      // get patient medical records to display in modal
+
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/lab/labResult/get/" + patient_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+        console.log("It came back");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this13.setState({
+            lab_test_results: json.data.lab_results
+          });
+        } else {
+          _this13.setState({// errorMessage: json.data.data,
+            // showError: true
+          });
+        }
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    } // ///////////////////////////// VIEW APPOINTMENT /////////////////////////////
+
+  }, {
+    key: "viewAppointment",
+    value: function viewAppointment(patient_id, name) {
+      var _this14 = this; // get patient medical records to display in modal
+
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/lab/appointment/get/" + patient_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+        console.log("It came back");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          console.log(json.data);
+
+          _this14.setState({
+            // //////////////////////////////////////////////////////
+            appointment_id: json.data.data.id,
+            appointment_date: json.data.data.date,
+            appointment_time: json.data.data.time,
+            appointment_subject: json.data.data.subject,
+            appointment_message: json.data.data.message,
+            appointment_patient_username: json.data.data.patient_username,
+            appointment_patient_first_name: json.data.data.patient_first_name,
+            appointment_patient_last_name: json.data.data.patient_last_name,
+            appointment_patient_middle_name: json.data.data.patient_middle_name,
+            appointment_status: json.data.data.status
+          }, _this14.toggleViewAppointment(patient_id, name));
+
+          if (_this14.state.appointment_status == 1) {
+            _this14.setState({
+              appointment_status: 'Open',
+              appointment_status_color: 'success',
+              chat_btn_status: false
+            });
+          }
+
+          if (_this14.state.appointment_status == 2) {
+            _this14.setState({
+              appointment_status: 'Close',
+              appointment_status_color: 'danger',
+              chat_btn_status: true
+            });
+          }
+        } else {
+          _this14.setState({
+            errorMessage: json.data.data,
+            showError: true
+          });
+        }
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    }
+  }, {
+    key: "endAppointment",
+    /////////////////////////////// End Appointment ///////////////////////////
+    value: function endAppointment() {
+      var _this15 = this; // get patient medical records to display in modal
+
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/lab/appointment/end/" + this.state.patient_id + '/' + this.state.id + '/' + this.state.appointment_id + "?token=".concat(this.state.token)).then(function (response) {
+        console.log("It came back");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          console.log(json.data.data);
+
+          _this15.setState({
+            successMessage: json.data.data,
+            showSuccess: true
+          }, _this15.toggleViewAppointment());
+        } else {
+          _this15.setState({
+            errorMessage: json.data.data,
+            showError: true
+          });
+        }
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    } // //////////////////////////////////////////////////////////
+
+  }, {
+    key: "onSubmitLabResult",
+    value: function onSubmitLabResult(e) {
+      var _this16 = this;
+
+      e.preventDefault();
+      var lab_result_save = {
+        lab_test_name: this.state.lab_test_name,
+        lab_result: this.state.lab_result
+      };
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("/api/lab/labResult/save/" + this.state.patient_id + '/' + this.state.id + "?token=".concat(this.state.token), lab_result_save) // axios.post(`api/products/add?token=${this.state.token}`, product_data)
+      // axios.post('api/products/add', product_data, {
+      //     headers: {
+      //         'Content-Type': 'application/json',
+      //         'Authorization': 'Bearer '+ `${this.state.token}`
+      //     },      
+      // })  
+      .then(function (response) {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this16.setState({
+            successMessage: "Lab result saved",
+            showSuccess: true
+          });
+        } else {
+          _this16.setState({
+            errorMessage: json.data.data,
+            showError: true
+          });
+        }
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    }
+  }, {
+    key: "changeLabStatus",
+    value: function changeLabStatus(lab_id) {
+      var _this17 = this;
+
+      this.setState({
+        lab_id: lab_id
+      });
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/admin/lab/change_status/" + lab_id + "?token=".concat(this.state.token)).then(function (response) {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        console.log(json.data);
+
+        if (json.data.success) {
+          _this17.setState({}, _this17.componentDidMount);
+        } else {}
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    }
+  }, {
+    key: "changeAccountStatus",
+    value: function changeAccountStatus(account_id) {
+      var _this18 = this; // this.setState({ 
+      //   lab_id: lab_id
+      // });
+
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/admin/lab/change_account_status/" + account_id + "?token=".concat(this.state.token)).then(function (response) {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        console.log(json.data);
+
+        if (json.data.success) {
+          _this18.setState({
+            successMessage: "Updated successfully",
+            showSuccess: true
+          }, _this18.componentDidMount());
+        } else {
+          _this18.setState({
+            errorMessage: "Updated failed",
+            showError: true
+          });
+        }
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    }
   }, {
     key: "render",
     value: function render() {
-      // gets the state value as a string and convert to boolean
-      if (this.state.disability_none == "false") {
-        this.state.disability_none = false;
+      var _this19 = this;
+
+      if (this.state.status_lab == "0") {
+        this.state.status_lab = "Not activated";
       }
 
-      if (this.state.disability_hearing == "false") {
-        this.state.disability_hearing = false;
-      }
+      if (this.state.status_lab == "1") {
+        this.state.status_lab = "Activated";
+      } // const { product_image} = this.state
 
-      if (this.state.disability_mobility == "false") {
-        this.state.disability_mobility = false;
-      }
-
-      if (this.state.disability_sight == "false") {
-        this.state.disability_sight = false;
-      }
-
-      if (this.state.disability_learning == "false") {
-        this.state.disability_learning = false;
-      }
-
-      if (this.state.disability_others == "false") {
-        this.state.disability_others = false;
-      }
-
-      if (this.state.disability_none == "true") {
-        this.state.disability_none = true;
-      }
-
-      if (this.state.disability_hearing == "true") {
-        this.state.disability_hearing = true;
-      }
-
-      if (this.state.disability_mobility == "true") {
-        this.state.disability_mobility = true;
-      }
-
-      if (this.state.disability_sight == "true") {
-        this.state.disability_sight = true;
-      }
-
-      if (this.state.disability_learning == "true") {
-        this.state.disability_learning = true;
-      }
-
-      if (this.state.disability_others == "true") {
-        this.state.disability_others = true;
-      }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "animated fadeIn"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
         xs: "12",
         sm: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Profile Form"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Laboratories"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
         xs: "12",
-        sm: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["CardHeader"], {
-        className: "border-bottom text-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-3 mx-auto"
+        lg: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-align-justify"
+      }), " List of Laboratories"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Table"], {
+        responsive: true,
+        bordered: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "USERNAME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "NAME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "TELEPHONE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "EMAIL"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "COUNTRY"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "District/Province/State"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        style: {
+          paddingRight: "55px"
+        }
+      }, "ACTION"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "STATUS"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ( // Calculation for the page S/N
+      this.state.currentPage = this.state.activePage * 10 - (10 - 1), // ////////////////////////////////////////////////////////////
+      this.state.labs_list.map(function (lab) {
+        if (lab.status == 1) {
+          _this19.state.lab_status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+            size: "sm",
+            onClick: function onClick() {
+              return _this19.changeLabStatus(lab.id);
+            },
+            active: true,
+            color: "danger",
+            title: "deactivate account",
+            "aria-pressed": "true"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "fa fa-close"
+          }));
+        } else {
+          _this19.state.lab_status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+            size: "sm",
+            onClick: function onClick() {
+              return _this19.changeLabStatus(lab.id);
+            },
+            active: true,
+            color: "success",
+            title: "activate account",
+            "aria-pressed": "true"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "fa fa-check"
+          }));
+        }
+
+        var lab_id = lab.id; // const name     = lab.first_name +" "+lab.last_name+" "+lab.middle_name;
+
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: lab.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+          scope: "row"
+        }, _this19.state.currentPage++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, lab.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, lab.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, lab.zip_code, " ", lab.telephone), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, lab.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, lab.country), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, lab.district_province_state), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+          size: "sm",
+          onClick: function onClick() {
+            return _this19.viewLab(lab_id, name);
+          },
+          className: "btn-facebook btn-brand icon mr-1 mb-1",
+          title: "View lab"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-user"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+          size: "sm",
+          onClick: function onClick() {
+            return _this19.viewAccount(lab_id, name);
+          },
+          className: "btn-vine btn-brand icon mr-1 mb-1",
+          title: "View lab's account"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-money"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+          size: "sm",
+          onClick: function onClick() {
+            return _this19.viewLabPatient(lab.id);
+          },
+          className: "btn-flickr btn-brand icon mr-1 mb-1",
+          title: "View lab's patient"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-stethoscope"
+        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this19.state.lab_status));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        activePage: this.state.activePage_labs,
+        itemsCountPerPage: this.state.itemsCountPerPage_labs,
+        totalItemsCount: this.state.totalItemsCount_labs,
+        pageRangeDisplayed: this.state.pageRangeDisplayed_labs,
+        onChange: this.handlePageChangeLabs,
+        itemClass: "page-item",
+        linkClass: "page-link"
+      })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Modal"], {
+        isOpen: this.state.labView,
+        className: 'modal-primary ' + this.props.className,
+        style: {
+          maxWidth: "1000px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalHeader"], {
+        toggle: function toggle() {
+          return _this19.toggleLabView("close", "close");
+        }
+      }, "View Lab"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-align-justify"
+      }), this.state.patient_name, " Lab's Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "12",
+        sm: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "3",
+        lg: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "rounded-circle",
-        src: this.state.profile_picture,
+        // className="rounded-circle"
+        src: this.state.logo,
         alt: this.state.name,
-        width: "110"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "mb-0"
-      }, this.state.first_name, " ", this.state.last_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted d-block mb-2"
-      }, this.state.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["ListGroupItem"], {
-        className: "px-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Button"], {
-        block: true,
-        outline: true,
+        width: "150"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "9",
+        lg: "9"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Table"], {
+        responsive: true,
+        striped: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.username)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.email)))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Table"], {
+        responsive: true,
+        striped: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Zip code"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.zip_code)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Telephone"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.telephone)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Country"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.country)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "District/Province/State"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.district_province_state)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.address)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Certificate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        target: "_blank",
+        href: this.state.certificate
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        size: "sm",
+        active: true,
         color: "success",
-        onClick: this.trigerFileUpload
-      }, "Update Profile Photograph"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
+        title: "View certificate",
+        "aria-pressed": "true"
+      }, "View certificate")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Consultation fee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.consultation_fee)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Bank name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.bank_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Bank account name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.bank_account_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Bank account number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.bank_account_number)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Bank account number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.status_hospital)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Status"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.status_lab)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Registration Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.created_at))))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        color: "secondary",
+        onClick: function onClick() {
+          return _this19.toggleLabView("close", "close");
+        }
+      }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Modal"], {
+        isOpen: this.state.accountView,
+        className: 'modal-primary ' + this.props.className,
+        style: {
+          maxWidth: "1000px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalHeader"], {
+        toggle: function toggle() {
+          return _this19.toggleAccountView("close", "close");
+        }
+      }, "View Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-align-justify"
+      }), this.state.patient_name, " Lab's Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Table"], {
+        responsive: true,
+        bordered: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Amount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Currency"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Order No"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Status"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ( // Calculation for the page S/N
+      this.state.currentPage = this.state.activePage_account * 10 - (10 - 1), // ////////////////////////////////////////////////////////////
+      this.state.account_list.map(function (account) {
+        if (account.status == 1) {
+          _this19.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Badge"], {
+            color: "danger"
+          }, "Consultation Open");
+          _this19.state.payment_status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+            size: "sm",
+            onClick: function onClick() {
+              return _this19.changeAccountStatus(account.id);
+            },
+            active: true,
+            color: "success",
+            title: "pay",
+            "aria-pressed": "true"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "fa fa-check"
+          }));
+        } else if (account.status == 2) {
+          _this19.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Badge"], {
+            color: "primary"
+          }, "Consultation Closed");
+          _this19.state.payment_status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+            size: "sm",
+            onClick: function onClick() {
+              return _this19.changeAccountStatus(account.id);
+            },
+            active: true,
+            color: "success",
+            title: "pay",
+            "aria-pressed": "true"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "fa fa-check"
+          }));
+        } else if (account.status == 3) {
+          _this19.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Badge"], {
+            color: "success"
+          }, "Paid");
+          _this19.state.payment_status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+            size: "sm",
+            onClick: function onClick() {
+              return _this19.changeAccountStatus(account.id);
+            },
+            active: true,
+            color: "danger",
+            title: "unpay",
+            "aria-pressed": "true"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "fa fa-close"
+          }));
+        } // if(account.status == 1){
+        //   this.state.payment_status = <Button size="sm" onClick={() => this.changeAccountStatus(account.account_id)} active color="danger" title="unpay" aria-pressed="true"><i className="fa fa-close"></i></Button>;
+        // }else{
+        //   this.state.payment_status = <Button size="sm" onClick={() => this.changeAccountStatus(account.account_id)} active color="success" title="paid" aria-pressed="true"><i className="fa fa-check"></i></Button>;
+        // }
+
+
+        var patient_id = account.patient_id;
+        var name = account.patient_first_name + " " + account.patient_last_name + " " + account.patient_middle_name;
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: account.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+          scope: "row"
+        }, _this19.state.currentPage++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, account.patient_username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, account.billing_lab_fee), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, account.billing_amount_currency), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, account.billing_orderID), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, account.created_at), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this19.state.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this19.state.payment_status));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        activePage: this.state.activePage_account,
+        itemsCountPerPage: this.state.itemsCountPerPage_account,
+        totalItemsCount: this.state.totalItemsCount_account,
+        pageRangeDisplayed: this.state.pageRangeDisplayed_account,
+        onChange: this.handlePageChangeAccount,
+        itemClass: "page-item",
+        linkClass: "page-link"
+      })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        color: "secondary",
+        onClick: function onClick() {
+          return _this19.toggleAccountView("close", "close");
+        }
+      }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Modal"], {
+        isOpen: this.state.primaryLabPatient,
+        className: 'modal-primary ' + this.props.className,
+        style: {
+          maxWidth: "1200px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalHeader"], {
+        toggle: function toggle() {
+          return _this19.toggleViewLabPatient("close", "close");
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-align-justify"
+      }), " Patients"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-align-justify"
+      }), " List of Patients", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_external_link__WEBPACK_IMPORTED_MODULE_6__["ExternalLink"], {
+        href: "https://live.cammedics.com/"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        color: "primary",
+        style: {
+          "float": "right"
+        }
+      }, "Start a Video Chat"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Table"], {
+        responsive: true,
+        bordered: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Middle Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Status"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ( // Calculation for the page S/N
+      this.state.currentPage2 = this.state.activePage * 10 - (10 - 1), // ////////////////////////////////////////////////////////////
+      this.state.applications_list.map(function (application) {
+        if (application.status == 1) {
+          _this19.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Badge"], {
+            color: "success"
+          }, "Open");
+        } else {
+          _this19.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Badge"], {
+            color: "danger"
+          }, "Closed");
+        }
+
+        var patient_id = application.patient_id;
+        var name = application.patient_first_name + " " + application.patient_last_name;
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: application.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+          scope: "row"
+        }, _this19.state.currentPage2++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.patient_username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.patient_first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.patient_last_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.patient_middle_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.time), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this19.state.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+          size: "sm",
+          onClick: function onClick() {
+            return _this19.getLabTestRecommendations(patient_id, name);
+          },
+          className: "btn-facebook btn-brand icon mr-1 mb-1",
+          style: {
+            marginRight: "15px"
+          }
+        }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-hospital-o",
+          title: "View medical record"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+          size: "sm",
+          onClick: function onClick() {
+            return _this19.viewAppointment(patient_id, name);
+          },
+          className: "btn-facebook btn-brand icon mr-1 mb-1",
+          title: "View appointment"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-calendar-check-o"
+        }))));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        activePage: this.state.activePage,
+        itemsCountPerPage: this.state.itemsCountPerPage,
+        totalItemsCount: this.state.totalItemsCount,
+        pageRangeDisplayed: this.state.pageRangeDisplayed,
+        onChange: this.handlePageChange,
+        itemClass: "page-item",
+        linkClass: "page-link"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        color: "secondary",
+        onClick: function onClick() {
+          return _this19.toggleViewLabPatient("close", "close");
+        }
+      }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Modal"], {
+        isOpen: this.state.primary,
+        className: 'modal-primary ' + this.props.className,
+        style: {
+          maxWidth: "1000px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalHeader"], {
+        toggle: function toggle() {
+          return _this19.togglePrimary("close", "close");
+        }
+      }, "Messages"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-align-justify"
+      }), this.state.patient_name, " Messages"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.message_list_array), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        id: "message_area",
+        style: {
+          maxHeight: "300px",
+          overflowX: "auto"
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "textarea",
+        id: "message_box",
+        rows: "2",
+        onChange: this.onChangeMessageBox,
+        placeholder: "type ..."
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-telegram fa-lg cammedics-color",
+        style: {
+          cursor: "pointer",
+          fontSize: "2em"
+        },
+        onClick: this.sendMessage
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-paperclip fa-lg cammedics-color",
+        style: {
+          cursor: "pointer",
+          fontSize: "2em",
+          "float": "right"
+        },
+        onClick: this.trigerSendFile
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         type: "file",
         color: "primary",
-        id: "profile_picture",
+        id: "send_file",
+        style: {
+          display: "none"
+        } // onChange={this.onChangeProfilePicture}
+        ,
+        onChange: function onChange(e) {
+          _this19.sendFile(e);
+        }
+      })))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        color: "secondary",
+        onClick: function onClick() {
+          return _this19.togglePrimary("close", "close");
+        }
+      }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Modal"], {
+        isOpen: this.state.patientRec,
+        className: 'modal-primary ' + this.props.className,
+        style: {
+          maxWidth: "1000px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalHeader"], {
+        toggle: function toggle() {
+          return _this19.togglePatientRec("close", "close");
+        }
+      }, "Medical Records"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-align-justify"
+      }), this.state.patient_name, " Laboratory test from doctors"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Form"], {
+        onSubmit: this.onSubmitLabResult
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "12",
+        sm: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Personal Data")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Username: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_username)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Title: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "First Name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_first_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Last Name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        style: {
+          textAlign: "left"
+        }
+      }, this.state.personal_data_last_name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Middle Name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_middle_name)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Gender: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_gender)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Date of Birth: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        style: {
+          textAlign: "right"
+        }
+      }, this.state.personal_data_dob))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Nationality: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_nationality)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Country of Residence: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_country_of_residence)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "District/Province/State: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_district_province_state))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Laboratory Test")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroup"], {
+        id: "list-tab",
+        role: "tablist"
+      }, this.state.lab_test.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+          key: meds.id,
+          onClick: function onClick() {
+            return _this19.toggleMedRecTab(meds.id + "lab");
+          },
+          action: true,
+          active: _this19.state.activeTab === meds.id + "lab",
+          style: {
+            padding: "0.3rem 1.0rem"
+          }
+        }, meds.doc_name, " (", meds.doc_username, ") ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          style: {
+            color: "#ca333a",
+            fontWeight: "600",
+            fontSize: "10px",
+            "float": "right",
+            bottom: "3px"
+          }
+        }, meds.created_at));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["TabContent"], {
+        activeTab: this.state.activeTab
+      }, this.state.lab_test.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["TabPane"], {
+          key: meds.id,
+          tabId: meds.id + "lab"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, meds.lab_test));
+      })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Laboratory Results")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroup"], {
+        id: "list-tab",
+        role: "tablist"
+      }, this.state.lab_test_results.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+          key: meds.id,
+          onClick: function onClick() {
+            return _this19.toggleMedRecTab(meds.id + "labR");
+          },
+          action: true,
+          active: _this19.state.activeTab === meds.id + "labR",
+          style: {
+            padding: "0.3rem 1.0rem"
+          }
+        }, meds.lab_name, " (", meds.lab_username, ") ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          style: {
+            color: "#ca333a",
+            fontWeight: "600",
+            fontSize: "10px",
+            "float": "right",
+            bottom: "3px"
+          }
+        }, meds.created_at));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["TabContent"], {
+        activeTab: this.state.activeTab
+      }, this.state.lab_test_results.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["TabPane"], {
+          key: meds.id,
+          tabId: meds.id + "labR"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, meds.lab_result));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Add Test Result"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Test Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "text",
+        id: "lab_test_name",
+        defaultValue: this.state.lab_test_name,
+        onChange: this.onChangeLabTestName
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Test Result"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "textarea",
+        id: "lab_result",
+        rows: "4",
+        defaultValue: this.state.lab_result,
+        onChange: this.onChangeLabResult,
+        placeholder: "enter laboratory result"
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
+        className: "form-actions"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        style: {
+          "float": "right",
+          marginRight: "25px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        type: "submit",
+        color: "primary"
+      }, "Save Result")))))))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        color: "secondary",
+        onClick: function onClick() {
+          return _this19.togglePatientRec("close", "close");
+        }
+      }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Modal"], {
+        isOpen: this.state.primaryViewAppointment,
+        className: 'modal-primary ' + this.props.className,
+        style: {
+          maxWidth: "1000px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalHeader"], {
+        toggle: function toggle() {
+          return _this19.toggleViewAppointment("close", "close");
+        }
+      }, "View Appointment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-align-justify"
+      }), this.state.patient_name, " Appointment", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Badge"], {
+        color: this.state.appointment_status_color,
+        style: {
+          "float": "right",
+          padding: "5px 10px"
+        }
+      }, this.state.appointment_status)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Form"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "12",
+        sm: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Patient Appointment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        size: "sm",
+        onClick: function onClick() {
+          return _this19.togglePrimary();
+        },
+        className: "btn-facebook btn-brand icon mr-1 mb-1",
+        title: "Chat with patient",
+        style: {
+          "float": "right"
+        },
+        disabled: this.state.chat_btn_status
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-comments"
+      }), " Send a Message")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], {
+        style: {
+          marginBottom: "25px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Date: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.appointment_date)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Username: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.appointment_patient_username)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Last name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.appointment_patient_last_name)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Time: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.appointment_time)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "First name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.appointment_patient_first_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Middle name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.appointment_patient_middle_name)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Subject: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.appointment_subject))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
+        className: "justify-content-between"
+      }, "Message: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.appointment_message))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        type: "submit",
+        size: "sm",
+        color: "danger",
+        style: {
+          "float": "right"
+        },
+        onClick: function onClick() {
+          return _this19.endAppointment();
+        }
+      }, "End Appointment"))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        color: "secondary",
+        onClick: function onClick() {
+          return _this19.toggleViewAppointment("close", "close");
+        }
+      }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "sweet_alert1",
         style: {
           display: "none"
         },
-        onChange: this.onChangeProfilePicture
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
-        className: "text-muted d-block mb-2"
-      }, this.state.metaTitle)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
-        xs: "12",
-        sm: "9"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Profile Instructions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Button"], {
-        color: "primary",
-        onClick: this.toggle_app_instructions,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Toggle"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Collapse"], {
-        isOpen: this.state.collapse_app_instructions
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Thank you for choosing Cam Medics!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "All communications regarding your application and responses to your inquiries will be sent to the email address that you have provided in your account. You are therefore encouraged to check your email regularly.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Using this account, you can start a new application or resume an existing application.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "How to Use"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "1. Complete the application forms.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "2. Upload the required academic documents and any other relevant documents.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "3. Upload your passport photo or take a webcam photo", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You are required to scan all the academic documents and any other relevant documents prior to starting the online application process. In addition, you are required to have a passport photograph ready, if you do not wish to take a webcam photo.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "If you complete and submit your application without academic documents or with partial academic documents, you can still use this account to upload the required documents.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Editing Application Information: Before making the final submission of your application, you can edit your application information. However, after making the final submission of the application form, you will not be able to edit it."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Personal Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Button"], {
-        color: "primary",
-        onClick: this.toggle,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Toggle"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Collapse"], {
-        isOpen: this.state.collapse
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Form"], {
-        onSubmit: this.onSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
-        xs: "12",
-        sm: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Title")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "select",
-        id: "title",
-        value: this.state.title,
-        onChange: this.onChangeTitle
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "0"
-      }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1"
-      }, "Mr"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "2"
-      }, "Mrs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "3"
-      }, "Ms"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "3"
-      }, "Miss")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Gender")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "select",
-        id: "gender",
-        value: this.state.gender,
-        onChange: this.onChangeGender
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "0"
-      }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1"
-      }, "Male"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "2"
-      }, "Female")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "First Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "text",
-        id: "first_name",
-        defaultValue: this.state.first_name,
-        onChange: this.onChangeFirstName
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Middle Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "text",
-        id: "middle_name",
-        defaultValue: this.state.middle_name,
-        onChange: this.onChangeMiddleName
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-envelope"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Last Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "text",
-        id: "last_name",
-        defaultValue: this.state.last_name,
-        onChange: this.onChangeLastName
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Phone Number")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "select",
-        id: "zip_code",
-        value: this.state.zip_code,
-        onChange: this.onChangeZipCode
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "0"
-      }, " Zip Code "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "NG (+234)"
-      }, "NG (+234)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "UG (+256)"
-      }, "UG (+256)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "text",
-        id: "telephone",
-        defaultValue: this.state.telephone,
-        onChange: this.onChangeTelephone
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Date of Birth")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "date",
-        id: "dob",
-        defaultValue: this.state.dob,
-        onChange: this.onChangeDob
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Nationality")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "select",
-        id: "nationality",
-        value: this.state.nationality,
-        onChange: this.onChangeNationality
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "0"
-      }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1"
-      }, "Ghana"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "2"
-      }, "Nigeria")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Country of Residence")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "select",
-        id: "country_of_residence",
-        value: this.state.country_of_residence,
-        onChange: this.onChangeCountryOfResidence
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "0"
-      }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "1"
-      }, "Ghana"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "2"
-      }, "Nigeria")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "District/Province/State")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "text",
-        id: "district_province_state",
-        defaultValue: this.state.district_province_state,
-        onChange: this.onChangeDistrictProvinceState
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Contact Address")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "textarea",
-        id: "contact_address",
-        rows: "2",
-        defaultValue: this.state.contact_address,
-        onChange: this.onChangeContactAddress,
-        placeholder: "Contact Address"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
-        xs: "12",
-        sm: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Height ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "text",
-        id: "height",
-        defaultValue: this.state.height,
-        onChange: this.onChangeHeight
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Weight ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "text",
-        id: "weight",
-        defaultValue: this.state.weight,
-        onChange: this.onChangeWeight
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Disability:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
-        xs: "12",
-        sm: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], {
-        check: true,
-        className: "checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        className: "form-check-input",
-        type: "checkbox",
-        id: "disability_none",
-        checked: this.state.disability_none,
-        onChange: this.onChangeDisabilityNone
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Label"], {
-        check: true,
-        className: "form-check-label",
-        htmlFor: "checkbox1"
-      }, "None")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], {
-        check: true,
-        className: "checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        className: "form-check-input",
-        type: "checkbox",
-        id: "hearing",
-        checked: this.state.disability_hearing,
-        onChange: this.onChangeDisabilityHearing
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Label"], {
-        check: true,
-        className: "form-check-label",
-        htmlFor: "checkbox2"
-      }, "Hearing")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], {
-        check: true,
-        className: "checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        className: "form-check-input",
-        type: "checkbox",
-        id: "mobility",
-        checked: this.state.disability_mobility,
-        onChange: this.onChangeDisabilityMobility
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Label"], {
-        check: true,
-        className: "form-check-label",
-        htmlFor: "checkbox3"
-      }, "Mobility"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
-        xs: "12",
-        sm: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], {
-        check: true,
-        className: "checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        className: "form-check-input",
-        type: "checkbox",
-        id: "sight",
-        checked: this.state.disability_sight,
-        onChange: this.onChangeDisabilitySight
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Label"], {
-        check: true,
-        className: "form-check-label",
-        htmlFor: "checkbox1"
-      }, "Sight")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], {
-        check: true,
-        className: "checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        className: "form-check-input",
-        type: "checkbox",
-        id: "learning_disability",
-        checked: this.state.disability_learning,
-        onChange: this.onChangeDisabilityLearning
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Label"], {
-        check: true,
-        className: "form-check-label",
-        htmlFor: "checkbox2"
-      }, "Learning Disability")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], {
-        check: true,
-        className: "checkbox"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        className: "form-check-input",
-        type: "checkbox",
-        id: "others",
-        checked: this.state.disability_others,
-        onChange: this.onChangeDisabilityOthers
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Label"], {
-        check: true,
-        className: "form-check-label",
-        htmlFor: "checkbox3"
-      }, "others")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Next of Kin Information")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Full Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "text",
-        id: "next_of_kin_name",
-        defaultValue: this.state.next_of_kin_name,
-        onChange: this.onChangeNextKinName
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Relationship")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "text",
-        id: "next_of_kin_relationship",
-        defaultValue: this.state.next_of_kin_relationship,
-        onChange: this.onChangeNextKinRelationship
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Occupation")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "text",
-        id: "next_of_kin_occupation",
-        defaultValue: this.state.next_of_kin_occupation,
-        onChange: this.onChangeNextKinOccupation
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Phone")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "text",
-        id: "next_of_kin_phone",
-        defaultValue: this.state.next_of_kin_phone,
-        onChange: this.onChangeNextKinPhone
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Email")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "email",
-        id: "next_of_kin_email",
-        defaultValue: this.state.next_of_kin_email,
-        onChange: this.onChangeNextKinEmail
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], {
-        className: "form-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Button"], {
-        type: "submit",
-        size: "sm",
-        color: "primary"
-      }, "Update Personal Details")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Medical History"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Button"], {
-        color: "primary",
-        onClick: this.toggle_identification,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Toggle"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Collapse"], {
-        isOpen: this.state.collapse_identification
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Form"], {
-        onSubmit: this.onSubmitMedicalHistory
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Col"], {
-        xs: "12",
-        sm: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "List of Medications You are Currently Using")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "textarea",
-        id: "medications_currently_using",
-        rows: "2",
-        defaultValue: this.state.medications_currently_using,
-        onChange: this.onChangeMedicationsCurrentlyUsing,
-        placeholder: "List of Medications You are Currently Using"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Allergies")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "textarea",
-        id: "allergies",
-        rows: "2",
-        defaultValue: this.state.allergies,
-        onChange: this.onChangeAllergies,
-        placeholder: ":List of Allergies "
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Blood Group")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "select",
-        id: "blood_group",
-        value: this.state.blood_group,
-        onChange: this.onChangeBloodGroup
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "0"
-      }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "A+"
-      }, "A+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "A-"
-      }, "A-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "B+"
-      }, "B+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "B-"
-      }, "B-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "O+"
-      }, "O+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "O-"
-      }, "O-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "AB+"
-      }, "AB+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "AB-"
-      }, "AB-")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Underlying Conditions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "textarea",
-        id: "underlying_conditions",
-        rows: "2",
-        defaultValue: this.state.underlying_conditions,
-        onChange: this.onChangeUnderlyingConditions,
-        placeholder: ":Underlying conditions"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Family Medical History")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "textarea",
-        id: "family_medical_history",
-        rows: "2",
-        defaultValue: this.state.family_medical_history,
-        onChange: this.onChangeFamilyMedicalHistory,
-        placeholder: ":Family Medical History"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Hypertensive")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "select",
-        id: "hypertensive",
-        value: this.state.hypertensive,
-        onChange: this.onChangeHypertensive
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "0"
-      }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Yes"
-      }, "Yes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "No"
-      }, "No")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Diabetic")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "select",
-        id: "diabetic",
-        value: this.state.diabetic,
-        onChange: this.onChangeDiabetic
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "0"
-      }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Yes"
-      }, "Yes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "No"
-      }, "No")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], {
-        className: "form-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Button"], {
-        type: "submit",
-        size: "sm",
-        color: "primary"
-      }, "Update Medical History"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["CardFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Button"], {
-        color: "primary",
-        onClick: this.togglePrimary,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Share Medical Record"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Modal"], {
-        isOpen: this.state.primary,
-        toggle: this.togglePrimary,
-        className: 'modal-primary ' + this.props.className
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["ModalHeader"], {
-        toggle: this.togglePrimary
-      }, "Share Medical Record"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Form"], {
-        onSubmit: this.onSubmitShareMedHistory
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, "Doctor / Airport email")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Input"], {
-        type: "textarea",
-        id: "share_med_history",
-        rows: "2",
-        onChange: this.onChangeShareMedHistory,
-        placeholder: "enter the doctor or airport email"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Button"], {
-        type: "submit",
-        size: "sm",
-        color: "primary"
-      }, "Share"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Button"], {
-        color: "secondary",
-        onClick: this.togglePrimary
-      }, "Cancel")))))))));
+        onClick: function onClick() {
+          return _this19.setState({
+            showSuccess: true
+          });
+        }
+      }, "Alert"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(sweetalert2_react__WEBPACK_IMPORTED_MODULE_7___default.a, {
+        show: this.state.showSuccess // title="Demo"
+        ,
+        type: "success",
+        confirmButtonColor: "#2167ac",
+        animation: "true",
+        text: this.state.successMessage,
+        onConfirm: function onConfirm() {
+          return _this19.setState({
+            showSuccess: false
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "sweet_alert2",
+        style: {
+          display: "none"
+        },
+        onClick: function onClick() {
+          return _this19.setState({
+            showError: true
+          });
+        }
+      }, "Alert"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(sweetalert2_react__WEBPACK_IMPORTED_MODULE_7___default.a, {
+        show: this.state.showError // title="Demo"
+        ,
+        type: "warning",
+        confirmButtonColor: "#2167ac",
+        animation: "true",
+        text: this.state.errorMessage,
+        onConfirm: function onConfirm() {
+          return _this19.setState({
+            showError: false
+          });
+        }
+      }));
     }
   }]);
 
-  return Profile;
+  return Labs;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Profile);
+/* harmony default export */ __webpack_exports__["default"] = (Labs);
 
 /***/ })
 
