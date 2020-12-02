@@ -11,10 +11,10 @@ module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/Pages/ResetPasswordPharm/ResetPasswordPharm.js":
-/*!***********************************************************************************!*\
-  !*** ./resources/coreui/src/views/Pages/ResetPasswordPharm/ResetPasswordPharm.js ***!
-  \***********************************************************************************/
+/***/ "./resources/coreui/src/views/Pages/ResetPasswordLab/ResetPasswordLab.js":
+/*!*******************************************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/ResetPasswordLab/ResetPasswordLab.js ***!
+  \*******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -178,15 +178,15 @@ var validateForm = function validateForm(errors) {
   return valid;
 };
 
-var ResetPasswordPharm = /*#__PURE__*/function (_Component) {
-  _inherits(ResetPasswordPharm, _Component);
+var ResetPasswordLab = /*#__PURE__*/function (_Component) {
+  _inherits(ResetPasswordLab, _Component);
 
-  var _super = _createSuper(ResetPasswordPharm);
+  var _super = _createSuper(ResetPasswordLab);
 
-  function ResetPasswordPharm(props) {
+  function ResetPasswordLab(props) {
     var _this;
 
-    _classCallCheck(this, ResetPasswordPharm);
+    _classCallCheck(this, ResetPasswordLab);
 
     _this = _super.call(this, props);
 
@@ -251,7 +251,7 @@ var ResetPasswordPharm = /*#__PURE__*/function (_Component) {
     return _this;
   }
 
-  _createClass(ResetPasswordPharm, [{
+  _createClass(ResetPasswordLab, [{
     key: "onChangeState",
     // onchange for setting state
     value: function onChangeState(e) {
@@ -278,7 +278,7 @@ var ResetPasswordPharm = /*#__PURE__*/function (_Component) {
           url_string: this.state.url_string
         };
         var encrypted_user_data = Object(aes__WEBPACK_IMPORTED_MODULE_5__["AesEncrypt"])(newUser, 'where do you go when you by yourself');
-        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/patient/resetPassword', {
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/lab/resetPassword', {
           user: encrypted_user_data
         }, {
           headers: {
@@ -336,7 +336,7 @@ var ResetPasswordPharm = /*#__PURE__*/function (_Component) {
 
         this.state.url_string = url_string; // post param to check if reset password has been allowed
 
-        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/patient/check', {
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/lab/check', {
           url_string: url_string
         }).then(function (response) {
           // console.log(response);
@@ -440,7 +440,7 @@ var ResetPasswordPharm = /*#__PURE__*/function (_Component) {
         xs: "6",
         className: "text-right"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/login_pharm"
+        to: "/login_lab"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         color: "link",
         className: "px-0 kiu-color"
@@ -452,7 +452,7 @@ var ResetPasswordPharm = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], {
         className: "text-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hospital without borders where innovative technology meets premium care.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "It's all about you."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't Have An Account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/register_pharm"
+        to: "/register_lab"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         className: "mt-3 cam-btn-white-bg",
         active: true,
@@ -461,10 +461,10 @@ var ResetPasswordPharm = /*#__PURE__*/function (_Component) {
     }
   }]);
 
-  return ResetPasswordPharm;
+  return ResetPasswordLab;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (ResetPasswordPharm);
+/* harmony default export */ __webpack_exports__["default"] = (ResetPasswordLab);
 
 /***/ })
 

@@ -6,6 +6,16 @@ import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGr
 import axios from 'axios'
 import $ from "jquery";
 import { AesEncrypt, AesDecrypt } from 'aes';
+// ////////// LOADER /////////////////////////////////
+import { css } from "@emotion/core";
+import ScaleLoader from "react-spinners/ScaleLoader";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+// ///////////////////////////////////////////////////
 
 class ForgetPasswordPort extends Component {
   constructor(props) {
@@ -18,6 +28,10 @@ class ForgetPasswordPort extends Component {
         user: {},
         // storedData1: {},
         // storedData2: {},
+        // /////// LOADER ////////////
+        showDiv: "none",
+        loading: false,
+        // //////////////////////////
 
         avatar: require("./../../../images/logo/cam-medics-logo.png"),
         Cam_Medics: 'Cam-Medics Logo'
@@ -32,7 +46,12 @@ class ForgetPasswordPort extends Component {
   }
   onSubmit(e) {
       e.preventDefault()
-
+      // ////////////// LOADER ////////////
+      this.setState({
+        showDiv: "block",
+        loading: true,
+      });
+      // ////////////////////////////////
       const user = {
           email: this.state.email
           // password: this.state.password
@@ -56,6 +75,12 @@ class ForgetPasswordPort extends Component {
             // return response.data.token
         })
         .then(json => {
+            // ////////// LOADER //////////////
+              this.setState({
+                showDiv: "none",
+                loading: false,
+              });
+            // ///////////////////////////////
             if (json.data.success) {
                 alert("Login Successful!");
                 const { id, created_at, auth_token, user_type } = json.data.data;
@@ -181,6 +206,22 @@ class ForgetPasswordPort extends Component {
                 </Card>
               </CardGroup>
             </Col>
+            {/* // ////////// LOADER ////////////// */}
+            <div className="sweet-loading" style={{position: "fixed", height:"100%", width:"100%", display: this.state.showDiv}}>
+                <div style={{position: "absolute", top:"50%", left:"50%",backgroundColor: "#ffffffcf",width:"100px",padding:"15px",borderRadius:"20px" }}>
+                  <ScaleLoader
+                    css={override}
+                    height={50}
+                    width={3}
+                    radius={2}
+                    margin={5}
+                    color={"#2167ac"}
+                    loading={this.state.loading}
+                  />
+                  <h6 style={{color: "#ca333a"}}>Loading...</h6>
+                </div>
+              </div>
+            {/* // ///////////////// ////////////// */}
           </Row>
         </Container>
       </div>

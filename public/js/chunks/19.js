@@ -1,5 +1,166 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[19],{
 
+/***/ "./node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/umd/custom-tooltips.js":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/umd/custom-tooltips.js ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function (global, factory) {
+   true ? factory(exports) :
+  undefined;
+}(this, function (exports) { 'use strict';
+
+  /**
+   * --------------------------------------------------------------------------
+   * CoreUI Plugins - Custom Tooltips for Chart.js (v1.3.1): custom-tooltips.js
+   * Licensed under MIT (https://coreui.io/license)
+   * --------------------------------------------------------------------------
+   */
+  function CustomTooltips(tooltipModel) {
+    var _this = this;
+
+    // Add unique id if not exist
+    var _setCanvasId = function _setCanvasId() {
+      var _idMaker = function _idMaker() {
+        var _hex = 16;
+        var _multiplier = 0x10000;
+        return ((1 + Math.random()) * _multiplier | 0).toString(_hex);
+      };
+
+      var _canvasId = "_canvas-" + (_idMaker() + _idMaker());
+
+      _this._chart.canvas.id = _canvasId;
+      return _canvasId;
+    };
+
+    var ClassName = {
+      ABOVE: 'above',
+      BELOW: 'below',
+      CHARTJS_TOOLTIP: 'chartjs-tooltip',
+      NO_TRANSFORM: 'no-transform',
+      TOOLTIP_BODY: 'tooltip-body',
+      TOOLTIP_BODY_ITEM: 'tooltip-body-item',
+      TOOLTIP_BODY_ITEM_COLOR: 'tooltip-body-item-color',
+      TOOLTIP_BODY_ITEM_LABEL: 'tooltip-body-item-label',
+      TOOLTIP_BODY_ITEM_VALUE: 'tooltip-body-item-value',
+      TOOLTIP_HEADER: 'tooltip-header',
+      TOOLTIP_HEADER_ITEM: 'tooltip-header-item'
+    };
+    var Selector = {
+      DIV: 'div',
+      SPAN: 'span',
+      TOOLTIP: (this._chart.canvas.id || _setCanvasId()) + "-tooltip"
+    };
+    var tooltip = document.getElementById(Selector.TOOLTIP);
+
+    if (!tooltip) {
+      tooltip = document.createElement('div');
+      tooltip.id = Selector.TOOLTIP;
+      tooltip.className = ClassName.CHARTJS_TOOLTIP;
+
+      this._chart.canvas.parentNode.appendChild(tooltip);
+    } // Hide if no tooltip
+
+
+    if (tooltipModel.opacity === 0) {
+      tooltip.style.opacity = 0;
+      return;
+    } // Set caret Position
+
+
+    tooltip.classList.remove(ClassName.ABOVE, ClassName.BELOW, ClassName.NO_TRANSFORM);
+
+    if (tooltipModel.yAlign) {
+      tooltip.classList.add(tooltipModel.yAlign);
+    } else {
+      tooltip.classList.add(ClassName.NO_TRANSFORM);
+    } // Set Text
+
+
+    if (tooltipModel.body) {
+      var titleLines = tooltipModel.title || [];
+      var tooltipHeader = document.createElement(Selector.DIV);
+      tooltipHeader.className = ClassName.TOOLTIP_HEADER;
+      titleLines.forEach(function (title) {
+        var tooltipHeaderTitle = document.createElement(Selector.DIV);
+        tooltipHeaderTitle.className = ClassName.TOOLTIP_HEADER_ITEM;
+        tooltipHeaderTitle.innerHTML = title;
+        tooltipHeader.appendChild(tooltipHeaderTitle);
+      });
+      var tooltipBody = document.createElement(Selector.DIV);
+      tooltipBody.className = ClassName.TOOLTIP_BODY;
+      var tooltipBodyItems = tooltipModel.body.map(function (item) {
+        return item.lines;
+      });
+      tooltipBodyItems.forEach(function (item, i) {
+        var tooltipBodyItem = document.createElement(Selector.DIV);
+        tooltipBodyItem.className = ClassName.TOOLTIP_BODY_ITEM;
+        var colors = tooltipModel.labelColors[i];
+        var tooltipBodyItemColor = document.createElement(Selector.SPAN);
+        tooltipBodyItemColor.className = ClassName.TOOLTIP_BODY_ITEM_COLOR;
+        tooltipBodyItemColor.style.backgroundColor = colors.backgroundColor;
+        tooltipBodyItem.appendChild(tooltipBodyItemColor);
+
+        if (item[0].split(':').length > 1) {
+          var tooltipBodyItemLabel = document.createElement(Selector.SPAN);
+          tooltipBodyItemLabel.className = ClassName.TOOLTIP_BODY_ITEM_LABEL;
+          tooltipBodyItemLabel.innerHTML = item[0].split(': ')[0];
+          tooltipBodyItem.appendChild(tooltipBodyItemLabel);
+          var tooltipBodyItemValue = document.createElement(Selector.SPAN);
+          tooltipBodyItemValue.className = ClassName.TOOLTIP_BODY_ITEM_VALUE;
+          tooltipBodyItemValue.innerHTML = item[0].split(': ').pop();
+          tooltipBodyItem.appendChild(tooltipBodyItemValue);
+        } else {
+          var _tooltipBodyItemValue = document.createElement(Selector.SPAN);
+
+          _tooltipBodyItemValue.className = ClassName.TOOLTIP_BODY_ITEM_VALUE;
+          _tooltipBodyItemValue.innerHTML = item[0];
+          tooltipBodyItem.appendChild(_tooltipBodyItemValue);
+        }
+
+        tooltipBody.appendChild(tooltipBodyItem);
+      });
+      tooltip.innerHTML = '';
+      tooltip.appendChild(tooltipHeader);
+      tooltip.appendChild(tooltipBody);
+    }
+
+    var position = this._chart.canvas.getBoundingClientRect();
+
+    var positionY = this._chart.canvas.offsetTop;
+    var positionX = this._chart.canvas.offsetLeft;
+    var positionLeft = positionX + tooltipModel.caretX;
+    var positionTop = positionY + tooltipModel.caretY; // eslint-disable-next-line
+
+    var halfWidth = tooltipModel.width / 2;
+
+    if (positionLeft + halfWidth > position.width) {
+      positionLeft -= halfWidth;
+    } else if (positionLeft < halfWidth) {
+      positionLeft += halfWidth;
+    } // Display, position, and set styles for font
+
+
+    tooltip.style.opacity = 1;
+    tooltip.style.left = positionLeft + "px";
+    tooltip.style.top = positionTop + "px";
+  }
+
+  var customTooltips = CustomTooltips; // TODO: camel-case
+
+  exports.CustomTooltips = CustomTooltips;
+  exports.customTooltips = customTooltips;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+}));
+//# sourceMappingURL=custom-tooltips.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/moment/locale sync recursive ^\\.\\/.*$":
 /*!**************************************************!*\
   !*** ./node_modules/moment/locale sync ^\.\/.*$ ***!
@@ -296,10 +457,10 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/Admin/AdminDashboard/AdminDashboard.js":
-/*!***************************************************************************!*\
-  !*** ./resources/coreui/src/views/Admin/AdminDashboard/AdminDashboard.js ***!
-  \***************************************************************************/
+/***/ "./resources/coreui/src/views/Charts/Charts.js":
+/*!*****************************************************!*\
+  !*** ./resources/coreui/src/views/Charts/Charts.js ***!
+  \*****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -311,11 +472,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 /* harmony import */ var _coreui_coreui_plugin_chartjs_custom_tooltips__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/coreui-plugin-chartjs-custom-tooltips */ "./node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/umd/custom-tooltips.js");
 /* harmony import */ var _coreui_coreui_plugin_chartjs_custom_tooltips__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_coreui_coreui_plugin_chartjs_custom_tooltips__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _coreui_coreui_dist_js_coreui_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @coreui/coreui/dist/js/coreui-utilities */ "./node_modules/@coreui/coreui/dist/js/coreui-utilities.js");
-/* harmony import */ var _coreui_coreui_dist_js_coreui_utilities__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_coreui_coreui_dist_js_coreui_utilities__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_calendar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-calendar */ "./node_modules/react-calendar/dist/esm/index.js");
-/* harmony import */ var react_calendar_dist_Calendar_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-calendar/dist/Calendar.css */ "./node_modules/react-calendar/dist/Calendar.css");
-/* harmony import */ var react_calendar_dist_Calendar_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_calendar_dist_Calendar_css__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -437,466 +593,192 @@ function _getPrototypeOf(o) {
 
 
 
-
-
-
-var Widget03 = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_0__["lazy"])(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(9), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ../../../views/Widgets/Widget03 */ "./resources/coreui/src/views/Widgets/Widget03.js"));
-});
-var brandPrimary = Object(_coreui_coreui_dist_js_coreui_utilities__WEBPACK_IMPORTED_MODULE_4__["getStyle"])('--primary');
-var brandSuccess = Object(_coreui_coreui_dist_js_coreui_utilities__WEBPACK_IMPORTED_MODULE_4__["getStyle"])('--success');
-var brandInfo = Object(_coreui_coreui_dist_js_coreui_utilities__WEBPACK_IMPORTED_MODULE_4__["getStyle"])('--info');
-var brandWarning = Object(_coreui_coreui_dist_js_coreui_utilities__WEBPACK_IMPORTED_MODULE_4__["getStyle"])('--warning');
-var brandDanger = Object(_coreui_coreui_dist_js_coreui_utilities__WEBPACK_IMPORTED_MODULE_4__["getStyle"])('--danger'); // Card Chart 1
-
-var cardChartData1 = {
+var line = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [{
     label: 'My First dataset',
-    backgroundColor: brandPrimary,
-    borderColor: 'rgba(255,255,255,.55)',
-    data: [65, 59, 84, 84, 51, 55, 40]
+    fill: false,
+    lineTension: 0.1,
+    backgroundColor: 'rgba(75,192,192,0.4)',
+    borderColor: 'rgba(75,192,192,1)',
+    borderCapStyle: 'butt',
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderJoinStyle: 'miter',
+    pointBorderColor: 'rgba(75,192,192,1)',
+    pointBackgroundColor: '#fff',
+    pointBorderWidth: 1,
+    pointHoverRadius: 5,
+    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+    pointHoverBorderColor: 'rgba(220,220,220,1)',
+    pointHoverBorderWidth: 2,
+    pointRadius: 1,
+    pointHitRadius: 10,
+    data: [65, 59, 80, 81, 56, 55, 40]
   }]
 };
-var cardChartOpts1 = {
-  tooltips: {
-    enabled: false,
-    custom: _coreui_coreui_plugin_chartjs_custom_tooltips__WEBPACK_IMPORTED_MODULE_3__["CustomTooltips"]
-  },
-  maintainAspectRatio: false,
-  legend: {
-    display: false
-  },
-  scales: {
-    xAxes: [{
-      gridLines: {
-        color: 'transparent',
-        zeroLineColor: 'transparent'
-      },
-      ticks: {
-        fontSize: 2,
-        fontColor: 'transparent'
-      }
-    }],
-    yAxes: [{
-      display: false,
-      ticks: {
-        display: false,
-        min: Math.min.apply(Math, cardChartData1.datasets[0].data) - 5,
-        max: Math.max.apply(Math, cardChartData1.datasets[0].data) + 5
-      }
-    }]
-  },
-  elements: {
-    line: {
-      borderWidth: 1
-    },
-    point: {
-      radius: 4,
-      hitRadius: 10,
-      hoverRadius: 4
-    }
-  }
-}; // Card Chart 2
-
-var cardChartData2 = {
+var bar = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [{
     label: 'My First dataset',
-    backgroundColor: brandInfo,
-    borderColor: 'rgba(255,255,255,.55)',
-    data: [1, 18, 9, 17, 34, 22, 11]
+    backgroundColor: 'rgba(255,99,132,0.2)',
+    borderColor: 'rgba(255,99,132,1)',
+    borderWidth: 1,
+    hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+    hoverBorderColor: 'rgba(255,99,132,1)',
+    data: [65, 59, 80, 81, 56, 55, 40]
   }]
 };
-var cardChartOpts2 = {
-  tooltips: {
-    enabled: false,
-    custom: _coreui_coreui_plugin_chartjs_custom_tooltips__WEBPACK_IMPORTED_MODULE_3__["CustomTooltips"]
-  },
-  maintainAspectRatio: false,
-  legend: {
-    display: false
-  },
-  scales: {
-    xAxes: [{
-      gridLines: {
-        color: 'transparent',
-        zeroLineColor: 'transparent'
-      },
-      ticks: {
-        fontSize: 2,
-        fontColor: 'transparent'
-      }
-    }],
-    yAxes: [{
-      display: false,
-      ticks: {
-        display: false,
-        min: Math.min.apply(Math, cardChartData2.datasets[0].data) - 5,
-        max: Math.max.apply(Math, cardChartData2.datasets[0].data) + 5
-      }
-    }]
-  },
-  elements: {
-    line: {
-      tension: 0.00001,
-      borderWidth: 1
-    },
-    point: {
-      radius: 4,
-      hitRadius: 10,
-      hoverRadius: 4
-    }
-  }
-}; // Card Chart 3
-
-var cardChartData3 = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+var doughnut = {
+  labels: ['Red', 'Green', 'Yellow'],
   datasets: [{
-    label: 'My First dataset',
-    backgroundColor: 'rgba(255,255,255,.2)',
-    borderColor: 'rgba(255,255,255,.55)',
-    data: [78, 81, 80, 45, 34, 12, 40]
+    data: [300, 50, 100],
+    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+    hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
   }]
 };
-var cardChartOpts3 = {
-  tooltips: {
-    enabled: false,
-    custom: _coreui_coreui_plugin_chartjs_custom_tooltips__WEBPACK_IMPORTED_MODULE_3__["CustomTooltips"]
-  },
-  maintainAspectRatio: false,
-  legend: {
-    display: false
-  },
-  scales: {
-    xAxes: [{
-      display: false
-    }],
-    yAxes: [{
-      display: false
-    }]
-  },
-  elements: {
-    line: {
-      borderWidth: 2
-    },
-    point: {
-      radius: 0,
-      hitRadius: 10,
-      hoverRadius: 4
-    }
-  }
-}; // Card Chart 4
-
-var cardChartData4 = {
-  labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+var radar = {
+  labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
   datasets: [{
     label: 'My First dataset',
-    backgroundColor: 'rgba(255,255,255,.3)',
-    borderColor: 'transparent',
-    data: [78, 81, 80, 45, 34, 12, 40, 75, 34, 89, 32, 68, 54, 72, 18, 98],
-    barPercentage: 0.6
-  }]
-};
-var cardChartOpts4 = {
-  tooltips: {
-    enabled: false,
-    custom: _coreui_coreui_plugin_chartjs_custom_tooltips__WEBPACK_IMPORTED_MODULE_3__["CustomTooltips"]
-  },
-  maintainAspectRatio: false,
-  legend: {
-    display: false
-  },
-  scales: {
-    xAxes: [{
-      display: false
-    }],
-    yAxes: [{
-      display: false
-    }]
-  }
-}; // Social Box Chart
-
-var socialBoxData = [{
-  data: [65, 59, 84, 84, 51, 55, 40],
-  label: 'facebook'
-}, {
-  data: [1, 13, 9, 17, 34, 41, 38],
-  label: 'twitter'
-}, {
-  data: [78, 81, 80, 45, 34, 12, 40],
-  label: 'linkedin'
-}, {
-  data: [35, 23, 56, 22, 97, 23, 64],
-  label: 'google'
-}];
-
-var makeSocialBoxData = function makeSocialBoxData(dataSetNo) {
-  var dataset = socialBoxData[dataSetNo];
-  var data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [{
-      backgroundColor: 'rgba(255,255,255,.1)',
-      borderColor: 'rgba(255,255,255,.55)',
-      pointHoverBackgroundColor: '#fff',
-      borderWidth: 2,
-      data: dataset.data,
-      label: dataset.label
-    }]
-  };
-  return function () {
-    return data;
-  };
-};
-
-var socialChartOpts = {
-  tooltips: {
-    enabled: false,
-    custom: _coreui_coreui_plugin_chartjs_custom_tooltips__WEBPACK_IMPORTED_MODULE_3__["CustomTooltips"]
-  },
-  responsive: true,
-  maintainAspectRatio: false,
-  legend: {
-    display: false
-  },
-  scales: {
-    xAxes: [{
-      display: false
-    }],
-    yAxes: [{
-      display: false
-    }]
-  },
-  elements: {
-    point: {
-      radius: 0,
-      hitRadius: 10,
-      hoverRadius: 4,
-      hoverBorderWidth: 3
-    }
-  }
-}; // sparkline charts
-
-var sparkLineChartData = [{
-  data: [35, 23, 56, 22, 97, 23, 64],
-  label: 'New Clients'
-}, {
-  data: [65, 59, 84, 84, 51, 55, 40],
-  label: 'Recurring Clients'
-}, {
-  data: [35, 23, 56, 22, 97, 23, 64],
-  label: 'Pageviews'
-}, {
-  data: [65, 59, 84, 84, 51, 55, 40],
-  label: 'Organic'
-}, {
-  data: [78, 81, 80, 45, 34, 12, 40],
-  label: 'CTR'
-}, {
-  data: [1, 13, 9, 17, 34, 41, 38],
-  label: 'Bounce Rate'
-}];
-
-var makeSparkLineData = function makeSparkLineData(dataSetNo, variant) {
-  var dataset = sparkLineChartData[dataSetNo];
-  var data = {
-    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-    datasets: [{
-      backgroundColor: 'transparent',
-      borderColor: variant ? variant : '#c2cfd6',
-      data: dataset.data,
-      label: dataset.label
-    }]
-  };
-  return function () {
-    return data;
-  };
-};
-
-var sparklineChartOpts = {
-  tooltips: {
-    enabled: false,
-    custom: _coreui_coreui_plugin_chartjs_custom_tooltips__WEBPACK_IMPORTED_MODULE_3__["CustomTooltips"]
-  },
-  responsive: true,
-  maintainAspectRatio: true,
-  scales: {
-    xAxes: [{
-      display: false
-    }],
-    yAxes: [{
-      display: false
-    }]
-  },
-  elements: {
-    line: {
-      borderWidth: 2
-    },
-    point: {
-      radius: 0,
-      hitRadius: 10,
-      hoverRadius: 4,
-      hoverBorderWidth: 3
-    }
-  },
-  legend: {
-    display: false
-  }
-}; // Main Chart
-//Random Numbers
-
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-var elements = 27;
-var data1 = [];
-var data2 = [];
-var data3 = [];
-
-for (var i = 0; i <= elements; i++) {
-  data1.push(random(50, 200));
-  data2.push(random(80, 100));
-  data3.push(65);
-}
-
-var mainChart = {
-  labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
-  datasets: [{
-    label: 'My First dataset',
-    backgroundColor: Object(_coreui_coreui_dist_js_coreui_utilities__WEBPACK_IMPORTED_MODULE_4__["hexToRgba"])(brandInfo, 10),
-    borderColor: brandInfo,
+    backgroundColor: 'rgba(179,181,198,0.2)',
+    borderColor: 'rgba(179,181,198,1)',
+    pointBackgroundColor: 'rgba(179,181,198,1)',
+    pointBorderColor: '#fff',
     pointHoverBackgroundColor: '#fff',
-    borderWidth: 2,
-    data: data1
+    pointHoverBorderColor: 'rgba(179,181,198,1)',
+    data: [65, 59, 90, 81, 56, 55, 40]
   }, {
     label: 'My Second dataset',
-    backgroundColor: 'transparent',
-    borderColor: brandSuccess,
+    backgroundColor: 'rgba(255,99,132,0.2)',
+    borderColor: 'rgba(255,99,132,1)',
+    pointBackgroundColor: 'rgba(255,99,132,1)',
+    pointBorderColor: '#fff',
     pointHoverBackgroundColor: '#fff',
-    borderWidth: 2,
-    data: data2
-  }, {
-    label: 'My Third dataset',
-    backgroundColor: 'transparent',
-    borderColor: brandDanger,
-    pointHoverBackgroundColor: '#fff',
-    borderWidth: 1,
-    borderDash: [8, 5],
-    data: data3
+    pointHoverBorderColor: 'rgba(255,99,132,1)',
+    data: [28, 48, 40, 19, 96, 27, 100]
   }]
 };
-var mainChartOpts = {
+var pie = {
+  labels: ['Red', 'Green', 'Yellow'],
+  datasets: [{
+    data: [300, 50, 100],
+    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+    hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+  }]
+};
+var polar = {
+  datasets: [{
+    data: [11, 16, 7, 3, 14],
+    backgroundColor: ['#FF6384', '#4BC0C0', '#FFCE56', '#E7E9ED', '#36A2EB'],
+    label: 'My dataset' // for legend
+
+  }],
+  labels: ['Red', 'Green', 'Yellow', 'Grey', 'Blue']
+};
+var options = {
   tooltips: {
     enabled: false,
-    custom: _coreui_coreui_plugin_chartjs_custom_tooltips__WEBPACK_IMPORTED_MODULE_3__["CustomTooltips"],
-    intersect: true,
-    mode: 'index',
-    position: 'nearest',
-    callbacks: {
-      labelColor: function labelColor(tooltipItem, chart) {
-        return {
-          backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor
-        };
-      }
-    }
+    custom: _coreui_coreui_plugin_chartjs_custom_tooltips__WEBPACK_IMPORTED_MODULE_3__["CustomTooltips"]
   },
-  maintainAspectRatio: false,
-  legend: {
-    display: false
-  },
-  scales: {
-    xAxes: [{
-      gridLines: {
-        drawOnChartArea: false
-      }
-    }],
-    yAxes: [{
-      ticks: {
-        beginAtZero: true,
-        maxTicksLimit: 5,
-        stepSize: Math.ceil(250 / 5),
-        max: 250
-      }
-    }]
-  },
-  elements: {
-    point: {
-      radius: 0,
-      hitRadius: 10,
-      hoverRadius: 4,
-      hoverBorderWidth: 3
-    }
-  }
+  maintainAspectRatio: false
 };
 
-var AdminDashboard = /*#__PURE__*/function (_Component) {
-  _inherits(AdminDashboard, _Component);
+var Charts = /*#__PURE__*/function (_Component) {
+  _inherits(Charts, _Component);
 
-  var _super = _createSuper(AdminDashboard);
+  var _super = _createSuper(Charts);
 
-  function AdminDashboard(props) {
-    var _this;
+  function Charts() {
+    _classCallCheck(this, Charts);
 
-    _classCallCheck(this, AdminDashboard);
-
-    _this = _super.call(this, props);
-
-    _this.onChange = function (date) {
-      return _this.setState({
-        date: date
-      });
-    };
-
-    _this.loading = function () {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "animated fadeIn pt-1 text-center"
-      }, "Loading...");
-    };
-
-    _this.toggle = _this.toggle.bind(_assertThisInitialized(_this));
-    _this.onRadioBtnClick = _this.onRadioBtnClick.bind(_assertThisInitialized(_this));
-    _this.state = {
-      dropdownOpen: false,
-      radioSelected: 2,
-      date: new Date()
-    };
-    return _this;
+    return _super.apply(this, arguments);
   }
 
-  _createClass(AdminDashboard, [{
-    key: "toggle",
-    value: function toggle() {
-      this.setState({
-        dropdownOpen: !this.state.dropdownOpen
-      });
-    }
-  }, {
-    key: "onRadioBtnClick",
-    value: function onRadioBtnClick(radioSelected) {
-      this.setState({
-        radioSelected: radioSelected
-      });
-    }
-  }, {
+  _createClass(Charts, [{
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "animated fadeIn"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-        xs: "12",
-        sm: "12",
-        md: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
-        className: "border-primary"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "THE MANY USES OF CAMMEDICS!!!")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, "CamMedics is a telemedicine portal with the slogan \"Hospital without borders\" because of it's one of a kind intergregated system that brings doctors, pharmacies, medical laboratories and community health certifications under one roof.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "If the most powerful and protected couple in the world can catch coronavirus,  then you cannot be too safe. An extra layer of protection from the pandemic, is a no brainer. It comes highly recommended. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "CamMedics is essential in this direction. You can book your video appointment and consultation with your favourite doctor on the portal. You can also search, invite  and see any doctor in the world on CamMedics, no matter your location or theirs.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "By using the platform, your choice of medical practitioners is practically limitless. You can reach the most renowned medical experts/specialists and  literally have them at your finger tips. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "It also enables you to minimise your physical exposure to viral infections while maximising the comfort and convenience of your medical treatment. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "For doctors, medical professionals and facilities, it opens up a whole new world of patients, not in any way limited by geographical location. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Hospitals can also use CamMedics to protect  doctors and other medical professionals. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "By using CamMedics, non- essential in-person visits can be totally eliminated thereby reducing the potential viral load in our medical facilities and making our hospitals safer for patients and providers.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Frequent travellers can also overcome the challenge and inconvenience of International travels occasioned by a world reopening after a global pandemic by enjoying the advantage of an easy to retrieve, safe and secure online medical record that follows you where ever you go and can be shared at anytime and with the medical doctor or medical facility of your choice. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "This also makes it easy to produce proof of medical tests, health certifications and evidence of vaccinations to various Airport and health officials. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Additionally, you can facilitate your medical tests and receive the result directly without a need for a repeat physical visit on the site. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Reputable Pharmacies with with the most affordable prescription drugs can also be found on CamMedics. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "CamMedics first of it's kind, Pre- boarding Medical Screening (PBMS), is the most comprehensive, safe  and reliable medical screening system currently available any where in the world. Its special video feature enables  Airport  and health officials to physically evaluate potential International passengers, verify relevant medical records, certifications and vaccinations and accurately see on a case by case basis, the level of risk each passenger poses to the destination community. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "The is a huge innovation in keeping passengers, airline workers, transportation officials, citizens and residents, safe.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "It also delivers a much needed efficient and convenient travel experience to wary passengers. This will go a long way in encouraging millions to resume traveling and reassure communities not to stigmatize international visitors.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Similarly, CamMedics Pre- arrival medical screening (PAMS), can also be used by locations with sensitive and vulnerable occupants to medically evaluate visitors before their arrival. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Schools, Government offices, Parliaments, businesses with a large volume of daily traffic, can create a safe bubble by using this feature. ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "CamMedics is a hospital without borders, where innovative cutting-edge technology, meets premium medical care.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "It's all about you.")))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardColumns"], {
+        className: "cols-2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardHeader"], null, "Line Chart", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header-actions"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "http://www.chartjs.org",
+        className: "card-header-action"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        className: "text-muted"
+      }, "docs")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chart-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_1__["Line"], {
+        data: line,
+        options: options
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardHeader"], null, "Bar Chart", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header-actions"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "http://www.chartjs.org",
+        className: "card-header-action"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        className: "text-muted"
+      }, "docs")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chart-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_1__["Bar"], {
+        data: bar,
+        options: options
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardHeader"], null, "Doughnut Chart", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header-actions"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "http://www.chartjs.org",
+        className: "card-header-action"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        className: "text-muted"
+      }, "docs")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chart-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_1__["Doughnut"], {
+        data: doughnut
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardHeader"], null, "Radar Chart", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header-actions"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "http://www.chartjs.org",
+        className: "card-header-action"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        className: "text-muted"
+      }, "docs")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chart-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_1__["Radar"], {
+        data: radar
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardHeader"], null, "Pie Chart", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header-actions"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "http://www.chartjs.org",
+        className: "card-header-action"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        className: "text-muted"
+      }, "docs")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chart-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_1__["Pie"], {
+        data: pie
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardHeader"], null, "Polar Area Chart", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-header-actions"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "http://www.chartjs.org",
+        className: "card-header-action"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+        className: "text-muted"
+      }, "docs")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chart-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_1__["Polar"], {
+        data: polar,
+        options: options
+      }))))));
     }
   }]);
 
-  return AdminDashboard;
+  return Charts;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (AdminDashboard);
+/* harmony default export */ __webpack_exports__["default"] = (Charts);
 
 /***/ })
 

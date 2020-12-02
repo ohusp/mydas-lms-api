@@ -7,6 +7,16 @@ import axios from 'axios'
 import $ from "jquery";
 import SweetAlert from 'sweetalert2-react';
 import { AesEncrypt, AesDecrypt } from 'aes';
+// ////////// LOADER /////////////////////////////////
+import { css } from "@emotion/core";
+import ScaleLoader from "react-spinners/ScaleLoader";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+// ///////////////////////////////////////////////////
 
 class ForgetPasswordPatient extends Component {
   constructor(props) {
@@ -14,6 +24,10 @@ class ForgetPasswordPatient extends Component {
     this.state = {
       successMessage: "Successful",
       errorMessage: "Failed",
+      // /////// LOADER ////////////
+      showDiv: "none",
+      loading: false,
+      // //////////////////////////
 
         avatar: require("./../../../images/logo/cam-medics-logo.png"),
         Cam_Medics: 'Cam-Medics Logo'
@@ -28,6 +42,12 @@ class ForgetPasswordPatient extends Component {
   }
   onSubmit(e) {
       e.preventDefault()
+      // ////////////// LOADER ////////////
+      this.setState({
+        showDiv: "block",
+        loading: true,
+      });
+      // ////////////////////////////////
       const user = {
           email: this.state.email
       }
@@ -45,6 +65,12 @@ class ForgetPasswordPatient extends Component {
             // console.log("Mr mendes")
         })
         .then(json => {
+            // ////////// LOADER //////////////
+              this.setState({
+                showDiv: "none",
+                loading: false,
+              });
+            // ///////////////////////////////
             if (json.data.success) {
               this.setState({ 
                 successMessage: "Please follow the link sent to your email and reset your password",
@@ -139,6 +165,22 @@ class ForgetPasswordPatient extends Component {
                 </Card>
               </CardGroup>
             </Col>
+            {/* // ////////// LOADER ////////////// */}
+            <div className="sweet-loading" style={{position: "fixed", height:"100%", width:"100%", display: this.state.showDiv}}>
+                <div style={{position: "absolute", top:"50%", left:"50%",backgroundColor: "#ffffffcf",width:"100px",padding:"15px",borderRadius:"20px" }}>
+                  <ScaleLoader
+                    css={override}
+                    height={50}
+                    width={3}
+                    radius={2}
+                    margin={5}
+                    color={"#2167ac"}
+                    loading={this.state.loading}
+                  />
+                  <h6 style={{color: "#ca333a"}}>Loading...</h6>
+                </div>
+              </div>
+            {/* // ///////////////// ////////////// */}
           </Row>
         </Container>
           {/* ///////////////// Sweet Alerts //////////////////////////////////// */}

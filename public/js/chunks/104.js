@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[104],{
 
-/***/ "./resources/coreui/src/views/PatientListPorts/PatientListPorts.js":
-/*!*************************************************************************!*\
-  !*** ./resources/coreui/src/views/PatientListPorts/PatientListPorts.js ***!
-  \*************************************************************************/
+/***/ "./resources/coreui/src/views/PatientListLabs/PatientListLabs.js":
+/*!***********************************************************************!*\
+  !*** ./resources/coreui/src/views/PatientListLabs/PatientListLabs.js ***!
+  \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -179,17 +179,17 @@ function _getPrototypeOf(o) {
 
 var hashHistory = Object(history__WEBPACK_IMPORTED_MODULE_3__["createHashHistory"])();
 
-var PatientListPorts = /*#__PURE__*/function (_Component) {
-  _inherits(PatientListPorts, _Component);
+var PatientListLabs = /*#__PURE__*/function (_Component) {
+  _inherits(PatientListLabs, _Component);
 
-  var _super = _createSuper(PatientListPorts);
+  var _super = _createSuper(PatientListLabs);
 
-  function PatientListPorts(props) {
+  function PatientListLabs(props) {
     var _this$state;
 
     var _this;
 
-    _classCallCheck(this, PatientListPorts);
+    _classCallCheck(this, PatientListLabs);
 
     _this = _super.call(this, props); // ////////////////MODAL
 
@@ -206,7 +206,8 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
     };
 
     _this.togglePrimary = _this.togglePrimary.bind(_assertThisInitialized(_this));
-    _this.toggleViewPort = _this.toggleViewPort.bind(_assertThisInitialized(_this));
+    _this.toggleViewLab = _this.toggleViewLab.bind(_assertThisInitialized(_this));
+    _this.toggleTakeTest = _this.toggleTakeTest.bind(_assertThisInitialized(_this));
     _this.toggleViewAppointments = _this.toggleViewAppointments.bind(_assertThisInitialized(_this));
     _this.toggleMakePayment = _this.toggleMakePayment.bind(_assertThisInitialized(_this)); // this.toggleEnterReport = this.toggleEnterReport.bind(this);
     // bing toggle functions and values
@@ -269,7 +270,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
       message_box: "",
       // for append chat message
       // ////////////////////////////////////////////////////
-      ports_list: [],
+      labs_list: [],
       number: 1,
       activePage: 1,
       itemsCountPerPage: 1,
@@ -285,12 +286,12 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
       pageRangeDisplayed_appointments: 3,
       currentPage2_appointments: '',
       status_appointments: '1'
-    }, _defineProperty(_this$state, "status", ""), _defineProperty(_this$state, "created_at", localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.created_at : ""), _defineProperty(_this$state, "user_type", localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.user_type : ""), _defineProperty(_this$state, "collapse", false), _defineProperty(_this$state, "collapse_identification", false), _defineProperty(_this$state, "collapse_app_instructions", false), _defineProperty(_this$state, "fadeIn", true), _defineProperty(_this$state, "timeout", 300), _defineProperty(_this$state, "port_id", ""), _defineProperty(_this$state, "port_name", ""), _defineProperty(_this$state, "startDate", new Date()), _defineProperty(_this$state, "date", ""), _defineProperty(_this$state, "time", '10:00'), _defineProperty(_this$state, "subject", ""), _defineProperty(_this$state, "message", ""), _defineProperty(_this$state, "primary", false), _defineProperty(_this$state, "primaryViewPort", false), _defineProperty(_this$state, "primaryViewAppointments", false), _defineProperty(_this$state, "primaryMakePayment", false), _defineProperty(_this$state, "enterReport", false), _defineProperty(_this$state, "showSuccess", false), _defineProperty(_this$state, "showError", false), _defineProperty(_this$state, "successMessage", "Successful"), _defineProperty(_this$state, "errorMessage", "Failed"), _defineProperty(_this$state, "port_fee", ""), _defineProperty(_this$state, "country_handling_fee", ""), _defineProperty(_this$state, "total_fee", ""), _defineProperty(_this$state, "chatBtn", ""), _this$state);
+    }, _defineProperty(_this$state, "status", ""), _defineProperty(_this$state, "created_at", localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.created_at : ""), _defineProperty(_this$state, "user_type", localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.user_type : ""), _defineProperty(_this$state, "collapse", false), _defineProperty(_this$state, "collapse_identification", false), _defineProperty(_this$state, "collapse_app_instructions", false), _defineProperty(_this$state, "fadeIn", true), _defineProperty(_this$state, "timeout", 300), _defineProperty(_this$state, "lab_id", ""), _defineProperty(_this$state, "lab_name", ""), _defineProperty(_this$state, "startDate", new Date()), _defineProperty(_this$state, "date", ""), _defineProperty(_this$state, "time", '10:00'), _defineProperty(_this$state, "subject", ""), _defineProperty(_this$state, "message", ""), _defineProperty(_this$state, "primary", false), _defineProperty(_this$state, "primaryViewLab", false), _defineProperty(_this$state, "primaryTakeTest", false), _defineProperty(_this$state, "primaryViewAppointments", false), _defineProperty(_this$state, "primaryMakePayment", false), _defineProperty(_this$state, "enterReport", false), _defineProperty(_this$state, "showSuccess", false), _defineProperty(_this$state, "showError", false), _defineProperty(_this$state, "successMessage", "Successful"), _defineProperty(_this$state, "errorMessage", "Failed"), _defineProperty(_this$state, "test_fee", ""), _defineProperty(_this$state, "country_handling_fee", ""), _defineProperty(_this$state, "total_fee", ""), _defineProperty(_this$state, "chatBtn", ""), _defineProperty(_this$state, "lab_test_list", []), _defineProperty(_this$state, "number_lab_test", 1), _defineProperty(_this$state, "activePage_lab_test", 1), _defineProperty(_this$state, "itemsCountPerPage_lab_test", 1), _defineProperty(_this$state, "totalItemsCount_lab_test", 1), _defineProperty(_this$state, "pageRangeDisplayed_lab_test", 3), _defineProperty(_this$state, "currentPage2_lab_test", ''), _defineProperty(_this$state, "status_lab_test", '1'), _defineProperty(_this$state, "lab_result_list", []), _defineProperty(_this$state, "number_lab_result", 1), _defineProperty(_this$state, "activePage_lab_result", 1), _defineProperty(_this$state, "itemsCountPerPage_lab_result", 1), _defineProperty(_this$state, "totalItemsCount_lab_result", 1), _defineProperty(_this$state, "pageRangeDisplayed_lab_result", 3), _defineProperty(_this$state, "currentPage2_lab_result", ''), _defineProperty(_this$state, "status_lab_result", '1'), _defineProperty(_this$state, "test_id", ""), _this$state);
     _this.handlePageChange = _this.handlePageChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(PatientListPorts, [{
+  _createClass(PatientListLabs, [{
     key: "onChangeDate",
     // medical record tab toggle
     // toggleMedRecTab(tab) {
@@ -355,12 +356,12 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/ports_list/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/labs_list/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
         return response;
       }).then(function (json) {
         if (json.data.success) {
           _this2.setState({
-            ports_list: json.data.data.data,
+            labs_list: json.data.data.data,
             itemsCountPerPage: json.data.data.per_page,
             totalItemsCount: json.data.data.total,
             activePage: json.data.data.current_page
@@ -379,12 +380,12 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
       var _this3 = this; // this.setState({activePage: pageNumber});
 
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/ports_list/" + this.state.id + "?token=".concat(this.state.token, "&page=") + pageNumber).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/labs_list/" + this.state.id + "?token=".concat(this.state.token, "&page=") + pageNumber).then(function (response) {
         return response;
       }).then(function (json) {
         if (json.data.success) {
           _this3.setState({
-            ports_list: json.data.data.data,
+            labs_list: json.data.data.data,
             itemsCountPerPage: json.data.data.per_page,
             totalItemsCount: json.data.data.total,
             activePage: json.data.data.current_page
@@ -408,13 +409,13 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
     // }
     // //////////////////////////////////////////////////////////////////////
     // /////////////// Patient chat
-    value: function togglePrimary(port_id, port_name) {
+    value: function togglePrimary(lab_id, lab_name) {
       this.setState({
-        port_id: port_id,
-        port_name: port_name
+        lab_id: lab_id,
+        lab_name: lab_name
       }); // if the variable passed is closed do not call axios
 
-      if (port_id == "close") {
+      if (lab_id == "close") {
         clearInterval(this.interval);
         this.setState({
           primary: !this.state.primary
@@ -422,28 +423,28 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
       } else {
         this.setState({
           primary: !this.state.primary
-        }, this.getMessages1(port_id));
+        }, this.getMessages1(lab_id));
       }
     } // get message and set interval incase of new messages
 
   }, {
     key: "getMessages1",
-    value: function getMessages1(port_id) {
+    value: function getMessages1(lab_id) {
       var _this4 = this;
 
-      this.getMessages2(port_id);
+      this.getMessages2(lab_id);
       this.interval = setInterval(function () {
-        return _this4.getMessages2(port_id);
+        return _this4.getMessages2(lab_id);
       }, 5000);
     } // get messages
 
   }, {
     key: "getMessages2",
-    value: function getMessages2(port_id) {
+    value: function getMessages2(lab_id) {
       var _this5 = this; // alert("Paulo");
 
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/port/chat/message/get/" + port_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/lab/chat/message/get/" + lab_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
         return response;
       }).then(function (json) {
         if (json.data.success) {
@@ -464,7 +465,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
       // empty message area before adding new message
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('#message_area').empty();
       passMessageArray.forEach(this.splitMessage);
-    } // split the messages to know that of port and patient
+    } // split the messages to know that of lab and patient
 
   }, {
     key: "splitMessage",
@@ -477,11 +478,11 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
 
       if (from == "patient") {
         jquery__WEBPACK_IMPORTED_MODULE_5___default()("#message_area").append("<li style='background-color: rgb(33, 103, 172); color: rgb(255, 255, 255); padding: 5px 10px; margin: 5px; border-radius: 10px;'>" + message + "</li>");
-      } else if (from == "port") {
+      } else if (from == "lab") {
         jquery__WEBPACK_IMPORTED_MODULE_5___default()("#message_area").append("<li style='background-color: #ca333a; color: rgb(255, 255, 255); padding: 5px 10px; margin: 5px; border-radius: 10px;'>" + message + "</li>");
       } else if (from == "patient_file") {
         jquery__WEBPACK_IMPORTED_MODULE_5___default()("#message_area").append("<a href='" + message + "' target='_blank'><li style='background-color: rgb(33, 103, 172); color: rgb(255, 255, 255); padding: 5px 10px; margin: 5px; border-radius: 10px;'>" + fileName + "<i class='fa fa-paperclip' style='font-size: 1.5em; float: right'></i></li></a>");
-      } else if (from == "port_file") {
+      } else if (from == "lab_file") {
         jquery__WEBPACK_IMPORTED_MODULE_5___default()("#message_area").append("<a href='" + message + "' target='_blank'><li style='background-color: #ca333a; color: rgb(255, 255, 255); padding: 5px 10px; margin: 5px; border-radius: 10px;'>" + fileName + "<i class='fa fa-paperclip' style='font-size: 1.5em; float: right'></i></li></a>");
       }
     }
@@ -507,7 +508,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         var send_message = {
           message: message
         };
-        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/patient/port/chat/message/send/" + this.state.port_id + '/' + this.state.id + "?token=".concat(this.state.token), send_message).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/patient/lab/chat/message/send/" + this.state.lab_id + '/' + this.state.id + "?token=".concat(this.state.token), send_message).then(function (response) {
           return response;
         }).then(function (json) {
           if (json.status == 200) {
@@ -557,7 +558,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
   }, {
     key: "uploadSendFile",
     value: function uploadSendFile() {
-      var url = '/api/patient/port/chat/file/send/' + this.state.port_id + '/' + this.state.id + "?token=".concat(this.state.token);
+      var url = '/api/patient/lab/chat/file/send/' + this.state.lab_id + '/' + this.state.id + "?token=".concat(this.state.token);
       var formData = new FormData();
       formData.append('send_file', this.state.send_file);
       var config = {
@@ -567,35 +568,39 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
       };
       return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
     } // //////////////////////////////////////////////////////////////////////////
-    // /////////////// VIEW PORT
+    // /////////////// VIEW Lab
 
   }, {
-    key: "toggleViewPort",
-    value: function toggleViewPort(id, name) {
+    key: "toggleViewLab",
+    value: function toggleViewLab() {
       this.setState({
-        primaryViewPort: !this.state.primaryViewPort,
-        port_id: id,
-        port_name: name
-      });
+        primaryViewLab: !this.state.primaryViewLab // lab_id: id,
+        // lab_name: name,
+
+      }, this.labTests);
     }
   }, {
-    key: "viewPort",
-    value: function viewPort(port_id, name) {
+    key: "viewLab",
+    value: function viewLab(lab_id, name) {
       var _this7 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/ports/get/" + port_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+      this.setState({
+        lab_id: lab_id,
+        lab_name: name
+      });
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/labs/get/" + lab_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
         return response;
       }).then(function (json) {
         if (json.data.success) {
           _this7.setState({
-            port_address: json.data.port_data.address,
-            port_country: json.data.port_data.country,
-            port_district_province_state: json.data.port_data.district_province_state,
-            port_name: json.data.port_data.name,
-            port_username: json.data.port_data.username,
-            logo: json.data.port_data.logo,
+            lab_username: json.data.lab_data.username,
+            lab_name: json.data.lab_data.name,
+            lab_country: json.data.lab_data.country,
+            lab_district_province_state: json.data.lab_data.district_province_state,
+            lab_test_carried_out: json.data.lab_data.test_carried_out,
+            logo: json.data.lab_data.logo,
             status: json.data.status
-          }, _this7.toggleViewPort(port_id, name));
+          }, _this7.toggleViewLab);
         } else {
           _this7.setState({
             errorMessage: json.data.data,
@@ -607,7 +612,111 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         // hashHistory.push('/premontessori');
         console.error("An Error Occuredd! ".concat(error));
       });
-    } // /////////////// Make payment
+    }
+  }, {
+    key: "labTests",
+    value: function labTests() {
+      var _this8 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/lab/test/list/" + this.state.lab_id + "?token=".concat(this.state.token)).then(function (response) {
+        return response;
+      }).then(function (json) {
+        _this8.labResults();
+
+        if (json.data.success) {
+          _this8.setState({
+            lab_test_list: json.data.data.data,
+            itemsCountPerPage_lab_test: json.data.data.per_page,
+            totalItemsCount_lab_test: json.data.data.total,
+            activePage_lab_test: json.data.data.current_page
+          });
+        } else alert("Login Failed!");
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    } // Pagination handler
+
+  }, {
+    key: "handlePageChangeLabTests",
+    value: function handlePageChangeLabTests(pageNumber) {
+      var _this9 = this; // this.setState({activePage: pageNumber});
+
+
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/lab/test/list/" + this.state.lab_id + "?token=".concat(this.state.token, "&page=") + pageNumber).then(function (response) {
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this9.setState({
+            lab_test_list: json.data.data.data,
+            itemsCountPerPage_lab_test: json.data.data.per_page,
+            totalItemsCount_lab_test: json.data.data.total,
+            activePage_lab_test: json.data.data.current_page
+          });
+        } else alert("Login Failed!");
+      });
+    }
+  }, {
+    key: "labResults",
+    value: function labResults() {
+      var _this10 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/lab/result/list/" + this.state.id + "/" + this.state.lab_id + "?token=".concat(this.state.token)).then(function (response) {
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this10.setState({
+            lab_result_list: json.data.data.data,
+            itemsCountPerPage_lab_result: json.data.data.per_page,
+            totalItemsCount_lab_result: json.data.data.total,
+            activePage_lab_result: json.data.data.current_page
+          });
+        } else alert("Login Failed!");
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    } // Pagination handler
+
+  }, {
+    key: "handlePageChangeLabResults",
+    value: function handlePageChangeLabResults(pageNumber) {
+      var _this11 = this; // this.setState({activePage: pageNumber});
+
+
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/lab/result/list/" + this.state.id + "/" + this.state.lab_id + "?token=".concat(this.state.token, "&page=") + pageNumber).then(function (response) {
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this11.setState({
+            lab_result_list: json.data.data.data,
+            itemsCountPerPage_lab_result: json.data.data.per_page,
+            totalItemsCount_lab_result: json.data.data.total,
+            activePage_lab_result: json.data.data.current_page
+          });
+        } else alert("Login Failed!");
+      });
+    } // ///////////////////////// TAKE TEST ////////////////////////////////////////////////
+
+  }, {
+    key: "toggleTakeTest",
+    value: function toggleTakeTest() {
+      this.setState({
+        primaryTakeTest: !this.state.primaryTakeTest // lab_id: id,
+        // lab_name: name,
+
+      });
+    }
+  }, {
+    key: "takeTest",
+    value: function takeTest(test_id) {
+      this.setState({
+        test_id: test_id
+      }, this.toggleTakeTest);
+    } // ///////////////////////////////////////////////////////////////////////////////////
+    // /////////////// Make payment
 
   }, {
     key: "toggleMakePayment",
@@ -625,7 +734,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
   }, {
     key: "onSubmitBookAppointment",
     value: function onSubmitBookAppointment(e) {
-      var _this8 = this;
+      var _this12 = this;
 
       e.preventDefault();
 
@@ -635,24 +744,23 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
           showError: true
         });
       } else {
-        // get port's fee
-        axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/port_fee/get/" + this.state.port_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+        // get lab test's fee
+        axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/test_fee/get/" + this.state.lab_id + '/' + this.state.test_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
           return response;
         }).then(function (json) {
           if (json.data.success) {
-            // if fee is zero meaning out side transaction of free screening
-            if (json.data.port_fee != 0) {
-              _this8.setState({
-                port_fee: json.data.port_fee,
+            if (json.data.test_fee != 0) {
+              _this12.setState({
+                test_fee: json.data.test_fee,
                 country_handling_fee: json.data.country_handling_fee,
                 total_fee: json.data.total_fee
-              }, _this8.toggleMakePayment());
+              }, _this12.toggleMakePayment());
             } else {
-              _this8.setState({
-                port_fee: json.data.port_fee,
+              _this12.setState({
+                test_fee: json.data.test_fee,
                 country_handling_fee: json.data.country_handling_fee,
                 total_fee: json.data.total_fee
-              }, _this8.onSubmitBookAppointment3());
+              }, _this12.onSubmitBookAppointment3());
             }
           } else {}
         })["catch"](function (error) {
@@ -675,7 +783,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
   }, {
     key: "onSubmitBookAppointment3",
     value: function onSubmitBookAppointment3() {
-      var _this9 = this;
+      var _this13 = this;
 
       var appointment_data = {
         date: this.state.date,
@@ -685,29 +793,29 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         // /////////////////////////////////////////////
         billing_amount_currency: this.state.billing_amount_currency,
         billing_amount_value: this.state.billing_amount_value,
-        billing_port_fee: this.state.port_fee,
+        billing_test_fee: this.state.test_fee,
         billing_country_handling_fee: this.state.country_handling_fee,
         billing_email_address: this.state.billing_email_address,
         billing_name: this.state.billing_name,
         billing_orderID: this.state.billing_orderID,
         billing_payerID: this.state.billing_payerID
       };
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/patient/book_port_appointment/" + this.state.port_id + '/' + this.state.id + "?token=".concat(this.state.token), appointment_data).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/patient/book_test_appointment/" + this.state.lab_id + '/' + this.state.test_id + '/' + this.state.id + "?token=".concat(this.state.token), appointment_data).then(function (response) {
         return response;
       }, this.toggleMakePayment("close", "close")).then(function (json) {
         if (json.data.success) {
-          _this9.setState({
+          _this13.setState({
             successMessage: json.data.data,
             showSuccess: true
           });
         } else {
-          _this9.setState({
+          _this13.setState({
             successMessage: json.data.data,
             showError: true
           });
         }
       })["catch"](function (error) {
-        _this9.setState({
+        _this13.setState({
           showError: true
         });
       });
@@ -717,26 +825,26 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
     key: "toggleViewAppointments",
     value: function toggleViewAppointments() {
       this.setState({
-        primaryViewAppointments: !this.state.primaryViewAppointments // port_id: id,
-        // port_name: name,
+        primaryViewAppointments: !this.state.primaryViewAppointments // lab_id: id,
+        // lab_name: name,
 
       });
     }
   }, {
     key: "viewAppointments",
     value: function viewAppointments() {
-      var _this10 = this;
+      var _this14 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/port_appointments/get/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/lab_appointments/get/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          _this10.setState({
+          _this14.setState({
             appointments_list: json.data.data.data,
             itemsCountPerPage_appointments: json.data.data.per_page,
             totalItemsCount_appointments: json.data.data.total,
             activePage_appointments: json.data.data.current_page
-          }, _this10.toggleViewAppointments());
+          }, _this14.toggleViewAppointments());
         } else {}
       })["catch"](function (error) {
         // redirect user to previous page if user does not have autorization to the page
@@ -747,14 +855,14 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
   }, {
     key: "handlePageChangeAppointments",
     value: function handlePageChangeAppointments(pageNumber) {
-      var _this11 = this; // this.setState({activePage: pageNumber});
+      var _this15 = this; // this.setState({activePage: pageNumber});
 
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/port_appointments/get/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/lab_appointments/get/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          _this11.setState({
+          _this15.setState({
             appointments_list: json.data.data.data,
             itemsCountPerPage_appointments: json.data.data.per_page,
             totalItemsCount_appointments: json.data.data.total,
@@ -766,7 +874,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this12 = this; // const { product_image} = this.state
+      var _this16 = this; // const { product_image} = this.state
 
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -774,12 +882,12 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Col"], {
         xs: "12",
         sm: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Ports"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Col"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Laboratories"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Col"], {
         xs: "12",
         lg: "12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
-      }), " List of Ports", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }), " List of Laboratories", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         style: {
           "float": "right"
         }
@@ -788,35 +896,35 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         size: "sm",
         color: "primary",
         onClick: function onClick() {
-          return _this12.viewAppointments();
+          return _this16.viewAppointments();
         }
       }, "View Appointments"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Table"], {
         responsive: true,
         bordered: true
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Country"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "District/Province/State"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ( // Calculation for the page S/N
+      }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Country"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "District/Province/State"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ( // Calculation for the page S/N
       this.state.currentPage = this.state.activePage * 10 - (10 - 1), // ////////////////////////////////////////////////////////////
-      this.state.ports_list.map(function (port) {
-        if (port.status == 1) {
-          _this12.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Badge"], {
+      this.state.labs_list.map(function (lab) {
+        if (lab.status == 1) {
+          _this16.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Badge"], {
             color: "success"
           }, "Completed");
         } else {
-          _this12.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Badge"], {
+          _this16.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Badge"], {
             color: "danger"
           }, "Not Complete");
         }
 
-        var port_id = port.id;
+        var lab_id = lab.id;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          key: port.id
+          key: lab.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
           scope: "row"
-        }, _this12.state.currentPage++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, port.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, port.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, port.country), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, port.district_province_state), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, port.address), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
+        }, _this16.state.currentPage++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, lab.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, lab.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, lab.country), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, lab.district_province_state), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
           size: "sm",
           onClick: function onClick() {
-            return _this12.viewPort(port_id, name);
+            return _this16.viewLab(lab_id, lab.yname);
           },
           className: "btn-facebook btn-brand icon mr-1 mb-1",
           style: {
@@ -843,7 +951,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalHeader"], {
         toggle: function toggle() {
-          return _this12.togglePrimary("close", "close");
+          return _this16.togglePrimary("close", "close");
         }
       }, "Messages"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
@@ -885,29 +993,29 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         } // onChange={this.onChangeProfilePicture}
         ,
         onChange: function onChange(e) {
-          _this12.sendFile(e);
+          _this16.sendFile(e);
         }
       })))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
         color: "secondary",
         onClick: function onClick() {
-          return _this12.togglePrimary("close", "close");
+          return _this16.togglePrimary("close", "close");
         }
       }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Modal"], {
-        isOpen: this.state.primaryViewPort,
+        isOpen: this.state.primaryViewLab,
         className: 'modal-primary ' + this.props.className,
         style: {
           maxWidth: "1000px"
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalHeader"], {
         toggle: function toggle() {
-          return _this12.toggleViewPort("close", "close");
+          return _this16.toggleViewLab("close", "close");
         }
-      }, "View Port"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }, "View Laboratory"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
-      }), this.state.patient_name, " Port's Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Form"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Col"], {
+      }), this.state.lab_name, " Laboratory Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Form"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Col"], {
         xs: "12",
         sm: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Port's Data")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Row"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Laboratory Data")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Row"], {
         style: {
           marginBottom: "25px"
         }
@@ -915,15 +1023,112 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         xs: "12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
         className: "justify-content-between"
-      }, "Username: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.port_username)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
+      }, "Username: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.lab_username)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
         className: "justify-content-between"
-      }, "Name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.port_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
+      }, "Name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.lab_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
         className: "justify-content-between"
-      }, "Country: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.port_country)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
+      }, "Country: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.lab_country)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
         className: "justify-content-between"
-      }, "District/Province/State: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.port_district_province_state)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
+      }, "District/Province/State: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.lab_district_province_state)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
         className: "justify-content-between"
-      }, "Address: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.address)))))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }, "Tests: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.test_carried_out))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Col"], {
+        xs: "12",
+        lg: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-align-justify"
+      }), " Laboratory Tests"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Table"], {
+        responsive: true,
+        bordered: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Price"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ( // Calculation for the page S/N
+      this.state.currentPage_lab_test = this.state.activePage_lab_test * 10 - (10 - 1), // ////////////////////////////////////////////////////////////
+      this.state.lab_test_list.map(function (test) {
+        if (test.status == 1) {
+          _this16.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Badge"], {
+            color: "success"
+          }, "Completed");
+        } else {
+          _this16.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Badge"], {
+            color: "danger"
+          }, "Not Complete");
+        }
+
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: test.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+          scope: "row"
+        }, _this16.state.currentPage_lab_test++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, test.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, test.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, test.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
+          size: "sm",
+          onClick: function onClick() {
+            return _this16.takeTest(test.id);
+          },
+          className: "btn-facebook btn-brand icon mr-1 mb-1"
+        }, "Take Test")));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_6___default.a, {
+        activePage: this.state.activePage_lab_test,
+        itemsCountPerPage: this.state.itemsCountPerPage_lab_test,
+        totalItemsCount: this.state.totalItemsCount_lab_test,
+        pageRangeDisplayed: this.state.pageRangeDisplayed_lab_test,
+        onChange: this.handlePageChangeLabTests,
+        itemClass: "page-item",
+        linkClass: "page-link"
+      })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Col"], {
+        xs: "12",
+        lg: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-align-justify"
+      }), " My Laboratory Results"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Table"], {
+        responsive: true,
+        bordered: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "NAME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "RESULT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "DATE"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ( // Calculation for the page S/N
+      this.state.currentPage2_lab_result = this.state.activePage_lab_result * 10 - (10 - 1), // ////////////////////////////////////////////////////////////
+      this.state.lab_result_list.map(function (test) {
+        if (test.status == 1) {
+          _this16.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Badge"], {
+            color: "success"
+          }, "Completed");
+        } else {
+          _this16.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Badge"], {
+            color: "danger"
+          }, "Not Complete");
+        }
+
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: test.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+          scope: "row"
+        }, _this16.state.currentPage2_lab_result++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, test.lab_test_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, test.lab_result), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, test.created_at));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_6___default.a, {
+        activePage: this.state.activePage_lab_result,
+        itemsCountPerPage: this.state.itemsCountPerPage_lab_result,
+        totalItemsCount: this.state.totalItemsCount_lab_result,
+        pageRangeDisplayed: this.state.pageRangeDisplayed_lab_result,
+        onChange: this.handlePageChangeLabResults,
+        itemClass: "page-item",
+        linkClass: "page-link"
+      })))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
+        color: "secondary",
+        onClick: function onClick() {
+          return _this16.toggleViewLab("close", "close");
+        }
+      }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Modal"], {
+        isOpen: this.state.primaryTakeTest,
+        className: 'modal-primary ' + this.props.className,
+        style: {
+          maxWidth: "1000px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalHeader"], {
+        toggle: function toggle() {
+          return _this16.toggleTakeTest("close", "close");
+        }
+      }, "Laboratory Test"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
       }), this.state.patient_name, " Appointment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Form"], {
         onSubmit: this.onSubmitBookAppointment
@@ -1070,7 +1275,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
       }, "Book appointment")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
         color: "secondary",
         onClick: function onClick() {
-          return _this12.toggleViewPort("close", "close");
+          return _this16.toggleTakeTest("close", "close");
         }
       }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Modal"], {
         isOpen: this.state.primaryViewAppointments,
@@ -1080,7 +1285,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalHeader"], {
         toggle: function toggle() {
-          return _this12.toggleViewAppointments("close", "close");
+          return _this16.toggleViewAppointments("close", "close");
         }
       }, "View Appointments"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
@@ -1097,18 +1302,18 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         bordered: true
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "S/N"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Port Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Subject"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Message"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Status"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ( // Calculation for the page S/N
+      }, "S/N"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Laboratory Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Subject"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Message"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Status"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ( // Calculation for the page S/N
       this.state.currentPage2_appointments = this.state.activePage_appointments * 10 - (10 - 1), // ////////////////////////////////////////////////////////////
       this.state.appointments_list.map(function (appointment) {
         // if status is 1 allow chat else disable chat that is consultation is done
         if (appointment.status == 1) {
-          _this12.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Badge"], {
+          _this16.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Badge"], {
             color: "success"
           }, "Open");
-          _this12.state.chatBtn = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
+          _this16.state.chatBtn = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
             size: "sm",
             onClick: function onClick() {
-              return _this12.togglePrimary(appointment.port_id, appointment.port_name);
+              return _this16.togglePrimary(appointment.lab_id, appointment.lab_name);
             },
             className: "btn-facebook btn-brand icon mr-1 mb-1"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -1117,13 +1322,13 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         }
 
         if (appointment.status == 2) {
-          _this12.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Badge"], {
+          _this16.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Badge"], {
             color: "danger"
           }, "Close");
-          _this12.state.chatBtn = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
+          _this16.state.chatBtn = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
             size: "sm",
             onClick: function onClick() {
-              return _this12.togglePrimary(appointment.port_id, appointment.port_name);
+              return _this16.togglePrimary(appointment.lab_id, appointment.lab_name);
             },
             className: "btn-facebook btn-brand icon mr-1 mb-1",
             disabled: true
@@ -1136,7 +1341,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
           key: appointment.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
           scope: "row"
-        }, _this12.state.currentPage2_appointments++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.port_username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.port_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.subject), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.time), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this12.state.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this12.state.chatBtn));
+        }, _this16.state.currentPage2_appointments++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.lab_username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.lab_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.subject), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.time), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this16.state.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this16.state.chatBtn));
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex justify-content-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_6___default.a, {
@@ -1150,7 +1355,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
       })))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
         color: "secondary",
         onClick: function onClick() {
-          return _this12.toggleViewAppointments("close", "close");
+          return _this16.toggleViewAppointments("close", "close");
         }
       }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Modal"], {
         isOpen: this.state.primaryMakePayment,
@@ -1160,7 +1365,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalHeader"], {
         toggle: function toggle() {
-          return _this12.toggleMakePayment("close", "close");
+          return _this16.toggleMakePayment("close", "close");
         }
       }, "Make Payment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
@@ -1172,11 +1377,11 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         sm: "6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
         className: "justify-content-between"
-      }, "Port Fee: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
+      }, "Test Fee: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
         style: {
           "float": "right"
         }
-      }, "$", this.state.port_fee)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
+      }, "$", this.state.test_fee)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
         className: "justify-content-between"
       }, "Handling Fee: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
         style: {
@@ -1196,17 +1401,17 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         amount: this.state.total_fee // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
         ,
         onSuccess: function onSuccess(details, data) {
-          _this12.state.billing_amount_currency = details.purchase_units[0].amount.currency_code;
-          _this12.state.billing_amount_value = details.purchase_units[0].amount.value;
-          _this12.state.billing_orderID = data.orderID;
-          _this12.state.billing_payerID = data.payerID;
-          _this12.state.billing_email_address = details.payer.email_address;
-          _this12.state.billing_name = details.payer.name.given_name + " " + details.payer.name.surname; // console.log(details);
+          _this16.state.billing_amount_currency = details.purchase_units[0].amount.currency_code;
+          _this16.state.billing_amount_value = details.purchase_units[0].amount.value;
+          _this16.state.billing_orderID = data.orderID;
+          _this16.state.billing_payerID = data.payerID;
+          _this16.state.billing_email_address = details.payer.email_address;
+          _this16.state.billing_name = details.payer.name.given_name + " " + details.payer.name.surname; // console.log(details);
           // console.log(data);
           // console.log(details.purchase_units[0].amount.currency_code)
           // console.log(details.purchase_units[0].amount.value)
 
-          return _this12.onSubmitBookAppointment2();
+          return _this16.onSubmitBookAppointment2();
         },
         onError: function onError(err) {
           alert(err);
@@ -1218,7 +1423,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
         color: "secondary",
         onClick: function onClick() {
-          return _this12.toggleMakePayment("close", "close");
+          return _this16.toggleMakePayment("close", "close");
         }
       }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "sweet_alert1",
@@ -1226,7 +1431,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
           display: "none"
         },
         onClick: function onClick() {
-          return _this12.setState({
+          return _this16.setState({
             showSuccess: true
           });
         }
@@ -1238,7 +1443,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         animation: "true",
         text: this.state.successMessage,
         onConfirm: function onConfirm() {
-          return _this12.setState({
+          return _this16.setState({
             showSuccess: false
           });
         }
@@ -1248,7 +1453,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
           display: "none"
         },
         onClick: function onClick() {
-          return _this12.setState({
+          return _this16.setState({
             showError: true
           });
         }
@@ -1260,7 +1465,7 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
         animation: "true",
         text: this.state.errorMessage,
         onConfirm: function onConfirm() {
-          return _this12.setState({
+          return _this16.setState({
             showError: false
           });
         }
@@ -1268,10 +1473,10 @@ var PatientListPorts = /*#__PURE__*/function (_Component) {
     }
   }]);
 
-  return PatientListPorts;
+  return PatientListLabs;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (PatientListPorts);
+/* harmony default export */ __webpack_exports__["default"] = (PatientListLabs);
 
 /***/ })
 

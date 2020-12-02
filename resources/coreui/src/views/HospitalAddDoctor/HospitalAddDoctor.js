@@ -5,10 +5,18 @@ import {createHashHistory} from 'history';
 // import axios from 'axios';
 import axios, { post } from 'axios';
 import $ from "jquery";
-import Pagination from "react-js-pagination";
 import SweetAlert from 'sweetalert2-react';
-
 import { AesEncrypt, AesDecrypt } from 'aes';
+// ////////// LOADER /////////////////////////////////
+import { css } from "@emotion/core";
+import ScaleLoader from "react-spinners/ScaleLoader";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+// ///////////////////////////////////////////////////
 
 import {
   Badge,
@@ -115,10 +123,7 @@ class HospitalAddDoctor extends Component {
       available_by_time: "",
       available_on_appointment: "",
       available_on_emergency: "",
-
-      
       // /////////////////////////////////////////////////////////////
-      
       profile_picture: null,
       medical_certificate: null,
       medical_license: null,
@@ -139,6 +144,10 @@ class HospitalAddDoctor extends Component {
       fadeIn: true,
       timeout: 300,
       // //////////////////////////////////////////////////
+      // /////// LOADER ////////////
+      showDiv: "none",
+      loading: false,
+      // //////////////////////////
       
       avatar: require("./../../images/avatars/0.jpg"),
       metaValue:
@@ -274,24 +283,6 @@ class HospitalAddDoctor extends Component {
   
   ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-  // ///////////////// IDENTITY ///////////////////////////////
-  // pass in the file into state
-  // onChangeProfilePicture(e) {
-  //   this.setState({profile_picture:e.target.files[0]});
-  //   // set a timer and call the submit profile picture 
-  //   const timeout = setTimeout(() => {
-  //     // call to save images
-  //     this.onSubmitProfilePicture();
-  //     const timeout = setTimeout(() => {
-  //       // call to load contents again so the image can change
-  //       this.componentDidMount();
-  //     }, 2000);
-  //   }, 3000);
-  // }
-
-  // ///////////////////////////////////////////////////////////
-
-  
   onSubmit(e)
   {
     e.preventDefault();
@@ -304,6 +295,12 @@ class HospitalAddDoctor extends Component {
         showError: true
       });
     }else{
+      // ////////////// LOADER ////////////
+      this.setState({
+        showDiv: "block",
+        loading: true,
+      });
+      // ////////////////////////////////
       const doctor_data ={
         username : this.state.username, email : this.state.email, password : this.state.password, first_name : this.state.first_name, last_name : this.state.last_name, middle_name : this.state.middle_name, zip_code : this.state.zip_code, telephone : this.state.telephone, gender : this.state.gender, gender_others : this.state.gender_others, dob : this.state.dob, nationality : this.state.nationality, country_of_residence : this.state.country_of_residence, district_province_state : this.state.district_province_state, contact_address : this.state.contact_address, area_of_specialization : this.state.area_of_specialization, available_on_appointment : this.state.available_on_appointment, available_on_emergency : this.state.available_on_emergency, available_by_time : this.state.available_by_time, consultation_fee : this.state.consultation_fee
       }
@@ -316,6 +313,12 @@ class HospitalAddDoctor extends Component {
         return response;
       })
       .then(json => {
+        // ////////// LOADER //////////////
+          this.setState({
+            showDiv: "none",
+            loading: false,
+          });
+        // ///////////////////////////////
         if (json.data.success) {
           this.setState({
             successMessage: "Doctor added successfully",
@@ -423,6 +426,7 @@ class HospitalAddDoctor extends Component {
 
     return (
       <div className="animated fadeIn"> 
+        
         <Row> 
           <Col xs="12" sm="3">
             <h3>Add Doctor</h3>    
@@ -430,48 +434,25 @@ class HospitalAddDoctor extends Component {
         </Row><br></br> 
         
         <Row>
-            {/* <Col xs="12" sm="3">
-              <Card>
-                <CardHeader className="border-bottom text-center"> */}
-                  
-                  {/* <div className="mb-3 mx-auto">
-                    <img
-                      className="rounded-circle"
-                      src={this.state.profile_picture}
-                      alt={this.state.name}
-                      width="110"
-                    />
-                  </div>
-                  <h4 className="mb-0">{this.state.username} </h4>
-                  <span className="text-muted d-block mb-2">{this.state.email}</span>
-                  <ListGroupItem className="px-4">
-                    <Button block outline color="success" onClick={this.trigerFileUpload}>Update Profile Picture</Button>
-                  </ListGroupItem>
-                </CardHeader> */}
-                {/* ///////////// */}
-                {/* input file to change profile picture */}
-                  {/* <Input 
-                    type="file" 
-                    color="primary"
-                    id="profile_picture"
-                    style={{display: "none"}}
-                    onChange={this.onChangeProfilePicture}
-                  /> */}
-                {/* //////////// */}
-
-                {/* <CardBody>
-                  <strong className="text-muted d-block mb-2">
-                    {this.state.metaTitle}
-                  </strong> */}
-                  {/* <span>{this.state.metaValue}</span> */}
-                {/* </CardBody>
-              </Card>
-            </Col> */}
-            
             <Col xs="12" sm="12">
-            
               {/* ////////////////////// PERSONAL DATA ////////////////////////////////////// */}
               <Card>
+                {/* // ////////// LOADER ////////////// */}
+                  <div className="sweet-loading" style={{position: "fixed", height:"100%", width:"100%", display: this.state.showDiv, top:"50%", left:"50%",zIndex:"1500"}}>
+                      <div style={{position: "absolute", backgroundColor: "#ffffffcf",width:"100px",padding:"15px",borderRadius:"20px" }}>
+                        <ScaleLoader
+                          css={override}
+                          height={50}
+                          width={3}
+                          radius={2}
+                          margin={5}
+                          color={"#2167ac"}
+                          loading={this.state.loading}
+                        />
+                        <h6 style={{color: "#ca333a"}}>Loading...</h6>
+                      </div>
+                    </div>
+                  {/* // ///////////////// ////////////// */}
                 <CardHeader>
                   <i className="fa fa-align-justify"></i><strong>Doctor's Data</strong>
                   <div className="card-header-actions">
@@ -764,7 +745,6 @@ class HospitalAddDoctor extends Component {
                 </Collapse>
               </Card>
             </Col>
-
         </Row>
             {/* ///////////////// Sweet Alerts //////////////////////////////////// */}
                 
@@ -790,7 +770,6 @@ class HospitalAddDoctor extends Component {
                 onConfirm={() => this.setState({ showError: false })}
               />
             {/* ///////////////// Sweet Alerts //////////////////////////////////// */}
-        
       </div>
     );
   }

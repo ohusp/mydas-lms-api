@@ -466,7 +466,7 @@ class PortController2 extends Controller
 
         $port_data   = Ports::where('id', '=', $port_id)->first();
         $port_name   = $port_data->name;
-        $port_logo   = $port_data->profile_picture;
+        $port_logo   = $port_data->logo;
 
         $patient_data  = Patients::where('id', '=', $patient_id)->first();
         $first_name    = $patient_data->first_name;
@@ -497,20 +497,21 @@ class PortController2 extends Controller
 
         // ////////// SEND MAIL //////////////////////////
         $emailDetails = [
-            'title' => $port_name.' Medical Report',
-            'patient_name'  => $first_name." ".$middle_name." ".$last_name,
-            'age'           => $age,
-            'nationality'   => $nationality,
-            'passport_number' => $passport_number,
-            'vessel'          => $vessel,
-            'arrival_from'    => $arrival_from,
-            'observations'    => $observations,
-            'recommendations' => $recommendations,
-            'name_of_officer' => $name_of_officer,
-            'position'        => $position,
-            'date'            => $date,
-            'time'            => $time,
-            'footer'          => 'Powered by: CamMedics'
+            'logo'              => $port_logo,
+            'title'             => $port_name.' Medical Report',
+            'patient_name'      => $first_name." ".$middle_name." ".$last_name,
+            'age'               => $age,
+            'nationality'       => $nationality,
+            'passport_number'   => $passport_number,
+            'vessel'            => $vessel,
+            'arrival_from'      => $arrival_from,
+            'observations'      => $observations,
+            'recommendations'   => $recommendations,
+            'name_of_officer'   => $name_of_officer,
+            'position'          => $position,
+            'date'              => $date,
+            'time'              => $time,
+            'footer'            => 'Powered by: CamMedics'
         ];
 
         Mail::to($email)->send(new PortReportMail($emailDetails));

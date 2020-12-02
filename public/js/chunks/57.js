@@ -11,10 +11,10 @@ module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/Pages/TermsConditions/TermsConditions.js":
-/*!*****************************************************************************!*\
-  !*** ./resources/coreui/src/views/Pages/TermsConditions/TermsConditions.js ***!
-  \*****************************************************************************/
+/***/ "./resources/coreui/src/views/Pages/ResetPasswordPharm/ResetPasswordPharm.js":
+/*!***********************************************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/ResetPasswordPharm/ResetPasswordPharm.js ***!
+  \***********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -22,7 +22,14 @@ module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! aes */ "./node_modules/aes/index.js");
+/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(aes__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -37,6 +44,21 @@ function _typeof(obj) {
   }
 
   return _typeof(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -141,66 +163,308 @@ function _getPrototypeOf(o) {
 }
 
 
- // import {register} from './../../../functions/UserFunctions'
 
-var TermsConditions = /*#__PURE__*/function (_Component) {
-  _inherits(TermsConditions, _Component);
+ // import {login} from './../../../functions/UserFunctions'
 
-  var _super = _createSuper(TermsConditions);
 
-  function TermsConditions() {
+
+
+
+var validateForm = function validateForm(errors) {
+  var valid = true;
+  Object.values(errors).forEach(function (val) {
+    return val.length > 0 && (valid = false);
+  });
+  return valid;
+};
+
+var ResetPasswordPharm = /*#__PURE__*/function (_Component) {
+  _inherits(ResetPasswordPharm, _Component);
+
+  var _super = _createSuper(ResetPasswordPharm);
+
+  function ResetPasswordPharm(props) {
     var _this;
 
-    _classCallCheck(this, TermsConditions);
+    _classCallCheck(this, ResetPasswordPharm);
 
-    _this = _super.call(this);
-    _this.state = {
-      avatar: __webpack_require__(/*! ./../../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png"),
-      Cam_Medics: 'CamMedics Logo'
+    _this = _super.call(this, props);
+
+    _this.onChange = function (e) {
+      _this.onChangeState(e); // this.handleChange(e)
+
     };
+
+    _this.handleChange = function (event) {
+      event.preventDefault();
+      var _event$target = event.target,
+          name = _event$target.name,
+          value = _event$target.value;
+      var errors = _this.state.errors; // called to empty thec alert on top of the form
+
+      _this.setState({
+        alert_message: ""
+      });
+
+      switch (name) {
+        case 'password':
+          errors.password = value.length < 8 ? 'Password must be at least 8 characters long!' : '';
+          break;
+
+        case 'confirmPassword':
+          if (_this.state.password !== value) {
+            errors.confirmPassword = "Password and Confirm Password does not match.";
+          } else {
+            errors.confirmPassword = "";
+          }
+
+          break;
+
+        default:
+          break;
+      }
+
+      _this.setState(_defineProperty({
+        errors: errors
+      }, name, value));
+    };
+
+    _this.state = {
+      // first_name: '',
+      // last_name: '',
+      // email: '',
+      password: '',
+      confirmPassword: '',
+      url_string: '',
+      errorMsg: '',
+      errors: {
+        // email: '',
+        password: '',
+        confirmPassword: ''
+      },
+      // alert_message:'',
+      avatar: __webpack_require__(/*! ./../../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png"),
+      Cam_Medics: 'Cam-Medics Logo'
+    };
+    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
+    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(TermsConditions, [{
+  _createClass(ResetPasswordPharm, [{
+    key: "onChangeState",
+    // onchange for setting state
+    value: function onChangeState(e) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+      this.handleChange(e);
+    }
+  }, {
+    key: "onSubmit",
+    value: function onSubmit(e) {
+      var _this2 = this;
+
+      e.preventDefault(); // validate check if fields are empty
+
+      if (this.state.password == "" || this.state.confirmPassword == "") {
+        this.setState({
+          alert_message: "error"
+        });
+        this.setState({
+          errorMsg: "Please fill all required fields"
+        }); // validate check if theres no error in the form 
+      } else if (validateForm(this.state.errors)) {
+        var newUser = {
+          password: this.state.password,
+          url_string: this.state.url_string
+        };
+        var encrypted_user_data = Object(aes__WEBPACK_IMPORTED_MODULE_5__["AesEncrypt"])(newUser, 'where do you go when you by yourself');
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/patient/resetPassword', {
+          user: encrypted_user_data
+        }, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(function (response) {
+          // console.log(response);
+          if (response.data.success) {
+            // console.log("Password Reset Successful")
+            _this2.setState({
+              alert_message: "success"
+            }); // redirect after 3 secs
+
+
+            var timer = setTimeout(function () {
+              _this2.props.history.push('/login');
+            }, 3000);
+            return function () {
+              return clearTimeout(timer);
+            };
+          } else {// console.log(response.data.data)
+            // const { first_name, last_name, email, password } = response.data.data;
+          }
+        })["catch"](function (err) {
+          // console.log(err)
+          // this.setState({alert_message:"success"});
+          _this2.setState({
+            alert_message: "error"
+          });
+
+          _this2.setState({
+            errorMsg: "Please fill form correctly"
+          });
+        });
+      } else {
+        console.error(this.state.errors.password);
+        this.setState({
+          alert_message: "error"
+        });
+        this.setState({
+          errorMsg: "Please fill form correctly"
+        });
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this3 = this;
+
+      try {
+        // get the url param
+        var url_string = window.location.href;
+        var url_string = url_string.split('?')[1];
+        var url_string = url_string.split('=')[1]; // pass into state for later use
+
+        this.state.url_string = url_string; // post param to check if reset password has been allowed
+
+        axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/patient/check', {
+          url_string: url_string
+        }).then(function (response) {
+          // console.log(response);
+          return response;
+        }).then(function (json) {
+          // if password reset is allowed stay on page, else redirect
+          if (json.data.success) {} else _this3.props.history.push("/login");
+        })["catch"](function (err) {
+          // if theres error redirect to login page
+          // console.log(err)
+          _this3.props.history.push("/login");
+        });
+      } catch (error) {
+        // if theres error redirect to login page
+        // console.log(error)
+        this.props.history.push("/login");
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var errors = this.state.errors;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "flex-row align-items-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-        className: "justify-content-center",
-        style: {
-          textAlign: "justify",
-          textJustify: "inter-word",
-          fontSize: "16px"
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: "12",
-        lg: "12",
-        xl: "12"
+        className: "app flex-row align-items-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+        className: "justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        md: "8"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-3 mx-auto text-center",
-        style: {
-          marginTop: "50px"
-        }
+        className: "mb-3 mx-auto text-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "",
         src: this.state.avatar,
         alt: this.state.Cam_Medics,
         width: "160"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
+        className: "p-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Form"], {
+        noValidate: true,
+        onSubmit: this.onSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Reset Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-muted"
+      }, "Enter new password"), this.state.alert_message == "success" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Alert"], {
+        color: "success"
+      }, "Password Reset Successful") : null, this.state.alert_message == "error" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Alert"], {
+        color: "danger"
+      }, this.state.errorMsg) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-lock"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "form-control",
+        name: "password",
+        placeholder: "Enter Password",
+        value: this.state.password,
+        onChange: this.onChange // onBlur={this.onChange}
+        ,
+        noValidate: true
+      })), errors.password.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Badge"], {
         style: {
-          marginTop: "50px",
-          marginBottom: "50px"
+          marginBottom: 25
+        },
+        className: "mr-1",
+        color: "danger"
+      }, errors.password), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], {
+        className: "mb-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-lock"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Input"], {
+        type: "password",
+        placeholder: "Confirm password",
+        name: "confirmPassword",
+        value: this.state.confirmPassword,
+        onChange: this.onChange // onBlur={this.onChange}
+        ,
+        noValidate: true
+      })), errors.confirmPassword.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Badge"], {
+        style: {
+          marginBottom: 25
+        },
+        className: "mr-1",
+        color: "danger"
+      }, errors.confirmPassword), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        xs: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-lg kiu-btn btn-block"
+      }, "Reset Password")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        xs: "6",
+        className: "text-right"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        xs: "6",
+        className: "text-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/login_pharm"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        color: "link",
+        className: "px-0 kiu-color"
+      }, " Sign In")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
+        className: "text-white kiu-bg py-5 d-md-down-none",
+        style: {
+          width: '44%'
         }
-      }, "TERMS AND CONDITIONS, CAMMEDICS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "These Terms of Use (\"Terms\") and our Privacy Policy set forth the terms and conditions governing your use of the CAMMEDICS telemedicine service (the \"Service\"). The service is offered by INTERNATIONAL MEDICAL LAW CENTRE (the \"Facility\"). The Terms and Privacy Policy together form a legal contract between you and Facility, governing your access to and use of the Service. Please read the Terms and Privacy Policy carefully before using the Service. BY CLICKING \"I ACCEPT\", YOU ARE ENTERING INTO A LEGALLY BINDING AGREEMENT TO THESE TERMS OF USE AND THE PRIVACY POLICY JUST AS YOU WOULD BY SIGNING A PAPER CONTRACT. If you do not agree with and accept these Terms of Use and the Privacy Policy, do not use the Service."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "DO NOT USE THIS SITE FOR EMERGENCY MEDICAL NEEDS. If you experience a medical emergency, call 911 or any other appropriate emergency number immediately.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You hereby certify that you are not a Medicare or Medicaid beneficiary. If you provide false or deceptive information regarding your Medicare or Medicaid enrollment status, CAMMEDICS reserves the right to terminate all current or future use of the Service by you."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " YOUR LOCATION "), "You hereby certify that you are physically located in the City, State or country you choose/have chosen as your current location. You acknowledge that your ability to access and use the Service is conditioned upon the truthfulness of this certification and that the physicians you access are relying upon this certification in order to interact with you. In the event that your certification is inaccurate, you agree to indemnify the Facility and the physicians you interact with from any resulting damages, costs or claims as set forth in the Indemnification Section below."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " WEBSITE CONTENT "), "Other than information received directly by you from physicians in the context of a telemedicine service, the content on the website should not be considered medical advice. We may post or provide links to general information resources that may be of interest to you (\"Posted Materials\"). Posted Materials are not to be used as medical diagnosis, treatment or advice. Other than information received directly by you from physicians in the context of a telemedicine service, you should always talk to an appropriately qualified health care professional for diagnosis and treatment, including information regarding which medications or treatment may be appropriate for you. None of the content on this website represents or warrants that any particular medication or treatment is safe, appropriate, or effective for you. Without limitation, Facility does not recommend or endorse any specific tests, physicians, medications, products or procedures."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " ACCOUNT ENROLLMENT "), "To access the Service, you must first enroll to establish an individual user account (\"Account\"), by providing certain information. With the exception of subaccounts established for minor children of whom you are a parent or legal guardian, you agree that you will not create more than one Account, or create an account for anyone other than yourself without first receiving permission from the other person. In exchange for your use of the Service and, if applicable, in order for physicians to send notices to you, you agree to: (i) provide true, accurate, current and complete information about yourself as prompted by our Account enrollment form; and (ii) each time you log on, maintain and promptly update such Account information to keep it true, accurate, current and complete. If you provide any information that is untrue, inaccurate, not current or incomplete, or we have reasonable grounds to suspect that such Account information is untrue, inaccurate, not current or incomplete, we reserve the right to suspend or terminate your Account and refuse any and all current or future use of the Service. You represent and warrant that you are at least 18 years of age and possess the legal right and ability, on behalf of yourself or a minor child of whom you are a parent or legal guardian, to agree to these Terms of Use."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " ACCEPTABLE USE "), "You agree not to access or use the Service in an unlawful way or for an unlawful or illegitimate purpose or in any manner that contravenes this Agreement. You shall not post, use, store or transmit (a) a message or information under a false name; (b) information that is unlawful, libelous, defamatory, obscene, fraudulent, predatory of minors, harassing, threatening or hateful to any person; or (c) information that infringes or violates any of the intellectual property rights of others or the privacy or publicity rights of others. You shall not attempt to disrupt the operation of the Service by any method, including through use of viruses, Trojan horses, worms, time bombs, denial of service attacks, flooding or spamming. You shall not use the Service in any manner that could damage, disable or impair the Service. You shall not attempt to gain unauthorized access to any user accounts or computer systems or networks, through hacking, password mining or any other means. You shall not use any robot, scraper or other means to access the Service for any purpose."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " INTERLLECTUAL PROPERTY "), "All of the content available on or through the Service is the property of Facility or its licensors and is protected by copyright, trademark, patent, trade secret and other intellectual property law. We give you permission to display, download, store and print the content only for your personal, non-commercial use. You agree not to reproduce, retransmit, distribute, disseminate, sell, publish, broadcast, or circulate the content received through the Service to anyone, including but not limited to others in your organization. All software and accompanying documentation made available for download from the Service is the copyrighted work of Facility or its licensors. Any copy made of information obtained through the Service must include all applicable copyright notices.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Subject to the terms of this Agreement, Facility hereby grants you a limited, revocable, non-transferable and non-exclusive license to use the software, network facilities, content and documentation on and in the Service to the extent, and only to the extent, necessary to access and use the Service.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "The license granted herein does not permit you, and you agree not to: (a) modify, translate, reverse engineer, disassemble, decompile or create derivative works of the Service or allow a third party, whether directly or indirectly (including, but not limited to the direct or indirect use of wizards, agents, bots, or other utilities), to modify, translate, reverse engineer, disassemble, decompile or create derivative works of the Service; or (b) transfer, distribute, sell, lease, rent, disclose or provide access to the Service to any third party or use the Service to provide service bureau, time sharing or other services to third parties."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " DISCLAIMERS"), "ACCESS TO THE SERVICE AND THE INFORMATION CONTAINED THEREIN IS PROVIDED \"AS IS\" AND \"AS AVAILABLE\" WITHOUT ANY WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMISSIBLE PURSUANT TO APPLICABLE LAW, FACILITY DISCLAIMS ALL WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY IMPLIED WARRANTIES OF TITLE, MERCHANTIBILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "WITHOUT LIMITING THE FOREGOING, FACILITY DOES NOT WARRANT THAT ACCESS TO THE SERVICE WILL BE UNINTERRUPTED OR ERROR-FREE, OR THAT DEFECTS, IF ANY, WILL BE CORRECTED; NOR DOES FACILITY MAKE ANY REPRESENTATIONS ABOUT THE ACCURACY, RELIABILITY, CURRENCY, QUALITY, COMPLETENESS, USEFULNESS, PERFORMANCE, SECURITY, LEGALITY OR SUITABILITY OF THE SERVICE OR ANY OF THE INFORMATION CONTAINED THEREIN. YOU EXPRESSLY AGREE THAT YOUR USE OF THE SERVICE AND YOUR RELIANCE UPON ANY OF ITS CONTENTS IS AT YOUR SOLE RISK.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "YOU SHALL BE SOLELY AND FULLY RESPONSIBLE FOR ANY DAMAGE TO THE SERVICE OR ANY COMPUTER SYSTEM, ANY LOSS OF DATA, OR ANY IMPROPER USE OR DISCLOSURE OF INFORMATION ON THE SERVICE CAUSED BY YOU OR ANY PERSON USING YOUR USERNAME OR PASSWORD. FACILITY CANNOT AND DOES NOT ASSUME ANY RESPONSIBILITY FOR ANY LOSS, DAMAGES OR LIABILITIES ARISING FROM THE FAILURE OF ANY TELECOMMUNICATIONS INFRASTRUCTURE, OR THE INTERNET OR FOR YOUR MISUSE OF ANY PROTECTED HEALTH INFORMATION, ADVICE, IDEAS, INFORMATION, INSTRUCTIONS OR GUIDELINES ACCESSED THROUGH THE SERVICE."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " LIMITATIONS OF LIABILITY "), "IN THE EVENT OF ANY PROBLEM WITH THE SERVICE OR ANY OF ITS CONTENT, YOU AGREE THAT YOUR SOLE REMEDY IS TO CEASE USING THE SERVICE. UNDER NO CIRCUMSTANCES SHALL FACILITY, ANY FACILITY LICENSOR OR SUPPLIER, OR ANY THIRD PARTY WHO PROMOTES THE SERVICE OR PROVIDES YOU WITH A LINK TO THE SERVICE BE LIABLE IN ANY WAY FOR YOUR USE OF THE SERVICE OR ANY OF ITS CONTENT, INCLUDING, BUT NOT LIMITED TO, ANY ERRORS OR OMISSIONS IN ANY CONTENT, ANY INFRINGEMENT BY ANY CONTENT OF THE INTELLECTUAL PROPERTY RIGHTS OR OTHER RIGHTS OF THIRD PARTIES, OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF ANY CONTENT.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "UNDER NO CIRCUMSTANCES SHALL FACILITY, ITS LICENSORS OR SUPPLIERS OF NON-MEDICAL SERVICES OR ANY THIRD PARTY WHO PROMOTES THE SERVICE OR PROVIDES YOU WITH A LINK TO THE SERVICE, BE LIABLE FOR ANY PUNITIVE, EXEMPLARY, CONSEQUENTIAL, INCIDENTAL, INDIRECT OR SPECIAL DAMAGES (INCLUDING, WITHOUT LIMITATION, ANY PERSONAL INJURY, LOST PROFITS, BUSINESS INTERRUPTION, LOSS OF PROGRAMS OR OTHER DATA ON YOUR COMPUTER OR OTHERWISE) ARISING FROM OR IN CONNECTION WITH YOUR USE OF THE SERVICE, WHETHER UNDER A THEORY OF BREACH OF CONTRACT, NEGLIGENCE, STRICT LIABILITY, MALPRACTICE OR OTHERWISE, EVEN IF WE OR THEY HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " INTERNATIONAL USE "), "The Service is designed for and intended for users around the world and in countries where the service is assible and availaible. Facility makes no representation that the information and services provided on the Service are applicable to, appropriate for, or available to users in locations outside the expressly stated countries. Accessing the Service from territories where the content is illegal is prohibited. If you choose to access the site from a location outside the stated locations, you do so on your own initiative and you are responsible for compliance with local laws."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " TERMINATION "), "Facility may suspend or terminate your access to the Service at any time, for any reason or for no reason at all. Facility has the right (but not the obligation) to refuse to provide access to the Service to any person, agency or organization at any time, for any reason or for no reason at all, in our sole discretion. Facility reserves the right to change, suspend, or discontinue all or part of the Service, temporarily or permanently, without prior notice."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " NOTICE OF PRIVACY PRACTICES "), "Pursuant to Health Insurance Portability and Accountability Act of 1996 (HIPAA), and all other relevant laws, you acknowledge that you have received a copy of the Facility's Notice of Privacy Practices. You hereby consent to disclosure of your protected information, including information generated through use of virtual health or telemedicine services, as described in the Notice of Privacy Practices. This will include all of your protected health information generated during the provision of Services, including but not limited to treatment for mental health, drug and alcohol abuse, communicable diseases such as HIV/AIDS, developmental disabilities, genetic testing, and other types of treatment received."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " INFORMED CONSENT "), "Possible Risks of Telemedicine:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "As with any medical procedure, there are potential risks associated with the use of telemedicine. Facility believes that the likelihood of these risks materializing is very low. These risks may include, without limitation, the following:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Delays in medical evaluation and consultation or treatment may occur due to deficiencies or failures of the equipment which may include poor video and data quality.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Security protocols could fail, causing a breach of privacy of personal medical information. Lack of access to complete medical records may result in adverse drug interactions or allergic reactions or other negative outcomes.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "By accepting these Terms of Use, you acknowledge that you understand and agree with the following:", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You understand that the laws that protect privacy and the confidentiality of medical information also apply to telemedicine.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You understand that telemedicine may involve electronic communication of your personal medical information to medical practitioners who may be located in other areas, including out of city, state/ region or country.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You understand that you may expect the anticipated benefits from the use of telemedicine, but that no results can be guaranteed or assured.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You understand that all information will be part of your medical record and available to you by printing the summary from the visit. This information will have the same restrictions on dissemination without your consent. Except to the extent already relied upon, you understand you may withdraw your consent at any time by sending a notice in writing to withdraw your consent and inactivate your account.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You understand that your healthcare information may be shared with other individuals for treatment, payment and healthcare operations purposes. Psychotherapy notes are maintained by clinicians but are not shared with others, while billing codes and encounter summaries are shared with others. If you obtain psychotherapy services, you understand that your therapist has the right to limit the information provided to you if in your therapist's professional judgment sharing the information with you would be harmful to you.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You further understand that your healthcare information may be shared in the following circumstances: When a valid court order is issued for medical records.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Reporting suspected abuse, neglect, or domestic violence.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Preventing or reducing a serious threat to anyone's health or safety.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Patient Consent to the Use of Telemedicine", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "I HAVE READ AND UNDERSTAND THE INFORMATION PROVIDED ABOVE, AND UNDERSTAND THE RISKS AND BENEFITS OF TELEMEDICINE, AND BY ACCEPTING THESE TERMS OF USE I HEREBY GIVE MY INFORMED CONSENT TO PARTICIPATE IN A TELEMEDICINE VISIT UNDER THE TERMS DESCRIBED HEREIN. BY CLICKING THE \"AGREE\" BUTTON YOU ARE CONSENTING TO RECEIVING CARE VIA THE SERVICE. THE SCOPE OF CARE WILL BE AT THE SOLE DISCRETION OF THE HEALTHCARE PHYSICIAN WHO IS TREATING YOU, WITH NO GUARANTEE OF DIAGNOSIS, TREATMENT, OR PRESCRIPTION. THE HEALTHCARE PHYSICIAN WILL DETERMINE WHETHER OR NOT THE CONDITION BEING DIAGNOSED AND/OR TREATED IS APPROPRIATE FOR A TELEHEALTH ENCOUNTER VIA THE SERVICE."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " MODIFICATION OF THESE TERMS AND THE SITE. "), "You are responsible for regularly reviewing these Terms. Facility has the right, but not the obligation, to correct any errors or omissions in any portion of the Site, the Service and these Terms. Facility reserves the right, at its sole discretion, to change, modify, add, remove or terminate any portion of the Site, the Service and these Terms, in whole or in part, at any time, without prior notice. All changes to these Terms are effective immediately upon being posted to the Site. YOUR CONTINUED USE OF THE SITE OR SERVICE FOLLOWING ANY CHANGES TO THESE TERMS WILL MEAN YOU ACCEPT THESE CHANGES."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " RESTRICTIONS ON SITE USE. "), "You may not access or use, or attempt to access or use, the Service to take any action that could harm us or any third party, interfere with the operation of the Service, or use the Service in a manner that violates any laws. Without limiting the foregoing, you agree not to: Impersonate any person or entity or falsely state or otherwise misrepresent your affiliation with any person or entity or the origin of any information you provide;", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Use any device, software, or routine to interfere or attempt to interfere with the proper working of the Service or any activity conducted on the Service or attempt to probe, scan, test the vulnerability of, or breach the security of any system or network;", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Circumvent, reverse engineer, decipher, decompile, disassemble, decrypt, or otherwise alter or interfere with (or attempt, encourage, or support anyone else's attempt to engage in such activities) any of the software comprising or in any way making up a part of the Service. The use or distribution of tools designed for compromising security (e.g., password guessing programs, cracking tools or network probing tools) is strictly prohibited;", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Engage in unauthorized use of bots, spiders, scraping, or harvesting of content or information, or use any other unauthorized automated means to compile information;", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Obtain or attempt to gain unauthorized access to other computer systems, materials, information or any services available on or through the Service;", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Take any action that imposes an unreasonable or disproportionately large load on our network or infrastructure;", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Upload or otherwise transmit any communication, software, or material that contains a virus or is otherwise harmful to our users' computers or systems; or Engage in any other conduct that restricts or inhibits any person from using the Service, or that, in our sole judgment, exposes us or any of our users, affiliates, or any other third party to any liability, damages, or detriment of any type."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " INFORMATION DISCLOSURE. "), "Disclosure under Law. Facility reserves the right at all times to disclose any information as necessary to satisfy any applicable law, regulation, legal process or governmental request, including personally identifiable information, or to edit, refuse to allow or to remove any information or materials, in whole or in part, in Facility's sole discretion. Any disclosure of medical information, such as Protected Health Information (\"PHI\") under the Health Insurance Portability and Accountability Act (\"HIPAA\") or state medical information privacy laws, is subject to the restrictions and requirements of such laws.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Providing Correct Personal Information. In the course of using the Site, you may be required to enter certain information, including without limitation personal information (collectively, \"Information\"). You represent and warrant that you will provide Facility with full, true and correct Information, and to update such Information on the Site promptly as reasonably necessary and as required by the Site."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " YOUR ACCOUNT "), "Security of Account and Password. In the event you establish an account and receive or establish a password for such account, you are responsible for maintaining the confidentiality of your account and password, and for restricting access to your computer. You accept full responsibility and liability for all activities that occur under your account or password. Facility reserves the right to refuse service, terminate accounts, or remove content in its sole discretion Notification of Unauthorized Use/Ceasing Access. You shall notify Facility immediately of any unauthorized use or threat of unauthorized use of your account or the Site or of any other breach or potential breach of security known to you with respect to your account or the Site, including without limitation any loss or compromise of any password, and will cooperate with Facility in every reasonable way to help Facility prevent the further unauthorized use, threat of unauthorized use, disclosure or threat of disclosure regarding the Site, your account and/or your password. You agree that immediately upon termination of your right to use the Site or any password-protected portion of the Site, or upon any earlier demand by Facility at any time, you will cease all access and/or use of the Site or such password protected portion of the Site, and will not attempt to access and/or use same."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " INDEMNIFICATION "), "You will indemnify, defend (or settle) and hold harmless Facility Entities from all claims, actions, proceedings, losses, settlements, judgments, liabilities, suits, damages, disputes or demands, including without limitation any proceeding, investigation or claim by a self-regulatory organization, state or federal securities agency or commission, and including reasonable attorneys fees and all other costs, fees, and expenses (collectively, \"Claims\") against any of Facility Entities to the fullest extent permitted by law arising out of or in connection with (1) your conduct, provision of content or use of the Site, or such actions by any third party through you, (2) your violation of the rights of another person or party, (3) any Materials provided or made available by you, and (4) any breach or violation by you of your obligations under these Terms, including without limitation any breach of your representations and warranties herein. You will not settle any indemnified claim without the prior written consent of Facility, such consent not to be unreasonably withheld. In connection with any Claims that may give rise to your indemnification obligations as set forth above, Facility Entities shall have the exclusive right, at their option, to defend, compromise and/or settle the suit, action or proceeding, and you shall be bound by the determination of any suit, action or proceeding so defended or any compromise or settlement so effected. The remedies provided in this Section are not exclusive of and do not limit any other remedies that may be available to Facility Entities pursuant to this Section."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " COPYRIGHT AND OTHER INTELLECTUAL PROPERTY "), "Site Ownership. The Site and all content, organization, graphics, design, compilation, translation, and other matters related to the Site (collectively, \"Content\") are protected under applicable copyrights, trademarks, and other proprietary (including but not limited to intellectual property) rights pursuant to municipal, international conventions and and other laws. The Site and all Content is the property of Facility and/or third party licensors, and all right, title and interest in and to the Site and Content will remain with Facility or such third party licensors. Other product and Facility names mentioned herein may be the trademarks of their respective owners. You do not acquire ownership rights to the Site or any Content other than any rights in the Materials that you may have. You will abide by any and all additional copyright notices, information, or restrictions contained in any Content. You will not modify, adapt, translate, reverse engineer, decompile, or disassemble the Site or any Site content. You may only use the Site and the Content as expressly permitted herein, and any other use is prohibited. Any copying, republication, or redistribution of the Site or Site content, including by caching, framing, or similar means, is expressly prohibited without the prior written consent of Facility and/or the respective intellectual property rights holder identified in the subject content, which consent to be granted or withheld at the sole discretion of the rights holder.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Copyright Infringement Claims. Facility respects the intellectual property rights of others and expects our users to do the same. If you believe that your work has been copied in a way that constitutes copyright infringement, please provide Facility's Designated Copyright Agent, identified below, with all information required by the Online Copyright Infringement Liability Limitation Act of the Digital Millennium Copyright Act (\"DMCA\"), 17 U.S.C. \xA7 512, summarized as follows: (1) a physical or electronic signature of a person authorized to act on behalf of the owner of an exclusive right that is allegedly infringed; (2) identification of the copyright work claimed to have been infringed, or, if multiple copyrighted works at a single online Site are covered by a single notification, a representative list of such works at that Site; (3) identification of the material that is claimed to be infringing or to be the subject of infringing activity and that is to be removed or access to which is to be disabled, and information reasonably sufficient to permit us to locate the material; (4) information reasonably sufficient to permit us to contact the complaining party; (5) a statement that the complaining party has a good-faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law; (6) a statement that the information in the notification is accurate, and under penalty of perjury, that the complaining party is authorized to act on behalf of the owner of an exclusive right that is allegedly infringed; and (7) any other materials or information as may be required under the DMCA as amended from time to time or by the U.S. Copyright Office and all other copyright right laws of other jurisdictions."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " DISPUTE RESOLUTION (ARBITRATION CLAUSE) "), "Binding Arbitration. You and Facility each agree to submit to binding arbitration in the event of a dispute, controversy or claim (each, a \"Dispute\") arising out of or in connection with these Terms or the breach, termination, enforcement, interpretation or validity thereof (including the determination of the scope or applicability of these Terms to arbitrate), your or Facility's rights and obligations under these Terms, the Site, the use of the Site, and/or the information, services and/or products that may be provided by or through or in connection with the Site. The arbitration will be held in the country of [FACILITY Country] before one arbitrator on an individual basis and not as a class action. You expressly waive any right you may have to arbitrate a dispute as a class action. You also expressly waive your right to a jury trial. The arbitration will be administered by a certified arbitrator. You and Facility shall agree on one arbitrator to conduct the arbitration. Each party shall be responsible for its own attorney, expert and other fees, unless such fees are awarded by the arbitrator to the prevailing party. Notwithstanding anything to the contrary in this Section, to the extent you have in any manner violated or threatened to violate Facility's intellectual property rights, Facility may seek (and you will not contest) injunctive or other appropriate relief in any court with jurisdiction over [FACILITY country] and you consent to exclusive jurisdiction and venue in such courts. Arbitration Final. The arbitrator's award is final and binding on all parties. Any court having jurisdiction may enter judgment on the arbitrator's award. If any part of this clause, other than waivers of class action rights, is deemed or found to be unenforceable for any reason, the remainder shall remain enforceable. Notwithstanding anything to the contrary contained herein, if the waiver of class action rights contained herein is not enforceable as to any person or persons, such non-enforceability shall apply to such person or persons only, and all other persons shall continue to be governed by the Arbitration Clause.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Giving Up Right of Class Action. These Terms provides that all Disputes will be resolved by binding arbitration and not in court or by jury trial. IF A DISPUTE IS ARBITRATED, YOU GIVE UP YOUR RIGHT TO PARTICIPATE AS A CLASS REPRESENTATIVE OR CLASS MEMBER ON ANY CLASS CLAIM YOU MAY HAVE AGAINST FACILITY ENTITIES INCLUDING ANY RIGHT TO CLASS ARBITRATION OR ANY CONSOLIDATION OF INDIVIDUAL ARBITRATIONS. WITHOUT LIMITATION, THIS INCLUDES GIVING UP YOUR RIGHTS TO BRING OR PARTICIPATE IN A CLASS ACTION AS SET FORTH IN ANY STATE STATUTE.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Choice of Law; Jurisdiction and Venue; Waiver of Jury Trial. To the maximum extent permitted by law, these Terms are governed by the laws of the Federation of St. Kitts and Nevis [FACILITY COUNTRY], excluding any law or conflicts of law principle that would apply the law of another jurisdiction. To the extent a Dispute is not governed by the Arbitration Clause, you hereby consent to the exclusive jurisdiction and venue of courts in [FACILITY COUNTRY] in all disputes arising out of or relating to the use of the Site or under these Terms; provided, however, that in the event Facility is sued or joined by a third party in any other court or in any other forum in respect of any matter which may give rise to a claim by Facility hereunder, you consent to the jurisdiction of such court or forum over any claim which may be asserted by Facility therein. You irrevocably consent to the exercise of personal jurisdiction by such courts in any such action. In addition, and notwithstanding the foregoing, you irrevocably waive, to the fullest extent permitted by law, any objection that you may now or hereafter have to the laying of the venue of any such suit, action or proceeding brought in any such court and any claim that any such suit, action or proceeding brought in any such court has been brought in an inconvenient forum. Final judgment in any such suit, action or proceeding brought in any such court shall be conclusive and binding upon you and may be enforced in any court in which you are subject to a jurisdiction by a suit upon such judgment. Use of the Site is unauthorized in any jurisdiction that does not give effect to all provisions of these Terms, including without limitation this paragraph. To the extent a claim is not governed by the Arbitration Clause, Facility and you each hereby waive the right to a trial by jury in any court and in any suit, action or proceeding, whether in tort, contract, or otherwise, in which any such party is a party, as to any claim arising out of or in connection with these Terms, your or Facility's rights and obligations under these Terms, the Site, use of the Site, and/or the services and/or products that may be provided by or through or in connection with the Site."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " MISCELLANEOUS "), "Viewing, Accessing and Use Outside the stated countries. If and when any products or services referenced on the Site become available, they will become available in the stated countries and may not become available elsewhere. Facility makes no claims that the Site or any products or services referenced therein may be lawfully viewed, accessed or used outside the stated countries. Access or use of the Site or any products or services referenced therein may not be legal by certain persons or in certain countries. If you access or use the Site from outside of the stated countries, you do so at your own risk and you are responsible for compliance with the laws of your jurisdiction.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Headings. Section headings and other captions in these Terms are used solely for the convenience of the parties, have no legal or contractual significance, and shall not be used in interpreting, construing or enforcing any of the provisions of these Terms.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Survival. The provisions of the following sections shall specifically survive any termination or expiration of these Terms of Use: Sections: Disclosure Under Law, Materials, User Representations and Warranties, Disclaimers, Indemnification, Informed Consent, Consent to the Use Of Telemedicine, Confidentiality, Copyright and Other Intellectual Property, Dispute Resolution (Arbitration Clause), Choice of Law; Jurisdiction and Venue; Waiver of Jury Trial, and Miscellaneous.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "No Waiver. The failure of Facility to enforce any provision of these Terms will not be construed as a waiver or limitation of Facility's right to subsequently enforce and compel strict compliance with that provision or any other provision of these Terms.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Assignment. No assignment, delegation or other conveyance of these Terms may be made by you (by operation of law or otherwise) without the prior written consent of Facility, to be given in its sole discretion. Facility may assign its rights and obligations hereunder to any other party. Statute of Limitations. Any cause of action you may have with respect to your use of the Site must be commenced within one year after the claim or cause of action arises; thereafter, any such claim will be forever barred, without regard to any contrary legislation.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Agreement Binding. In the event that any provision of these Terms is deemed to be unenforceable, said provision will be interpreted to reflect the original intent of the parties in accordance with applicable law, and the remainder of these Terms will continue in full force and effect. Entire Agreement; Language of Agreement. These Terms and Privacy Policy contain the entire agreement between you and Facility with respect to the Site. It supersedes all prior or contemporaneous communications and proposals, whether electronic, oral or written, between the user and Facility with respect to the Site. Any rights not expressly granted herein are reserved. A printed version of these Terms and of any notice given in electronic form shall be admissible in judicial or administrative proceedings based upon or relating to these Terms to the same extent and subject to the same conditions as other business documents and records originally generated and maintained in printed form. It is the express wish of the parties that these Terms and all related documents be drawn up in English."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], {
+        className: "text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hospital without borders where innovative technology meets premium care.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "It's all about you."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't Have An Account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/register_pharm"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        className: "mt-3 cam-btn-white-bg",
+        active: true,
+        tabIndex: -1
+      }, "Register Now!")))))))))));
     }
   }]);
 
-  return TermsConditions;
+  return ResetPasswordPharm;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (TermsConditions);
+/* harmony default export */ __webpack_exports__["default"] = (ResetPasswordPharm);
 
 /***/ })
 

@@ -11,10 +11,10 @@ module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/Pages/ForgetPasswordPatient/ForgetPasswordPatient.js":
-/*!*****************************************************************************************!*\
-  !*** ./resources/coreui/src/views/Pages/ForgetPasswordPatient/ForgetPasswordPatient.js ***!
-  \*****************************************************************************************/
+/***/ "./resources/coreui/src/views/Pages/ForgetPasswordHospital/ForgetPasswordHospital.js":
+/*!*******************************************************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/ForgetPasswordHospital/ForgetPasswordHospital.js ***!
+  \*******************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -28,10 +28,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var sweetalert2_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2-react */ "./node_modules/sweetalert2-react/dist/sweetalert-react.min.js");
-/* harmony import */ var sweetalert2_react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! aes */ "./node_modules/aes/index.js");
-/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(aes__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! aes */ "./node_modules/aes/index.js");
+/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(aes__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @emotion/core */ "./node_modules/@emotion/core/dist/core.browser.esm.js");
+/* harmony import */ var react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-spinners/ScaleLoader */ "./node_modules/react-spinners/ScaleLoader.js");
+/* harmony import */ var react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_7__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -164,29 +165,63 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: block;\n  margin: 0 auto;\n  border-color: red;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  return Object.freeze(Object.defineProperties(strings, {
+    raw: {
+      value: Object.freeze(raw)
+    }
+  }));
+}
+
 
 
  // import {login} from './../../../functions/UserFunctions'
 
 
 
+ // ////////// LOADER /////////////////////////////////
 
 
 
-var ForgetPasswordPatient = /*#__PURE__*/function (_Component) {
-  _inherits(ForgetPasswordPatient, _Component);
+var override = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_6__["css"])(_templateObject()); // ///////////////////////////////////////////////////
 
-  var _super = _createSuper(ForgetPasswordPatient);
+var ForgetPasswordHospital = /*#__PURE__*/function (_Component) {
+  _inherits(ForgetPasswordHospital, _Component);
 
-  function ForgetPasswordPatient(props) {
+  var _super = _createSuper(ForgetPasswordHospital);
+
+  function ForgetPasswordHospital(props) {
     var _this;
 
-    _classCallCheck(this, ForgetPasswordPatient);
+    _classCallCheck(this, ForgetPasswordHospital);
 
     _this = _super.call(this, props);
     _this.state = {
-      successMessage: "Successful",
-      errorMessage: "Failed",
+      id: '',
+      created_at: '',
+      errors: {},
+      isLoggedIn: false,
+      user: {},
+      // storedData1: {},
+      // storedData2: {},
+      // /////// LOADER ////////////
+      showDiv: "none",
+      loading: false,
+      // //////////////////////////
       avatar: __webpack_require__(/*! ./../../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png"),
       Cam_Medics: 'Cam-Medics Logo'
     };
@@ -195,7 +230,7 @@ var ForgetPasswordPatient = /*#__PURE__*/function (_Component) {
     return _this;
   }
 
-  _createClass(ForgetPasswordPatient, [{
+  _createClass(ForgetPasswordHospital, [{
     key: "onChange",
     value: function onChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
@@ -205,35 +240,90 @@ var ForgetPasswordPatient = /*#__PURE__*/function (_Component) {
     value: function onSubmit(e) {
       var _this2 = this;
 
-      e.preventDefault();
+      e.preventDefault(); // ////////////// LOADER ////////////
+
+      this.setState({
+        showDiv: "block",
+        loading: true
+      }); // ////////////////////////////////
+
       var user = {
-        email: this.state.email
+        email: this.state.email // password: this.state.password
+
       };
-      var encrypted_user_data = Object(aes__WEBPACK_IMPORTED_MODULE_6__["AesEncrypt"])(user, 'where do you go when you by yourself');
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/patient/forgetPassword', {
-        email: encrypted_user_data
+      var encrypted_user_data = Object(aes__WEBPACK_IMPORTED_MODULE_5__["AesEncrypt"])(user, 'where do you go when you by yourself');
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/hospital/forgetPassword', {
+        email: encrypted_user_data // password: user.password
+
       }).then(function (response) {
+        // console.log("response-1");
+        // console.log(response);
         return response; // console.log("Mr mendes")
+        // localStorage.setItem('usertoken', response.data.auth_token)
+        // return response.data.token
       }).then(function (json) {
+        // ////////// LOADER //////////////
+        _this2.setState({
+          showDiv: "none",
+          loading: false
+        }); // ///////////////////////////////
+
+
         if (json.data.success) {
+          alert("Login Successful!");
+          var _json$data$data = json.data.data,
+              id = _json$data$data.id,
+              created_at = _json$data$data.created_at,
+              auth_token = _json$data$data.auth_token,
+              user_type = _json$data$data.user_type;
+          var userData = {
+            id: id,
+            created_at: created_at,
+            auth_token: auth_token,
+            user_type: user_type,
+            timestamp: new Date().toString()
+          };
+          var appState = {
+            isLoggedIn: true,
+            user: userData
+          }; // save app state with user date in local storage
+
+          localStorage["appState"] = JSON.stringify(appState); // console.log("Response-2");
+          // console.log(localStorage["appState"]);
+          // console.log("Response-3");
+
           _this2.setState({
-            successMessage: "Please follow the link sent to your email and reset your password",
-            showSuccess: true
-          });
-        } else {
-          _this2.setState({
-            errorMessage: "Forget password failed",
-            showError: true
-          });
-        }
+            isLoggedIn: appState.isLoggedIn,
+            user: appState.user
+          }); // localStorage.setItem('usertoken', appState)
+          // console.log("Mr Mendes is here 2");
+          // console.log(`Bearer ${localStorage.usertoken}`)
+
+
+          _this2.props.history.push("/dashboard");
+        } else alert("Login Failed!");
+
+        jquery__WEBPACK_IMPORTED_MODULE_4___default()("#login-form button").removeAttr("disabled").html("Login");
       })["catch"](function (err) {// console.log(err)
       });
     }
   }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var state = localStorage["appState"];
+
+      if (state) {
+        var AppState = JSON.parse(state); // console.log(AppState);
+
+        this.setState({
+          isLoggedIn: AppState.isLoggedIn,
+          user: AppState
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "app flex-row align-items-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
@@ -291,63 +381,49 @@ var ForgetPasswordPatient = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], {
         className: "text-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hospital without borders where innovative technology meets premium care.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "It's all about you."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't Have An Account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/register"
+        to: "/register_hospital"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         className: "mt-3 cam-btn-white-bg",
         active: true,
         tabIndex: -1
-      }, "Register Now!")))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "sweet_alert1",
+      }, "Register Now!")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sweet-loading",
         style: {
-          display: "none"
-        },
-        onClick: function onClick() {
-          return _this3.setState({
-            showSuccess: true
-          });
+          position: "fixed",
+          height: "100%",
+          width: "100%",
+          display: this.state.showDiv
         }
-      }, "Alert"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(sweetalert2_react__WEBPACK_IMPORTED_MODULE_5___default.a, {
-        show: this.state.showSuccess // title="Demo"
-        ,
-        type: "success",
-        confirmButtonColor: "#2167ac",
-        animation: "true",
-        text: this.state.successMessage,
-        onConfirm: function onConfirm() {
-          return _this3.setState({
-            showSuccess: false
-          });
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "sweet_alert2",
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
-          display: "none"
-        },
-        onClick: function onClick() {
-          return _this3.setState({
-            showError: true
-          });
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          backgroundColor: "#ffffffcf",
+          width: "100px",
+          padding: "15px",
+          borderRadius: "20px"
         }
-      }, "Alert"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(sweetalert2_react__WEBPACK_IMPORTED_MODULE_5___default.a, {
-        show: this.state.showError // title="Demo"
-        ,
-        type: "warning",
-        confirmButtonColor: "#2167ac",
-        animation: "true",
-        text: this.state.errorMessage,
-        onConfirm: function onConfirm() {
-          return _this3.setState({
-            showError: false
-          });
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_7___default.a, {
+        css: override,
+        height: 50,
+        width: 3,
+        radius: 2,
+        margin: 5,
+        color: "#2167ac",
+        loading: this.state.loading
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        style: {
+          color: "#ca333a"
         }
-      }));
+      }, "Loading..."))))));
     }
   }]);
 
-  return ForgetPasswordPatient;
+  return ForgetPasswordHospital;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (ForgetPasswordPatient);
+/* harmony default export */ __webpack_exports__["default"] = (ForgetPasswordHospital);
 
 /***/ })
 

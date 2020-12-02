@@ -62,9 +62,9 @@ var ExternalLink = function (_a) {
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/LabListPatients/LabListPatients.js":
+/***/ "./resources/coreui/src/views/DocListPatients/DocListPatients.js":
 /*!***********************************************************************!*\
-  !*** ./resources/coreui/src/views/LabListPatients/LabListPatients.js ***!
+  !*** ./resources/coreui/src/views/DocListPatients/DocListPatients.js ***!
   \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -235,17 +235,17 @@ function _getPrototypeOf(o) {
 
 var hashHistory = Object(history__WEBPACK_IMPORTED_MODULE_3__["createHashHistory"])();
 
-var LabListPatients = /*#__PURE__*/function (_Component) {
-  _inherits(LabListPatients, _Component);
+var DocListPatients = /*#__PURE__*/function (_Component) {
+  _inherits(DocListPatients, _Component);
 
-  var _super = _createSuper(LabListPatients);
+  var _super = _createSuper(DocListPatients);
 
-  function LabListPatients(props) {
+  function DocListPatients(props) {
     var _this$state;
 
     var _this;
 
-    _classCallCheck(this, LabListPatients);
+    _classCallCheck(this, DocListPatients);
 
     _this = _super.call(this, props); // ////////////////MODAL
 
@@ -257,49 +257,44 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
 
     _this.togglePatientRec = function (patient_id, name) {
       // togglePatientRec(id, name) {
-      // alert(patient_id);
-      // alert(name)
-      // console.log(patient_id);
+      console.log(patient_id);
+
       _this.setState({
         patientRec: !_this.state.patientRec,
-        patient_id: patient_id,
-        patient_name: name
-      }, _this.getLabTestResults(patient_id, name));
-    };
-
-    _this.toggleViewAppointment = function (patient_id, name) {
-      // console.log(patient_id);
-      _this.setState({
-        primaryViewAppointment: !_this.state.primaryViewAppointment,
         patient_id: patient_id,
         patient_name: name
       });
     };
 
+    _this.toggleViewAppointment = function () {
+      _this.setState({
+        primaryViewAppointment: !_this.state.primaryViewAppointment
+      });
+    };
+
     _this.togglePrimary = _this.togglePrimary.bind(_assertThisInitialized(_this));
     _this.toggleViewAppointment = _this.toggleViewAppointment.bind(_assertThisInitialized(_this));
-    _this.togglePatientRec = _this.togglePatientRec.bind(_assertThisInitialized(_this));
-    _this.onChangeLabResult = _this.onChangeLabResult.bind(_assertThisInitialized(_this));
-    _this.onChangeLabTestName = _this.onChangeLabTestName.bind(_assertThisInitialized(_this));
-    _this.onSubmitLabResult = _this.onSubmitLabResult.bind(_assertThisInitialized(_this)); // bing toggle functions and values
+    _this.togglePatientRec = _this.togglePatientRec.bind(_assertThisInitialized(_this)); // bing toggle functions and values
 
     _this.toggle = _this.toggle.bind(_assertThisInitialized(_this));
     _this.toggle_identification = _this.toggle_identification.bind(_assertThisInitialized(_this));
-    _this.toggle_app_instructions = _this.toggle_app_instructions.bind(_assertThisInitialized(_this)); // this.onChangeMedicationsCurrentlyUsingUpdate  =this.onChangeMedicationsCurrentlyUsingUpdate.bind(this);
-    // this.onChangeAllergiesUpdate            =this.onChangeAllergiesUpdate.bind(this);
-    // this.onChangeBloodGroupUpdate           =this.onChangeBloodGroupUpdate.bind(this);
-    // this.onChangeUnderlyingConditionsUpdate =this.onChangeUnderlyingConditionsUpdate.bind(this);
-    // this.onChangeFamilyMedicalHistoryUpdate =this.onChangeFamilyMedicalHistoryUpdate.bind(this);
-    // this.onChangeHypertensiveUpdate         =this.onChangeHypertensiveUpdate.bind(this);
-    // this.onChangeDiabeticUpdate             =this.onChangeDiabeticUpdate.bind(this);
-    // this.onChangePrescriptionUpdate         =this.onChangePrescriptionUpdate.bind(this);
-    // this.onChangeLabTestUpdate              =this.onChangeLabTestUpdate.bind(this);
-    // this.onChangeNoteUpdate                 =this.onChangeNoteUpdate.bind(this);
-
+    _this.toggle_app_instructions = _this.toggle_app_instructions.bind(_assertThisInitialized(_this));
+    _this.onChangeMedicationsCurrentlyUsingUpdate = _this.onChangeMedicationsCurrentlyUsingUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeAllergiesUpdate = _this.onChangeAllergiesUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeBloodGroupUpdate = _this.onChangeBloodGroupUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeUnderlyingConditionsUpdate = _this.onChangeUnderlyingConditionsUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeFamilyMedicalHistoryUpdate = _this.onChangeFamilyMedicalHistoryUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeHypertensiveUpdate = _this.onChangeHypertensiveUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeDiabeticUpdate = _this.onChangeDiabeticUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangePrescriptionUpdate = _this.onChangePrescriptionUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeLabTestUpdate = _this.onChangeLabTestUpdate.bind(_assertThisInitialized(_this));
+    _this.onChangeNoteUpdate = _this.onChangeNoteUpdate.bind(_assertThisInitialized(_this));
     _this.onChangeMessageBox = _this.onChangeMessageBox.bind(_assertThisInitialized(_this));
+    _this.sendFile = _this.sendFile.bind(_assertThisInitialized(_this));
+    _this.submitSendFile = _this.submitSendFile.bind(_assertThisInitialized(_this));
     _this.sendMessage = _this.sendMessage.bind(_assertThisInitialized(_this)); // /////////////////////////////////////////////////////////////////
-    // this.onSubmitMedicalRec = this.onSubmitMedicalRec.bind(this);
-    // medical record tab toggle
+
+    _this.onSubmitMedicalRec = _this.onSubmitMedicalRec.bind(_assertThisInitialized(_this)); // medical record tab toggle
 
     _this.toggleMedRecTab = _this.toggleMedRecTab.bind(_assertThisInitialized(_this));
     _this.state = (_this$state = {
@@ -310,29 +305,27 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
       last_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.last_name : "",
       middle_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.middle_name : "",
       // store array of data when a patient is clicked 
-      // medications_currently_using: [],
-      // allergies: [],
-      // blood_group: [],
-      // underlying_conditions: [],
-      // family_medical_history: [],
-      // hypertensive: [],
-      // diabetic: [],
-      // prescription: [],
+      medications_currently_using: [],
+      allergies: [],
+      blood_group: [],
+      underlying_conditions: [],
+      family_medical_history: [],
+      hypertensive: [],
+      diabetic: [],
+      prescription: [],
       lab_test: [],
-      lab_test_results: [],
-      lab_result: "",
-      lab_test_name: "",
+      note: [],
       // store new data entered to be stored/submitted
-      // medications_currently_using_update: "",
-      // allergies_update: "",
-      // blood_group_update: "",
-      // underlying_conditions_update: "",
-      // family_medical_history_update: "",
-      // hypertensive_update: "",
-      // diabetic_update: "",
-      // prescription_update: "",
-      // lab_test_update: "",
-      // note_update: "",
+      medications_currently_using_update: "",
+      allergies_update: "",
+      blood_group_update: "",
+      underlying_conditions_update: "",
+      family_medical_history_update: "",
+      hypertensive_update: "",
+      diabetic_update: "",
+      prescription_update: "",
+      lab_test_update: "",
+      note_update: "",
       currentTime: new Date().toLocaleString(),
       // for chat
       message_box: "",
@@ -364,7 +357,7 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
   } // medical record tab toggle
 
 
-  _createClass(LabListPatients, [{
+  _createClass(DocListPatients, [{
     key: "toggleMedRecTab",
     value: function toggleMedRecTab(tab) {
       if (this.state.activeTab !== tab) {
@@ -442,20 +435,6 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
       this.setState({
         note_update: e.target.value
       });
-    }
-  }, {
-    key: "onChangeLabResult",
-    value: function onChangeLabResult(e) {
-      this.setState({
-        lab_result: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeLabTestName",
-    value: function onChangeLabTestName(e) {
-      this.setState({
-        lab_test_name: e.target.value
-      });
     } // fetch data from db
 
   }, {
@@ -463,15 +442,16 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/lab/patients_list/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
-        // console.log("ROI Cartoon");
-        // console.log(response);
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/doc/patients_list/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+        console.log("ROI Cartoon");
+        console.log(response);
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          // console.log("applications_list");
-          // console.log(typeof(json.data.data.data));
-          // console.log(json.data.data.data);
+          console.log("applications_list");
+          console.log(_typeof(json.data.data.data));
+          console.log(json.data.data.data);
+
           _this2.setState({
             applications_list: json.data.data.data,
             itemsCountPerPage: json.data.data.per_page,
@@ -489,11 +469,11 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
   }, {
     key: "handlePageChange",
     value: function handlePageChange(pageNumber) {
-      var _this3 = this; // console.log(`active page is ${pageNumber}`);
-      // this.setState({activePage: pageNumber});
+      var _this3 = this;
 
+      console.log("active page is ".concat(pageNumber)); // this.setState({activePage: pageNumber});
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/lab/patients_list/" + this.state.id + "?token=".concat(this.state.token, "&page=") + pageNumber).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/doc/patients_list/" + this.state.id + "?token=".concat(this.state.token, "&page=") + pageNumber).then(function (response) {
         return response;
       }).then(function (json) {
         if (json.data.success) {
@@ -530,7 +510,6 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
         collapse_identification: !this.state.collapse_identification
       });
     } // //////////////////////////////////////////////////////////////////////
-    // //////////////////////////////////////////////////////////////////////
     // /////////////// Patient chat
 
   }, {
@@ -550,8 +529,10 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
         });
       } else {
         this.setState({
-          primary: !this.state.primary
-        }, this.getMessages1);
+          primary: !this.state.primary,
+          patient_id: this.state.patient_id,
+          patient_name: this.state.patient_name
+        }, this.getMessages1());
       }
     }
   }, {
@@ -568,16 +549,18 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
   }, {
     key: "getMessages2",
     value: function getMessages2() {
-      var _this5 = this;
+      var _this5 = this; // alert("Paulo");
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/lab/patient/chat/message/get/" + this.state.patient_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
-        // console.log("ROI Cartoon");
-        // console.log(response);
+
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/doc/patient/chat/message/get/" + this.state.patient_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+        console.log("ROI Cartoon");
+        console.log(response);
         return response;
       }).then(function (json) {
-        // console.log("json.data.messages.message");
-        // console.log(typeof(json.data.messages.message));
-        // console.log(json.data.messages.message);
+        console.log("json.data.messages.message");
+        console.log(_typeof(json.data.messages.message));
+        console.log(json.data.messages.message);
+
         if (json.data.success) {
           //   console.log("applications_list");
           //   console.log(json.data.data.data);
@@ -598,7 +581,7 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
       // empty message area before adding new message
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('#message_area').empty();
       passMessageArray.forEach(this.splitMessage);
-    } // split the messages to know that of lab and patient
+    } // split the messages to know that of doctor and patient
 
   }, {
     key: "splitMessage",
@@ -609,11 +592,11 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
       var message = item_split[2];
       var fileName = item_split[3].slice(0, -1);
 
-      if (from == "lab") {
+      if (from == "doctor") {
         jquery__WEBPACK_IMPORTED_MODULE_5___default()("#message_area").append("<li style='background-color: rgb(33, 103, 172); color: rgb(255, 255, 255); padding: 5px 10px; margin: 5px; border-radius: 10px;'>" + message + "</li>");
       } else if (from == "patient") {
         jquery__WEBPACK_IMPORTED_MODULE_5___default()("#message_area").append("<li style='background-color: #ca333a; color: rgb(255, 255, 255); padding: 5px 10px; margin: 5px; border-radius: 10px;'>" + message + "</li>");
-      } else if (from == "lab_file") {
+      } else if (from == "doctor_file") {
         jquery__WEBPACK_IMPORTED_MODULE_5___default()("#message_area").append("<a href='" + message + "' target='_blank'><li style='background-color: rgb(33, 103, 172); color: rgb(255, 255, 255); padding: 5px 10px; margin: 5px; border-radius: 10px;'>" + fileName + "<i class='fa fa-paperclip' style='font-size: 1.5em; float: right'></i></li></a>");
       } else if (from == "patient_file") {
         jquery__WEBPACK_IMPORTED_MODULE_5___default()("#message_area").append("<a href='" + message + "' target='_blank'><li style='background-color: #ca333a; color: rgb(255, 255, 255); padding: 5px 10px; margin: 5px; border-radius: 10px;'>" + fileName + "<i class='fa fa-paperclip' style='font-size: 1.5em; float: right'></i></li></a>");
@@ -643,9 +626,9 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
         var send_message = {
           message: message
         };
-        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/lab/patient/chat/message/send/" + this.state.patient_id + '/' + this.state.id + "?token=".concat(this.state.token), send_message).then(function (response) {
-          // console.log("ROI Cartoon");
-          // console.log(response);
+        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/doc/patient/chat/message/send/" + this.state.patient_id + '/' + this.state.id + "?token=".concat(this.state.token), send_message).then(function (response) {
+          console.log("ROI Cartoon");
+          console.log(response);
           return response;
         }).then(function (json) {
           if (json.status == 200) {
@@ -659,16 +642,16 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
       }
     }
   }, {
-    key: "trigerSendFile",
-    value: function trigerSendFile() {
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('#send_file').trigger('click');
-    }
-  }, {
     key: "sendFile",
     value: function sendFile(e) {
       this.setState({
         send_file: e.target.files[0]
       }, this.submitSendFile);
+    }
+  }, {
+    key: "trigerSendFile",
+    value: function trigerSendFile() {
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('#send_file').trigger('click');
     }
   }, {
     key: "submitSendFile",
@@ -696,7 +679,7 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
   }, {
     key: "uploadSendFile",
     value: function uploadSendFile() {
-      var url = '/api/lab/patient/chat/file/send/' + this.state.patient_id + '/' + this.state.id + "?token=".concat(this.state.token);
+      var url = '/api/doc/patient/chat/file/send/' + this.state.patient_id + '/' + this.state.id + "?token=".concat(this.state.token);
       var formData = new FormData();
       formData.append('send_file', this.state.send_file);
       var config = {
@@ -709,38 +692,35 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
     // /////////////// Patient records
 
   }, {
-    key: "getLabTestRecommendations",
-    value: function getLabTestRecommendations(patient_id, name) {
+    key: "getPateintMedicalRec",
+    value: function getPateintMedicalRec(patient_id, name) {
       var _this7 = this; // get patient medical records to display in modal
 
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/lab/sharedLabTest/get/" + patient_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
-        // console.log("It came back");
-        // console.log(response);
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/doc/patientMedRec/get/" + patient_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+        console.log("It came back");
+        console.log(response);
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          // console.log("med_currently_using");
-          // console.log(json.data.med_currently_using)
-          // console.log(json.status)
+          console.log("med_currently_using");
+          console.log(json.data.med_currently_using);
+          console.log(json.status);
+
           _this7.setState({
             // //////////////////////////////////////////////////////
-            personal_data_username: json.data.personal_data.username,
-            personal_data_first_name: json.data.personal_data.first_name,
-            personal_data_last_name: json.data.personal_data.last_name,
-            personal_data_middle_name: json.data.personal_data.middle_name,
-            personal_data_title: json.data.personal_data.title,
-            personal_data_gender: json.data.personal_data.gender,
-            personal_data_gender_others: json.data.personal_data.gender_others,
-            personal_data_dob: json.data.personal_data.dob,
-            personal_data_nationality: json.data.personal_data.nationality,
-            personal_data_country_of_residence: json.data.personal_data.country_of_residence,
-            personal_data_district_province_state: json.data.personal_data.district_province_state,
-            personal_data_profile_picture: json.data.personal_data.profile_picture,
-            status: json.data.status,
-            lab_test: json.data.lab_test,
-            patient_id: patient_id,
-            patient_name: name
+            medications_currently_using: json.data.med_currently_using,
+            allergies: json.data.med_allergies,
+            blood_group: json.data.med_blood_group,
+            underlying_conditions: json.data.med_underlying_conditions,
+            family_medical_history: json.data.med_family_medical_history,
+            hypertensive: json.data.med_hypertensive,
+            diabetic: json.data.med_diabetic,
+            prescription: json.data.med_prescription,
+            lab_test: json.data.med_lab_test,
+            note: json.data.med_note,
+            personal_data: json.data.personal_data,
+            status: json.data.status
           }, _this7.togglePatientRec(patient_id, name));
         } else {
           _this7.setState({
@@ -753,49 +733,27 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
         // hashHistory.push('/premontessori');
         console.error("An Error Occuredd! ".concat(error));
       });
-    }
-  }, {
-    key: "getLabTestResults",
-    value: function getLabTestResults(patient_id, name) {
-      var _this8 = this; // alert(this.state.patient_id);
-      // get patient medical records to display in modal
-
-
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/lab/labResult/get/" + patient_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
-        // console.log("It came back");
-        // console.log(response);
-        return response;
-      }).then(function (json) {
-        if (json.data.success) {
-          _this8.setState({
-            lab_test_results: json.data.lab_results
-          });
-        } else {
-          _this8.setState({// errorMessage: json.data.data,
-            // showError: true
-          });
-        }
-      })["catch"](function (error) {
-        // redirect user to previous page if user does not have autorization to the page
-        // hashHistory.push('/premontessori');
-        console.error("An Error Occuredd! ".concat(error));
-      });
     } // ///////////////////////////// VIEW APPOINTMENT /////////////////////////////
 
   }, {
     key: "viewAppointment",
     value: function viewAppointment(patient_id, name) {
-      var _this9 = this; // get patient medical records to display in modal
+      var _this8 = this;
 
+      this.setState({
+        patient_id: patient_id,
+        patient_name: name
+      }); // get patient medical records to display in modal
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/lab/appointment/get/" + patient_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
-        // console.log("It came back");
-        // console.log(response);
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/doc/appointment/get/" + patient_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+        console.log("It came back");
+        console.log(response);
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          // console.log(json.data)
-          _this9.setState({
+          console.log(json.data);
+
+          _this8.setState({
             // //////////////////////////////////////////////////////
             appointment_id: json.data.data.id,
             appointment_date: json.data.data.date,
@@ -807,25 +765,25 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
             appointment_patient_last_name: json.data.data.patient_last_name,
             appointment_patient_middle_name: json.data.data.patient_middle_name,
             appointment_status: json.data.data.status
-          }, _this9.toggleViewAppointment(patient_id, name));
+          }, _this8.toggleViewAppointment());
 
-          if (_this9.state.appointment_status == 1) {
-            _this9.setState({
+          if (_this8.state.appointment_status == 1) {
+            _this8.setState({
               appointment_status: 'Open',
               appointment_status_color: 'success',
               chat_btn_status: false
             });
           }
 
-          if (_this9.state.appointment_status == 2) {
-            _this9.setState({
+          if (_this8.state.appointment_status == 2) {
+            _this8.setState({
               appointment_status: 'Close',
               appointment_status_color: 'danger',
               chat_btn_status: true
             });
           }
         } else {
-          _this9.setState({
+          _this8.setState({
             errorMessage: json.data.data,
             showError: true
           });
@@ -840,22 +798,23 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
     key: "endAppointment",
     /////////////////////////////// End Appointment ///////////////////////////
     value: function endAppointment() {
-      var _this10 = this; // get patient medical records to display in modal
+      var _this9 = this; // get patient medical records to display in modal
 
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/lab/appointment/end/" + this.state.patient_id + '/' + this.state.id + '/' + this.state.appointment_id + "?token=".concat(this.state.token)).then(function (response) {
-        // console.log("It came back");
-        // console.log(response);
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/doc/appointment/end/" + this.state.patient_id + '/' + this.state.id + '/' + this.state.appointment_id + "?token=".concat(this.state.token)).then(function (response) {
+        console.log("It came back");
+        console.log(response);
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          // console.log(json.data.data)
-          _this10.setState({
+          console.log(json.data.data);
+
+          _this9.setState({
             successMessage: json.data.data,
             showSuccess: true
-          }, _this10.toggleViewAppointment());
+          }, _this9.toggleViewAppointment());
         } else {
-          _this10.setState({
+          _this9.setState({
             errorMessage: json.data.data,
             showError: true
           });
@@ -868,58 +827,57 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
     } // //////////////////////////////////////////////////////////
 
   }, {
-    key: "onSubmitLabResult",
-    value: function onSubmitLabResult(e) {
-      var _this11 = this;
+    key: "onSubmitMedicalRec",
+    value: function onSubmitMedicalRec(e) {
+      var _this10 = this;
 
       e.preventDefault();
-
-      if (this.state.lab_test_name == "" || this.state.lab_result == "" || this.state.lab_test_name == null || this.state.lab_result == null) {
-        this.setState({
-          errorMessage: "Please fill all required field",
-          showError: true
-        });
-      } else {
-        var lab_result_save = {
-          lab_test_name: this.state.lab_test_name,
-          lab_result: this.state.lab_result
-        };
-        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/lab/labResult/save/" + this.state.patient_id + '/' + this.state.id + "?token=".concat(this.state.token), lab_result_save) // axios.post(`api/products/add?token=${this.state.token}`, product_data)
-        // axios.post('api/products/add', product_data, {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': 'Bearer '+ `${this.state.token}`
-        //     },      
-        // })  
-        .then(function (response) {
-          // console.log("ROI Cartoon");
-          // console.log(response);
-          return response;
-        }).then(function (json) {
-          if (json.data.success) {
-            _this11.setState({
-              successMessage: "Lab result saved",
-              showSuccess: true,
-              patientRec: !_this11.state.patientRec
-            });
-          } else {
-            _this11.setState({
-              errorMessage: json.data.data,
-              showError: true
-            });
-          }
-        })["catch"](function (error) {
-          // redirect user to previous page if user does not have autorization to the page
-          // hashHistory.push('/premontessori');
-          console.error("An Error Occuredd! ".concat(error));
-        });
-      }
+      var med_rec_data = {
+        med_currently_using: this.state.medications_currently_using_update,
+        med_allergies: this.state.allergies_update,
+        med_blood_group: this.state.blood_group_update,
+        med_underlying_conditions: this.state.underlying_conditions_update,
+        med_family_medical_history: this.state.family_medical_history_update,
+        med_hypertensive: this.state.hypertensive_update,
+        med_diabetic: this.state.diabetic_update,
+        med_prescription: this.state.prescription_update,
+        med_lab_test: this.state.lab_test_update,
+        med_note: this.state.note_update
+      };
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/doc/patientMedRec/update/" + this.state.patient_id + '/' + this.state.id + "?token=".concat(this.state.token), med_rec_data) // axios.post(`api/products/add?token=${this.state.token}`, product_data)
+      // axios.post('api/products/add', product_data, {
+      //     headers: {
+      //         'Content-Type': 'application/json',
+      //         'Authorization': 'Bearer '+ `${this.state.token}`
+      //     },      
+      // })  
+      .then(function (response) {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this10.setState({
+            successMessage: "Updated successfully",
+            showSuccess: true
+          }, _this10.componentDidMount());
+        } else {
+          _this10.setState({
+            errorMessage: "Updated failed",
+            showError: true
+          });
+        }
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
     } // ///////////////// to append chat message
 
   }, {
     key: "render",
     value: function render() {
-      var _this12 = this; // const { product_image} = this.state
+      var _this11 = this; // const { product_image} = this.state
 
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -945,14 +903,14 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
       }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Middle Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Status"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ( // Calculation for the page S/N
-      this.state.currentPage2 = this.state.activePage * 10 - (10 - 1), // ////////////////////////////////////////////////////////////
+      this.state.currentPage = this.state.activePage * 10 - (10 - 1), // ////////////////////////////////////////////////////////////
       this.state.applications_list.map(function (application) {
         if (application.status == 1) {
-          _this12.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Badge"], {
+          _this11.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Badge"], {
             color: "success"
           }, "Open");
         } else {
-          _this12.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Badge"], {
+          _this11.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Badge"], {
             color: "danger"
           }, "Closed");
         }
@@ -963,10 +921,10 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
           key: application.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
           scope: "row"
-        }, _this12.state.currentPage2++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.patient_username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.patient_first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.patient_last_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.patient_middle_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.time), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this12.state.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Button"], {
+        }, _this11.state.currentPage++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.patient_username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.patient_first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.patient_last_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.patient_middle_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.time), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this11.state.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Button"], {
           size: "sm",
           onClick: function onClick() {
-            return _this12.getLabTestRecommendations(patient_id, name);
+            return _this11.getPateintMedicalRec(patient_id, name);
           },
           className: "btn-facebook btn-brand icon mr-1 mb-1",
           style: {
@@ -978,7 +936,7 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Button"], {
           size: "sm",
           onClick: function onClick() {
-            return _this12.viewAppointment(patient_id, name);
+            return _this11.viewAppointment(patient_id, name);
           },
           className: "btn-facebook btn-brand icon mr-1 mb-1",
           title: "View appointment"
@@ -1003,7 +961,7 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ModalHeader"], {
         toggle: function toggle() {
-          return _this12.togglePrimary("close", "close");
+          return _this11.togglePrimary("close", "close");
         }
       }, "Messages"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
@@ -1045,12 +1003,12 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
         } // onChange={this.onChangeProfilePicture}
         ,
         onChange: function onChange(e) {
-          _this12.sendFile(e);
+          _this11.sendFile(e);
         }
       })))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Button"], {
         color: "secondary",
         onClick: function onClick() {
-          return _this12.togglePrimary("close", "close");
+          return _this11.togglePrimary("close", "close");
         }
       }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Modal"], {
         isOpen: this.state.patientRec,
@@ -1060,48 +1018,416 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ModalHeader"], {
         toggle: function toggle() {
-          return _this12.togglePatientRec("close", "close");
+          return _this11.togglePatientRec("close", "close");
         }
       }, "Medical Records"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
-      }), this.state.patient_name, " Laboratory test from doctors"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Form"], {
-        onSubmit: this.onSubmitLabResult
+      }), this.state.patient_name, " Medical Records"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Form"], {
+        onSubmit: this.onSubmitMedicalRec
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
         xs: "12",
         sm: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Personal Data")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
-        xs: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
-        className: "justify-content-between"
-      }, "Username: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_username)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
-        className: "justify-content-between"
-      }, "Title: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
-        className: "justify-content-between"
-      }, "First Name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_first_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
-        className: "justify-content-between"
-      }, "Last Name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        style: {
-          textAlign: "left"
-        }
-      }, this.state.personal_data_last_name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
-        className: "justify-content-between"
-      }, "Middle Name: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_middle_name)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
-        xs: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
-        className: "justify-content-between"
-      }, "Gender: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_gender)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
-        className: "justify-content-between"
-      }, "Date of Birth: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        style: {
-          textAlign: "right"
-        }
-      }, this.state.personal_data_dob))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
-        className: "justify-content-between"
-      }, "Nationality: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_nationality)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
-        className: "justify-content-between"
-      }, "Country of Residence: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_country_of_residence)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
-        className: "justify-content-between"
-      }, "District/Province/State: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.state.personal_data_district_province_state))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Laboratory Test")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "List of Medications You are Currently Using")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroup"], {
+        id: "list-tab",
+        role: "tablist"
+      }, this.state.medications_currently_using.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
+          key: meds.id,
+          onClick: function onClick() {
+            return _this11.toggleMedRecTab(meds.id + "mcu");
+          },
+          action: true,
+          active: _this11.state.activeTab === meds.id + "mcu",
+          style: {
+            padding: "0.3rem 1.0rem"
+          }
+        }, meds.doc_name, " (", meds.doc_username, ") ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          style: {
+            color: "#ca333a",
+            fontWeight: "600",
+            fontSize: "10px",
+            "float": "right",
+            bottom: "3px"
+          }
+        }, meds.created_at));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabContent"], {
+        activeTab: this.state.activeTab
+      }, this.state.medications_currently_using.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabPane"], {
+          key: meds.id,
+          tabId: meds.id + "mcu"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, meds.medications));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, "Medications currently using")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Input"], {
+        type: "textarea",
+        id: "medications_currently_using_update",
+        rows: "2",
+        defaultValue: this.state.medications_currently_using_update,
+        onChange: this.onChangeMedicationsCurrentlyUsingUpdate,
+        placeholder: "enter medications currently using"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "List of Allergies")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroup"], {
+        id: "list-tab",
+        role: "tablist"
+      }, this.state.allergies.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
+          key: meds.id,
+          onClick: function onClick() {
+            return _this11.toggleMedRecTab(meds.id + "all");
+          },
+          action: true,
+          active: _this11.state.activeTab === meds.id + "all",
+          style: {
+            padding: "0.3rem 1.0rem"
+          }
+        }, meds.doc_name, " (", meds.doc_username, ") ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          style: {
+            color: "#ca333a",
+            fontWeight: "600",
+            fontSize: "10px",
+            "float": "right",
+            bottom: "3px"
+          }
+        }, meds.created_at));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabContent"], {
+        activeTab: this.state.activeTab
+      }, this.state.allergies.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabPane"], {
+          key: meds.id,
+          tabId: meds.id + "all"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, meds.allergies));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, "Allergies")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Input"], {
+        type: "textarea",
+        id: "allergies_update",
+        rows: "2",
+        defaultValue: this.state.allergies_update,
+        onChange: this.onChangeAllergiesUpdate,
+        placeholder: "list allergies "
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Blood Group")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroup"], {
+        id: "list-tab",
+        role: "tablist"
+      }, this.state.blood_group.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
+          key: meds.id,
+          onClick: function onClick() {
+            return _this11.toggleMedRecTab(meds.id + "blo");
+          },
+          action: true,
+          active: _this11.state.activeTab === meds.id + "blo",
+          style: {
+            padding: "0.3rem 1.0rem"
+          }
+        }, meds.doc_name, " (", meds.doc_username, ") ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          style: {
+            color: "#ca333a",
+            fontWeight: "600",
+            fontSize: "10px",
+            "float": "right",
+            bottom: "3px"
+          }
+        }, meds.created_at));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabContent"], {
+        activeTab: this.state.activeTab
+      }, this.state.blood_group.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabPane"], {
+          key: meds.id,
+          tabId: meds.id + "blo"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, meds.blood_group));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, "Blood Group")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Input"], {
+        type: "select",
+        id: "blood_group_update",
+        value: this.state.blood_group_update,
+        onChange: this.onChangeBloodGroupUpdate
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "0"
+      }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "A+"
+      }, "A+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "A-"
+      }, "A-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "B+"
+      }, "B+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "B-"
+      }, "B-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "O+"
+      }, "O+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "O-"
+      }, "O-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "AB+"
+      }, "AB+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "AB-"
+      }, "AB-")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-user"
+      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Family medical history")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroup"], {
+        id: "list-tab",
+        role: "tablist"
+      }, this.state.family_medical_history.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
+          key: meds.id,
+          onClick: function onClick() {
+            return _this11.toggleMedRecTab(meds.id + "fmh");
+          },
+          action: true,
+          active: _this11.state.activeTab === meds.id + "fmh",
+          style: {
+            padding: "0.3rem 1.0rem"
+          }
+        }, meds.doc_name, " (", meds.doc_username, ") ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          style: {
+            color: "#ca333a",
+            fontWeight: "600",
+            fontSize: "10px",
+            "float": "right",
+            bottom: "3px"
+          }
+        }, meds.created_at));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabContent"], {
+        activeTab: this.state.activeTab
+      }, this.state.family_medical_history.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabPane"], {
+          key: meds.id,
+          tabId: meds.id + "fmh"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, meds.family_medical_history));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, "Family medical history")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Input"], {
+        type: "textarea",
+        id: "family_medical_history_update",
+        rows: "2",
+        defaultValue: this.state.family_medical_history_update,
+        onChange: this.onChangeFamilyMedicalHistoryUpdate,
+        placeholder: "enter family medical history"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Hypertensive")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroup"], {
+        id: "list-tab",
+        role: "tablist"
+      }, this.state.hypertensive.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
+          key: meds.id,
+          onClick: function onClick() {
+            return _this11.toggleMedRecTab(meds.id + "hyp");
+          },
+          action: true,
+          active: _this11.state.activeTab === meds.id + "hyp",
+          style: {
+            padding: "0.3rem 1.0rem"
+          }
+        }, meds.doc_name, " (", meds.doc_username, ") ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          style: {
+            color: "#ca333a",
+            fontWeight: "600",
+            fontSize: "10px",
+            "float": "right",
+            bottom: "3px"
+          }
+        }, meds.created_at));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabContent"], {
+        activeTab: this.state.activeTab
+      }, this.state.hypertensive.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabPane"], {
+          key: meds.id,
+          tabId: meds.id + "hyp"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, meds.hypertensive));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, "Hypertensive")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Input"], {
+        type: "select",
+        id: "hypertensive_update",
+        value: this.state.hypertensive_update,
+        onChange: this.onChangeHypertensiveUpdate
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "0"
+      }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Yes"
+      }, "Yes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "No"
+      }, "No")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-user"
+      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Diabetic")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroup"], {
+        id: "list-tab",
+        role: "tablist"
+      }, this.state.diabetic.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
+          key: meds.id,
+          onClick: function onClick() {
+            return _this11.toggleMedRecTab(meds.id + "dia");
+          },
+          action: true,
+          active: _this11.state.activeTab === meds.id + "dia",
+          style: {
+            padding: "0.3rem 1.0rem"
+          }
+        }, meds.doc_name, " (", meds.doc_username, ") ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          style: {
+            color: "#ca333a",
+            fontWeight: "600",
+            fontSize: "10px",
+            "float": "right",
+            bottom: "3px"
+          }
+        }, meds.created_at));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabContent"], {
+        activeTab: this.state.activeTab
+      }, this.state.diabetic.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabPane"], {
+          key: meds.id,
+          tabId: meds.id + "dia"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, meds.diabetic));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, "Diabetic")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Input"], {
+        type: "select",
+        id: "diabetic_update",
+        value: this.state.diabetic_update,
+        onChange: this.onChangeDiabeticUpdate
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "0"
+      }, " --- update --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Yes"
+      }, "Yes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "No"
+      }, "No")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-user"
+      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Other underlying conditions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroup"], {
+        id: "list-tab",
+        role: "tablist"
+      }, this.state.underlying_conditions.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
+          key: meds.id,
+          onClick: function onClick() {
+            return _this11.toggleMedRecTab(meds.id + "und");
+          },
+          action: true,
+          active: _this11.state.activeTab === meds.id + "und",
+          style: {
+            padding: "0.3rem 1.0rem"
+          }
+        }, meds.doc_name, " (", meds.doc_username, ") ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          style: {
+            color: "#ca333a",
+            fontWeight: "600",
+            fontSize: "10px",
+            "float": "right",
+            bottom: "3px"
+          }
+        }, meds.created_at));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabContent"], {
+        activeTab: this.state.activeTab
+      }, this.state.underlying_conditions.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabPane"], {
+          key: meds.id,
+          tabId: meds.id + "und"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, meds.underlying_conditions));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, "Underlying Conditions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Input"], {
+        type: "textarea",
+        id: "underlying_conditions_update",
+        rows: "2",
+        defaultValue: this.state.underlying_conditions_update,
+        onChange: this.onChangeUnderlyingConditionsUpdate,
+        placeholder: "Underlying conditions"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Prescription")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroup"], {
+        id: "list-tab",
+        role: "tablist"
+      }, this.state.prescription.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
+          key: meds.id,
+          onClick: function onClick() {
+            return _this11.toggleMedRecTab(meds.id + "pre");
+          },
+          action: true,
+          active: _this11.state.activeTab === meds.id + "pre",
+          style: {
+            padding: "0.3rem 1.0rem"
+          }
+        }, meds.doc_name, " (", meds.doc_username, ") ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          style: {
+            color: "#ca333a",
+            fontWeight: "600",
+            fontSize: "10px",
+            "float": "right",
+            bottom: "3px"
+          }
+        }, meds.created_at));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+        xs: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabContent"], {
+        activeTab: this.state.activeTab
+      }, this.state.prescription.map(function (meds) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabPane"], {
+          key: meds.id,
+          tabId: meds.id + "pre"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, meds.prescription));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, "Prescriptions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Input"], {
+        type: "textarea",
+        id: "prescription_update",
+        rows: "2",
+        defaultValue: this.state.prescription_update,
+        onChange: this.onChangePrescriptionUpdate,
+        placeholder: "enter prescriptions"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Laboratory Test")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
         xs: "4"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroup"], {
         id: "list-tab",
@@ -1110,10 +1436,10 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
           key: meds.id,
           onClick: function onClick() {
-            return _this12.toggleMedRecTab(meds.id + "lab");
+            return _this11.toggleMedRecTab(meds.id + "lab");
           },
           action: true,
-          active: _this12.state.activeTab === meds.id + "lab",
+          active: _this11.state.activeTab === meds.id + "lab",
           style: {
             padding: "0.3rem 1.0rem"
           }
@@ -1135,23 +1461,36 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
           key: meds.id,
           tabId: meds.id + "lab"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, meds.lab_test));
-      })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Laboratory Results")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, "Laboratory Test")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Input"], {
+        type: "textarea",
+        id: "lab_test_update",
+        rows: "2",
+        defaultValue: this.state.lab_test_update,
+        onChange: this.onChangeLabTestUpdate,
+        placeholder: "enter laboratory test update"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Note"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Enter other medical information")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
         xs: "4"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroup"], {
         id: "list-tab",
         role: "tablist"
-      }, this.state.lab_test_results.map(function (meds) {
+      }, this.state.note.map(function (meds) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ListGroupItem"], {
           key: meds.id,
           onClick: function onClick() {
-            return _this12.toggleMedRecTab(meds.id + "labR");
+            return _this11.toggleMedRecTab(meds.id + "not");
           },
           action: true,
-          active: _this12.state.activeTab === meds.id + "labR",
+          active: _this11.state.activeTab === meds.id + "not",
           style: {
             padding: "0.3rem 1.0rem"
           }
-        }, meds.lab_name, " (", meds.lab_username, ") ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        }, meds.doc_name, " (", meds.doc_username, ") ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           style: {
             color: "#ca333a",
             fontWeight: "600",
@@ -1164,43 +1503,34 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
         xs: "8"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabContent"], {
         activeTab: this.state.activeTab
-      }, this.state.lab_test_results.map(function (meds) {
+      }, this.state.note.map(function (meds) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["TabPane"], {
           key: meds.id,
-          tabId: meds.id + "labR"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, meds.lab_result));
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Col"], {
-        xs: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Add Test Result"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Test Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Input"], {
-        type: "text",
-        id: "lab_test_name",
-        defaultValue: this.state.lab_test_name,
-        onChange: this.onChangeLabTestName
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Test Result"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Input"], {
+          tabId: meds.id + "not"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, meds.note));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, "Note")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Input"], {
         type: "textarea",
-        id: "lab_result",
-        rows: "4",
-        defaultValue: this.state.lab_result,
-        onChange: this.onChangeLabResult,
-        placeholder: "enter laboratory result"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], {
+        id: "note_update",
+        rows: "2",
+        defaultValue: this.state.note_update,
+        onChange: this.onChangeNoteUpdate,
+        placeholder: "enter note"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["FormGroup"], {
         className: "form-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        style: {
-          "float": "right",
-          marginRight: "25px"
-        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Button"], {
         type: "submit",
+        size: "sm",
         color: "primary"
-      }, "Save Result")))))))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Button"], {
+      }, "Update Medical Records")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Button"], {
         color: "secondary",
         onClick: function onClick() {
-          return _this12.togglePatientRec("close", "close");
+          return _this11.togglePatientRec("close", "close");
         }
       }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Modal"], {
         isOpen: this.state.primaryViewAppointment,
@@ -1210,7 +1540,7 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ModalHeader"], {
         toggle: function toggle() {
-          return _this12.toggleViewAppointment("close", "close");
+          return _this11.toggleViewAppointment("close", "close");
         }
       }, "View Appointment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
@@ -1226,7 +1556,7 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Patient Appointment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Button"], {
         size: "sm",
         onClick: function onClick() {
-          return _this12.togglePrimary();
+          return _this11.togglePrimary();
         },
         className: "btn-facebook btn-brand icon mr-1 mb-1",
         title: "Chat with patient",
@@ -1270,12 +1600,12 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
           "float": "right"
         },
         onClick: function onClick() {
-          return _this12.endAppointment();
+          return _this11.endAppointment();
         }
       }, "End Appointment"))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_10__["Button"], {
         color: "secondary",
         onClick: function onClick() {
-          return _this12.toggleViewAppointment("close", "close");
+          return _this11.toggleViewAppointment("close", "close");
         }
       }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "sweet_alert1",
@@ -1283,7 +1613,7 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
           display: "none"
         },
         onClick: function onClick() {
-          return _this12.setState({
+          return _this11.setState({
             showSuccess: true
           });
         }
@@ -1295,7 +1625,7 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
         animation: "true",
         text: this.state.successMessage,
         onConfirm: function onConfirm() {
-          return _this12.setState({
+          return _this11.setState({
             showSuccess: false
           });
         }
@@ -1305,7 +1635,7 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
           display: "none"
         },
         onClick: function onClick() {
-          return _this12.setState({
+          return _this11.setState({
             showError: true
           });
         }
@@ -1317,7 +1647,7 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
         animation: "true",
         text: this.state.errorMessage,
         onConfirm: function onConfirm() {
-          return _this12.setState({
+          return _this11.setState({
             showError: false
           });
         }
@@ -1325,10 +1655,10 @@ var LabListPatients = /*#__PURE__*/function (_Component) {
     }
   }]);
 
-  return LabListPatients;
+  return DocListPatients;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (LabListPatients);
+/* harmony default export */ __webpack_exports__["default"] = (DocListPatients);
 
 /***/ })
 

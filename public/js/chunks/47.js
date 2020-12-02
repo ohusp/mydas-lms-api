@@ -11,9 +11,9 @@ module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/Pages/RegisterLab/RegisterLab.js":
+/***/ "./resources/coreui/src/views/Pages/RegisterDoc/RegisterDoc.js":
 /*!*********************************************************************!*\
-  !*** ./resources/coreui/src/views/Pages/RegisterLab/RegisterLab.js ***!
+  !*** ./resources/coreui/src/views/Pages/RegisterDoc/RegisterDoc.js ***!
   \*********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -23,8 +23,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! aes */ "./node_modules/aes/index.js");
-/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(aes__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var sweetalert2_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2-react */ "./node_modules/sweetalert2-react/dist/sweetalert-react.min.js");
+/* harmony import */ var sweetalert2_react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! aes */ "./node_modules/aes/index.js");
+/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(aes__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @emotion/core */ "./node_modules/@emotion/core/dist/core.browser.esm.js");
+/* harmony import */ var react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-spinners/ScaleLoader */ "./node_modules/react-spinners/ScaleLoader.js");
+/* harmony import */ var react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -157,9 +162,37 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: block;\n  margin: 0 auto;\n  border-color: red;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  return Object.freeze(Object.defineProperties(strings, {
+    raw: {
+      value: Object.freeze(raw)
+    }
+  }));
+}
+
 
  // import {register} from './../../../functions/UserFunctions'
 
+
+ // ////////// LOADER /////////////////////////////////
+
+
+
+var override = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_4__["css"])(_templateObject()); // ///////////////////////////////////////////////////
 
 var validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 
@@ -171,15 +204,15 @@ var validateForm = function validateForm(errors) {
   return valid;
 };
 
-var RegisterLab = /*#__PURE__*/function (_Component) {
-  _inherits(RegisterLab, _Component);
+var RegisterDoc = /*#__PURE__*/function (_Component) {
+  _inherits(RegisterDoc, _Component);
 
-  var _super = _createSuper(RegisterLab);
+  var _super = _createSuper(RegisterDoc);
 
-  function RegisterLab() {
+  function RegisterDoc() {
     var _this;
 
-    _classCallCheck(this, RegisterLab);
+    _classCallCheck(this, RegisterDoc);
 
     _this = _super.call(this);
 
@@ -234,7 +267,8 @@ var RegisterLab = /*#__PURE__*/function (_Component) {
 
     _this.state = {
       username: '',
-      name: '',
+      first_name: '',
+      last_name: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -245,6 +279,12 @@ var RegisterLab = /*#__PURE__*/function (_Component) {
         confirmPassword: ''
       },
       alert_message: '',
+      successMessage: "Successful",
+      errorMessage: "Failed",
+      // /////// LOADER ////////////
+      showDiv: "none",
+      loading: false,
+      // //////////////////////////
       avatar: __webpack_require__(/*! ./../../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png"),
       Cam_Medics: 'Cam-Medics Logo'
     };
@@ -253,7 +293,7 @@ var RegisterLab = /*#__PURE__*/function (_Component) {
     return _this;
   }
 
-  _createClass(RegisterLab, [{
+  _createClass(RegisterDoc, [{
     key: "onChangeState",
     // onchange for setting state
     value: function onChangeState(e) {
@@ -265,9 +305,15 @@ var RegisterLab = /*#__PURE__*/function (_Component) {
     value: function onSubmit(e) {
       var _this2 = this;
 
-      e.preventDefault(); // validate check if fields are empty
+      e.preventDefault(); // ////////////// LOADER ////////////
 
-      if (this.state.username == "" || this.state.name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == "") {
+      this.setState({
+        showDiv: "block",
+        loading: true
+      }); // ////////////////////////////////
+      // validate check if fields are empty
+
+      if (this.state.username == "" || this.state.first_name == "" || this.state.last_name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == "") {
         this.setState({
           alert_message: "error"
         });
@@ -277,18 +323,26 @@ var RegisterLab = /*#__PURE__*/function (_Component) {
       } else if (validateForm(this.state.errors)) {
         var newUser = {
           username: this.state.username,
-          name: this.state.name,
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
           email: this.state.email,
           password: this.state.password
         };
-        var encrypted_user_data = Object(aes__WEBPACK_IMPORTED_MODULE_2__["AesEncrypt"])(newUser, 'where do you go when you by yourself');
-        axios.post('api/lab/register', {
+        var encrypted_user_data = Object(aes__WEBPACK_IMPORTED_MODULE_3__["AesEncrypt"])(newUser, 'where do you go when you by yourself');
+        axios.post('api/doctor/register', {
           user: encrypted_user_data
         }, {
           headers: {
             'Content-Type': 'application/json'
           }
         }).then(function (response) {
+          // ////////// LOADER //////////////
+          _this2.setState({
+            showDiv: "none",
+            loading: false
+          }); // ///////////////////////////////
+
+
           if (response.data.success) {
             // console.log("The form is correct")
             _this2.setState({
@@ -297,7 +351,7 @@ var RegisterLab = /*#__PURE__*/function (_Component) {
 
 
             var timer = setTimeout(function () {
-              _this2.props.history.push('/login_lab');
+              _this2.props.history.push('/login_doctor');
             }, 3000);
           } else {
             // console.log(response.data.data)
@@ -366,6 +420,8 @@ var RegisterLab = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var errors = this.state.errors;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "app flex-row align-items-center"
@@ -392,7 +448,7 @@ var RegisterLab = /*#__PURE__*/function (_Component) {
         style: {
           marginTop: "15px"
         }
-      }, "Laboratories")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+      }, "Doctors")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
         className: "mx-4"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], {
         className: "p-4"
@@ -417,7 +473,7 @@ var RegisterLab = /*#__PURE__*/function (_Component) {
         type: "text",
         className: "form-control",
         name: "username",
-        placeholder: "enter username",
+        placeholder: "Enter Username",
         value: this.state.username,
         onChange: this.onChange
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
@@ -431,9 +487,24 @@ var RegisterLab = /*#__PURE__*/function (_Component) {
       }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        name: "name",
-        placeholder: "enter name",
-        value: this.state.name,
+        name: "first_name",
+        placeholder: "Enter First Name",
+        value: this.state.first_name,
+        onChange: this.onChange
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-user"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        name: "last_name",
+        placeholder: "enter last name",
+        value: this.state.last_name,
         onChange: this.onChange
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
         className: "mb-3"
@@ -522,15 +593,89 @@ var RegisterLab = /*#__PURE__*/function (_Component) {
         type: "submit",
         className: "btn btn-lg kiu-btn btn-block"
       }, "Sign up")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "/#/login_lab"
-      }, "sign in"))))))));
+        href: "/#/login_doctor"
+      }, "sign in"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sweet-loading",
+        style: {
+          position: "fixed",
+          height: "100%",
+          width: "100%",
+          display: this.state.showDiv
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          backgroundColor: "#ffffffcf",
+          width: "100px",
+          padding: "15px",
+          borderRadius: "20px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        css: override,
+        height: 50,
+        width: 3,
+        radius: 2,
+        margin: 5,
+        color: "#2167ac",
+        loading: this.state.loading
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        style: {
+          color: "#ca333a"
+        }
+      }, "Loading..."))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "sweet_alert1",
+        style: {
+          display: "none"
+        },
+        onClick: function onClick() {
+          return _this3.setState({
+            showSuccess: true
+          });
+        }
+      }, "Alert"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(sweetalert2_react__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        show: this.state.showSuccess // title="Demo"
+        ,
+        type: "success",
+        confirmButtonColor: "#2167ac",
+        animation: "true",
+        text: this.state.successMessage,
+        onConfirm: function onConfirm() {
+          return _this3.setState({
+            showSuccess: false
+          });
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "sweet_alert2",
+        style: {
+          display: "none"
+        },
+        onClick: function onClick() {
+          return _this3.setState({
+            showError: true
+          });
+        }
+      }, "Alert"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(sweetalert2_react__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        show: this.state.showError // title="Demo"
+        ,
+        type: "warning",
+        confirmButtonColor: "#2167ac",
+        animation: "true",
+        text: this.state.errorMessage,
+        onConfirm: function onConfirm() {
+          return _this3.setState({
+            showError: false
+          });
+        }
+      }));
     }
   }]);
 
-  return RegisterLab;
+  return RegisterDoc;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (RegisterLab);
+/* harmony default export */ __webpack_exports__["default"] = (RegisterDoc);
 
 /***/ })
 

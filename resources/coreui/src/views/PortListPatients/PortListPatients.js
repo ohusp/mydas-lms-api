@@ -11,6 +11,16 @@ import {Link} from 'react-router-dom';
 import { ExternalLink } from 'react-external-link';
 import SweetAlert from 'sweetalert2-react';
 import TimePicker from 'react-time-picker';
+// ////////// LOADER /////////////////////////////////
+import { css } from "@emotion/core";
+import ScaleLoader from "react-spinners/ScaleLoader";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+// ///////////////////////////////////////////////////
 
 import {
   Badge,
@@ -216,7 +226,10 @@ class PortListPatients extends Component {
       showError:    false,
       successMessage: "Successful",
       errorMessage: "Failed",
-
+      // /////// LOADER ////////////
+      showDiv: "none",
+      loading: false,
+      // //////////////////////////
 
     };
     this.handlePageChange=this.handlePageChange.bind(this);
@@ -623,6 +636,12 @@ class PortListPatients extends Component {
         showError: true
       });
     }else{
+      // ////////////// LOADER ////////////
+      this.setState({
+        showDiv: "block",
+        loading: true,
+      });
+      // ////////////////////////////////
       const port_report_data ={
         age : this.state.age,
         passport_number: this.state.passport_number,
@@ -647,6 +666,12 @@ class PortListPatients extends Component {
         return response;
       })
       .then(json => {
+        // ////////// LOADER //////////////
+          this.setState({
+            showDiv: "none",
+            loading: false,
+          });
+        // ///////////////////////////////
         if (json.data.success) {
           this.setState({ 
             successMessage: "Report generated successfully",
@@ -849,6 +874,22 @@ class PortListPatients extends Component {
         <Row>  
             {/* ///////// PATIENT LIST TABLE ///////////// */}
             <Col xs="12" lg="12">
+              {/* // ////////// LOADER ////////////// */}
+                <div className="sweet-loading" style={{position: "fixed", height:"100%", width:"100%", display: this.state.showDiv, top:"50%", left:"50%",zIndex:"1500"}}>
+                  <div style={{position: "absolute", backgroundColor: "#ffffffcf",width:"100px",padding:"15px",borderRadius:"20px" }}>
+                    <ScaleLoader
+                      css={override}
+                      height={50}
+                      width={3}
+                      radius={2}
+                      margin={5}
+                      color={"#2167ac"}
+                      loading={this.state.loading}
+                    />
+                    <h6 style={{color: "#ca333a"}}>Loading...</h6>
+                  </div>
+                </div>
+              {/* // ///////////////// ////////////// */}
               <Card>
                 <CardHeader>
                   <i className="fa fa-align-justify"></i> List of visitors 

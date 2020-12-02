@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Alert } from 'reactstrap';
 // import {login} from './../../../functions/UserFunctions'
 import axios from 'axios'
 import $ from "jquery";
 import { AesEncrypt, AesDecrypt } from 'aes';
+// ////////// LOADER /////////////////////////////////
+import { css } from "@emotion/core";
+import ScaleLoader from "react-spinners/ScaleLoader";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+// ///////////////////////////////////////////////////
 
 class Login extends Component {
   constructor(props) {
@@ -17,6 +27,10 @@ class Login extends Component {
         user: {},
         storedData1: {},
         storedData2: {},
+        // /////// LOADER ////////////
+        showDiv: "none",
+        loading: false,
+        // //////////////////////////
 
         avatar: require("./../../../images/logo/cam-medics-logo.png"),
         Cam_Medics: 'Cam-Medics Logo'
@@ -31,7 +45,12 @@ class Login extends Component {
   }
   onSubmit(e) {
       e.preventDefault()
-
+      // ////////////// LOADER ////////////
+      this.setState({
+        showDiv: "block",
+        loading: true,
+      });
+      // ////////////////////////////////
       const user = {
         email: this.state.email,
         password: this.state.password
@@ -54,8 +73,14 @@ class Login extends Component {
             // return response.data.token
         })
         .then(json => {
+          // ////////// LOADER //////////////
+            this.setState({
+              showDiv: "none",
+              loading: false,
+            });
+          // ///////////////////////////////
             if (json.data.success) {
-                // alert("Login Successful!");
+                this.setState({alert_message:"success"});
                 const { id, created_at, auth_token, user_type } = json.data.data;
 
                 let userData = {
@@ -89,7 +114,9 @@ class Login extends Component {
                 // console.log("Mr Mendes is here 2");
                 // console.log(`Bearer ${localStorage.usertoken}`)
                 this.props.history.push(`/profile`)
-            } else alert("Login Failed!");
+            } else {
+              this.setState({alert_message:"error"});
+            }
 
             $("#login-form button")
                 .removeAttr("disabled")
@@ -131,6 +158,16 @@ class Login extends Component {
                     <Form noValidate onSubmit={this.onSubmit}>
                       <h1>Login</h1>
                       <p className="text-muted">Sign In to your account</p>
+                      {this.state.alert_message=="success"?
+                        <Alert color="success">
+                          Successful
+                        </Alert>
+                      :null}
+                      {this.state.alert_message=="error"?
+                        <Alert color="danger">
+                          Invalid username or password
+                        </Alert>
+                      :null}
                       <InputGroup className="mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
@@ -197,6 +234,22 @@ class Login extends Component {
                 </Card>
               </CardGroup>
             </Col>
+            {/* // ////////// LOADER ////////////// */}
+              <div className="sweet-loading" style={{position: "fixed", height:"100%", width:"100%", display: this.state.showDiv}}>
+                <div style={{position: "absolute", top:"50%", left:"50%",backgroundColor: "#ffffffcf",width:"100px",padding:"15px",borderRadius:"20px" }}>
+                  <ScaleLoader
+                    css={override}
+                    height={50}
+                    width={3}
+                    radius={2}
+                    margin={5}
+                    color={"#2167ac"}
+                    loading={this.state.loading}
+                  />
+                  <h6 style={{color: "#ca333a"}}>Loading...</h6>
+                </div>
+              </div>
+            {/* // ///////////////// ////////////// */}
           </Row>
         </Container>
       </div>

@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Badge, Alert } from 'reactstrap';
 // import {register} from './../../../functions/UserFunctions'
 import { AesEncrypt, AesDecrypt } from 'aes';
+// ////////// LOADER /////////////////////////////////
+import { css } from "@emotion/core";
+import ScaleLoader from "react-spinners/ScaleLoader";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+// ///////////////////////////////////////////////////
 
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -28,6 +38,10 @@ class RegisterHospital extends Component {
         confirmPassword: '',
       },
       alert_message:'',
+      // /////// LOADER ////////////
+      showDiv: "none",
+      loading: false,
+      // //////////////////////////
 
       avatar: require("./../../../images/logo/cam-medics-logo.png"),
       Cam_Medics: 'Cam-Medics Logo'
@@ -92,7 +106,12 @@ class RegisterHospital extends Component {
 
   onSubmit(e){
     e.preventDefault()
-
+    // ////////////// LOADER ////////////
+    this.setState({
+      showDiv: "block",
+      loading: true,
+    });
+    // ////////////////////////////////
     // validate check if fields are empty
     if(this.state.username == "" || this.state.name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == ""){
       this.setState({alert_message:"error"});
@@ -114,6 +133,12 @@ class RegisterHospital extends Component {
             headers: { 'Content-Type': 'application/json' }
         })
         .then(response => {
+          // ////////// LOADER //////////////
+            this.setState({
+              showDiv: "none",
+              loading: false,
+            });
+          // ///////////////////////////////
           if(response.data.success){
             // console.log("The form is correct")
             this.setState({alert_message:"success"});
@@ -308,6 +333,22 @@ class RegisterHospital extends Component {
                 </CardFooter> */}
               </Card>
             </Col>
+            {/* // ////////// LOADER ////////////// */}
+            <div className="sweet-loading" style={{position: "fixed", height:"100%", width:"100%", display: this.state.showDiv}}>
+                <div style={{position: "absolute", top:"50%", left:"50%",backgroundColor: "#ffffffcf",width:"100px",padding:"15px",borderRadius:"20px" }}>
+                  <ScaleLoader
+                    css={override}
+                    height={50}
+                    width={3}
+                    radius={2}
+                    margin={5}
+                    color={"#2167ac"}
+                    loading={this.state.loading}
+                  />
+                  <h6 style={{color: "#ca333a"}}>Loading...</h6>
+                </div>
+              </div>
+            {/* // ///////////////// ////////////// */}
           </Row>
         </Container>
       </div>

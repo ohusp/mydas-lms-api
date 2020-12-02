@@ -11,10 +11,10 @@ module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/Pages/ProvidersAgreement/ProvidersAgreement.js":
-/*!***********************************************************************************!*\
-  !*** ./resources/coreui/src/views/Pages/ProvidersAgreement/ProvidersAgreement.js ***!
-  \***********************************************************************************/
+/***/ "./resources/coreui/src/views/Pages/Login/Login.js":
+/*!*********************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/Login/Login.js ***!
+  \*********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -22,7 +22,17 @@ module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! aes */ "./node_modules/aes/index.js");
+/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(aes__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @emotion/core */ "./node_modules/@emotion/core/dist/core.browser.esm.js");
+/* harmony import */ var react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-spinners/ScaleLoader */ "./node_modules/react-spinners/ScaleLoader.js");
+/* harmony import */ var react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_7__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -37,6 +47,21 @@ function _typeof(obj) {
   }
 
   return _typeof(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -140,67 +165,293 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: block;\n  margin: 0 auto;\n  border-color: red;\n"]);
 
- // import {register} from './../../../functions/UserFunctions'
+  _templateObject = function _templateObject() {
+    return data;
+  };
 
-var ProvidersAgreement = /*#__PURE__*/function (_Component) {
-  _inherits(ProvidersAgreement, _Component);
+  return data;
+}
 
-  var _super = _createSuper(ProvidersAgreement);
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
 
-  function ProvidersAgreement() {
+  return Object.freeze(Object.defineProperties(strings, {
+    raw: {
+      value: Object.freeze(raw)
+    }
+  }));
+}
+
+
+
+ // import {login} from './../../../functions/UserFunctions'
+
+
+
+ // ////////// LOADER /////////////////////////////////
+
+
+
+var override = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_6__["css"])(_templateObject()); // ///////////////////////////////////////////////////
+
+var Login = /*#__PURE__*/function (_Component) {
+  _inherits(Login, _Component);
+
+  var _super = _createSuper(Login);
+
+  function Login(props) {
     var _this;
 
-    _classCallCheck(this, ProvidersAgreement);
+    _classCallCheck(this, Login);
 
-    _this = _super.call(this);
+    _this = _super.call(this, props);
     _this.state = {
+      id: '',
+      created_at: '',
+      errors: {},
+      isLoggedIn: false,
+      user: {},
+      storedData1: {},
+      storedData2: {},
+      // /////// LOADER ////////////
+      showDiv: "none",
+      loading: false,
+      // //////////////////////////
       avatar: __webpack_require__(/*! ./../../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png"),
-      Cam_Medics: 'CamMedics Logo'
+      Cam_Medics: 'Cam-Medics Logo'
     };
+    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
+    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(ProvidersAgreement, [{
+  _createClass(Login, [{
+    key: "onChange",
+    value: function onChange(e) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+    }
+  }, {
+    key: "onSubmit",
+    value: function onSubmit(e) {
+      var _this2 = this;
+
+      e.preventDefault(); // ////////////// LOADER ////////////
+
+      this.setState({
+        showDiv: "block",
+        loading: true
+      }); // ////////////////////////////////
+
+      var user = {
+        email: this.state.email,
+        password: this.state.password
+      };
+      var encrypted_user_data = Object(aes__WEBPACK_IMPORTED_MODULE_5__["AesEncrypt"])(user, 'where do you go when you by yourself');
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/patient/login', {
+        user: encrypted_user_data
+      }).then(function (response) {
+        // console.log("response-1");
+        // console.log(response);
+        return response; // console.log("Mr mendes")
+        // localStorage.setItem('usertoken', response.data.auth_token)
+        // return response.data.token
+      }).then(function (json) {
+        // ////////// LOADER //////////////
+        _this2.setState({
+          showDiv: "none",
+          loading: false
+        }); // ///////////////////////////////
+
+
+        if (json.data.success) {
+          _this2.setState({
+            alert_message: "success"
+          });
+
+          var _json$data$data = json.data.data,
+              id = _json$data$data.id,
+              created_at = _json$data$data.created_at,
+              auth_token = _json$data$data.auth_token,
+              user_type = _json$data$data.user_type;
+          var userData = {
+            id: id,
+            created_at: created_at,
+            auth_token: auth_token,
+            user_type: user_type,
+            timestamp: new Date().toString()
+          };
+          var appState = {
+            isLoggedIn: true,
+            user: userData
+          };
+          localStorage["login_from"] = "patient"; // save app state with user date in local storage
+
+          localStorage["appState"] = JSON.stringify(appState); // console.log("Response-2");
+          // console.log(localStorage["appState"]);
+          // console.log("Response-3");
+
+          _this2.setState({
+            isLoggedIn: appState.isLoggedIn,
+            user: appState.user
+          });
+
+          var timeout = setTimeout(function () {
+            window.location.reload();
+          }, 1000); // localStorage.setItem('usertoken', appState)
+          // console.log("Mr Mendes is here 2");
+          // console.log(`Bearer ${localStorage.usertoken}`)
+
+          _this2.props.history.push("/profile");
+        } else {
+          _this2.setState({
+            alert_message: "error"
+          });
+        }
+
+        jquery__WEBPACK_IMPORTED_MODULE_4___default()("#login-form button").removeAttr("disabled").html("Login");
+      })["catch"](function (err) {// console.log(err)
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var state = localStorage["appState"];
+
+      if (state) {
+        var AppState = JSON.parse(state); // console.log(AppState);
+
+        this.setState({
+          isLoggedIn: AppState.isLoggedIn,
+          user: AppState
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var errors = this.state.errors;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "flex-row align-items-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-        className: "justify-content-center",
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+        className: "justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        md: "8",
         style: {
-          textAlign: "justify",
-          textJustify: "inter-word",
-          fontSize: "16px"
+          marginTop: "100px"
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: "12",
-        lg: "12",
-        xl: "12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-3 mx-auto text-center",
-        style: {
-          marginTop: "50px"
-        }
+        className: "mb-3 mx-auto text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://cammedics.com"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "",
         src: this.state.avatar,
         alt: this.state.Cam_Medics,
         width: "160"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
+        className: "p-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Form"], {
+        noValidate: true,
+        onSubmit: this.onSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-muted"
+      }, "Sign In to your account"), this.state.alert_message == "success" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Alert"], {
+        color: "success"
+      }, "Successful") : null, this.state.alert_message == "error" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Alert"], {
+        color: "danger"
+      }, "Invalid username or password") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], {
+        className: "mb-3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-user"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "email",
+        className: "form-control",
+        name: "email",
+        placeholder: "Enter email",
+        value: this.state.email,
+        onChange: this.onChange
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], {
+        className: "mb-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-lock"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "form-control",
+        name: "password",
+        placeholder: "Password",
+        onChange: this.onChange
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        xs: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-lg kiu-btn btn-block"
+      }, "Sign in")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        xs: "6",
+        className: "text-right"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+        xs: "6",
+        className: "text-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/forgetpassword_patient"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        color: "link",
+        className: "px-0 kiu-color"
+      }, "Forget password?")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
+        className: "text-white kiu-bg py-5"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], {
+        className: "text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hospital without borders where innovative technology meets premium care.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "It's all about you."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/register"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+        className: "mt-3 cam-btn-white-bg",
+        active: true,
+        tabIndex: -1
+      }, "Register Now!"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sweet-loading",
         style: {
-          marginTop: "50px",
-          marginBottom: "50px"
+          position: "fixed",
+          height: "100%",
+          width: "100%",
+          display: this.state.showDiv
         }
-      }, "PROVIDERS' AGREEMENT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Agreement is made between International Medical Law Centre, St Kitts and Nevis, W.I., operators of CamMedics.com (The platform) on one hand \xA0and providers/ vendors of medical services via telemedicine using the platform, \xA0on the other."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The provider/ vendor undertakes that by clicking \"I agree\" at the bottom of this agreement, a binding legal contract is established and the terms are activated and becomes enforceable against the parties as if the formal contract was duly signed and executed in compliance with the relevant Laws."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\xB7\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0 The purpose of this Agreement is to regulate the utilization of the technology provided on the platform that delivers medical services via telemedicine to patients from providers like doctors hospitals, pharmacies, medical laboratories, Ports, and other ancillary service providers."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\xB7\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0 The goal is to minimize the inconvenience, of time, travel and finances for both patient and provider."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\xB7\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0 Terms of Agreement", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Provider' Responsibility", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Provider shall ensure that only qualified and duly licensed personnel shall provide medical services to the Client. The provider by offering services on the platform represents that all ethical and \xA0legal qualifications and licenses required have been first \xA0obtained from the relevant authorizing and licensing bodies/ agencies."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The provider when engaging or utilizing the platform, shall ensure that only properly licensed medical healthcare professionals shall be employed in conducting a diagnosis, procedure, treatment, or other healthcare services necessary in connection with this telemedicine services Agreement."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The provider shall have complete authority, management, and control over including, but not limited to, clinical diagnosis, procedure, treatment required or any other professional healthcare services necessary in connection with the provision of the telemedicine services in accordance with the relevant laws.\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "FEES", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Patients booking appointments on the platform, shall pay the total sum of consultation or Service fees plus handling fees for each consultation.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Consultation or service fees shall be determined by providers, while handing fees shall be fixed by operator/platform based on a percentage of the provider's consultation/ service fee."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The consultation/service fee shall be paid to the Providers, less statutory or operational deductions such as banking and payment platform charges.. The operator/platform shall maintain a complete record of all transactions and due payments which shall be made available to the provider upon demand."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "All Payments to the provider shall be due upon the completion of the consultation process \xA0with each patient.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "The process shall be complete upon the satisfactory delivery of product and service to the patient.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Payments may be subject to inter-banking, payment platforms or transactional approval delays."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Operator's Responsibility", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "The operator shall not control, direct, interfere, nor supervise the Provider in connection with the provision of medical services.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Limitation Against Practice of Medicine", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Notwithstanding any provision contained herein, this Agreement is not intended to"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "1.\xA0\xA0\xA0 Supervise any non-licensed medical professional or individual in the practice of medicine.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "2.\xA0\xA0\xA0 Constitute the use of the medical license by anyone other than the licensed physician or other duly licensed healthcare professional.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "3.\xA0\xA0\xA0 Perform any act that is contrary to state and federal laws.\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Provider shall remain entirely independent of operator/ platform as to", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "4.\xA0\xA0\xA0 Diagnosis and treatment of patients,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "5.\xA0\xA0\xA0 Prescription, order, or administration of any drug or medicine, and", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "6.\xA0\xA0\xA0 All other medical, professional and ethical affairs of Provider."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Confidential Information", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Any proprietary information such as, but not limited to relating to business operations, services, technology, software, among others, that the Provider may acquire from the Operator through the performance of this Agreement which is not considered public knowledge shall be recognized as Confidential Information. \xA0Provider shall not in any way disclose the Confidential Information without the prior written consent of the Operator In case of uncertainty whether such information is considered confidential, it shall always be presumed confidential for the benefit and protection of the Parties."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Arbitration", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Any disagreement pursuant to this agreement shall be subject to an Arbitration first before any further action."))))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          backgroundColor: "#ffffffcf",
+          width: "100px",
+          padding: "15px",
+          borderRadius: "20px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_7___default.a, {
+        css: override,
+        height: 50,
+        width: 3,
+        radius: 2,
+        margin: 5,
+        color: "#2167ac",
+        loading: this.state.loading
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        style: {
+          color: "#ca333a"
+        }
+      }, "Loading..."))))));
     }
   }]);
 
-  return ProvidersAgreement;
+  return Login;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (ProvidersAgreement);
+/* harmony default export */ __webpack_exports__["default"] = (Login);
 
 /***/ })
 

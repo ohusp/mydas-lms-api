@@ -11,10 +11,10 @@ module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/Pages/Register/Register.js":
-/*!***************************************************************!*\
-  !*** ./resources/coreui/src/views/Pages/Register/Register.js ***!
-  \***************************************************************/
+/***/ "./resources/coreui/src/views/Pages/RegisterPharm/RegisterPharm.js":
+/*!*************************************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/RegisterPharm/RegisterPharm.js ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -25,6 +25,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 /* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! aes */ "./node_modules/aes/index.js");
 /* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(aes__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @emotion/core */ "./node_modules/@emotion/core/dist/core.browser.esm.js");
+/* harmony import */ var react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-spinners/ScaleLoader */ "./node_modules/react-spinners/ScaleLoader.js");
+/* harmony import */ var react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -157,9 +160,36 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: block;\n  margin: 0 auto;\n  border-color: red;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  return Object.freeze(Object.defineProperties(strings, {
+    raw: {
+      value: Object.freeze(raw)
+    }
+  }));
+}
+
 
  // import {register} from './../../../functions/UserFunctions'
 
+ // ////////// LOADER /////////////////////////////////
+
+
+
+var override = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["css"])(_templateObject()); // ///////////////////////////////////////////////////
 
 var validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 
@@ -171,15 +201,15 @@ var validateForm = function validateForm(errors) {
   return valid;
 };
 
-var Register = /*#__PURE__*/function (_Component) {
-  _inherits(Register, _Component);
+var RegisterPharm = /*#__PURE__*/function (_Component) {
+  _inherits(RegisterPharm, _Component);
 
-  var _super = _createSuper(Register);
+  var _super = _createSuper(RegisterPharm);
 
-  function Register() {
+  function RegisterPharm() {
     var _this;
 
-    _classCallCheck(this, Register);
+    _classCallCheck(this, RegisterPharm);
 
     _this = _super.call(this);
 
@@ -234,8 +264,8 @@ var Register = /*#__PURE__*/function (_Component) {
 
     _this.state = {
       username: '',
-      first_name: '',
-      last_name: '',
+      name: '',
+      // last_name: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -246,15 +276,19 @@ var Register = /*#__PURE__*/function (_Component) {
         confirmPassword: ''
       },
       alert_message: '',
+      // /////// LOADER ////////////
+      showDiv: "none",
+      loading: false,
+      // //////////////////////////
       avatar: __webpack_require__(/*! ./../../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png"),
-      Cam_Medics: 'CamMedics Logo'
+      Cam_Medics: 'Cam-Medics Logo'
     };
     _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(Register, [{
+  _createClass(RegisterPharm, [{
     key: "onChangeState",
     // onchange for setting state
     value: function onChangeState(e) {
@@ -266,9 +300,15 @@ var Register = /*#__PURE__*/function (_Component) {
     value: function onSubmit(e) {
       var _this2 = this;
 
-      e.preventDefault(); // validate check if fields are empty
+      e.preventDefault(); // ////////////// LOADER ////////////
 
-      if (this.state.username == "" || this.state.first_name == "" || this.state.last_name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == "") {
+      this.setState({
+        showDiv: "block",
+        loading: true
+      }); // ////////////////////////////////
+      // validate check if fields are empty
+
+      if (this.state.username == "" || this.state.name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == "") {
         this.setState({
           alert_message: "error"
         });
@@ -278,28 +318,33 @@ var Register = /*#__PURE__*/function (_Component) {
       } else if (validateForm(this.state.errors)) {
         var newUser = {
           username: this.state.username,
-          first_name: this.state.first_name,
-          last_name: this.state.last_name,
+          name: this.state.name,
           email: this.state.email,
           password: this.state.password
         };
         var encrypted_user_data = Object(aes__WEBPACK_IMPORTED_MODULE_2__["AesEncrypt"])(newUser, 'where do you go when you by yourself');
-        axios.post('api/patient/register', {
+        axios.post('api/pharm/register', {
           user: encrypted_user_data
         }, {
           headers: {
             'Content-Type': 'application/json'
           }
         }).then(function (response) {
+          // ////////// LOADER //////////////
+          _this2.setState({
+            showDiv: "none",
+            loading: false
+          }); // ///////////////////////////////
+
+
           if (response.data.success) {
             // console.log("The form is correct")
             _this2.setState({
               alert_message: "success"
-            }); // redirect after 3 secs
-
+            });
 
             var timer = setTimeout(function () {
-              _this2.props.history.push('/login');
+              _this2.props.history.push('/login_pharm');
             }, 3000);
           } else {
             // console.log(response.data.data)
@@ -389,7 +434,12 @@ var Register = /*#__PURE__*/function (_Component) {
         src: this.state.avatar,
         alt: this.state.Cam_Medics,
         width: "160"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "text-center",
+        style: {
+          marginTop: "15px"
+        }
+      }, "Pharmacy")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
         className: "mx-4"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], {
         className: "p-4"
@@ -428,24 +478,9 @@ var Register = /*#__PURE__*/function (_Component) {
       }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        name: "first_name",
-        placeholder: "enter first name",
-        value: this.state.first_name,
-        onChange: this.onChange
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
-        className: "mb-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-user"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        name: "last_name",
-        placeholder: "enter last name",
-        value: this.state.last_name,
+        name: "name",
+        placeholder: "enter name",
+        value: this.state.name,
         onChange: this.onChange
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
         className: "mb-3"
@@ -518,10 +553,13 @@ var Register = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "I agree to CamMedics", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "/#/terms_conditions",
         target: "_blank"
-      }, " Terms & Conditions"), " and ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, " Terms & Conditions"), ", ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "/#/privacy_policy",
         target: "_blank"
-      }, "Privacy Policy"))), errors.confirmPassword.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+      }, "Privacy Policy"), " and", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/#/providers_agreement",
+        target: "_blank"
+      }, "Providers' Agreement"))), errors.confirmPassword.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
         style: {
           marginBottom: 25
         },
@@ -531,15 +569,45 @@ var Register = /*#__PURE__*/function (_Component) {
         type: "submit",
         className: "btn btn-lg kiu-btn btn-block"
       }, "Sign up")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "/#/login"
-      }, "sign in"))))))));
+        href: "/#/login_pharm"
+      }, "sign in"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sweet-loading",
+        style: {
+          position: "fixed",
+          height: "100%",
+          width: "100%",
+          display: this.state.showDiv
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          backgroundColor: "#ffffffcf",
+          width: "100px",
+          padding: "15px",
+          borderRadius: "20px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        css: override,
+        height: 50,
+        width: 3,
+        radius: 2,
+        margin: 5,
+        color: "#2167ac",
+        loading: this.state.loading
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        style: {
+          color: "#ca333a"
+        }
+      }, "Loading..."))))));
     }
   }]);
 
-  return Register;
+  return RegisterPharm;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Register);
+/* harmony default export */ __webpack_exports__["default"] = (RegisterPharm);
 
 /***/ })
 

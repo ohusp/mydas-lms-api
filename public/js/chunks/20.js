@@ -1,20 +1,20 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[20],{
 
-/***/ "./resources/coreui/src/images/logo/cam-medics-logo.png":
-/*!**************************************************************!*\
-  !*** ./resources/coreui/src/images/logo/cam-medics-logo.png ***!
-  \**************************************************************/
+/***/ "./resources/coreui/src/assets/img/brand/sygnet.svg":
+/*!**********************************************************!*\
+  !*** ./resources/coreui/src/assets/img/brand/sygnet.svg ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
+module.exports = "/images/sygnet.svg?c8d5c2d9c0e8849271af0664df052817";
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/Admin/AdminLogin/AdminLogin.js":
-/*!*******************************************************************!*\
-  !*** ./resources/coreui/src/views/Admin/AdminLogin/AdminLogin.js ***!
-  \*******************************************************************/
+/***/ "./resources/coreui/src/containers/DefaultLayout/DefaultHeader.js":
+/*!************************************************************************!*\
+  !*** ./resources/coreui/src/containers/DefaultLayout/DefaultHeader.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -23,13 +23,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! aes */ "./node_modules/aes/index.js");
-/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(aes__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
+/* harmony import */ var _images_logo_cam_medics_logo_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png");
+/* harmony import */ var _images_logo_cam_medics_logo_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_images_logo_cam_medics_logo_png__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _assets_img_brand_sygnet_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../assets/img/brand/sygnet.svg */ "./resources/coreui/src/assets/img/brand/sygnet.svg");
+/* harmony import */ var _assets_img_brand_sygnet_svg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_assets_img_brand_sygnet_svg__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var sweetalert2_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! sweetalert2-react */ "./node_modules/sweetalert2-react/dist/sweetalert-react.min.js");
+/* harmony import */ var sweetalert2_react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-js-pagination */ "./node_modules/react-js-pagination/dist/Pagination.js");
+/* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_js_pagination__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -46,19 +51,40 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
   }
 
-  return obj;
+  return target;
+}
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -164,207 +190,219 @@ function _getPrototypeOf(o) {
 
 
 
- // import {login} from './../../../functions/UserFunctions'
 
 
 
 
 
-var AdminLogin = /*#__PURE__*/function (_Component) {
-  _inherits(AdminLogin, _Component);
 
-  var _super = _createSuper(AdminLogin);
 
-  function AdminLogin(props) {
+var propTypes = {
+  children: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.node
+};
+var defaultProps = {};
+var login_from = localStorage.getItem("login_from");
+
+var DefaultHeader = /*#__PURE__*/function (_Component) {
+  _inherits(DefaultHeader, _Component);
+
+  var _super = _createSuper(DefaultHeader);
+
+  function DefaultHeader(props) {
     var _this;
 
-    _classCallCheck(this, AdminLogin);
+    _classCallCheck(this, DefaultHeader);
 
-    _this = _super.call(this, props);
+    _this = _super.call(this, props); // this.toggleViewCart = this.toggleViewCart.bind(this);
+    // this.onChangeQty    = this.onChangeQty.bind(this);
+
     _this.state = {
-      id: '',
-      created_at: '',
-      errors: {},
-      isLoggedIn: false,
-      user: {},
-      storedData1: {},
-      storedData2: {},
-      avatar: __webpack_require__(/*! ./../../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png"),
-      Cam_Medics: 'Cam-Medics Logo'
+      token: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.auth_token : "",
+      id: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.id : "",
+      username: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.username : "",
+      user_type: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.user_type : "",
+      // ////////////////////////////////////////////////////
+      // snumber: 1,
+      // items_list: [],
+      product_in_cart: "0" // qty: "1",
+      // primaryViewCart: false,
+
     };
-    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
-    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(AdminLogin, [{
-    key: "onChange",
-    value: function onChange(e) {
-      this.setState(_defineProperty({}, e.target.name, e.target.value));
-    }
-  }, {
-    key: "onSubmit",
-    value: function onSubmit(e) {
+  _createClass(DefaultHeader, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var _this2 = this;
 
-      e.preventDefault(); // const message = 'This is an unecrypted message';
-      // const encryptedData = AesEncrypt(message,'passphrase' );
-      // const decryptedMessage = AesDecrypt(encryptedData, 'passphrase');
-      // console.log("encryptedData");
-      // console.log(encryptedData);
-      // console.log(decryptedMessage);
-      // var dataJson    = { 'email'  : this.state.email, 'password': this.state.password  };
-      // const encryptedData = AesEncrypt(dataJson, 'where do you go when you by yourself' );
-      // var user1   = { 'encrypt'  : encryptedData}
-      // var user    = JSON.stringify(user1);
-      // const email     = AesEncrypt(this.state.email, 'where do you go when you by yourself' );
-      // const password  = AesEncrypt(this.state.password, 'where do you go when you by yourself' );
-
-      var user_data = {
-        email: this.state.email,
-        password: this.state.password
-      };
-      var encrypted_user_data = Object(aes__WEBPACK_IMPORTED_MODULE_5__["AesEncrypt"])(user_data, 'where do you go when you by yourself');
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/admin/login', {
-        user: encrypted_user_data
-      }).then(function (response) {
-        console.log("response-1");
-        console.log(response);
-        return response; // console.log("Mr mendes")
-        // localStorage.setItem('usertoken', response.data.auth_token)
-        // return response.data.token
+      axios.get("/api/patient/product_in_cart/get/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+        return response;
       }).then(function (json) {
         if (json.data.success) {
-          // alert("Login Successful!");
-          var _json$data$data = json.data.data,
-              id = _json$data$data.id,
-              created_at = _json$data$data.created_at,
-              auth_token = _json$data$data.auth_token,
-              user_type = _json$data$data.user_type;
-          var userData = {
-            id: id,
-            created_at: created_at,
-            auth_token: auth_token,
-            user_type: user_type,
-            timestamp: new Date().toString()
-          };
-          var appState = {
-            isLoggedIn: true,
-            user: userData
-          };
-          localStorage["login_from"] = "admin_user"; // save app state with user date in local storage
-
-          localStorage["appState"] = JSON.stringify(appState); // console.log("Response-2");
-
-          console.log(localStorage["appState"]); // console.log("Response-3");
-
           _this2.setState({
-            isLoggedIn: appState.isLoggedIn,
-            user: appState.user
+            product_in_cart: json.data.data
           });
-
-          var timeout = setTimeout(function () {
-            window.location.reload();
-          }, 1000); // localStorage.setItem('usertoken', appState)
-          // console.log("Mr Mendes is here 2");
-          // console.log(`Bearer ${localStorage.usertoken}`)
-
-          _this2.props.history.push("/admin/admin-dashboard");
-        } else alert("Login Failed!");
-
-        jquery__WEBPACK_IMPORTED_MODULE_4___default()("#login-form button").removeAttr("disabled").html("Login");
-      })["catch"](function (err) {
-        console.log(err);
+        } else {}
+      })["catch"](function (error) {// redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        // console.error(`An Error Occuredd! ${error}`);
       });
-    }
+    } // onChangeQty(e)   { this.setState({ qty:e.target.value  }, this.calculateSubtotal) }
+    // calculateSubtotal(){
+    //   alert(this.state.qty)
+    // }
+    // itemUpdate(e, item_id){
+    //   // const item_id1 = item_id;
+    //   // const qty   = e.target.value;
+    //   const product_data ={
+    //     item_id1 : item_id, 
+    //     qty: e.target.value
+    //   }
+    //   axios.post(`/api/patient/product_qty/update/`+this.state.id+`?token=${this.state.token}`, product_data)
+    //   .then(response => {
+    //     return response;
+    //   })
+    //   .then(json => {
+    //     if (json.data.success) {
+    //       this.setState({
+    //         successMessage: json.data.data,
+    //         showSuccess: true
+    //       }, this.componentDidMount);
+    //     } else{
+    //       this.setState({
+    //         successMessage: json.data.data,
+    //         showError: true
+    //       });
+    //     }
+    //   })
+    //   .catch(error => {
+    //     this.setState({
+    //       showError: true
+    //     });
+    //   });
+    //   // alert("item_id: "+ item_id1);
+    //   // alert("qty: "+ qty);
+    //   // this.setState({   }, this.componentDidMount)
+    // }
+    // /////////////// VIEW APPOINTMENTS
+    // toggleViewCart() {
+    //   this.setState({
+    //     primaryViewCart: !this.state.primaryViewCart,
+    //   });
+    // }
+    // viewCart()
+    // {
+    //   axios.get(`/api/patient/product_in_cart/get_all/`+this.state.id+`?token=${this.state.token}`)
+    //   .then(response => {
+    //     return response;
+    //   })
+    //   .then(json => {
+    //     if (json.data.success) {
+    //       this.setState({ 
+    //         items_list: json.data.data,
+    //         // itemsCountPerPage_appointments: json.data.data.per_page,
+    //         // totalItemsCount_appointments: json.data.data.total,
+    //         // activePage_appointments: json.data.data.current_page
+    //       }, this.toggleViewCart());
+    //     } else {
+    //     }
+    //   })
+    //   .catch(error => {
+    //     // redirect user to previous page if user does not have autorization to the page
+    //     // hashHistory.push('/premontessori');
+    //     console.error(`An Error Occuredd! ${error}`);
+    //   });
+    // }
+
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "app flex-row align-items-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
-        className: "justify-content-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-        md: "8",
-        style: {
-          marginTop: "100px"
+      var _this3 = this; // eslint-disable-next-line
+
+
+      var _this$props = this.props,
+          children = _this$props.children,
+          attributes = _objectWithoutProperties(_this$props, ["children"]);
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_3__["AppSidebarToggler"], {
+        className: "d-lg-none",
+        display: "md",
+        mobile: true
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_3__["AppNavbarBrand"], {
+        full: {
+          src: _images_logo_cam_medics_logo_png__WEBPACK_IMPORTED_MODULE_4___default.a,
+          width: 89,
+          height: 25,
+          alt: 'CoreUI Logo'
+        },
+        minimized: {
+          src: _assets_img_brand_sygnet_svg__WEBPACK_IMPORTED_MODULE_5___default.a,
+          width: 30,
+          height: 30,
+          alt: 'CoreUI Logo'
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-3 mx-auto text-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://cammedics.com"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "",
-        src: this.state.avatar,
-        alt: this.state.Cam_Medics,
-        width: "160"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
-        className: "p-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Form"], {
-        noValidate: true,
-        onSubmit: this.onSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Admin Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-muted"
-      }, "Sign In to your account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], {
-        className: "mb-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-user"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "email",
-        className: "form-control",
-        name: "email",
-        placeholder: "Enter email",
-        value: this.state.email,
-        onChange: this.onChange
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], {
-        className: "mb-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-lock"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "password",
-        className: "form-control",
-        name: "password",
-        placeholder: "Password",
-        value: this.state.password,
-        onChange: this.onChange
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-        xs: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        className: "btn btn-lg kiu-btn btn-block"
-      }, "Sign in")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-        xs: "6",
-        className: "text-right"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-        xs: "6",
-        className: "text-right"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_coreui_react__WEBPACK_IMPORTED_MODULE_3__["AppSidebarToggler"], {
+        className: "d-md-down-none",
+        display: "lg"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Nav"], {
+        className: "ml-auto",
+        navbar: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["NavItem"], {
+        className: "d-md-down-none"
+      }, login_from === "patient" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: "#",
+        className: "nav-link",
+        replace: true
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/forgetpassword_patient"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        color: "link",
-        className: "px-0 kiu-color"
-      }, "Forget password?")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Card"], {
-        className: "text-white kiu-bg py-5"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], {
-        className: "text-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hospital without borders where innovative technology meets premium care.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "It's all about you."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/register"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
-        className: "mt-3 cam-btn-white-bg",
-        active: true,
-        tabIndex: -1
-      }, "Register Now!"))))))))));
+        to: "/cart"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-cart-plus fa-2x mt-4"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Badge"], {
+        pill: true,
+        color: "danger",
+        style: {
+          padding: "5px 10px",
+          fontSize: "12px"
+        }
+      }, this.state.product_in_cart)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["UncontrolledDropdown"], {
+        nav: true,
+        direction: "down"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["DropdownToggle"], {
+        nav: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: '../../assets/img/avatars/6.jpg',
+        className: "img-avatar",
+        alt: ""
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["DropdownMenu"], {
+        right: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["DropdownItem"], {
+        onClick: function onClick(e) {
+          return _this3.props.onLogout(e);
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-lock"
+      }), " Logout")))));
     }
   }]);
 
-  return AdminLogin;
+  return DefaultHeader;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (AdminLogin);
+DefaultHeader.propTypes = propTypes;
+DefaultHeader.defaultProps = defaultProps;
+/* harmony default export */ __webpack_exports__["default"] = (DefaultHeader);
+
+/***/ }),
+
+/***/ "./resources/coreui/src/images/logo/cam-medics-logo.png":
+/*!**************************************************************!*\
+  !*** ./resources/coreui/src/images/logo/cam-medics-logo.png ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
 
 /***/ })
 

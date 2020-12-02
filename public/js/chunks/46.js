@@ -11,10 +11,10 @@ module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/Pages/RegisterHospital/RegisterHospital.js":
-/*!*******************************************************************************!*\
-  !*** ./resources/coreui/src/views/Pages/RegisterHospital/RegisterHospital.js ***!
-  \*******************************************************************************/
+/***/ "./resources/coreui/src/views/Pages/ProvidersAgreement/ProvidersAgreement.js":
+/*!***********************************************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/ProvidersAgreement/ProvidersAgreement.js ***!
+  \***********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -23,8 +23,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! aes */ "./node_modules/aes/index.js");
-/* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(aes__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -39,21 +37,6 @@ function _typeof(obj) {
   }
 
   return _typeof(obj);
-}
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -160,377 +143,64 @@ function _getPrototypeOf(o) {
 
  // import {register} from './../../../functions/UserFunctions'
 
+var ProvidersAgreement = /*#__PURE__*/function (_Component) {
+  _inherits(ProvidersAgreement, _Component);
 
-var validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+  var _super = _createSuper(ProvidersAgreement);
 
-var validateForm = function validateForm(errors) {
-  var valid = true;
-  Object.values(errors).forEach(function (val) {
-    return val.length > 0 && (valid = false);
-  });
-  return valid;
-};
-
-var RegisterHospital = /*#__PURE__*/function (_Component) {
-  _inherits(RegisterHospital, _Component);
-
-  var _super = _createSuper(RegisterHospital);
-
-  function RegisterHospital() {
+  function ProvidersAgreement() {
     var _this;
 
-    _classCallCheck(this, RegisterHospital);
+    _classCallCheck(this, ProvidersAgreement);
 
     _this = _super.call(this);
-
-    _this.onChange = function (e) {
-      _this.onChangeState(e); // this.handleChange(e)
-
-    };
-
-    _this.handleChange = function (event) {
-      event.preventDefault();
-      var _event$target = event.target,
-          name = _event$target.name,
-          value = _event$target.value;
-      var errors = _this.state.errors; // called to empty thec alert on top of the form
-
-      _this.setState({
-        alert_message: ""
-      });
-
-      switch (name) {
-        // case 'fullName': 
-        //   errors.fullName = 
-        //     value.length < 5
-        //       ? 'Full Name must be at least 5 characters long!'
-        //       : '';
-        //   break;
-        case 'email':
-          errors.email = validEmailRegex.test(value) ? '' : 'Email is not valid!';
-          break;
-
-        case 'password':
-          errors.password = value.length < 8 ? 'Password must be at least 8 characters long!' : '';
-          break;
-
-        case 'confirmPassword':
-          if (_this.state.password !== value) {
-            errors.confirmPassword = "Password and Confirm Password does not match.";
-          } else {
-            errors.confirmPassword = "";
-          }
-
-          break;
-
-        default:
-          break;
-      }
-
-      _this.setState(_defineProperty({
-        errors: errors
-      }, name, value));
-    };
-
     _this.state = {
-      username: '',
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-      errorMsg: '',
-      errors: {
-        email: '',
-        password: '',
-        confirmPassword: ''
-      },
-      alert_message: '',
       avatar: __webpack_require__(/*! ./../../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png"),
-      Cam_Medics: 'Cam-Medics Logo'
+      Cam_Medics: 'CamMedics Logo'
     };
-    _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
-    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(RegisterHospital, [{
-    key: "onChangeState",
-    // onchange for setting state
-    value: function onChangeState(e) {
-      this.setState(_defineProperty({}, e.target.name, e.target.value));
-      this.handleChange(e);
-    }
-  }, {
-    key: "onSubmit",
-    value: function onSubmit(e) {
-      var _this2 = this;
-
-      e.preventDefault(); // validate check if fields are empty
-
-      if (this.state.username == "" || this.state.name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == "") {
-        this.setState({
-          alert_message: "error"
-        });
-        this.setState({
-          errorMsg: "Please fill all required fields"
-        }); // validate check if theres no error in the form 
-      } else if (validateForm(this.state.errors)) {
-        var newUser = {
-          username: this.state.username,
-          name: this.state.name,
-          email: this.state.email,
-          password: this.state.password
-        };
-        var encrypted_user_data = Object(aes__WEBPACK_IMPORTED_MODULE_2__["AesEncrypt"])(newUser, 'where do you go when you by yourself');
-        axios.post('api/hospital/register', {
-          user: encrypted_user_data
-        }, {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }).then(function (response) {
-          if (response.data.success) {
-            // console.log("The form is correct")
-            _this2.setState({
-              alert_message: "success"
-            }); // redirect after 3 secs
-
-
-            var timer = setTimeout(function () {
-              _this2.props.history.push('/login_hospital');
-            }, 3000);
-          } else {
-            // console.log(response.data.data)
-            var _response$data$data = response.data.data,
-                username = _response$data$data.username,
-                first_name = _response$data$data.first_name,
-                last_name = _response$data$data.last_name,
-                email = _response$data$data.email,
-                password = _response$data$data.password; // if email error is returned, loop through it and display else display normal error
-
-            if (email) {
-              email.map(function (emailErr) {
-                _this2.setState({
-                  alert_message: "error"
-                });
-
-                _this2.setState({
-                  errorMsg: emailErr
-                });
-              });
-            } else if (username) {
-              username.map(function (usernameErr) {
-                _this2.setState({
-                  alert_message: "error"
-                });
-
-                _this2.setState({
-                  errorMsg: usernameErr
-                });
-              });
-            } else {
-              _this2.setState({
-                alert_message: "error"
-              });
-
-              _this2.setState({
-                errorMsg: "Please fill form correctly"
-              });
-            }
-          }
-        })["catch"](function (err) {
-          // console.log(err)
-          // this.setState({alert_message:"success"});
-          _this2.setState({
-            alert_message: "error"
-          });
-
-          _this2.setState({
-            errorMsg: "Please fill form correctly"
-          });
-        });
-      } else {
-        console.error(this.state.errors.email, ", ", this.state.errors.password);
-        this.setState({
-          alert_message: "error"
-        });
-        this.setState({
-          errorMsg: "Please fill form correctly"
-        });
-      }
-    } // this.setState({alert_message:"success"})
-    //           }).catch(error=>{
-    //               this.setState({alert_message:"error"});
-    //           })
-
-  }, {
+  _createClass(ProvidersAgreement, [{
     key: "render",
     value: function render() {
       var errors = this.state.errors;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "app flex-row align-items-center"
+        className: "flex-row align-items-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
-        className: "justify-content-center"
+        className: "justify-content-center",
+        style: {
+          textAlign: "justify",
+          textJustify: "inter-word",
+          fontSize: "16px"
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-        md: "9",
-        lg: "7",
-        xl: "6"
+        md: "12",
+        lg: "12",
+        xl: "12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "mb-3 mx-auto text-center",
         style: {
-          marginTop: "100px"
+          marginTop: "50px"
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://cammedics.com"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "",
         src: this.state.avatar,
         alt: this.state.Cam_Medics,
         width: "160"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-        className: "text-center",
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         style: {
-          marginTop: "15px"
+          marginTop: "50px",
+          marginBottom: "50px"
         }
-      }, "Hospital")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-        className: "mx-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], {
-        className: "p-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-        noValidate: true,
-        onSubmit: this.onSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Create an Account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-muted"
-      }, "Create your account and begin registration process"), this.state.alert_message == "success" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
-        color: "success"
-      }, "Registration Successful") : null, this.state.alert_message == "error" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
-        color: "danger"
-      }, this.state.errorMsg) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
-        className: "mb-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-user"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        name: "username",
-        placeholder: "enter username",
-        value: this.state.username,
-        onChange: this.onChange
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
-        className: "mb-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-user"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        name: "name",
-        placeholder: "enter name",
-        value: this.state.name,
-        onChange: this.onChange
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
-        className: "mb-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, "@", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "email",
-        className: "form-control",
-        name: "email",
-        placeholder: "enter email",
-        value: this.state.email,
-        onChange: this.onChange // onBlur={this.onChange}
-        ,
-        noValidate: true
-      })), errors.email.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
-        style: {
-          marginBottom: 25
-        },
-        className: "mr-1",
-        color: "danger"
-      }, errors.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
-        className: "mb-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-lock"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "password",
-        className: "form-control",
-        name: "password",
-        placeholder: "enter password",
-        onChange: this.onChange // onBlur={this.onChange}
-        ,
-        noValidate: true
-      })), errors.password.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
-        style: {
-          marginBottom: 25
-        },
-        className: "mr-1",
-        color: "danger"
-      }, errors.password), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
-        className: "mb-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "icon-lock"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-        type: "password",
-        placeholder: "Confirm password",
-        name: "confirmPassword",
-        value: this.state.confirmPassword,
-        onChange: this.onChange // onBlur={this.onChange}
-        ,
-        noValidate: true
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
-        className: "mb-4",
-        style: {
-          marginLeft: "25px"
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-        className: "form-check-input",
-        type: "checkbox",
-        required: true
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "I agree to CamMedics", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "/#/terms_conditions",
-        target: "_blank"
-      }, " Terms & Conditions"), ", ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "/#/privacy_policy",
-        target: "_blank"
-      }, "Privacy Policy"), " and", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "/#/providers_agreement",
-        target: "_blank"
-      }, "Providers' Agreement"))), errors.confirmPassword.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
-        style: {
-          marginBottom: 25
-        },
-        className: "mr-1",
-        color: "danger"
-      }, errors.confirmPassword), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        className: "btn btn-lg kiu-btn btn-block"
-      }, "Sign up")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "/#/login_hospital"
-      }, "sign in"))))))));
+      }, "PROVIDERS' AGREEMENT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Agreement is made between International Medical Law Centre, St Kitts and Nevis, W.I., operators of CamMedics.com (The platform) on one hand \xA0and providers/ vendors of medical services via telemedicine using the platform, \xA0on the other."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The provider/ vendor undertakes that by clicking \"I agree\" at the bottom of this agreement, a binding legal contract is established and the terms are activated and becomes enforceable against the parties as if the formal contract was duly signed and executed in compliance with the relevant Laws."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\xB7\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0 The purpose of this Agreement is to regulate the utilization of the technology provided on the platform that delivers medical services via telemedicine to patients from providers like doctors hospitals, pharmacies, medical laboratories, Ports, and other ancillary service providers."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\xB7\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0 The goal is to minimize the inconvenience, of time, travel and finances for both patient and provider."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\xB7\xA0\xA0\xA0\xA0\xA0\xA0\xA0\xA0 Terms of Agreement", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Provider' Responsibility", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Provider shall ensure that only qualified and duly licensed personnel shall provide medical services to the Client. The provider by offering services on the platform represents that all ethical and \xA0legal qualifications and licenses required have been first \xA0obtained from the relevant authorizing and licensing bodies/ agencies."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The provider when engaging or utilizing the platform, shall ensure that only properly licensed medical healthcare professionals shall be employed in conducting a diagnosis, procedure, treatment, or other healthcare services necessary in connection with this telemedicine services Agreement."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The provider shall have complete authority, management, and control over including, but not limited to, clinical diagnosis, procedure, treatment required or any other professional healthcare services necessary in connection with the provision of the telemedicine services in accordance with the relevant laws.\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "FEES", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Patients booking appointments on the platform, shall pay the total sum of consultation or Service fees plus handling fees for each consultation.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Consultation or service fees shall be determined by providers, while handing fees shall be fixed by operator/platform based on a percentage of the provider's consultation/ service fee."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The consultation/service fee shall be paid to the Providers, less statutory or operational deductions such as banking and payment platform charges.. The operator/platform shall maintain a complete record of all transactions and due payments which shall be made available to the provider upon demand."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "All Payments to the provider shall be due upon the completion of the consultation process \xA0with each patient.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "The process shall be complete upon the satisfactory delivery of product and service to the patient.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Payments may be subject to inter-banking, payment platforms or transactional approval delays."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Operator's Responsibility", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "The operator shall not control, direct, interfere, nor supervise the Provider in connection with the provision of medical services.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Limitation Against Practice of Medicine", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Notwithstanding any provision contained herein, this Agreement is not intended to"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "1.\xA0\xA0\xA0 Supervise any non-licensed medical professional or individual in the practice of medicine.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "2.\xA0\xA0\xA0 Constitute the use of the medical license by anyone other than the licensed physician or other duly licensed healthcare professional.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "3.\xA0\xA0\xA0 Perform any act that is contrary to state and federal laws.\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Provider shall remain entirely independent of operator/ platform as to", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "4.\xA0\xA0\xA0 Diagnosis and treatment of patients,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "5.\xA0\xA0\xA0 Prescription, order, or administration of any drug or medicine, and", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "6.\xA0\xA0\xA0 All other medical, professional and ethical affairs of Provider."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Confidential Information", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Any proprietary information such as, but not limited to relating to business operations, services, technology, software, among others, that the Provider may acquire from the Operator through the performance of this Agreement which is not considered public knowledge shall be recognized as Confidential Information. \xA0Provider shall not in any way disclose the Confidential Information without the prior written consent of the Operator In case of uncertainty whether such information is considered confidential, it shall always be presumed confidential for the benefit and protection of the Parties."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Arbitration", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Any disagreement pursuant to this agreement shall be subject to an Arbitration first before any further action."))))));
     }
   }]);
 
-  return RegisterHospital;
+  return ProvidersAgreement;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (RegisterHospital);
+/* harmony default export */ __webpack_exports__["default"] = (ProvidersAgreement);
 
 /***/ })
 

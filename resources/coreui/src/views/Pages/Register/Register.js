@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Badge, Alert } from 'reactstrap';
 // import {register} from './../../../functions/UserFunctions'
 import { AesEncrypt, AesDecrypt } from 'aes';
+// ////////// LOADER /////////////////////////////////
+import { css } from "@emotion/core";
+import ScaleLoader from "react-spinners/ScaleLoader";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+// ///////////////////////////////////////////////////
 
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -11,6 +21,7 @@ const validateForm = errors => {
   Object.values(errors).forEach(val => val.length > 0 && (valid = false));
   return valid;
 };
+
 
 class Register extends Component {
   constructor(){
@@ -29,6 +40,10 @@ class Register extends Component {
         confirmPassword: '',
       },
       alert_message:'',
+      // /////// LOADER ////////////
+      showDiv: "none",
+      loading: false,
+      // //////////////////////////
 
       avatar: require("./../../../images/logo/cam-medics-logo.png"),
       Cam_Medics: 'CamMedics Logo'
@@ -93,7 +108,12 @@ class Register extends Component {
 
   onSubmit(e){
     e.preventDefault()
-
+    // ////////////// LOADER ////////////
+    this.setState({
+      showDiv: "block",
+      loading: true,
+    });
+    // ////////////////////////////////
     // validate check if fields are empty
     if(this.state.username == "" || this.state.first_name == "" || this.state.last_name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == ""){
       this.setState({alert_message:"error"});
@@ -116,6 +136,12 @@ class Register extends Component {
             headers: { 'Content-Type': 'application/json' }
         })
         .then(response => {
+          // ////////// LOADER //////////////
+            this.setState({
+              showDiv: "none",
+              loading: false,
+            });
+          // ///////////////////////////////
           if(response.data.success){
             // console.log("The form is correct")
             this.setState({alert_message:"success"});
@@ -164,6 +190,7 @@ class Register extends Component {
   render() {
     const {errors} = this.state;
     return (
+      
       <div className="app flex-row align-items-center">
         <Container>
           <Row className="justify-content-center">
@@ -324,6 +351,22 @@ class Register extends Component {
                 </CardFooter> */}
               </Card>
             </Col>
+            {/* // ////////// LOADER ////////////// */}
+            <div className="sweet-loading" style={{position: "fixed", height:"100%", width:"100%", display: this.state.showDiv}}>
+                <div style={{position: "absolute", top:"50%", left:"50%",backgroundColor: "#ffffffcf",width:"100px",padding:"15px",borderRadius:"20px" }}>
+                  <ScaleLoader
+                    css={override}
+                    height={50}
+                    width={3}
+                    radius={2}
+                    margin={5}
+                    color={"#2167ac"}
+                    loading={this.state.loading}
+                  />
+                  <h6 style={{color: "#ca333a"}}>Loading...</h6>
+                </div>
+              </div>
+            {/* // ///////////////// ////////////// */}
           </Row>
         </Container>
       </div>

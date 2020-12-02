@@ -11,10 +11,10 @@ module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/Pages/LoginPharm/LoginPharm.js":
-/*!*******************************************************************!*\
-  !*** ./resources/coreui/src/views/Pages/LoginPharm/LoginPharm.js ***!
-  \*******************************************************************/
+/***/ "./resources/coreui/src/views/Pages/LoginHospital/LoginHospital.js":
+/*!*************************************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/LoginHospital/LoginHospital.js ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -30,6 +30,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! aes */ "./node_modules/aes/index.js");
 /* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(aes__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @emotion/core */ "./node_modules/@emotion/core/dist/core.browser.esm.js");
+/* harmony import */ var react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-spinners/ScaleLoader */ "./node_modules/react-spinners/ScaleLoader.js");
+/* harmony import */ var react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_7__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -162,23 +165,49 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: block;\n  margin: 0 auto;\n  border-color: red;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  return Object.freeze(Object.defineProperties(strings, {
+    raw: {
+      value: Object.freeze(raw)
+    }
+  }));
+}
+
 
 
  // import {login} from './../../../functions/UserFunctions'
 
 
 
+ // ////////// LOADER /////////////////////////////////
 
 
-var LoginPharm = /*#__PURE__*/function (_Component) {
-  _inherits(LoginPharm, _Component);
 
-  var _super = _createSuper(LoginPharm);
+var override = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_6__["css"])(_templateObject()); // ///////////////////////////////////////////////////
 
-  function LoginPharm(props) {
+var LoginHospital = /*#__PURE__*/function (_Component) {
+  _inherits(LoginHospital, _Component);
+
+  var _super = _createSuper(LoginHospital);
+
+  function LoginHospital(props) {
     var _this;
 
-    _classCallCheck(this, LoginPharm);
+    _classCallCheck(this, LoginHospital);
 
     _this = _super.call(this, props);
     _this.state = {
@@ -189,6 +218,10 @@ var LoginPharm = /*#__PURE__*/function (_Component) {
       user: {},
       storedData1: {},
       storedData2: {},
+      // /////// LOADER ////////////
+      showDiv: "none",
+      loading: false,
+      // //////////////////////////
       avatar: __webpack_require__(/*! ./../../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png"),
       Cam_Medics: 'Cam-Medics Logo'
     };
@@ -197,7 +230,7 @@ var LoginPharm = /*#__PURE__*/function (_Component) {
     return _this;
   }
 
-  _createClass(LoginPharm, [{
+  _createClass(LoginHospital, [{
     key: "onChange",
     value: function onChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
@@ -207,13 +240,19 @@ var LoginPharm = /*#__PURE__*/function (_Component) {
     value: function onSubmit(e) {
       var _this2 = this;
 
-      e.preventDefault();
+      e.preventDefault(); // ////////////// LOADER ////////////
+
+      this.setState({
+        showDiv: "block",
+        loading: true
+      }); // ////////////////////////////////
+
       var user = {
         email: this.state.email,
         password: this.state.password
       };
       var encrypted_user_data = Object(aes__WEBPACK_IMPORTED_MODULE_5__["AesEncrypt"])(user, 'where do you go when you by yourself');
-      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/pharm/login', {
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/hospital/login', {
         user: encrypted_user_data
       }).then(function (response) {
         // console.log("response-1");
@@ -222,8 +261,18 @@ var LoginPharm = /*#__PURE__*/function (_Component) {
         // localStorage.setItem('usertoken', response.data.auth_token)
         // return response.data.token
       }).then(function (json) {
+        // ////////// LOADER //////////////
+        _this2.setState({
+          showDiv: "none",
+          loading: false
+        }); // ///////////////////////////////
+
+
         if (json.data.success) {
-          alert("Login Successful!");
+          _this2.setState({
+            alert_message: "success"
+          });
+
           var _json$data$data = json.data.data,
               id = _json$data$data.id,
               created_at = _json$data$data.created_at,
@@ -240,7 +289,7 @@ var LoginPharm = /*#__PURE__*/function (_Component) {
             isLoggedIn: true,
             user: userData
           };
-          localStorage["login_from"] = "pharm"; // save app state with user date in local storage
+          localStorage["login_from"] = "hospital"; // save app state with user date in local storage
 
           localStorage["appState"] = JSON.stringify(appState); // console.log("Response-2");
           // console.log(localStorage["appState"]);
@@ -257,7 +306,7 @@ var LoginPharm = /*#__PURE__*/function (_Component) {
           // console.log("Mr Mendes is here 2");
           // console.log(`Bearer ${localStorage.usertoken}`)
 
-          _this2.props.history.push("/profile_pharm");
+          _this2.props.history.push("/profile_hospital");
         } else alert("Login Failed!");
 
         jquery__WEBPACK_IMPORTED_MODULE_4___default()("#login-form button").removeAttr("disabled").html("Login");
@@ -304,9 +353,13 @@ var LoginPharm = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Form"], {
         noValidate: true,
         onSubmit: this.onSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Pharmacy Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hospital Login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "text-muted"
-      }, "Sign In to your account"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], {
+      }, "Sign In to your account"), this.state.alert_message == "success" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Alert"], {
+        color: "success"
+      }, "Successful") : null, this.state.alert_message == "error" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Alert"], {
+        color: "danger"
+      }, "Invalid username or password") : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroup"], {
         className: "mb-3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["InputGroupAddon"], {
         addonType: "prepend"
@@ -343,7 +396,7 @@ var LoginPharm = /*#__PURE__*/function (_Component) {
         xs: "6",
         className: "text-right"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/forgetpassword_pharm"
+        to: "/forgetpassword_hospital"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         color: "link",
         className: "px-0 kiu-color"
@@ -352,19 +405,49 @@ var LoginPharm = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["CardBody"], {
         className: "text-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hospital without borders where innovative technology meets premium care.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "It's all about you."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/register_pharm"
+        to: "/register_hospital"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
         className: "mt-3 cam-btn-white-bg",
         active: true,
         tabIndex: -1
-      }, "Register Now!"))))))))));
+      }, "Register Now!"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sweet-loading",
+        style: {
+          position: "fixed",
+          height: "100%",
+          width: "100%",
+          display: this.state.showDiv
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          backgroundColor: "#ffffffcf",
+          width: "100px",
+          padding: "15px",
+          borderRadius: "20px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_7___default.a, {
+        css: override,
+        height: 50,
+        width: 3,
+        radius: 2,
+        margin: 5,
+        color: "#2167ac",
+        loading: this.state.loading
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        style: {
+          color: "#ca333a"
+        }
+      }, "Loading..."))))));
     }
   }]);
 
-  return LoginPharm;
+  return LoginHospital;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (LoginPharm);
+/* harmony default export */ __webpack_exports__["default"] = (LoginHospital);
 
 /***/ })
 

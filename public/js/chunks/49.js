@@ -11,10 +11,10 @@ module.exports = "/images/cam-medics-logo.png?20d7a32b8eafe9ebd1a3a00687b3ed63";
 
 /***/ }),
 
-/***/ "./resources/coreui/src/views/Pages/RegisterPort/RegisterPort.js":
-/*!***********************************************************************!*\
-  !*** ./resources/coreui/src/views/Pages/RegisterPort/RegisterPort.js ***!
-  \***********************************************************************/
+/***/ "./resources/coreui/src/views/Pages/RegisterLab/RegisterLab.js":
+/*!*********************************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/RegisterLab/RegisterLab.js ***!
+  \*********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -25,6 +25,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 /* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! aes */ "./node_modules/aes/index.js");
 /* harmony import */ var aes__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(aes__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @emotion/core */ "./node_modules/@emotion/core/dist/core.browser.esm.js");
+/* harmony import */ var react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-spinners/ScaleLoader */ "./node_modules/react-spinners/ScaleLoader.js");
+/* harmony import */ var react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -157,9 +160,36 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: block;\n  margin: 0 auto;\n  border-color: red;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  return Object.freeze(Object.defineProperties(strings, {
+    raw: {
+      value: Object.freeze(raw)
+    }
+  }));
+}
+
 
  // import {register} from './../../../functions/UserFunctions'
 
+ // ////////// LOADER /////////////////////////////////
+
+
+
+var override = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["css"])(_templateObject()); // ///////////////////////////////////////////////////
 
 var validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 
@@ -171,15 +201,15 @@ var validateForm = function validateForm(errors) {
   return valid;
 };
 
-var RegisterPort = /*#__PURE__*/function (_Component) {
-  _inherits(RegisterPort, _Component);
+var RegisterLab = /*#__PURE__*/function (_Component) {
+  _inherits(RegisterLab, _Component);
 
-  var _super = _createSuper(RegisterPort);
+  var _super = _createSuper(RegisterLab);
 
-  function RegisterPort() {
+  function RegisterLab() {
     var _this;
 
-    _classCallCheck(this, RegisterPort);
+    _classCallCheck(this, RegisterLab);
 
     _this = _super.call(this);
 
@@ -245,6 +275,10 @@ var RegisterPort = /*#__PURE__*/function (_Component) {
         confirmPassword: ''
       },
       alert_message: '',
+      // /////// LOADER ////////////
+      showDiv: "none",
+      loading: false,
+      // //////////////////////////
       avatar: __webpack_require__(/*! ./../../../images/logo/cam-medics-logo.png */ "./resources/coreui/src/images/logo/cam-medics-logo.png"),
       Cam_Medics: 'Cam-Medics Logo'
     };
@@ -253,7 +287,7 @@ var RegisterPort = /*#__PURE__*/function (_Component) {
     return _this;
   }
 
-  _createClass(RegisterPort, [{
+  _createClass(RegisterLab, [{
     key: "onChangeState",
     // onchange for setting state
     value: function onChangeState(e) {
@@ -265,7 +299,13 @@ var RegisterPort = /*#__PURE__*/function (_Component) {
     value: function onSubmit(e) {
       var _this2 = this;
 
-      e.preventDefault(); // validate check if fields are empty
+      e.preventDefault(); // ////////////// LOADER ////////////
+
+      this.setState({
+        showDiv: "block",
+        loading: true
+      }); // ////////////////////////////////
+      // validate check if fields are empty
 
       if (this.state.username == "" || this.state.name == "" || this.state.email == "" || this.state.password == "" || this.state.confirmPassword == "") {
         this.setState({
@@ -282,7 +322,7 @@ var RegisterPort = /*#__PURE__*/function (_Component) {
           password: this.state.password
         };
         var encrypted_user_data = Object(aes__WEBPACK_IMPORTED_MODULE_2__["AesEncrypt"])(newUser, 'where do you go when you by yourself');
-        axios.post('api/port/register', {
+        axios.post('api/lab/register', {
           user: encrypted_user_data
         }, {
           headers: {
@@ -290,14 +330,21 @@ var RegisterPort = /*#__PURE__*/function (_Component) {
           }
         }).then(function (response) {
           if (response.data.success) {
+            // ////////// LOADER //////////////
+            _this2.setState({
+              showDiv: "none",
+              loading: false
+            }); // ///////////////////////////////
             // console.log("The form is correct")
+
+
             _this2.setState({
               alert_message: "success"
             }); // redirect after 3 secs
 
 
             var timer = setTimeout(function () {
-              _this2.props.history.push('/login_port');
+              _this2.props.history.push('/login_lab');
             }, 3000);
           } else {
             // console.log(response.data.data)
@@ -392,7 +439,7 @@ var RegisterPort = /*#__PURE__*/function (_Component) {
         style: {
           marginTop: "15px"
         }
-      }, "Ports")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+      }, "Laboratories")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], {
         className: "mx-4"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], {
         className: "p-4"
@@ -494,7 +541,13 @@ var RegisterPort = /*#__PURE__*/function (_Component) {
         onChange: this.onChange // onBlur={this.onChange}
         ,
         noValidate: true
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+      })), errors.confirmPassword.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+        style: {
+          marginBottom: 25
+        },
+        className: "mr-1",
+        color: "danger"
+      }, errors.confirmPassword), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
         className: "mb-4",
         style: {
           marginLeft: "25px"
@@ -512,25 +565,49 @@ var RegisterPort = /*#__PURE__*/function (_Component) {
       }, "Privacy Policy"), " and", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "/#/providers_agreement",
         target: "_blank"
-      }, "Providers' Agreement"))), errors.confirmPassword.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
-        style: {
-          marginBottom: 25
-        },
-        className: "mr-1",
-        color: "danger"
-      }, errors.confirmPassword), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Providers' Agreement"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-lg kiu-btn btn-block"
       }, "Sign up")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Already have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "/#/login_port"
-      }, "sign in"))))))));
+        href: "/#/login_lab"
+      }, "sign in"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sweet-loading",
+        style: {
+          position: "fixed",
+          height: "100%",
+          width: "100%",
+          display: this.state.showDiv
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          backgroundColor: "#ffffffcf",
+          width: "100px",
+          padding: "15px",
+          borderRadius: "20px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_spinners_ScaleLoader__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        css: override,
+        height: 50,
+        width: 3,
+        radius: 2,
+        margin: 5,
+        color: "#2167ac",
+        loading: this.state.loading
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+        style: {
+          color: "#ca333a"
+        }
+      }, "Loading..."))))));
     }
   }]);
 
-  return RegisterPort;
+  return RegisterLab;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (RegisterPort);
+/* harmony default export */ __webpack_exports__["default"] = (RegisterLab);
 
 /***/ })
 
