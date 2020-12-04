@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[103],{
 
-/***/ "./resources/coreui/src/views/PatientCart/PatientCart.js":
-/*!***************************************************************!*\
-  !*** ./resources/coreui/src/views/PatientCart/PatientCart.js ***!
-  \***************************************************************/
+/***/ "./resources/coreui/src/views/Pages/Page404/Page404.js":
+/*!*************************************************************!*\
+  !*** ./resources/coreui/src/views/Pages/Page404/Page404.js ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11,26 +11,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/dist/react-datepicker.min.js");
-/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_datepicker__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-datepicker/dist/react-datepicker.css */ "./node_modules/react-datepicker/dist/react-datepicker.css");
-/* harmony import */ var react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! history */ "./node_modules/history/esm/history.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-js-pagination */ "./node_modules/react-js-pagination/dist/Pagination.js");
-/* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_js_pagination__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_external_link__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-external-link */ "./node_modules/react-external-link/dist/index.esm.js");
-/* harmony import */ var sweetalert2_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! sweetalert2-react */ "./node_modules/sweetalert2-react/dist/sweetalert-react.min.js");
-/* harmony import */ var sweetalert2_react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var react_time_picker__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-time-picker */ "./node_modules/react-time-picker/dist/entry.js");
-/* harmony import */ var react_time_picker__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_time_picker__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var react_paypal_button_v2__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-paypal-button-v2 */ "./node_modules/react-paypal-button-v2/lib/index.js");
-/* harmony import */ var react_paypal_button_v2__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_paypal_button_v2__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -151,454 +132,56 @@ function _getPrototypeOf(o) {
 
 
 
- // import axios from 'axios';
+var Page404 = /*#__PURE__*/function (_Component) {
+  _inherits(Page404, _Component);
 
+  var _super = _createSuper(Page404);
 
+  function Page404() {
+    _classCallCheck(this, Page404);
 
+    return _super.apply(this, arguments);
+  }
 
-
-
-
-
-
-
-var hashHistory = Object(history__WEBPACK_IMPORTED_MODULE_3__["createHashHistory"])();
-
-var PatientCart = /*#__PURE__*/function (_Component) {
-  _inherits(PatientCart, _Component);
-
-  var _super = _createSuper(PatientCart);
-
-  function PatientCart(props) {
-    var _this;
-
-    _classCallCheck(this, PatientCart);
-
-    _this = _super.call(this, props); // ////////////////MODAL
-    // this.togglePrimary    = this.togglePrimary.bind(this);
-    // this.toggleViewPort = this.toggleViewPort.bind(this);
-    // this.toggleViewAppointments = this.toggleViewAppointments.bind(this);
-    // this.toggleMakePayment      = this.toggleMakePayment.bind(this);
-    // this.toggleEnterReport = this.toggleEnterReport.bind(this);
-    // bing toggle functions and values
-    // this.toggle = this.toggle.bind(this);
-    // this.toggle_identification    = this.toggle_identification.bind(this);
-    // this.toggle_app_instructions  = this.toggle_app_instructions.bind(this);
-    // this.onChangeDate     =this.onChangeDate.bind(this);
-    // this.onChangeTime     =this.onChangeTime.bind(this);
-    // this.onChangeSubject  =this.onChangeSubject.bind(this);
-    // this.onChangeMessage  =this.onChangeMessage.bind(this);
-    // this.onChangeAllergiesUpdate            =this.onChangeAllergiesUpdate.bind(this);
-    // this.onChangeBloodGroupUpdate           =this.onChangeBloodGroupUpdate.bind(this);
-    // this.onChangeUnderlyingConditionsUpdate =this.onChangeUnderlyingConditionsUpdate.bind(this);
-    // this.onChangeFamilyMedicalHistoryUpdate =this.onChangeFamilyMedicalHistoryUpdate.bind(this);
-    // this.onChangeHypertensiveUpdate         =this.onChangeHypertensiveUpdate.bind(this);
-    // this.onChangeDiabeticUpdate             =this.onChangeDiabeticUpdate.bind(this);
-    // this.onChangePrescriptionUpdate         =this.onChangePrescriptionUpdate.bind(this);
-    // this.onChangeLabTestUpdate              =this.onChangeLabTestUpdate.bind(this);
-    // this.onChangeNoteUpdate                 =this.onChangeNoteUpdate.bind(this);
-    // this.onChangeMessageBox  = this.onChangeMessageBox.bind(this);
-    // this.sendMessage = this.sendMessage.bind(this);
-    // /////////////////////////////////////////////////////////////////
-    // this.onSubmitBookAppointment = this.onSubmitBookAppointment.bind(this);
-
-    _this.onCheckout = _this.onCheckout.bind(_assertThisInitialized(_this)); // medical record tab toggle
-    // this.toggleMedRecTab = this.toggleMedRecTab.bind(this);
-    // this.onChangeDate             =this.onChangeDate.bind(this);
-    // this.onChangeTime             =this.onChangeTime.bind(this);
-
-    _this.state = {
-      token: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.auth_token : "",
-      id: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.id : "",
-      username: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.username : "",
-      first_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.first_name : "",
-      last_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.last_name : "",
-      middle_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.middle_name : "",
-      status: "",
-      created_at: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.created_at : "",
-      user_type: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.user_type : "",
-      primaryMakePayment: false,
-      // ///////////////////////////////////////////////////////
-      // showSuccess:  false,
-      // showError:    false,
-      successMessage: "Successful",
-      errorMessage: "Failed",
-      // ///////////////////////////////////////////
-      cart_total: "",
-      handling_fee: "",
-      total_fee: "",
-      // ///////////////////////////////////////
-      // chatBtn: "",
-      // ///////////////////////////////////
-      snumber: 1,
-      items_list: [],
-      pharm_id: ""
-    }; // this.handlePageChange=this.handlePageChange.bind(this);
-
-    return _this;
-  } // onChange = time => this.setState({ time })
-  // medical record tab toggle
-  // toggleMedRecTab(tab) {
-  //   if (this.state.activeTab !== tab) {
-  //     this.setState({
-  //       activeTab: tab
-  //     });
-  //   }
-  // }
-  // onChangeDate(e) { this.setState({ date:e.target.value  }); }
-  // onChangeTime(e) { this.setState({ time:e.target.value  }); }
-  // onChangeSubject(e) { this.setState({ subject:e.target.value  }); }
-  // onChangeMessage(e) { this.setState({ message:e.target.value  }); }
-  // onChangeAllergiesUpdate(e)      { this.setState({ allergies_update:e.target.value  }); }
-  // onChangeBloodGroupUpdate(e)     { this.setState({ blood_group_update:e.target.value  }); }
-  // onChangeUnderlyingConditionsUpdate(e)     { this.setState({ underlying_conditions_update:e.target.value  }); }
-  // onChangeFamilyMedicalHistoryUpdate(e)     { this.setState({ family_medical_history_update:e.target.value  }); }
-  // onChangeHypertensiveUpdate(e)     { this.setState({ hypertensive_update:e.target.value  }); }
-  // onChangeDiabeticUpdate(e)         { this.setState({ diabetic_update:e.target.value  }); }
-  // onChangePrescriptionUpdate(e)     { this.setState({ prescription_update:e.target.value  }); }
-  // onChangeLabTestUpdate(e)          { this.setState({ lab_test_update:e.target.value  }); }
-  // onChangeNoteUpdate(e)             { this.setState({ note_update:e.target.value  }); }
-  // onChangeDate(e)           { this.setState({ date:e.target.value  }); }
-  // onChangeTime(e)           { this.setState({ time:e.target.value  }); }
-  // fetch data from db
-
-
-  _createClass(PatientCart, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/product_in_cart/get_all/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
-        return response;
-      }).then(function (json) {
-        if (json.data.success) {
-          _this2.setState({
-            items_list: json.data.data,
-            pharm_id: json.data.data[0].pharm_id // itemsCountPerPage_appointments: json.data.data.per_page,
-            // totalItemsCount_appointments: json.data.data.total,
-            // activePage_appointments: json.data.data.current_page
-
-          });
-        } else {}
-      })["catch"](function (error) {
-        // redirect user to previous page if user does not have autorization to the page
-        // hashHistory.push('/premontessori');
-        console.error("An Error Occuredd! ".concat(error));
-      });
-    }
-  }, {
-    key: "itemUpdate",
-    value: function itemUpdate(e, item_id) {
-      var _this3 = this; // const item_id1 = item_id;
-      // const qty   = e.target.value;
-
-
-      var product_data = {
-        item_id1: item_id,
-        qty: e.target.value
-      };
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/patient/product_qty/update/" + this.state.id + "?token=".concat(this.state.token), product_data).then(function (response) {
-        return response;
-      }).then(function (json) {
-        if (json.data.success) {
-          _this3.setState({// successMessage: json.data.data,
-            // showSuccess: true
-          }, _this3.componentDidMount);
-        } else {
-          _this3.setState({
-            successMessage: "Quantity update failed",
-            showError: true
-          });
-        }
-      })["catch"](function (error) {
-        _this3.setState({
-          showError: true
-        });
-      }); // alert("item_id: "+ item_id1);
-      // alert("qty: "+ qty);
-      // this.setState({   }, this.componentDidMount)
-    }
-  }, {
-    key: "onCheckout",
-    value: function onCheckout() {
-      var _this4 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/product/checkout1/" + this.state.pharm_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
-        return response;
-      }).then(function (json) {
-        if (json.data.success) {
-          // const total_fee = parseInt(json.data.port_fee) + parseInt(json.data.country_handling_fee);
-          _this4.setState({
-            cart_total: json.data.cart_total,
-            handling_fee: json.data.handling_fee,
-            total_fee: json.data.total_fee
-          }, _this4.toggleMakePayment());
-        } else {}
-      })["catch"](function (error) {
-        // redirect user to previous page if user does not have autorization to the page
-        // hashHistory.push('/premontessori');
-        console.error("An Error Occuredd! ".concat(error));
-      });
-    }
-  }, {
-    key: "onSubmitBookAppointment2",
-    value: function onSubmitBookAppointment2() {
-      // e.preventDefault();
-      // alert("here");
-      this.setState({
-        successMessage: "Payment successful",
-        showSuccess: true
-      }, this.onSubmitBookAppointment3);
-    }
-  }, {
-    key: "onSubmitBookAppointment3",
-    value: function onSubmitBookAppointment3() {
-      var _this5 = this;
-
-      var phurchase_data = {
-        // /////////////////////////////////////////////
-        billing_create_time: this.state.billing_create_time,
-        billing_update_time: this.state.billing_update_time,
-        billing_amount_currency: this.state.billing_amount_currency,
-        billing_amount_value: this.state.billing_amount_value,
-        billing_cart_total: this.state.cart_total,
-        billing_handling_fee: this.state.handling_fee,
-        billing_email_address: this.state.billing_email_address,
-        billing_name: this.state.billing_name,
-        billing_orderID: this.state.billing_orderID,
-        billing_payerID: this.state.billing_payerID
-      };
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/patient/product/checkout2/" + this.state.pharm_id + '/' + this.state.id + "?token=".concat(this.state.token), phurchase_data).then(function (response) {
-        return response;
-      }, this.toggleMakePayment("close", "close")).then(function (json) {
-        if (json.data.success) {
-          _this5.setState({
-            successMessage: json.data.data,
-            showSuccess: true
-          });
-        } else {
-          _this5.setState({
-            successMessage: json.data.data,
-            showError: true
-          });
-        }
-      })["catch"](function (error) {
-        _this5.setState({
-          showError: true
-        });
-      });
-    } // /////////////// Make payment
-
-  }, {
-    key: "toggleMakePayment",
-    value: function toggleMakePayment() {
-      // console.log(id);
-      this.setState({
-        primaryMakePayment: !this.state.primaryMakePayment // port_id: id,
-        // port_name: name,
-
-      });
-    }
-  }, {
+  _createClass(Page404, [{
     key: "render",
     value: function render() {
-      var _this6 = this; // const { product_image} = this.state
-
-
-      var snumber = 1;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "animated fadeIn"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Col"], {
-        xs: "12",
-        sm: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Cart"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Col"], {
-        xs: "12",
-        lg: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), " Cart Items"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Table"], {
-        responsive: true,
-        bordered: true
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "S/N"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ITEM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "CATEGORY"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "QUANTITY"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "UNIT PRICE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "SUBTOTAL"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "ACTION"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, // ////////////////////////////////////////////////////////////
-      this.state.items_list.map(function (item) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          key: item.id
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-          scope: "row"
-        }, snumber++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Input"], {
-          type: "select",
-          id: "qty",
-          value: item.qty // onChange={this.onChangeQty}
-          ,
-          onChange: function onChange(e) {
-            _this6.itemUpdate(e, item.id);
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "1"
-        }, "1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "2"
-        }, "2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "3"
-        }, "3"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "4"
-        }, "4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "5"
-        }, "5"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "6"
-        }, "6"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "7"
-        }, "7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "8"
-        }, "8"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "9"
-        }, "9"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: "10"
-        }, "10"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.sub_total), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
-          size: "sm",
-          onClick: function onClick() {
-            return _this6.remove(item.id);
-          },
-          className: "cammedics-btn-danger"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fa fa-trash"
-        }), " Remove")));
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        style: {
-          "float": "right"
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
-        type: "submit",
-        size: "sm",
-        color: "primary",
-        onClick: function onClick() {
-          return _this6.onCheckout();
-        }
-      }, "PROCEED TO CHECKOUT")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Modal"], {
-        isOpen: this.state.primaryMakePayment,
-        className: 'modal-primary ' + this.props.className,
-        style: {
-          maxWidth: "1000px"
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalHeader"], {
-        toggle: function toggle() {
-          return _this6.toggleMakePayment("close", "close");
-        }
-      }, "Make Payment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), this.state.patient_name, " Make Payment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Col"], {
-        xs: "3",
-        sm: "3"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Col"], {
-        xs: "6",
-        sm: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
-        className: "justify-content-between"
-      }, "Products Cost: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
-        style: {
-          "float": "right"
-        }
-      }, "$", this.state.cart_total)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
-        className: "justify-content-between"
-      }, "Handling Fee: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
-        style: {
-          "float": "right"
-        }
-      }, "$", this.state.handling_fee)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ListGroupItem"], {
-        className: "justify-content-between"
-      }, "Total: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
-        style: {
-          "float": "right"
-        }
-      }, "$", this.state.total_fee))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        style: {
-          marginBottom: "25px"
-        }
-      }, "You can pay with your paypal account or with your debit or credit card."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_paypal_button_v2__WEBPACK_IMPORTED_MODULE_11__["PayPalButton"], {
-        amount: this.state.total_fee // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
-        ,
-        onSuccess: function onSuccess(details, data) {
-          _this6.state.billing_amount_currency = details.purchase_units[0].amount.currency_code;
-          _this6.state.billing_amount_value = details.purchase_units[0].amount.value;
-          _this6.state.billing_orderID = data.orderID;
-          _this6.state.billing_payerID = data.payerID;
-          _this6.state.billing_email_address = details.payer.email_address;
-          _this6.state.billing_name = details.payer.name.given_name + " " + details.payer.name.surname;
-          _this6.state.billing_create_time = details.create_time;
-          _this6.state.billing_update_time = details.update_time; // console.log(details);
-          // console.log(data);
-          // console.log(details.create_time);
-          // console.log(details.update_time);
-          // console.log(details.purchase_units[0].amount.currency_code)
-          // console.log(details.purchase_units[0].amount.value)
-
-          return _this6.onSubmitBookAppointment2();
-        },
-        onError: function onError(err) {
-          alert(err);
-          window.location.reload();
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Col"], {
-        xs: "3",
-        sm: "3"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_12__["Button"], {
-        color: "secondary",
-        onClick: function onClick() {
-          return _this6.toggleMakePayment("close", "close");
-        }
-      }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "sweet_alert1",
-        style: {
-          display: "none"
-        },
-        onClick: function onClick() {
-          return _this6.setState({
-            showSuccess: true
-          });
-        }
-      }, "Alert"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(sweetalert2_react__WEBPACK_IMPORTED_MODULE_9___default.a, {
-        show: this.state.showSuccess // title="Demo"
-        ,
-        type: "success",
-        confirmButtonColor: "#2167ac",
-        animation: "true",
-        text: this.state.successMessage,
-        onConfirm: function onConfirm() {
-          return _this6.setState({
-            showSuccess: false
-          });
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "sweet_alert2",
-        style: {
-          display: "none"
-        },
-        onClick: function onClick() {
-          return _this6.setState({
-            showError: true
-          });
-        }
-      }, "Alert"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(sweetalert2_react__WEBPACK_IMPORTED_MODULE_9___default.a, {
-        show: this.state.showError // title="Demo"
-        ,
-        type: "warning",
-        confirmButtonColor: "#2167ac",
-        animation: "true",
-        text: this.state.errorMessage,
-        onConfirm: function onConfirm() {
-          return _this6.setState({
-            showError: false
-          });
-        }
-      }));
+        className: "app flex-row align-items-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+        className: "justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        md: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "clearfix"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "float-left display-3 mr-4"
+      }, "404"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "pt-3"
+      }, "Oops! You're lost."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-muted float-left"
+      }, "The page you are looking for was not found.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
+        className: "input-prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-search"
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+        size: "16",
+        type: "text",
+        placeholder: "What are you looking for?"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        color: "info"
+      }, "Search")))))));
     }
   }]);
 
-  return PatientCart;
+  return Page404;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (PatientCart);
+/* harmony default export */ __webpack_exports__["default"] = (Page404);
 
 /***/ })
 

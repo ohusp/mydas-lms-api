@@ -1,16 +1,9 @@
 import React, { Component, useState } from 'react';
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {createHashHistory} from 'history';
 // import axios from 'axios';
 import axios, { post } from 'axios';
-import $ from "jquery";
-import Pagination from "react-js-pagination";
-import {Link} from 'react-router-dom';
-
-import { ExternalLink } from 'react-external-link';
 import SweetAlert from 'sweetalert2-react';
-import TimePicker from 'react-time-picker';
 
 import { PayPalButton } from "react-paypal-button-v2";
 
@@ -57,44 +50,12 @@ class PatientCart extends Component {
   constructor(props) {
     super(props);
     // ////////////////MODAL
-    // this.togglePrimary    = this.togglePrimary.bind(this);
-    // this.toggleViewPort = this.toggleViewPort.bind(this);
-    // this.toggleViewAppointments = this.toggleViewAppointments.bind(this);
-    // this.toggleMakePayment      = this.toggleMakePayment.bind(this);
-    // this.toggleEnterReport = this.toggleEnterReport.bind(this);
 
-    // bing toggle functions and values
-    // this.toggle = this.toggle.bind(this);
-    // this.toggle_identification    = this.toggle_identification.bind(this);
-    // this.toggle_app_instructions  = this.toggle_app_instructions.bind(this);
-
-    // this.onChangeDate     =this.onChangeDate.bind(this);
-    // this.onChangeTime     =this.onChangeTime.bind(this);
-    // this.onChangeSubject  =this.onChangeSubject.bind(this);
-    // this.onChangeMessage  =this.onChangeMessage.bind(this);
-    // this.onChangeAllergiesUpdate            =this.onChangeAllergiesUpdate.bind(this);
-    // this.onChangeBloodGroupUpdate           =this.onChangeBloodGroupUpdate.bind(this);
-    // this.onChangeUnderlyingConditionsUpdate =this.onChangeUnderlyingConditionsUpdate.bind(this);
-    // this.onChangeFamilyMedicalHistoryUpdate =this.onChangeFamilyMedicalHistoryUpdate.bind(this);
-    // this.onChangeHypertensiveUpdate         =this.onChangeHypertensiveUpdate.bind(this);
-    // this.onChangeDiabeticUpdate             =this.onChangeDiabeticUpdate.bind(this);
-    // this.onChangePrescriptionUpdate         =this.onChangePrescriptionUpdate.bind(this);
-    // this.onChangeLabTestUpdate              =this.onChangeLabTestUpdate.bind(this);
-    // this.onChangeNoteUpdate                 =this.onChangeNoteUpdate.bind(this);
-
-    // this.onChangeMessageBox  = this.onChangeMessageBox.bind(this);
-
-    // this.sendMessage = this.sendMessage.bind(this);
 
     // /////////////////////////////////////////////////////////////////
 
     // this.onSubmitBookAppointment = this.onSubmitBookAppointment.bind(this);
     this.onCheckout = this.onCheckout.bind(this);
-
-    // medical record tab toggle
-    // this.toggleMedRecTab = this.toggleMedRecTab.bind(this);
-    // this.onChangeDate             =this.onChangeDate.bind(this);
-    // this.onChangeTime             =this.onChangeTime.bind(this);
 
     this.state = {
       token: localStorage["appState"]
@@ -144,36 +105,6 @@ class PatientCart extends Component {
     // this.handlePageChange=this.handlePageChange.bind(this);
 
   }
-
-  // onChange = time => this.setState({ time })
-
-  // medical record tab toggle
-  // toggleMedRecTab(tab) {
-  //   if (this.state.activeTab !== tab) {
-  //     this.setState({
-  //       activeTab: tab
-  //     });
-  //   }
-  // }
-
-  // onChangeDate(e) { this.setState({ date:e.target.value  }); }
-  // onChangeTime(e) { this.setState({ time:e.target.value  }); }
-  // onChangeSubject(e) { this.setState({ subject:e.target.value  }); }
-  // onChangeMessage(e) { this.setState({ message:e.target.value  }); }
-  // onChangeAllergiesUpdate(e)      { this.setState({ allergies_update:e.target.value  }); }
-  // onChangeBloodGroupUpdate(e)     { this.setState({ blood_group_update:e.target.value  }); }
-  // onChangeUnderlyingConditionsUpdate(e)     { this.setState({ underlying_conditions_update:e.target.value  }); }
-  // onChangeFamilyMedicalHistoryUpdate(e)     { this.setState({ family_medical_history_update:e.target.value  }); }
-  // onChangeHypertensiveUpdate(e)     { this.setState({ hypertensive_update:e.target.value  }); }
-  // onChangeDiabeticUpdate(e)         { this.setState({ diabetic_update:e.target.value  }); }
-  // onChangePrescriptionUpdate(e)     { this.setState({ prescription_update:e.target.value  }); }
-  // onChangeLabTestUpdate(e)          { this.setState({ lab_test_update:e.target.value  }); }
-  // onChangeNoteUpdate(e)             { this.setState({ note_update:e.target.value  }); }
-
-
-  // onChangeDate(e)           { this.setState({ date:e.target.value  }); }
-  // onChangeTime(e)           { this.setState({ time:e.target.value  }); }
-
 
   // fetch data from db
   componentDidMount()
@@ -396,8 +327,6 @@ class PatientCart extends Component {
                               </td>
                               <td>{item.price}</td>
                               <td>{item.sub_total}</td>
-                              {/* <td>{appointment.time}</td> */}
-                              {/* <td>{this.state.status}</td> */}
                               <td>
                                 <Button size="sm" onClick={() => this.remove(item.id)} className="cammedics-btn-danger"><i className="fa fa-trash"></i> Remove</Button>
                               </td>

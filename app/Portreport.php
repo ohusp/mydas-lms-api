@@ -22,7 +22,7 @@ class Portreport extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'patient_id', 'port_id', 'patient_name', 'age', 'passport_number', 'vessel', 'arrival_from', 'observations', 'recommendations', 'name_of_officer', 'position', 'date', 'time', 'status'
+        'patient_id', 'port_id', 'patient_name', 'age', 'passport_number', 'vessel', 'arrival_from', 'observations', 'recommendations', 'name_of_officer', 'position', 'date', 'time', 'time_zone', 'status'
     ];
 
     /**

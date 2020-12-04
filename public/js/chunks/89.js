@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[89],{
 
-/***/ "./resources/coreui/src/views/DocProfile/DocProfile.js":
-/*!*************************************************************!*\
-  !*** ./resources/coreui/src/views/DocProfile/DocProfile.js ***!
-  \*************************************************************/
+/***/ "./resources/coreui/src/views/Chat/Chat.js":
+/*!*************************************************!*\
+  !*** ./resources/coreui/src/views/Chat/Chat.js ***!
+  \*************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -20,10 +20,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-js-pagination */ "./node_modules/react-js-pagination/dist/Pagination.js");
-/* harmony import */ var react_js_pagination__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_js_pagination__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var sweetalert2_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! sweetalert2-react */ "./node_modules/sweetalert2-react/dist/sweetalert-react.min.js");
-/* harmony import */ var sweetalert2_react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var react_chat_elements_dist_main_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-chat-elements/dist/main.css */ "./node_modules/react-chat-elements/dist/main.css");
+/* harmony import */ var react_chat_elements_dist_main_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_chat_elements_dist_main_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_chat_elements__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-chat-elements */ "./node_modules/react-chat-elements/dist/main.js");
+/* harmony import */ var react_chat_elements__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_chat_elements__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 function _typeof(obj) {
   "@babel/helpers - typeof";
@@ -163,71 +163,26 @@ function _getPrototypeOf(o) {
  // import axios from 'axios';
 
 
+ // RCE CSS
+
+ // MessageBox component
 
 
 
 
 var hashHistory = Object(history__WEBPACK_IMPORTED_MODULE_3__["createHashHistory"])();
 
-var DocProfile = /*#__PURE__*/function (_Component) {
-  _inherits(DocProfile, _Component);
+var Chat = /*#__PURE__*/function (_Component) {
+  _inherits(Chat, _Component);
 
-  var _super = _createSuper(DocProfile);
+  var _super = _createSuper(Chat);
 
-  function DocProfile(props) {
-    var _this$state;
-
+  function Chat(props) {
     var _this;
 
-    _classCallCheck(this, DocProfile);
+    _classCallCheck(this, Chat);
 
     _this = _super.call(this, props); // ////////////////MODAL
-
-    _this.getCountries = function () {
-      // ///////////////////// get countries /////////////////////////////////////
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/get/countries?token=".concat(_this.state.token)).then(function (response) {
-        // console.log("COUNTRIES");
-        // console.log(response);
-        return response;
-      }).then(function (json) {
-        if (json.data.success) {
-          // console.log("All Rise");
-          _this.setState({
-            countries: json.data.data
-          }, _this.getMedicalRecords);
-        } else {}
-
-        ;
-      })["catch"](function (error) {// redirect user to previous page if user does not have autorization to the page
-        // hashHistory.push('/premontessori');
-        // console.error(`An Error Occuredd! ${error}`);
-      });
-    };
-
-    _this.getMedicalRecords = function () {
-      // //////////////////// get shared medical records /////////////////////////////////
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/SharedMedRecDoc/list/" + _this.state.id + "?token=".concat(_this.state.token)).then(function (response) {
-        // console.log("ROI Cartoon");
-        // console.log(response);
-        return response;
-      }).then(function (json) {
-        if (json.data.success) {
-          _this.setState({
-            medical_share_list: json.data.data.data,
-            itemsCountPerPage: json.data.data.per_page,
-            totalItemsCount: json.data.data.total,
-            activePage: json.data.data.current_page
-          });
-        } else {
-          _this.setState({}, _this.checkGender);
-        }
-
-        ;
-      })["catch"](function (error) {
-        // redirect user to previous page if user does not have autorization to the page
-        hashHistory.push('/premontessori'); // console.error(`An Error Occuredd! ${error}`);
-      });
-    };
 
     _this.handleChange = function (date) {
       _this.setState({
@@ -235,212 +190,230 @@ var DocProfile = /*#__PURE__*/function (_Component) {
       });
     };
 
-    _this.checkGender = function () {
-      // console.log(this.state.gender)
-      // if they select others, display field else check if its displayed hide it.
-      if (_this.state.gender == 4) {
-        _this.setState({
-          show: !_this.state.show
-        });
-      } else {
-        if (_this.state.show == true) {
-          _this.setState({
-            show: !_this.state.show
-          });
-        }
-      }
-    };
-
-    _this.imageHandlerProfilePicture = function (e) {
-      var reader = new FileReader();
-
-      reader.onload = function () {
-        if (reader.readyState === 2) {
-          _this.setState({
-            profile_picture: reader.result
-          });
-        }
-      };
-
-      reader.readAsDataURL(e.target.files[0]);
-    };
-
     _this.togglePrimary = _this.togglePrimary.bind(_assertThisInitialized(_this)); // bing toggle functions and values
 
     _this.toggle = _this.toggle.bind(_assertThisInitialized(_this));
-    _this.toggleBank = _this.toggleBank.bind(_assertThisInitialized(_this));
     _this.toggle_identification = _this.toggle_identification.bind(_assertThisInitialized(_this));
-    _this.toggle_app_instructions = _this.toggle_app_instructions.bind(_assertThisInitialized(_this));
-    _this.toggle_med_certificate = _this.toggle_med_certificate.bind(_assertThisInitialized(_this)); // bind input values on change
+    _this.toggle_app_instructions = _this.toggle_app_instructions.bind(_assertThisInitialized(_this)); // bind input values on change
+    // this.onChangeFirstName    =this.onChangeFirstName.bind(this);
+    // this.onChangeLastName     =this.onChangeLastName.bind(this);
+    // this.onChangeMiddleName   =this.onChangeMiddleName.bind(this);
+    // this.onChangeEmail        =this.onChangeEmail.bind(this);
 
-    _this.onChangeFirstName = _this.onChangeFirstName.bind(_assertThisInitialized(_this));
-    _this.onChangeLastName = _this.onChangeLastName.bind(_assertThisInitialized(_this));
-    _this.onChangeMiddleName = _this.onChangeMiddleName.bind(_assertThisInitialized(_this));
     _this.onChangeZipCode = _this.onChangeZipCode.bind(_assertThisInitialized(_this));
     _this.onChangeTelephone = _this.onChangeTelephone.bind(_assertThisInitialized(_this));
+    _this.onChangeTitle = _this.onChangeTitle.bind(_assertThisInitialized(_this));
     _this.onChangeGender = _this.onChangeGender.bind(_assertThisInitialized(_this));
-    _this.onChangeGenderOthers = _this.onChangeGenderOthers.bind(_assertThisInitialized(_this));
     _this.onChangeDob = _this.onChangeDob.bind(_assertThisInitialized(_this));
     _this.onChangeNationality = _this.onChangeNationality.bind(_assertThisInitialized(_this));
     _this.onChangeCountryOfResidence = _this.onChangeCountryOfResidence.bind(_assertThisInitialized(_this));
     _this.onChangeDistrictProvinceState = _this.onChangeDistrictProvinceState.bind(_assertThisInitialized(_this));
-    _this.onChangeAreaOfSpecialization = _this.onChangeAreaOfSpecialization.bind(_assertThisInitialized(_this));
     _this.onChangeContactAddress = _this.onChangeContactAddress.bind(_assertThisInitialized(_this));
-    _this.onChangeAvailableOnAppointment = _this.onChangeAvailableOnAppointment.bind(_assertThisInitialized(_this));
-    _this.onChangeAvailableOnEmergency = _this.onChangeAvailableOnEmergency.bind(_assertThisInitialized(_this));
-    _this.onChangeAvailableByTime = _this.onChangeAvailableByTime.bind(_assertThisInitialized(_this)); // ///////////////////////////////////////////////////////////////////////////////  
+    _this.onChangeHeight = _this.onChangeHeight.bind(_assertThisInitialized(_this));
+    _this.onChangeWeight = _this.onChangeWeight.bind(_assertThisInitialized(_this)); // ////////////////////// DISABILITY //////////////////////////////////////////////////
 
-    _this.onChangeConsultationFee = _this.onChangeConsultationFee.bind(_assertThisInitialized(_this));
-    _this.onChangeBankName = _this.onChangeBankName.bind(_assertThisInitialized(_this));
-    _this.onChangeBankAccountName = _this.onChangeBankAccountName.bind(_assertThisInitialized(_this));
-    _this.onChangeBankAccountNumber = _this.onChangeBankAccountNumber.bind(_assertThisInitialized(_this)); // /////////////////////////////////////////////////////////////////
-    // //////////// //////////////////////////////
+    _this.onChangeDisabilityNone = _this.onChangeDisabilityNone.bind(_assertThisInitialized(_this));
+    _this.onChangeDisabilityHearing = _this.onChangeDisabilityHearing.bind(_assertThisInitialized(_this));
+    _this.onChangeDisabilityMobility = _this.onChangeDisabilityMobility.bind(_assertThisInitialized(_this));
+    _this.onChangeDisabilitySight = _this.onChangeDisabilitySight.bind(_assertThisInitialized(_this));
+    _this.onChangeDisabilityLearning = _this.onChangeDisabilityLearning.bind(_assertThisInitialized(_this));
+    _this.onChangeDisabilityOthers = _this.onChangeDisabilityOthers.bind(_assertThisInitialized(_this)); // ////////////////////////////////////////////////////////////////////////////////////
 
-    _this.onChangeProfilePicture = _this.onChangeProfilePicture.bind(_assertThisInitialized(_this));
-    _this.onChangeMedicalCertificate = _this.onChangeMedicalCertificate.bind(_assertThisInitialized(_this));
-    _this.onChangeMedicalLicense = _this.onChangeMedicalLicense.bind(_assertThisInitialized(_this));
+    _this.onChangeNextKinName = _this.onChangeNextKinName.bind(_assertThisInitialized(_this));
+    _this.onChangeNextKinRelationship = _this.onChangeNextKinRelationship.bind(_assertThisInitialized(_this));
+    _this.onChangeNextKinOccupation = _this.onChangeNextKinOccupation.bind(_assertThisInitialized(_this));
+    _this.onChangeNextKinPhone = _this.onChangeNextKinPhone.bind(_assertThisInitialized(_this));
+    _this.onChangeNextKinEmail = _this.onChangeNextKinEmail.bind(_assertThisInitialized(_this)); // //////////// IDENTITY //////////////////////////////
+
+    _this.onChangeProfilePicture = _this.onChangeProfilePicture.bind(_assertThisInitialized(_this)); // this.onChangePassportPhotograph         =this.onChangePassportPhotograph.bind(this);
+    // this.onChangeTypeOfIdentification       =this.onChangeTypeOfIdentification.bind(this);
+    // this.onChangeIdPassportNumber           =this.onChangeIdPassportNumber.bind(this);
+    // this.onChangeIdPassportUpload         =this.onChangeIdPassportUpload.bind(this);
+    // ///////////////////////////////////////////////////////
+
+    _this.onChangeProgrammeFirstChoice = _this.onChangeProgrammeFirstChoice.bind(_assertThisInitialized(_this));
+    _this.onChangeProgrammeSecondChoice = _this.onChangeProgrammeSecondChoice.bind(_assertThisInitialized(_this));
+    _this.onChangeProgrammeThirdChoice = _this.onChangeProgrammeThirdChoice.bind(_assertThisInitialized(_this));
+    _this.onChangeAcademicSession = _this.onChangeAcademicSession.bind(_assertThisInitialized(_this));
+    _this.onChangeAdmissionIntake = _this.onChangeAdmissionIntake.bind(_assertThisInitialized(_this));
+    _this.onChangeStudyMode = _this.onChangeStudyMode.bind(_assertThisInitialized(_this));
+    _this.onChangePreviousResultTranscript = _this.onChangePreviousResultTranscript.bind(_assertThisInitialized(_this)); // ///////////////////////////////////////////////////////
+    // /////////////////// MEDICAL HISTORY /////////////////////////////////////
+
+    _this.onChangeMedicationsCurrentlyUsing = _this.onChangeMedicationsCurrentlyUsing.bind(_assertThisInitialized(_this));
+    _this.onChangeAllergies = _this.onChangeAllergies.bind(_assertThisInitialized(_this));
+    _this.onChangeBloodGroup = _this.onChangeBloodGroup.bind(_assertThisInitialized(_this));
+    _this.onChangeUnderlyingConditions = _this.onChangeUnderlyingConditions.bind(_assertThisInitialized(_this));
+    _this.onChangeFamilyMedicalHistory = _this.onChangeFamilyMedicalHistory.bind(_assertThisInitialized(_this));
+    _this.onChangeHypertensive = _this.onChangeHypertensive.bind(_assertThisInitialized(_this));
+    _this.onChangeDiabetic = _this.onChangeDiabetic.bind(_assertThisInitialized(_this)); // ////////////////// SHARE MEDICAL HISTORY //////////////////////////////
+
+    _this.onChangeShareMedHistory = _this.onChangeShareMedHistory.bind(_assertThisInitialized(_this));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
-    _this.onSubmitBankAccountDetails = _this.onSubmitBankAccountDetails.bind(_assertThisInitialized(_this)); // ///////////// IDENTITY SUBMISSION /////////////////
+    _this.onSubmitMedicalHistory = _this.onSubmitMedicalHistory.bind(_assertThisInitialized(_this));
+    _this.onSubmitShareMedHistory = _this.onSubmitShareMedHistory.bind(_assertThisInitialized(_this)); // ///////////// IDENTITY SUBMISSION /////////////////
 
-    _this.onSubmitProfilePicture = _this.onSubmitProfilePicture.bind(_assertThisInitialized(_this));
-    _this.onSubmitMedicalCertificate = _this.onSubmitMedicalCertificate.bind(_assertThisInitialized(_this));
-    _this.onSubmitMedicalLicense = _this.onSubmitMedicalLicense.bind(_assertThisInitialized(_this)); // this.fileUploadIdPassport = this.fileUploadIdPassport.bind(this)
+    _this.onSubmitProfilePicture = _this.onSubmitProfilePicture.bind(_assertThisInitialized(_this)); // this.fileUploadIdPassport = this.fileUploadIdPassport.bind(this)
     // this.idPassportDetails = this.idPassportDetails.bind(this)
-    // //////////////// For Pagination //////////////////////////////
 
-    _this.handlePageChange = _this.handlePageChange.bind(_assertThisInitialized(_this));
-    _this.state = (_this$state = {
+    _this.state = _defineProperty({
       token: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.auth_token : "",
       id: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.id : "",
-      first_name: "",
-      last_name: "",
-      middle_name: "",
-      username: "",
-      email: "",
+      // first_name: "",
+      // last_name: "",
+      // middle_name: "",
+      // email: "",
       zip_code: "",
       telephone: "",
+      title: "",
       gender: "",
-      gender_others: "",
       dob: "",
       nationality: "",
       country_of_residence: "",
       district_province_state: "",
       contact_address: "",
-      area_of_specialization: "",
-      available_by_time: "",
-      available_on_appointment: "",
-      available_on_emergency: "",
-      // ////////////////////////////////////////////////////
-      consultation_fee: "",
-      bank_name: "",
-      bank_account_name: "",
-      bank_account_number: "",
+      height: "",
+      weight: "",
+      // ///////// DISABILITY /////////////////////////////////////////
+      disability_none: "",
+      disability_hearing: "",
+      disability_mobility: "",
+      disability_sight: "",
+      disability_learning: "",
+      disability_others: "",
       // /////////////////////////////////////////////////////////////
+      next_of_kin_name: "",
+      next_of_kin_relationship: "",
+      next_of_kin_occupation: "",
+      next_of_kin_phone: "",
+      next_of_kin_email: "",
+      // /////////// IDENTITY ////////////////////////////////
+      passport_photograph: "",
+      type_of_identification: "",
+      id_passport_number: "",
       profile_picture: null,
-      medical_certificate: null,
-      medical_license: null,
       // ////////////////////////////////////////////////////
+      programme_first_choice: "",
+      programme_second_choice: "",
+      programme_third_choice: "",
+      academic_session: "",
+      admission_intake: "",
+      study_mode: "",
+      previous_result_transcript: "",
+      // ////////////////////////////////////////////
+      medications_currently_using: "",
+      allergies: "",
+      blood_group: "",
+      underlying_conditions: "",
+      family_medical_history: "",
+      hypertensive: "",
+      diabetic: "",
       status: "",
       created_at: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.created_at : "",
       user_type: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.user_type : "",
       collapse: false,
-      collapseBank: false,
       collapse_identification: false,
       collapse_app_instructions: false,
-      collapse_med_certificate: false,
       fadeIn: true,
       timeout: 300,
       // //////////////////////////////////////////////////
       avatar: __webpack_require__(/*! ./../../images/avatars/0.jpg */ "./resources/coreui/src/images/avatars/0.jpg"),
-      metaValue: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+      metaValue: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?",
       startDate: new Date(),
       // //////////////////modal
       primary: false,
       share_med_history: "",
+      // profile_pictureimageUrl: "/images/cam-medics-logo.png"
       // ////////////////////////////////////////////////////
-      medical_share_list: [],
+      applications_list: [],
       number: 1,
       activePage: 1,
       itemsCountPerPage: 1,
       totalItemsCount: 1,
       pageRangeDisplayed: 3,
       currentPage2: ''
-    }, _defineProperty(_this$state, "status", '1'), _defineProperty(_this$state, "showSuccess", false), _defineProperty(_this$state, "showError", false), _defineProperty(_this$state, "successMessage", "Successful"), _defineProperty(_this$state, "errorMessage", "Failed"), _defineProperty(_this$state, "med_cert_uploaded", ""), _defineProperty(_this$state, "med_lic_uploaded", ""), _defineProperty(_this$state, "show", false), _defineProperty(_this$state, "countries", []), _this$state);
+    }, "status", '1');
     return _this;
   }
 
-  _createClass(DocProfile, [{
+  _createClass(Chat, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/doc/get/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
-        // console.log("It came back");
-        // console.log(response);
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("http://localhost:8000/api/user/get/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+        console.log("It came back");
+        console.log(response);
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          // console.log("It came back 2");
-          // console.log(json.data.data);
-          // console.log(json.data.data.bank_name);
-          // alert(json.data.data.medical_certificate);
+          console.log("It came back 2");
+
           _this2.setState({
-            first_name: json.data.data.first_name,
-            last_name: json.data.data.last_name,
-            middle_name: json.data.data.middle_name,
-            username: json.data.data.username,
+            title: json.data.data.title,
+            // first_name: json.data.data.first_name,
+            // last_name: json.data.data.last_name,
+            // middle_name: json.data.data.middle_name,
             email: json.data.data.email,
             zip_code: json.data.data.zip_code,
             telephone: json.data.data.telephone,
             gender: json.data.data.gender,
-            gender_others: json.data.data.gender_others,
             dob: json.data.data.dob,
             nationality: json.data.data.nationality,
             country_of_residence: json.data.data.country_of_residence,
             district_province_state: json.data.data.district_province_state,
             contact_address: json.data.data.contact_address,
-            area_of_specialization: json.data.data.area_of_specialization,
-            available_on_appointment: json.data.data.available_on_appointment,
-            available_on_emergency: json.data.data.available_on_emergency,
-            available_by_time: json.data.data.available_by_time,
+            height: json.data.data.height,
+            weight: json.data.data.weight,
+            // ///////// DISABILITY /////////////////////////////////////////
+            disability_none: json.data.data.disability_none,
+            disability_hearing: json.data.data.disability_hearing,
+            disability_mobility: json.data.data.disability_mobility,
+            disability_sight: json.data.data.disability_sight,
+            disability_learning: json.data.data.disability_learning,
+            disability_others: json.data.data.disability_others,
+            /////////////////////////////////////////////
+            next_of_kin_name: json.data.data.next_kin_name,
+            next_of_kin_relationship: json.data.data.next_kin_relationship,
+            next_of_kin_occupation: json.data.data.next_kin_occupation,
+            next_of_kin_phone: json.data.data.next_kin_phone,
+            next_of_kin_email: json.data.data.next_kin_email,
+            // /////////////////////////////////////////////
+            // //////////////////////////////////////////////////////
+            medications_currently_using: json.data.data.med_currently_using,
+            allergies: json.data.data.med_allergies,
+            blood_group: json.data.data.med_blood_group,
+            underlying_conditions: json.data.data.med_underlying_conditions,
+            family_medical_history: json.data.data.med_family_medical_history,
+            hypertensive: json.data.data.med_hypertensive,
+            diabetic: json.data.data.med_diabetic,
             profile_picture: json.data.data.profile_picture,
-            medical_certificate: json.data.data.medical_certificate,
-            medical_license: json.data.data.medical_license,
-            // ///////////////////////////////////////////////////////
-            consultation_fee: json.data.data.consultation_fee,
-            bank_name: json.data.data.bank_name,
-            bank_account_name: json.data.data.bank_account_name,
-            bank_account_number: json.data.data.bank_account_number,
-            status: json.data.data.status // check gender if 4(others), display the other value
-
-          }, _this2.getCountries);
-        } else {}
-
-        ;
-      })["catch"](function (error) {// redirect user to previous page if user does not have autorization to the page
-        // hashHistory.push('/premontessori');
-        // console.error(`An Error Occuredd! ${error}`);
-      });
-    }
-  }, {
-    key: "handlePageChange",
-    // Pagination handler
-    value: function handlePageChange(pageNumber) {
-      var _this3 = this; // console.log(`active page is ${pageNumber}`);
-      // this.setState({activePage: pageNumber});
-
-
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/SharedMedRecDoc/list/" + this.state.id + "?token=".concat(this.state.token, "&page=") + pageNumber).then(function (response) {
-        return response;
-      }).then(function (json) {
-        if (json.data.success) {
-          _this3.setState({
-            medical_share_list: json.data.data.data,
-            itemsCountPerPage: json.data.data.per_page,
-            totalItemsCount: json.data.data.total,
-            activePage: json.data.data.current_page
+            status: json.data.data.status
           });
         } else alert("Login Failed!");
+
+        axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("http://localhost:8000/api/products/list?token=".concat(_this2.state.token)).then(function (response) {
+          console.log("ROI Cartoon");
+          console.log(response);
+          return response;
+        }).then(function (json) {
+          if (json.data.success) {
+            _this2.setState({
+              applications_list: json.data.data.data,
+              itemsCountPerPage: json.data.data.per_page,
+              totalItemsCount: json.data.data.total,
+              activePage: json.data.data.current_page
+            });
+          } else alert("Login Failed!");
+        })["catch"](function (error) {
+          // redirect user to previous page if user does not have autorization to the page
+          hashHistory.push('/premontessori');
+          console.error("An Error Occuredd! ".concat(error));
+        });
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
       });
     } // For datepicker
 
@@ -451,13 +424,6 @@ var DocProfile = /*#__PURE__*/function (_Component) {
       this.setState({
         collapse_app_instructions: !this.state.collapse_app_instructions
       });
-    }
-  }, {
-    key: "toggle_med_certificate",
-    value: function toggle_med_certificate() {
-      this.setState({
-        collapse_med_certificate: !this.state.collapse_med_certificate
-      });
     } // toggle collapse and expand personal data
 
   }, {
@@ -465,13 +431,6 @@ var DocProfile = /*#__PURE__*/function (_Component) {
     value: function toggle() {
       this.setState({
         collapse: !this.state.collapse
-      });
-    }
-  }, {
-    key: "toggleBank",
-    value: function toggleBank() {
-      this.setState({
-        collapseBank: !this.state.collapseBank
       });
     } // toggle collapse and expand identification
 
@@ -490,33 +449,16 @@ var DocProfile = /*#__PURE__*/function (_Component) {
         primary: !this.state.primary
       });
     } // ON Change of first name input
+    // onChangeFirstName(e)  { this.setState({ first_name:e.target.value }); }
+    // onChangeLastName(e)   { this.setState({ last_name:e.target.value  }); }
+    // onChangeLastName(e)   { this.setState({ last_name:e.target.value  }); }
+    // onChangeMiddleName(e) { this.setState({ middle_name:e.target.value  }); }
 
   }, {
-    key: "onChangeFirstName",
-    value: function onChangeFirstName(e) {
+    key: "onChangeEmail",
+    value: function onChangeEmail(e) {
       this.setState({
-        first_name: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeLastName",
-    value: function onChangeLastName(e) {
-      this.setState({
-        last_name: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeLastName",
-    value: function onChangeLastName(e) {
-      this.setState({
-        last_name: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeMiddleName",
-    value: function onChangeMiddleName(e) {
-      this.setState({
-        middle_name: e.target.value
+        email: e.target.value
       });
     }
   }, {
@@ -534,18 +476,17 @@ var DocProfile = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "onChangeTitle",
+    value: function onChangeTitle(e) {
+      this.setState({
+        title: e.target.value
+      });
+    }
+  }, {
     key: "onChangeGender",
     value: function onChangeGender(e) {
       this.setState({
         gender: e.target.value
-      }, this.checkGender);
-    } // check the gender selected. if others display field for others gender
-
-  }, {
-    key: "onChangeGenderOthers",
-    value: function onChangeGenderOthers(e) {
-      this.setState({
-        gender_others: e.target.value
       });
     }
   }, {
@@ -577,13 +518,6 @@ var DocProfile = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
-    key: "onChangeAreaOfSpecialization",
-    value: function onChangeAreaOfSpecialization(e) {
-      this.setState({
-        area_of_specialization: e.target.value
-      });
-    }
-  }, {
     key: "onChangeContactAddress",
     value: function onChangeContactAddress(e) {
       this.setState({
@@ -591,316 +525,386 @@ var DocProfile = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
-    key: "onChangeAvailableOnAppointment",
-    value: function onChangeAvailableOnAppointment(e) {
+    key: "onChangeHeight",
+    value: function onChangeHeight(e) {
       this.setState({
-        available_on_appointment: !this.state.available_on_appointment
+        height: e.target.value
       });
     }
   }, {
-    key: "onChangeAvailableOnEmergency",
-    value: function onChangeAvailableOnEmergency(e) {
+    key: "onChangeWeight",
+    value: function onChangeWeight(e) {
       this.setState({
-        available_on_emergency: !this.state.available_on_emergency
+        weight: e.target.value
       });
-    }
-  }, {
-    key: "onChangeAvailableByTime",
-    value: function onChangeAvailableByTime(e) {
-      this.setState({
-        available_by_time: e.target.value
-      });
-    } // ////////////////////////////////////////////////////////////////////////////////////////////////////
+    } // //////////////////////// DISABILITY /////////////////////////////////////////////////////////////
 
   }, {
-    key: "onChangeConsultationFee",
-    value: function onChangeConsultationFee(e) {
+    key: "onChangeDisabilityNone",
+    value: function onChangeDisabilityNone(e) {
       this.setState({
-        consultation_fee: e.target.value
+        disability_none: !this.state.disability_none
       });
     }
   }, {
-    key: "onChangeBankName",
-    value: function onChangeBankName(e) {
+    key: "onChangeDisabilityHearing",
+    value: function onChangeDisabilityHearing(e) {
       this.setState({
-        bank_name: e.target.value
+        disability_hearing: !this.state.disability_hearing
       });
     }
   }, {
-    key: "onChangeBankAccountName",
-    value: function onChangeBankAccountName(e) {
+    key: "onChangeDisabilityMobility",
+    value: function onChangeDisabilityMobility(e) {
       this.setState({
-        bank_account_name: e.target.value
+        disability_mobility: !this.state.disability_mobility
       });
     }
   }, {
-    key: "onChangeBankAccountNumber",
-    value: function onChangeBankAccountNumber(e) {
+    key: "onChangeDisabilitySight",
+    value: function onChangeDisabilitySight(e) {
       this.setState({
-        bank_account_number: e.target.value
+        disability_sight: !this.state.disability_sight
+      });
+    }
+  }, {
+    key: "onChangeDisabilityLearning",
+    value: function onChangeDisabilityLearning(e) {
+      this.setState({
+        disability_learning: !this.state.disability_learning
+      });
+    }
+  }, {
+    key: "onChangeDisabilityOthers",
+    value: function onChangeDisabilityOthers(e) {
+      this.setState({
+        disability_others: !this.state.disability_others
       });
     } ///////////////////////////////////////////////////////////////////////////////////////////////////
-    // ///////////////// PROFILE PICTURE ///////////////////////////////
+
+  }, {
+    key: "onChangeNextKinName",
+    value: function onChangeNextKinName(e) {
+      this.setState({
+        next_of_kin_name: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeNextKinRelationship",
+    value: function onChangeNextKinRelationship(e) {
+      this.setState({
+        next_of_kin_relationship: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeNextKinOccupation",
+    value: function onChangeNextKinOccupation(e) {
+      this.setState({
+        next_of_kin_occupation: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeNextKinPhone",
+    value: function onChangeNextKinPhone(e) {
+      this.setState({
+        next_of_kin_phone: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeNextKinEmail",
+    value: function onChangeNextKinEmail(e) {
+      this.setState({
+        next_of_kin_email: e.target.value
+      });
+    } // onChangePassportPhotograph(e)         { this.setState({ passport_photograph:e.target.value  }); }
+    // ///////////////// IDENTITY ///////////////////////////////
+    // pass in the file into state
+
+  }, {
+    key: "onChangeProfilePicture",
+    value: function onChangeProfilePicture(e) {
+      var _this3 = this;
+
+      this.setState({
+        profile_picture: e.target.files[0]
+      }); // set a timwer and call the submit profile picture 
+
+      var timeout = setTimeout(function () {
+        // call to save images
+        _this3.onSubmitProfilePicture(); // call to load contents again so the image can change
+
+
+        _this3.componentDidMount();
+      }, 1000); // },[]);
+      // this.onSubmitProfilePicture()
+    } // ///////////////////////////////////////////////////////////
+
+  }, {
+    key: "onChangeProgrammeFirstChoice",
+    value: function onChangeProgrammeFirstChoice(e) {
+      this.setState({
+        programme_first_choice: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeProgrammeSecondChoice",
+    value: function onChangeProgrammeSecondChoice(e) {
+      this.setState({
+        programme_second_choice: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeProgrammeThirdChoice",
+    value: function onChangeProgrammeThirdChoice(e) {
+      this.setState({
+        programme_third_choice: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeAcademicSession",
+    value: function onChangeAcademicSession(e) {
+      this.setState({
+        academic_session: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeAdmissionIntake",
+    value: function onChangeAdmissionIntake(e) {
+      this.setState({
+        admission_intake: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeStudyMode",
+    value: function onChangeStudyMode(e) {
+      this.setState({
+        study_mode: e.target.value
+      });
+    }
+  }, {
+    key: "onChangePreviousResultTranscript",
+    value: function onChangePreviousResultTranscript(e) {
+      this.setState({
+        previous_result_transcript: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeStatus",
+    value: function onChangeStatus(e) {
+      this.setState({
+        status: e.target.value
+      });
+    } // ////////////////////////////////////////////////////////////
+
+  }, {
+    key: "onChangeMedicationsCurrentlyUsing",
+    value: function onChangeMedicationsCurrentlyUsing(e) {
+      this.setState({
+        medications_currently_using: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeAllergies",
+    value: function onChangeAllergies(e) {
+      this.setState({
+        allergies: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeBloodGroup",
+    value: function onChangeBloodGroup(e) {
+      this.setState({
+        blood_group: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeUnderlyingConditions",
+    value: function onChangeUnderlyingConditions(e) {
+      this.setState({
+        underlying_conditions: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeFamilyMedicalHistory",
+    value: function onChangeFamilyMedicalHistory(e) {
+      this.setState({
+        family_medical_history: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeHypertensive",
+    value: function onChangeHypertensive(e) {
+      this.setState({
+        hypertensive: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeDiabetic",
+    value: function onChangeDiabetic(e) {
+      this.setState({
+        diabetic: e.target.value
+      });
+    } // //////////////////// SHARE MED HISTORY /////////////////////////
+
+  }, {
+    key: "onChangeShareMedHistory",
+    value: function onChangeShareMedHistory(e) {
+      this.setState({
+        share_med_history: e.target.value
+      });
+    }
+  }, {
+    key: "onSubmit",
+    value: function onSubmit(e) {
+      var _this4 = this;
+
+      e.preventDefault();
+      var application_data = {
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        middle_name: this.state.middle_name,
+        email: this.state.email,
+        zip_code: this.state.zip_code,
+        telephone: this.state.telephone,
+        title: this.state.title,
+        gender: this.state.gender,
+        dob: this.state.dob,
+        nationality: this.state.nationality,
+        country_of_residence: this.state.country_of_residence,
+        district_province_state: this.state.district_province_state,
+        contact_address: this.state.contact_address,
+        height: this.state.height,
+        weight: this.state.weight,
+        disability_none: this.state.disability_none,
+        disability_hearing: this.state.disability_hearing,
+        disability_mobility: this.state.disability_mobility,
+        disability_sight: this.state.disability_sight,
+        disability_learning: this.state.disability_learning,
+        disability_others: this.state.disability_others,
+        next_kin_name: this.state.next_of_kin_name,
+        next_kin_relationship: this.state.next_of_kin_relationship,
+        next_kin_occupation: this.state.next_of_kin_occupation,
+        next_kin_phone: this.state.next_of_kin_phone,
+        next_kin_email: this.state.next_of_kin_email
+      };
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/update/" + this.state.id + "?token=".concat(this.state.token), application_data).then(function (response) {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this4.setState({// applications_list: json.data.data.data,
+          });
+        } else alert("Login Failed!");
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    }
+  }, {
+    key: "onSubmitMedicalHistory",
+    value: function onSubmitMedicalHistory(e) {
+      var _this5 = this;
+
+      e.preventDefault();
+      var application_data = {
+        med_currently_using: this.state.medications_currently_using,
+        med_allergies: this.state.allergies,
+        med_blood_group: this.state.blood_group,
+        med_underlying_conditions: this.state.underlying_conditions,
+        med_family_medical_history: this.state.family_medical_history,
+        med_hypertensive: this.state.hypertensive,
+        med_diabetic: this.state.diabetic
+      };
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/updateMed/" + this.state.id + "?token=".concat(this.state.token), application_data).then(function (response) {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this5.setState({// applications_list: json.data.data.data,
+          });
+        } else alert("Login Failed!");
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    }
+  }, {
+    key: "onSubmitShareMedHistory",
+    value: function onSubmitShareMedHistory(e) {
+      var _this6 = this;
+
+      e.preventDefault();
+      var share_med_data = {
+        share_med_history: this.state.share_med_history
+      };
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("http://localhost:8000/api/user/shareMedHistory/" + this.state.id + "?token=".concat(this.state.token), share_med_data).then(function (response) {
+        console.log("ROI Cartoon");
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this6.setState({// applications_list: json.data.data.data,
+          });
+        } else alert("Login Failed!");
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    }
+  }, {
+    key: "onSubmitProfilePicture",
+    value: function onSubmitProfilePicture(e) {
+      // e.preventDefault() // Stop form submit
+      this.fileUploadProfilePicture(this.state.profile_picture).then(function (response) {
+        console.log(response.data); // Call the function to get and store passport type n id number
+        // this.idPassportDetails()
+      });
+    }
+  }, {
+    key: "fileUploadProfilePicture",
+    value: function fileUploadProfilePicture(profile_picture) {
+      var url = 'http://localhost:8000/api/user/updateProfilePicture/' + this.state.id + "?token=".concat(this.state.token);
+      var formData = new FormData();
+      formData.append('profile_picture', profile_picture);
+      var config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      };
+      return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
+    } // idPassportDetails(){
+    //   const application_data ={
+    //     type_of_identification : this.state.type_of_identification, id_passport_number : this.state.id_passport_number
+    //   }
+    //   axios.put(`http://localhost:8000/api/user/updateIdDetails/`+this.state.id+`?token=${this.state.token}`, application_data)
+    //   .then(response => {
+    //     console.log("ROI Cartoon");
+    //     console.log(response);
+    //     return response;
+    //   })
+    //   .then(json => {
+    //     if (json.data.success) {
+    //       this.setState({ 
+    //         // applications_list: json.data.data.data,
+    //       });
+    //     } else alert("Login Failed!");
+    //   })
+    //   .catch(error => {
+    //     // redirect user to previous page if user does not have autorization to the page
+    //     hashHistory.push('/premontessori');
+    //     console.error(`An Error Occuredd! ${error}`);
+    //   });
+    // }
 
   }, {
     key: "trigerFileUpload",
     value: function trigerFileUpload() {
       jquery__WEBPACK_IMPORTED_MODULE_5___default()('#profile_picture').trigger('click');
-    }
-  }, {
-    key: "onChangeProfilePicture",
-    value: function onChangeProfilePicture(e) {
-      this.setState({
-        profile_picture: e.target.files[0]
-      }, this.onSubmitProfilePicture);
-    }
-  }, {
-    key: "onSubmitProfilePicture",
-    value: function onSubmitProfilePicture(e) {
-      var _this4 = this; // e.preventDefault() // Stop form submit
-
-
-      this.fileUploadProfilePicture().then(function (response) {
-        // console.log(response.data);
-        if (response.data.success) {// this.setState({
-          //   successMessage: "Profile picture uploaded successfully",
-          //   showSuccess: true
-          // });
-        } else {// this.setState({
-            //   errorMessage: response.data.data.profile_picture,
-            //   showError: true
-            // });
-          }
-      })["catch"](function (error) {
-        _this4.setState({
-          showError: true
-        });
-      });
-    }
-  }, {
-    key: "fileUploadProfilePicture",
-    value: function fileUploadProfilePicture() {
-      var url = '/api/doc/updateprofilepicture/' + this.state.id + "?token=".concat(this.state.token);
-      var formData = new FormData();
-      formData.append('profile_picture', this.state.profile_picture);
-      var config = {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      };
-      return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
-    } // ///////////////////// MEDICAL CERTIFICATE /////////////////////////////////////////
-
-  }, {
-    key: "trigerMedicalCertificateFileUpload",
-    value: function trigerMedicalCertificateFileUpload() {
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('#medical_certificate').trigger('click');
-    }
-  }, {
-    key: "onChangeMedicalCertificate",
-    value: function onChangeMedicalCertificate(e) {
-      this.setState({
-        medical_certificate: e.target.files[0]
-      }, this.onSubmitMedicalCertificate);
-    }
-  }, {
-    key: "onSubmitMedicalCertificate",
-    value: function onSubmitMedicalCertificate(e) {
-      var _this5 = this; // e.preventDefault() // Stop form submit
-      // console.log("this.state.medical_certificate");
-      // console.log(this.state.medical_certificate);
-
-
-      this.fileUploadMedicalCertificate(this.state.medical_certificate).then(function (response) {
-        // console.log(response);
-        if (response.data.success) {
-          _this5.setState({
-            successMessage: "Medical certificate uploaded successfully",
-            showSuccess: true
-          }); // this.componentDidMount
-
-        } else {
-          _this5.setState({
-            errorMessage: response.data.data.medical_certificate,
-            showError: true
-          });
-        }
-      })["catch"](function (error) {
-        // console.log("error");
-        // console.log(error);
-        _this5.setState({
-          showError: true
-        });
-      });
-    }
-  }, {
-    key: "fileUploadMedicalCertificate",
-    value: function fileUploadMedicalCertificate(medical_certificate) {
-      var url = '/api/doc/updateMedicalCertificate/' + this.state.id + "?token=".concat(this.state.token);
-      var formData = new FormData();
-      formData.append('medical_certificate', medical_certificate);
-      var config = {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      };
-      return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
-    } // ///////////////////////  MEDICAL LICENSE  ///////////////////////////////////////////////////
-
-  }, {
-    key: "trigermedicalLicenseFileUpload",
-    value: function trigermedicalLicenseFileUpload() {
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('#medical_license').trigger('click');
-    }
-  }, {
-    key: "onChangeMedicalLicense",
-    value: function onChangeMedicalLicense(e) {
-      this.setState({
-        medical_license: e.target.files[0]
-      }, this.onSubmitMedicalLicense);
-    } // ////// Upload medical License ///////////////////////
-
-  }, {
-    key: "onSubmitMedicalLicense",
-    value: function onSubmitMedicalLicense(e) {
-      var _this6 = this; // e.preventDefault() // Stop form submit
-
-
-      this.fileUploadMedicalLicense(this.state.medical_license).then(function (response) {
-        // console.log(response.data);
-        if (response.data.success) {
-          _this6.setState({
-            successMessage: "Medical license uploaded successfully",
-            showSuccess: true
-          }); // this.componentDidMount
-
-        } else {
-          _this6.setState({
-            errorMessage: response.data.data.medical_license,
-            showError: true
-          });
-        }
-      })["catch"](function (error) {
-        _this6.setState({// showError: true
-        });
-      });
-    }
-  }, {
-    key: "fileUploadMedicalLicense",
-    value: function fileUploadMedicalLicense(medical_license) {
-      var url = '/api/doc/updateMedicalLicense/' + this.state.id + "?token=".concat(this.state.token);
-      var formData = new FormData();
-      formData.append('medical_license', medical_license);
-      var config = {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      };
-      return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
-    } // ///////////////////////////////////////////////////////////
-
-  }, {
-    key: "onSubmit",
-    value: function onSubmit(e) {
-      var _this7 = this;
-
-      e.preventDefault();
-
-      if (this.state.first_name == "" || this.state.last_name == "" || this.state.zip_code == "select" || this.state.telephone == "" || this.state.gender == "0" || this.state.dob == "" || this.state.nationality == "" || this.state.country_of_residence == "" || this.state.district_province_state == "" || this.state.contact_address == "" || this.state.area_of_specialization == "" || this.state.first_name == null || this.state.last_name == null || this.state.zip_code == null || this.state.telephone == null || this.state.gender == null || this.state.dob == null || this.state.nationality == null || this.state.country_of_residence == null || this.state.district_province_state == null || this.state.contact_address == null || this.state.area_of_specialization == null) {
-        this.setState({
-          errorMessage: "Please fill all required field",
-          showError: true
-        });
-      } else {
-        var doctor_data = {
-          first_name: this.state.first_name,
-          last_name: this.state.last_name,
-          middle_name: this.state.middle_name,
-          zip_code: this.state.zip_code,
-          telephone: this.state.telephone,
-          gender: this.state.gender,
-          gender_others: this.state.gender_others,
-          dob: this.state.dob,
-          nationality: this.state.nationality,
-          country_of_residence: this.state.country_of_residence,
-          district_province_state: this.state.district_province_state,
-          contact_address: this.state.contact_address,
-          area_of_specialization: this.state.area_of_specialization,
-          available_on_appointment: this.state.available_on_appointment,
-          available_on_emergency: this.state.available_on_emergency,
-          available_by_time: this.state.available_by_time
-        };
-        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/doc/update/" + this.state.id + "?token=".concat(this.state.token), doctor_data).then(function (response) {
-          // console.log("ROI Cartoon");
-          // console.log(response);
-          return response;
-        }).then(function (json) {
-          if (json.data.success) {
-            _this7.setState({
-              successMessage: "Profile details updated successfully",
-              showSuccess: true
-            });
-          } else {
-            _this7.setState({
-              showError: true
-            });
-          }
-        })["catch"](function (error) {
-          _this7.setState({
-            errorMessage: "Profile update failed",
-            showError: true
-          });
-        });
-      }
-    }
-  }, {
-    key: "onSubmitBankAccountDetails",
-    value: function onSubmitBankAccountDetails(e) {
-      var _this8 = this; // alert("Hello World");
-
-
-      e.preventDefault();
-
-      if (this.state.consultation_fee == "" || this.state.bank_name == "" || this.state.bank_account_name == "" || this.state.bank_account_number == "" || this.state.consultation_fee == null || this.state.bank_name == null || this.state.bank_account_name == null || this.state.bank_account_number == null) {
-        this.setState({
-          errorMessage: "Please fill all required field",
-          showError: true
-        });
-      } else {
-        var bank_details = {
-          consultation_fee: this.state.consultation_fee,
-          bank_name: this.state.bank_name,
-          bank_account_name: this.state.bank_account_name,
-          bank_account_number: this.state.bank_account_number
-        };
-        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/doc/account_details/add/" + this.state.id + "?token=".concat(this.state.token), bank_details) // axios.post(`api/products/add?token=${this.state.token}`, product_data)
-        // axios.post('api/products/add', product_data, {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': 'Bearer '+ `${this.state.token}`
-        //     },      
-        // })  
-        .then(function (response) {
-          // console.log("ROI Cartoon");
-          // console.log(response);
-          return response;
-        }).then(function (json) {
-          if (json.data.success) {
-            _this8.setState({
-              successMessage: "Account details updated successfully",
-              showSuccess: true
-            });
-          } else {
-            _this8.setState({
-              errorMessage: json.data.data,
-              showError: true
-            });
-          }
-        })["catch"](function (error) {// redirect user to previous page if user does not have autorization to the page
-          // hashHistory.push('/premontessori');
-          // console.error(`An Error Occuredd! ${error}`);
-        });
-      }
     } // onError() {
     //   this.setState({
     //     imageUrl: "/images/cam-medics-logo.png"
@@ -910,101 +914,73 @@ var DocProfile = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this9 = this;
-
-      if (this.state.available_on_appointment == "false") {
-        this.state.available_on_appointment = false;
+      // gets the state value as a string and convert to boolean
+      if (this.state.disability_none == "false") {
+        this.state.disability_none = false;
       }
 
-      if (this.state.available_on_emergency == "false") {
-        this.state.available_on_emergency = false;
+      if (this.state.disability_hearing == "false") {
+        this.state.disability_hearing = false;
       }
 
-      if (this.state.available_on_appointment == "true") {
-        this.state.available_on_appointment = true;
+      if (this.state.disability_mobility == "false") {
+        this.state.disability_mobility = false;
       }
 
-      if (this.state.available_on_emergency == "true") {
-        this.state.available_on_emergency = true;
-      } // if(this.state.medical_certificate != "" || this.state.medical_certificate != null){ 
-      //   this.state.med_cert_uploaded = "Medical certificate uploaded" 
-      // }
-      // if(this.state.medical_license != "" || this.state.medical_license != null){ 
-      //   this.state.med_lic_uploaded = "Medical license uploaded" 
-      // }
-
-
-      if (this.state && !this.state.medical_certificate) {} else {
-        this.state.med_cert_uploaded = "Medical license uploaded";
+      if (this.state.disability_sight == "false") {
+        this.state.disability_sight = false;
       }
 
-      if (this.state && !this.state.medical_license) {} else {
-        this.state.med_lic_uploaded = "Medical license uploaded";
-      } // for countries select options
-      // const {countries} = this.countries;
+      if (this.state.disability_learning == "false") {
+        this.state.disability_learning = false;
+      }
 
+      if (this.state.disability_others == "false") {
+        this.state.disability_others = false;
+      }
+
+      if (this.state.disability_none == "true") {
+        this.state.disability_none = true;
+      }
+
+      if (this.state.disability_hearing == "true") {
+        this.state.disability_hearing = true;
+      }
+
+      if (this.state.disability_mobility == "true") {
+        this.state.disability_mobility = true;
+      }
+
+      if (this.state.disability_sight == "true") {
+        this.state.disability_sight = true;
+      }
+
+      if (this.state.disability_learning == "true") {
+        this.state.disability_learning = true;
+      }
+
+      if (this.state.disability_others == "true") {
+        this.state.disability_others = true;
+      }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "animated fadeIn"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
         xs: "12",
         sm: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Doctor Profile"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Messages"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chat_elements__WEBPACK_IMPORTED_MODULE_7__["ChatItem"], {
+        avatar: 'https://facebook.github.io/react/img/logo.svg',
+        alt: 'Reactjs',
+        title: 'Facebook',
+        subtitle: 'What are you doing?',
+        date: new Date(),
+        unread: 0
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
         xs: "12",
-        sm: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], {
-        className: "border-bottom text-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-3 mx-auto"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "rounded-circle",
-        src: this.state.profile_picture,
-        alt: this.state.name,
-        width: "110"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "mb-0"
-      }, this.state.username, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted d-block mb-2"
-      }, this.state.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
-        className: "px-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        block: true,
-        outline: true,
-        color: "success",
-        onClick: this.trigerFileUpload
-      }, "Update Profile Picture"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "file",
-        color: "primary",
-        id: "profile_picture",
-        style: {
-          display: "none"
-        } // onChange={this.onChangeProfilePicture}
-        ,
-        onChange: function onChange(e) {
-          _this9.onChangeProfilePicture(e);
-
-          _this9.imageHandlerProfilePicture(e);
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
-        className: "text-muted d-block mb-2"
-      }, this.state.metaTitle)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
-        xs: "12",
-        sm: "9"
+        sm: "12"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Welcome"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        color: "primary",
-        onClick: this.toggle_app_instructions,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Open"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Collapse"], {
-        isOpen: this.state.collapse_app_instructions
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Thank you for choosing CamMedics!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "We value your participation, and we will continue to partner with you and honour your commitment to providing premium care to your patient ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "From this platform, you can schedule a video appointment and consultation with patients located anywhere in the world.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You can also transmit your prescription and medical test recommendation directly to your patients who can comply with same on our platform.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Enjoy an integrated medical system at it's very best."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Doctor's Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Personal Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-header-actions"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
         color: "primary",
@@ -1012,18 +988,37 @@ var DocProfile = /*#__PURE__*/function (_Component) {
         className: 'mb-1',
         id: "",
         size: "sm"
-      }, "Open"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Collapse"], {
+      }, "Toggle"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Collapse"], {
         isOpen: this.state.collapse
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Form"], {
         onSubmit: this.onSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
         xs: "12",
-        sm: "12"
+        sm: "6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Gender")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Title")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "select",
+        id: "title",
+        value: this.state.title,
+        onChange: this.onChangeTitle
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "0"
+      }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "1"
+      }, "Mr"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "2"
+      }, "Mrs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "3"
+      }, "Ms"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "3"
+      }, "Miss")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-user"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Gender")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         type: "select",
         id: "gender",
         value: this.state.gender,
@@ -1034,25 +1029,13 @@ var DocProfile = /*#__PURE__*/function (_Component) {
         value: "1"
       }, "Male"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "2"
-      }, "Female"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "3"
-      }, "Prefer not to say"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "4"
-      }, "Others")), this.state.show ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "text",
-        id: "gender_others",
-        defaultValue: this.state.gender_others,
-        onChange: this.onChangeGenderOthers,
-        placeholder: "enter gender"
-      }) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+      }, "Female")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-user"
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "First Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "First Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         type: "text",
         id: "first_name",
         defaultValue: this.state.first_name,
@@ -1063,20 +1046,7 @@ var DocProfile = /*#__PURE__*/function (_Component) {
         className: "fa fa-user"
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Last Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "text",
-        id: "last_name",
-        defaultValue: this.state.last_name,
-        onChange: this.onChangeLastName
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, " Middle Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Middle Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         type: "text",
         id: "middle_name",
         defaultValue: this.state.middle_name,
@@ -1084,21 +1054,32 @@ var DocProfile = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
+        className: "fa fa-envelope"
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Phone Number")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Last Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "text",
+        id: "last_name",
+        defaultValue: this.state.last_name,
+        onChange: this.onChangeLastName
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Phone Number")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         type: "select",
         id: "zip_code",
         value: this.state.zip_code,
         onChange: this.onChangeZipCode
-      }, this.state.countries.map(function (country) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: country.zip_code
-        }, " ", country.code, " (", country.zip_code, ") ");
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "0"
+      }, " Zip Code "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "NG (+234)"
+      }, "NG (+234)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "UG (+256)"
+      }, "UG (+256)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         type: "text",
         id: "telephone",
         defaultValue: this.state.telephone,
@@ -1106,12 +1087,10 @@ var DocProfile = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-address-book-o"
+        className: "fa fa-asterisk"
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Date of Birth")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Date of Birth")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         type: "date",
         id: "dob",
         defaultValue: this.state.dob,
@@ -1119,46 +1098,44 @@ var DocProfile = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-calendar"
+        className: "fa fa-asterisk"
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Nationality")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Nationality")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         type: "select",
         id: "nationality",
         value: this.state.nationality,
         onChange: this.onChangeNationality
-      }, this.state.countries.map(function (country) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: country.name
-        }, " ", country.name, " ");
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "0"
+      }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "1"
+      }, "Ghana"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "2"
+      }, "Nigeria")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-globe"
+        className: "fa fa-user"
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Country")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Country of Residence")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         type: "select",
         id: "country_of_residence",
         value: this.state.country_of_residence,
         onChange: this.onChangeCountryOfResidence
-      }, this.state.countries.map(function (country) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: country.name
-        }, " ", country.name, " ");
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "0"
+      }, " --- select --- "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "1"
+      }, "Ghana"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "2"
+      }, "Nigeria")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-globe"
+        className: "fa fa-user"
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "District/Province/State")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "District/Province/State")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         type: "text",
         id: "district_province_state",
         defaultValue: this.state.district_province_state,
@@ -1166,335 +1143,198 @@ var DocProfile = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-globe"
+        className: "fa fa-asterisk"
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Address")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Contact Address")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         type: "textarea",
         id: "contact_address",
         rows: "2",
         defaultValue: this.state.contact_address,
         onChange: this.onChangeContactAddress,
-        placeholder: " Address"
+        placeholder: "Contact Address"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-home"
+        className: "fa fa-asterisk"
+      })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "12",
+        sm: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Height ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "text",
+        id: "height",
+        defaultValue: this.state.height,
+        onChange: this.onChangeHeight
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Area of Medical Specialization/Interest")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "textarea",
-        id: "area_of_specialization",
-        rows: "2",
-        defaultValue: this.state.area_of_specialization,
-        onChange: this.onChangeAreaOfSpecialization,
-        placeholder: " Area of specialization"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Weight ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "text",
+        id: "weight",
+        defaultValue: this.state.weight,
+        onChange: this.onChangeWeight
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-stethoscope"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Indicate Availability")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        className: "fa fa-asterisk"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Disability:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
         xs: "12",
-        sm: "5"
+        sm: "6"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
         check: true,
         className: "checkbox"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         className: "form-check-input",
         type: "checkbox",
-        id: "available_on_appointment",
-        checked: this.state.available_on_appointment,
-        onChange: this.onChangeAvailableOnAppointment
+        id: "disability_none",
+        checked: this.state.disability_none,
+        onChange: this.onChangeDisabilityNone
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Label"], {
         check: true,
         className: "form-check-label",
-        htmlFor: "checkbox2"
-      }, "Available on Appointment")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
+        htmlFor: "checkbox1"
+      }, "None")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
         check: true,
         className: "checkbox"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         className: "form-check-input",
         type: "checkbox",
-        id: "available_on_emergency",
-        checked: this.state.available_on_emergency,
-        onChange: this.onChangeAvailableOnEmergency
+        id: "hearing",
+        checked: this.state.disability_hearing,
+        onChange: this.onChangeDisabilityHearing
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Label"], {
         check: true,
         className: "form-check-label",
         htmlFor: "checkbox2"
-      }, "Available on Emergency"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+      }, "Hearing")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
+        check: true,
+        className: "checkbox"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        className: "form-check-input",
+        type: "checkbox",
+        id: "mobility",
+        checked: this.state.disability_mobility,
+        onChange: this.onChangeDisabilityMobility
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Label"], {
+        check: true,
+        className: "form-check-label",
+        htmlFor: "checkbox3"
+      }, "Mobility"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
         xs: "12",
-        sm: "7"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        sm: "6"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
+        check: true,
+        className: "checkbox"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        className: "form-check-input",
+        type: "checkbox",
+        id: "sight",
+        checked: this.state.disability_sight,
+        onChange: this.onChangeDisabilitySight
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Label"], {
+        check: true,
+        className: "form-check-label",
+        htmlFor: "checkbox1"
+      }, "Sight")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
+        check: true,
+        className: "checkbox"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        className: "form-check-input",
+        type: "checkbox",
+        id: "learning_disability",
+        checked: this.state.disability_learning,
+        onChange: this.onChangeDisabilityLearning
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Label"], {
+        check: true,
+        className: "form-check-label",
+        htmlFor: "checkbox2"
+      }, "Learning Disability")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
+        check: true,
+        className: "checkbox"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        className: "form-check-input",
+        type: "checkbox",
+        id: "others",
+        checked: this.state.disability_others,
+        onChange: this.onChangeDisabilityOthers
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Label"], {
+        check: true,
+        className: "form-check-label",
+        htmlFor: "checkbox3"
+      }, "others")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Next of Kin Information")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Available by Time")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Full Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         type: "text",
-        id: "available_by_time",
-        defaultValue: this.state.available_by_time,
-        onChange: this.onChangeAvailableByTime
+        id: "next_of_kin_name",
+        defaultValue: this.state.next_of_kin_name,
+        onChange: this.onChangeNextKinName
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-clock"
-      }))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
+        className: "fa fa-user"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Relationship")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "text",
+        id: "next_of_kin_relationship",
+        defaultValue: this.state.next_of_kin_relationship,
+        onChange: this.onChangeNextKinRelationship
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-user"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Occupation")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "text",
+        id: "next_of_kin_occupation",
+        defaultValue: this.state.next_of_kin_occupation,
+        onChange: this.onChangeNextKinOccupation
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-user"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Phone")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "text",
+        id: "next_of_kin_phone",
+        defaultValue: this.state.next_of_kin_phone,
+        onChange: this.onChangeNextKinPhone
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-user"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Email")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "email",
+        id: "next_of_kin_email",
+        defaultValue: this.state.next_of_kin_email,
+        onChange: this.onChangeNextKinEmail
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-user"
+      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
         className: "form-actions"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
         type: "submit",
         size: "sm",
         color: "primary"
-      }, "Update Personal Details")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Medical Certificate / Lisence"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        color: "primary",
-        onClick: this.toggle_med_certificate,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Open"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Collapse"], {
-        isOpen: this.state.collapse_med_certificate
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
-        xs: "12",
-        sm: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "file",
-        color: "primary",
-        id: "medical_certificate",
-        style: {
-          display: "none"
-        },
-        onChange: this.onChangeMedicalCertificate
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Upload Your Medical Certificate")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        style: {
-          fontSize: 12,
-          color: '#2167ac'
-        }
-      }, this.state.med_cert_uploaded), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        style: {
-          fontSize: 14,
-          flexDirection: 'row'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "cui-paperclip icons font-1xl d-block mt-4",
-        style: {
-          fontSize: 11,
-          fontWeight: "bold"
-        }
-      }), "Please upload a file, your file size should not be more than 500KB."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        type: "button",
-        size: "sm",
-        color: "primary",
-        onClick: this.trigerMedicalCertificateFileUpload
-      }, "Upload File")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
-        xs: "12",
-        sm: "6"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "file",
-        color: "primary",
-        id: "medical_license",
-        style: {
-          display: "none"
-        },
-        onChange: this.onChangeMedicalLicense
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Upload Medical License")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        style: {
-          fontSize: 12,
-          color: '#2167ac'
-        }
-      }, this.state.med_lic_uploaded), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        style: {
-          fontSize: 14,
-          flexDirection: 'row'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "cui-paperclip icons font-1xl d-block mt-4",
-        style: {
-          fontSize: 11,
-          fontWeight: "bold"
-        }
-      }), "Please upload a file, your file size should not be more than 500KB."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        type: "button",
-        size: "sm",
-        color: "primary",
-        onClick: this.trigermedicalLicenseFileUpload
-      }, "Upload File")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Account Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        color: "primary",
-        onClick: this.toggleBank,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Open"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Collapse"], {
-        isOpen: this.state.collapseBank
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Form"], {
-        onSubmit: this.onSubmitBankAccountDetails
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
-        xs: "12",
-        sm: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Consultation Fee")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "number",
-        id: "consultation_fee",
-        defaultValue: this.state.consultation_fee,
-        onChange: this.onChangeConsultationFee,
-        placeholder: "enter amount in USD without the sign"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-university"
-      }))))), "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Bank Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "text",
-        id: "bank_name",
-        defaultValue: this.state.bank_name,
-        onChange: this.onChangeBankName
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-university"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Bank Account Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "text",
-        id: "bank_account_name",
-        defaultValue: this.state.bank_account_name,
-        onChange: this.onChangeBankAccountName
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-university"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Bank Account Number")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "text",
-        id: "bank_account_number",
-        defaultValue: this.state.bank_account_number,
-        onChange: this.onChangeBankAccountNumber
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-university"
-      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
-        className: "form-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        type: "submit",
-        size: "sm",
-        color: "primary"
-      }, "Update Account Details"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Shared Medical History"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        color: "primary",
-        onClick: this.toggle_identification,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Open"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Collapse"], {
-        isOpen: this.state.collapse_identification
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Table"], {
-        responsive: true,
-        bordered: true
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Last Name Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Middle Name"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ( // Calculation for the page S/N
-      this.state.currentPage = this.state.activePage * 10 - (10 - 1), // ////////////////////////////////////////////////////////////
-      this.state.medical_share_list.map(function (medical_share) {
-        if (medical_share.status == 1) {
-          _this9.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Badge"], {
-            color: "success"
-          }, "Completed");
-        } else {
-          _this9.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Badge"], {
-            color: "danger"
-          }, "Not Complete");
-        }
-
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          key: medical_share.id
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-          scope: "row"
-        }, _this9.state.currentPage++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, medical_share.patient_username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, medical_share.patient_first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, medical_share.patient_last_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, medical_share.patient_middle_name));
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-flex justify-content-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_6___default.a, {
-        activePage: this.state.activePage,
-        itemsCountPerPage: this.state.itemsCountPerPage,
-        totalItemsCount: this.state.totalItemsCount,
-        pageRangeDisplayed: this.state.pageRangeDisplayed,
-        onChange: this.handlePageChange,
-        itemClass: "page-item",
-        linkClass: "page-link"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardFooter"], null)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "sweet_alert1",
-        style: {
-          display: "none"
-        },
-        onClick: function onClick() {
-          return _this9.setState({
-            showSuccess: true
-          });
-        }
-      }, "Alert"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(sweetalert2_react__WEBPACK_IMPORTED_MODULE_7___default.a, {
-        show: this.state.showSuccess // title="Demo"
-        ,
-        type: "success",
-        confirmButtonColor: "#2167ac",
-        animation: "true",
-        text: this.state.successMessage,
-        onConfirm: function onConfirm() {
-          return _this9.setState({
-            showSuccess: false
-          });
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "sweet_alert2",
-        style: {
-          display: "none"
-        },
-        onClick: function onClick() {
-          return _this9.setState({
-            showError: true
-          });
-        }
-      }, "Alert"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(sweetalert2_react__WEBPACK_IMPORTED_MODULE_7___default.a, {
-        show: this.state.showError // title="Demo"
-        ,
-        type: "warning",
-        confirmButtonColor: "#2167ac",
-        animation: "true",
-        text: this.state.errorMessage,
-        onConfirm: function onConfirm() {
-          return _this9.setState({
-            showError: false
-          });
-        }
-      }));
+      }, "Update Personal Details")))))))));
     }
   }]);
 
-  return DocProfile;
+  return Chat;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (DocProfile);
+/* harmony default export */ __webpack_exports__["default"] = (Chat);
 
 /***/ })
 

@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[96],{
 
-/***/ "./resources/coreui/src/views/LabProfile/LabProfile.js":
-/*!*************************************************************!*\
-  !*** ./resources/coreui/src/views/LabProfile/LabProfile.js ***!
-  \*************************************************************/
+/***/ "./resources/coreui/src/views/Icons/SimpleLineIcons/SimpleLineIcons.js":
+/*!*****************************************************************************!*\
+  !*** ./resources/coreui/src/views/Icons/SimpleLineIcons/SimpleLineIcons.js ***!
+  \*****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11,18 +11,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/dist/react-datepicker.min.js");
-/* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_datepicker__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-datepicker/dist/react-datepicker.css */ "./node_modules/react-datepicker/dist/react-datepicker.css");
-/* harmony import */ var react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_datepicker_dist_react_datepicker_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var history__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! history */ "./node_modules/history/esm/history.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var sweetalert2_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! sweetalert2-react */ "./node_modules/sweetalert2-react/dist/sweetalert-react.min.js");
-/* harmony import */ var sweetalert2_react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
@@ -143,936 +132,1132 @@ function _getPrototypeOf(o) {
 
 
 
- // import axios from 'axios';
+var SimpleLineIcons = /*#__PURE__*/function (_Component) {
+  _inherits(SimpleLineIcons, _Component);
 
+  var _super = _createSuper(SimpleLineIcons);
 
+  function SimpleLineIcons() {
+    _classCallCheck(this, SimpleLineIcons);
 
-
-
-var hashHistory = Object(history__WEBPACK_IMPORTED_MODULE_3__["createHashHistory"])();
-
-var LabProfile = /*#__PURE__*/function (_Component) {
-  _inherits(LabProfile, _Component);
-
-  var _super = _createSuper(LabProfile);
-
-  function LabProfile(props) {
-    var _this;
-
-    _classCallCheck(this, LabProfile);
-
-    _this = _super.call(this, props); // ////////////////MODAL
-
-    _this.handleChange = function (date) {
-      _this.setState({
-        startDate: date
-      });
-    };
-
-    _this.imageHandlerLogo = function (e) {
-      var reader = new FileReader();
-
-      reader.onload = function () {
-        if (reader.readyState === 2) {
-          _this.setState({
-            logo: reader.result
-          });
-        }
-      };
-
-      reader.readAsDataURL(e.target.files[0]);
-    };
-
-    _this.togglePrimary = _this.togglePrimary.bind(_assertThisInitialized(_this)); // bing toggle functions and values
-
-    _this.toggle = _this.toggle.bind(_assertThisInitialized(_this));
-    _this.toggleBank = _this.toggleBank.bind(_assertThisInitialized(_this));
-    _this.toggle_identification = _this.toggle_identification.bind(_assertThisInitialized(_this));
-    _this.toggle_app_instructions = _this.toggle_app_instructions.bind(_assertThisInitialized(_this)); // bind input values on change
-
-    _this.onChangeName = _this.onChangeName.bind(_assertThisInitialized(_this));
-    _this.onChangeUsername = _this.onChangeUsername.bind(_assertThisInitialized(_this));
-    _this.onChangeEmail = _this.onChangeEmail.bind(_assertThisInitialized(_this));
-    _this.onChangeZipCode = _this.onChangeZipCode.bind(_assertThisInitialized(_this));
-    _this.onChangeTelephone = _this.onChangeTelephone.bind(_assertThisInitialized(_this));
-    _this.onChangeCountry = _this.onChangeCountry.bind(_assertThisInitialized(_this));
-    _this.onChangeDistrictProvinceState = _this.onChangeDistrictProvinceState.bind(_assertThisInitialized(_this));
-    _this.onChangeAddress = _this.onChangeAddress.bind(_assertThisInitialized(_this)); // this.onChangeAreaOfSpecialization   =this.onChangeAreaOfSpecialization.bind(this);
-    // this.onChangeAvailableOnAppointment =this.onChangeAvailableOnAppointment.bind(this);
-    // this.onChangeAvailableOnEmergency   =this.onChangeAvailableOnEmergency.bind(this);
-    // this.onChangeAvailableByTime        =this.onChangeAvailableByTime.bind(this);
-    // ///////////////////////////////////////////////////////////////////////////////
-
-    _this.onChangeBankName = _this.onChangeBankName.bind(_assertThisInitialized(_this));
-    _this.onChangeBankAccountName = _this.onChangeBankAccountName.bind(_assertThisInitialized(_this));
-    _this.onChangeBankAccountNumber = _this.onChangeBankAccountNumber.bind(_assertThisInitialized(_this)); // /////////////////////////////////////////////////////////////////
-
-    _this.onSubmitBankAccountDetails = _this.onSubmitBankAccountDetails.bind(_assertThisInitialized(_this)); // //////////// IDENTITY //////////////////////////////
-
-    _this.onChangeLogo = _this.onChangeLogo.bind(_assertThisInitialized(_this));
-    _this.onChangeMedicalCertificate = _this.onChangeMedicalCertificate.bind(_assertThisInitialized(_this));
-    _this.onChangeMedicalLicense = _this.onChangeMedicalLicense.bind(_assertThisInitialized(_this));
-    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this)); // this.onSubmitMedicalHistory = this.onSubmitMedicalHistory.bind(this);
-    // this.onSubmitShareMedHistory = this.onSubmitShareMedHistory.bind(this);
-    // ///////////// IDENTITY SUBMISSION /////////////////
-
-    _this.onSubmitLogo = _this.onSubmitLogo.bind(_assertThisInitialized(_this));
-    _this.onSubmitMedicalCertificate = _this.onSubmitMedicalCertificate.bind(_assertThisInitialized(_this));
-    _this.onSubmitMedicalLicense = _this.onSubmitMedicalLicense.bind(_assertThisInitialized(_this)); // this.fileUploadIdPassport = this.fileUploadIdPassport.bind(this)
-    // this.idPassportDetails = this.idPassportDetails.bind(this)
-
-    _this.state = {
-      token: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.auth_token : "",
-      id: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.id : "",
-      address: "",
-      country: "",
-      district_province_state: "",
-      email: "",
-      name: "",
-      telephone: "",
-      username: "",
-      zip_code: "",
-      // //////////////////////////////////////////////
-      bank_name: "",
-      bank_account_name: "",
-      bank_account_number: "",
-      logo: null,
-      medical_license: null,
-      med_lic_uploaded: "",
-      // ///////////////////////////////////////////////////////
-      status: "",
-      created_at: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.created_at : "",
-      user_type: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.user_type : "",
-      collapse: false,
-      collapseBank: false,
-      collapse_identification: false,
-      collapse_app_instructions: false,
-      fadeIn: true,
-      timeout: 300,
-      // //////////////////////////////////////////////////
-      successMessage: "Successful",
-      errorMessage: "Failed",
-      avatar: __webpack_require__(/*! ./../../images/avatars/0.jpg */ "./resources/coreui/src/images/avatars/0.jpg"),
-      metaValue: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?",
-      startDate: new Date(),
-      // //////////////////modal
-      primary: false,
-      share_med_history: "",
-      countries: []
-    };
-    return _this;
+    return _super.apply(this, arguments);
   }
 
-  _createClass(LabProfile, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/lab/get/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
-        // console.log("It came back");
-        // console.log(response);
-        return response;
-      }).then(function (json) {
-        if (json.data.success) {
-          // console.log("It came back 2");
-          _this2.setState({
-            address: json.data.data.address,
-            country: json.data.data.country,
-            district_province_state: json.data.data.district_province_state,
-            email: json.data.data.email,
-            name: json.data.data.name,
-            telephone: json.data.data.telephone,
-            username: json.data.data.username,
-            zip_code: json.data.data.zip_code,
-            // //////////////////////////////////////////////
-            bank_name: json.data.data.bank_name,
-            bank_account_name: json.data.data.bank_account_name,
-            bank_account_number: json.data.data.bank_account_number,
-            logo: json.data.data.logo,
-            medical_license: json.data.data.medical_license,
-            status: json.data.data.status
-          }, _this2.getCountries);
-        } else {}
-      })["catch"](function (error) {
-        // redirect user to previous page if user does not have autorization to the page
-        // hashHistory.push('/premontessori');
-        console.error("An Error Occuredd! ".concat(error));
-      });
-    } // For datepicker
-
-  }, {
-    key: "toggle_app_instructions",
-    // toggle collapse and expand application instruction
-    value: function toggle_app_instructions() {
-      this.setState({
-        collapse_app_instructions: !this.state.collapse_app_instructions
-      });
-    } // toggle collapse and expand personal data
-
-  }, {
-    key: "toggle",
-    value: function toggle() {
-      this.setState({
-        collapse: !this.state.collapse
-      });
-    } // toggle collapse and expand identification
-
-  }, {
-    key: "toggle_identification",
-    value: function toggle_identification() {
-      this.setState({
-        collapse_identification: !this.state.collapse_identification
-      });
-    }
-  }, {
-    key: "toggleBank",
-    value: function toggleBank() {
-      this.setState({
-        collapseBank: !this.state.collapseBank
-      });
-    } // /////////////// Share medical records
-
-  }, {
-    key: "togglePrimary",
-    value: function togglePrimary() {
-      this.setState({
-        primary: !this.state.primary
-      });
-    } // ON Change of first name input
-
-  }, {
-    key: "onChangeName",
-    value: function onChangeName(e) {
-      this.setState({
-        name: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeUsername",
-    value: function onChangeUsername(e) {
-      this.setState({
-        username: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeEmail",
-    value: function onChangeEmail(e) {
-      this.setState({
-        email: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeZipCode",
-    value: function onChangeZipCode(e) {
-      this.setState({
-        zip_code: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeTelephone",
-    value: function onChangeTelephone(e) {
-      this.setState({
-        telephone: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeCountry",
-    value: function onChangeCountry(e) {
-      this.setState({
-        country: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeDistrictProvinceState",
-    value: function onChangeDistrictProvinceState(e) {
-      this.setState({
-        district_province_state: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeAreaOfSpecialization",
-    value: function onChangeAreaOfSpecialization(e) {
-      this.setState({
-        area_of_specialization: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeAddress",
-    value: function onChangeAddress(e) {
-      this.setState({
-        address: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeAvailableOnAppointment",
-    value: function onChangeAvailableOnAppointment(e) {
-      this.setState({
-        available_on_appointment: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeAvailableOnEmergency",
-    value: function onChangeAvailableOnEmergency(e) {
-      this.setState({
-        available_on_emergency: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeAvailableByTime",
-    value: function onChangeAvailableByTime(e) {
-      this.setState({
-        available_by_time: e.target.value
-      });
-    } // ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  }, {
-    key: "onChangeBankName",
-    value: function onChangeBankName(e) {
-      this.setState({
-        bank_name: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeBankAccountName",
-    value: function onChangeBankAccountName(e) {
-      this.setState({
-        bank_account_name: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeBankAccountNumber",
-    value: function onChangeBankAccountNumber(e) {
-      this.setState({
-        bank_account_number: e.target.value
-      });
-    } ///////////////////////////////////////////////////////////////////////////////////////////////////
-    // ///////////////// IDENTITY ///////////////////////////////
-    // pass in the file into state
-
-  }, {
-    key: "onChangeLogo",
-    value: function onChangeLogo(e) {
-      this.setState({
-        logo: e.target.files[0]
-      }, this.onSubmitLogo);
-    }
-  }, {
-    key: "onChangeMedicalCertificate",
-    value: function onChangeMedicalCertificate(e) {
-      this.setState({
-        medical_certificate: e.target.files[0]
-      }, this.onSubmitMedicalCertificate);
-    }
-  }, {
-    key: "onChangeMedicalLicense",
-    value: function onChangeMedicalLicense(e) {
-      this.setState({
-        medical_license: e.target.files[0]
-      }, this.onSubmitMedicalLicense);
-    } // ///////////////////////////////////////////////////////////
-
-  }, {
-    key: "onSubmit",
-    value: function onSubmit(e) {
-      var _this3 = this;
-
-      e.preventDefault();
-
-      if (this.state.name == "" || this.state.zip_code == "select" || this.state.telephone == "" || this.state.country == "select" || this.state.district_province_state == "" || this.state.address == "" || this.state.name == null || this.state.zip_code == null || this.state.telephone == null || this.state.country == null || this.state.district_province_state == null || this.state.address == null) {
-        this.setState({
-          errorMessage: "Please fill all required field",
-          showError: true
-        });
-      } else {
-        var application_data = {
-          name: this.state.name,
-          zip_code: this.state.zip_code,
-          telephone: this.state.telephone,
-          country: this.state.country,
-          district_province_state: this.state.district_province_state,
-          address: this.state.address
-        };
-        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/lab/update/" + this.state.id + "?token=".concat(this.state.token), application_data).then(function (response) {
-          // console.log("ROI Cartoon");
-          // console.log(response);
-          return response;
-        }).then(function (json) {
-          if (json.data.success) {
-            _this3.setState({
-              successMessage: "Profile updated successfully",
-              showSuccess: true
-            });
-          } else {
-            _this3.setState({
-              errorMessage: response.data.data.profile_picture,
-              showError: true
-            });
-          }
-        })["catch"](function (error) {
-          // redirect user to previous page if user does not have autorization to the page
-          // hashHistory.push('/premontessori');
-          console.error("An Error Occuredd! ".concat(error));
-        });
-      }
-    }
-  }, {
-    key: "onSubmitBankAccountDetails",
-    value: function onSubmitBankAccountDetails(e) {
-      var _this4 = this; // alert("Hello World");
-
-
-      e.preventDefault();
-
-      if (this.state.bank_name == "" || this.state.bank_account_name == "" || this.state.bank_account_number == "" || this.state.bank_name == null || this.state.bank_account_name == null || this.state.bank_account_number == null) {
-        this.setState({
-          errorMessage: "Please fill all required field",
-          showError: true
-        });
-      } else {
-        var bank_details = {
-          bank_name: this.state.bank_name,
-          bank_account_name: this.state.bank_account_name,
-          bank_account_number: this.state.bank_account_number
-        };
-        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/lab/account_details/add/" + this.state.id + "?token=".concat(this.state.token), bank_details) // axios.post(`api/products/add?token=${this.state.token}`, product_data)
-        // axios.post('api/products/add', product_data, {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': 'Bearer '+ `${this.state.token}`
-        //     },      
-        // })  
-        .then(function (response) {
-          // console.log("ROI Cartoon");
-          // console.log(response);
-          return response;
-        }).then(function (json) {
-          // this.componentDidMount();
-          if (json.data.success) {
-            _this4.setState({
-              successMessage: "Account updated successfully",
-              showSuccess: true
-            });
-          } else {
-            _this4.setState({
-              errorMessage: response.data.data.profile_picture,
-              showError: true
-            });
-          }
-        })["catch"](function (error) {
-          // redirect user to previous page if user does not have autorization to the page
-          // hashHistory.push('/premontessori');
-          // console.error(`An Error Occuredd! ${error}`);
-          _this4.setState({
-            errorMessage: "An error occured",
-            showError: true
-          });
-        });
-      }
-    }
-  }, {
-    key: "onSubmitLogo",
-    value: function onSubmitLogo(e) {
-      var _this5 = this; // e.preventDefault() // Stop form submit
-      // alert("here");
-
-
-      this.fileUploadLogo().then(function (response) {
-        // console.log(response.data);
-        if (response.data.success) {
-          _this5.setState({// successMessage: "Logo uploaded successfully",
-            // showSuccess: true
-          }); // this.componentDidMount
-
-        } else {
-          _this5.setState({
-            errorMessage: "Logo upload failed",
-            showError: true
-          });
-        }
-      });
-    }
-  }, {
-    key: "fileUploadLogo",
-    value: function fileUploadLogo() {
-      // alert(logo);
-      var url = '/api/lab/logo/update/' + this.state.id + "?token=".concat(this.state.token);
-      var formData = new FormData();
-      formData.append('logo', this.state.logo);
-      var config = {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      };
-      return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
-    } // ////// Upload medical Certificate ///////////////////////
-
-  }, {
-    key: "onSubmitMedicalCertificate",
-    value: function onSubmitMedicalCertificate(e) {
-      var _this6 = this; // e.preventDefault() // Stop form submit
-
-
-      this.fileUploadMedicalCertificate(this.state.medical_certificate).then(function (response) {
-        if (response.data.success) {
-          _this6.setState({
-            successMessage: "Medical certificate uploaded successfully",
-            showSuccess: true
-          });
-
-          _this6.componentDidMount;
-        } else {
-          _this6.setState({
-            errorMessage: "Medical certificate upload failed",
-            showError: true
-          });
-        }
-      })["catch"](function (error) {
-        _this6.setState({// showError: true
-        });
-      });
-    }
-  }, {
-    key: "fileUploadMedicalCertificate",
-    value: function fileUploadMedicalCertificate(medical_certificate) {
-      var url = '/api/doc/updateMedicalCertificate/' + this.state.id + "?token=".concat(this.state.token);
-      var formData = new FormData();
-      formData.append('medical_certificate', medical_certificate);
-      var config = {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      };
-      return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
-    } // ////// Upload medical License ///////////////////////
-
-  }, {
-    key: "onSubmitMedicalLicense",
-    value: function onSubmitMedicalLicense(e) {
-      var _this7 = this; // e.preventDefault() // Stop form submit
-
-
-      this.fileUploadMedicalLicense(this.state.medical_license).then(function (response) {
-        // console.log(response.data);
-        if (response.data.success) {
-          _this7.setState({
-            successMessage: "Medical license updated successfully",
-            showSuccess: true
-          }); // this.componentDidMount
-
-        } else {
-          _this7.setState({
-            errorMessage: response.data.data.profile_picture,
-            showError: true
-          });
-        }
-      });
-    }
-  }, {
-    key: "fileUploadMedicalLicense",
-    value: function fileUploadMedicalLicense(medical_license) {
-      var url = '/api/lab/updateMedicalLicense/' + this.state.id + "?token=".concat(this.state.token);
-      var formData = new FormData();
-      formData.append('medical_license', medical_license);
-      var config = {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      };
-      return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
-    } // idPassportDetails(){
-    //   const application_data ={
-    //     type_of_identification : this.state.type_of_identification, id_passport_number : this.state.id_passport_number
-    //   }
-    //   axios.put(`/api/pharm/updateIdDetails/`+this.state.id+`?token=${this.state.token}`, application_data)
-    //   .then(response => {
-    //     console.log("ROI Cartoon");
-    //     console.log(response);
-    //     return response;
-    //   })
-    //   .then(json => {
-    //     if (json.data.success) {
-    //       this.setState({ 
-    //         // applications_list: json.data.data.data,
-    //       });
-    //     } else alert("Login Failed!");
-    //   })
-    //   .catch(error => {
-    //     // redirect pharm to previous page if pharm does not have autorization to the page
-    //     hashHistory.push('/premontessori');
-    //     console.error(`An Error Occuredd! ${error}`);
-    //   });
-    // }
-
-  }, {
-    key: "trigerFileUpload",
-    value: function trigerFileUpload() {
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('#logo').trigger('click');
-    }
-  }, {
-    key: "trigerMedicalCertificateFileUpload",
-    value: function trigerMedicalCertificateFileUpload() {
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('#medical_certificate').trigger('click');
-    }
-  }, {
-    key: "trigermedicalLicenseFileUpload",
-    value: function trigermedicalLicenseFileUpload() {
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('#medical_license').trigger('click');
-    }
-  }, {
-    key: "getCountries",
-    value: function getCountries() {
-      var _this8 = this; // ///////////////////// get countries /////////////////////////////////////
-
-
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/get/countries?token=".concat(this.state.token)).then(function (response) {
-        // console.log("COUNTRIES");
-        // console.log(response);
-        return response;
-      }).then(function (json) {
-        if (json.data.success) {
-          // console.log("All Rise");
-          // console.log(json.data.data);
-          _this8.setState({
-            countries: json.data.data
-          });
-        } else alert("Login Failed!");
-      })["catch"](function (error) {
-        // redirect user to previous page if user does not have autorization to the page
-        // hashHistory.push('/premontessori');
-        console.error("An Error Occuredd! ".concat(error));
-      });
-    }
-  }, {
+  _createClass(SimpleLineIcons, [{
     key: "render",
     value: function render() {
-      var _this9 = this;
-
-      if (this.state && !this.state.medical_license) {} else {
-        this.state.med_lic_uploaded = "Medical license uploaded";
-      }
-
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "animated fadeIn"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Col"], {
-        xs: "12",
-        sm: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Laboratory Profile"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Col"], {
-        xs: "12",
-        sm: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], {
-        className: "border-bottom text-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-3 mx-auto"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "rounded-circle",
-        src: this.state.logo,
-        alt: this.state.name,
-        width: "110"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "mb-0"
-      }, this.state.username, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted d-block mb-2"
-      }, this.state.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["ListGroupItem"], {
-        className: "px-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Button"], {
-        block: true,
-        outline: true,
-        color: "success",
-        onClick: this.trigerFileUpload
-      }, "Update Logo"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Input"], {
-        type: "file",
-        color: "primary",
-        id: "logo",
-        style: {
-          display: "none"
-        } // onChange={this.onChangeLogo}
-        ,
-        onChange: function onChange(e) {
-          _this9.onChangeLogo(e);
-
-          _this9.imageHandlerLogo(e);
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
-        className: "text-muted d-block mb-2"
-      }, this.state.metaTitle)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Col"], {
-        xs: "12",
-        sm: "9"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Welcome"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Button"], {
-        color: "primary",
-        onClick: this.toggle_app_instructions,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Open"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
-        isOpen: this.state.collapse_app_instructions
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Thank you for choosing CamMedics!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "We are happy to partner with you to create the enabling environment for you to continue to provide authentic and reliable medical test while keeping you and your patient safe.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "The name of the game is reducing exposure to infection and the viral load in medical facilities", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "On this platform, your patients can book for your services and come in just for sample taking where absolutely necessary. Alternatively, they can send in their test sample where appropriate The result can also be transmitted directly to the patient without the need for another visit.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Pre and Post test counselling can also be carried out while maintaining safe physical distancing."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Laboratory's Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Button"], {
-        color: "primary",
-        onClick: this.toggle,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Open"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
-        isOpen: this.state.collapse
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Form"], {
-        onSubmit: this.onSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Col"], {
-        xs: "12",
-        sm: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Input"], {
-        type: "text",
-        id: "name",
-        defaultValue: this.state.name,
-        onChange: this.onChangeName
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Phone Number")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Input"], {
-        type: "select",
-        id: "zip_code",
-        value: this.state.zip_code,
-        onChange: this.onChangeZipCode
-      }, this.state.countries.map(function (country) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: country.zip_code
-        }, " ", country.code, " (", country.zip_code, ") ");
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Input"], {
-        type: "text",
-        id: "telephone",
-        defaultValue: this.state.telephone,
-        onChange: this.onChangeTelephone
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Country")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Input"], {
-        type: "select",
-        id: "country",
-        value: this.state.country,
-        onChange: this.onChangeCountry
-      }, this.state.countries.map(function (country) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: country.name
-        }, " ", country.name, " ");
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "District/Province/State")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Input"], {
-        type: "text",
-        id: "district_province_state",
-        defaultValue: this.state.district_province_state,
-        onChange: this.onChangeDistrictProvinceState
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Address")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Input"], {
-        type: "textarea",
-        id: "tests",
-        rows: "2",
-        defaultValue: this.state.address,
-        onChange: this.onChangeAddress,
-        placeholder: "enter address"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-asterisk"
-      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["FormGroup"], {
-        className: "form-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Button"], {
-        type: "submit",
-        size: "sm",
-        color: "primary"
-      }, "Update Details")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Medical License"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Button"], {
-        color: "primary",
-        onClick: this.toggle_identification,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Open"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
-        isOpen: this.state.collapse_identification
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Form"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Col"], {
-        xs: "12",
-        sm: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Col"], {
-        xs: "12",
-        sm: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Input"], {
-        type: "file",
-        color: "primary",
-        id: "medical_license",
-        style: {
-          display: "none"
-        },
-        onChange: this.onChangeMedicalLicense
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Upload License")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        style: {
-          fontSize: 12,
-          color: '#2167ac'
-        }
-      }, this.state.med_lic_uploaded), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        style: {
-          fontSize: 16,
-          flexDirection: 'row'
-        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-picture-o"
+      }), " Simple Line Icons"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+        className: "text-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "cui-paperclip icons font-1xl d-block mt-4",
-        style: {
-          fontSize: 11,
-          fontWeight: "bold"
-        }
-      }), "Please upload a file, your file size should not be more than 500KB."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Button"], {
-        type: "button",
-        size: "sm",
-        color: "primary",
-        onClick: this.trigermedicalLicenseFileUpload
-      }, "Upload file"))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Bank Account Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Button"], {
-        color: "primary",
-        onClick: this.toggleBank,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Open"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Collapse"], {
-        isOpen: this.state.collapseBank
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Form"], {
-        onSubmit: this.onSubmitBankAccountDetails
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Col"], {
-        xs: "12",
-        sm: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Bank Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Input"], {
-        type: "text",
-        id: "bank_name",
-        defaultValue: this.state.bank_name,
-        onChange: this.onChangeBankName
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-university"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Bank Account Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Input"], {
-        type: "text",
-        id: "bank_account_name",
-        defaultValue: this.state.bank_account_name,
-        onChange: this.onChangeBankAccountName
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-university"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Bank Account Number")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Input"], {
-        type: "text",
-        id: "bank_account_number",
-        defaultValue: this.state.bank_account_number,
-        onChange: this.onChangeBankAccountNumber
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-university"
-      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["CardFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["FormGroup"], {
-        className: "form-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_7__["Button"], {
-        type: "submit",
-        size: "sm",
-        color: "primary"
-      }, "Update Account Details"))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "sweet_alert1",
-        style: {
-          display: "none"
-        },
-        onClick: function onClick() {
-          return _this9.setState({
-            showSuccess: true
-          });
-        }
-      }, "Alert"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(sweetalert2_react__WEBPACK_IMPORTED_MODULE_6___default.a, {
-        show: this.state.showSuccess // title="Demo"
-        ,
-        type: "success",
-        confirmButtonColor: "#2167ac",
-        animation: "true",
-        text: this.state.successMessage,
-        onConfirm: function onConfirm() {
-          return _this9.setState({
-            showSuccess: false
-          });
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "sweet_alert2",
-        style: {
-          display: "none"
-        },
-        onClick: function onClick() {
-          return _this9.setState({
-            showError: true
-          });
-        }
-      }, "Alert"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(sweetalert2_react__WEBPACK_IMPORTED_MODULE_6___default.a, {
-        show: this.state.showError // title="Demo"
-        ,
-        type: "warning",
-        confirmButtonColor: "#2167ac",
-        animation: "true",
-        text: this.state.errorMessage,
-        onConfirm: function onConfirm() {
-          return _this9.setState({
-            showError: false
-          });
-        }
-      }));
+        className: "icon-user icons font-2xl d-block mt-4"
+      }), "icon-user"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-people icons font-2xl d-block mt-4"
+      }), "icon-people"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-user-female icons font-2xl d-block mt-4"
+      }), "icon-user-female"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-user-follow icons font-2xl d-block mt-4"
+      }), "icon-user-follow"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-user-following icons font-2xl d-block mt-4"
+      }), "icon-user-following"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-user-unfollow icons font-2xl d-block mt-4"
+      }), "icon-user-unfollow"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-login icons font-2xl d-block mt-4"
+      }), "icon-login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-logout icons font-2xl d-block mt-4"
+      }), "icon-logout"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-emotsmile icons font-2xl d-block mt-4"
+      }), "icon-emotsmile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-phone icons font-2xl d-block mt-4"
+      }), "icon-phone"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-call-end icons font-2xl d-block mt-4"
+      }), "icon-call-end"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-call-in icons font-2xl d-block mt-4"
+      }), "icon-call-in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-call-out icons font-2xl d-block mt-4"
+      }), "icon-call-out"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-map icons font-2xl d-block mt-4"
+      }), "icon-map"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-location-pin icons font-2xl d-block mt-4"
+      }), "icon-location-pin"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-direction icons font-2xl d-block mt-4"
+      }), "icon-direction"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-directions icons font-2xl d-block mt-4"
+      }), "icon-directions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-compass icons font-2xl d-block mt-4"
+      }), "icon-compass"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-layers icons font-2xl d-block mt-4"
+      }), "icon-layers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-menu icons font-2xl d-block mt-4"
+      }), "icon-menu"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-list icons font-2xl d-block mt-4"
+      }), "icon-list"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-options-vertical icons font-2xl d-block mt-4"
+      }), "icon-options-vertical"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-options icons font-2xl d-block mt-4"
+      }), "icon-options"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-arrow-down icons font-2xl d-block mt-4"
+      }), "icon-arrow-down"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-arrow-left icons font-2xl d-block mt-4"
+      }), "icon-arrow-left"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-arrow-right icons font-2xl d-block mt-4"
+      }), "icon-arrow-right"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-arrow-up icons font-2xl d-block mt-4"
+      }), "icon-arrow-up"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-arrow-up-circle icons font-2xl d-block mt-4"
+      }), "icon-arrow-up-circle"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-arrow-left-circle icons font-2xl d-block mt-4"
+      }), "icon-arrow-left-circle"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-arrow-right-circle icons font-2xl d-block mt-4"
+      }), "icon-arrow-right-circle"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-arrow-down-circle icons font-2xl d-block mt-4"
+      }), "icon-arrow-down-circle"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-check icons font-2xl d-block mt-4"
+      }), "icon-check"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-clock icons font-2xl d-block mt-4"
+      }), "icon-clock"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-plus icons font-2xl d-block mt-4"
+      }), "icon-plus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-close icons font-2xl d-block mt-4"
+      }), "icon-close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-trophy icons font-2xl d-block mt-4"
+      }), "icon-trophy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-screen-smartphone icons font-2xl d-block mt-4"
+      }), "icon-screen-smartphone"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-screen-desktop icons font-2xl d-block mt-4"
+      }), "icon-screen-desktop"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-plane icons font-2xl d-block mt-4"
+      }), "icon-plane"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-notebook icons font-2xl d-block mt-4"
+      }), "icon-notebook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-mustache icons font-2xl d-block mt-4"
+      }), "icon-mustache"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-mouse icons font-2xl d-block mt-4"
+      }), "icon-mouse"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-magnet icons font-2xl d-block mt-4"
+      }), "icon-magnet"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-energy icons font-2xl d-block mt-4"
+      }), "icon-energy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-disc icons font-2xl d-block mt-4"
+      }), "icon-disc"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-cursor icons font-2xl d-block mt-4"
+      }), "icon-cursor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-cursor-move icons font-2xl d-block mt-4"
+      }), "icon-cursor-move"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-crop icons font-2xl d-block mt-4"
+      }), "icon-crop"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-chemistry icons font-2xl d-block mt-4"
+      }), "icon-chemistry"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-speedometer icons font-2xl d-block mt-4"
+      }), "icon-speedometer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-shield icons font-2xl d-block mt-4"
+      }), "icon-shield"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-screen-tablet icons font-2xl d-block mt-4"
+      }), "icon-screen-tablet"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-magic-wand icons font-2xl d-block mt-4"
+      }), "icon-magic-wand"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-hourglass icons font-2xl d-block mt-4"
+      }), "icon-hourglass"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-graduation icons font-2xl d-block mt-4"
+      }), "icon-graduation"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-ghost icons font-2xl d-block mt-4"
+      }), "icon-ghost"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-game-controller icons font-2xl d-block mt-4"
+      }), "icon-game-controller"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-fire icons font-2xl d-block mt-4"
+      }), "icon-fire"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-eyeglass icons font-2xl d-block mt-4"
+      }), "icon-eyeglass"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-envelope-open icons font-2xl d-block mt-4"
+      }), "icon-envelope-open"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-envelope-letter icons font-2xl d-block mt-4"
+      }), "icon-envelope-letter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-bell icons font-2xl d-block mt-4"
+      }), "icon-bell"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-badge icons font-2xl d-block mt-4"
+      }), "icon-badge"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-anchor icons font-2xl d-block mt-4"
+      }), "icon-anchor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-wallet icons font-2xl d-block mt-4"
+      }), "icon-wallet"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-vector icons font-2xl d-block mt-4"
+      }), "icon-vector"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-speech icons font-2xl d-block mt-4"
+      }), "icon-speech"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-puzzle icons font-2xl d-block mt-4"
+      }), "icon-puzzle"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-printer icons font-2xl d-block mt-4"
+      }), "icon-printer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-present icons font-2xl d-block mt-4"
+      }), "icon-present"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-playlist icons font-2xl d-block mt-4"
+      }), "icon-playlist"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-pin icons font-2xl d-block mt-4"
+      }), "icon-pin"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-picture icons font-2xl d-block mt-4"
+      }), "icon-picture"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-handbag icons font-2xl d-block mt-4"
+      }), "icon-handbag"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-globe-alt icons font-2xl d-block mt-4"
+      }), "icon-globe-alt"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-globe icons font-2xl d-block mt-4"
+      }), "icon-globe"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-folder-alt icons font-2xl d-block mt-4"
+      }), "icon-folder-alt"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-folder icons font-2xl d-block mt-4"
+      }), "icon-folder"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-film icons font-2xl d-block mt-4"
+      }), "icon-film"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-feed icons font-2xl d-block mt-4"
+      }), "icon-feed"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-drop icons font-2xl d-block mt-4"
+      }), "icon-drop"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-drawer icons font-2xl d-block mt-4"
+      }), "icon-drawer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-docs icons font-2xl d-block mt-4"
+      }), "icon-docs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-doc icons font-2xl d-block mt-4"
+      }), "icon-doc"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-diamond icons font-2xl d-block mt-4"
+      }), "icon-diamond"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-cup icons font-2xl d-block mt-4"
+      }), "icon-cup"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-calculator icons font-2xl d-block mt-4"
+      }), "icon-calculator"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-bubbles icons font-2xl d-block mt-4"
+      }), "icon-bubbles"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-briefcase icons font-2xl d-block mt-4"
+      }), "icon-briefcase"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-book-open icons font-2xl d-block mt-4"
+      }), "icon-book-open"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-basket-loaded icons font-2xl d-block mt-4"
+      }), "icon-basket-loaded"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-basket icons font-2xl d-block mt-4"
+      }), "icon-basket"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-bag icons font-2xl d-block mt-4"
+      }), "icon-bag"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-action-undo icons font-2xl d-block mt-4"
+      }), "icon-action-undo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-action-redo icons font-2xl d-block mt-4"
+      }), "icon-action-redo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-wrench icons font-2xl d-block mt-4"
+      }), "icon-wrench"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-umbrella icons font-2xl d-block mt-4"
+      }), "icon-umbrella"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-trash icons font-2xl d-block mt-4"
+      }), "icon-trash"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-tag icons font-2xl d-block mt-4"
+      }), "icon-tag"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-support icons font-2xl d-block mt-4"
+      }), "icon-support"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-frame icons font-2xl d-block mt-4"
+      }), "icon-frame"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-size-fullscreen icons font-2xl d-block mt-4"
+      }), "icon-size-fullscreen"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-size-actual icons font-2xl d-block mt-4"
+      }), "icon-size-actual"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-shuffle icons font-2xl d-block mt-4"
+      }), "icon-shuffle"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-share-alt icons font-2xl d-block mt-4"
+      }), "icon-share-alt"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-share icons font-2xl d-block mt-4"
+      }), "icon-share"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-rocket icons font-2xl d-block mt-4"
+      }), "icon-rocket"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-question icons font-2xl d-block mt-4"
+      }), "icon-question"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-pie-chart icons font-2xl d-block mt-4"
+      }), "icon-pie-chart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-pencil icons font-2xl d-block mt-4"
+      }), "icon-pencil"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-note icons font-2xl d-block mt-4"
+      }), "icon-note"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-loop icons font-2xl d-block mt-4"
+      }), "icon-loop"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-home icons font-2xl d-block mt-4"
+      }), "icon-home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-grid icons font-2xl d-block mt-4"
+      }), "icon-grid"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-graph icons font-2xl d-block mt-4"
+      }), "icon-graph"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-microphone icons font-2xl d-block mt-4"
+      }), "icon-microphone"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-music-tone-alt icons font-2xl d-block mt-4"
+      }), "icon-music-tone-alt"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-music-tone icons font-2xl d-block mt-4"
+      }), "icon-music-tone"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-earphones-alt icons font-2xl d-block mt-4"
+      }), "icon-earphones-alt"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-earphones icons font-2xl d-block mt-4"
+      }), "icon-earphones"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-equalizer icons font-2xl d-block mt-4"
+      }), "icon-equalizer"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-like icons font-2xl d-block mt-4"
+      }), "icon-like"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-dislike icons font-2xl d-block mt-4"
+      }), "icon-dislike"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-control-start icons font-2xl d-block mt-4"
+      }), "icon-control-start"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-control-rewind icons font-2xl d-block mt-4"
+      }), "icon-control-rewind"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-control-play icons font-2xl d-block mt-4"
+      }), "icon-control-play"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-control-pause icons font-2xl d-block mt-4"
+      }), "icon-control-pause"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-control-forward icons font-2xl d-block mt-4"
+      }), "icon-control-forward"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-control-end icons font-2xl d-block mt-4"
+      }), "icon-control-end"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-volume-1 icons font-2xl d-block mt-4"
+      }), "icon-volume-1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-volume-2 icons font-2xl d-block mt-4"
+      }), "icon-volume-2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-volume-off icons font-2xl d-block mt-4"
+      }), "icon-volume-off"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-calendar icons font-2xl d-block mt-4"
+      }), "icon-calendar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-bulb icons font-2xl d-block mt-4"
+      }), "icon-bulb"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-chart icons font-2xl d-block mt-4"
+      }), "icon-chart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-ban icons font-2xl d-block mt-4"
+      }), "icon-ban"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-bubble icons font-2xl d-block mt-4"
+      }), "icon-bubble"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-camrecorder icons font-2xl d-block mt-4"
+      }), "icon-camrecorder"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-camera icons font-2xl d-block mt-4"
+      }), "icon-camera"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-cloud-download icons font-2xl d-block mt-4"
+      }), "icon-cloud-download"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-cloud-upload icons font-2xl d-block mt-4"
+      }), "icon-cloud-upload"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-envelope icons font-2xl d-block mt-4"
+      }), "icon-envelope"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-eye icons font-2xl d-block mt-4"
+      }), "icon-eye"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-flag icons font-2xl d-block mt-4"
+      }), "icon-flag"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-heart icons font-2xl d-block mt-4"
+      }), "icon-heart"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-info icons font-2xl d-block mt-4"
+      }), "icon-info"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-key icons font-2xl d-block mt-4"
+      }), "icon-key"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-link icons font-2xl d-block mt-4"
+      }), "icon-link"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-lock icons font-2xl d-block mt-4"
+      }), "icon-lock"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-lock-open icons font-2xl d-block mt-4"
+      }), "icon-lock-open"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-magnifier icons font-2xl d-block mt-4"
+      }), "icon-magnifier"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-magnifier-add icons font-2xl d-block mt-4"
+      }), "icon-magnifier-add"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-magnifier-remove icons font-2xl d-block mt-4"
+      }), "icon-magnifier-remove"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-paper-clip icons font-2xl d-block mt-4"
+      }), "icon-paper-clip"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-paper-plane icons font-2xl d-block mt-4"
+      }), "icon-paper-plane"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-power icons font-2xl d-block mt-4"
+      }), "icon-power"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-refresh icons font-2xl d-block mt-4"
+      }), "icon-refresh"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-reload icons font-2xl d-block mt-4"
+      }), "icon-reload"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-settings icons font-2xl d-block mt-4"
+      }), "icon-settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-star icons font-2xl d-block mt-4"
+      }), "icon-star"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-symbol-female icons font-2xl d-block mt-4"
+      }), "icon-symbol-female"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-symbol-male icons font-2xl d-block mt-4"
+      }), "icon-symbol-male"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-target icons font-2xl d-block mt-4"
+      }), "icon-target"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-credit-card icons font-2xl d-block mt-4"
+      }), "icon-credit-card"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-paypal icons font-2xl d-block mt-4"
+      }), "icon-paypal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-tumblr icons font-2xl d-block mt-4"
+      }), "icon-social-tumblr"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-twitter icons font-2xl d-block mt-4"
+      }), "icon-social-twitter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-facebook icons font-2xl d-block mt-4"
+      }), "icon-social-facebook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-instagram icons font-2xl d-block mt-4"
+      }), "icon-social-instagram"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-linkedin icons font-2xl d-block mt-4"
+      }), "icon-social-linkedin"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-pinterest icons font-2xl d-block mt-4"
+      }), "icon-social-pinterest"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-github icons font-2xl d-block mt-4"
+      }), "icon-social-github"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-gplus icons font-2xl d-block mt-4"
+      }), "icon-social-gplus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-reddit icons font-2xl d-block mt-4"
+      }), "icon-social-reddit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-skype icons font-2xl d-block mt-4"
+      }), "icon-social-skype"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-dribbble icons font-2xl d-block mt-4"
+      }), "icon-social-dribbble"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-behance icons font-2xl d-block mt-4"
+      }), "icon-social-behance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-foursqare icons font-2xl d-block mt-4"
+      }), "icon-social-foursqare"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-soundcloud icons font-2xl d-block mt-4"
+      }), "icon-social-soundcloud"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-spotify icons font-2xl d-block mt-4"
+      }), "icon-social-spotify"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-stumbleupon icons font-2xl d-block mt-4"
+      }), "icon-social-stumbleupon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-youtube icons font-2xl d-block mt-4"
+      }), "icon-social-youtube"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        xs: "6",
+        sm: "4",
+        md: "3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "icon-social-dropbox icons font-2xl d-block mt-4"
+      }), "icon-social-dropbox")))));
     }
   }]);
 
-  return LabProfile;
+  return SimpleLineIcons;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (LabProfile);
+/* harmony default export */ __webpack_exports__["default"] = (SimpleLineIcons);
 
 /***/ })
 

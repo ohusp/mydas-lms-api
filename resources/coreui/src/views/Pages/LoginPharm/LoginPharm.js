@@ -110,11 +110,10 @@ class LoginPharm extends Component {
 
                 const timeout = setTimeout(() => {
                   window.location.reload();
-                }, 1000);
-                // localStorage.setItem('usertoken', appState)
-                // console.log("Mr Mendes is here 2");
-                // console.log(`Bearer ${localStorage.usertoken}`)
-                this.props.history.push(`/profile_pharm`)
+                }, 100).then(
+                  this.props.history.push(`/profile_pharm`)
+                )
+
             } else {
               this.setState({alert_message:"error"});
             }

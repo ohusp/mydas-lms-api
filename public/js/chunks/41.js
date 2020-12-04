@@ -302,11 +302,7 @@ var LoginLab = /*#__PURE__*/function (_Component) {
 
           var timeout = setTimeout(function () {
             window.location.reload();
-          }, 1000); // localStorage.setItem('usertoken', appState)
-          // console.log("Mr Mendes is here 2");
-          // console.log(`Bearer ${localStorage.usertoken}`)
-
-          _this2.props.history.push("/profile_lab");
+          }, 100).then(_this2.props.history.push("/profile_lab"));
         } else {
           _this2.setState({
             alert_message: "error"

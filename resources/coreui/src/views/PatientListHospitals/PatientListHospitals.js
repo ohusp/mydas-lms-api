@@ -70,19 +70,13 @@ class PatientListHospitals extends Component {
     // this.toggle_identification    = this.toggle_identification.bind(this);
     // this.toggle_app_instructions  = this.toggle_app_instructions.bind(this);
 
-    this.onChangeDate     =this.onChangeDate.bind(this);
-    this.onChangeTime     =this.onChangeTime.bind(this);
-    this.onChangeSubject  =this.onChangeSubject.bind(this);
-    this.onChangeMessage  =this.onChangeMessage.bind(this);
-    // this.onChangeAllergiesUpdate            =this.onChangeAllergiesUpdate.bind(this);
-    // this.onChangeBloodGroupUpdate           =this.onChangeBloodGroupUpdate.bind(this);
-    // this.onChangeUnderlyingConditionsUpdate =this.onChangeUnderlyingConditionsUpdate.bind(this);
-    // this.onChangeFamilyMedicalHistoryUpdate =this.onChangeFamilyMedicalHistoryUpdate.bind(this);
-    // this.onChangeHypertensiveUpdate         =this.onChangeHypertensiveUpdate.bind(this);
-    // this.onChangeDiabeticUpdate             =this.onChangeDiabeticUpdate.bind(this);
-    // this.onChangePrescriptionUpdate         =this.onChangePrescriptionUpdate.bind(this);
-    // this.onChangeLabTestUpdate              =this.onChangeLabTestUpdate.bind(this);
-    // this.onChangeNoteUpdate                 =this.onChangeNoteUpdate.bind(this);
+    this.onChangeDate       =this.onChangeDate.bind(this);
+    this.onChangeHour       =this.onChangeHour.bind(this);
+    this.onChangeMinute     =this.onChangeMinute.bind(this);
+    this.onChangeAmPm       =this.onChangeAmPm.bind(this);
+    this.onChangeTimeZone   =this.onChangeTimeZone.bind(this);
+    this.onChangeSubject    =this.onChangeSubject.bind(this);
+    this.onChangeMessage    =this.onChangeMessage.bind(this);
 
     this.onChangeMessageBox  = this.onChangeMessageBox.bind(this);
 
@@ -92,10 +86,6 @@ class PatientListHospitals extends Component {
 
     this.onSubmitBookAppointment = this.onSubmitBookAppointment.bind(this);
 
-    // medical record tab toggle
-    // this.toggleMedRecTab = this.toggleMedRecTab.bind(this);
-    // this.onChangeDate             =this.onChangeDate.bind(this);
-    // this.onChangeTime             =this.onChangeTime.bind(this);
 
     this.state = {
       token: localStorage["appState"]
@@ -116,30 +106,6 @@ class PatientListHospitals extends Component {
       middle_name: localStorage["appState"]
         ? JSON.parse(localStorage["appState"]).user.middle_name
         : "",
-
-      // store array of data when a patient is clicked 
-      // medications_currently_using: [],
-      // allergies: [],
-      // blood_group: [],
-      // underlying_conditions: [],
-      // family_medical_history: [],
-      // hypertensive: [],
-      // diabetic: [],
-      // prescription: [],
-      // lab_test: [],
-      // note: [],
-
-      // store new data entered to be stored/submitted
-      // medications_currently_using_update: "",
-      // allergies_update: "",
-      // blood_group_update: "",
-      // underlying_conditions_update: "",
-      // family_medical_history_update: "",
-      // hypertensive_update: "",
-      // diabetic_update: "",
-      // prescription_update: "",
-      // lab_test_update: "",
-      // note_update: "",
 
       currentTime : new Date().toLocaleString(),
 
@@ -202,7 +168,11 @@ class PatientListHospitals extends Component {
       
       startDate: new Date(),
       date: "",
-      time: '12:34',
+      hour: "12",
+      minute: "00",
+      am_pm: "AM",
+      time_zone: "(GMT+0:00) Greenwich Mean Time",
+      time_zones:[],
       subject: "",
       message: "",
       // //////////////////modal
@@ -246,23 +216,13 @@ class PatientListHospitals extends Component {
   //   }
   // }
 
-  onChangeDate(e) { this.setState({ date:e.target.value  }); }
-  onChangeTime(e) { this.setState({ time:e.target.value  }); }
-  onChangeSubject(e) { this.setState({ subject:e.target.value  }); }
-  onChangeMessage(e) { this.setState({ message:e.target.value  }); }
-  // onChangeAllergiesUpdate(e)      { this.setState({ allergies_update:e.target.value  }); }
-  // onChangeBloodGroupUpdate(e)     { this.setState({ blood_group_update:e.target.value  }); }
-  // onChangeUnderlyingConditionsUpdate(e)     { this.setState({ underlying_conditions_update:e.target.value  }); }
-  // onChangeFamilyMedicalHistoryUpdate(e)     { this.setState({ family_medical_history_update:e.target.value  }); }
-  // onChangeHypertensiveUpdate(e)     { this.setState({ hypertensive_update:e.target.value  }); }
-  // onChangeDiabeticUpdate(e)         { this.setState({ diabetic_update:e.target.value  }); }
-  // onChangePrescriptionUpdate(e)     { this.setState({ prescription_update:e.target.value  }); }
-  // onChangeLabTestUpdate(e)          { this.setState({ lab_test_update:e.target.value  }); }
-  // onChangeNoteUpdate(e)             { this.setState({ note_update:e.target.value  }); }
-
-
-  // onChangeDate(e)           { this.setState({ date:e.target.value  }); }
-  // onChangeTime(e)           { this.setState({ time:e.target.value  }); }
+  onChangeDate(e)     { this.setState({ date:e.target.value  }); }
+  onChangeHour(e)     { this.setState({ hour:e.target.value  }); }
+  onChangeMinute(e)   { this.setState({ minute:e.target.value  }); }
+  onChangeAmPm(e)     { this.setState({ am_pm:e.target.value  }); }
+  onChangeTimeZone(e) { this.setState({ time_zone:e.target.value  }); }
+  onChangeSubject(e)  { this.setState({ subject:e.target.value  }); }
+  onChangeMessage(e)  { this.setState({ message:e.target.value  }); }
 
 
   // fetch data from db
@@ -311,6 +271,29 @@ class PatientListHospitals extends Component {
         
       }
     })
+  }
+
+  getTimeZones(){
+    // ///////////////////// get time zones /////////////////////////////////////
+    axios.get(`/api/get/time_zones?token=${this.state.token}`)
+    .then(response => {
+      return response;
+    })
+    .then(json => {
+      if (json.data.success) {
+        this.setState({ 
+          time_zones: json.data.data,
+        });
+      } else {
+
+      }
+    })
+    .catch(error => {
+      // redirect user to previous page if user does not have autorization to the page
+      // hashHistory.push('/premontessori');
+      console.error(`An Error Occuredd! ${error}`);
+      
+    });
   }
 
   toggleViewDoctors() {
@@ -553,7 +536,7 @@ class PatientListHospitals extends Component {
       primaryViewDoctor: !this.state.primaryViewDoctor,
       doctor_id: id,
       doctor_name: name,
-    });
+    }, this.getTimeZones);
   }
 
   viewDoctor(doctor_id, name) {
@@ -604,8 +587,8 @@ class PatientListHospitals extends Component {
   { 
     e.preventDefault();
     if(
-      this.state.date == "" || this.state.time == "" || this.state.subject == "" || this.state.message == "" || 
-      this.state.date == null || this.state.time == null || this.state.subject == null || this.state.message == null
+      this.state.date == "" ||  this.state.hour == "" || this.state.minute == "" || this.state.am_pm == "" || this.state.time_zone == "" || this.state.subject == "" || this.state.message == "" || 
+      this.state.date == null || this.state.hour == null || this.state.minute == null || this.state.am_pm == null || this.state.time_zone == null || this.state.subject == null || this.state.message == null
     ){
       this.setState({
         errorMessage: "Please fill all required field",
@@ -651,7 +634,8 @@ class PatientListHospitals extends Component {
   {
       const appointment_data ={
         date : this.state.date, 
-        time : this.state.time, 
+        time: this.state.hour+":"+this.state.minute+" "+this.state.am_pm,
+        time_zone: this.state.time_zone, 
         subject : this.state.subject, 
         message : this.state.message, 
         // /////////////////////////////////////////////
@@ -1125,64 +1109,120 @@ class PatientListHospitals extends Component {
                                         <InputGroupText><span className="asterisk">*</span>Date</InputGroupText>
                                       </InputGroupAddon>
                                       <Input type="date" id="date" defaultValue={this.state.date} onChange={this.onChangeDate} />
-                                      {/* <Input type="text" id="time1" defaultValue={this.state.time1} onChange={this.onChangeTime1} /> */}
-                                      <Input type="select" id="time" defaultValue={this.state.time} onChange={this.onChangeTime}>
-                                        <option value="" selected>Time</option>
-                                        <option value="12:00 AM TO 12:30 AM">12:00 AM TO 12:30 AM</option>
-                                        <option value="12:30 AM TO 01:00 PM">12:30 AM TO 01:00 PM</option>
-                                        <option value="01:00 AM TO 01:30 AM">01:00 AM TO 01:30 AM</option>
-                                        <option value="01:30 AM TO 02:00 AM">01:30 AM TO 02:00 AM</option>
-                                        <option value="02:00 AM TO 02:30 AM">02:00 AM TO 02:30 AM</option>
-                                        <option value="03:30 AM TO 03:00 AM">03:30 AM TO 03:00 AM</option>
-                                        <option value="03:00 AM TO 03:30 AM">03:00 AM TO 03:30 AM</option>
-                                        <option value="03:30 AM TO 04:00 AM">03:30 AM TO 04:00 AM</option>
-                                        <option value="04:00 AM TO 04:30 AM">04:00 AM TO 04:30 AM</option>
-                                        <option value="04:30 AM TO 05:00 AM">04:30 AM TO 05:00 AM</option>
-                                        <option value="05:00 AM TO 05:30 AM">05:00 AM TO 05:30 AM</option>
-                                        <option value="05:30 AM TO 06:00 AM">05:30 AM TO 06:00 AM</option>
-                                        <option value="06:00 AM TO 06:30 AM">06:00 AM TO 06:30 AM</option>
-                                        <option value="06:30 AM TO 07:00 AM">06:30 AM TO 07:00 AM</option>
-                                        <option value="07:00 AM TO 07:30 AM">07:00 AM TO 07:30 AM</option>
-                                        <option value="07:30 AM TO 08:00 AM">07:30 AM TO 08:00 AM</option>
-                                        <option value="08:00 AM TO 08:30 AM">08:00 AM TO 08:30 AM</option>
-                                        <option value="08:30 AM TO 09:00 AM">08:30 AM TO 09:00 AM</option>
-                                        <option value="09:00 AM TO 09:30 AM">09:00 AM TO 09:30 AM</option>
-                                        <option value="09:30 AM TO 10:00 AM">09:30 AM TO 10:00 AM</option>
-                                        <option value="10:00 AM TO 10:30 AM">10:00 AM TO 10:30 AM</option>
-                                        <option value="10:30 AM TO 11:00 AM">10:30 AM TO 11:00 AM</option>
-                                        <option value="11:00 AM TO 11:30 AM">11:00 AM TO 11:30 AM</option>
-                                        <option value="11:30 AM TO 12:00 PM">11:30 AM TO 12:00 PM</option>
-                                        <option value="12:00 PM TO 01:30 PM">12:00 PM TO 01:30 PM</option>
-                                        <option value="01:30 PM TO 02:00 PM">01:30 PM TO 02:00 PM</option>
-                                        <option value="02:00 PM TO 02:30 PM">02:00 PM TO 02:30 PM</option>
-                                        <option value="02:30 PM TO 03:00 PM">02:30 PM TO 03:00 PM</option>
-                                        <option value="03:00 PM TO 03:30 PM">03:00 PM TO 03:30 PM</option>
-                                        <option value="03:30 PM TO 04:00 PM">03:30 PM TO 04:00 PM</option>
-                                        <option value="04:00 PM TO 04:30 PM">04:00 PM TO 04:30 PM</option>
-                                        <option value="04:30 PM TO 05:00 PM">04:30 PM TO 05:00 PM</option>
-                                        <option value="05:00 PM TO 05:30 PM">05:00 PM TO 05:30 PM</option>
-                                        <option value="05:30 PM TO 06:00 PM">05:30 PM TO 06:00 PM</option>
-                                        <option value="06:00 PM TO 06:30 PM">06:00 PM TO 06:30 PM</option>
-                                        <option value="06:30 PM TO 07:00 PM">06:30 PM TO 07:00 PM</option>
-                                        <option value="07:00 PM TO 07:30 PM">07:00 PM TO 07:30 PM</option>
-                                        <option value="07:30 PM TO 08:00 PM">07:30 PM TO 08:00 PM</option>
-                                        <option value="08:00 PM TO 08:30 PM">08:00 PM TO 08:30 PM</option>
-                                        <option value="08:30 PM TO 09:00 PM">08:30 PM TO 09:00 PM</option>
-                                        <option value="09:00 PM TO 09:30 PM">09:00 PM TO 09:30 PM</option>
-                                        <option value="09:30 PM TO 10:00 PM">09:30 PM TO 10:00 PM</option>
-                                        <option value="10:00 PM TO 10:30 PM">10:00 PM TO 10:30 PM</option>
-                                        <option value="10:30 PM TO 11:00 PM">10:30 PM TO 11:00 PM</option>
-                                        <option value="11:00 PM TO 11:30 PM">11:00 PM TO 11:30 PM</option>
-                                        <option value="11:30 PM TO 12:00 PM">11:30 PM TO 12:00 PM</option>
-                                      </Input>
-                                      {/* <TimePicker
-                                        onChange={this.onChangeTime}
-                                        value={this.state.time}
-                                      /> */}
-                                      {/* <TimeField value={time} onChange={this.onTimeChange} /> */}
-                                      {/* <InputGroupAddon addonType="append">
+                                      <InputGroupAddon addonType="append">
                                         <InputGroupText><i className="fa fa-asterisk"></i></InputGroupText>
-                                      </InputGroupAddon> */}
+                                      </InputGroupAddon>
+                                    </InputGroup>
+                                  </FormGroup>
+
+                                  {/* //// TIME //////// */}
+                                  <FormGroup>
+                                    <InputGroup>
+                                      <InputGroupAddon addonType="prepend">
+                                        <InputGroupText><span className="asterisk">*</span>Time</InputGroupText>
+                                      </InputGroupAddon>
+                                      <Input type="select" id="hour" defaultValue={this.state.hour} onChange={this.onChangeHour}>
+                                        <option value="12">12</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                      </Input>
+                                      <Input type="select" id="minute" defaultValue={this.state.minute} onChange={this.onChangeMinute}>
+                                        <option value="00">00</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                        <option value="31">31</option>
+                                        <option value="32">32</option>
+                                        <option value="33">33</option>
+                                        <option value="34">34</option>
+                                        <option value="35">35</option>
+                                        <option value="36">36</option>
+                                        <option value="37">37</option>
+                                        <option value="38">38</option>
+                                        <option value="39">39</option>
+                                        <option value="40">40</option>
+                                        <option value="41">41</option>
+                                        <option value="42">42</option>
+                                        <option value="43">43</option>
+                                        <option value="44">44</option>
+                                        <option value="45">45</option>
+                                        <option value="46">46</option>
+                                        <option value="47">47</option>
+                                        <option value="48">48</option>
+                                        <option value="49">49</option>
+                                        <option value="50">50</option>
+                                        <option value="51">51</option>
+                                        <option value="52">52</option>
+                                        <option value="53">53</option>
+                                        <option value="54">54</option>
+                                        <option value="55">55</option>
+                                        <option value="56">56</option>
+                                        <option value="57">57</option>
+                                        <option value="58">58</option>
+                                        <option value="59">59</option>
+                                      </Input>
+                                      <Input type="select" id="am_pm" defaultValue={this.state.am_pm} onChange={this.onChangeAmPm}>
+                                        <option value="AM">AM</option>
+                                        <option value="PM">PM</option>
+                                      </Input>
+                                      <InputGroupAddon addonType="append">
+                                        <InputGroupText><i className="fa fa-clock"></i></InputGroupText>
+                                      </InputGroupAddon>
+                                    </InputGroup>
+                                  </FormGroup>
+
+                                  {/* //// TIME ZONE //////// */}
+                                  <FormGroup>
+                                    <InputGroup>
+                                      <InputGroupAddon addonType="prepend">
+                                        <InputGroupText><span className="asterisk">*</span>Time Zone</InputGroupText>
+                                      </InputGroupAddon>
+                                      <Input type="select" id="time_zone" value={this.state.time_zone} onChange={this.onChangeTimeZone}>
+                                        {this.state.time_zones.map(time_zone => {
+                                          return (
+                                            <option value={time_zone.time_zone}> {time_zone.time_zone} </option>
+                                          )
+                                        })}
+                                      </Input>
+                                      <InputGroupAddon addonType="append">
+                                        <InputGroupText><i className="fa fa-clock"></i></InputGroupText>
+                                      </InputGroupAddon>
                                     </InputGroup>
                                   </FormGroup>
                                   {/* ///////////////////////// SUBJECT //////////////////////// */}

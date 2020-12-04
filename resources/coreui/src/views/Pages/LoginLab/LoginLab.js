@@ -107,14 +107,13 @@ class LoginLab extends Component {
                     isLoggedIn: appState.isLoggedIn,
                     user: appState.user
                 });
-
+                
                 const timeout = setTimeout(() => {
                   window.location.reload();
-                }, 1000);
-                // localStorage.setItem('usertoken', appState)
-                // console.log("Mr Mendes is here 2");
-                // console.log(`Bearer ${localStorage.usertoken}`)
-                this.props.history.push(`/profile_lab`)
+                }, 100).then(
+                  this.props.history.push(`/profile_lab`)
+                )
+
             } else {
               this.setState({alert_message:"error"});
             }

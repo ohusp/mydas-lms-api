@@ -22,7 +22,12 @@ class Portbookappointment extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'date', 'time', 'subject', 'message', 'port_id', 
+        'date', 
+        'time', 
+        'time_zone', 
+        'subject', 
+        'message', 
+        'port_id', 
         'port_username', 
         'port_name', 
         'patient_id', 

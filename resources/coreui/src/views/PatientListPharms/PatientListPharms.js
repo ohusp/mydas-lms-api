@@ -1,18 +1,13 @@
 import React, { Component, useState } from 'react';
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {createHashHistory} from 'history';
 // import axios from 'axios';
 import axios, { post } from 'axios';
 import $ from "jquery";
 import Pagination from "react-js-pagination";
-import {Link} from 'react-router-dom';
 
 import { ExternalLink } from 'react-external-link';
 import SweetAlert from 'sweetalert2-react';
-import TimePicker from 'react-time-picker';
-
-import { PayPalButton } from "react-paypal-button-v2";
 
 import {
   Badge,

@@ -1424,10 +1424,10 @@ function _getPrototypeOf(o) {
 
 var login_from = localStorage.getItem("login_from");
 var DefaultAside = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 64).then(__webpack_require__.bind(null, /*! ./DefaultAside */ "./resources/coreui/src/containers/DefaultLayout/DefaultAside.js"));
+  return __webpack_require__.e(/*! import() */ 66).then(__webpack_require__.bind(null, /*! ./DefaultAside */ "./resources/coreui/src/containers/DefaultLayout/DefaultAside.js"));
 });
 var DefaultFooter = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 65).then(__webpack_require__.bind(null, /*! ./DefaultFooter */ "./resources/coreui/src/containers/DefaultLayout/DefaultFooter.js"));
+  return __webpack_require__.e(/*! import() */ 67).then(__webpack_require__.bind(null, /*! ./DefaultFooter */ "./resources/coreui/src/containers/DefaultLayout/DefaultFooter.js"));
 });
 var DefaultHeader = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, /*! ./DefaultHeader */ "./resources/coreui/src/containers/DefaultLayout/DefaultHeader.js"));
@@ -1632,7 +1632,7 @@ __webpack_require__.r(__webpack_exports__);
 // //////////////////////////////// ADMIN ////////////////////////////////////////////////
 
 var AdminDashboard = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(5), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(13), __webpack_require__.e(21)]).then(__webpack_require__.bind(null, /*! ./views/Admin/AdminDashboard */ "./resources/coreui/src/views/Admin/AdminDashboard/AdminDashboard.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(13), __webpack_require__.e(21)]).then(__webpack_require__.bind(null, /*! ./views/Admin/AdminDashboard */ "./resources/coreui/src/views/Admin/AdminDashboard/AdminDashboard.js"));
 });
 var Patients = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(26)]).then(__webpack_require__.bind(null, /*! ./views/Admin/Patients */ "./resources/coreui/src/views/Admin/Patients/Patients.js"));
@@ -1654,77 +1654,77 @@ var Labs = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(functi
 }); // //////////////////////////////// USER ///////////////////////////////////////////////////////
 
 var Dashboard = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(5), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(10), __webpack_require__.e(13), __webpack_require__.e(29)]).then(__webpack_require__.bind(null, /*! ./views/Dashboard */ "./resources/coreui/src/views/Dashboard/Dashboard.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(13), __webpack_require__.e(29)]).then(__webpack_require__.bind(null, /*! ./views/Dashboard */ "./resources/coreui/src/views/Dashboard/Dashboard.js"));
 });
 var PatientProfile = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(107)]).then(__webpack_require__.bind(null, /*! ./views/PatientProfile/PatientProfile */ "./resources/coreui/src/views/PatientProfile/PatientProfile.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(108)]).then(__webpack_require__.bind(null, /*! ./views/PatientProfile/PatientProfile */ "./resources/coreui/src/views/PatientProfile/PatientProfile.js"));
 });
 var PatientListDoctors = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(6), __webpack_require__.e(60)]).then(__webpack_require__.bind(null, /*! ./views/PatientListDoctors/PatientListDoctors */ "./resources/coreui/src/views/PatientListDoctors/PatientListDoctors.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(5), __webpack_require__.e(60)]).then(__webpack_require__.bind(null, /*! ./views/PatientListDoctors/PatientListDoctors */ "./resources/coreui/src/views/PatientListDoctors/PatientListDoctors.js"));
 });
 var PatientListHospitals = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(6), __webpack_require__.e(61)]).then(__webpack_require__.bind(null, /*! ./views/PatientListHospitals/PatientListHospitals */ "./resources/coreui/src/views/PatientListHospitals/PatientListHospitals.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(5), __webpack_require__.e(61)]).then(__webpack_require__.bind(null, /*! ./views/PatientListHospitals/PatientListHospitals */ "./resources/coreui/src/views/PatientListHospitals/PatientListHospitals.js"));
 });
 var PatientListLabs = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(6), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(104)]).then(__webpack_require__.bind(null, /*! ./views/PatientListLabs/PatientListLabs */ "./resources/coreui/src/views/PatientListLabs/PatientListLabs.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(5), __webpack_require__.e(8), __webpack_require__.e(12), __webpack_require__.e(106)]).then(__webpack_require__.bind(null, /*! ./views/PatientListLabs/PatientListLabs */ "./resources/coreui/src/views/PatientListLabs/PatientListLabs.js"));
 });
 var PatientListPharms = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(6), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(105)]).then(__webpack_require__.bind(null, /*! ./views/PatientListPharms/PatientListPharms */ "./resources/coreui/src/views/PatientListPharms/PatientListPharms.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(62)]).then(__webpack_require__.bind(null, /*! ./views/PatientListPharms/PatientListPharms */ "./resources/coreui/src/views/PatientListPharms/PatientListPharms.js"));
 });
 var PharmListOrders = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(6), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(110)]).then(__webpack_require__.bind(null, /*! ./views/PharmListOrders/PharmListOrders */ "./resources/coreui/src/views/PharmListOrders/PharmListOrders.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(5), __webpack_require__.e(8), __webpack_require__.e(12), __webpack_require__.e(111)]).then(__webpack_require__.bind(null, /*! ./views/PharmListOrders/PharmListOrders */ "./resources/coreui/src/views/PharmListOrders/PharmListOrders.js"));
 });
 var PatientListPorts = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(6), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(106)]).then(__webpack_require__.bind(null, /*! ./views/PatientListPorts/PatientListPorts */ "./resources/coreui/src/views/PatientListPorts/PatientListPorts.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(5), __webpack_require__.e(107)]).then(__webpack_require__.bind(null, /*! ./views/PatientListPorts/PatientListPorts */ "./resources/coreui/src/views/PatientListPorts/PatientListPorts.js"));
 });
 var PatientCart = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(6), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(103)]).then(__webpack_require__.bind(null, /*! ./views/PatientCart/PatientCart */ "./resources/coreui/src/views/PatientCart/PatientCart.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(5), __webpack_require__.e(105)]).then(__webpack_require__.bind(null, /*! ./views/PatientCart/PatientCart */ "./resources/coreui/src/views/PatientCart/PatientCart.js"));
 });
 var Paystack = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(6), __webpack_require__.e(108)]).then(__webpack_require__.bind(null, /*! ./views/Paystack/Paystack */ "./resources/coreui/src/views/Paystack/Paystack.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(5), __webpack_require__.e(109)]).then(__webpack_require__.bind(null, /*! ./views/Paystack/Paystack */ "./resources/coreui/src/views/Paystack/Paystack.js"));
 }); // /////////////////////////////// PHARM //////////////////////////////////////////////
 
 var PharmProfile = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(112)]).then(__webpack_require__.bind(null, /*! ./views/PharmProfile/PharmProfile */ "./resources/coreui/src/views/PharmProfile/PharmProfile.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(113)]).then(__webpack_require__.bind(null, /*! ./views/PharmProfile/PharmProfile */ "./resources/coreui/src/views/PharmProfile/PharmProfile.js"));
 });
 var PharmProducts = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(111)]).then(__webpack_require__.bind(null, /*! ./views/PharmProducts/PharmProducts */ "./resources/coreui/src/views/PharmProducts/PharmProducts.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(112)]).then(__webpack_require__.bind(null, /*! ./views/PharmProducts/PharmProducts */ "./resources/coreui/src/views/PharmProducts/PharmProducts.js"));
 }); // /////////////////////////////// DOC //////////////////////////////////////////////
 
 var DocProfile = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(89)]).then(__webpack_require__.bind(null, /*! ./views/DocProfile/DocProfile */ "./resources/coreui/src/views/DocProfile/DocProfile.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(91)]).then(__webpack_require__.bind(null, /*! ./views/DocProfile/DocProfile */ "./resources/coreui/src/views/DocProfile/DocProfile.js"));
 });
 var DocListPatients = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(30)]).then(__webpack_require__.bind(null, /*! ./views/DocListPatients/DocListPatients */ "./resources/coreui/src/views/DocListPatients/DocListPatients.js"));
 });
 var DocAccount = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(88)]).then(__webpack_require__.bind(null, /*! ./views/DocAccount/DocAccount */ "./resources/coreui/src/views/DocAccount/DocAccount.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(90)]).then(__webpack_require__.bind(null, /*! ./views/DocAccount/DocAccount */ "./resources/coreui/src/views/DocAccount/DocAccount.js"));
 });
 var HospitalAccount = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(90)]).then(__webpack_require__.bind(null, /*! ./views/HospitalAccount/HospitalAccount */ "./resources/coreui/src/views/HospitalAccount/HospitalAccount.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(92)]).then(__webpack_require__.bind(null, /*! ./views/HospitalAccount/HospitalAccount */ "./resources/coreui/src/views/HospitalAccount/HospitalAccount.js"));
 });
 var PharmAccount = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(109)]).then(__webpack_require__.bind(null, /*! ./views/PharmAccount/PharmAccount */ "./resources/coreui/src/views/PharmAccount/PharmAccount.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(110)]).then(__webpack_require__.bind(null, /*! ./views/PharmAccount/PharmAccount */ "./resources/coreui/src/views/PharmAccount/PharmAccount.js"));
 });
 var PortAccount = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(113)]).then(__webpack_require__.bind(null, /*! ./views/PortAccount/PortAccount */ "./resources/coreui/src/views/PortAccount/PortAccount.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(114)]).then(__webpack_require__.bind(null, /*! ./views/PortAccount/PortAccount */ "./resources/coreui/src/views/PortAccount/PortAccount.js"));
 });
 var LabAccount = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(95)]).then(__webpack_require__.bind(null, /*! ./views/LabAccount/LabAccount */ "./resources/coreui/src/views/LabAccount/LabAccount.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(97)]).then(__webpack_require__.bind(null, /*! ./views/LabAccount/LabAccount */ "./resources/coreui/src/views/LabAccount/LabAccount.js"));
 }); // /////////////////////////////// PORT //////////////////////////////////////////////
 
 var PortProfile = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(115)]).then(__webpack_require__.bind(null, /*! ./views/PortProfile/PortProfile */ "./resources/coreui/src/views/PortProfile/PortProfile.js"));
 });
 var PortListPatients = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(5), __webpack_require__.e(7), __webpack_require__.e(114)]).then(__webpack_require__.bind(null, /*! ./views/PortListPatients/PortListPatients */ "./resources/coreui/src/views/PortListPatients/PortListPatients.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(63)]).then(__webpack_require__.bind(null, /*! ./views/PortListPatients/PortListPatients */ "./resources/coreui/src/views/PortListPatients/PortListPatients.js"));
 }); // /////////////////////////////// LAB //////////////////////////////////////////////
 
 var LabProfile = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 96).then(__webpack_require__.bind(null, /*! ./views/LabProfile/LabProfile */ "./resources/coreui/src/views/LabProfile/LabProfile.js"));
+  return __webpack_require__.e(/*! import() */ 98).then(__webpack_require__.bind(null, /*! ./views/LabProfile/LabProfile */ "./resources/coreui/src/views/LabProfile/LabProfile.js"));
 });
 var LabTests = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(97)]).then(__webpack_require__.bind(null, /*! ./views/LabTests/LabTests */ "./resources/coreui/src/views/LabTests/LabTests.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(99)]).then(__webpack_require__.bind(null, /*! ./views/LabTests/LabTests */ "./resources/coreui/src/views/LabTests/LabTests.js"));
 });
 var LabListPatients = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(32)]).then(__webpack_require__.bind(null, /*! ./views/LabListPatients/LabListPatients */ "./resources/coreui/src/views/LabListPatients/LabListPatients.js"));
@@ -1735,109 +1735,109 @@ var HospitalListDoctors = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___defaul
 }); // ////////////////////////////////////////////////////////////////////////////
 
 var Chat = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(16), __webpack_require__.e(87)]).then(__webpack_require__.bind(null, /*! ./views/Chat/Chat */ "./resources/coreui/src/views/Chat/Chat.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(6), __webpack_require__.e(16), __webpack_require__.e(89)]).then(__webpack_require__.bind(null, /*! ./views/Chat/Chat */ "./resources/coreui/src/views/Chat/Chat.js"));
 });
 var Breadcrumbs = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 66).then(__webpack_require__.bind(null, /*! ./views/Base/Breadcrumbs */ "./resources/coreui/src/views/Base/Breadcrumbs/Breadcrumbs.js"));
+  return __webpack_require__.e(/*! import() */ 68).then(__webpack_require__.bind(null, /*! ./views/Base/Breadcrumbs */ "./resources/coreui/src/views/Base/Breadcrumbs/Breadcrumbs.js"));
 });
 var Cards = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 67).then(__webpack_require__.bind(null, /*! ./views/Base/Cards */ "./resources/coreui/src/views/Base/Cards/Cards.js"));
+  return __webpack_require__.e(/*! import() */ 69).then(__webpack_require__.bind(null, /*! ./views/Base/Cards */ "./resources/coreui/src/views/Base/Cards/Cards.js"));
 });
 var Carousels = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 68).then(__webpack_require__.bind(null, /*! ./views/Base/Carousels */ "./resources/coreui/src/views/Base/Carousels/Carousels.js"));
+  return __webpack_require__.e(/*! import() */ 70).then(__webpack_require__.bind(null, /*! ./views/Base/Carousels */ "./resources/coreui/src/views/Base/Carousels/Carousels.js"));
 });
 var Collapses = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 69).then(__webpack_require__.bind(null, /*! ./views/Base/Collapses */ "./resources/coreui/src/views/Base/Collapses/Collapses.js"));
+  return __webpack_require__.e(/*! import() */ 71).then(__webpack_require__.bind(null, /*! ./views/Base/Collapses */ "./resources/coreui/src/views/Base/Collapses/Collapses.js"));
 });
 var Dropdowns = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 70).then(__webpack_require__.bind(null, /*! ./views/Base/Dropdowns */ "./resources/coreui/src/views/Base/Dropdowns/Dropdowns.js"));
+  return __webpack_require__.e(/*! import() */ 72).then(__webpack_require__.bind(null, /*! ./views/Base/Dropdowns */ "./resources/coreui/src/views/Base/Dropdowns/Dropdowns.js"));
 });
 var Forms = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 71).then(__webpack_require__.bind(null, /*! ./views/Base/Forms */ "./resources/coreui/src/views/Base/Forms/Forms.js"));
+  return __webpack_require__.e(/*! import() */ 73).then(__webpack_require__.bind(null, /*! ./views/Base/Forms */ "./resources/coreui/src/views/Base/Forms/Forms.js"));
 });
 var Jumbotrons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 72).then(__webpack_require__.bind(null, /*! ./views/Base/Jumbotrons */ "./resources/coreui/src/views/Base/Jumbotrons/Jumbotrons.js"));
+  return __webpack_require__.e(/*! import() */ 74).then(__webpack_require__.bind(null, /*! ./views/Base/Jumbotrons */ "./resources/coreui/src/views/Base/Jumbotrons/Jumbotrons.js"));
 });
 var ListGroups = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 73).then(__webpack_require__.bind(null, /*! ./views/Base/ListGroups */ "./resources/coreui/src/views/Base/ListGroups/ListGroups.js"));
+  return __webpack_require__.e(/*! import() */ 75).then(__webpack_require__.bind(null, /*! ./views/Base/ListGroups */ "./resources/coreui/src/views/Base/ListGroups/ListGroups.js"));
 });
 var Navbars = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 74).then(__webpack_require__.bind(null, /*! ./views/Base/Navbars */ "./resources/coreui/src/views/Base/Navbars/Navbars.js"));
+  return __webpack_require__.e(/*! import() */ 76).then(__webpack_require__.bind(null, /*! ./views/Base/Navbars */ "./resources/coreui/src/views/Base/Navbars/Navbars.js"));
 });
 var Navs = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 75).then(__webpack_require__.bind(null, /*! ./views/Base/Navs */ "./resources/coreui/src/views/Base/Navs/Navs.js"));
+  return __webpack_require__.e(/*! import() */ 77).then(__webpack_require__.bind(null, /*! ./views/Base/Navs */ "./resources/coreui/src/views/Base/Navs/Navs.js"));
 });
 var Paginations = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 76).then(__webpack_require__.bind(null, /*! ./views/Base/Paginations */ "./resources/coreui/src/views/Base/Paginations/Pagnations.js"));
+  return __webpack_require__.e(/*! import() */ 78).then(__webpack_require__.bind(null, /*! ./views/Base/Paginations */ "./resources/coreui/src/views/Base/Paginations/Pagnations.js"));
 });
 var Popovers = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 77).then(__webpack_require__.bind(null, /*! ./views/Base/Popovers */ "./resources/coreui/src/views/Base/Popovers/Popovers.js"));
+  return __webpack_require__.e(/*! import() */ 79).then(__webpack_require__.bind(null, /*! ./views/Base/Popovers */ "./resources/coreui/src/views/Base/Popovers/Popovers.js"));
 });
 var ProgressBar = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 78).then(__webpack_require__.bind(null, /*! ./views/Base/ProgressBar */ "./resources/coreui/src/views/Base/ProgressBar/ProgressBar.js"));
+  return __webpack_require__.e(/*! import() */ 80).then(__webpack_require__.bind(null, /*! ./views/Base/ProgressBar */ "./resources/coreui/src/views/Base/ProgressBar/ProgressBar.js"));
 });
 var Switches = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 79).then(__webpack_require__.bind(null, /*! ./views/Base/Switches */ "./resources/coreui/src/views/Base/Switches/Switches.js"));
+  return __webpack_require__.e(/*! import() */ 81).then(__webpack_require__.bind(null, /*! ./views/Base/Switches */ "./resources/coreui/src/views/Base/Switches/Switches.js"));
 });
 var Tables = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 80).then(__webpack_require__.bind(null, /*! ./views/Base/Tables */ "./resources/coreui/src/views/Base/Tables/Tables.js"));
+  return __webpack_require__.e(/*! import() */ 82).then(__webpack_require__.bind(null, /*! ./views/Base/Tables */ "./resources/coreui/src/views/Base/Tables/Tables.js"));
 });
 var Tabs = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 81).then(__webpack_require__.bind(null, /*! ./views/Base/Tabs */ "./resources/coreui/src/views/Base/Tabs/Tabs.js"));
+  return __webpack_require__.e(/*! import() */ 83).then(__webpack_require__.bind(null, /*! ./views/Base/Tabs */ "./resources/coreui/src/views/Base/Tabs/Tabs.js"));
 });
 var Tooltips = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 82).then(__webpack_require__.bind(null, /*! ./views/Base/Tooltips */ "./resources/coreui/src/views/Base/Tooltips/Tooltips.js"));
+  return __webpack_require__.e(/*! import() */ 84).then(__webpack_require__.bind(null, /*! ./views/Base/Tooltips */ "./resources/coreui/src/views/Base/Tooltips/Tooltips.js"));
 });
 var BrandButtons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 83).then(__webpack_require__.bind(null, /*! ./views/Buttons/BrandButtons */ "./resources/coreui/src/views/Buttons/BrandButtons/BrandButtons.js"));
+  return __webpack_require__.e(/*! import() */ 85).then(__webpack_require__.bind(null, /*! ./views/Buttons/BrandButtons */ "./resources/coreui/src/views/Buttons/BrandButtons/BrandButtons.js"));
 });
 var ButtonDropdowns = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 84).then(__webpack_require__.bind(null, /*! ./views/Buttons/ButtonDropdowns */ "./resources/coreui/src/views/Buttons/ButtonDropdowns/ButtonDropdowns.js"));
+  return __webpack_require__.e(/*! import() */ 86).then(__webpack_require__.bind(null, /*! ./views/Buttons/ButtonDropdowns */ "./resources/coreui/src/views/Buttons/ButtonDropdowns/ButtonDropdowns.js"));
 });
 var ButtonGroups = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 85).then(__webpack_require__.bind(null, /*! ./views/Buttons/ButtonGroups */ "./resources/coreui/src/views/Buttons/ButtonGroups/ButtonGroups.js"));
+  return __webpack_require__.e(/*! import() */ 87).then(__webpack_require__.bind(null, /*! ./views/Buttons/ButtonGroups */ "./resources/coreui/src/views/Buttons/ButtonGroups/ButtonGroups.js"));
 });
 var Buttons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 86).then(__webpack_require__.bind(null, /*! ./views/Buttons/Buttons */ "./resources/coreui/src/views/Buttons/Buttons/Buttons.js"));
+  return __webpack_require__.e(/*! import() */ 88).then(__webpack_require__.bind(null, /*! ./views/Buttons/Buttons */ "./resources/coreui/src/views/Buttons/Buttons/Buttons.js"));
 });
 var Charts = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./views/Charts */ "./resources/coreui/src/views/Charts/Charts.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! ./views/Charts */ "./resources/coreui/src/views/Charts/Charts.js"));
 });
 var CoreUIIcons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 91).then(__webpack_require__.bind(null, /*! ./views/Icons/CoreUIIcons */ "./resources/coreui/src/views/Icons/CoreUIIcons/CoreUIIcons.js"));
+  return __webpack_require__.e(/*! import() */ 93).then(__webpack_require__.bind(null, /*! ./views/Icons/CoreUIIcons */ "./resources/coreui/src/views/Icons/CoreUIIcons/CoreUIIcons.js"));
 });
 var Flags = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 92).then(__webpack_require__.bind(null, /*! ./views/Icons/Flags */ "./resources/coreui/src/views/Icons/Flags/Flags.js"));
+  return __webpack_require__.e(/*! import() */ 94).then(__webpack_require__.bind(null, /*! ./views/Icons/Flags */ "./resources/coreui/src/views/Icons/Flags/Flags.js"));
 });
 var FontAwesome = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 93).then(__webpack_require__.bind(null, /*! ./views/Icons/FontAwesome */ "./resources/coreui/src/views/Icons/FontAwesome/FontAwesome.js"));
+  return __webpack_require__.e(/*! import() */ 95).then(__webpack_require__.bind(null, /*! ./views/Icons/FontAwesome */ "./resources/coreui/src/views/Icons/FontAwesome/FontAwesome.js"));
 });
 var SimpleLineIcons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 94).then(__webpack_require__.bind(null, /*! ./views/Icons/SimpleLineIcons */ "./resources/coreui/src/views/Icons/SimpleLineIcons/SimpleLineIcons.js"));
+  return __webpack_require__.e(/*! import() */ 96).then(__webpack_require__.bind(null, /*! ./views/Icons/SimpleLineIcons */ "./resources/coreui/src/views/Icons/SimpleLineIcons/SimpleLineIcons.js"));
 });
 var Alerts = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 98).then(__webpack_require__.bind(null, /*! ./views/Notifications/Alerts */ "./resources/coreui/src/views/Notifications/Alerts/Alerts.js"));
+  return __webpack_require__.e(/*! import() */ 100).then(__webpack_require__.bind(null, /*! ./views/Notifications/Alerts */ "./resources/coreui/src/views/Notifications/Alerts/Alerts.js"));
 });
 var Badges = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 99).then(__webpack_require__.bind(null, /*! ./views/Notifications/Badges */ "./resources/coreui/src/views/Notifications/Badges/Badges.js"));
+  return __webpack_require__.e(/*! import() */ 101).then(__webpack_require__.bind(null, /*! ./views/Notifications/Badges */ "./resources/coreui/src/views/Notifications/Badges/Badges.js"));
 });
 var Modals = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 100).then(__webpack_require__.bind(null, /*! ./views/Notifications/Modals */ "./resources/coreui/src/views/Notifications/Modals/Modals.js"));
+  return __webpack_require__.e(/*! import() */ 102).then(__webpack_require__.bind(null, /*! ./views/Notifications/Modals */ "./resources/coreui/src/views/Notifications/Modals/Modals.js"));
 });
 var Colors = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(10), __webpack_require__.e(116)]).then(__webpack_require__.bind(null, /*! ./views/Theme/Colors */ "./resources/coreui/src/views/Theme/Colors/Colors.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(9), __webpack_require__.e(116)]).then(__webpack_require__.bind(null, /*! ./views/Theme/Colors */ "./resources/coreui/src/views/Theme/Colors/Colors.js"));
 });
 var Typography = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return __webpack_require__.e(/*! import() */ 117).then(__webpack_require__.bind(null, /*! ./views/Theme/Typography */ "./resources/coreui/src/views/Theme/Typography/Typography.js"));
 });
 var Widgets = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(8), __webpack_require__.e(9), __webpack_require__.e(11), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! ./views/Widgets/Widgets */ "./resources/coreui/src/views/Widgets/Widgets.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(6), __webpack_require__.e(7), __webpack_require__.e(10), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! ./views/Widgets/Widgets */ "./resources/coreui/src/views/Widgets/Widgets.js"));
 });
 var Users = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 63).then(__webpack_require__.bind(null, /*! ./views/Users/Users */ "./resources/coreui/src/views/Users/Users.js"));
+  return __webpack_require__.e(/*! import() */ 65).then(__webpack_require__.bind(null, /*! ./views/Users/Users */ "./resources/coreui/src/views/Users/Users.js"));
 });
 var User = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return __webpack_require__.e(/*! import() */ 62).then(__webpack_require__.bind(null, /*! ./views/Users/User */ "./resources/coreui/src/views/Users/User.js"));
+  return __webpack_require__.e(/*! import() */ 64).then(__webpack_require__.bind(null, /*! ./views/Users/User */ "./resources/coreui/src/views/Users/User.js"));
 }); // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 
 var routes = [// ///////////////////////////// ADMIN ////////////////////////////////////////////////////////////

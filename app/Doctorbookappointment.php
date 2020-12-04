@@ -22,7 +22,8 @@ class Doctorbookappointment extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'date', 'time', 'subject', 'message', 'doc_id', 'doc_username', 'doc_first_name', 'doc_last_name', 'doc_middle_name', 'patient_id', 'patient_username', 'patient_first_name', 'patient_last_name', 'patient_middle_name', 'status'
+        'date', 'time', 'time_zone', 
+        'subject', 'message', 'doc_id', 'doc_username', 'doc_first_name', 'doc_last_name', 'doc_middle_name', 'patient_id', 'patient_username', 'patient_first_name', 'patient_last_name', 'patient_middle_name', 'status'
     ];
 
     /**

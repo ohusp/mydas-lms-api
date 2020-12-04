@@ -263,34 +263,19 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
     _this.togglePrimary = _this.togglePrimary.bind(_assertThisInitialized(_this));
     _this.toggleViewDoctor = _this.toggleViewDoctor.bind(_assertThisInitialized(_this));
     _this.toggleViewAppointments = _this.toggleViewAppointments.bind(_assertThisInitialized(_this));
-    _this.toggleMakePayment = _this.toggleMakePayment.bind(_assertThisInitialized(_this)); // this.toggleEnterReport = this.toggleEnterReport.bind(this);
-    // bing toggle functions and values
-    // this.toggle = this.toggle.bind(this);
-    // this.toggle_identification    = this.toggle_identification.bind(this);
-    // this.toggle_app_instructions  = this.toggle_app_instructions.bind(this);
-
+    _this.toggleMakePayment = _this.toggleMakePayment.bind(_assertThisInitialized(_this));
     _this.onChangeDate = _this.onChangeDate.bind(_assertThisInitialized(_this));
-    _this.onChangeTime = _this.onChangeTime.bind(_assertThisInitialized(_this));
+    _this.onChangeHour = _this.onChangeHour.bind(_assertThisInitialized(_this));
+    _this.onChangeMinute = _this.onChangeMinute.bind(_assertThisInitialized(_this));
+    _this.onChangeAmPm = _this.onChangeAmPm.bind(_assertThisInitialized(_this));
+    _this.onChangeTimeZone = _this.onChangeTimeZone.bind(_assertThisInitialized(_this));
     _this.onChangeSubject = _this.onChangeSubject.bind(_assertThisInitialized(_this));
-    _this.onChangeMessage = _this.onChangeMessage.bind(_assertThisInitialized(_this)); // this.onChangeAllergiesUpdate            =this.onChangeAllergiesUpdate.bind(this);
-    // this.onChangeBloodGroupUpdate           =this.onChangeBloodGroupUpdate.bind(this);
-    // this.onChangeUnderlyingConditionsUpdate =this.onChangeUnderlyingConditionsUpdate.bind(this);
-    // this.onChangeFamilyMedicalHistoryUpdate =this.onChangeFamilyMedicalHistoryUpdate.bind(this);
-    // this.onChangeHypertensiveUpdate         =this.onChangeHypertensiveUpdate.bind(this);
-    // this.onChangeDiabeticUpdate             =this.onChangeDiabeticUpdate.bind(this);
-    // this.onChangePrescriptionUpdate         =this.onChangePrescriptionUpdate.bind(this);
-    // this.onChangeLabTestUpdate              =this.onChangeLabTestUpdate.bind(this);
-    // this.onChangeNoteUpdate                 =this.onChangeNoteUpdate.bind(this);
-
+    _this.onChangeMessage = _this.onChangeMessage.bind(_assertThisInitialized(_this));
     _this.onChangeMessageBox = _this.onChangeMessageBox.bind(_assertThisInitialized(_this));
     _this.submitSendFile = _this.submitSendFile.bind(_assertThisInitialized(_this));
     _this.sendMessage = _this.sendMessage.bind(_assertThisInitialized(_this)); // /////////////////////////////////////////////////////////////////
 
-    _this.onSubmitBookAppointment = _this.onSubmitBookAppointment.bind(_assertThisInitialized(_this)); // medical record tab toggle
-    // this.toggleMedRecTab = this.toggleMedRecTab.bind(this);
-    // this.onChangeDate             =this.onChangeDate.bind(this);
-    // this.onChangeTime             =this.onChangeTime.bind(this);
-
+    _this.onSubmitBookAppointment = _this.onSubmitBookAppointment.bind(_assertThisInitialized(_this));
     _this.state = (_this$state = {
       token: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.auth_token : "",
       id: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.id : "",
@@ -298,28 +283,6 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
       first_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.first_name : "",
       last_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.last_name : "",
       middle_name: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.middle_name : "",
-      // store array of data when a patient is clicked 
-      // medications_currently_using: [],
-      // allergies: [],
-      // blood_group: [],
-      // underlying_conditions: [],
-      // family_medical_history: [],
-      // hypertensive: [],
-      // diabetic: [],
-      // prescription: [],
-      // lab_test: [],
-      // note: [],
-      // store new data entered to be stored/submitted
-      // medications_currently_using_update: "",
-      // allergies_update: "",
-      // blood_group_update: "",
-      // underlying_conditions_update: "",
-      // family_medical_history_update: "",
-      // hypertensive_update: "",
-      // diabetic_update: "",
-      // prescription_update: "",
-      // lab_test_update: "",
-      // note_update: "",
       currentTime: new Date().toLocaleString(),
       // for chat
       message_box: "",
@@ -341,23 +304,11 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
       pageRangeDisplayed_appointments: 3,
       currentPage2_appointments: '',
       status_appointments: '1'
-    }, _defineProperty(_this$state, "status", ""), _defineProperty(_this$state, "created_at", localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.created_at : ""), _defineProperty(_this$state, "user_type", localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.user_type : ""), _defineProperty(_this$state, "collapse", false), _defineProperty(_this$state, "collapse_identification", false), _defineProperty(_this$state, "collapse_app_instructions", false), _defineProperty(_this$state, "fadeIn", true), _defineProperty(_this$state, "timeout", 300), _defineProperty(_this$state, "doctor_id", ""), _defineProperty(_this$state, "doctor_name", ""), _defineProperty(_this$state, "doc_id", ""), _defineProperty(_this$state, "doc_name", ""), _defineProperty(_this$state, "startDate", new Date()), _defineProperty(_this$state, "date", ""), _defineProperty(_this$state, "time", '12:34'), _defineProperty(_this$state, "subject", ""), _defineProperty(_this$state, "message", ""), _defineProperty(_this$state, "primary", false), _defineProperty(_this$state, "primaryViewDoctor", false), _defineProperty(_this$state, "primaryViewAppointments", false), _defineProperty(_this$state, "primaryMakePayment", false), _defineProperty(_this$state, "enterReport", false), _defineProperty(_this$state, "showSuccess", false), _defineProperty(_this$state, "showError", false), _defineProperty(_this$state, "successMessage", "Successful"), _defineProperty(_this$state, "errorMessage", "Failed"), _defineProperty(_this$state, "doctor_fee", ""), _defineProperty(_this$state, "country_handling_fee", ""), _defineProperty(_this$state, "total_fee", ""), _defineProperty(_this$state, "chatBtn", ""), _this$state);
+    }, _defineProperty(_this$state, "status", ""), _defineProperty(_this$state, "created_at", localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.created_at : ""), _defineProperty(_this$state, "user_type", localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.user_type : ""), _defineProperty(_this$state, "collapse", false), _defineProperty(_this$state, "collapse_identification", false), _defineProperty(_this$state, "collapse_app_instructions", false), _defineProperty(_this$state, "fadeIn", true), _defineProperty(_this$state, "timeout", 300), _defineProperty(_this$state, "doctor_id", ""), _defineProperty(_this$state, "doctor_name", ""), _defineProperty(_this$state, "doc_id", ""), _defineProperty(_this$state, "doc_name", ""), _defineProperty(_this$state, "startDate", new Date()), _defineProperty(_this$state, "date", ""), _defineProperty(_this$state, "hour", "12"), _defineProperty(_this$state, "minute", "00"), _defineProperty(_this$state, "am_pm", "AM"), _defineProperty(_this$state, "time_zone", "(GMT+0:00) Greenwich Mean Time"), _defineProperty(_this$state, "time_zones", []), _defineProperty(_this$state, "subject", ""), _defineProperty(_this$state, "message", ""), _defineProperty(_this$state, "primary", false), _defineProperty(_this$state, "primaryViewDoctor", false), _defineProperty(_this$state, "primaryViewAppointments", false), _defineProperty(_this$state, "primaryMakePayment", false), _defineProperty(_this$state, "enterReport", false), _defineProperty(_this$state, "showSuccess", false), _defineProperty(_this$state, "showError", false), _defineProperty(_this$state, "successMessage", "Successful"), _defineProperty(_this$state, "errorMessage", "Failed"), _defineProperty(_this$state, "doctor_fee", ""), _defineProperty(_this$state, "country_handling_fee", ""), _defineProperty(_this$state, "total_fee", ""), _defineProperty(_this$state, "chatBtn", ""), _this$state);
     _this.handlePageChange = _this.handlePageChange.bind(_assertThisInitialized(_this)); // this.onTimeChange = this.onTimeChange.bind(this);
 
     return _this;
-  } // onTimeChange(time) {
-  //   this.setState({time});
-  // }
-  // onChange = time => this.setState({ time })
-  // medical record tab toggle
-  // toggleMedRecTab(tab) {
-  //   if (this.state.activeTab !== tab) {
-  //     this.setState({
-  //       activeTab: tab
-  //     });
-  //   }
-  // }
-
+  }
 
   _createClass(PatientListDoctors, [{
     key: "onChangeDate",
@@ -367,10 +318,31 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
-    key: "onChangeTime",
-    value: function onChangeTime(e) {
+    key: "onChangeHour",
+    value: function onChangeHour(e) {
       this.setState({
-        time: e.target.value
+        hour: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeMinute",
+    value: function onChangeMinute(e) {
+      this.setState({
+        minute: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeAmPm",
+    value: function onChangeAmPm(e) {
+      this.setState({
+        am_pm: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeTimeZone",
+    value: function onChangeTimeZone(e) {
+      this.setState({
+        time_zone: e.target.value
       });
     }
   }, {
@@ -386,18 +358,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
       this.setState({
         message: e.target.value
       });
-    } // onChangeAllergiesUpdate(e)      { this.setState({ allergies_update:e.target.value  }); }
-    // onChangeBloodGroupUpdate(e)     { this.setState({ blood_group_update:e.target.value  }); }
-    // onChangeUnderlyingConditionsUpdate(e)     { this.setState({ underlying_conditions_update:e.target.value  }); }
-    // onChangeFamilyMedicalHistoryUpdate(e)     { this.setState({ family_medical_history_update:e.target.value  }); }
-    // onChangeHypertensiveUpdate(e)     { this.setState({ hypertensive_update:e.target.value  }); }
-    // onChangeDiabeticUpdate(e)         { this.setState({ diabetic_update:e.target.value  }); }
-    // onChangePrescriptionUpdate(e)     { this.setState({ prescription_update:e.target.value  }); }
-    // onChangeLabTestUpdate(e)          { this.setState({ lab_test_update:e.target.value  }); }
-    // onChangeNoteUpdate(e)             { this.setState({ note_update:e.target.value  }); }
-    // onChangeDate(e)           { this.setState({ date:e.target.value  }); }
-    // onChangeTime(e)           { this.setState({ time:e.target.value  }); }
-    // fetch data from db
+    } // fetch data from db
 
   }, {
     key: "componentDidMount",
@@ -447,21 +408,29 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
-    key: "togglePrimary",
-    // toggle collapse and expand application instruction
-    // toggle_app_instructions() {
-    //   this.setState({ collapse_app_instructions: !this.state.collapse_app_instructions });
-    // }
-    // toggle collapse and expand personal data
-    // toggle() {
-    //   this.setState({ collapse: !this.state.collapse });
-    // }
-    // toggle collapse and expand identification
-    // toggle_identification() {
-    //   this.setState({ collapse_identification: !this.state.collapse_identification });
-    // }
-    // //////////////////////////////////////////////////////////////////////
+    key: "getTimeZones",
+    value: function getTimeZones() {
+      var _this4 = this; // ///////////////////// get time zones /////////////////////////////////////
+
+
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/get/time_zones?token=".concat(this.state.token)).then(function (response) {
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this4.setState({
+            time_zones: json.data.data
+          });
+        } else {}
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    } // //////////////////////////////////////////////////////////////////////
     // /////////////// Patient chat
+
+  }, {
+    key: "togglePrimary",
     value: function togglePrimary(doc_id, doc_name) {
       this.setState({
         doc_id: doc_id,
@@ -483,18 +452,18 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
   }, {
     key: "getMessages1",
     value: function getMessages1(doc_id) {
-      var _this4 = this;
+      var _this5 = this;
 
       this.getMessages2(doc_id);
       this.interval = setInterval(function () {
-        return _this4.getMessages2(doc_id);
+        return _this5.getMessages2(doc_id);
       }, 5000);
     } // get messages
 
   }, {
     key: "getMessages2",
     value: function getMessages2(doc_id) {
-      var _this5 = this; // alert("Paulo");
+      var _this6 = this; // alert("Paulo");
 
 
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/doc/chat/message/get/" + doc_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
@@ -503,9 +472,9 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         if (json.data.success) {
           //   console.log("applications_list");
           //   console.log(json.data.data.data);
-          _this5.setState({
+          _this6.setState({
             message_list: json.data.messages.message
-          }, _this5.loadMessages(json.data.messages.message));
+          }, _this6.loadMessages(json.data.messages.message));
         } else {}
       })["catch"](function (error) {
         // redirect user to previous page if user does not have autorization to the page
@@ -593,7 +562,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
   }, {
     key: "submitSendFile",
     value: function submitSendFile(e) {
-      var _this6 = this; // e.preventDefault() // Stop form submit
+      var _this7 = this; // e.preventDefault() // Stop form submit
 
 
       this.uploadSendFile().then(function (response) {
@@ -608,7 +577,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
             // });
           }
       })["catch"](function (error) {
-        _this6.setState({
+        _this7.setState({
           showError: true
         });
       });
@@ -636,12 +605,12 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         primaryViewDoctor: !this.state.primaryViewDoctor,
         doctor_id: id,
         doctor_name: name
-      });
+      }, this.getTimeZones);
     }
   }, {
     key: "viewDoctor",
     value: function viewDoctor(doctor_id, name) {
-      var _this7 = this;
+      var _this8 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/doctors/get/" + doctor_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
         // console.log("It came back");
@@ -649,7 +618,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          _this7.setState({
+          _this8.setState({
             doctor_username: json.data.doctor_data.username,
             doctor_first_name: json.data.doctor_data.first_name,
             doctor_last_name: json.data.doctor_data.last_name,
@@ -667,9 +636,9 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
             doctor_available_by_time: json.data.doctor_data.available_by_time,
             doctor_profile_picture: json.data.doctor_data.profile_picture,
             status: json.data.status
-          }, _this7.toggleViewDoctor(doctor_id, name));
+          }, _this8.toggleViewDoctor(doctor_id, name));
         } else {
-          _this7.setState({
+          _this8.setState({
             errorMessage: json.data.data,
             showError: true
           });
@@ -698,11 +667,11 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
   }, {
     key: "onSubmitBookAppointment",
     value: function onSubmitBookAppointment(e) {
-      var _this8 = this;
+      var _this9 = this;
 
       e.preventDefault();
 
-      if (this.state.date == "" || this.state.time == "" || this.state.subject == "" || this.state.message == "" || this.state.date == null || this.state.time == null || this.state.subject == null || this.state.message == null) {
+      if (this.state.date == "" || this.state.hour == "" || this.state.minute == "" || this.state.am_pm == "" || this.state.time_zone == "" || this.state.subject == "" || this.state.message == "" || this.state.date == null || this.state.hour == null || this.state.minute == null || this.state.am_pm == null || this.state.time_zone == null || this.state.subject == null || this.state.message == null) {
         this.setState({
           errorMessage: "Please fill all required field",
           showError: true
@@ -715,17 +684,17 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
           if (json.data.success) {
             // console.log(json.data);
             if (json.data.doctor_fee != 0) {
-              _this8.setState({
+              _this9.setState({
                 doctor_fee: json.data.doctor_fee,
                 country_handling_fee: json.data.country_handling_fee,
                 total_fee: json.data.total_fee
-              }, _this8.toggleMakePayment());
+              }, _this9.toggleMakePayment());
             } else {
-              _this8.setState({
+              _this9.setState({
                 doctor_fee: json.data.doctor_fee,
                 country_handling_fee: json.data.country_handling_fee,
                 total_fee: json.data.total_fee
-              }, _this8.onSubmitBookAppointment3());
+              }, _this9.onSubmitBookAppointment3());
             }
           } else {}
         })["catch"](function (error) {
@@ -747,11 +716,12 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
   }, {
     key: "onSubmitBookAppointment3",
     value: function onSubmitBookAppointment3() {
-      var _this9 = this;
+      var _this10 = this;
 
       var appointment_data = {
         date: this.state.date,
-        time: this.state.time,
+        time: this.state.hour + ":" + this.state.minute + " " + this.state.am_pm,
+        time_zone: this.state.time_zone,
         subject: this.state.subject,
         message: this.state.message,
         // /////////////////////////////////////////////
@@ -770,18 +740,18 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         return response;
       }, this.toggleMakePayment("close", "close")).then(function (json) {
         if (json.data.success) {
-          _this9.setState({
+          _this10.setState({
             successMessage: json.data.data,
             showSuccess: true
           });
         } else {
-          _this9.setState({
+          _this10.setState({
             successMessage: json.data.data,
             showError: true
           });
         }
       })["catch"](function (error) {
-        _this9.setState({
+        _this10.setState({
           showError: true
         });
       });
@@ -800,18 +770,18 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
   }, {
     key: "viewAppointments",
     value: function viewAppointments() {
-      var _this10 = this;
+      var _this11 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/patient/doc_appointments/get/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          _this10.setState({
+          _this11.setState({
             appointments_list: json.data.data.data,
             itemsCountPerPage_appointments: json.data.data.per_page,
             totalItemsCount_appointments: json.data.data.total,
             activePage_appointments: json.data.data.current_page
-          }, _this10.toggleViewAppointments());
+          }, _this11.toggleViewAppointments());
         } else {}
       })["catch"](function (error) {
         // redirect user to previous page if user does not have autorization to the page
@@ -822,7 +792,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
   }, {
     key: "handlePageChangeAppointments",
     value: function handlePageChangeAppointments(pageNumber) {
-      var _this11 = this; // console.log(`active page is ${pageNumber}`);
+      var _this12 = this; // console.log(`active page is ${pageNumber}`);
       // this.setState({activePage: pageNumber});
 
 
@@ -830,7 +800,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          _this11.setState({
+          _this12.setState({
             appointments_list: json.data.data.data,
             itemsCountPerPage_appointments: json.data.data.per_page,
             totalItemsCount_appointments: json.data.data.total,
@@ -842,7 +812,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this12 = this;
+      var _this13 = this;
 
       if (this.state.doctor_gender == "0") {
         this.state.doctor_gender = "Not specified";
@@ -905,7 +875,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         size: "sm",
         color: "primary",
         onClick: function onClick() {
-          return _this12.viewAppointments();
+          return _this13.viewAppointments();
         }
       }, "View Appointments"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Table"], {
         responsive: true,
@@ -916,11 +886,11 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
       this.state.currentPage = this.state.activePage * 10 - (10 - 1), // ////////////////////////////////////////////////////////////
       this.state.doctors_list.map(function (doctor) {
         if (doctor.status == 1) {
-          _this12.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Badge"], {
+          _this13.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Badge"], {
             color: "success"
           }, "Completed");
         } else {
-          _this12.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Badge"], {
+          _this13.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Badge"], {
             color: "danger"
           }, "Not Complete");
         }
@@ -929,33 +899,33 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         var name = doctor.first_name + " " + doctor.last_name;
 
         if (doctor.gender == "0") {
-          _this12.state.gender = "Not specified";
+          _this13.state.gender = "Not specified";
         }
 
         if (doctor.gender == "1") {
-          _this12.state.gender = "Male";
+          _this13.state.gender = "Male";
         }
 
         if (doctor.gender == "2") {
-          _this12.state.gender = "Female";
+          _this13.state.gender = "Female";
         }
 
         if (doctor.gender == "3") {
-          _this12.state.gender = "Prefer not to say";
+          _this13.state.gender = "Prefer not to say";
         }
 
         if (doctor.gender == "4") {
-          _this12.state.gender = doctor.gender_others;
+          _this13.state.gender = doctor.gender_others;
         }
 
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: doctor.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
           scope: "row"
-        }, _this12.state.currentPage++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, doctor.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, doctor.first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, doctor.last_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, doctor.middle_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this12.state.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, doctor.country_of_residence), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Button"], {
+        }, _this13.state.currentPage++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, doctor.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, doctor.first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, doctor.last_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, doctor.middle_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this13.state.gender), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, doctor.country_of_residence), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Button"], {
           size: "sm",
           onClick: function onClick() {
-            return _this12.viewDoctor(doctor_id, name);
+            return _this13.viewDoctor(doctor_id, name);
           },
           className: "btn-facebook btn-brand icon mr-1 mb-1",
           style: {
@@ -982,7 +952,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["ModalHeader"], {
         toggle: function toggle() {
-          return _this12.togglePrimary("close", "close");
+          return _this13.togglePrimary("close", "close");
         }
       }, "Messages"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
@@ -1024,12 +994,12 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         } // onChange={this.onChangeProfilePicture}
         ,
         onChange: function onChange(e) {
-          _this12.sendFile(e);
+          _this13.sendFile(e);
         }
       })))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Button"], {
         color: "secondary",
         onClick: function onClick() {
-          return _this12.togglePrimary("close", "close");
+          return _this13.togglePrimary("close", "close");
         }
       }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Modal"], {
         isOpen: this.state.primaryViewDoctor,
@@ -1039,7 +1009,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["ModalHeader"], {
         toggle: function toggle() {
-          return _this12.toggleViewDoctor("close", "close");
+          return _this13.toggleViewDoctor("close", "close");
         }
       }, "View Doctor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
@@ -1140,107 +1110,199 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         id: "date",
         defaultValue: this.state.date,
         onChange: this.onChangeDate
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Input"], {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"), "Time")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Input"], {
         type: "select",
-        id: "time",
-        defaultValue: this.state.time,
-        onChange: this.onChangeTime
+        id: "hour",
+        defaultValue: this.state.hour,
+        onChange: this.onChangeHour
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "",
-        selected: true
-      }, "Time"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "12:00 AM TO 12:30 AM"
-      }, "12:00 AM TO 12:30 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "12:30 AM TO 01:00 PM"
-      }, "12:30 AM TO 01:00 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "01:00 AM TO 01:30 AM"
-      }, "01:00 AM TO 01:30 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "01:30 AM TO 02:00 AM"
-      }, "01:30 AM TO 02:00 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "02:00 AM TO 02:30 AM"
-      }, "02:00 AM TO 02:30 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "03:30 AM TO 03:00 AM"
-      }, "03:30 AM TO 03:00 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "03:00 AM TO 03:30 AM"
-      }, "03:00 AM TO 03:30 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "03:30 AM TO 04:00 AM"
-      }, "03:30 AM TO 04:00 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "04:00 AM TO 04:30 AM"
-      }, "04:00 AM TO 04:30 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "04:30 AM TO 05:00 AM"
-      }, "04:30 AM TO 05:00 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "05:00 AM TO 05:30 AM"
-      }, "05:00 AM TO 05:30 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "05:30 AM TO 06:00 AM"
-      }, "05:30 AM TO 06:00 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "06:00 AM TO 06:30 AM"
-      }, "06:00 AM TO 06:30 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "06:30 AM TO 07:00 AM"
-      }, "06:30 AM TO 07:00 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "07:00 AM TO 07:30 AM"
-      }, "07:00 AM TO 07:30 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "07:30 AM TO 08:00 AM"
-      }, "07:30 AM TO 08:00 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "08:00 AM TO 08:30 AM"
-      }, "08:00 AM TO 08:30 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "08:30 AM TO 09:00 AM"
-      }, "08:30 AM TO 09:00 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "09:00 AM TO 09:30 AM"
-      }, "09:00 AM TO 09:30 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "09:30 AM TO 10:00 AM"
-      }, "09:30 AM TO 10:00 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "10:00 AM TO 10:30 AM"
-      }, "10:00 AM TO 10:30 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "10:30 AM TO 11:00 AM"
-      }, "10:30 AM TO 11:00 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "11:00 AM TO 11:30 AM"
-      }, "11:00 AM TO 11:30 AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "11:30 AM TO 12:00 PM"
-      }, "11:30 AM TO 12:00 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "12:00 PM TO 01:30 PM"
-      }, "12:00 PM TO 01:30 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "01:30 PM TO 02:00 PM"
-      }, "01:30 PM TO 02:00 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "02:00 PM TO 02:30 PM"
-      }, "02:00 PM TO 02:30 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "02:30 PM TO 03:00 PM"
-      }, "02:30 PM TO 03:00 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "03:00 PM TO 03:30 PM"
-      }, "03:00 PM TO 03:30 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "03:30 PM TO 04:00 PM"
-      }, "03:30 PM TO 04:00 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "04:00 PM TO 04:30 PM"
-      }, "04:00 PM TO 04:30 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "04:30 PM TO 05:00 PM"
-      }, "04:30 PM TO 05:00 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "05:00 PM TO 05:30 PM"
-      }, "05:00 PM TO 05:30 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "05:30 PM TO 06:00 PM"
-      }, "05:30 PM TO 06:00 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "06:00 PM TO 06:30 PM"
-      }, "06:00 PM TO 06:30 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "06:30 PM TO 07:00 PM"
-      }, "06:30 PM TO 07:00 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "07:00 PM TO 07:30 PM"
-      }, "07:00 PM TO 07:30 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "07:30 PM TO 08:00 PM"
-      }, "07:30 PM TO 08:00 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "08:00 PM TO 08:30 PM"
-      }, "08:00 PM TO 08:30 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "08:30 PM TO 09:00 PM"
-      }, "08:30 PM TO 09:00 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "09:00 PM TO 09:30 PM"
-      }, "09:00 PM TO 09:30 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "09:30 PM TO 10:00 PM"
-      }, "09:30 PM TO 10:00 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "10:00 PM TO 10:30 PM"
-      }, "10:00 PM TO 10:30 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "10:30 PM TO 11:00 PM"
-      }, "10:30 PM TO 11:00 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "11:00 PM TO 11:30 PM"
-      }, "11:00 PM TO 11:30 PM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "11:30 PM TO 12:00 PM"
-      }, "11:30 PM TO 12:00 PM")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroupAddon"], {
+        value: "12"
+      }, "12"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "01"
+      }, "01"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "02"
+      }, "02"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "03"
+      }, "03"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "04"
+      }, "04"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "05"
+      }, "05"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "06"
+      }, "06"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "07"
+      }, "07"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "08"
+      }, "08"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "09"
+      }, "09"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "10"
+      }, "10"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "11"
+      }, "11")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Input"], {
+        type: "select",
+        id: "minute",
+        defaultValue: this.state.minute,
+        onChange: this.onChangeMinute
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "00"
+      }, "00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "01"
+      }, "01"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "02"
+      }, "02"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "03"
+      }, "03"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "04"
+      }, "04"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "05"
+      }, "05"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "06"
+      }, "06"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "07"
+      }, "07"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "08"
+      }, "08"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "09"
+      }, "09"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "10"
+      }, "10"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "11"
+      }, "11"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "12"
+      }, "12"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "13"
+      }, "13"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "14"
+      }, "14"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "15"
+      }, "15"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "16"
+      }, "16"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "17"
+      }, "17"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "18"
+      }, "18"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "19"
+      }, "19"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "20"
+      }, "20"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "21"
+      }, "21"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "22"
+      }, "22"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "23"
+      }, "23"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "24"
+      }, "24"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "25"
+      }, "25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "26"
+      }, "26"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "27"
+      }, "27"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "28"
+      }, "28"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "29"
+      }, "29"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "30"
+      }, "30"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "31"
+      }, "31"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "32"
+      }, "32"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "33"
+      }, "33"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "34"
+      }, "34"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "35"
+      }, "35"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "36"
+      }, "36"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "37"
+      }, "37"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "38"
+      }, "38"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "39"
+      }, "39"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "40"
+      }, "40"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "41"
+      }, "41"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "42"
+      }, "42"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "43"
+      }, "43"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "44"
+      }, "44"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "45"
+      }, "45"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "46"
+      }, "46"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "47"
+      }, "47"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "48"
+      }, "48"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "49"
+      }, "49"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "50"
+      }, "50"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "51"
+      }, "51"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "52"
+      }, "52"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "53"
+      }, "53"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "54"
+      }, "54"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "55"
+      }, "55"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "56"
+      }, "56"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "57"
+      }, "57"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "58"
+      }, "58"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "59"
+      }, "59")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Input"], {
+        type: "select",
+        id: "am_pm",
+        defaultValue: this.state.am_pm,
+        onChange: this.onChangeAmPm
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "AM"
+      }, "AM"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "PM"
+      }, "PM")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-clock"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"), "Time Zone")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Input"], {
+        type: "select",
+        id: "time_zone",
+        value: this.state.time_zone,
+        onChange: this.onChangeTimeZone
+      }, this.state.time_zones.map(function (time_zone) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: time_zone.time_zone
+        }, " ", time_zone.time_zone, " ");
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-clock"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroupAddon"], {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "asterisk"
@@ -1269,7 +1331,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
       }, "Book appointment")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Button"], {
         color: "secondary",
         onClick: function onClick() {
-          return _this12.toggleViewDoctor("close", "close");
+          return _this13.toggleViewDoctor("close", "close");
         }
       }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Modal"], {
         isOpen: this.state.primaryViewAppointments,
@@ -1279,7 +1341,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["ModalHeader"], {
         toggle: function toggle() {
-          return _this12.toggleViewAppointments("close", "close");
+          return _this13.toggleViewAppointments("close", "close");
         }
       }, "View Appointments"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
@@ -1303,13 +1365,13 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         // if status is 1 allow chat else disable chat that is consultation is done
 
         if (appointment.status == 1) {
-          _this12.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Badge"], {
+          _this13.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Badge"], {
             color: "success"
           }, "Open");
-          _this12.state.chatBtn = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Button"], {
+          _this13.state.chatBtn = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Button"], {
             size: "sm",
             onClick: function onClick() {
-              return _this12.togglePrimary(appointment.doc_id, name);
+              return _this13.togglePrimary(appointment.doc_id, name);
             },
             className: "btn-facebook btn-brand icon mr-1 mb-1"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -1318,13 +1380,13 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         }
 
         if (appointment.status == 2) {
-          _this12.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Badge"], {
+          _this13.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Badge"], {
             color: "danger"
           }, "Close");
-          _this12.state.chatBtn = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Button"], {
+          _this13.state.chatBtn = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Button"], {
             size: "sm",
             onClick: function onClick() {
-              return _this12.togglePrimary(appointment.doc_id, name);
+              return _this13.togglePrimary(appointment.doc_id, name);
             },
             className: "btn-facebook btn-brand icon mr-1 mb-1",
             disabled: true
@@ -1337,7 +1399,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
           key: appointment.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
           scope: "row"
-        }, _this12.state.currentPage2_appointments++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.doc_username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.subject), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.time), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this12.state.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this12.state.chatBtn));
+        }, _this13.state.currentPage2_appointments++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.doc_username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.subject), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.message), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, appointment.time), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this13.state.status), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, _this13.state.chatBtn));
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex justify-content-center"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_6___default.a, {
@@ -1351,7 +1413,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
       })))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Button"], {
         color: "secondary",
         onClick: function onClick() {
-          return _this12.toggleViewAppointments("close", "close");
+          return _this13.toggleViewAppointments("close", "close");
         }
       }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Modal"], {
         isOpen: this.state.primaryMakePayment,
@@ -1361,7 +1423,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["ModalHeader"], {
         toggle: function toggle() {
-          return _this12.toggleMakePayment("close", "close");
+          return _this13.toggleMakePayment("close", "close");
         }
       }, "Make Payment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
@@ -1397,17 +1459,17 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         amount: this.state.total_fee // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
         ,
         onSuccess: function onSuccess(details, data) {
-          _this12.state.billing_amount_currency = details.purchase_units[0].amount.currency_code;
-          _this12.state.billing_amount_value = details.purchase_units[0].amount.value;
-          _this12.state.billing_orderID = data.orderID;
-          _this12.state.billing_payerID = data.payerID;
-          _this12.state.billing_email_address = details.payer.email_address;
-          _this12.state.billing_name = details.payer.name.given_name + " " + details.payer.name.surname; // console.log(details);
+          _this13.state.billing_amount_currency = details.purchase_units[0].amount.currency_code;
+          _this13.state.billing_amount_value = details.purchase_units[0].amount.value;
+          _this13.state.billing_orderID = data.orderID;
+          _this13.state.billing_payerID = data.payerID;
+          _this13.state.billing_email_address = details.payer.email_address;
+          _this13.state.billing_name = details.payer.name.given_name + " " + details.payer.name.surname; // console.log(details);
           // console.log(data);
           // console.log(details.purchase_units[0].amount.currency_code)
           // console.log(details.purchase_units[0].amount.value)
 
-          return _this12.onSubmitBookAppointment2();
+          return _this13.onSubmitBookAppointment2();
         },
         onError: function onError(err) {
           alert(err);
@@ -1422,7 +1484,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_11__["Button"], {
         color: "secondary",
         onClick: function onClick() {
-          return _this12.toggleMakePayment("close", "close");
+          return _this13.toggleMakePayment("close", "close");
         }
       }, "Cancel"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "sweet_alert1",
@@ -1430,7 +1492,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
           display: "none"
         },
         onClick: function onClick() {
-          return _this12.setState({
+          return _this13.setState({
             showSuccess: true
           });
         }
@@ -1442,7 +1504,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         animation: "true",
         text: this.state.successMessage,
         onConfirm: function onConfirm() {
-          return _this12.setState({
+          return _this13.setState({
             showSuccess: false
           });
         }
@@ -1452,7 +1514,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
           display: "none"
         },
         onClick: function onClick() {
-          return _this12.setState({
+          return _this13.setState({
             showError: true
           });
         }
@@ -1464,7 +1526,7 @@ var PatientListDoctors = /*#__PURE__*/function (_Component) {
         animation: "true",
         text: this.state.errorMessage,
         onConfirm: function onConfirm() {
-          return _this12.setState({
+          return _this13.setState({
             showError: false
           });
         }

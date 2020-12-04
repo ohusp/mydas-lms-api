@@ -80723,7 +80723,7 @@ var loading = function loading() {
 
 
 var DefaultLayout = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(12), __webpack_require__.e(15), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./containers/DefaultLayout */ "./resources/coreui/src/containers/DefaultLayout/DefaultLayout.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(11), __webpack_require__.e(15), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! ./containers/DefaultLayout */ "./resources/coreui/src/containers/DefaultLayout/DefaultLayout.js"));
 }); // /////////////////////////////////////// ADMIN //////////////////////////////////////////
 
 var AdminLogin = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
@@ -80737,7 +80737,7 @@ var RegisterPort = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.laz
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(51)]).then(__webpack_require__.bind(null, /*! ./views/Pages/RegisterPort/RegisterPort */ "./resources/coreui/src/views/Pages/RegisterPort/RegisterPort.js"));
 });
 var RegisterDoc = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(12), __webpack_require__.e(47)]).then(__webpack_require__.bind(null, /*! ./views/Pages/RegisterDoc/RegisterDoc */ "./resources/coreui/src/views/Pages/RegisterDoc/RegisterDoc.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(11), __webpack_require__.e(47)]).then(__webpack_require__.bind(null, /*! ./views/Pages/RegisterDoc/RegisterDoc */ "./resources/coreui/src/views/Pages/RegisterDoc/RegisterDoc.js"));
 });
 var RegisterLab = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(49)]).then(__webpack_require__.bind(null, /*! ./views/Pages/RegisterLab/RegisterLab */ "./resources/coreui/src/views/Pages/RegisterLab/RegisterLab.js"));
@@ -80776,7 +80776,7 @@ var LoginHospital = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.la
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(40)]).then(__webpack_require__.bind(null, /*! ./views/Pages/LoginHospital */ "./resources/coreui/src/views/Pages/LoginHospital/LoginHospital.js"));
 });
 var ForgetPasswordPatient = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(12), __webpack_require__.e(36)]).then(__webpack_require__.bind(null, /*! ./views/Pages/ForgetPasswordPatient */ "./resources/coreui/src/views/Pages/ForgetPasswordPatient/ForgetPasswordPatient.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(4), __webpack_require__.e(11), __webpack_require__.e(36)]).then(__webpack_require__.bind(null, /*! ./views/Pages/ForgetPasswordPatient */ "./resources/coreui/src/views/Pages/ForgetPasswordPatient/ForgetPasswordPatient.js"));
 });
 var ResetPasswordPatient = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
   return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(3), __webpack_require__.e(56)]).then(__webpack_require__.bind(null, /*! ./views/Pages/ResetPasswordPatient */ "./resources/coreui/src/views/Pages/ResetPasswordPatient/ResetPasswordPatient.js"));
@@ -80813,10 +80813,10 @@ var ResetPasswordLab = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a
 }); // Pages
 
 var Page404 = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(101)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page404 */ "./resources/coreui/src/views/Pages/Page404/Page404.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(103)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page404 */ "./resources/coreui/src/views/Pages/Page404/Page404.js"));
 });
 var Page500 = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.lazy(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(102)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page500 */ "./resources/coreui/src/views/Pages/Page500/Page500.js"));
+  return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(104)]).then(__webpack_require__.bind(null, /*! ./views/Pages/Page500 */ "./resources/coreui/src/views/Pages/Page500/Page500.js"));
 });
 
 var App = /*#__PURE__*/function (_Component) {

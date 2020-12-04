@@ -302,11 +302,7 @@ var LoginHospital = /*#__PURE__*/function (_Component) {
 
           var timeout = setTimeout(function () {
             window.location.reload();
-          }, 1000); // localStorage.setItem('usertoken', appState)
-          // console.log("Mr Mendes is here 2");
-          // console.log(`Bearer ${localStorage.usertoken}`)
-
-          _this2.props.history.push("/profile_hospital");
+          }, 100).then(_this2.props.history.push("/profile_hospital"));
         } else alert("Login Failed!");
 
         jquery__WEBPACK_IMPORTED_MODULE_4___default()("#login-form button").removeAttr("disabled").html("Login");

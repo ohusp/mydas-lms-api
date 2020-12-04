@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[112],{
 
-/***/ "./resources/coreui/src/views/PharmProfile/PharmProfile.js":
-/*!*****************************************************************!*\
-  !*** ./resources/coreui/src/views/PharmProfile/PharmProfile.js ***!
-  \*****************************************************************/
+/***/ "./resources/coreui/src/views/PharmProducts/PharmProducts.js":
+/*!*******************************************************************!*\
+  !*** ./resources/coreui/src/views/PharmProducts/PharmProducts.js ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -169,17 +169,17 @@ function _getPrototypeOf(o) {
 
 var hashHistory = Object(history__WEBPACK_IMPORTED_MODULE_3__["createHashHistory"])();
 
-var PharmProfile = /*#__PURE__*/function (_Component) {
-  _inherits(PharmProfile, _Component);
+var PharmProducts = /*#__PURE__*/function (_Component) {
+  _inherits(PharmProducts, _Component);
 
-  var _super = _createSuper(PharmProfile);
+  var _super = _createSuper(PharmProducts);
 
-  function PharmProfile(props) {
+  function PharmProducts(props) {
     var _this$state;
 
     var _this;
 
-    _classCallCheck(this, PharmProfile);
+    _classCallCheck(this, PharmProducts);
 
     _this = _super.call(this, props); // ////////////////MODAL
 
@@ -189,13 +189,27 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
       });
     };
 
-    _this.imageHandlerLogo = function (e) {
+    _this.imageHandler = function (e) {
       var reader = new FileReader();
 
       reader.onload = function () {
         if (reader.readyState === 2) {
           _this.setState({
-            pharm_logo: reader.result
+            show_product_image: reader.result
+          });
+        }
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+    };
+
+    _this.imageHandlerEdit = function (e) {
+      var reader = new FileReader();
+
+      reader.onload = function () {
+        if (reader.readyState === 2) {
+          _this.setState({
+            view_product_show_product: reader.result
           });
         }
       };
@@ -206,143 +220,98 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
     _this.togglePrimary = _this.togglePrimary.bind(_assertThisInitialized(_this)); // bing toggle functions and values
 
     _this.toggle = _this.toggle.bind(_assertThisInitialized(_this));
-    _this.toggleMedical = _this.toggleMedical.bind(_assertThisInitialized(_this));
-    _this.toggleBank = _this.toggleBank.bind(_assertThisInitialized(_this));
-    _this.toggle_pharmacist = _this.toggle_pharmacist.bind(_assertThisInitialized(_this));
-    _this.toggle_add_pharmacist = _this.toggle_add_pharmacist.bind(_assertThisInitialized(_this));
+    _this.toggleViewProduct = _this.toggleViewProduct.bind(_assertThisInitialized(_this));
     _this.toggle_identification = _this.toggle_identification.bind(_assertThisInitialized(_this));
     _this.toggle_app_instructions = _this.toggle_app_instructions.bind(_assertThisInitialized(_this)); // bind input values on change
 
+    _this.onChangeProductName = _this.onChangeProductName.bind(_assertThisInitialized(_this));
+    _this.onChangeProductDescription = _this.onChangeProductDescription.bind(_assertThisInitialized(_this));
+    _this.onChangeProductDosage = _this.onChangeProductDosage.bind(_assertThisInitialized(_this));
+    _this.onChangeProductCategory = _this.onChangeProductCategory.bind(_assertThisInitialized(_this));
+    _this.onChangeProductPrice = _this.onChangeProductPrice.bind(_assertThisInitialized(_this));
+    _this.onChangeProductQty = _this.onChangeProductQty.bind(_assertThisInitialized(_this));
     _this.onChangeName = _this.onChangeName.bind(_assertThisInitialized(_this));
-    _this.onChangeUsername = _this.onChangeUsername.bind(_assertThisInitialized(_this));
-    _this.onChangeEmail = _this.onChangeEmail.bind(_assertThisInitialized(_this));
-    _this.onChangeZipCode = _this.onChangeZipCode.bind(_assertThisInitialized(_this));
-    _this.onChangeTelephone = _this.onChangeTelephone.bind(_assertThisInitialized(_this));
-    _this.onChangePharmCountry = _this.onChangePharmCountry.bind(_assertThisInitialized(_this));
-    _this.onChangeDistrictProvinceState = _this.onChangeDistrictProvinceState.bind(_assertThisInitialized(_this));
-    _this.onChangePharmAddress = _this.onChangePharmAddress.bind(_assertThisInitialized(_this)); // /////////////////////////////////////////////////////////////////
+    _this.onChangeDescription = _this.onChangeDescription.bind(_assertThisInitialized(_this));
+    _this.onChangeDosage = _this.onChangeDosage.bind(_assertThisInitialized(_this));
+    _this.onChangeCategory = _this.onChangeCategory.bind(_assertThisInitialized(_this));
+    _this.onChangePrice = _this.onChangePrice.bind(_assertThisInitialized(_this));
+    _this.onChangeQty = _this.onChangeQty.bind(_assertThisInitialized(_this)); // this.onChangeUsername     =this.onChangeUsername.bind(this);
+    // this.onChangeEmail        =this.onChangeEmail.bind(this);
+    // this.onChangeZipCode      =this.onChangeZipCode.bind(this);
+    // this.onChangeTelephone    =this.onChangeTelephone.bind(this);
+    // this.onChangePharmCountry     =this.onChangePharmCountry.bind(this);
+    // this.onChangeDistrictProvinceState  =this.onChangeDistrictProvinceState.bind(this);
+    // this.onChangePharmAddress         =this.onChangePharmAddress.bind(this);
+    // /////////////////////////////////////////////////////////////////
+    // //////////// IDENTITY //////////////////////////////
+    // this.onChangeCompanyLogo         =this.onChangeCompanyLogo.bind(this);
 
-    _this.onChangePharmacistName = _this.onChangePharmacistName.bind(_assertThisInitialized(_this));
-    _this.onChangePharmacistQualification = _this.onChangePharmacistQualification.bind(_assertThisInitialized(_this)); // ///////////////////////////////////////////////////////////////////////////////
-
-    _this.onChangeBankName = _this.onChangeBankName.bind(_assertThisInitialized(_this));
-    _this.onChangeBankAccountName = _this.onChangeBankAccountName.bind(_assertThisInitialized(_this));
-    _this.onChangeBankAccountNumber = _this.onChangeBankAccountNumber.bind(_assertThisInitialized(_this)); // //////////// IDENTITY //////////////////////////////
-
-    _this.onChangeCompanyLogo = _this.onChangeCompanyLogo.bind(_assertThisInitialized(_this));
-    _this.onSubmitBankAccountDetails = _this.onSubmitBankAccountDetails.bind(_assertThisInitialized(_this));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_this));
-    _this.onSubmitPharmacist = _this.onSubmitPharmacist.bind(_assertThisInitialized(_this));
-    _this.onChangeMedicalLicense = _this.onChangeMedicalLicense.bind(_assertThisInitialized(_this)); // this.onSubmitShareMedHistory = this.onSubmitShareMedHistory.bind(this);
+    _this.onSubmitEditProduct = _this.onSubmitEditProduct.bind(_assertThisInitialized(_this));
+    _this.onSubmitProductImage = _this.onSubmitProductImage.bind(_assertThisInitialized(_this));
+    _this.onSubmitEditProductImage = _this.onSubmitEditProductImage.bind(_assertThisInitialized(_this));
+    _this.onChangeProductImage = _this.onChangeProductImage.bind(_assertThisInitialized(_this));
+    _this.onChangeEditProductImage = _this.onChangeEditProductImage.bind(_assertThisInitialized(_this)); // this.onSubmitMedicalHistory = this.onSubmitMedicalHistory.bind(this);
+    // this.onSubmitShareMedHistory = this.onSubmitShareMedHistory.bind(this);
     // ///////////// IDENTITY SUBMISSION /////////////////
-
-    _this.onSubmitCompanyLogo = _this.onSubmitCompanyLogo.bind(_assertThisInitialized(_this)); // this.fileUploadIdPassport = this.fileUploadIdPassport.bind(this)
+    // this.onSubmitCompanyLogo = this.onSubmitCompanyLogo.bind(this);
+    // this.fileUploadIdPassport = this.fileUploadIdPassport.bind(this)
     // this.idPassportDetails = this.idPassportDetails.bind(this)
 
     _this.state = (_this$state = {
       token: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.auth_token : "",
       id: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.id : "",
-      created_at: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.created_at : "",
-      user_type: localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.user_type : "",
-      name: "",
-      username: "",
-      email: "",
-      zip_code: "",
-      telephone: "",
-      pharm_country: "",
-      pharm_district_province_state: "",
-      pharm_address: "",
-      // /////////////////////////////////////////////////////////////
-      pharmacist_name: "",
-      pharmacist_qualifications: "",
-      pharm_logo: null,
+      product_name: "",
+      product_description: "",
+      product_dosage: "",
+      product_category: "",
+      product_price: "",
+      product_qty: "",
+      product_id: "",
+      categories: [],
       // ////////////////////////////////////////////////////
-      bank_name: "",
-      bank_account_name: "",
-      bank_account_number: "",
-      collapse: false,
-      collapse_medical: false,
-      collapseBank: false,
-      collapsePharmacist: false,
-      collapseAddPharmacist: true,
-      collapse_identification: false,
-      collapse_app_instructions: false,
-      fadeIn: true,
-      timeout: 300,
-      status: "",
-      // //////////////////////////////////////////////////
-      medical_license: null,
-      med_lic_uploaded: "",
-      avatar: __webpack_require__(/*! ./../../images/avatars/0.jpg */ "./resources/coreui/src/images/avatars/0.jpg"),
-      metaValue: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?",
-      startDate: new Date(),
-      // //////////////////modal
-      primary: false,
-      share_med_history: "",
-      countries: [],
-      // ////////////////////////////////////////////////////
-      pharmacist_list: [],
+      applications_list: [],
       number: 1,
       activePage: 1,
       itemsCountPerPage: 1,
       totalItemsCount: 1,
       pageRangeDisplayed: 3,
-      currentPage2: ''
-    }, _defineProperty(_this$state, "status", '1'), _defineProperty(_this$state, "successMessage", "Successful"), _defineProperty(_this$state, "errorMessage", "Failed"), _this$state);
+      currentPage2: '',
+      status: '1',
+      // //////////////////View product ///////////
+      category: "",
+      description: "",
+      dosage: "",
+      name: "",
+      price: "",
+      product_gallery: "",
+      // product_image: "",
+      qty: ""
+    }, _defineProperty(_this$state, "status", ""), _defineProperty(_this$state, "created_at", localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.created_at : ""), _defineProperty(_this$state, "user_type", localStorage["appState"] ? JSON.parse(localStorage["appState"]).user.user_type : ""), _defineProperty(_this$state, "collapse", false), _defineProperty(_this$state, "collapse_identification", false), _defineProperty(_this$state, "collapse_app_instructions", false), _defineProperty(_this$state, "fadeIn", true), _defineProperty(_this$state, "timeout", 300), _defineProperty(_this$state, "primaryViewProduct", false), _defineProperty(_this$state, "successMessage", "Successful"), _defineProperty(_this$state, "errorMessage", "Failed"), _defineProperty(_this$state, "startDate", new Date()), _defineProperty(_this$state, "primary", false), _defineProperty(_this$state, "show_product_image", 'https://cdn.shopify.com/s/files/1/0024/4370/6412/products/The_Shopping_Cart_Sticker_-_Product_Image_1024x.jpg?v=1543631522'), _defineProperty(_this$state, "view_product_show_product", ""), _defineProperty(_this$state, "product_image", null), _defineProperty(_this$state, "edit_product_image", ""), _defineProperty(_this$state, "edited_product_id", ""), _defineProperty(_this$state, "last_inserted_id", ""), _this$state);
+    _this.handlePageChange = _this.handlePageChange.bind(_assertThisInitialized(_this));
     return _this;
-  }
+  } // fetch data from db
 
-  _createClass(PharmProfile, [{
+
+  _createClass(PharmProducts, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/pharm/get/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/products/list/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
         return response;
       }).then(function (json) {
         if (json.data.success) {
           _this2.setState({
-            name: json.data.data.name,
-            username: json.data.data.username,
-            email: json.data.data.email,
-            zip_code: json.data.data.zip_code,
-            telephone: json.data.data.telephone,
-            pharm_country: json.data.data.pharm_country,
-            pharm_district_province_state: json.data.data.pharm_district_province_state,
-            pharm_address: json.data.data.pharm_address,
-            pharm_logo: json.data.data.pharm_logo,
-            medical_license: json.data.data.medical_license,
-            bank_name: json.data.data.bank_name,
-            bank_account_name: json.data.data.bank_account_name,
-            bank_account_number: json.data.data.bank_account_number,
-            status: json.data.data.status
-          }, _this2.getCountries);
+            applications_list: json.data.data.data,
+            itemsCountPerPage: json.data.data.per_page,
+            totalItemsCount: json.data.data.total,
+            activePage: json.data.data.current_page
+          }, _this2.getProductCategories);
         } else {}
       })["catch"](function (error) {
         // redirect user to previous page if user does not have autorization to the page
         hashHistory.push('/premontessori');
-        console.error("An Error Occuredd! ".concat(error));
-      });
-    }
-  }, {
-    key: "getPharmacist",
-    value: function getPharmacist() {
-      var _this3 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/pharm/pharmacist/list/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
-        return response;
-      }).then(function (json) {
-        if (json.data.success) {
-          _this3.setState({
-            pharmacist_list: json.data.data.data,
-            itemsCountPerPage: json.data.data.per_page,
-            totalItemsCount: json.data.data.total,
-            activePage: json.data.data.current_page
-          });
-        } else {}
-      })["catch"](function (error) {
-        // redirect user to previous page if user does not have autorization to the page
-        // hashHistory.push('/premontessori');
         console.error("An Error Occuredd! ".concat(error));
       });
     } // Pagination handler
@@ -350,23 +319,42 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
   }, {
     key: "handlePageChange",
     value: function handlePageChange(pageNumber) {
-      var _this4 = this; // this.setState({activePage: pageNumber});
+      var _this3 = this; // this.setState({activePage: pageNumber});
 
 
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/pharm/pharmacist/list/" + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/products/list/" + this.state.id + "?token=".concat(this.state.token, "&page=") + pageNumber).then(function (response) {
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          _this4.setState({
-            pharmacist_list: json.data.data.data,
+          _this3.setState({
+            applications_list: json.data.data.data,
             itemsCountPerPage: json.data.data.per_page,
             totalItemsCount: json.data.data.total,
             activePage: json.data.data.current_page
           });
         } else {}
       });
-    } // For datepicker
+    }
+  }, {
+    key: "getProductCategories",
+    value: function getProductCategories() {
+      var _this4 = this; // ///////////////////// get Product Categories /////////////////////////////////////
 
+
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/get/product_categories?token=".concat(this.state.token)).then(function (response) {
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          _this4.setState({
+            categories: json.data.data
+          });
+        } else {}
+      })["catch"](function (error) {
+        // redirect user to previous page if user does not have autorization to the page
+        // hashHistory.push('/premontessori');
+        console.error("An Error Occuredd! ".concat(error));
+      });
+    }
   }, {
     key: "toggle_app_instructions",
     // toggle collapse and expand application instruction
@@ -382,20 +370,6 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
       this.setState({
         collapse: !this.state.collapse
       });
-    }
-  }, {
-    key: "toggleMedical",
-    value: function toggleMedical() {
-      this.setState({
-        collapse_medical: !this.state.collapse_medical
-      });
-    }
-  }, {
-    key: "toggleBank",
-    value: function toggleBank() {
-      this.setState({
-        collapseBank: !this.state.collapseBank
-      });
     } // toggle collapse and expand identification
 
   }, {
@@ -403,20 +377,6 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
     value: function toggle_identification() {
       this.setState({
         collapse_identification: !this.state.collapse_identification
-      });
-    }
-  }, {
-    key: "toggle_pharmacist",
-    value: function toggle_pharmacist() {
-      this.setState({
-        collapsePharmacist: !this.state.collapsePharmacist
-      });
-    }
-  }, {
-    key: "toggle_add_pharmacist",
-    value: function toggle_add_pharmacist() {
-      this.setState({
-        collapseAddPharmacist: !this.state.collapseAddPharmacist
       });
     } // /////////////// Share medical records
 
@@ -429,6 +389,48 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
     } // ON Change of first name input
 
   }, {
+    key: "onChangeProductName",
+    value: function onChangeProductName(e) {
+      this.setState({
+        product_name: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeProductDescription",
+    value: function onChangeProductDescription(e) {
+      this.setState({
+        product_description: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeProductDosage",
+    value: function onChangeProductDosage(e) {
+      this.setState({
+        product_dosage: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeProductCategory",
+    value: function onChangeProductCategory(e) {
+      this.setState({
+        product_category: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeProductPrice",
+    value: function onChangeProductPrice(e) {
+      this.setState({
+        product_price: e.target.value
+      });
+    }
+  }, {
+    key: "onChangeProductQty",
+    value: function onChangeProductQty(e) {
+      this.setState({
+        product_qty: e.target.value
+      });
+    }
+  }, {
     key: "onChangeName",
     value: function onChangeName(e) {
       this.setState({
@@ -436,434 +438,329 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
-    key: "onChangeUsername",
-    value: function onChangeUsername(e) {
+    key: "onChangeDescription",
+    value: function onChangeDescription(e) {
       this.setState({
-        username: e.target.value
+        description: e.target.value
       });
     }
   }, {
-    key: "onChangeEmail",
-    value: function onChangeEmail(e) {
+    key: "onChangeDosage",
+    value: function onChangeDosage(e) {
       this.setState({
-        email: e.target.value
+        dosage: e.target.value
       });
     }
   }, {
-    key: "onChangeZipCode",
-    value: function onChangeZipCode(e) {
+    key: "onChangeCategory",
+    value: function onChangeCategory(e) {
       this.setState({
-        zip_code: e.target.value
+        category: e.target.value
       });
     }
   }, {
-    key: "onChangeTelephone",
-    value: function onChangeTelephone(e) {
+    key: "onChangePrice",
+    value: function onChangePrice(e) {
       this.setState({
-        telephone: e.target.value
+        price: e.target.value
       });
     }
   }, {
-    key: "onChangePharmCountry",
-    value: function onChangePharmCountry(e) {
+    key: "onChangeQty",
+    value: function onChangeQty(e) {
       this.setState({
-        pharm_country: e.target.value
+        qty: e.target.value
       });
-    }
-  }, {
-    key: "onChangeDistrictProvinceState",
-    value: function onChangeDistrictProvinceState(e) {
-      this.setState({
-        pharm_district_province_state: e.target.value
-      });
-    }
-  }, {
-    key: "onChangePharmAddress",
-    value: function onChangePharmAddress(e) {
-      this.setState({
-        pharm_address: e.target.value
-      });
-    } ///////////////////////////////////////////////////////////////////////////////////////////////////
+    } // ///////////////////////////////////////////////////////////
 
   }, {
-    key: "onChangePharmacistName",
-    value: function onChangePharmacistName(e) {
-      this.setState({
-        pharmacist_name: e.target.value
-      });
-    }
-  }, {
-    key: "onChangePharmacistQualification",
-    value: function onChangePharmacistQualification(e) {
-      this.setState({
-        pharmacist_qualifications: e.target.value
-      });
-    } // ////////////////////////////////////////////////////////////////////////////////////////////////////
+    key: "onSubmit",
+    value: function onSubmit(e) {
+      var _this5 = this;
 
+      e.preventDefault();
+
+      if (this.state.product_name == "" || this.state.product_description == "" || this.state.product_dosage == "" || this.state.product_category == "" || this.state.product_price == "" || this.state.product_name == null || this.state.product_description == null || this.state.product_dosage == null || this.state.product_category == null || this.state.product_price == null) {
+        this.setState({
+          errorMessage: "Please fill all required field",
+          showError: true
+        });
+      } else {
+        var product_data = {
+          name: this.state.product_name,
+          description: this.state.product_description,
+          dosage: this.state.product_dosage,
+          category: this.state.product_category,
+          price: this.state.product_price,
+          qty: this.state.product_qty
+        };
+        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/products/add/" + this.state.id + "?token=".concat(this.state.token), product_data) // axios.post(`api/products/add?token=${this.state.token}`, product_data)
+        // axios.post('api/products/add', product_data, {
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Authorization': 'Bearer '+ `${this.state.token}`
+        //     },      
+        // })  
+        .then(function (response) {
+          return response;
+        }).then(function (json) {
+          // this.componentDidMount();
+          if (json.data.success) {
+            _this5.setState({
+              last_inserted_id: json.data.data.last_inserted_id
+            }, _this5.onSubmitProductImage); // this.onSubmitProductImage();
+
+          } else {}
+        })["catch"](function (error) {
+          // redirect user to previous page if user does not have autorization to the page
+          hashHistory.push('/premontessori');
+          console.error("An Error Occuredd! ".concat(error));
+        });
+      }
+    }
   }, {
-    key: "onChangeBankName",
-    value: function onChangeBankName(e) {
-      this.setState({
-        bank_name: e.target.value
+    key: "onSubmitProductImage",
+    value: function onSubmitProductImage(e) {
+      var _this6 = this; // e.preventDefault() // Stop form submit
+
+
+      this.fileUploadProductImage(this.state.product_image).then(function (response) {
+        if (response.data.success) {
+          _this6.setState({
+            successMessage: "Product added successfully",
+            showSuccess: true
+          });
+
+          _this6.componentDidMount;
+        } else {
+          _this6.setState({
+            errorMessage: response.data.data.data,
+            showError: true
+          });
+        }
       });
     }
   }, {
-    key: "onChangeBankAccountName",
-    value: function onChangeBankAccountName(e) {
-      this.setState({
-        bank_account_name: e.target.value
-      });
-    }
-  }, {
-    key: "onChangeBankAccountNumber",
-    value: function onChangeBankAccountNumber(e) {
-      this.setState({
-        bank_account_number: e.target.value
-      });
-    } // ///////////////// LOGO ///////////////////////////////
+    key: "fileUploadProductImage",
+    value: function fileUploadProductImage(product_image) {
+      var url = '/api/products/addImage/' + this.state.last_inserted_id + "/" + this.state.id + "?token=".concat(this.state.token);
+      var formData = new FormData();
+      formData.append('add_product_image', product_image);
+      var config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      };
+      return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
+    } // called when button is clicked to click the file input field
 
   }, {
     key: "trigerFileUpload",
     value: function trigerFileUpload() {
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('#pharm_logo').trigger('click');
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('#product_image').trigger('click');
     }
   }, {
-    key: "onChangeCompanyLogo",
-    value: function onChangeCompanyLogo(e) {
+    key: "onChangeProductImage",
+    value: function onChangeProductImage(e) {
       this.setState({
-        pharm_logo: e.target.files[0]
-      }, this.onSubmitCompanyLogo);
+        product_image: e.target.files[0]
+      }); // call to save images
+      // this.onSubmitProductImage();
+      // this.imageHandler();
+      // set a timwer and call the submit profile picture 
+      // const timeout = setTimeout(() => {
+      // call to load contents again so the image can change
+      // this.componentDidMount();
+      // }, 1000);
+      // },[]);
+      // this.onSubmitProfilePicture()
     }
   }, {
-    key: "onSubmitCompanyLogo",
-    value: function onSubmitCompanyLogo(e) {
-      var _this5 = this; // e.preventDefault() // Stop form submit
-
-
-      this.fileUploadCompanyLogo(this.state.pharm_logo).then(function (response) {
-        if (response.data.success) {
-          _this5.setState({
-            successMessage: "Logo uploaded successfully",
-            showSuccess: true
-          }); // this.componentDidMount
-
-        } else {
-          _this5.setState({
-            errorMessage: response.data.data.medical_certificate,
-            showError: true
-          });
-        }
+    key: "toggleViewProduct",
+    // /////////////// VIEW PRODUCT
+    value: function toggleViewProduct(product_id) {
+      this.setState({
+        primaryViewProduct: !this.state.primaryViewProduct,
+        product_id: product_id
       });
     }
   }, {
-    key: "fileUploadCompanyLogo",
-    value: function fileUploadCompanyLogo(pharm_logo) {
-      var url = '/api/pharm/updateLogo/' + this.state.id + "?token=".concat(this.state.token);
-      var formData = new FormData();
-      formData.append('pharm_logo', pharm_logo);
-      var config = {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      };
-      return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
-    } // ////// Upload medical License ///////////////////////
-
-  }, {
-    key: "trigermedicalLicenseFileUpload",
-    value: function trigermedicalLicenseFileUpload() {
-      jquery__WEBPACK_IMPORTED_MODULE_5___default()('#medical_license').trigger('click');
-    }
-  }, {
-    key: "onChangeMedicalLicense",
-    value: function onChangeMedicalLicense(e) {
-      this.setState({
-        medical_license: e.target.files[0]
-      }, this.onSubmitMedicalLicense);
-    }
-  }, {
-    key: "onSubmitMedicalLicense",
-    value: function onSubmitMedicalLicense(e) {
-      var _this6 = this; // e.preventDefault() // Stop form submit
+    key: "viewProduct",
+    value: function viewProduct(product_id) {
+      var _this7 = this; // alert(product_id);
 
 
-      this.fileUploadMedicalLicense(this.state.medical_license).then(function (response) {
-        if (response.data.success) {
-          _this6.setState({
-            successMessage: "Medical license uploaded successfully",
-            showSuccess: true
-          }); // this.componentDidMount
-
-        } else {
-          _this6.setState({
-            errorMessage: "Medical license upload failed",
-            showError: true
-          });
-        }
-      });
-    }
-  }, {
-    key: "fileUploadMedicalLicense",
-    value: function fileUploadMedicalLicense(medical_license) {
-      var url = '/api/pharm/updateMedicalLicense/' + this.state.id + "?token=".concat(this.state.token);
-      var formData = new FormData();
-      formData.append('medical_license', medical_license);
-      var config = {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      };
-      return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
-    }
-  }, {
-    key: "onSubmit",
-    value: function onSubmit(e) {
-      var _this7 = this;
-
-      e.preventDefault();
-
-      if (this.state.name == "" || this.state.zip_code == "select" || this.state.telephone == "" || this.state.pharm_country == "select" || this.state.pharm_district_province_state == "" || this.state.pharm_address == "" || this.state.name == null || this.state.zip_code == null || this.state.telephone == null || this.state.pharm_country == null || this.state.pharm_district_province_state == null || this.state.pharm_address == null) {
-        this.setState({
-          errorMessage: "Please fill all required field",
-          showError: true
-        });
-      } else {
-        var application_data = {
-          name: this.state.name,
-          zip_code: this.state.zip_code,
-          telephone: this.state.telephone,
-          pharm_country: this.state.pharm_country,
-          pharm_district_province_state: this.state.pharm_district_province_state,
-          pharm_address: this.state.pharm_address
-        };
-        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/pharm/update/" + this.state.id + "?token=".concat(this.state.token), application_data).then(function (response) {
-          return response;
-        }).then(function (json) {
-          if (json.data.success) {
-            _this7.setState({
-              successMessage: "Profile updated successfully",
-              showSuccess: true
-            });
-          } else {
-            _this7.setState({
-              errorMessage: "Profile update failed",
-              showError: true
-            });
-          }
-        })["catch"](function (error) {
-          // redirect user to previous page if user does not have autorization to the page
-          // hashHistory.push('/premontessori');
-          console.error("An Error Occuredd! ".concat(error));
-        });
-      }
-    }
-  }, {
-    key: "onSubmitBankAccountDetails",
-    value: function onSubmitBankAccountDetails(e) {
-      var _this8 = this; // alert("Hello World");
-
-
-      e.preventDefault();
-
-      if (this.state.bank_name == "" || this.state.bank_account_name == "" || this.state.bank_account_number == "" || this.state.bank_name == null || this.state.bank_account_name == null || this.state.bank_account_number == null) {
-        this.setState({
-          errorMessage: "Please fill all required field",
-          showError: true
-        });
-      } else {
-        var bank_details = {
-          bank_name: this.state.bank_name,
-          bank_account_name: this.state.bank_account_name,
-          bank_account_number: this.state.bank_account_number
-        };
-        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/pharm/account_details/add/" + this.state.id + "?token=".concat(this.state.token), bank_details) // axios.post(`api/products/add?token=${this.state.token}`, product_data)
-        // axios.post('api/products/add', product_data, {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': 'Bearer '+ `${this.state.token}`
-        //     },      
-        // })  
-        .then(function (response) {
-          return response;
-        }).then(function (json) {
-          if (json.data.success) {
-            _this8.setState({
-              successMessage: "Account updated successfully",
-              showSuccess: true
-            });
-          } else {
-            _this8.setState({
-              errorMessage: "Account update failed",
-              showError: true
-            });
-          }
-        })["catch"](function (error) {
-          // redirect user to previous page if user does not have autorization to the page
-          // hashHistory.push('/premontessori');
-          console.error("An Error Occuredd! ".concat(error));
-        });
-      }
-    }
-  }, {
-    key: "onSubmitPharmacist",
-    value: function onSubmitPharmacist(e) {
-      var _this9 = this; // alert("Hello World");
-
-
-      e.preventDefault();
-
-      if (this.state.pharmacist_name == "" || this.state.pharmacist_qualifications == "" || this.state.pharmacist_name == null || this.state.pharmacist_qualifications == null) {
-        this.setState({
-          errorMessage: "Please fill all required field",
-          showError: true
-        });
-      } else {
-        var pharmacist_data = {
-          name: this.state.pharmacist_name,
-          qualifications: this.state.pharmacist_qualifications
-        };
-        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/pharm/pharmacist/add/" + this.state.id + "?token=".concat(this.state.token), pharmacist_data) // axios.post(`api/products/add?token=${this.state.token}`, product_data)
-        // axios.post('api/products/add', product_data, {
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': 'Bearer '+ `${this.state.token}`
-        //     },      
-        // })  
-        .then(function (response) {
-          return response;
-        }).then(function (json) {
-          if (json.data.success) {
-            _this9.setState({
-              successMessage: "Pharmacist added successfully",
-              showSuccess: true
-            });
-
-            _this9.componentDidMount;
-          } else {
-            _this9.setState({
-              errorMessage: response.data.data.medical_certificate,
-              showError: true
-            });
-          }
-        })["catch"](function (error) {
-          // redirect user to previous page if user does not have autorization to the page
-          // hashHistory.push('/premontessori');
-          console.error("An Error Occuredd! ".concat(error));
-        });
-      }
-    } // idPassportDetails(){
-    //   const application_data ={
-    //     type_of_identification : this.state.type_of_identification, id_passport_number : this.state.id_passport_number
-    //   }
-    //   axios.put(`/api/pharm/updateIdDetails/`+this.state.id+`?token=${this.state.token}`, application_data)
-    //   .then(response => {
-    //     return response;
-    //   })
-    //   .then(json => {
-    //     if (json.data.success) {
-    //       this.setState({ 
-    //         // applications_list: json.data.data.data,
-    //       });
-    //     } else alert("Login Failed!");
-    //   })
-    //   .catch(error => {
-    //     // redirect pharm to previous page if pharm does not have autorization to the page
-    //     hashHistory.push('/premontessori');
-    //     console.error(`An Error Occuredd! ${error}`);
-    //   });
-    // }
-
-  }, {
-    key: "getCountries",
-    value: function getCountries() {
-      var _this10 = this; // ///////////////////// get countries /////////////////////////////////////
-
-
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/get/countries?token=".concat(this.state.token)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/pharm/product/get/" + product_id + '/' + this.state.id + "?token=".concat(this.state.token)).then(function (response) {
         return response;
       }).then(function (json) {
         if (json.data.success) {
-          _this10.setState({
-            countries: json.data.data
-          }, _this10.getPharmacist);
-        } else {}
+          _this7.setState({
+            category: json.data.data.category,
+            description: json.data.data.description,
+            dosage: json.data.data.dosage,
+            name: json.data.data.name,
+            price: json.data.data.price,
+            product_gallery: json.data.data.product_gallery,
+            view_product_show_product: json.data.data.product_image,
+            // edit_product_image: json.data.data.product_image,
+            qty: json.data.data.qty,
+            status: json.data.status,
+            edited_product_id: product_id
+          }, _this7.toggleViewProduct(product_id));
+        } else {
+          _this7.setState({
+            errorMessage: json.data.data,
+            showError: true
+          });
+        }
       })["catch"](function (error) {
         // redirect user to previous page if user does not have autorization to the page
         // hashHistory.push('/premontessori');
         console.error("An Error Occuredd! ".concat(error));
       });
+    } // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  }, {
+    key: "onChangeEditProductImage",
+    value: function onChangeEditProductImage(e) {
+      this.setState({
+        edit_product_image: e.target.files[0]
+      });
     }
   }, {
-    key: "render",
-    value: function render() {
-      var _this11 = this;
+    key: "onSubmitEditProduct",
+    value: function onSubmitEditProduct(e) {
+      var _this8 = this;
 
-      if (this.state && !this.state.medical_license) {} else {
-        this.state.med_lic_uploaded = "Medical license uploaded";
+      e.preventDefault();
+
+      if (this.state.name == "" || this.state.description == "" || this.state.dosage == "" || this.state.category == "" || this.state.price == "" || this.state.name == null || this.state.description == null || this.state.dosage == null || this.state.category == null || this.state.price == null) {
+        this.setState({
+          errorMessage: "Please fill all required field",
+          showError: true
+        });
+      } else {
+        var product_edit_data = {
+          name: this.state.name,
+          description: this.state.description,
+          dosage: this.state.dosage,
+          category: this.state.category,
+          price: this.state.price,
+          qty: this.state.qty
+        };
+        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/pharm/products/edit/" + this.state.id + '/' + this.state.edited_product_id + "?token=".concat(this.state.token), product_edit_data) // axios.post(`api/products/add?token=${this.state.token}`, product_data)
+        // axios.post('api/products/add', product_data, {
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Authorization': 'Bearer '+ `${this.state.token}`
+        //     },      
+        // })  
+        .then(function (response) {
+          return response;
+        }).then(function (json) {
+          // this.componentDidMount();
+          if (json.data.success) {
+            _this8.setState({// last_inserted_id: json.data.data.last_edited_id,
+            });
+
+            if (_this8.state.edit_product_image == "") {
+              _this8.setState({
+                successMessage: "Product updated successfully",
+                showSuccess: true
+              });
+
+              _this8.componentDidMount;
+            } else {
+              _this8.onSubmitEditProductImage();
+            }
+          } else {}
+        })["catch"](function (error) {
+          // redirect user to previous page if user does not have autorization to the page
+          hashHistory.push('/premontessori');
+          console.error("An Error Occuredd! ".concat(error));
+        });
       }
+    }
+  }, {
+    key: "onSubmitEditProductImage",
+    value: function onSubmitEditProductImage(e) {
+      var _this9 = this; // e.preventDefault() // Stop form submit
+      // alert(this.state.edit_product_image);
 
+
+      this.fileUploadEditProductImage().then(function (response) {
+        if (response.data.success) {
+          _this9.setState({
+            successMessage: "Product updated successfully",
+            showSuccess: true
+          });
+
+          _this9.componentDidMount;
+        } else {
+          _this9.setState({
+            errorMessage: response.data.data.data,
+            showError: true
+          });
+        }
+      });
+    }
+  }, {
+    key: "fileUploadEditProductImage",
+    value: function fileUploadEditProductImage() {
+      var url = '/api/pharm/products/editImage/' + this.state.id + '/' + this.state.edited_product_id + "?token=".concat(this.state.token);
+      var formData = new FormData();
+      formData.append('edit_product_image', this.state.edit_product_image);
+      var config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      };
+      return Object(axios__WEBPACK_IMPORTED_MODULE_4__["post"])(url, formData, config);
+    } // called when button is clicked to click the file input field
+
+  }, {
+    key: "trigerFileUploadEdit",
+    value: function trigerFileUploadEdit() {
+      jquery__WEBPACK_IMPORTED_MODULE_5___default()('#edit_product_image').trigger('click');
+    } // onChangeProductImage(e)     {
+    //   this.setState({edit_product_image:e.target.files[0]});
+    //   // call to save images
+    //   // this.onSubmitProductImage();
+    //   // this.imageHandler();
+    //   // set a timwer and call the submit profile picture 
+    //     // const timeout = setTimeout(() => {
+    //       // call to load contents again so the image can change
+    //       // this.componentDidMount();
+    //     // }, 1000);
+    //   // },[]);
+    //   // this.onSubmitProfilePicture()
+    // }
+
+  }, {
+    key: "render",
+    // /////////////// VIEW PRODUCT
+    // toggleViewProduct(product_id) {
+    //   this.setState({
+    //     primaryViewProduct: !this.state.primaryViewProduct,
+    //     product_id: product_id,
+    //   });
+    // }
+    value: function render() {
+      var _this10 = this;
+
+      var show_product_image = this.state.show_product_image;
+      var view_product_show_product = this.state.view_product_show_product;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "animated fadeIn"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
         xs: "12",
         sm: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Pharmacy Profile"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Products"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
         xs: "12",
-        sm: "3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], {
-        className: "border-bottom text-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "mb-3 mx-auto"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        // className="rounded-circle"
-        src: this.state.pharm_logo,
-        alt: this.state.name,
-        width: "110",
-        height: "auto"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "mb-0"
-      }, this.state.username, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "text-muted d-block mb-2"
-      }, this.state.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ListGroupItem"], {
-        className: "px-4"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        block: true,
-        outline: true,
-        color: "success",
-        onClick: this.trigerFileUpload
-      }, "Update Logo"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "file",
-        color: "primary",
-        id: "pharm_logo",
-        style: {
-          display: "none"
-        } // onChange={this.onChangeCompanyLogo}
-        ,
-        onChange: function onChange(e) {
-          _this11.onChangeCompanyLogo(e);
-
-          _this11.imageHandlerLogo(e);
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
-        className: "text-muted d-block mb-2"
-      }, this.state.metaTitle)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
-        xs: "12",
-        sm: "9"
+        sm: "5"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Welcome"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        color: "primary",
-        onClick: this.toggle_app_instructions,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Open"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Collapse"], {
-        isOpen: this.state.collapse_app_instructions
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Thank you for choosing CamMedics!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "We are happy to partner with you, to deliver authentic and affordable mediction to your clients. On this plateform your customers can purchase products displayed in your inventory. They can also share their prescription pad issued by duely licensed medical practitioners to optain presvription drugs.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You can also initiate a video call with your patients to offer any necessary explanation or direction as may be required.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Pharmacy Data"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Add A new Product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-header-actions"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
         color: "primary",
@@ -882,7 +779,241 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "asterisk"
-      }, "*"), "Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+      }, "*"), "Product Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "text",
+        id: "product_name",
+        defaultValue: this.state.product_name,
+        onChange: this.onChangeProductName,
+        placeholder: "enter product name"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-user"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"), "Description")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "textarea",
+        id: "product_description",
+        rows: "3",
+        defaultValue: this.state.product_description,
+        onChange: this.onChangeProductDescription,
+        placeholder: "enter product description"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"), "Dosage")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "textarea",
+        id: "product_dosage",
+        rows: "3",
+        defaultValue: this.state.product_dosage,
+        onChange: this.onChangeProductDosage,
+        placeholder: "enter product dosage"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"), "Category")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "select",
+        id: "product_category",
+        value: this.state.product_category,
+        onChange: this.onChangeProductCategory
+      }, this.state.categories.map(function (category) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          value: category.id
+        }, " ", category.name, " ");
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-user"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"), "Price")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "number",
+        id: "product_price",
+        defaultValue: this.state.product_price,
+        onChange: this.onChangeProductPrice,
+        placeholder: "enter amount in USD without the sign"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Quantity")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "number",
+        id: "product_qty",
+        defaultValue: this.state.product_qty,
+        onChange: this.onChangeProductQty
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Add Product Image")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Upload a product image with equal dimensions (350 x 350)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "product-img-holder"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: show_product_image,
+        alt: "",
+        id: "img",
+        className: "product-img"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        style: {
+          display: "none"
+        },
+        src: this.state.product_image,
+        alt: this.state.name,
+        width: "110"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "file",
+        color: "primary",
+        id: "product_image",
+        style: {
+          display: "none"
+        } // onChange={this.onChangeProductImage}
+        ,
+        onChange: function onChange(e) {
+          _this10.onChangeProductImage(e);
+
+          _this10.imageHandler(e);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        block: true,
+        outline: true,
+        color: "success",
+        onClick: this.trigerFileUpload
+      }, "Add Image"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
+        className: "form-actions"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        type: "submit",
+        size: "sm",
+        color: "primary"
+      }, "Add Product"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "12",
+        lg: "7"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-align-justify"
+      }), " Products"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Table"], {
+        responsive: true,
+        bordered: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Category"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Price"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Qty"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Action"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ( // Calculation for the page S/N
+      this.state.currentPage = this.state.activePage * 10 - (10 - 1), // ////////////////////////////////////////////////////////////
+      this.state.applications_list.map(function (application) {
+        if (application.status == 1) {
+          _this10.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Badge"], {
+            color: "success"
+          }, "Completed");
+        } else {
+          _this10.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Badge"], {
+            color: "danger"
+          }, "Not Complete");
+        }
+
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: application.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+          scope: "row"
+        }, _this10.state.currentPage++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, application.qty), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+          size: "sm",
+          onClick: function onClick() {
+            return _this10.viewProduct(application.id);
+          },
+          className: "btn-facebook btn-brand icon mr-1 mb-1",
+          style: {
+            marginRight: "15px"
+          }
+        }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-eye"
+        }))));
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex justify-content-center"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_6___default.a, {
+        activePage: this.state.activePage,
+        itemsCountPerPage: this.state.itemsCountPerPage,
+        totalItemsCount: this.state.totalItemsCount,
+        pageRangeDisplayed: this.state.pageRangeDisplayed,
+        onChange: this.handlePageChange,
+        itemClass: "page-item",
+        linkClass: "page-link"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Modal"], {
+        isOpen: this.state.primaryViewProduct,
+        className: 'modal-primary ' + this.props.className,
+        style: {
+          maxWidth: "1200px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalHeader"], {
+        toggle: function toggle() {
+          return _this10.toggleViewProduct("close", "close");
+        }
+      }, "View product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-align-justify"
+      }), this.state.patient_name, " Product"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Form"], {
+        onSubmit: this.onSubmitEditProduct
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "12",
+        sm: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "View product")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], {
+        style: {
+          marginBottom: "25px"
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Change Product Image")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Upload a product image with equal dimensions (350 x 350)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "product-img-holder"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: view_product_show_product,
+        alt: "",
+        id: "img",
+        className: "product-img"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        style: {
+          display: "none"
+        },
+        src: this.state.view_product_show_product,
+        alt: this.state.name,
+        width: "110"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "file",
+        color: "primary",
+        id: "edit_product_image",
+        style: {
+          display: "none"
+        } // onChange={this.onChangeProductImage}
+        // onChange={e => { this.onChangeEditProductImage(e); this.imageHandlerEdit(e) }}
+        ,
+        onChange: function onChange(e) {
+          _this10.onChangeEditProductImage(e);
+
+          _this10.imageHandlerEdit(e);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        block: true,
+        outline: true,
+        color: "success",
+        onClick: this.trigerFileUploadEdit
+      }, "Add Image")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "8"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
+        xs: "12",
+        sm: "12"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"), "Product Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         type: "text",
         id: "name",
         defaultValue: this.state.name,
@@ -895,20 +1026,12 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "asterisk"
-      }, "*"), "Phone Number")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "select",
-        id: "zip_code",
-        value: this.state.zip_code,
-        onChange: this.onChangeZipCode
-      }, this.state.countries.map(function (country) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: country.zip_code
-        }, " ", country.code, " (", country.zip_code, ") ");
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "text",
-        id: "telephone",
-        defaultValue: this.state.telephone,
-        onChange: this.onChangeTelephone
+      }, "*"), "Description")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "textarea",
+        id: "description",
+        rows: "3",
+        defaultValue: this.state.description,
+        onChange: this.onChangeDescription
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -917,15 +1040,29 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "asterisk"
-      }, "*"), "Country")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+      }, "*"), "Dosage")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "textarea",
+        id: "dosage",
+        rows: "3",
+        defaultValue: this.state.dosage,
+        onChange: this.onChangeDosage
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "append"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-asterisk"
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
+        addonType: "prepend"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "asterisk"
+      }, "*"), "Category")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
         type: "select",
-        id: "pharm_country",
-        value: this.state.pharm_country,
-        onChange: this.onChangePharmCountry
-      }, this.state.countries.map(function (country) {
+        id: "category",
+        value: this.state.category,
+        onChange: this.onChangeCategory
+      }, this.state.categories.map(function (category) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          value: country.name
-        }, " ", country.name, " ");
+          value: category.id
+        }, " ", category.name, " ");
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -934,252 +1071,44 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
         addonType: "prepend"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "asterisk"
-      }, "*"), "District/Province/State")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "text",
-        id: "pharm_district_province_state",
-        defaultValue: this.state.pharm_district_province_state,
-        onChange: this.onChangeDistrictProvinceState
+      }, "*"), "Price")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "number",
+        id: "price",
+        defaultValue: this.state.price,
+        onChange: this.onChangePrice
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-asterisk"
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Address")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "textarea",
-        id: "pharm_address",
-        rows: "2",
-        defaultValue: this.state.pharm_address,
-        onChange: this.onChangePharmAddress,
-        placeholder: " Address"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, "Quantity")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
+        type: "number",
+        id: "qty",
+        defaultValue: this.state.qty,
+        onChange: this.onChangeQty
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
         addonType: "append"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-asterisk"
-      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
+      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
         className: "form-actions"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
         type: "submit",
         size: "sm",
         color: "primary"
-      }, "Update Personal Details"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Medical License"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        color: "primary",
-        onClick: this.toggleMedical,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Open"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Collapse"], {
-        isOpen: this.state.collapse_medical
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
-        xs: "12",
-        sm: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
-        xs: "12",
-        sm: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "file",
-        color: "primary",
-        id: "medical_license",
-        style: {
-          display: "none"
-        },
-        onChange: this.onChangeMedicalLicense
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Upload License")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        style: {
-          fontSize: 12,
-          color: '#2167ac'
+      }, "Update Product")))))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["ModalFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
+        color: "secondary",
+        onClick: function onClick() {
+          return _this10.toggleViewProduct("close", "close");
         }
-      }, this.state.med_lic_uploaded), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        style: {
-          fontSize: 16,
-          flexDirection: 'row'
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "cui-paperclip icons font-1xl d-block mt-4",
-        style: {
-          fontSize: 11,
-          fontWeight: "bold"
-        }
-      }), "Please upload a file, your file size should not be more than 500KB."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        type: "button",
-        size: "sm",
-        color: "primary",
-        onClick: this.trigermedicalLicenseFileUpload
-      }, "Upload File")))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Bank Account Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        color: "primary",
-        onClick: this.toggleBank,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Open"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Collapse"], {
-        isOpen: this.state.collapseBank
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Form"], {
-        onSubmit: this.onSubmitBankAccountDetails
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
-        xs: "12",
-        sm: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Bank Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "text",
-        id: "bank_name",
-        defaultValue: this.state.bank_name,
-        onChange: this.onChangeBankName
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-university"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Bank Account Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "text",
-        id: "bank_account_name",
-        defaultValue: this.state.bank_account_name,
-        onChange: this.onChangeBankAccountName
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-university"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Bank Account Number")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "text",
-        id: "bank_account_number",
-        defaultValue: this.state.bank_account_number,
-        onChange: this.onChangeBankAccountNumber
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-university"
-      }))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardFooter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
-        className: "form-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        type: "submit",
-        size: "sm",
-        color: "primary"
-      }, "Update Account Details"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Add Pharmacist"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        color: "primary",
-        onClick: this.toggle_pharmacist,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Open"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Collapse"], {
-        isOpen: this.state.collapsePharmacist
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
-        xs: "12",
-        sm: "5"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Add Pharmacist"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "card-header-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        color: "primary",
-        onClick: this.toggle_add_pharmacist,
-        className: 'mb-1',
-        id: "",
-        size: "sm"
-      }, "Open"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Collapse"], {
-        isOpen: this.state.collapseAddPharmacist
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Form"], {
-        onSubmit: this.onSubmitPharmacist
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
-        xs: "12",
-        sm: "12"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "text",
-        id: "pharmacist_name",
-        defaultValue: this.state.pharmacist_name,
-        onChange: this.onChangePharmacistName
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "append"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-user"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroup"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupAddon"], {
-        addonType: "prepend"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["InputGroupText"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "asterisk"
-      }, "*"), "Qualifications")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Input"], {
-        type: "textarea",
-        id: "pharmacist_qualifications",
-        rows: "3",
-        defaultValue: this.state.pharmacist_qualifications,
-        onChange: this.onChangePharmacistQualification,
-        placeholder: "enter pharmacist qualification"
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["FormGroup"], {
-        className: "form-actions"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Button"], {
-        type: "submit",
-        size: "sm",
-        color: "primary"
-      }, "Add Pharmacist"))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Col"], {
-        xs: "12",
-        lg: "7"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Card"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardHeader"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-align-justify"
-      }), " Pharmacist"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["CardBody"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Table"], {
-        responsive: true,
-        bordered: true
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "col"
-      }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Qualification"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, ( // Calculation for the page S/N
-      this.state.currentPage = this.state.activePage * 10 - (10 - 1), // ////////////////////////////////////////////////////////////
-      this.state.pharmacist_list.map(function (pharmacist) {
-        if (pharmacist.status == 1) {
-          _this11.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Badge"], {
-            color: "success"
-          }, "Completed");
-        } else {
-          _this11.state.status = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_8__["Badge"], {
-            color: "danger"
-          }, "Not Complete");
-        }
-
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          key: pharmacist.id
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-          scope: "row"
-        }, _this11.state.currentPage++), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, pharmacist.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, pharmacist.qualifications));
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "d-flex justify-content-center"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_js_pagination__WEBPACK_IMPORTED_MODULE_6___default.a, {
-        activePage: this.state.activePage,
-        itemsCountPerPage: this.state.itemsCountPerPage,
-        totalItemsCount: this.state.totalItemsCount,
-        pageRangeDisplayed: this.state.pageRangeDisplayed,
-        onChange: this.handlePageChange,
-        itemClass: "page-item",
-        linkClass: "page-link"
-      }))))))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Cancel")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "sweet_alert1",
         style: {
           display: "none"
         },
         onClick: function onClick() {
-          return _this11.setState({
+          return _this10.setState({
             showSuccess: true
           });
         }
@@ -1191,7 +1120,7 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
         animation: "true",
         text: this.state.successMessage,
         onConfirm: function onConfirm() {
-          return _this11.setState({
+          return _this10.setState({
             showSuccess: false
           });
         }
@@ -1201,7 +1130,7 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
           display: "none"
         },
         onClick: function onClick() {
-          return _this11.setState({
+          return _this10.setState({
             showError: true
           });
         }
@@ -1213,7 +1142,7 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
         animation: "true",
         text: this.state.errorMessage,
         onConfirm: function onConfirm() {
-          return _this11.setState({
+          return _this10.setState({
             showError: false
           });
         }
@@ -1221,10 +1150,10 @@ var PharmProfile = /*#__PURE__*/function (_Component) {
     }
   }]);
 
-  return PharmProfile;
+  return PharmProducts;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (PharmProfile);
+/* harmony default export */ __webpack_exports__["default"] = (PharmProducts);
 
 /***/ })
 

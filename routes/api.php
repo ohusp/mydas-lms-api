@@ -77,6 +77,8 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
     // ////////////////////// GENERAL ROUTE /////////////////////////////////////////
     // get all countries
     Route::get('/get/countries', 'CountriesController@index');
+    // get all time zones
+    Route::get('/get/time_zones', 'TimezoneController@index');
 
     // /////Pateints and Doctors
     Route::get('/patient/doc/chat/message/get/{doctor_id}/{patient_id}', 'MessageController@patientGetDocMessages');

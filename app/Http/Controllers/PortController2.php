@@ -444,6 +444,7 @@ class PortController2 extends Controller
             'position'          => 'required|string|max:255', 
             'date'              => 'required|string|max:255', 
             'time'              => 'required|string|max:255', 
+            'time_zone'         => 'required|string|max:255', 
         ]);
 
         // Return validation error
@@ -463,6 +464,7 @@ class PortController2 extends Controller
         $position        = Sanitizes::my_sanitize_string( $request->position );
         $date            = Sanitizes::my_sanitize_string( $request->date );
         $time            = Sanitizes::my_sanitize_string( $request->time );
+        $time_zone       = Sanitizes::my_sanitize_string( $request->time_zone );
 
         $port_data   = Ports::where('id', '=', $port_id)->first();
         $port_name   = $port_data->name;
@@ -489,6 +491,7 @@ class PortController2 extends Controller
             'position'          =>$position,
             'date'              =>$date,
             'time'              =>$time,
+            'time_zone'         =>$time_zone,
         ];
         $port_report = new \App\Portreport($port_report);
         $port_report->save();
@@ -511,6 +514,7 @@ class PortController2 extends Controller
             'position'          => $position,
             'date'              => $date,
             'time'              => $time,
+            'time_zone'         => $time_zone,
             'footer'            => 'Powered by: CamMedics'
         ];
 

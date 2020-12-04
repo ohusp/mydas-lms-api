@@ -10,7 +10,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Model;
 use Laratrust\Traits\LaratrustUserTrait;
 
-class Labbookappointment extends Authenticatable implements JWTSubject
+class Time_zones extends Authenticatable implements JWTSubject
 
 {
     use LaratrustUserTrait;
@@ -22,18 +22,7 @@ class Labbookappointment extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'date', 
-        'time', 
-        'time_zone', 
-        'subject', 
-        'message', 
-        'test_id', 
-        'lab_id', 
-        'lab_username', 
-        'lab_name', 
-        'patient_id', 
-        'patient_username', 
-        'patient_first_name', 'patient_last_name', 'patient_middle_name', 'status'
+        'time_zone', 'status'
     ];
 
     /**
@@ -41,9 +30,7 @@ class Labbookappointment extends Authenticatable implements JWTSubject
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+ 
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

@@ -863,10 +863,26 @@ class PatientsController2 extends Controller
     public function bookDocAppointment(Request $request, $doctor_id, $patient_id)
     {   
         // return $request;
-        $date     = $request->date;
-        $time     = $request->time;
-        $subject  = $request->subject;
-        $message  = $request->message;
+        $validator  = Validator::make($request->all(), [  
+            'date'      => 'required|string|max:255', 
+            'time'      => 'required|string|max:255', 
+            'time_zone' => 'required|string|max:255', 
+            'subject'   => 'required|string|max:255', 
+            'message'   => 'required|string|max:65000', 
+        ]);
+
+        // Return validation error
+        if ($validator->fails()) { 
+            $validationError = $validator->errors(); 
+            $response = ['success'=>false, 'data'=>$validationError];
+            return response()->json($response, 201);
+        }
+
+        $date       = Sanitizes::my_sanitize_string( $request->date );
+        $time       = Sanitizes::my_sanitize_string( $request->time );
+        $time_zone  = Sanitizes::my_sanitize_string( $request->time_zone );
+        $subject    = Sanitizes::my_sanitize_string( $request->subject );
+        $message    = Sanitizes::my_sanitize_string( $request->message );
 
         $billing_amount_currency        = $request->billing_amount_currency;
         $billing_amount_value           = $request->billing_amount_value;
@@ -877,7 +893,6 @@ class PatientsController2 extends Controller
         $billing_orderID                = $request->billing_orderID;
         $billing_payerID                = $request->billing_payerID;
 
-        // Get pharmacy details from username
         $doc_data       = Doctors::where('id', '=', $doctor_id)->first();
         $doc_username   = $doc_data->username;
         $doc_first_name = $doc_data->first_name;
@@ -895,6 +910,7 @@ class PatientsController2 extends Controller
             // id of the test the doctor created the patient should take
             'date'      =>$date,
             'time'      =>$time,
+            'time_zone' =>$time_zone,
             'subject'   =>$subject, 
             'message'   =>$message, 
 
@@ -1007,10 +1023,26 @@ class PatientsController2 extends Controller
     public function bookTestAppointment(Request $request, $lab_id, $test_id, $patient_id)
     {   
         // return $request;
-        $date     = $request->date;
-        $time     = $request->time;
-        $subject  = $request->subject;
-        $message  = $request->message;
+        $validator  = Validator::make($request->all(), [  
+            'date'      => 'required|string|max:255', 
+            'time'      => 'required|string|max:255', 
+            'time_zone' => 'required|string|max:255', 
+            'subject'   => 'required|string|max:255', 
+            'message'   => 'required|string|max:65000', 
+        ]);
+
+        // Return validation error
+        if ($validator->fails()) { 
+            $validationError = $validator->errors(); 
+            $response = ['success'=>false, 'data'=>$validationError];
+            return response()->json($response, 201);
+        }
+
+        $date       = Sanitizes::my_sanitize_string( $request->date );
+        $time       = Sanitizes::my_sanitize_string( $request->time );
+        $time_zone  = Sanitizes::my_sanitize_string( $request->time_zone );
+        $subject    = Sanitizes::my_sanitize_string( $request->subject );
+        $message    = Sanitizes::my_sanitize_string( $request->message );
 
         $billing_amount_currency        = $request->billing_amount_currency;
         $billing_amount_value           = $request->billing_amount_value;
@@ -1037,6 +1069,7 @@ class PatientsController2 extends Controller
             // id of the test the doctor created the patient should take
             'date'      =>$date,
             'time'      =>$time,
+            'time_zone' =>$time_zone,
             'subject'   =>$subject, 
             'message'   =>$message, 
 
@@ -1141,10 +1174,26 @@ class PatientsController2 extends Controller
     public function bookPortAppointment(Request $request, $port_id, $patient_id)
     {   
         // return $request;
-        $date     = $request->date;
-        $time     = $request->time;
-        $subject  = $request->subject;
-        $message  = $request->message;
+        $validator  = Validator::make($request->all(), [  
+            'date'      => 'required|string|max:255', 
+            'time'      => 'required|string|max:255', 
+            'time_zone' => 'required|string|max:255', 
+            'subject'   => 'required|string|max:255', 
+            'message'   => 'required|string|max:65000', 
+        ]);
+
+        // Return validation error
+        if ($validator->fails()) { 
+            $validationError = $validator->errors(); 
+            $response = ['success'=>false, 'data'=>$validationError];
+            return response()->json($response, 201);
+        }
+
+        $date       = Sanitizes::my_sanitize_string( $request->date );
+        $time       = Sanitizes::my_sanitize_string( $request->time );
+        $time_zone  = Sanitizes::my_sanitize_string( $request->time_zone );
+        $subject    = Sanitizes::my_sanitize_string( $request->subject );
+        $message    = Sanitizes::my_sanitize_string( $request->message );
 
         $billing_amount_currency        = $request->billing_amount_currency;
         $billing_amount_value           = $request->billing_amount_value;
@@ -1171,6 +1220,7 @@ class PatientsController2 extends Controller
             // id of the test the doctor created the patient should take
             'date'      =>$date,
             'time'      =>$time,
+            'time_zone' =>$time_zone,
             'subject'   =>$subject, 
             'message'   =>$message, 
 
