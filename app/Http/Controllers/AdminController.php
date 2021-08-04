@@ -1,16 +1,36 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\User;
+use App\Admins;
+use App\Managers;
+use App\Students;
 use JWTAuth;
 use JWTAuthException;
+use Mail;
+use App\Mail\WelcomeMail;
 
 use Illuminate\Support\Facades\Validator;
 use App\Sanitizes\Sanitizes;
 use App\Encrypt\Encrypt;
 
+
+
 class AdminController extends Controller
-{
+{   
+    
+    function __construct()
+    {   
+        // check if logged in as superadmin
+        // $this->middleware('role:superadministrator');
+
+        // This is use to get the token for admins model. it uses the same for user.
+        \Config::set('jwt.user', Admins::class);
+        \Config::set('auth.providers', ['users' => [
+                'driver' => 'eloquent',
+                'model' => Admins::class,
+            ]]);
+    }
+
     private function getToken($email, $password)
     {
         $token = null;
@@ -31,6 +51,7 @@ class AdminController extends Controller
         }
         return $token;
     }
+
     public function login(Request $request)
     {   
         // return $request;
@@ -39,9 +60,8 @@ class AdminController extends Controller
         // convert array back to laravel request object
         $request = new \Illuminate\Http\Request();
         $request->replace($user);
-        $user = $request;
         
-        $validator  = Validator::make($user->all(), [ 
+        $validator  = Validator::make($request->all(), [ 
             'email'     => 'required|email|max:255', 
             'password'  => 'required|string|min:8|max:255', 
         ]);
@@ -50,59 +70,247 @@ class AdminController extends Controller
         if ($validator->fails()) { 
             $validationError = $validator->errors(); 
             $response = ['success'=>false, 'data'=>$validationError];
-            return response()->json($response, 201);
+            return response()->json($response, 501);
         }
 
-        $email      = Sanitizes::my_sanitize_email( $user->email);
-        $password   = Sanitizes::my_sanitize_string( $user->password);
-        
-        $user = \App\User::where('email', $email)->get()->first();
-        if ($user && \Hash::check($password, $user->password)) // The passwords match...
+        $email      = Sanitizes::my_sanitize_email( $request->email);
+        $password   = Sanitizes::my_sanitize_string( $request->password);
+
+        $admin_data = \App\Admins::where('email', $email)->get()->first();
+        if ($admin_data && \Hash::check($password, $admin_data->password)) // The passwords match...
         {   
-            $role_name = $user->roles->pluck('name');
+            // This gets the patient role name and passed into a variable
+            $role_name = $admin_data->roles->pluck('name');
             $role_name = $role_name[0];
+
             $token = self::getToken($email, $password);
-            $user->auth_token = $token;
-            $user->save();
-            $response = ['success'=>true, 'data'=>['id'=>$user->id,'auth_token'=>$user->auth_token,'name'=>$user->name, 'email'=>$user->email, 'user_type'=>$role_name]];           
+            $admin_data->auth_token = $token;
+            $admin_data->save();
+
+            // return $disability_none;
+
+            // send response array to the front
+            $response = ['success'=>true, 'data'=>[
+                'auth_token'=>$admin_data->auth_token,
+                'email'=>$admin_data->email, 
+                'role'=>$role_name, 
+            ]];   
+            return response()->json($response, 200);        
         }
         else 
-          $response = ['success'=>false, 'data'=>'Record doesnt exists'];
-
-        return response()->json($response, 201);
+            $response = ['success'=>false, 'data'=>'Record doesnt exists'];
+            return response()->json($response, 401);
     }
 
-    public function register(Request $request)
-    { 
+    public function getDetails($email)
+    {   
+        // return $email;
+        $admin_data = Admins::where('email', '=', $email)->first();
+
+        return $admin_data;
+
+        $response = ['success'=>true, 'data'=>[
+            'auth_token'    =>$admin_data->auth_token,
+            'id'            =>$admin_data->id,
+            'username'      =>$admin_data->username,
+            'first_name'    =>$admin_data->first_name,
+            'last_name'     =>$admin_data->last_name, 
+            'email'         =>$admin_data->email, 
+            'zip_code'      =>$admin_data->zip_code, 
+            'telephone'     =>$admin_data->telephone, 
+            'title'         =>$admin_data->title, 
+            'gender'        =>$admin_data->gender, 
+            'nationality'   =>$admin_data->nationality, 
+            'country_of_residence'      =>$admin_data->country_of_residence, 
+            'district_province_state'   =>$admin_data->district_province_state, 
+            'address'   =>$admin_data->address,
+            
+            'status'=>$admin_data->status, 
+            'created_at'=>$admin_data->created_at
+        ]];
+
+        return response()->json($response, 200);
+    }
+
+    public function addManager(Request $request, $email, $role)
+    {   
+        // return $request;
+        $user = Encrypt::cryptoJsAesDecrypt('where do you go when you by yourself', $request->user_data);
+        // convert array back to laravel request object
+        $request = new \Illuminate\Http\Request();
+        $request->replace($user);
+        
+        // Validate
+        $validator = Validator::make($request->all(), [ 
+            'first_name'=> 'required|string|max:150', 
+            'last_name' => 'required|string|max:150', 
+            'email'     => 'required|email|unique:managers|max:255', 
+            'password'  => 'required|string|min:8|max:255', 
+            'zip_code'       => 'nullable|string|max:150',
+            'telephone' => 'nullable|string|max:150',
+            'gender'    => 'nullable|string|max:150',
+            'institution'               => 'nullable|string|max:250',
+            'nationality'               => 'nullable|string|max:150',
+            'country_of_residence'      => 'nullable|string|max:150',
+            'district_province_state'   => 'nullable|string|max:150',
+            'address'                   => 'nullable|string|max:150',
+        ]);
+        
+        // Return validation error
+        if ($validator->fails()) { 
+            $validationError = $validator->errors(); 
+            $response = ['success'=>false, 'data'=>$validationError];
+            return response()->json($response, 501);
+        }
+
+        // Sanitize inputs
+        $first_name = Sanitizes::my_sanitize_string( $request->first_name);
+        $last_name  = Sanitizes::my_sanitize_string( $request->last_name);
+        $email      = Sanitizes::my_sanitize_email( $request->email);
+        $password   = Sanitizes::my_sanitize_string( $request->password);
+        $zip_code       = Sanitizes::my_sanitize_string( $request->zip_code);
+        $telephone      = Sanitizes::my_sanitize_string( $request->telephone);
+        $gender         = Sanitizes::my_sanitize_string( $request->gender);
+        $institution    = Sanitizes::my_sanitize_string( $request->institution);
+        $nationality    = Sanitizes::my_sanitize_string( $request->nationality);
+        $country_of_residence       = Sanitizes::my_sanitize_string( $request->country_of_residence);
+        $district_province_state    = Sanitizes::my_sanitize_string( $request->district_province_state);
+        $address                    = Sanitizes::my_sanitize_string( $request->address);
+
+        $ev_code = md5(sprintf("%05x%05x",mt_rand(0,0xffff),mt_rand(0,0xffff)));
+
         $payload = [
-            'password'=>\Hash::make($request->password),
-            'email'=>$request->email,
-            'name'=>$request->name,
-            'auth_token'=> ''
+            'password'  =>\Hash::make($password),
+            'email'     =>$email,
+            'first_name'=>$first_name,
+            'last_name' =>$last_name,
+            'zip_code'       =>$zip_code,
+            'telephone' =>$telephone,
+            'gender'    =>$gender,
+            'institution'               =>$institution,
+            'nationality'               =>$nationality,
+            'country_of_residence'      =>$country_of_residence,
+            'district_province_state'   =>$district_province_state,
+            'address'       =>$address,
+            'auth_token'    => '',
+            'ev_code'       =>$ev_code
         ];
+
+        // return $payload;
                   
-        $user = new \App\User($payload);
+        $user = new \App\Managers($payload);
         if ($user->save())
         {
             
-            $token = self::getToken($request->email, $request->password); // generate user token
+            $token = self::getToken($email, $password); // generate user token
             
             if (!is_string($token))  return response()->json(['success'=>false,'data'=>'Token generation failed'], 201);
             
-            $user = \App\User::where('email', $request->email)->get()->first();
+            $user = \App\Managers::where('email', $email)->get()->first();
             
             $user->auth_token = $token; // update user token
             
             $user->save();
             // ///////// ADD ROLE ///////////////////////
-            $user->attachRole('user');
-            // /////////////////////////////////////////
-            $response = ['success'=>true, 'data'=>['name'=>$user->name,'id'=>$user->id,'email'=>$request->email,'auth_token'=>$token]];        
+            $user->attachRole('manager');
+            // ////////// SEND MAIL //////////////////////////
+            $emailDetails = [
+                'title' => 'Welcome to Digital Innovation and Skills Hub',
+                'first_name' => $user->first_name,
+                'url' => 'https://dashboard.cammedics.com/#/login'
+            ];
+    
+            Mail::to($email)->send(new WelcomeMail($emailDetails));
+            // /////////////////////////////////////////////////////
+
+            $response = ['success'=>true, 'data'=>'Registration successful'];      
+            return response()->json($response, 201);  
         }
         else
             $response = ['success'=>false, 'data'=>'Couldnt register user'];
-        
-        
-        return response()->json($response, 201);
+            return response()->json($response, 501);
     }
+
+    public function getManagers($email, $role)
+    {   
+        if($role == "superadministrator"){
+            //
+            // $support_tickets = Support_tickets::all();
+            $managers = Managers::paginate(5);
+            
+            $response = ['success'=>true, 'data'=>$managers];
+            return response()->json($response, 201);
+        }
+    }
+
+    public function getStudents($email, $role)
+    {   
+        if($role == "superadministrator"){
+            //
+            $students = Students::paginate(5);
+            
+            $response = ['success'=>true, 'data'=>$students];
+            return response()->json($response, 201);
+        }else if($role == "manager"){
+            //
+            $students = Students::paginate(5);
+            
+            $response = ['success'=>true, 'data'=>$students];
+            return response()->json($response, 201);
+        }
+    }
+
+    public function updateStudent(Request $request, $email, $role)
+    {   
+        $request->replace($request->user_data);
+        // return $request;
+        
+        // Validate
+        $validator = Validator::make($request->all(), [ 
+            'first_name'=> 'required|string|max:150', 
+            'last_name' => 'required|string|max:150', 
+            'zip_code'       => 'nullable|string|max:150',
+            'telephone' => 'nullable|string|max:150',
+            'gender'    => 'nullable|string|max:150',
+            'institution'               => 'nullable|string|max:250',
+            'nationality'               => 'nullable|string|max:150',
+            'country_of_residence'      => 'nullable|string|max:150',
+            'district_province_state'   => 'nullable|string|max:150',
+            'address'                   => 'nullable|string|max:150',
+        ]);
+        
+        // Return validation error
+        if ($validator->fails()) { 
+            $validationError = $validator->errors(); 
+            $response = ['success'=>false, 'data'=>$validationError];
+            return response()->json($response, 501);
+        }
+
+        // return $request->email;
+        $student_data = Students::where('email', '=', $request->email)->first();
+        $ev_code = md5(sprintf("%05x%05x",mt_rand(0,0xffff),mt_rand(0,0xffff)));
+
+        // Sanitize inputs
+        $student_data->first_name = Sanitizes::my_sanitize_string( $request->first_name);
+        $student_data->last_name  = Sanitizes::my_sanitize_string( $request->last_name);
+        $student_data->zip_code       = Sanitizes::my_sanitize_string( $request->zip_code);
+        $student_data->telephone      = Sanitizes::my_sanitize_string( $request->telephone);
+        $student_data->gender         = Sanitizes::my_sanitize_string( $request->gender);
+        $student_data->institution    = Sanitizes::my_sanitize_string( $request->institution);
+        $student_data->nationality    = Sanitizes::my_sanitize_string( $request->nationality);
+        $student_data->country_of_residence       = Sanitizes::my_sanitize_string( $request->country_of_residence);
+        $student_data->district_province_state    = Sanitizes::my_sanitize_string( $request->district_province_state);
+        $student_data->address                    = Sanitizes::my_sanitize_string( $request->address);
+        $student_data->ev_code                    = Sanitizes::my_sanitize_string( $ev_code);
+                  
+        if ($student_data->save())
+        {
+            $response = ['success'=>true, 'data'=>'Update successful'];      
+            return response()->json($response, 201);  
+        }
+        else
+            $response = ['success'=>false, 'data'=>'Update failed'];
+            return response()->json($response, 501);
+    }
+
 }

@@ -49,7 +49,7 @@ return [
 
         'api' => [
             'driver' => 'session',
-            'provider' => 'applications',
+            'provider' => 'students',
             'hash' => false,
         ],
     ],
@@ -77,9 +77,9 @@ return [
             'model' => App\User::class,
         ],
 
-        'applications' => [
+        'students' => [
             'driver' => 'eloquent',
-            'model' => App\Applications::class,
+            'model' => App\Students::class,
         ],
 
         // 'users' => [
@@ -111,8 +111,8 @@ return [
             'throttle' => 60,
         ],
 
-        'applications' => [
-            'provider' => 'applications',
+        'students' => [
+            'provider' => 'students',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

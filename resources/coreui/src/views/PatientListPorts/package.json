@@ -1,6 +1,0 @@
-{
-  "name": "PatientListPorts",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./PatientListPorts.js"
-}

@@ -1,6 +1,0 @@
-{
-  "name": "DocAccount",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./DocAccount.js"
-}

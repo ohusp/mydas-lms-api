@@ -330,7 +330,7 @@
     "APP_DEBUG": "true",
     "APP_ENV": "local",
     "APP_KEY": "base64:JnqKEo72/8iZznb8OGntVkjhfI4hrtqH46I+Q5BhpxQ=",
-    "APP_NAME": "CamMedics",
+    "APP_NAME": "DISH",
     "APP_URL": "http://localhost",
     "AWS_ACCESS_KEY_ID": "",
     "AWS_BUCKET": "",

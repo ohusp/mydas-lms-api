@@ -1,6 +1,0 @@
-{
-  "name": "PatientListPharms",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./PatientListPharms.js"
-}
