@@ -10,7 +10,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Model;
 use Laratrust\Traits\LaratrustUserTrait;
 
-class Erp_fetch_save extends Authenticatable implements JWTSubject
+class Teachers extends Authenticatable implements JWTSubject
 
 {
     use LaratrustUserTrait;
@@ -22,7 +22,25 @@ class Erp_fetch_save extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'username', 'first_name', 'last_name', 'middle_name', 'email', 'zip_code', 'telephone', 'password', 'auth_token', 'ev_code', 'allow_password_change', 'gender', 'dob', 'nationality', 'country_of_residence', 'district_province_state', 'address', 'height', 'weight', 'disabilities', 'next_kin_name', 'next_kin_relationship', 'next_kin_occupation', 'next_kin_phone', 'next_kin_email', 'type_of_identification', 'id_passport_number', 'id_passport_upload', 'profile_picture', 'status'
+        'username', 
+        'first_name', 
+        'last_name', 
+        'email', 
+        'zip_code', 
+        'telephone', 
+        'password', 
+        'auth_token', 
+        'ev_code', 
+        'allow_password_change', 
+        'gender', 
+        'dob', 
+        'institution',
+        'nationality', 
+        'country_of_residence', 
+        'district_province_state', 
+        'address', 
+        'profile_picture', 
+        'status'
     ];
 
     /**

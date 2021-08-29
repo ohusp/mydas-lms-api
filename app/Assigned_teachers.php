@@ -10,7 +10,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Model;
 use Laratrust\Traits\LaratrustUserTrait;
 
-class Subscriptions extends Authenticatable implements JWTSubject
+class Assigned_teachers extends Authenticatable implements JWTSubject
 
 {
     use LaratrustUserTrait;
@@ -22,14 +22,10 @@ class Subscriptions extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'amount', 
+        'student', 
+        'teacher', 
         'email', 
-        'plan_id',
-        'plan_name', 
-        'plan_price',
-        'handling_fee', 
-        'plan_duration',
-        'expiration_time',
+        'role', 
         'status'
     ];
 

@@ -1,8 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Students;
-use App\Lms_users;
+use App\Teachers;
 use JWTAuth;
 use JWTAuthException;
 use Mail;
@@ -31,15 +32,15 @@ class StudentController extends Controller
             ]]);
     }
 
-    private function getToken($email, $password)
+    private function getToken($username, $password)
     {
         $token = null;
         //$credentials = $request->only('email', 'password');
         try {
-            if (!$token = JWTAuth::attempt( ['email'=>$email, 'password'=>$password])) {
+            if (!$token = JWTAuth::attempt( ['username'=>$username, 'password'=>$password])) {
                 return response()->json([
                     'response' => 'error',
-                    'message' => 'Password or email is invalid',
+                    'message' => 'Password or username is invalid',
                     'token'=>$token
                 ]);
             }
@@ -65,136 +66,50 @@ class StudentController extends Controller
         $request->replace($user);
         
         $validator  = Validator::make($request->all(), [ 
-            'email'     => 'required|email|max:255', 
-            'password'  => 'required|string|min:8|max:255', 
+            'username_email' => 'required|string|max:255', 
+            'password'       => 'required|string|min:8|max:255', 
         ]);
 
         // Return validation error
         if ($validator->fails()) { 
             $validationError = $validator->errors(); 
             $response = ['success'=>false, 'data'=>$validationError];
-            return response()->json($response, 501);
+            return response()->json($response, 200);
         }
 
-        $email      = Sanitizes::my_sanitize_email( $request->email);
-        $password   = Sanitizes::my_sanitize_string( $request->password);
+        $usernameEmail  = Sanitizes::my_sanitize_email( $request->username_email);
+        $password       = Sanitizes::my_sanitize_string( $request->password);
 
-        $student_data = \App\Students::where('email', $email)->get()->first();
+        $student_data = \App\Students::where('username', $usernameEmail)->get()->first();
         if ($student_data && \Hash::check($password, $student_data->password)) // The passwords match...
         {   
             // This gets the student role name and passed into a variable
             // $role_name = $student_data->roles->pluck('name');
-            $role_name = "student";
+            $subscription_data = \App\Subscriptions::where('id', $student_data->subscription_id)->get()->first();
+            if($subscription_data->status === 3 || $subscription_data->status === 4) {
+                $role_name = "student";
 
-            $token = self::getToken($email, $password);
-            $student_data->auth_token = $token;
-            $student_data->save();
-
-            // return $disability_none;
-
-            // send response array to the front
-            $response = ['success'=>true, 'data'=>[
-                'auth_token'=>$student_data->auth_token,
-                'email'=>$student_data->email, 
-                'role'=>$role_name, 
-            ]];   
+                $token = self::getToken($usernameEmail, $password);
+                $student_data->auth_token = $token;
+                $student_data->save();
+                // send response array to the front
+                $response = ['success'=>true, 'data'=>[
+                    'auth_token'    =>$student_data->auth_token,
+                    'username'      =>$student_data->username, 
+                    'role'          =>$role_name, 
+                    'verification'  =>$student_data->verification
+                ]];  
+            }else {
+                $response = ['success'=>false, 'data'=>'Subscription Expired'];
+            }
             return response()->json($response, 200); 
-                      
         }
         else 
-            $response = ['success'=>false, 'data'=>'Record doesnt exists'];
-            return response()->json($response, 401);
+            $response = ['success'=>false, 'data'=>'Invalid username or password'];
+            return response()->json($response, 200);
     }
 
-    public function register(Request $request)
-    {   
-        // return $request;
-        $user = Encrypt::cryptoJsAesDecrypt('where do you go when you by yourself', $request->user);
-        // convert array back to laravel request object
-        $request = new \Illuminate\Http\Request();
-        $request->replace($user);
-        // Validate
-        $validator = Validator::make($request->all(), [ 
-            'first_name'=> 'required|string|max:150', 
-            'last_name' => 'required|string|max:150', 
-            'username'  => 'required|string|unique:students|unique:mdl_user|max:150', 
-            'email'     => 'required|email|unique:students|unique:mdl_user|max:255', 
-            'password'  => 'required|string|min:8|max:255', 
-        ]);
-        
-        // Return validation error
-        if ($validator->fails()) { 
-            $validationError = $validator->errors(); 
-            $response = ['success'=>false, 'data'=>$validationError];
-            return response()->json($response, 501);
-        }
-
-        // Sanitize inputs
-        $first_name = Sanitizes::my_sanitize_string( $request->first_name);
-        $last_name  = Sanitizes::my_sanitize_string( $request->last_name);
-        $username   = Sanitizes::my_sanitize_string( $request->username);
-        $email      = Sanitizes::my_sanitize_email( $request->email);
-        $password   = Sanitizes::my_sanitize_string( $request->password);
-
-        $ev_code = md5(sprintf("%05x%05x",mt_rand(0,0xffff),mt_rand(0,0xffff)));
-
-        $payload = [
-            'password'  =>\Hash::make($password),
-            'email'     =>$email,
-            'first_name'=>$first_name,
-            'last_name'=>$last_name,
-            'username'  =>$username,
-            'auth_token'=> '',
-            'ev_code'   =>$ev_code
-        ];
-                  
-        $user = new \App\Students($payload);
-        if ($user->save())
-        {
-            
-                $token = self::getToken($email, $password); // generate user token
-                
-                if (!is_string($token))  return response()->json(['success'=>false,'data'=>'Token generation failed'], 201);
-                
-                $user = \App\Students::where('email', $email)->get()->first();
-                
-                $user->auth_token = $token; // update user token
-                
-                $user->save();
-                // ///////// ADD ROLE ///////////////////////
-                $user->attachRole('student');
-
-                ///////// SAVE TO LMS ////////////////////////// 
-                $payload1 = [
-                    'password'  =>\Hash::make($password),
-                    'email'     =>$email,
-                    'firstname' =>$first_name,
-                    'lastname'  =>$last_name,
-                    'username'  =>$username,
-                    'lms_role'  =>'1'
-                ];
-                $user1 = new \App\Lms_users($payload1);
-                $user1->save();
-
-                // ////////// SEND MAIL //////////////////////////
-                $emailDetails = [
-                    'title' => 'Welcome to Digital Innovation and Skills Hub',
-                    'first_name' => $user->first_name,
-                    'url' => 'https://dish-portal.kiu.ac.ug/signin'
-                ];
-        
-                Mail::to($email)->send(new WelcomeMail($emailDetails));
-                // /////////////////////////////////////////////////////
-
-                $response = ['success'=>true, 'data'=>'Registration successful'];      
-                return response()->json($response, 201);  
-        }
-        else
-            $response = ['success'=>false, 'data'=>'Couldnt register user'];
-            return response()->json($response, 501);
-    }
-
-    public function completeSignup(Request $request, $email, $role)
+    public function completeSignup(Request $request, $username, $role)
     {   
 
         $image = $request->file_data;  // your base64 encoded
@@ -203,15 +118,16 @@ class StudentController extends Controller
         // $imageName = uniqid().'.'.'jpg';
         $imageName = '1.jpg';
 
-        $path = config('global.verification_file') .'verification/';
-        // return $email;
-        if(!is_dir($path.$email)){
-			mkdir($path.$email);
+        $path = config('global.verification_file') .'verification/'.$role."/";
+        // return $path;
+        if(!is_dir($path.$username)){
+			mkdir($path.$username);
 		}
 
-        $destinationPath = $path.$email;
+        $destinationPath = $path.$username;
         \File::put($destinationPath. '/' . $imageName, base64_decode($image));
 
+        $student_data = \App\Students::where('username', $username)->get()->first();
         // save file name in database
         $student_data->verification = $destinationPath. '/' . $imageName;
         $student_data->save();
@@ -225,10 +141,10 @@ class StudentController extends Controller
         }
     }
 
-    public function getDetails($email)
+    public function getDetails($username)
     {   
-        // return $email;
-        $student_data = Students::where('email', '=', $email)->first();
+        // return $username;
+        $student_data = Students::where('username', '=', $username)->first();
 
         // get the disabilities values and convert to array
         $disabilities_new = $student_data->disabilities;
@@ -293,6 +209,12 @@ class StudentController extends Controller
         return response()->json($response, 200);
     }
 
+
+
+
+
+
+
     public function forgetPassword(Request $request)
     {   
         // return $request;
@@ -308,25 +230,26 @@ class StudentController extends Controller
         if($student){
             $myEmail = $email;
     
-            $details = [
+            $emailDetails = [
                 'title' => 'Forget Password',
                 'url' => config('global.api_baseURL').'student/reset/'.$student->ev_code.'/'.$myEmail,
             ];
-    
-            Mail::to($myEmail)->send(new ForgetPasswordMail($details));
+            
+            $sendEmail = MailController::sendEmail($emailDetails, "ForgetPasswordMail");
+            // Mail::to($myEmail)->send(new ForgetPasswordMail($details));
     
             // dd("Mail Send Successfully");
             $response = ['success'=>true, 'data'=>'Email sent successfully'];
-            return response()->json($response, 201);
+            return response()->json($response, 200);
         }else{
-            $response = ['success'=>true, 'data'=>'Email not sent'];
-            return response()->json($response, 201);
+            $response = ['success'=>false, 'data'=>'Email not sent'];
+            return response()->json($response, 200);
         }
     }
 
-    public function reset($code, $email)
+    public function reset($code, $username)
     {   
-        $student = Students::where([['ev_code', $code], ['email', $email]])->get()->first();
+        $student = Students::where([['ev_code', $code], ['username', $username]])->get()->first();
         if($student){
 
             // return \View::make("login/myTestMail");
@@ -357,7 +280,7 @@ class StudentController extends Controller
             $response = ['success'=>false, 'data'=>'Can not reset password'];
         }
 
-        return response()->json($response, 201);
+        return response()->json($response, 200);
     }
 
     public function resetPassword(Request $request)
@@ -398,18 +321,183 @@ class StudentController extends Controller
             $student->allow_password_change = 0;
             $student->save();
 
-            // get email to update LMS data
-            $email = $student->email;
-            $student1 = \App\Lms_users::where('email', $email)->get()->first();
-            $student1->password = $password;
-            $student1->save();
-
             $response = ['success'=>true, 'data'=>'password successfully updated'];
         }else{
             // the ev_code is not correct
             $response = ['success'=>false, 'data'=>'error can\'t reset password'];
         }
-        return response()->json($response, 201);
+        return response()->json($response, 200);
+    }
+
+
+
+
+
+
+
+    public function addStudent(Request $request, $parentUsername)
+    {   
+        // return $request;
+        $user = Encrypt::cryptoJsAesDecrypt('where do you go when you by yourself', $request->user);
+        // convert array back to laravel request object
+        $request = new \Illuminate\Http\Request();
+        $request->replace($user);
+        // return $request;
+        // Validate
+        $validator = Validator::make($request->all(), [ 
+            'first_name'=> 'required|string|max:150', 
+            'last_name' => 'required|string|max:150', 
+            'username'  => 'required|string|unique:students|max:150', 
+            'email'     => 'required|email|unique:students|max:255', 
+            'password'  => 'required|string|min:8|max:255', 
+            'subscription_id'   => 'required|integer|max:50', 
+        ]);
+        
+        // Return validation error
+        if ($validator->fails()) { 
+            $validationError = $validator->errors(); 
+            $response = ['success'=>false, 'data'=>$validationError];
+            return response()->json($response, 200);
+        }
+
+        // Sanitize inputs
+        $first_name = Sanitizes::my_sanitize_string( $request->first_name);
+        $last_name  = Sanitizes::my_sanitize_string( $request->last_name);
+        $username   = Sanitizes::my_sanitize_string( $request->username);
+        $email      = Sanitizes::my_sanitize_email( $request->email);
+        $password   = Sanitizes::my_sanitize_string( $request->password);
+        $subscription_id = Sanitizes::my_sanitize_string( $request->subscription_id);
+
+        $ev_code = md5(sprintf("%05x%05x",mt_rand(0,0xffff),mt_rand(0,0xffff)));
+
+        $payload = [
+            'password'  =>\Hash::make($password),
+            'email'     => $email,
+            'first_name'=> $first_name,
+            'last_name' => $last_name,
+            'username'  => $username,
+            'subscription_id' => $subscription_id,
+            'parent_username' => $parentUsername,
+            'auth_token'=> '',
+            'ev_code'   => $ev_code
+        ];
+                  
+        $user = new \App\Students($payload);
+        if ($user->save())
+        {
+            
+            $token = self::getToken($username, $password); // generate user token
+            
+            if (!is_string($token))  return response()->json(['success'=>false,'data'=>'Token generation failed'], 201);
+            
+            $user = \App\Students::where('email', $email)->get()->first();
+            
+            $user->auth_token = $token; // update user token
+            
+            $user->save();
+            // ///////// ADD ROLE ///////////////////////
+            $user->attachRole('student');
+
+            // ////////// SEND MAIL //////////////////////////
+            $emailDetails = [
+                'title' => 'Welcome to Digital Innovation and Skills Hub',
+                'first_name' => $user->first_name,
+                'url' => 'https://dish-portal.kiu.ac.ug/signin'
+            ];
+            
+            $sendEmail = MailController::sendEmail($emailDetails, "WelcomeMail");
+            // Mail::to($email)->send(new WelcomeMail($emailDetails));
+            // /////////////////////////////////////////////////////
+
+            $response = ['success'=>true, 'data'=>'Registration successful'];      
+            return response()->json($response, 201);  
+        }
+        else
+            $response = ['success'=>false, 'data'=>'Couldnt register student'];
+            return response()->json($response, 501);
+    }
+
+    public function myPlanStudents( $username, $role, $subscription_id )
+    {   
+        $student = Students::where([['parent_username', $username], ['subscription_id', $subscription_id]])->get()->all();
+
+        if($student) {
+            $response = ['success'=>true, 'data'=>$student];
+            return response()->json($response, 200);
+        }else {
+            $response = ['success'=>false, 'data'=>'Record doesnt exists'];
+            return response()->json($response, 200);
+        }
+       
+    }
+
+    public function getStudents($all, $username, $role)
+    {   
+        if($role == "superadministrator"){
+            if($all === "all") {
+                $students = Students::all();
+            }else {
+                $students = Students::paginate(5);
+            }
+            
+            $response = ['success'=>true, 'data'=>$students];
+            return response()->json($response, 201);
+        }else if($role == "manager"){
+            if($all === "all") {
+                $students = Students::all();
+            }else {
+                $students = Students::paginate(5);
+            }
+            
+            $response = ['success'=>true, 'data'=>$students];
+            return response()->json($response, 201);
+        }
+    }
+
+    public function getMyStudents($all, $username, $role, $requestFor)
+    {   
+        // return $role;
+        if($role === "superadministrator" || $role  === "manager" || $role === "teacher" || $role === "user"){
+            if($all === "all") {
+                if($requestFor === "teacher"){
+                    $teacher_data = Teachers::where('username', '=', $username)->first();
+                    $teacher_id   = $teacher_data->id;
+                    $my_students = DB::table('assigned_teachers')
+                        ->join('teachers', 'assigned_teachers.teacher', '=', 'teachers.id')
+                        ->join('students', 'assigned_teachers.student', '=', 'students.id')
+                        ->select('assigned_teachers.*', 'students.*')
+                        ->where([['assigned_teachers.teacher', $teacher_id]])
+                        ->get()->all();
+                    // return $result;
+                    $response = ['success'=>true, 'data'=>$my_students];
+                }else if($requestFor === "user") {
+                    $my_students = Students::where([['parent_username', $username]])->get()->all();
+                    $response = ['success'=>true, 'data'=>$my_students];
+                }
+                return response()->json($response, 201);
+            }else {
+                if($requestFor === "teacher") {
+                    $teacher_data = Teachers::where('username', '=', $username)->first();
+                    $teacher_id   = $teacher_data->id;
+                    $my_students = DB::table('assigned_teachers')
+                        ->join('teachers', 'assigned_teachers.teacher', '=', 'teachers.id')
+                        ->join('students', 'assigned_teachers.student', '=', 'students.id')
+                        ->select('assigned_teachers.*', 'students.*')
+                        ->where([['assigned_teachers.teacher', $teacher_id]])
+                        ->paginate(10);
+                    // return $result;
+                    $response = ['success'=>true, 'data'=>$my_students];
+                }else if($requestFor === "user"){
+                    $my_students = Students::where([['parent_username', $username]])->paginate(10);
+                    $response = ['success'=>true, 'data'=>$my_students];
+                }
+                return response()->json($response, 201);
+            }
+
+        }else {
+            $response = ['success'=>false, 'data'=>"Access denieeled"];
+            return response()->json($response, 201);
+        }
     }
 
 }

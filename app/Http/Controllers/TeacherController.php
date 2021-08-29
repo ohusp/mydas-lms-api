@@ -1,8 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Teachers;
-use App\Lms_users;
+use App\Assigned_teachers;
+use App\Students;
 use JWTAuth;
 use JWTAuthException;
 use Mail;
@@ -30,15 +32,15 @@ class TeacherController extends Controller
             ]]);
     }
 
-    private function getToken($email, $password)
+    private function getToken($username, $password)
     {
         $token = null;
-        //$credentials = $request->only('email', 'password');
+        //$credentials = $request->only('username', 'password');
         try {
-            if (!$token = JWTAuth::attempt( ['email'=>$email, 'password'=>$password])) {
+            if (!$token = JWTAuth::attempt( ['username'=>$username, 'password'=>$password])) {
                 return response()->json([
                     'response' => 'error',
-                    'message' => 'Password or email is invalid',
+                    'message' => 'Password or username is invalid',
                     'token'=>$token
                 ]);
             }
@@ -59,8 +61,8 @@ class TeacherController extends Controller
         $request->replace($user);
         
         $validator  = Validator::make($request->all(), [ 
-            'email'     => 'required|email|max:255', 
-            'password'  => 'required|string|min:8|max:255', 
+            'username_email'  => 'required|string|max:255', 
+            'password'        => 'required|string|min:8|max:255', 
         ]);
 
         // Return validation error
@@ -70,57 +72,286 @@ class TeacherController extends Controller
             return response()->json($response, 501);
         }
 
-        $email      = Sanitizes::my_sanitize_email( $request->email);
-        $password   = Sanitizes::my_sanitize_string( $request->password);
+        $usernameEmail  = Sanitizes::my_sanitize_string( $request->username_email);
+        $password       = Sanitizes::my_sanitize_string( $request->password);
 
-        $teacher_data = \App\Lms_users::where('email', $email)->get()->first();
+        $teacher_data = \App\Teachers::where('username', $usernameEmail)->get()->first();
+        // return $teacher_data;
         if ($teacher_data && \Hash::check($password, $teacher_data->password)) // The passwords match...
         {   
-            if($teacher_data->lms_role == 2){
-                $role_name = "teacher";
+            $role_name = "teacher";
 
-                // send response array to the front
-                $response = ['success'=>true, 'data'=>[
-                    'auth_token'=>$teacher_data->auth_token,
-                    'email'=>$teacher_data->email, 
-                    'role'=>$role_name, 
-                ]];   
-                return response()->json($response, 200);    
-            }else{
-                $response = ['success'=>false, 'data'=>'Record doesnt exists'];
-                return response()->json($response, 401);
-            }
+            $token = self::getToken($usernameEmail, $password);
+            $teacher_data->auth_token = $token;
+            $teacher_data->save();
+
+            // send response array to the front
+            $response = ['success'=>true, 'data'=>[
+                'auth_token'=>$teacher_data->auth_token,
+                'username'  =>$teacher_data->username, 
+                'role'      =>$role_name, 
+            ]];   
+            return response()->json($response, 200);    
+            
         }
         else 
             $response = ['success'=>false, 'data'=>'Record doesnt exists'];
             return response()->json($response, 401);
     }
 
-    public function getDetails($email)
+    public function addTeacher(Request $request, $username, $role)
     {   
-        $teacher_data = Lms_users::where([['email', $email], ['lms_role',  '2']])->get()->first();
-        // return $teacher_data;
+        // return $request;
+        $user = Encrypt::cryptoJsAesDecrypt('where do you go when you by yourself', $request->user_data);
+        // convert array back to laravel request object
+        $request = new \Illuminate\Http\Request();
+        $request->replace($user);
+        
+        // Validate
+        $validator = Validator::make($request->all(), [ 
+            'username'  => 'required|string|unique:teachers|max:255',
+            'first_name'=> 'required|string|max:150', 
+            'last_name' => 'required|string|max:150', 
+            'email'     => 'required|email|unique:teachers|max:255', 
+            'password'  => 'required|string|min:8|max:255', 
+            'zip_code'       => 'nullable|string|max:150',
+            'telephone' => 'nullable|string|max:150',
+            'gender'    => 'nullable|string|max:150',
+            'institution'               => 'nullable|string|max:250',
+            'nationality'               => 'nullable|string|max:150',
+            'country_of_residence'      => 'nullable|string|max:150',
+            'district_province_state'   => 'nullable|string|max:150',
+            'address'                   => 'nullable|string|max:150',
+        ]);
+        
+        // Return validation error
+        if ($validator->fails()) { 
+            $validationError = $validator->errors(); 
+            $response = ['success'=>false, 'data'=>$validationError];
+            return response()->json($response, 501);
+        }
 
-        $response = ['success'=>true, 'data'=>[
-            'id'            =>$teacher_data->id,
-            'username'      =>$teacher_data->username,
-            'first_name'    =>$teacher_data->firstname,
-            'last_name'     =>$teacher_data->lastname, 
-            'middle_name'   =>$teacher_data->middlename,
-            'email'         =>$teacher_data->email, 
-            'telephone'     =>$teacher_data->phone1, 
-            'gender'        =>$teacher_data->gender, 
-            'institution'   =>$teacher_data->institution, 
-            'department'    =>$teacher_data->department, 
-            'country_of_residence'      =>$teacher_data->country, 
-            'city'          =>$teacher_data->city,  
-            'address'       =>$teacher_data->address
-        ]];
+        // Sanitize inputs
+        $username   = Sanitizes::my_sanitize_string( $request->username);
+        $first_name = Sanitizes::my_sanitize_string( $request->first_name);
+        $last_name  = Sanitizes::my_sanitize_string( $request->last_name);
+        $email      = Sanitizes::my_sanitize_email( $request->email);
+        $password   = Sanitizes::my_sanitize_string( $request->password);
+        $zip_code       = Sanitizes::my_sanitize_string( $request->zip_code);
+        $telephone      = Sanitizes::my_sanitize_string( $request->telephone);
+        $gender         = Sanitizes::my_sanitize_string( $request->gender);
+        $institution    = Sanitizes::my_sanitize_string( $request->institution);
+        $nationality    = Sanitizes::my_sanitize_string( $request->nationality);
+        $country_of_residence       = Sanitizes::my_sanitize_string( $request->country_of_residence);
+        $district_province_state    = Sanitizes::my_sanitize_string( $request->district_province_state);
+        $address                    = Sanitizes::my_sanitize_string( $request->address);
 
-        return response()->json($response, 200);
+        $ev_code = md5(sprintf("%05x%05x",mt_rand(0,0xffff),mt_rand(0,0xffff)));
+
+        $payload = [
+            'password'  =>\Hash::make($password),
+            'username'  =>$username,
+            'email'     =>$email,
+            'first_name'=>$first_name,
+            'last_name' =>$last_name,
+            'zip_code'  =>$zip_code,
+            'telephone' =>$telephone,
+            'gender'    =>$gender,
+            'institution'               =>$institution,
+            'nationality'               =>$nationality,
+            'country_of_residence'      =>$country_of_residence,
+            'district_province_state'   =>$district_province_state,
+            'address'       =>$address,
+            'auth_token'    => '',
+            'ev_code'       =>$ev_code
+        ];
+
+        // return $payload;
+                  
+        $user = new \App\Teachers($payload);
+        if ($user->save())
+        {
+            
+            $token = self::getToken($username, $password); // generate user token
+            
+            if (!is_string($token))  return response()->json(['success'=>false,'data'=>'Token generation failed'], 201);
+            
+            $user = \App\Teachers::where('username', $username)->get()->first();
+            
+            $user->auth_token = $token; // update user token
+            
+            $user->save();
+            // ///////// ADD ROLE ///////////////////////
+            $user->attachRole('manager');
+            // ////////// SEND MAIL //////////////////////////
+            $emailDetails = [
+                'title' => 'Welcome to Mydas Tutors',
+                'first_name' => $user->first_name,
+                'url' => 'https://dashboard.mydastutors.com/teacher_signin'
+            ];
+            
+            $sendEmail = MailController::sendEmail($emailDetails, "WelcomeMail");
+            // Mail::to($email)->send(new WelcomeMail($emailDetails));
+            // /////////////////////////////////////////////////////
+
+            $response = ['success'=>true, 'data'=>'Registration successful'];      
+            return response()->json($response, 201);  
+        }
+        else
+            $response = ['success'=>false, 'data'=>'Couldnt register user'];
+            return response()->json($response, 501);
     }
 
-    public function update(Request $request, $email, $role)
+    public function getDetails($username)
+    {   
+        $teacher_data = Teachers::where([['username', $username]])->get()->first();
+        // return $manager_data;
+        if($teacher_data) {
+            $response = ['success'=>true, 'data'=> $teacher_data];
+            return response()->json($response, 200);
+        }else {
+            $response = ['success'=>false, 'data'=> "no record found"];
+            return response()->json($response, 200);
+        }
+    }
+
+    public function getTeachers($all, $username, $role)
+    {   
+        if($role == "superadministrator"){
+            if($all === "all") {
+                $teachers = Teachers::all();
+            }else {
+                $teachers = Teachers::paginate(5);
+            }
+            
+            $response = ['success'=>true, 'data'=>$teachers];
+            return response()->json($response, 201);
+        }else if($role == "manager"){
+            if($all === "all") {
+                $teachers = Teachers::all();
+            }else {
+                $teachers = Teachers::paginate(5);
+            }
+            
+            $response = ['success'=>true, 'data'=>$teachers];
+            return response()->json($response, 201);
+        }
+    }
+
+    public function getAssignedTeachers($username, $role)
+    {
+        // $subscriptions = Subscriptions::where([['username', $username]])->get()->all();
+
+        $assigned_teachers = DB::table('assigned_teachers')
+            ->join('teachers', 'assigned_teachers.teacher', '=', 'teachers.id')
+            ->join('students', 'assigned_teachers.student', '=', 'students.id')
+            ->select('assigned_teachers.*', 
+                'teachers.username AS teacher_username', 'teachers.first_name AS teacher_first_name', 'teachers.last_name AS teacher_last_name', 'teachers.email AS teacher_email', 'teachers.zip_code AS teacher_zip_code', 'teachers.telephone AS teacher_telephone', 'teachers.gender AS teacher_gender', 
+                'students.username AS student_username', 'students.first_name AS student_first_name', 'students.last_name AS student_last_name', 'students.email AS student_email', 'students.zip_code AS student_zip_code', 'students.telephone AS student_telephone', 'students.gender AS student_gender', 
+            )
+            // ->where([['subscriptions.email', $email]])
+            ->get()->all();
+        // return $result;
+        $response = ['success'=>true, 'data'=>$assigned_teachers];
+        return response()->json($response, 201);
+    }
+
+    public function assignTeacher(Request $request, $username, $role)
+    {   
+        $validator  = Validator::make($request->all(), [ 
+            'student'   => 'required|integer|max:255', 
+            'teacher'   => 'required|integer|max:255', 
+        ]);
+
+        // Return validation error
+        if ($validator->fails()) { 
+            $validationError = $validator->errors(); 
+            $response = ['success'=>false, 'data'=>$validationError];
+            return response()->json($response, 501);
+        }
+        
+        $student    = Sanitizes::my_sanitize_string( $request->student );
+        $teacher    = Sanitizes::my_sanitize_string( $request->teacher );
+        $username   = Sanitizes::my_sanitize_string( $username );
+        $role       = Sanitizes::my_sanitize_string( $role );
+
+        // return $support_subject;
+        $assign_data = Assigned_teachers::where([['student', $student], ['teachher', $teacher]])->get()->first();
+        if($assign_data) {
+            $response = ['success'=>true, 'data'=>"Already exist"];
+            return response()->json($response, 200);
+        }else {
+            $payload = [
+                'username'  =>$username,
+                'role'      =>$role,
+                'student'   =>$student,
+                'teacher'   =>$teacher,
+            ];
+                    
+            $assign_teacher = new \App\Assigned_teachers($payload);
+            if ($assign_teacher->save())
+            {
+                $response = ['success'=>true, 'data'=>"Added successfully"];
+                return response()->json($response, 200);
+            }else{
+                $response = ['success'=>true, 'data'=>"Failed"];
+                return response()->json($response, 200);
+            }
+        }
+    }
+
+    public function getMyTeachers($all, $username, $role)
+    {   
+        // return $all. "-" .$username. " - " .$role;
+        if($role === "superadministrator" || $role  === "manager" || $role === "user" || $role === "student"){
+            if($all === "all") {
+                $student_data = Students::where('username', '=', $username)->first();
+                $student_id   = $student_data->id;
+                $my_teachers = DB::table('assigned_teachers')
+                    ->join('teachers', 'assigned_teachers.teacher', '=', 'teachers.id')
+                    ->join('students', 'assigned_teachers.student', '=', 'students.id')
+                    ->select('assigned_teachers.*', 'teachers.*')
+                    ->where([['assigned_teachers.student', $student_id]])
+                    ->get()->all();
+                // return $result;
+                $response = ['success'=>true, 'data'=>$my_teachers];
+                return response()->json($response, 201);
+            }else {
+                $student_data = Students::where('username', '=', $username)->first();
+                $student_id   = $student_data->id;
+                $my_teachers = DB::table('assigned_teachers')
+                    ->join('teachers', 'assigned_teachers.teacher', '=', 'teachers.id')
+                    ->join('students', 'assigned_teachers.student', '=', 'students.id')
+                    ->select('assigned_teachers.*', 'teachers.*')
+                    ->where([['assigned_teachers.student', $student_id]])
+                    ->paginate(10);
+                // return $result;
+                $response = ['success'=>true, 'data'=>$my_teachers];
+                return response()->json($response, 201);
+            }
+
+        }else {
+            $response = ['success'=>false, 'data'=>"Access denieeled"];
+            return response()->json($response, 201);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    public function update(Request $request, $username, $role)
     {   
         $request->replace($request->user_data);
         // return $request;
@@ -146,8 +377,8 @@ class TeacherController extends Controller
             return response()->json($response, 501);
         }
 
-        // return $request->email;
-        $teacher_data = Lms_users::where('email', '=', $request->email)->first();
+        // return $request->username;
+        $teacher_data = Lms_users::where('username', '=', $request->username)->first();
 
         // Sanitize inputs
         $teacher_data->firstname    = Sanitizes::my_sanitize_string( $request->first_name);

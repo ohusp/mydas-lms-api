@@ -35,7 +35,7 @@ class GeneralController extends Controller
             ]]);
     }
 
-    public function updatePicture(Request $request, $email, $role, $file_key) {
+    public function updatePicture(Request $request, $username, $role, $file_key) {
         // return $request;
         $validator = Validator::make($request->all(), [ 
             $file_key => 'mimes:pdf,jpeg,png,jpg|max:512'
@@ -49,7 +49,7 @@ class GeneralController extends Controller
         }
         
         // get the user_email to update
-        $student_data = Students::where('email', '=', $email)->first();
+        $student_data = Students::where('username', '=', $username)->first();
 
         // delete previous image
         // return $student_data->profile_picture;
@@ -61,10 +61,10 @@ class GeneralController extends Controller
         $file = $request->file($file_key);
 
         $fileName = time().'.'.$file->getClientOriginalName();
-        $fileName = $email."-".time().".jpg";
+        $fileName = $username."-".time().".jpg";
 
         // Path where the file will be saved
-        $path = config('global.file_path1') . $file_key.'/'.$email;
+        $path = config('global.file_path1') . $file_key.'/'.$username;
         $destinationPath = public_path().$path;
         // return $destinationPath;
   
@@ -72,7 +72,7 @@ class GeneralController extends Controller
         $file->move($destinationPath,$fileName);
 
         // save file name in database
-        $student_data->$file_key = config('global.file_path2') . $file_key."/".$email."/".$fileName;
+        $student_data->$file_key = config('global.file_path2') . $file_key."/".$username."/".$fileName;
         $student_data->save();
 
         if($student_data){
@@ -84,7 +84,7 @@ class GeneralController extends Controller
         }
     }
 
-    public function updateDetails(Request $request, $email, $role)
+    public function updateDetails(Request $request, $username, $role)
     {   
         // return $request;
         $user = $request->user_data;
@@ -127,7 +127,7 @@ class GeneralController extends Controller
 
         // Find user with that id
         if($role == "student"){
-            $user_data = Students::where('email', '=', $email)->first();
+            $user_data = Students::where('username', '=', $username)->first();
         }
 
         $user_data->first_name    = Sanitizes::my_sanitize_string( $request->first_name);

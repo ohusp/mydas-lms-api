@@ -10,7 +10,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Model;
 use Laratrust\Traits\LaratrustUserTrait;
 
-class Subscriptions extends Authenticatable implements JWTSubject
+class Users extends Authenticatable implements JWTSubject
 
 {
     use LaratrustUserTrait;
@@ -22,15 +22,7 @@ class Subscriptions extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'amount', 
-        'email', 
-        'plan_id',
-        'plan_name', 
-        'plan_price',
-        'handling_fee', 
-        'plan_duration',
-        'expiration_time',
-        'status'
+        'username', 'first_name', 'last_name', 'middle_name', 'email', 'zip_code', 'telephone', 'password', 'auth_token', 'ev_code', 'allow_password_change', 'gender', 'dob', 'nationality', 'country_of_residence', 'district_province_state', 'address', 'height', 'weight', 'disabilities', 'next_kin_name', 'next_kin_relationship', 'next_kin_occupation', 'next_kin_phone', 'next_kin_email', 'type_of_identification', 'id_passport_number', 'id_passport_upload', 'profile_picture', 'status'
     ];
 
     /**

@@ -35,7 +35,7 @@ class SupportController extends Controller
         return response()->json($response, 201);
     }
 
-    public function submitTicket(Request $request, $email, $role)
+    public function submitTicket(Request $request, $username, $role)
     {   
         // return $request;
         $support = $request->support_data;
@@ -45,7 +45,7 @@ class SupportController extends Controller
             'support_dept'      => 'required|string|max:255', 
             'support_subject'   => 'required|string|max:255', 
             'support_message'   => 'required|string|max:65000',
-            // $email              => 'required|string|max:255',
+            // $username              => 'required|string|max:255',
             // $role               => 'required|string|max:255', 
         ]);
 
@@ -61,13 +61,13 @@ class SupportController extends Controller
         $support_dept    = Sanitizes::my_sanitize_string( $request->support_dept );
         $support_subject = Sanitizes::my_sanitize_string( $request->support_subject );
         $support_message = Sanitizes::my_sanitize_string( $request->support_message );
-        $email           = Sanitizes::my_sanitize_string( $email );
+        $username        = Sanitizes::my_sanitize_string( $username );
         $role            = Sanitizes::my_sanitize_string( $role );
 
         // return $support_subject;
 
         $payload = [
-            'email'             =>$email,
+            'username'          =>$username,
             'role'              =>$role,
             'support_dept'      =>$support_dept,
             'support_subject'   =>$support_subject,
@@ -85,12 +85,12 @@ class SupportController extends Controller
         }
     }
 
-    public function getTicket($email, $role)
+    public function getTicket($username, $role)
     {   
         if($role == "student"){
             //
             // $support_tickets = Support_tickets::all();
-            $support_tickets = Support_tickets::where([['email', $email], ['role', $role]])->paginate(5);
+            $support_tickets = Support_tickets::where([['username', $username], ['role', $role]])->paginate(5);
             
             $response = ['success'=>true, 'data'=>$support_tickets];
             return response()->json($response, 201);
@@ -100,7 +100,7 @@ class SupportController extends Controller
             // compare the department with the ticket deprtment
             // return result
 
-            // $manager_data = Managers::where('email', $email)->get()->first();
+            // $manager_data = Managers::where('username', $username)->get()->first();
             // $manager_dept = $manager_data->dept;
 
             $support_tickets = Support_tickets::paginate(5);
@@ -115,25 +115,25 @@ class SupportController extends Controller
         }
     }
 
-    public function getTicketReply($email, $role)
+    public function getTicketReply($username, $role)
     {   
         if($role == "student"){
             $support_data = DB::table('support_tickets_replies')
                 ->join('support_tickets', 'support_tickets_replies.ticket_id', '=', 'support_tickets.id')
                 ->select('support_tickets_replies.support_reply', 'support_tickets_replies.created_at AS reply_date', 'support_tickets.*')
-                ->where([['support_tickets.email', $email], ['support_tickets.role', $role]])
+                ->where([['support_tickets.username', $username], ['support_tickets.role', $role]])
                 ->paginate(5);
         }else if($role == "manager"){
             $support_data = DB::table('support_tickets_replies')
                 ->join('support_tickets', 'support_tickets_replies.ticket_id', '=', 'support_tickets.id')
                 ->select('support_tickets_replies.support_reply', 'support_tickets_replies.created_at AS reply_date', 'support_tickets.*')
-                // ->where([['support_tickets.email', $email], ['support_tickets.role', $role]])
+                // ->where([['support_tickets.username', $username], ['support_tickets.role', $role]])
                 ->paginate(5);
         }else if($role == "superadministrator"){
             $support_data = DB::table('support_tickets_replies')
                 ->join('support_tickets', 'support_tickets_replies.ticket_id', '=', 'support_tickets.id')
                 ->select('support_tickets_replies.support_reply', 'support_tickets_replies.created_at AS reply_date', 'support_tickets.*')
-                // ->where([['support_tickets.email', $email], ['support_tickets.role', $role]])
+                // ->where([['support_tickets.username', $username], ['support_tickets.role', $role]])
                 ->paginate(5);
         }
 
@@ -141,7 +141,7 @@ class SupportController extends Controller
         return response()->json($response, 201);
     }
 
-    public function getTicketReplyById(Request $request, $email, $role)
+    public function getTicketReplyById(Request $request, $username, $role)
     {   
         $ticket_id = $request->ticket_id;
 
@@ -157,7 +157,7 @@ class SupportController extends Controller
         return response()->json($response, 201);
     }
 
-    public function submitTicketReply(Request $request, $email, $role)
+    public function submitTicketReply(Request $request, $username, $role)
     {   
         // return $request;
         $support = $request->reply_data;
@@ -177,13 +177,13 @@ class SupportController extends Controller
         
         $ticketId       = Sanitizes::my_sanitize_number( $request->ticketId );
         $ticket_reply   = Sanitizes::my_sanitize_string( $request->ticket_reply );
-        $email          = Sanitizes::my_sanitize_string( $email );
+        $username       = Sanitizes::my_sanitize_string( $username );
         $role           = Sanitizes::my_sanitize_string( $role );
 
         // return $support_subject;
 
         $payload = [
-            'email'         =>$email,
+            'username'      =>$username,
             'role'          =>$role,
             'ticket_id'     =>$ticketId,
             'support_reply' =>$ticket_reply,

@@ -34,7 +34,7 @@ class CourseController extends Controller
         }
     }
 
-    public function saveClassSchedule(Request $request, $email, $role)
+    public function saveClassSchedule(Request $request, $username, $role)
     {   
         // return $request;
         $request->replace($request->course_data);
@@ -59,7 +59,7 @@ class CourseController extends Controller
         $class_topic    = Sanitizes::my_sanitize_string( $request->class_topic);
         $startDate      = Sanitizes::my_sanitize_string( $request->startDate);
         $endDate        = Sanitizes::my_sanitize_string( $request->endDate);
-        $email          = Sanitizes::my_sanitize_string( $email);
+        $username       = Sanitizes::my_sanitize_string( $username);
         $role           = Sanitizes::my_sanitize_string( $role);
 
         $payload = [
@@ -67,7 +67,7 @@ class CourseController extends Controller
             'class_topic'   =>$class_topic,
             'startDate'     =>$startDate,
             'endDate'       =>$endDate,
-            'created_by'    =>$email,
+            'created_by'    =>$username,
             'role'          =>$role,
         ];
                   
@@ -96,13 +96,13 @@ class CourseController extends Controller
         }
     }
 
-    public function getMyCourses($email, $role)
+    public function getMyCourses($username, $role)
     {
         // array to be use to store course details
         $course_data_array = array();
 
         // get student id
-        $student_data   = Lms_users::where('email', '=', $email)->first();
+        $student_data   = Lms_users::where('username', '=', $username)->first();
         if($student_data){
             $student_id     = $student_data->id;
 
@@ -145,7 +145,7 @@ class CourseController extends Controller
     }
 
 
-    // public function enrolCourse(Request $request, $email, $role)
+    // public function enrolCourse(Request $request, $username, $role)
     // {   
     //     // Validate
     //     $validator = Validator::make($request->all(), [ 
@@ -161,12 +161,12 @@ class CourseController extends Controller
 
     //     // Sanitize inputs
     //     $course_id  = Sanitizes::my_sanitize_string( $request->course_id);
-    //     $email      = Sanitizes::my_sanitize_email( $email);
+    //     $username      = Sanitizes::my_sanitize_email( $username);
     //     $role       = Sanitizes::my_sanitize_string( $role);
 
     //     $payload = [
     //         'course_id' =>$course_id,
-    //         'email'     =>$email,
+    //         'username'     =>$username,
     //         'role'      =>$role,
     //     ];
                   

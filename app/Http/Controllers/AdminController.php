@@ -31,15 +31,15 @@ class AdminController extends Controller
             ]]);
     }
 
-    private function getToken($email, $password)
+    private function getToken($username, $password)
     {
         $token = null;
-        //$credentials = $request->only('email', 'password');
+        //$credentials = $request->only('username', 'password');
         try {
-            if (!$token = JWTAuth::attempt( ['email'=>$email, 'password'=>$password])) {
+            if (!$token = JWTAuth::attempt( ['username'=>$username, 'password'=>$password])) {
                 return response()->json([
                     'response' => 'error',
-                    'message' => 'Password or email is invalid',
+                    'message' => 'Password or username is invalid',
                     'token'=>$token
                 ]);
             }
@@ -62,8 +62,8 @@ class AdminController extends Controller
         $request->replace($user);
         
         $validator  = Validator::make($request->all(), [ 
-            'email'     => 'required|email|max:255', 
-            'password'  => 'required|string|min:8|max:255', 
+            'username_email'  => 'required|username|max:255', 
+            'password'        => 'required|string|min:8|max:255', 
         ]);
 
         // Return validation error
@@ -73,17 +73,17 @@ class AdminController extends Controller
             return response()->json($response, 501);
         }
 
-        $email      = Sanitizes::my_sanitize_email( $request->email);
-        $password   = Sanitizes::my_sanitize_string( $request->password);
+        $usernameEmail  = Sanitizes::my_sanitize_string( $request->username_email);
+        $password       = Sanitizes::my_sanitize_string( $request->password);
 
-        $admin_data = \App\Admins::where('email', $email)->get()->first();
+        $admin_data = \App\Admins::where('username', $usernameEmail)->get()->first();
         if ($admin_data && \Hash::check($password, $admin_data->password)) // The passwords match...
         {   
             // This gets the patient role name and passed into a variable
             $role_name = $admin_data->roles->pluck('name');
             $role_name = $role_name[0];
 
-            $token = self::getToken($email, $password);
+            $token = self::getToken($usernameEmail, $password);
             $admin_data->auth_token = $token;
             $admin_data->save();
 
@@ -92,7 +92,7 @@ class AdminController extends Controller
             // send response array to the front
             $response = ['success'=>true, 'data'=>[
                 'auth_token'=>$admin_data->auth_token,
-                'email'=>$admin_data->email, 
+                'username'=>$admin_data->username, 
                 'role'=>$role_name, 
             ]];   
             return response()->json($response, 200);        
@@ -102,14 +102,15 @@ class AdminController extends Controller
             return response()->json($response, 401);
     }
 
-    public function getDetails($email)
+    public function getDetails($username)
     {   
-        // return $email;
-        $admin_data = Admins::where('email', '=', $email)->first();
+        // return $username;
+        $admin_data = Admins::where('username', '=', $username)->first();
 
         return $admin_data;
 
         $response = ['success'=>true, 'data'=>[
+            'username'      =>$admin_data->username,
             'auth_token'    =>$admin_data->auth_token,
             'id'            =>$admin_data->id,
             'username'      =>$admin_data->username,
@@ -132,7 +133,7 @@ class AdminController extends Controller
         return response()->json($response, 200);
     }
 
-    public function addManager(Request $request, $email, $role)
+    public function addManager(Request $request, $username, $role)
     {   
         // return $request;
         $user = Encrypt::cryptoJsAesDecrypt('where do you go when you by yourself', $request->user_data);
@@ -142,6 +143,7 @@ class AdminController extends Controller
         
         // Validate
         $validator = Validator::make($request->all(), [ 
+            'username'  => 'required|string|max:150', 
             'first_name'=> 'required|string|max:150', 
             'last_name' => 'required|string|max:150', 
             'email'     => 'required|email|unique:managers|max:255', 
@@ -164,6 +166,7 @@ class AdminController extends Controller
         }
 
         // Sanitize inputs
+        $username   = Sanitizes::my_sanitize_string( $request->username );
         $first_name = Sanitizes::my_sanitize_string( $request->first_name);
         $last_name  = Sanitizes::my_sanitize_string( $request->last_name);
         $email      = Sanitizes::my_sanitize_email( $request->email);
@@ -181,6 +184,7 @@ class AdminController extends Controller
 
         $payload = [
             'password'  =>\Hash::make($password),
+            'username'  =>$username,
             'email'     =>$email,
             'first_name'=>$first_name,
             'last_name' =>$last_name,
@@ -202,11 +206,11 @@ class AdminController extends Controller
         if ($user->save())
         {
             
-            $token = self::getToken($email, $password); // generate user token
+            $token = self::getToken($username, $password); // generate user token
             
             if (!is_string($token))  return response()->json(['success'=>false,'data'=>'Token generation failed'], 201);
             
-            $user = \App\Managers::where('email', $email)->get()->first();
+            $user = \App\Managers::where('username', $username)->get()->first();
             
             $user->auth_token = $token; // update user token
             
@@ -219,8 +223,9 @@ class AdminController extends Controller
                 'first_name' => $user->first_name,
                 'url' => 'https://dashboard.cammedics.com/#/login'
             ];
-    
-            Mail::to($email)->send(new WelcomeMail($emailDetails));
+            
+            $sendEmail = MailController::sendEmail($emailDetails, "WelcomeMail");
+            // Mail::to($email)->send(new WelcomeMail($emailDetails));
             // /////////////////////////////////////////////////////
 
             $response = ['success'=>true, 'data'=>'Registration successful'];      
@@ -231,7 +236,7 @@ class AdminController extends Controller
             return response()->json($response, 501);
     }
 
-    public function getManagers($email, $role)
+    public function getManagers($username, $role)
     {   
         if($role == "superadministrator"){
             //
@@ -243,24 +248,7 @@ class AdminController extends Controller
         }
     }
 
-    public function getStudents($email, $role)
-    {   
-        if($role == "superadministrator"){
-            //
-            $students = Students::paginate(5);
-            
-            $response = ['success'=>true, 'data'=>$students];
-            return response()->json($response, 201);
-        }else if($role == "manager"){
-            //
-            $students = Students::paginate(5);
-            
-            $response = ['success'=>true, 'data'=>$students];
-            return response()->json($response, 201);
-        }
-    }
-
-    public function updateStudent(Request $request, $email, $role)
+    public function updateStudent(Request $request, $username, $role)
     {   
         $request->replace($request->user_data);
         // return $request;
@@ -287,7 +275,7 @@ class AdminController extends Controller
         }
 
         // return $request->email;
-        $student_data = Students::where('email', '=', $request->email)->first();
+        $student_data = Students::where('username', '=', $request->username)->first();
         $ev_code = md5(sprintf("%05x%05x",mt_rand(0,0xffff),mt_rand(0,0xffff)));
 
         // Sanitize inputs

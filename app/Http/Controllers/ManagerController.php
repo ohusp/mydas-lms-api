@@ -31,15 +31,15 @@ class ManagerController extends Controller
             ]]);
     }
 
-    private function getToken($email, $password)
+    private function getToken($username, $password)
     {
         $token = null;
-        //$credentials = $request->only('email', 'password');
+        //$credentials = $request->only('username', 'password');
         try {
-            if (!$token = JWTAuth::attempt( ['email'=>$email, 'password'=>$password])) {
+            if (!$token = JWTAuth::attempt( ['username'=>$username, 'password'=>$password])) {
                 return response()->json([
                     'response' => 'error',
-                    'message' => 'Password or email is invalid',
+                    'message' => 'Password or username is invalid',
                     'token'=>$token
                 ]);
             }
@@ -65,8 +65,8 @@ class ManagerController extends Controller
         $request->replace($user);
         
         $validator  = Validator::make($request->all(), [ 
-            'email'     => 'required|email|max:255', 
-            'password'  => 'required|string|min:8|max:255', 
+            'username_email'  => 'required|username|max:255', 
+            'password'        => 'required|string|min:8|max:255', 
         ]);
 
         // Return validation error
@@ -76,57 +76,52 @@ class ManagerController extends Controller
             return response()->json($response, 501);
         }
 
-        $email      = Sanitizes::my_sanitize_email( $request->email);
-        $password   = Sanitizes::my_sanitize_string( $request->password);
+        $usernameEmail  = Sanitizes::my_sanitize_email( $request->username_email);
+        $password       = Sanitizes::my_sanitize_string( $request->password);
 
-        $manager_data = \App\Lms_users::where('email', $email)->get()->first();
+        $manager_data = \App\Managers::where('username', $usernameEmail)->get()->first();
         if ($manager_data && \Hash::check($password, $manager_data->password)) // The passwords match...
         {   
-            if($manager_data->lms_role == 3){
-                $role_name = "manager";
+            $role_name = "manager";
 
-                // send response array to the front
-                $response = ['success'=>true, 'data'=>[
-                    'auth_token'=>$manager_data->auth_token,
-                    'email'=>$manager_data->email, 
-                    'role'=>$role_name, 
-                ]];   
-                return response()->json($response, 200);    
-            }else{
-                $response = ['success'=>false, 'data'=>'Record doesnt exists'];
-                return response()->json($response, 401);
-            }
+            $token = self::getToken($usernameEmail, $password);
+            $manager_data->auth_token = $token;
+            $manager_data->save();
+
+            // send response array to the front
+            $response = ['success'=>true, 'data'=>[
+                'auth_token'=>$manager_data->auth_token,
+                'username'=>$manager_data->username, 
+                'role'=>$role_name, 
+            ]];   
+            return response()->json($response, 200);    
+           
         }
         else 
             $response = ['success'=>false, 'data'=>'Record doesnt exists'];
             return response()->json($response, 401);
     }
 
-    public function getDetails($email)
+
+
+
+
+
+
+    public function getDetails($username)
     {   
-        $manager_data = Lms_users::where([['email', $email], ['lms_role',  '3']])->get()->first();
+        $manager_data = Managers::where([['username', $username]])->get()->first();
         // return $manager_data;
-
-        $response = ['success'=>true, 'data'=>[
-            'id'            =>$manager_data->id,
-            'username'      =>$manager_data->username,
-            'first_name'    =>$manager_data->firstname,
-            'last_name'     =>$manager_data->lastname, 
-            'middle_name'   =>$manager_data->middlename,
-            'email'         =>$manager_data->email, 
-            'telephone'     =>$manager_data->phone1, 
-            'gender'        =>$manager_data->gender, 
-            'institution'   =>$manager_data->institution, 
-            'department'    =>$manager_data->department, 
-            'country_of_residence'      =>$manager_data->country, 
-            'city'          =>$manager_data->city,  
-            'address'       =>$manager_data->address
-        ]];
-
-        return response()->json($response, 200);
+        if($manager_data) {
+            $response = ['success'=>true, 'data'=> $manager_data];
+            return response()->json($response, 200);
+        }else {
+            $response = ['success'=>false, 'data'=> "no record found"];
+            return response()->json($response, 200);
+        }
     }
 
-    public function update(Request $request, $email, $role)
+    public function update(Request $request, $username, $role)
     {   
         $request->replace($request->user_data);
         // return $request;
@@ -152,8 +147,8 @@ class ManagerController extends Controller
             return response()->json($response, 501);
         }
 
-        // return $request->email;
-        $manager_data = Lms_users::where('email', '=', $request->email)->first();
+        // return $request->username;
+        $manager_data = Lms_users::where('username', '=', $request->username)->first();
 
         // Sanitize inputs
         $manager_data->firstname    = Sanitizes::my_sanitize_string( $request->first_name);

@@ -23,18 +23,75 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
 });
 
 // Route::group(['middleware' => 'api-header'], function () {
-    Route::post('/student/sign_up', 'StudentController@register');
-    Route::put('/student/complete_signup/{email}/{role}', 'StudentController@completeSignup');
+    Route::post('/user/sign_up', 'UserController@signup');
+    Route::put('/user/complete_signup/{username}/{role}', 'UserController@completeSignup');
+    Route::post('/user/signin', 'UserController@login');
+    Route::post('/user/forget_password', 'UserController@forgetPassword');
+    Route::get('/user/reset/{code}/{username}','UserController@reset');
+    Route::post('/user/check','UserController@checkResetPassword');
+    Route::post('/user/reset_password','UserController@resetPassword');
+    Route::get('/user/details/{username}/{role}', 'UserController@getDetails');
+
+    Route::get('/subscription_plans', 'SubscriptionController@getPlans');
+    Route::post('/pay/subscription_fee/{username}/{role}', 'SubscriptionController@pay');
+    Route::get('/process/subscription_fee', 'SubscriptionController@process');
+    Route::post('/verify/subscription_fee/{username}/{role}', 'SubscriptionController@verify');
+    Route::get('/get_subscriptions/{username}/{role}', 'SubscriptionController@getSubscriptions');
+
+    Route::post('/renew/subscription/{username}/{role}', 'SubscriptionController@renewSubscription');
+    Route::get('/renew/subscription/process', 'SubscriptionController@renewSubscriptionProcess');
+    // Route::post('/verify/subscription_fee/{username}/{role}', 'SubscriptionController@verify');
+
+    Route::post('/add/student/{username}', 'StudentController@addStudent');
+    Route::get('/my_plan/students/{username}/{role}/{plan_id}', 'StudentController@myPlanStudents');
+
+    Route::post('/student/signin', 'StudentController@login');
+    Route::put('/student/complete_signup/{username}/{role}', 'StudentController@completeSignup');
+    Route::post('/student/forget_password', 'StudentController@forgetPassword');
+    Route::get('/student/reset/{code}/{username}','StudentController@reset');
+    Route::post('/student/check','StudentController@checkResetPassword');
+    Route::post('/student/reset_password','StudentController@resetPassword');
+    Route::get('/student/details/{username}/{role}', 'StudentController@getDetails');
+    Route::get('/students/{all}/{username}/{role}', 'StudentController@getStudents');
+    Route::get('/my_students/{all}/{username}/{role}/{requestFor}', 'StudentController@getMyStudents');
+
+    Route::post('/manager/sign_in', 'ManagerController@login');
+    Route::get('/manager/get/{username}/{role}', 'ManagerController@getDetails');
+
+    Route::post('/teacher/sign_in', 'TeacherController@login');
+    Route::post('/add/teacher/{username}/{role}', 'TeacherController@addTeacher');
+    Route::get('/get/teacher/{username}/{role}', 'TeacherController@getDetails');
+    Route::get('/teachers/{all}/{username}/{role}', 'TeacherController@getTeachers');
+    Route::get('/assigned_teachers/{username}/{role}', 'TeacherController@getAssignedTeachers');
+    Route::post('/assign_teacher/{username}/{role}', 'TeacherController@assignTeacher');
+    Route::get('/my_teachers/{all}/{username}/{role}', 'TeacherController@getMyTeachers');
+
+    Route::post('/save_timetable/{username}/{role}', 'TimetableController@saveTimetable');
+    Route::post('/my_timetable/{username}/{role}/{requestFor}', 'TimetableController@getMyTimetable');
+
+    Route::post('/update_transaction', 'SubscriptionController@updateSubscriptions');
+
+
+
+
+
+
+
+
+
+
+
+
+    
     Route::post('/student/sign_in', 'StudentController@login');
     Route::post('/student/forget_password', 'StudentController@forgetPassword');
-    Route::get('/student/reset/{code}/{email}','StudentController@reset');
+    Route::get('/student/reset/{code}/{username}','StudentController@reset');
     Route::post('/student/check','StudentController@checkResetPassword');
     Route::post('/student/reset_password','StudentController@resetPassword');
 
     Route::post('/admin/sign_in', 'AdminController@login');
 
-    Route::post('/manager/sign_in', 'ManagerController@login');
-    Route::post('/teacher/sign_in', 'TeacherController@login');
+    
 // });
 
 // Route::group(['middleware' => ['jwt.auth','api-header']], function () {
@@ -43,41 +100,38 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
     Route::get('/get/statistics', 'GeneralController@getStatistics');
     Route::get('/get/course/categories', 'GeneralController@getCourseCategories');
 
-    Route::get('/subscription_plans', 'SubscriptionController@getPlans');
-    Route::post('/pay/subscription_fee/{email}/{role}', 'SubscriptionController@pay');
-    Route::get('/process/subscription_fee', 'SubscriptionController@process');
-    Route::post('/verify/subscription_fee/{email}/{role}', 'SubscriptionController@verify');
     
-    Route::get('/student/get/{email}/{role}', 'StudentController@getDetails');
-    Route::post('/update_file/{email}/{role}/{file_key}', 'GeneralController@updatePicture');
-    Route::put('/update_details/{email}/{role}', 'GeneralController@updateDetails');
+    
+    Route::get('/student/get/{username}/{role}', 'StudentController@getDetails');
+    Route::post('/update_file/{username}/{role}/{file_key}', 'GeneralController@updatePicture');
+    Route::put('/update_details/{username}/{role}', 'GeneralController@updateDetails');
 
     Route::get('/get/support/dept', 'SupportController@getSupportDept');
-    Route::post('/submit/ticket/{email}/{role}', 'SupportController@submitTicket');
-    Route::get('/get/tickets/{email}/{role}', 'SupportController@getTicket');
-    Route::get('/get/tickets/reply/{email}/{role}', 'SupportController@getTicketReply');
-    Route::post('/get/tickets/reply/by_id/{email}/{role}', 'SupportController@getTicketReplyById');
+    Route::post('/submit/ticket/{username}/{role}', 'SupportController@submitTicket');
+    Route::get('/get/tickets/{username}/{role}', 'SupportController@getTicket');
+    Route::get('/get/tickets/reply/{username}/{role}', 'SupportController@getTicketReply');
+    Route::post('/get/tickets/reply/by_id/{username}/{role}', 'SupportController@getTicketReplyById');
 
-    Route::post('/submit/ticket/reply/{email}/{role}', 'SupportController@submitTicketReply');
+    Route::post('/submit/ticket/reply/{username}/{role}', 'SupportController@submitTicketReply');
 
-    Route::get('/admin/get/{email}/{role}', 'AdminController@getDetails');
-    Route::post('add/manager/{email}/{role}', 'AdminController@addManager');
-    Route::get('get/managers/{email}/{role}', 'AdminController@getManagers');
+    Route::get('/admin/get/{username}/{role}', 'AdminController@getDetails');
+    Route::post('add/manager/{username}/{role}', 'AdminController@addManager');
+    Route::get('get/managers/{username}/{role}', 'AdminController@getManagers');
     
-    Route::get('get/students/{email}/{role}', 'AdminController@getStudents');
-    Route::put('update/student/{email}/{role}', 'AdminController@updateStudent');
+    
+    Route::put('update/student/{username}/{role}', 'AdminController@updateStudent');
 
-    Route::get('/manager/get/{email}/{role}', 'ManagerController@getDetails');
-    Route::put('/update/manager/{email}/{role}', 'ManagerController@update');
+    
+    Route::put('/update/manager/{username}/{role}', 'ManagerController@update');
 
-    Route::get('/get/courses/{email}/{role}', 'CourseController@getCourses');
-    Route::post('/save/class/schedule/{email}/{role}', 'CourseController@saveClassSchedule');
-    Route::post('/get/class/history/{email}/{role}', 'CourseController@getClassSchedule');
-    // Route::post('/enrol/course/{email}/{role}', 'CourseController@enrolCourse');
-    Route::get('/get/my_courses/{email}/{role}', 'CourseController@getMyCourses');
+    Route::get('/get/courses/{username}/{role}', 'CourseController@getCourses');
+    Route::post('/save/class/schedule/{username}/{role}', 'CourseController@saveClassSchedule');
+    Route::post('/get/class/history/{username}/{role}', 'CourseController@getClassSchedule');
+    // Route::post('/enrol/course/{username}/{role}', 'CourseController@enrolCourse');
+    Route::get('/get/my_courses/{username}/{role}', 'CourseController@getMyCourses');
 
-    Route::get('/get/teacher/{email}/{role}', 'TeacherController@getDetails');
-    Route::put('/update/teacher/{email}/{role}', 'TeacherController@update');
+    
+    Route::put('/update/teacher/{username}/{role}', 'TeacherController@update');
 
 
     Route::get('/test/fetch/save', 'ERPConnect@fetchSave');

@@ -9,8 +9,8 @@
     'file_path2' => "http://localhost:8000/images/uploads/",
 
     // 'verification_file' => "http://localhost:3000/images/uploads/",
-    "verification_file" => "C:\\xampp\htdocs\uk-lms\public/images/uploads/",
-
+    // "verification_file" => "C:\\xampp\htdocs\uk-lms\public/images/uploads/",
+    "verification_file" => "D:\Fontend-Projects\mydas-dashboard\public/images/uploads/",
     'api_baseURL' => "http://localhost:8000/api/",
     'client_baseURL' => "http://localhost:3000/",
  ];
