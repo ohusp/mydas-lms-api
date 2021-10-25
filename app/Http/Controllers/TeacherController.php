@@ -4,7 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Teachers;
 use App\Assigned_teachers;
+use App\Teacher_accounts;
 use App\Students;
+use App\Teachers_payments;
 use JWTAuth;
 use JWTAuthException;
 use Mail;
@@ -122,6 +124,7 @@ class TeacherController extends Controller
             'country_of_residence'      => 'nullable|string|max:150',
             'district_province_state'   => 'nullable|string|max:150',
             'address'                   => 'nullable|string|max:150',
+            'class_unit_payment'        => 'required|regex:/^\d+(\.\d{1,2})?$/|max:255',
         ]);
         
         // Return validation error
@@ -145,6 +148,7 @@ class TeacherController extends Controller
         $country_of_residence       = Sanitizes::my_sanitize_string( $request->country_of_residence);
         $district_province_state    = Sanitizes::my_sanitize_string( $request->district_province_state);
         $address                    = Sanitizes::my_sanitize_string( $request->address);
+        $class_unit_payment         = Sanitizes::my_sanitize_string( $request->class_unit_payment);
 
         $ev_code = md5(sprintf("%05x%05x",mt_rand(0,0xffff),mt_rand(0,0xffff)));
 
@@ -161,9 +165,10 @@ class TeacherController extends Controller
             'nationality'               =>$nationality,
             'country_of_residence'      =>$country_of_residence,
             'district_province_state'   =>$district_province_state,
-            'address'       =>$address,
-            'auth_token'    => '',
-            'ev_code'       =>$ev_code
+            'address'               =>$address,
+            'auth_token'            => '',
+            'ev_code'               =>$ev_code,
+            'class_unit_payment'    => $class_unit_payment
         ];
 
         // return $payload;
@@ -276,7 +281,7 @@ class TeacherController extends Controller
         $role       = Sanitizes::my_sanitize_string( $role );
 
         // return $support_subject;
-        $assign_data = Assigned_teachers::where([['student', $student], ['teachher', $teacher]])->get()->first();
+        $assign_data = Assigned_teachers::where([['student', $student], ['teacher', $teacher]])->get()->first();
         if($assign_data) {
             $response = ['success'=>true, 'data'=>"Already exist"];
             return response()->json($response, 200);
@@ -336,9 +341,87 @@ class TeacherController extends Controller
         }
     }
 
+    public function getAccount($username, $role)
+    {   
+        $teacher_data = Teachers::where([['username', $username]])->get()->first();
+        // $account_data = Teacher_accounts::where([['username', $username]])->paginate(10);
+        $account_data = DB::table('teacher_accounts')
+            ->join('timetables', 'teacher_accounts.timetables_id', '=', 'timetables.id')
+            ->select('teacher_accounts.*', 'timetables.*')
+            ->where([['teacher_accounts.username', $username]])
+            ->paginate(10);
+        // return $manager_data;
+        if($teacher_data) {
+            $response = [
+                'success'=>true, 
+                'account_details'=> ['account_balance' => $teacher_data->account_balance, 'account_name' => $teacher_data->account_name, 'account_number' => $teacher_data->account_number, 'bank' => $teacher_data->bank], 
+                'account_data'=>$account_data
+            ];
+            return response()->json($response, 200);
+        }else {
+            $response = ['success'=>false, 'data'=> "no record found"];
+            return response()->json($response, 200);
+        }
+    }
 
+    public function getPaymentHistory($username, $role)
+    {   
+        $payment_data = Teachers_payments::where([['teacher_username', $username]])->paginate(10);
+        // $account_data = Teacher_accounts::where([['username', $username]])->paginate(10);
+        // $account_data = DB::table('teacher_accounts')
+        //     ->join('timetables', 'teacher_accounts.timetables_id', '=', 'timetables.id')
+        //     ->select('teacher_accounts.*', 'timetables.*')
+        //     ->where([['teacher_accounts.username', $username]])
+        //     ->paginate(10);
+        // return $manager_data;
+        if($payment_data) {
+            $response = [
+                'success'=>true, 
+                'payment_data'=>$payment_data
+            ];
+            return response()->json($response, 200);
+        }else {
+            $response = ['success'=>false, 'data'=> "no record found"];
+            return response()->json($response, 200);
+        }
+    }
 
+    public function updateAccountDetails(Request $request)
+    {   
+        // return $request;
+        $username = $request->user_username;
+        $request->replace($request->account_data);
+        // Validate
+        $validator = Validator::make($request->all(), [ 
+            'account_name'   => 'required|string|max:150', 
+            'account_number' => 'required|string|max:150', 
+            'bank'           => 'required|string|max:150', 
+        ]);
+        
+        // Return validation error
+        if ($validator->fails()) { 
+            $validationError = $validator->errors(); 
+            $response = ['success'=>false, 'data'=>$validationError];
+            return response()->json($response, 200);
+        }
 
+        // return $request->username;
+        $teacher_data = Teachers::where('username', '=', $username)->first();
+
+        // Sanitize inputs
+        $teacher_data->account_name   = Sanitizes::my_sanitize_string( $request->account_name);
+        $teacher_data->account_number = Sanitizes::my_sanitize_string( $request->account_number);
+        $teacher_data->bank           = Sanitizes::my_sanitize_string( $request->bank);
+                  
+        if ($teacher_data->save())
+        {
+            $response = ['success'=>true, 'data'=>'Update successful'];      
+            return response()->json($response, 201);  
+        }
+        else
+            $response = ['success'=>false, 'data'=>'Update failed'];
+            return response()->json($response, 501);
+    }
 
 
 
@@ -400,6 +483,55 @@ class TeacherController extends Controller
         else
             $response = ['success'=>false, 'data'=>'Update failed'];
             return response()->json($response, 501);
+    }
+
+    public function addPaymentMade(Request $request, $username, $role, $teacherUsername, $amount, $accountName, $accountNumber, $bank) {
+        // return $request;
+        $validator = Validator::make($request->all(), [ 
+            'paymentProof' => 'mimes:pdf,jpeg,png,jpg|max:512'
+        ]);
+
+        // Return validation error
+        if ($validator->fails()) { 
+            $validationError = $validator->errors(); 
+            $response = ['success'=>'validationError', 'data'=>$validationError];
+            return response()->json($response, 200);
+        }
+
+        // get the file from the request and concartinate time with the name
+        $file = $request->file('paymentProof');
+        // return $file;
+
+        $fileName = time().'.'.$file->getClientOriginalName();
+        // $fileName = $teacherUsername."-".time().".pdf";
+
+        // Path where the file will be saved
+        $path = config('global.file_path1') . 'paymentProof'.'/'.$teacherUsername;
+        $destinationPath = public_path().$path;
+        // return $destinationPath;
+  
+        // This moved file to server folder
+        $file->move($destinationPath,$fileName);
+
+        // save file name in database
+        $payload = [
+            'teacher_username'  =>$teacherUsername,
+            'amount'            => $amount,
+            'account_name'       => $accountName,
+            'account_number'     => $accountNumber,
+            'bank'              => $bank,
+            'uploader'          => $username,
+            'uploader_role'     => $role,
+            'proof'             => config('global.file_path2') . 'paymentProof'."/".$teacherUsername."/".$fileName,
+        ];
+        $user = new \App\Teachers_payments($payload);
+        if($user->save()){
+            $response = ['success'=>true, 'data'=>"Payment record successful"];
+            return response()->json($response, 201);
+        }else{
+            $response = ['success'=>false, 'data'=>"Payment record failed"];
+            return response()->json($response, 200);
+        }
     }
 
 }

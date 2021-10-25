@@ -24,7 +24,7 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
 
 // Route::group(['middleware' => 'api-header'], function () {
     Route::post('/user/sign_up', 'UserController@signup');
-    Route::put('/user/complete_signup/{username}/{role}', 'UserController@completeSignup');
+    Route::post('/user/complete_signup/{username}/{role}', 'UserController@completeSignup');
     Route::post('/user/signin', 'UserController@login');
     Route::post('/user/forget_password', 'UserController@forgetPassword');
     Route::get('/user/reset/{code}/{username}','UserController@reset');
@@ -46,7 +46,7 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
     Route::get('/my_plan/students/{username}/{role}/{plan_id}', 'StudentController@myPlanStudents');
 
     Route::post('/student/signin', 'StudentController@login');
-    Route::put('/student/complete_signup/{username}/{role}', 'StudentController@completeSignup');
+    Route::post('/student/complete_signup/{username}/{role}', 'StudentController@completeSignup');
     Route::post('/student/forget_password', 'StudentController@forgetPassword');
     Route::get('/student/reset/{code}/{username}','StudentController@reset');
     Route::post('/student/check','StudentController@checkResetPassword');
@@ -61,6 +61,9 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
     Route::post('/teacher/sign_in', 'TeacherController@login');
     Route::post('/add/teacher/{username}/{role}', 'TeacherController@addTeacher');
     Route::get('/get/teacher/{username}/{role}', 'TeacherController@getDetails');
+    Route::get('/get/teacher/account/{username}/{role}', 'TeacherController@getAccount');
+    Route::get('/get/teacher/payment/history/{username}/{role}', 'TeacherController@getPaymentHistory');
+    Route::post('/update/account/details', 'TeacherController@updateAccountDetails');
     Route::get('/teachers/{all}/{username}/{role}', 'TeacherController@getTeachers');
     Route::get('/assigned_teachers/{username}/{role}', 'TeacherController@getAssignedTeachers');
     Route::post('/assign_teacher/{username}/{role}', 'TeacherController@assignTeacher');
@@ -68,11 +71,15 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
 
     Route::post('/save_timetable/{username}/{role}', 'TimetableController@saveTimetable');
     Route::post('/my_timetable/{username}/{role}/{requestFor}', 'TimetableController@getMyTimetable');
+    Route::post('/teacher_entered_class/{username}/{role}', 'TimetableController@teacherEnteredClass');
+
+    Route::post('/add/payment_made/{username}/{role}/{teacherUsername}/{amount}/{accountName}/{accountNumber}/{bank}', 'TeacherController@addPaymentMade');
 
     Route::post('/update_transaction', 'SubscriptionController@updateSubscriptions');
 
+    // Route::post('/update_timetable', 'TimetableController@updateTimetable');
 
-
+    
 
 
 
@@ -97,14 +104,15 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
 // Route::group(['middleware' => ['jwt.auth','api-header']], function () {
     Route::get('/get/countries', 'GeneralController@getContries');
     Route::get('/get/institutions', 'GeneralController@getInstitutions');
-    Route::get('/get/statistics', 'GeneralController@getStatistics');
+    Route::get('/get/teacher/statistics/{username}/{role}', 'GeneralController@getTeacherStatistics');
+    Route::get('/get/user/statistics/{username}/{role}', 'GeneralController@getUserStatistics');
     Route::get('/get/course/categories', 'GeneralController@getCourseCategories');
 
     
     
     Route::get('/student/get/{username}/{role}', 'StudentController@getDetails');
     Route::post('/update_file/{username}/{role}/{file_key}', 'GeneralController@updatePicture');
-    Route::put('/update_details/{username}/{role}', 'GeneralController@updateDetails');
+    Route::post('/update_details/{username}/{role}', 'GeneralController@updateDetails');
 
     Route::get('/get/support/dept', 'SupportController@getSupportDept');
     Route::post('/submit/ticket/{username}/{role}', 'SupportController@submitTicket');
@@ -119,10 +127,10 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
     Route::get('get/managers/{username}/{role}', 'AdminController@getManagers');
     
     
-    Route::put('update/student/{username}/{role}', 'AdminController@updateStudent');
+    Route::post('update/student/{username}/{role}', 'AdminController@updateStudent');
 
     
-    Route::put('/update/manager/{username}/{role}', 'ManagerController@update');
+    Route::post('/update/manager/{username}/{role}', 'ManagerController@update');
 
     Route::get('/get/courses/{username}/{role}', 'CourseController@getCourses');
     Route::post('/save/class/schedule/{username}/{role}', 'CourseController@saveClassSchedule');
@@ -131,7 +139,7 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
     Route::get('/get/my_courses/{username}/{role}', 'CourseController@getMyCourses');
 
     
-    Route::put('/update/teacher/{username}/{role}', 'TeacherController@update');
+    Route::post('/update/teacher/{username}/{role}', 'TeacherController@update');
 
 
     Route::get('/test/fetch/save', 'ERPConnect@fetchSave');

@@ -65,7 +65,7 @@ class ManagerController extends Controller
         $request->replace($user);
         
         $validator  = Validator::make($request->all(), [ 
-            'username_email'  => 'required|username|max:255', 
+            'username_email'  => 'required|string|max:255', 
             'password'        => 'required|string|min:8|max:255', 
         ]);
 
@@ -78,10 +78,12 @@ class ManagerController extends Controller
 
         $usernameEmail  = Sanitizes::my_sanitize_email( $request->username_email);
         $password       = Sanitizes::my_sanitize_string( $request->password);
-
+        
         $manager_data = \App\Managers::where('username', $usernameEmail)->get()->first();
+        // return $manager_data->password;
         if ($manager_data && \Hash::check($password, $manager_data->password)) // The passwords match...
         {   
+            // return "low";
             $role_name = "manager";
 
             $token = self::getToken($usernameEmail, $password);
@@ -99,7 +101,7 @@ class ManagerController extends Controller
         }
         else 
             $response = ['success'=>false, 'data'=>'Record doesnt exists'];
-            return response()->json($response, 401);
+            return response()->json($response, 200);
     }
 
 

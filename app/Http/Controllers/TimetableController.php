@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Timetable;
+use App\Teachers;
+use App\Teacher_accounts;
 use JWTAuth;
 use JWTAuthException;
 use Mail;
@@ -79,7 +81,7 @@ class TimetableController extends Controller
     public function getMyTimetable(Request $request, $username, $role, $requestFor)
     {   
         $updateTimetable = TimetableController::updateTimetable();
-        
+        // return $updateTimetable;
         // return $request;
         $validator  = Validator::make($request->all(), [ 
             'student_username' => 'required|string|max:255',
@@ -114,6 +116,7 @@ class TimetableController extends Controller
 
     public function updateTimetable()
     {  
+        // return "Mendes";
         $timetable_data = Timetable::all();
         $timetableCount = count($timetable_data);
         // return $timetableCount;
@@ -141,14 +144,19 @@ class TimetableController extends Controller
                 $timeToHour  =  trim($timeTo[0]," ");
                 $timeToMins  =  trim($timeTo[1]," ");
 
+                // return date("H"). "|||". $timeFromHour;
+
+                // if current hour is greater than start hours and greater than end hour
                 if(date("H") > $timeFromHour && date("H") > $timeToHour) {
                     // pass class time// pass class time
                     $timetable_data[$i]->status = 3;
                     $timetable_data[$i]->save();
+                // if current hour is greater than start hours and less than end hour
                 }else if(date("H") > $timeFromHour && date("H") < $timeToHour ) {
                     // Class is on
                     $timetable_data[$i]->status = 2;
                     $timetable_data[$i]->save();
+                // if current hour is greater than start hours and equal to end hour, then check mins
                 }else if(date("H") > $timeFromHour && date("H") == $timeToHour ) {
                     if(date("i") < $timeToMins) {
                         // Class is on
@@ -159,6 +167,7 @@ class TimetableController extends Controller
                         $timetable_data[$i]->status = 3;
                         $timetable_data[$i]->save();
                     }
+                // if current hour is equal to start hour then check mins
                 }else if(date("H") == $timeFromHour) {
                     if(date("i") == $timeToMins) {
                         // Class is on
@@ -179,5 +188,58 @@ class TimetableController extends Controller
             }
         }
         return;
+    }
+
+    public function teacherEnteredClass(Request $request, $username, $role)
+    {   
+        // return $request->startTime;
+        $validator  = Validator::make($request->all(), [ 
+            'class_id' => 'integer|string|max:255',
+        ]);
+
+        // Return validation error
+        if ($validator->fails()) { 
+            $validationError = $validator->errors(); 
+            $response = ['success'=>false, 'data'=>$validationError];
+            return response()->json($response, 501);
+        }
+        
+        $class_id   = Sanitizes::my_sanitize_string( $request->class_id );
+        $timetableId  = Teacher_accounts::where([['timetables_id', $class_id]])->get()->first();
+        if(!$timetableId) {
+            $timetable  = Timetable::where([['id', $class_id]])->get()->first();
+            $teacher    = Teachers::where([['username', $username]])->get()->first();
+            $from       = explode( ":", $timetable->time_from );
+            $fromHour   =  trim($from[0]," ");
+            // $timeFromMins  =  trim($timeFrom[1]," ");
+            $to      = explode( ":", $timetable->time_to );
+            $toHour  =  trim($to[0]," ");
+
+            $time_dif       = $toHour - $fromHour;
+            $total_earned   = $time_dif * $teacher->class_unit_payment;
+
+            $payload = [
+                'username'      =>$username,
+                'timetables_id' =>$class_id,
+                'class_unit_payment'    =>$teacher->class_unit_payment,
+                'hours_spent_in_class'  =>$time_dif,
+                'total_earned'  =>$total_earned,
+            ];
+
+            $timetable = new \App\Teacher_accounts($payload);
+            $timetable->save();
+
+            // update teaacher's accounnt balance
+            $new_balance = $teacher->account_balance + $total_earned;
+            $teacher->account_balance = $new_balance;
+            if ($teacher->save())
+            {
+                $response = ['success'=>true, 'data'=>"successful"];
+                return response()->json($response, 200);
+            }else{
+                $response = ['success'=>true, 'data'=>"Failed"];
+                return response()->json($response, 200);
+            }
+        }
     }
 }

@@ -24,7 +24,7 @@ class Assigned_teachers extends Authenticatable implements JWTSubject
     protected $fillable = [
         'student', 
         'teacher', 
-        'email', 
+        'username', 
         'role', 
         'status'
     ];

@@ -1,11 +1,16 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Students;
+use App\Users;
 use App\Courses;
 use App\Countries;
-use App\Institutions;
+use App\Subscriptions;
 use App\Course_categories;
+use App\Teachers;
+use App\Teacher_accounts;
+use App\Teachers_payments;
 use JWTAuth;
 use JWTAuthException;
 use Mail;
@@ -203,25 +208,101 @@ class GeneralController extends Controller
         return response()->json($response, 201);
     }
 
-    public function getStatistics()
+    public function getManagerStatistics()
     {
-        //
         $students = Students::all();
         $students = count($students);
 
-        $courses = Courses::where([['category', '279']])->get()->all();
-        $courses = count($courses);
+        $teachers = Teachers::all();
+        $teachers = count($teachers);
 
-        $response = ['success'=>true, 'students'=>$students, 'courses'=>$courses];
-        return response()->json($response, 201);
+        $users = Users::all();
+        $users = count($users);
+
+        $totalPendingPayments   = Teachers::sum("account_balance");
+
+        $response = [
+            'success'=>true, 
+            'students'=>$students, 
+            'teachers'=>$teachers, 
+            'users'=>$users, 
+            'totalPendingPayments'=>$totalPendingPayments
+        ];
+        return response()->json($response, 200);
     }
 
-    public function getCourseCategories()
+    public function getTeacherStatistics($username, $role)
     {
-        $countries = Course_categories::all();
-        // return $result;
-        $response = ['success'=>true, 'data'=>$countries];
-        return response()->json($response, 201);
+        //
+        $teacherData = Teachers::where('username', '=', $username)->first();
+        $teacherId   = $teacherData->id;
+        $myStudents  = DB::table('assigned_teachers')
+            ->join('teachers', 'assigned_teachers.teacher', '=', 'teachers.id')
+            ->join('students', 'assigned_teachers.student', '=', 'students.id')
+            ->select('assigned_teachers.*', 'students.*')
+            ->where([['assigned_teachers.teacher', $teacherId]])
+            ->get()->all();
+        $students = count($myStudents);
+
+        $totalEarned = Teacher_accounts::where([['username', $username]])->sum("total_earned");
+
+        $totalPaid   = Teachers_payments::where([['teacher_username', $username]])->sum("amount");
+
+        $teacherData = Teachers::where('username', '=', $username)->first();
+        $accountBalance = $teacherData->account_balance;
+
+        $response = [
+            'success'=>true, 
+            'students'=>$students, 
+            'totalEarned'=>$totalEarned, 
+            'totalPaid'=>$totalPaid, 
+            'accountBalance'=>$accountBalance
+        ];
+        return response()->json($response, 200);
     }
+
+    public function getUserStatistics($username, $role)
+    {
+        $students = Students::where([['parent_username', $username]])->get()->all();
+        $students = count($students);
+
+        $userData = Users::where('username', '=', $username)->first();
+        $activeSubscriptions = Subscriptions::where([['email', $userData->email], ['status', '3']])->get()->all();
+        $activeSubscriptions = count($activeSubscriptions);
+
+        // $teacherId   = $teacherData->id;
+        $openTickets  = DB::table('support_tickets')
+            ->select('support_tickets.id')
+            ->where([['support_tickets.email', $userData->email]])
+            ->join('support_tickets_replies', 'support_tickets.id', '!=', 'support_tickets_replies.ticket_id')
+            // ->join('students', 'assigned_teachers.student', '=', 'students.id')
+            
+            // ->whereColumn([
+            //         // ['support_tickets.email', '=', $userData->email],
+            //         ['support_tickets.id', '=', 'support_tickets_replies.ticket_id'],
+            //     ])
+            ->get();
+        // $students = count($myStudents);
+        return $openTickets;
+
+
+        $teachers = Teachers::all();
+        $teachers = count($teachers);
+
+        $users = Users::all();
+        $users = count($users);
+
+        $totalPendingPayments   = Teachers::sum("account_balance");
+
+        $response = [
+            'success'=>true, 
+            'students'=>$students, 
+            'teachers'=>$teachers, 
+            'users'=>$users, 
+            'totalPendingPayments'=>$totalPendingPayments
+        ];
+        return response()->json($response, 200);
+    }
+
 
 }
