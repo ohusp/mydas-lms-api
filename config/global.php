@@ -1,10 +1,7 @@
 <?php
    // //////////////// SEARCH FOR THIS ///////////////////////////////
  return[
- 	// ////////////// Files //////////////////////////////////////////////
-   //  'file_path1' => "/images/uploads/",
-   //  'file_path2' => "/images/uploads/",
-   //  online file path
+ 	// ////////////// LOCAL //////////////////////////////////////////////
     'file_path1' => "/images/uploads/",
     'file_path2' => "http://localhost:8000/images/uploads/",
 
@@ -13,4 +10,12 @@
     "verification_file" => "D:\Fontend-Projects\mydas-dashboard\public/images/uploads/",
     'api_baseURL' => "http://localhost:8000/api/",
     'client_baseURL' => "http://localhost:3000/",
+
+
+    // ////////////////ONLINE ///////////////////////////////////////
+    // 'file_path1' => "/images/uploads/",
+    // 'file_path2' => "backend/images/uploads/",
+    // "verification_file" => "images/uploads/",
+    // 'api_baseURL' => "https://mydas-dashboard.brickpine.com/backend/api/",
+    // 'client_baseURL' => "https://mydas-dashboard.brickpine.com/",
  ];

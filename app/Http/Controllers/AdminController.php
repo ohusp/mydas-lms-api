@@ -241,7 +241,7 @@ class AdminController extends Controller
         if($role == "superadministrator"){
             //
             // $support_tickets = Support_tickets::all();
-            $managers = Managers::paginate(5);
+            $managers = Managers::paginate(10);
             
             $response = ['success'=>true, 'data'=>$managers];
             return response()->json($response, 201);

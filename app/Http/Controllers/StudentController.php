@@ -152,18 +152,18 @@ class StudentController extends Controller
 
         if( $disabilities_new == "" || $disabilities_new == "null"){
             $disability_none        = "false";
-            $disability_hearing     = "false";
+            $disability_dyslexic    = "false";
+            $disability_dyscalculic = "false";
             $disability_mobility    = "false";
-            $disability_sight       = "false";
-            $disability_learning    = "false";
+            $disability_autistic    = "false";
             $disability_others      = "false";
         }else{
         // Pass each value into an array
             $disability_none        = $disabilities_new[0]["disability_none"];
-            $disability_hearing     = $disabilities_new[0]["disability_hearing"];
+            $disability_dyslexic    = $disabilities_new[0]["disability_dyslexic"];
+            $disability_dyscalculic = $disabilities_new[0]["disability_dyscalculic"];
             $disability_mobility    = $disabilities_new[0]["disability_mobility"];
-            $disability_sight       = $disabilities_new[0]["disability_sight"];
-            $disability_learning    = $disabilities_new[0]["disability_learning"];
+            $disability_autistic    = $disabilities_new[0]["disability_autistic"];
             $disability_others      = $disabilities_new[0]["disability_others"];
         }
 
@@ -188,10 +188,10 @@ class StudentController extends Controller
             'weight'    =>$student_data->weight, 
 
             'disability_none'       =>$disability_none,
-            'disability_hearing'    =>$disability_hearing,
-            'disability_mobility'   =>$disability_mobility,
-            'disability_sight'      =>$disability_sight,
-            'disability_learning'   =>$disability_learning, 
+            'disability_dyslexic'    =>$disability_dyslexic,
+            'disability_dyscalculic' =>$disability_dyscalculic,
+            'disability_mobility'      =>$disability_mobility,
+            'disability_autistic'   =>$disability_autistic, 
             'disability_others'     =>$disability_others, 
 
             'next_kin_name'         =>$student_data->next_kin_name, 
@@ -201,6 +201,7 @@ class StudentController extends Controller
             'next_kin_phone'        =>$student_data->next_kin_phone, 
             'next_kin_email'        =>$student_data->next_kin_email, 
             'profile_picture'       =>$student_data->profile_picture, 
+            'id_passport_upload'    =>$student_data->id_passport_upload, 
 
             'status'=>$student_data->status, 
             'created_at'=>$student_data->created_at
@@ -437,7 +438,7 @@ class StudentController extends Controller
             if($all === "all") {
                 $students = Students::all();
             }else {
-                $students = Students::paginate(5);
+                $students = Students::paginate(10);
             }
             
             $response = ['success'=>true, 'data'=>$students];
@@ -446,7 +447,7 @@ class StudentController extends Controller
             if($all === "all") {
                 $students = Students::all();
             }else {
-                $students = Students::paginate(5);
+                $students = Students::paginate(10);
             }
             
             $response = ['success'=>true, 'data'=>$students];

@@ -193,7 +193,7 @@ class UserController extends Controller
         $imageName = '1.jpg';
 
         $path = config('global.verification_file') .'verification/'.$role."/";
-        // return $username;
+        //return $path;
         if(!is_dir($path.$username)){
 			mkdir($path.$username);
 		}
@@ -203,7 +203,7 @@ class UserController extends Controller
         
         $user_data = \App\Users::where('username', $username)->get()->first();
         // save file name in database
-        $user_data->verification = $destinationPath. '/' . $imageName;
+        $user_data->verification = "backend/" .$destinationPath. '/' . $imageName;
         $user_data->save();
 
         if($user_data){
@@ -226,18 +226,18 @@ class UserController extends Controller
 
         if( $disabilities_new == "" || $disabilities_new == "null"){
             $disability_none        = "false";
-            $disability_hearing     = "false";
+            $disability_dyslexic    = "false";
+            $disability_dyscalculic = "false";
             $disability_mobility    = "false";
-            $disability_sight       = "false";
-            $disability_learning    = "false";
+            $disability_autistic    = "false";
             $disability_others      = "false";
         }else{
         // Pass each value into an array
             $disability_none        = $disabilities_new[0]["disability_none"];
-            $disability_hearing     = $disabilities_new[0]["disability_hearing"];
+            $disability_dyslexic    = $disabilities_new[0]["disability_dyslexic"];
+            $disability_dyscalculic = $disabilities_new[0]["disability_dyscalculic"];
             $disability_mobility    = $disabilities_new[0]["disability_mobility"];
-            $disability_sight       = $disabilities_new[0]["disability_sight"];
-            $disability_learning    = $disabilities_new[0]["disability_learning"];
+            $disability_autistic    = $disabilities_new[0]["disability_autistic"];
             $disability_others      = $disabilities_new[0]["disability_others"];
         }
 
@@ -262,10 +262,10 @@ class UserController extends Controller
             'weight'    =>$user_data->weight, 
 
             'disability_none'       =>$disability_none,
-            'disability_hearing'    =>$disability_hearing,
-            'disability_mobility'   =>$disability_mobility,
-            'disability_sight'      =>$disability_sight,
-            'disability_learning'   =>$disability_learning, 
+            'disability_dyslexic'    =>$disability_dyslexic,
+            'disability_dyscalculic' =>$disability_dyscalculic,
+            'disability_mobility'    =>$disability_mobility,
+            'disability_autistic'   =>$disability_autistic, 
             'disability_others'     =>$disability_others, 
 
             'next_kin_name'         =>$user_data->next_kin_name, 
@@ -396,5 +396,7 @@ class UserController extends Controller
         }
         return response()->json($response, 201);
     }
+
+    
 
 }

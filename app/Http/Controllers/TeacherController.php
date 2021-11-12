@@ -226,7 +226,7 @@ class TeacherController extends Controller
             if($all === "all") {
                 $teachers = Teachers::all();
             }else {
-                $teachers = Teachers::paginate(5);
+                $teachers = Teachers::paginate(10);
             }
             
             $response = ['success'=>true, 'data'=>$teachers];
@@ -235,7 +235,7 @@ class TeacherController extends Controller
             if($all === "all") {
                 $teachers = Teachers::all();
             }else {
-                $teachers = Teachers::paginate(5);
+                $teachers = Teachers::paginate(10);
             }
             
             $response = ['success'=>true, 'data'=>$teachers];

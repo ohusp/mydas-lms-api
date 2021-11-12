@@ -23,6 +23,9 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
 });
 
 // Route::group(['middleware' => 'api-header'], function () {
+
+    Route::post('/contact/message', 'GeneralController@submitContact');
+
     Route::post('/user/sign_up', 'UserController@signup');
     Route::post('/user/complete_signup/{username}/{role}', 'UserController@completeSignup');
     Route::post('/user/signin', 'UserController@login');
