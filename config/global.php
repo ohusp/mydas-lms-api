@@ -2,8 +2,8 @@
    // //////////////// SEARCH FOR THIS ///////////////////////////////
  return[
  	// ////////////// LOCAL //////////////////////////////////////////////
-    'file_path1' => "/images/uploads/",
-    'file_path2' => "http://localhost:8000/images/uploads/",
+    'file_path1' => "D:\Fontend-Projects\mydas-dashboard\public/backend/images/uploads/",
+    'file_path2' => "backend/images/uploads/",
 
     // 'verification_file' => "http://localhost:3000/images/uploads/",
     // "verification_file" => "C:\\xampp\htdocs\uk-lms\public/images/uploads/",

@@ -86,14 +86,14 @@ class GeneralController extends Controller
 
         // Path where the file will be saved
         $path = config('global.file_path1') . $file_key.'/'.$username;
-        $destinationPath = public_path().$path;
+        $destinationPath = $path;
         // return $destinationPath;
   
         // This moved file to server folder
         $file->move($destinationPath,$fileName);
 
         // save file name in database
-        $student_data->$file_key = config('global.file_path1') . $file_key."/".$username."/".$fileName;
+        $student_data->$file_key = config('global.file_path2') . $file_key."/".$username."/".$fileName;
         $student_data->save();
 
         if($student_data){

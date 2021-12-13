@@ -36,6 +36,8 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
     Route::get('/user/details/{username}/{role}', 'UserController@getDetails');
 
     Route::get('/subscription_plans', 'SubscriptionController@getPlans');
+    Route::post('/paypal/successful/{username}/{role}', 'SubscriptionController@paypalSuccessful');
+
     Route::post('/pay/subscription_fee/{username}/{role}', 'SubscriptionController@pay');
     Route::get('/process/subscription_fee', 'SubscriptionController@process');
     Route::post('/verify/subscription_fee/{username}/{role}', 'SubscriptionController@verify');

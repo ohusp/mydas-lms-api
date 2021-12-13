@@ -22,8 +22,13 @@ class Subscriptions extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
+        'currency',
         'amount', 
         'email', 
+        'name',
+        'orderID',
+        'payerID',
+        'username',
         'plan_id',
         'plan_name', 
         'plan_price',

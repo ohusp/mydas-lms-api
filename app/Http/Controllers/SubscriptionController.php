@@ -44,6 +44,62 @@ class SubscriptionController extends Controller
         return response()->json($response, 201);
     }
 
+    public function paypalSuccessful(Request $request, $username, $role)
+    {   
+        // return $request;
+        $request->replace($request->payment_data);
+        // return $waveRequest;
+
+        $validator  = Validator::make($request->all(), [ 
+            'billing_amount_currency' => 'required|string|max:255',
+            'billing_amount_value'    => 'required|regex:/^\d+(\.\d{1,2})?$/|max:255', 
+            'billing_email_address'   => 'required|string|max:255', 
+            'billing_name'            => 'required|string|max:255',
+            'billing_orderID'         => 'required|string|max:255',
+            'billing_payerID'         => 'required|string|max:255',
+            'handlingFee'   => 'required|regex:/^\d+(\.\d{1,2})?$/|max:255',
+            'planDuration'  => 'required|integer|max:255',
+            'planId'        => 'required|integer|max:255',
+            'planName'      => 'required|string|max:255',
+            'username'      => 'required|string|max:255',
+            'planPrice'     => 'required|regex:/^\d+(\.\d{1,2})?$/|max:255',
+        ]);
+
+        // Return validation error
+        if ($validator->fails()) { 
+            $validationError = $validator->errors(); 
+            $response = ['success'=>false, 'data'=>$validationError];
+            return response()->json($response, 201);
+        }
+
+        $currency       = Sanitizes::my_sanitize_string($request->billing_amount_currency);
+        $amount         = Sanitizes::my_sanitize_string($request->billing_amount_value);
+        $email          = Sanitizes::my_sanitize_string($request->billing_email_address);
+        $name           = Sanitizes::my_sanitize_string($request->billing_name);
+        $orderID        = Sanitizes::my_sanitize_string($request->billing_orderID);
+        $payerID        = Sanitizes::my_sanitize_string($request->billing_payerID);
+        $username       = Sanitizes::my_sanitize_string($request->username);
+        $planId         = Sanitizes::my_sanitize_string($request->planId);
+        $planName       = Sanitizes::my_sanitize_string($request->planName);
+        $planPrice      = Sanitizes::my_sanitize_string($request->planPrice);
+        $handlingFee    = Sanitizes::my_sanitize_string($request->handlingFee);
+        $planDuration   = Sanitizes::my_sanitize_string($request->planDuration);
+
+        $currentDateTime = Carbon::now();
+        $expirationTime  = Carbon::now()->addMonths($planDuration);
+
+        $saveSubscription = SubscriptionController::saveSubscription($currency, $amount, $email, $name, $orderID, $payerID, $username, $planId, $planName, $planPrice, $handlingFee, $planDuration, $expirationTime);
+
+        if($saveSubscription){
+            $response = ['success'=>true, 'data'=>'Payment successful'];
+            return response()->json($response, 201);
+        }else {
+            $response = ['success'=>false, 'data'=>'We can not process your payment'];
+            return response()->json($response, 201);
+        }
+    
+    }
+
     public function pay(Request $waveRequest, $username, $role)
     {   
         $waveRequest->replace($waveRequest->payment_data);
@@ -445,44 +501,33 @@ class SubscriptionController extends Controller
         }
         
     }
-
-    public static function saveSubscription($amount, $email, $planId, $planName, $planPrice, $handlingFee, $planDuration, $expirationTime)
+    
+    public static function saveSubscription($currency, $amount, $email, $name, $orderID, $payerID, $username, $planId, $planName, $planPrice, $handlingFee, $planDuration, $expirationTime)
     {   
-        // return ($amount ."-". $email."-".$planId."-".$planName."-".$planPrice."-". $handlingFee);
-        // check if theres any subscription initiated before that payment was not made. If any update and if none save new information
-        $subscription = \App\Subscriptions::where([['email', $email], ['status', 1]])->get()->first();
         
-        if($subscription){
-            $subscription->amount      = $amount;
-            $subscription->email       = $email;
-            $subscription->plan_id     = $planId;
-            $subscription->plan_name   = $planName;
-            $subscription->plan_price       = $planPrice;
-            $subscription->handling_fee     = $handlingFee;
-            $subscription->plan_duration    = $planDuration;
-            $subscription->expiration_time  = $expirationTime;
-            $subscription->save();
-
+        $payload = [
+            'currency'        =>$currency,
+            'amount'          =>$amount,
+            'email'           =>$email,
+            'name'            =>$name,
+            'orderID'         =>$orderID,
+            'payerID'         =>$payerID,
+            'username'        =>$username,
+            'plan_id'         >$planId,
+            'plan_name'       =>$planName,
+            'plan_price'      =>$planPrice,
+            'handling_fee'    =>$handlingFee,
+            'plan_duration'   =>$planDuration,
+            'expiration_time' =>$expirationTime,
+        ];
+                
+        $subscription = new \App\Subscriptions($payload);
+        if ($subscription->save())
+        {
             // $response = ['success'=>true, 'data'=>['number_ticket'=>$number_ticket, 'total_amount'=>$total_amount]];
             return true;
-        }else{
-            $payload = [
-                'amount'        =>$amount,
-                'email'         =>$email,
-                'plan_id'       =>$planId,
-                'plan_name'     =>$planName,
-                'plan_price'    =>$planPrice,
-                'handling_fee'  =>$handlingFee,
-                'plan_duration'     =>$planDuration,
-                'expiration_time'   =>$expirationTime,
-            ];
-                    
-            $subscription = new \App\Subscriptions($payload);
-            if ($subscription->save())
-            {
-                // $response = ['success'=>true, 'data'=>['number_ticket'=>$number_ticket, 'total_amount'=>$total_amount]];
-                return true;
-            }
+        }else {
+            return false;
         }
     }
 
@@ -509,7 +554,7 @@ class SubscriptionController extends Controller
             $num_students     = Students::where([['subscription_id', $subscription_id]])->count();
             array_push($student_count, $num_students);
         }
-        // return $my_subscriptions;
+        // return $student_count;
         $response = ['success'=>true, 'my_subscriptions'=>$my_subscriptions, 'student_count'=>$student_count];
         return response()->json($response, 201);
     }
