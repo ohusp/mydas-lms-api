@@ -97,7 +97,7 @@ class GeneralController extends Controller
         $student_data->save();
 
         if($student_data){
-            $response = ['success'=>true, 'data'=>"upload successful"];
+            $response = ['success'=>true, 'data'=>config('global.file_path2') . $file_key."/".$username."/".$fileName];
             return response()->json($response, 201);
         }else{
             $response = ['success'=>false, 'data'=>"upload failed"];
@@ -149,6 +149,8 @@ class GeneralController extends Controller
         // Find user with that id
         if($role == "student"){
             $user_data = Students::where('username', '=', $username)->first();
+        }else if($role == "user") {
+            $user_data = Users::where('username', '=', $username)->first();
         }
 
         $user_data->first_name    = Sanitizes::my_sanitize_string( $request->first_name);

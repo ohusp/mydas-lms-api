@@ -24,7 +24,7 @@ class Support_tickets_reply extends Authenticatable implements JWTSubject
     protected $fillable = [
         'ticket_id', 
         'support_reply', 
-        'email', 
+        'username', 
         'role', 
         'status'
     ];

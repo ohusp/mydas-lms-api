@@ -86,25 +86,25 @@ class SupportController extends Controller
 
     public function getTicket($username, $role)
     {   
-        if($role == "student" || $role == "user"){
+        if($role === "student" || $role === "user"){
             //
             // $support_tickets = Support_tickets::all();
             $support_tickets = Support_tickets::where([['username', $username], ['role', $role]])->paginate(10);
 
-            if($support_tickets != "") {
+            if($support_tickets !== "") {
                 $response = ['success'=>true, 'data'=> $support_tickets ];
             }else {
                 $response = ['success'=>false, 'data'=> "no ticket" ];
             }
             return response()->json($response, 200);
-        }else if($role == "manager" || $role == "superadministrator"){
+        }else if($role === "manager" || $role === "superadministrator"){
 
             // check the managers table and fetch the persons department.
             // compare the department with the ticket deprtment
 
             $support_tickets = Support_tickets::paginate(10);
             
-            if($support_tickets != "") {
+            if($support_tickets !== "") {
                 $response = ['success'=>true, 'data'=> $support_tickets ];
             }else {
                 $response = ['success'=>false, 'data'=> "no ticket" ];
@@ -206,5 +206,21 @@ class SupportController extends Controller
             $response = ['success'=>false, 'data'=>"Failed"];
             return response()->json($response, 200);
         }
+    }
+
+    public function closeTicket(Request $request, $username, $role){
+        $ticket_data = Support_tickets::where([['id', $request->ticket_id]])->get()->first();
+        // return $ticket_data;
+
+        $ticket_data->status = 2;
+                  
+        if ($ticket_data->save())
+        {
+            $response = ['success'=>true, 'data'=>'Ticket closed successful'];      
+            return response()->json($response, 200);  
+        }
+        else
+            $response = ['success'=>false, 'data'=>'failed'];
+            return response()->json($response, 501);
     }
 }

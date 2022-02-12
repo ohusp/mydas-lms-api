@@ -67,7 +67,7 @@ class StudentController extends Controller
         
         $validator  = Validator::make($request->all(), [ 
             'username_email' => 'required|string|max:255', 
-            'password'       => 'required|string|min:8|max:255', 
+            'password'       => 'required|string|max:255', 
         ]);
 
         // Return validation error
@@ -336,7 +336,7 @@ class StudentController extends Controller
 
 
 
-    public function addStudent(Request $request, $parentUsername)
+    public function addStudent(Request $request, $parentUsername, $subscription_id)
     {   
         // return $request;
         $user = Encrypt::cryptoJsAesDecrypt('where do you go when you by yourself', $request->user);
@@ -351,7 +351,6 @@ class StudentController extends Controller
             'username'  => 'required|string|unique:students|max:150', 
             'email'     => 'required|email|unique:students|max:255', 
             'password'  => 'required|string|min:8|max:255', 
-            'subscription_id'   => 'required|integer|max:50', 
         ]);
         
         // Return validation error
@@ -367,7 +366,7 @@ class StudentController extends Controller
         $username   = Sanitizes::my_sanitize_string( $request->username);
         $email      = Sanitizes::my_sanitize_email( $request->email);
         $password   = Sanitizes::my_sanitize_string( $request->password);
-        $subscription_id = Sanitizes::my_sanitize_string( $request->subscription_id);
+        $subscription_id = Sanitizes::my_sanitize_string( $subscription_id);
 
         $ev_code = md5(sprintf("%05x%05x",mt_rand(0,0xffff),mt_rand(0,0xffff)));
 
@@ -420,7 +419,7 @@ class StudentController extends Controller
 
     public function myPlanStudents( $username, $role, $subscription_id )
     {   
-        $student = Students::where([['parent_username', $username], ['subscription_id', $subscription_id]])->get()->all();
+        $student = Students::where([['parent_username', $username], ['subscription_id', $subscription_id]])->paginate(10);
 
         if($student) {
             $response = ['success'=>true, 'data'=>$student];
@@ -499,6 +498,15 @@ class StudentController extends Controller
             $response = ['success'=>false, 'data'=>"Access denieeled"];
             return response()->json($response, 201);
         }
+    }
+
+    public function getAllStudents($username, $role)
+    {   
+        $my_students = Students::paginate(10);
+        $response = ['success'=>true, 'data'=>$my_students];
+                
+        return response()->json($response, 200);
+            
     }
 
 }

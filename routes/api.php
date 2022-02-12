@@ -47,7 +47,7 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
     Route::get('/renew/subscription/process', 'SubscriptionController@renewSubscriptionProcess');
     // Route::post('/verify/subscription_fee/{username}/{role}', 'SubscriptionController@verify');
 
-    Route::post('/add/student/{username}', 'StudentController@addStudent');
+    Route::post('/add/student/{username}/{subscription_id}', 'StudentController@addStudent');
     Route::get('/my_plan/students/{username}/{role}/{plan_id}', 'StudentController@myPlanStudents');
 
     Route::post('/student/signin', 'StudentController@login');
@@ -59,6 +59,7 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
     Route::get('/student/details/{username}/{role}', 'StudentController@getDetails');
     Route::get('/students/{all}/{username}/{role}', 'StudentController@getStudents');
     Route::get('/my_students/{all}/{username}/{role}/{requestFor}', 'StudentController@getMyStudents');
+    Route::get('/all_students/{username}/{role}', 'StudentController@getAllStudents');
 
     Route::post('/manager/sign_in', 'ManagerController@login');
     Route::get('/manager/get/{username}/{role}', 'ManagerController@getDetails');
@@ -76,6 +77,7 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
 
     Route::post('/save_timetable/{username}/{role}', 'TimetableController@saveTimetable');
     Route::post('/my_timetable/{username}/{role}/{requestFor}', 'TimetableController@getMyTimetable');
+    Route::get('/all_my_timetable/{username}/{role}', 'TimetableController@getAllMyTimetable');
     Route::post('/teacher_entered_class/{username}/{role}', 'TimetableController@teacherEnteredClass');
 
     Route::post('/add/payment_made/{username}/{role}/{teacherUsername}/{amount}/{accountName}/{accountNumber}/{bank}', 'TeacherController@addPaymentMade');
@@ -95,7 +97,7 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
 
 
     
-    Route::post('/student/sign_in', 'StudentController@login');
+    // Route::post('/student/sign_in', 'StudentController@login');
     Route::post('/student/forget_password', 'StudentController@forgetPassword');
     Route::get('/student/reset/{code}/{username}','StudentController@reset');
     Route::post('/student/check','StudentController@checkResetPassword');
@@ -115,17 +117,18 @@ Route::middleware('auth:api')->get('/applications', function (Request $request) 
 
     
     
-    Route::get('/student/get/{username}/{role}', 'StudentController@getDetails');
     Route::post('/update_file/{username}/{role}/{file_key}', 'GeneralController@updatePicture');
     Route::post('/update_details/{username}/{role}', 'GeneralController@updateDetails');
 
     Route::get('/get/support/dept', 'SupportController@getSupportDept');
     Route::post('/submit/ticket/{username}/{role}', 'SupportController@submitTicket');
     Route::get('/get/tickets/{username}/{role}', 'SupportController@getTicket');
-    Route::get('/get/tickets/reply/{username}/{role}', 'SupportController@getTicketReply');
+
+    // Route::get('/get/tickets/reply/{username}/{role}', 'SupportController@getTicketReply');
     Route::post('/get/tickets/reply/by_id/{username}/{role}', 'SupportController@getTicketReplyById');
 
     Route::post('/submit/ticket/reply/{username}/{role}', 'SupportController@submitTicketReply');
+    Route::post('/close/ticket/{username}/{role}', 'SupportController@closeTicket');
 
     Route::get('/admin/get/{username}/{role}', 'AdminController@getDetails');
     Route::post('add/manager/{username}/{role}', 'AdminController@addManager');

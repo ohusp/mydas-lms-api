@@ -114,6 +114,26 @@ class TimetableController extends Controller
         }
     }
 
+    public function getAllMyTimetable($username, $role)
+    {   
+        $updateTimetable = TimetableController::updateTimetable();
+
+        if($role === "student"){
+            $timetable = Timetable::where([['student_username', $username]])->get()->all();
+        }else if($role === "teacher") {
+            $timetable = Timetable::where([['teacher_username', $username]])->get()->all();
+        }
+    
+        if ($timetable)
+        {
+            $response = ['success'=>true, 'data'=>$timetable];
+            return response()->json($response, 200);
+        }else{
+            $response = ['success'=>false, 'data'=>"Failed. No timetable"];
+            return response()->json($response, 200);
+        }
+    }
+
     public function updateTimetable()
     {  
         // return "Mendes";

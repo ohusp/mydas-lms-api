@@ -87,8 +87,9 @@ class SubscriptionController extends Controller
 
         $currentDateTime = Carbon::now();
         $expirationTime  = Carbon::now()->addMonths($planDuration);
+        $status          = "3";
 
-        $saveSubscription = SubscriptionController::saveSubscription($currency, $amount, $email, $name, $orderID, $payerID, $username, $planId, $planName, $planPrice, $handlingFee, $planDuration, $expirationTime);
+        $saveSubscription = SubscriptionController::saveSubscription($currency, $amount, $email, $name, $orderID, $payerID, $username, $planId, $planName, $planPrice, $handlingFee, $planDuration, $expirationTime, $status);
 
         if($saveSubscription){
             $response = ['success'=>true, 'data'=>'Payment successful'];
@@ -502,7 +503,7 @@ class SubscriptionController extends Controller
         
     }
     
-    public static function saveSubscription($currency, $amount, $email, $name, $orderID, $payerID, $username, $planId, $planName, $planPrice, $handlingFee, $planDuration, $expirationTime)
+    public static function saveSubscription($currency, $amount, $email, $name, $orderID, $payerID, $username, $planId, $planName, $planPrice, $handlingFee, $planDuration, $expirationTime, $status)
     {   
         
         $payload = [
@@ -513,12 +514,13 @@ class SubscriptionController extends Controller
             'orderID'         =>$orderID,
             'payerID'         =>$payerID,
             'username'        =>$username,
-            'plan_id'         >$planId,
+            'plan_id'         =>$planId,
             'plan_name'       =>$planName,
             'plan_price'      =>$planPrice,
             'handling_fee'    =>$handlingFee,
             'plan_duration'   =>$planDuration,
             'expiration_time' =>$expirationTime,
+            'status'          =>$status
         ];
                 
         $subscription = new \App\Subscriptions($payload);

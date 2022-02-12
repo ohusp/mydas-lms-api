@@ -25,7 +25,7 @@ class Support_tickets extends Authenticatable implements JWTSubject
         'support_dept', 
         'support_subject', 
         'support_message', 
-        'email', 
+        'username', 
         'role', 
         'status'
     ];

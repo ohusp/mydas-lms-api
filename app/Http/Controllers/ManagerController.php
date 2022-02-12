@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Managers;
 use App\Students;
-use App\Lms_users;
 use JWTAuth;
 use JWTAuthException;
 use Mail;
@@ -66,7 +65,7 @@ class ManagerController extends Controller
         
         $validator  = Validator::make($request->all(), [ 
             'username_email'  => 'required|string|max:255', 
-            'password'        => 'required|string|min:8|max:255', 
+            'password'        => 'required|string|max:255', 
         ]);
 
         // Return validation error
@@ -132,13 +131,10 @@ class ManagerController extends Controller
         $validator = Validator::make($request->all(), [ 
             'first_name'    => 'required|string|max:150', 
             'last_name'     => 'required|string|max:150', 
-            'middle_name'   => 'required|string|max:150', 
             'telephone'     => 'nullable|string|max:150',
             'gender'        => 'nullable|string|max:150',
-            'institution'   => 'nullable|string|max:250',
-            'department'    => 'nullable|string|max:150',
             'country_of_residence' => 'nullable|string|max:150',
-            'city'      => 'nullable|string|max:150',
+            'district_province_state'      => 'nullable|string|max:150',
             'address'   => 'nullable|string|max:150',
         ]);
         
@@ -150,18 +146,15 @@ class ManagerController extends Controller
         }
 
         // return $request->username;
-        $manager_data = Lms_users::where('username', '=', $request->username)->first();
+        $manager_data = Managers::where('username', '=', $request->username)->first();
 
         // Sanitize inputs
-        $manager_data->firstname    = Sanitizes::my_sanitize_string( $request->first_name);
-        $manager_data->lastname     = Sanitizes::my_sanitize_string( $request->last_name);
-        $manager_data->middlename   = Sanitizes::my_sanitize_string( $request->middle_name);
-        $manager_data->phone1       = Sanitizes::my_sanitize_string( $request->telephone);
+        $manager_data->first_name   = Sanitizes::my_sanitize_string( $request->first_name);
+        $manager_data->last_name    = Sanitizes::my_sanitize_string( $request->last_name);
+        $manager_data->telephone    = Sanitizes::my_sanitize_string( $request->telephone);
         $manager_data->gender       = Sanitizes::my_sanitize_string( $request->gender);
-        $manager_data->institution  = Sanitizes::my_sanitize_string( $request->institution);
-        $manager_data->department   = Sanitizes::my_sanitize_string( $request->department);
-        $manager_data->country      = Sanitizes::my_sanitize_string( $request->country_of_residence);
-        $manager_data->city         = Sanitizes::my_sanitize_string( $request->city);
+        $manager_data->country_of_residence = Sanitizes::my_sanitize_string( $request->country_of_residence);
+        $manager_data->district_province_state = Sanitizes::my_sanitize_string( $request->district_province_state);
         $manager_data->address      = Sanitizes::my_sanitize_string( $request->address);
                   
         if ($manager_data->save())

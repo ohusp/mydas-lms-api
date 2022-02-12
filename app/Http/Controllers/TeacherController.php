@@ -64,7 +64,7 @@ class TeacherController extends Controller
         
         $validator  = Validator::make($request->all(), [ 
             'username_email'  => 'required|string|max:255', 
-            'password'        => 'required|string|min:8|max:255', 
+            'password'        => 'required|string|max:255', 
         ]);
 
         // Return validation error
@@ -443,7 +443,7 @@ class TeacherController extends Controller
         $validator = Validator::make($request->all(), [ 
             'first_name'    => 'required|string|max:150', 
             'last_name'     => 'required|string|max:150', 
-            'middle_name'   => 'required|string|max:150', 
+            'middle_name'   => 'nullable|string|max:150', 
             'telephone'     => 'nullable|string|max:150',
             'gender'        => 'nullable|string|max:150',
             'institution'   => 'nullable|string|max:250',
@@ -461,18 +461,19 @@ class TeacherController extends Controller
         }
 
         // return $request->username;
-        $teacher_data = Lms_users::where('username', '=', $request->username)->first();
+        $teacher_data = Teachers::where('username', '=', $request->username)->first();
 
         // Sanitize inputs
-        $teacher_data->firstname    = Sanitizes::my_sanitize_string( $request->first_name);
-        $teacher_data->lastname     = Sanitizes::my_sanitize_string( $request->last_name);
-        $teacher_data->middlename   = Sanitizes::my_sanitize_string( $request->middle_name);
-        $teacher_data->phone1       = Sanitizes::my_sanitize_string( $request->telephone);
-        $teacher_data->gender       = Sanitizes::my_sanitize_string( $request->gender);
-        $teacher_data->institution  = Sanitizes::my_sanitize_string( $request->institution);
-        $teacher_data->department   = Sanitizes::my_sanitize_string( $request->department);
-        $teacher_data->country      = Sanitizes::my_sanitize_string( $request->country_of_residence);
-        $teacher_data->city         = Sanitizes::my_sanitize_string( $request->city);
+        $teacher_data->first_name    = Sanitizes::my_sanitize_string( $request->first_name);
+        $teacher_data->last_name     = Sanitizes::my_sanitize_string( $request->last_name);
+        $teacher_data->middle_name   = Sanitizes::my_sanitize_string( $request->middle_name);
+        $teacher_data->zip_code      = Sanitizes::my_sanitize_string( $request->zip_code);
+        $teacher_data->telephone     = Sanitizes::my_sanitize_string( $request->telephone);
+        $teacher_data->gender        = Sanitizes::my_sanitize_string( $request->gender);
+        $teacher_data->class_unit_payment   = Sanitizes::my_sanitize_string( $request->class_unit_payment);
+        $teacher_data->nationality          = Sanitizes::my_sanitize_string( $request->nationality);
+        $teacher_data->country_of_residence = Sanitizes::my_sanitize_string( $request->country_of_residence);
+        $teacher_data->district_province_state = Sanitizes::my_sanitize_string( $request->district_province_state);
         $teacher_data->address      = Sanitizes::my_sanitize_string( $request->address);
                   
         if ($teacher_data->save())

@@ -54,15 +54,16 @@ class AdminController extends Controller
 
     public function login(Request $request)
     {   
-        // return $request;
         //decrypt request 
         $user = Encrypt::cryptoJsAesDecrypt('where do you go when you by yourself', $request->user);
         // convert array back to laravel request object
         $request = new \Illuminate\Http\Request();
         $request->replace($user);
+
+        // return $request;
         
         $validator  = Validator::make($request->all(), [ 
-            'username_email'  => 'required|username|max:255', 
+            'username_email'  => 'required|string|max:255', 
             'password'        => 'required|string|min:8|max:255', 
         ]);
 
@@ -80,8 +81,9 @@ class AdminController extends Controller
         if ($admin_data && \Hash::check($password, $admin_data->password)) // The passwords match...
         {   
             // This gets the patient role name and passed into a variable
-            $role_name = $admin_data->roles->pluck('name');
-            $role_name = $role_name[0];
+            // $role_name = $admin_data->roles->pluck('name');
+            // $role_name = $role_name[0];
+            $role_name = "superadministrator";
 
             $token = self::getToken($usernameEmail, $password);
             $admin_data->auth_token = $token;
@@ -140,6 +142,8 @@ class AdminController extends Controller
         // convert array back to laravel request object
         $request = new \Illuminate\Http\Request();
         $request->replace($user);
+
+        // return $request;
         
         // Validate
         $validator = Validator::make($request->all(), [ 
@@ -151,7 +155,6 @@ class AdminController extends Controller
             'zip_code'       => 'nullable|string|max:150',
             'telephone' => 'nullable|string|max:150',
             'gender'    => 'nullable|string|max:150',
-            'institution'               => 'nullable|string|max:250',
             'nationality'               => 'nullable|string|max:150',
             'country_of_residence'      => 'nullable|string|max:150',
             'district_province_state'   => 'nullable|string|max:150',
@@ -174,7 +177,6 @@ class AdminController extends Controller
         $zip_code       = Sanitizes::my_sanitize_string( $request->zip_code);
         $telephone      = Sanitizes::my_sanitize_string( $request->telephone);
         $gender         = Sanitizes::my_sanitize_string( $request->gender);
-        $institution    = Sanitizes::my_sanitize_string( $request->institution);
         $nationality    = Sanitizes::my_sanitize_string( $request->nationality);
         $country_of_residence       = Sanitizes::my_sanitize_string( $request->country_of_residence);
         $district_province_state    = Sanitizes::my_sanitize_string( $request->district_province_state);
@@ -191,7 +193,6 @@ class AdminController extends Controller
             'zip_code'       =>$zip_code,
             'telephone' =>$telephone,
             'gender'    =>$gender,
-            'institution'               =>$institution,
             'nationality'               =>$nationality,
             'country_of_residence'      =>$country_of_residence,
             'district_province_state'   =>$district_province_state,
@@ -260,7 +261,6 @@ class AdminController extends Controller
             'zip_code'       => 'nullable|string|max:150',
             'telephone' => 'nullable|string|max:150',
             'gender'    => 'nullable|string|max:150',
-            'institution'               => 'nullable|string|max:250',
             'nationality'               => 'nullable|string|max:150',
             'country_of_residence'      => 'nullable|string|max:150',
             'district_province_state'   => 'nullable|string|max:150',
@@ -284,7 +284,6 @@ class AdminController extends Controller
         $student_data->zip_code       = Sanitizes::my_sanitize_string( $request->zip_code);
         $student_data->telephone      = Sanitizes::my_sanitize_string( $request->telephone);
         $student_data->gender         = Sanitizes::my_sanitize_string( $request->gender);
-        $student_data->institution    = Sanitizes::my_sanitize_string( $request->institution);
         $student_data->nationality    = Sanitizes::my_sanitize_string( $request->nationality);
         $student_data->country_of_residence       = Sanitizes::my_sanitize_string( $request->country_of_residence);
         $student_data->district_province_state    = Sanitizes::my_sanitize_string( $request->district_province_state);

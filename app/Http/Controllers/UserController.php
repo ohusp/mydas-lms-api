@@ -65,7 +65,7 @@ class UserController extends Controller
         
         $validator  = Validator::make($request->all(), [ 
             'username_email'  => 'required|string|max:255', 
-            'password'        => 'required|string|min:8|max:255', 
+            'password'        => 'required|string|max:255', 
         ]);
 
         // Return validation error
@@ -275,6 +275,7 @@ class UserController extends Controller
             'next_kin_phone'        =>$user_data->next_kin_phone, 
             'next_kin_email'        =>$user_data->next_kin_email, 
             'profile_picture'       =>$user_data->profile_picture, 
+            'id_passport_upload'    =>$user_data->id_passport_upload, 
 
             'status'=>$user_data->status, 
             'created_at'=>$user_data->created_at
